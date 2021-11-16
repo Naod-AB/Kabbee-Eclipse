@@ -4,14 +4,12 @@
     letter-spacing: .3px;
 }
 
-
-
-
-
 h1{color:blue;
 text-align:center;
-text-decoration:  underline ;
 text-decoration-color:blue;
+border-bottom: 3px solid rgb(226, 97, 209);
+border-radius: 3rem;
+border-left: 3px;
 padding: auto;
 }
 div.secondbox{
