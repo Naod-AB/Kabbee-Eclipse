@@ -7,32 +7,19 @@
 }
 
 /*border*/
-
-.border{
-    border: 7px solid black;
-    width: 700px;
-    height: 500px;
-    margin:20rem;
-}
-.border2{
-    border:3px solid black;
-    width: 680px;
-    height: 480px;
-    margin: .2rem;
-    box-shadow: inset .2em .2em .5em gray, inset .2em .2em .5em gray;
-}
-.border3{
-    border: 1px solid rgb(4, 149, 233) ;
-    width: 600px;
-    height: 400px;
-    margin: 2.5rem;
+.border3{ 
+    border:#0084ff 1.5px solid;
+    width: 1330px ;
+   height: 620px;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 /*header*/
 
 .header{
     font-size: 16px;
-    color: rgb(4, 149, 233);
+    color: #0084ff;
     text-align: center;
     margin-top: .5rem;
 }
@@ -41,26 +28,26 @@
     display: block;
     border: 0.05px solid rgb(4, 149, 233) ;
     width: 300px;
-    margin-left: 10rem;
+    margin-left: 30rem;
 }
 .words{
     font-size: 11px;
-    margin-left:10rem;
+    margin-left:30rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    color: rgb(4, 149, 233);
+    color: #0084ff;
     letter-spacing: 1px;
 }
 
 /*buttons*/
 .button{
    font-size: 10px;
-   border: 1px solid rgb(4, 149, 233) ;
+   border: 1px solid #0084ff ;
    display: block; 
    width: 300px;
-   margin-left: 10rem;
+   margin-left: 30rem;
    margin-bottom: 2rem;
-   color:rgb(4, 149, 233) ;
+   color:#0084ff ;
    background-color: white;
    padding: .8rem;
 }

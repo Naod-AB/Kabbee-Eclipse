@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*borders*/
+.border3{
+    border: 1px solid rgb(4, 149, 233);
+    width: 1330px;
+    height: 620px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+/*back button*/
+
+.fas{
+    color:rgb(4, 149, 233);
+    margin-left: 1rem;
+    margin-top: 1rem;
+    zoom: 195%;
+ 
+
+
+}
+
+/*home button*/
+.fa-home{
+   
+    color:rgb(4, 149, 233);
+    margin-left: 36rem;
+    zoom: 200%;
+}
+
+/*prossing word*/
+.words{
+    font-size: 35px;
+    color:rgb(4, 149, 233) ;
+    text-align: center;
+    margin-top: 13rem;
+}
