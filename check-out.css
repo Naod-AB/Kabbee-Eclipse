@@ -1,0 +1,91 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:sans-serif;
+    letter-spacing: .3px;
+}
+/*box properties */
+.firstbox{
+    
+    border: 3px solid black;
+    width: 300px;
+    height: 200px;
+    margin:9rem;
+    display: inline-block;
+    align-content: center;
+  
+}
+.secondbox{
+    border: 0.5px solid black;
+    width: 290px;
+    height: 190px;
+    margin:.1rem ;
+    box-shadow: inset .05rem .05rem .1em rgb(90, 88, 88), inset -.05em -.05em .1em  rgb(92, 90, 90);
+    
+ 
+    
+   
+  
+    
+
+}
+.thirdbox{
+    border:0.5px solid rgb(6, 180, 238);
+    width :275px;
+    height: 170px;
+    margin: 0.5rem;
+}
+
+.heading{
+    color:rgb(6, 180, 238);
+    font-size: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: .2rem;
+    
+
+}
+.heading::after {
+    content:' ';
+    display:block;
+    border:.2px solid rgb(6, 180, 238);
+    width: 100px;
+    margin-left: 5rem;
+}
+.text{
+    font-size: 4px;
+    text-align: center;
+    margin-top:2rem;
+    margin-bottom: 0;
+    color:rgb(6, 180, 238);
+    text-transform: uppercase;
+}
+.new{
+    margin-top: .5rem;
+}
+.text-1{
+    font-size: 4px;
+    margin-top: 1rem;
+}
+
+
+
+.btn{
+    border: -1px;
+    margin-left:5rem;
+    width: 100px;
+    font-size:4px;
+    padding: .2rem;
+    border:.5px solid lightseagreen;
+    margin-top: 0;
+    text-transform: uppercase;
+    color: rgb(6, 180, 238);
+    background-color: white;
+    
+}
+.btn-1{
+font-size: 6px;
+color:rgb(6, 180, 238);
+}
