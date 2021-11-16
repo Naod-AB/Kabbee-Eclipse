@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+
+/*border*/
+
+.border{
+    border: 7px solid black;
+    width: 700px;
+    height: 500px;
+    margin:20rem;
+}
+.border2{
+    border:3px solid black;
+    width: 680px;
+    height: 480px;
+    margin: .2rem;
+    box-shadow: inset .2em .2em .5em gray, inset .2em .2em .5em gray;
+}
+.border3{
+    border: 1px solid rgb(4, 149, 233) ;
+    width: 600px;
+    height: 400px;
+    margin: 2.5rem;
+}
+
+/*header*/
+
+.header{
+    font-size: 16px;
+    color: rgb(4, 149, 233);
+    text-align: center;
+    margin-top: .5rem;
+}
+.header::after{
+    content: "";
+    display: block;
+    border: 0.05px solid rgb(4, 149, 233) ;
+    width: 300px;
+    margin-left: 10rem;
+}
+.words{
+    font-size: 11px;
+    margin-left:10rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: rgb(4, 149, 233);
+    letter-spacing: 1px;
+}
+
+/*buttons*/
+.button{
+   font-size: 10px;
+   border: 1px solid rgb(4, 149, 233) ;
+   display: block; 
+   width: 300px;
+   margin-left: 10rem;
+   margin-bottom: 2rem;
+   color:rgb(4, 149, 233) ;
+   background-color: white;
+   padding: .8rem;
+}
+
+/* buttons decoration*/
+.clr{
+    text-decoration: none;
+    font-size: 12px;
+}
+ a:visited{
+     color:rgb(4, 149, 233) ;
+ }
