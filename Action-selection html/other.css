@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*borders*/
+
+.border1{
+    scrollbar-shadow-color: rgb(22, 21, 21);
+    border: 7px solid black;
+    width: 700px;
+    height: 500px;
+    margin: 20rem;
+}
+
+.border2{
+    border: 3px solid black;
+    width: 680px;
+    height: 480px;
+    margin: .2rem;
+    box-shadow: inset .2em .2em .5em gray, inset .2em .2em .5em gray;
+    
+}
+
+.border3{
+    border: 1px solid rgb(4, 149, 233);
+    width: 600px;
+    height: 400px;
+    margin: 2rem;
+}
+
+/*back button*/
+
+.fas{
+    color:rgb(4, 149, 233);
+    margin-left: 1rem;
+    margin-top: 1rem;
+    zoom: 195%;
+ 
+
+
+}
+
+/*home button*/
+.fa-home{
+   
+    color:rgb(4, 149, 233);
+    margin-left: 15rem;
+    zoom: 190%;
+}
+
+/*prossing word*/
+.words{
+    font-size: 25px;
+    color:rgb(4, 149, 233) ;
+    text-align: center;
+    margin-top: 7rem;
+}
