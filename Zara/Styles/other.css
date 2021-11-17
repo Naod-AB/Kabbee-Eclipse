@@ -1,22 +1,14 @@
-/*
-Border template
-*/
-.container {
-    display: flex;
-    justify-content: space-around;
-    
-  }
-  
-.sub-container {
-    width: 95%;
-    height: 40em;
-    margin: 1em;
-    padding: 0.2em 2em;
-    text-align: center;
-    border: 0.09em solid #3399ff;
-  }
-  
-  
-  
-  
-  
+/*Outside Border*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lgborder{
+  margin: 1.5rem 2rem 2rem 1.5rem;
+  width: 95vw;
+  height: 90vh;
+  border:#3399ff 1.5px solid;
+  overflow: auto;
+}
