@@ -7,7 +7,7 @@
     letter-spacing: .3px;
 }
 /*box properties */
-.firstbox{
+/* .firstbox{
     
     border: 3px solid black;
     width: 300px;
@@ -22,7 +22,7 @@
     width: 290px;
     height: 190px;
     margin:.1rem ;
-    box-shadow: inset .05rem .05rem .1em rgb(90, 88, 88), inset -.05em -.05em .1em  rgb(92, 90, 90);
+    box-shadow: inset .05rem .05rem .1em rgb(90, 88, 88), inset -.05em -.05em .1em  rgb(92, 90, 90); */
     
  
     
@@ -30,20 +30,20 @@
   
     
 
-}
+
 .thirdbox{
     border:0.5px solid rgb(6, 180, 238);
-    width :275px;
-    height: 170px;
-    margin: 0.5rem;
+     width:595px;
+    height: 285px;
+    margin: .5rem;
 }
 
 .heading{
     color:rgb(6, 180, 238);
-    font-size: 5px;
+    font-size: 10px;
     text-align: center;
     text-transform: uppercase;
-    margin-top: .2rem;
+    margin-top: 1rem;
     
 
 }
@@ -51,11 +51,11 @@
     content:' ';
     display:block;
     border:.2px solid rgb(6, 180, 238);
-    width: 100px;
-    margin-left: 5rem;
+    width: 120px;
+    margin-left: 15rem;
 }
 .text{
-    font-size: 4px;
+    font-size: 6px;
     text-align: center;
     margin-top:2rem;
     margin-bottom: 0;
@@ -63,26 +63,27 @@
     text-transform: uppercase;
 }
 .new{
+    font-size: 4px;
     margin-top: .5rem;
 }
 .text-1{
-    font-size: 4px;
+    font-size: 6px;
     margin-top: 1rem;
 }
 
 
 
 .btn{
-    border: -1px;
-    margin-left:5rem;
-    width: 100px;
-    font-size:4px;
-    padding: .2rem;
-    border:.5px solid lightseagreen;
-    margin-top: 0;
-    text-transform: uppercase;
-    color: rgb(6, 180, 238);
     background-color: white;
+    border: -1px;
+    border:.5px solid lightseagreen;
+    color: rgb(6, 180, 238);
+    font-size:6px;
+    margin-left:15rem;
+    margin-top: 0;
+    padding: .2rem;
+    text-transform: uppercase;
+    width: 100px;
     
 }
 .btn-1{
