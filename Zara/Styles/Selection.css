@@ -39,12 +39,16 @@ p{
     font-family:  Calibri;
     font-size: 1.5rem;
 }
-button{
+.anchor{
+  text-align: center;
+  display: block;
+  
   color:white;
   width: 305px;
   height: 45px;
   margin-bottom: 25px;
   background-color: #1E90FF;
+  text-decoration: none;
 }
 .catagory{
   align-items: center;

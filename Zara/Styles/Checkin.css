@@ -31,13 +31,45 @@ hr {
   font-size: 1.8em;
   
 }
-p{
-    text-align: center;
-    border-color: #3399ff;
-    margin: 2.5% 0 2% 0;
-    color: #3399ff;
-    font-family:  Calibri;
-    font-size: 1.5rem;
+
+#contener{
+  
+  margin-top: 150px;
+  background-color: white;
+  text-align: center;
 }
+.time{
+  width: 400px;
+  height: 50px;
+  border-color: rgb(42, 129, 209);
+  border-style: solid;
+  background-color: white;
+  color: rgb(42, 129, 209);
+}
+.done{
+  width: 200px;
+  height: 50px;
+  border-color: rgb(42, 129, 209);
+  border-style: solid;
+  background-color: white;
+  margin-left: 100px;
+  color: rgb(42, 129, 209);
+  
+}
+.text{
+  text-align: center;
+  margin-bottom: 1px;
+  margin-top: 50px;
+  color: rgb(42, 129, 209);
 
+}
+#have{
+  margin-top: 50px;
+  margin-bottom: 5px;
+  color: rgb(42, 129, 209);
 
+}
+#see{ 
+  margin-bottom: 60px;
+  color: rgb(42, 129, 209);
+}
