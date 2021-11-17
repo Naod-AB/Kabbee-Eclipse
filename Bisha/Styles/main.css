@@ -1,21 +1,22 @@
 /* Template for all the pages */
 .box {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-.content {
-    width: 95%;
-    height: 52rem;
-    margin: 1em;
-    padding: 0.2em 2em;
-    text-align: center;
-    flex-direction: column;
-    border:  #3399ff solid 0.09em;
+  display: flex;
+  justify-content: space-around;
+}
 
-  }
-  
-.content a, h2, h4 {
+.content {
+  width: 95%;
+  height: 52rem;
+  margin: 1em;
+  padding: 0.2em 2em;
+  text-align: center;
+  flex-direction: column;
+  border: #3399ff solid 0.09em;
+}
+
+.content a,
+h2,
+h4 {
   color: #3399ff;
   text-align: center;
   align-items: center;
@@ -23,27 +24,24 @@
   text-decoration: none;
 }
 
-
 hr {
   width: 70%;
   border: #3399ff solid 0.5px;
-} 
+}
 
 /* ------------------------------- */
 /* ------------------------------- */
-
-
 
 /* CSS specific for home.html */
 .pagelink {
-    padding: 0;
-    width: 100%;
-    height: 50rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-decoration: none;
-    color: #3399ff;
+  padding: 0;
+  width: 100%;
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  color: #3399ff;
 }
 
 .head1 {
@@ -51,7 +49,7 @@ hr {
   margin-top: 25em;
   height: 10rem;
   font-size: 3.5rem;
-  margin: 0 ;
+  margin: 0;
 }
 .head2 {
   font-size: 1.5rem;
@@ -62,103 +60,100 @@ hr {
 /* ------------------------------- */
 /* ------------------------------- */
 
-
-
-
 /* CSS specific for Option_selection.html */
 
+.btnbx {
+  margin-top: 5em;
+  margin-bottom: 17em;
+}
+
+/* buttons property only*/
+.btns {
+  width: 300px;
+  height: 50px;
+  margin: 20px;
+  background-color: #3399ff;
+  color: aliceblue;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
 /* ------------------------------- */
-/* ------------------------------- */
-
-
-
 
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
-                  
+
 .option {
-    margin-top: 3em;
-  }
-  
-  .option ul {
-    list-style: none;
-    display: flex;
-    box-sizing: content-box;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .adminbuttons button {
-      margin-top: 3em;
-      margin-bottom: 2em;
-  }
-  
-  .option ul li {
-    width: 30%;
-    margin-bottom: 0.4em;
-  }
-  
-  .option button {
-    width: 100%;
-    border: 0.09em solid #3399ff;
-    border-radius: 0;
-    height: 2.3rem;
-    background-color: white;
-    color: #3399ff;
-  }
-  
-  .option button:hover {
-    cursor: pointer;
-  }
+  margin-top: 3em;
+}
 
-            /* visitor_names */
+.option ul {
+  list-style: none;
+  display: flex;
+  box-sizing: content-box;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminbuttons button {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.option ul li {
+  width: 30%;
+  margin-bottom: 0.4em;
+}
+
+.option button {
+  width: 100%;
+  border: 0.09em solid #3399ff;
+  border-radius: 0;
+  height: 2.3rem;
+  background-color: white;
+  color: #3399ff;
+}
+
+.option button:hover {
+  cursor: pointer;
+}
+
+/* visitor_names */
 .form {
-    margin-top: 15em;
-  }
-  
-  .nameinput {
-    width: 90%;
-    height: 3em;
-    color: #3399ff;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    background-color: transparent;
-  }
-  
-  .subbut {
-    width: 60%;
-    height: 2.5rem;
-    background-color: #3399ff;
-    color: midnightblue;
-    margin-top: 4em;
-    border: none;
-    box-shadow: lightskyblue 1em 1em 1em;
-  }
-  
-  .subbut:hover {
-    cursor: pointer;
-  }
+  margin-top: 15em;
+}
+
+.nameinput {
+  width: 90%;
+  height: 3em;
+  color: #3399ff;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+}
+
+.subbut {
+  width: 60%;
+  height: 2.5rem;
+  background-color: #3399ff;
+  color: midnightblue;
+  margin-top: 4em;
+  border: none;
+  box-shadow: lightskyblue 1em 1em 1em;
+}
+
+.subbut:hover {
+  cursor: pointer;
+}
 /* ------------------------------- */
-/* ------------------------------- */
-
-
-
 
 /* CSS specific for actionselection.html */
 
 /* ------------------------------- */
-/* ------------------------------- */
-
-
-
 
 /* CSS specific for check in section.html */
 
 /* ------------------------------- */
-/* ------------------------------- */
-
-
-
 
 /* CSS specific for check-out.html */
 /* styles for the hole page*/
@@ -261,5 +256,4 @@ font-size: 6px;
 color:rgb(6, 180, 238);
 }
 
-/* ------------------------------- */
 /* ------------------------------- */
