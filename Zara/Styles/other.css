@@ -14,11 +14,29 @@
 }
 /* template having hr and "please select one option"*/
 
+/* template having hr and "please select one option"*/
+
 hr {
   width: 68%;
   margin: 0 20% 0 17%;
-  border-color: #0385ff;
+  border-color: #3399ff;
   border-top-style: hidden;
   border-width: 0.09em;
+}
+.temp_title{
+  text-align: center;
+  color:#3399ff;
+  margin: 0.5rem 0 0.5rem 0;
+  font-family:  Calibri;
+  font-size: 1.8em;
+  
+}
+p{
+    text-align: center;
+    border-color: #3399ff;
+    margin: 2.5% 0 2% 0;
+    color: #3399ff;
+    font-family:  Calibri;
+    font-size: 1.5rem;
 }
 

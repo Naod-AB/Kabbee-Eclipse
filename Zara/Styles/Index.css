@@ -8,7 +8,7 @@
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
   height: 90vh;
-  border:#0385ff 1.5px solid;
+  border:#3399ff 1.5px solid;
   overflow: auto;
 }
 a{
@@ -19,19 +19,19 @@ a{
   margin-top: 7rem;
   font-family:  Calibri;
   font-size: 3.7rem;
-  color: #0385ff;
+  color: #3399ff;
 }
 .greeting{
   text-align: center;
   margin-top: 3.5rem;
-  color: #0385ff;
+  color: #3399ff;
   font-family:  Calibri;
   font-size: 2rem;
 }
 .touch{
   text-align: center;
   margin-top: 6rem;
-  color: #0385ff;
+  color: #3399ff;
   font-size: 1.5rem;
   font-family:  Calibri;
 }
