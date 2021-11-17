@@ -156,5 +156,104 @@ hr {
 /* ------------------------------- */
 
 /* CSS specific for check-out.html */
+/* styles for the hole page*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:sans-serif;
+  letter-spacing: .3px;
+}
+/*............................*/
+/*............................*/
+
+
+
+
+/* repeated the Template for all the pages */
+
+  .thirdbox{
+      display: flex;
+      justify-content: space-around;
+  
+}
+.content{
+  width: 95%;
+  height: 52rem;
+  margin: 1em;
+  padding: 0.2em 2em;
+  text-align: center;
+  flex-direction: column;
+  border:  #3399ff solid 0.09em;
+
+}
+.content a, h2 {
+  color: #3399ff;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+
+
+
+
+}
+hr {
+  width: 70%;
+  border: #3399ff solid 0.5px;
+  
+} 
+/*...............................*/
+/*...............................*/
+
+
+
+/* styles for the text */
+
+.text{
+  font-size: 6px;
+  text-align: center;
+  margin-top:.5rem;
+  margin-bottom: 0;
+  color:rgb(6, 180, 238);
+  text-transform: uppercase;
+}
+.new{
+  font-size: 4px;
+  margin-top: .5rem;
+}
+.text2{
+  margin-top: 7em;
+}
+.text-1{
+  font-size: 5px;
+  margin-top: 6em;
+}
+/*.......................*/
+/*........................ */
+
+
+
+
+/* styles for buttons*/
+.btn{
+
+  background-color: white;
+  border: -1px;
+  border:.5px solid lightseagreen;
+  color: rgb(6, 180, 238);
+  font-size:6px;
+  margin-left:3em;
+  margin-top: 1em;
+  padding: .2rem;
+  text-transform: uppercase;
+  width: 100px;
+  
+}
+.btn-1{
+font-size: 6px;
+color:rgb(6, 180, 238);
+}
 
 /* ------------------------------- */

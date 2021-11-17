@@ -6,58 +6,43 @@
     font-family:sans-serif;
     letter-spacing: .3px;
 }
-/*box properties */
-/* .firstbox{
+
+    .thirdbox{
+        display: flex;
+        justify-content: space-around;
     
-    border: 3px solid black;
-    width: 300px;
-    height: 200px;
-    margin:9rem;
-    display: inline-block;
-    align-content: center;
-  
 }
-.secondbox{
-    border: 0.5px solid black;
-    width: 290px;
-    height: 190px;
-    margin:.1rem ;
-    box-shadow: inset .05rem .05rem .1em rgb(90, 88, 88), inset -.05em -.05em .1em  rgb(92, 90, 90); */
-    
- 
-    
-   
-  
-    
-
-
-.thirdbox{
-    border:0.5px solid rgb(6, 180, 238);
-     width:595px;
-    height: 285px;
-    margin: .5rem;
-}
-
-.heading{
-    color:rgb(6, 180, 238);
-    font-size: 10px;
+.content{
+    width: 95%;
+    height: 52rem;
+    margin: 1em;
+    padding: 0.2em 2em;
     text-align: center;
-    text-transform: uppercase;
-    margin-top: 1rem;
-    
+    flex-direction: column;
+    border:  #3399ff solid 0.09em;
 
 }
-.heading::after {
-    content:' ';
-    display:block;
-    border:.2px solid rgb(6, 180, 238);
-    width: 120px;
-    margin-left: 15rem;
+.content a, h2 {
+    color: #3399ff;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+  
+
+
+
 }
+hr {
+    width: 70%;
+    border: #3399ff solid 0.5px;
+  } 
+
 .text{
     font-size: 6px;
     text-align: center;
-    margin-top:2rem;
+    margin-top:.5rem;
     margin-bottom: 0;
     color:rgb(6, 180, 238);
     text-transform: uppercase;
@@ -66,21 +51,25 @@
     font-size: 4px;
     margin-top: .5rem;
 }
+.text2{
+    margin-top: 7em;
+}
 .text-1{
-    font-size: 6px;
-    margin-top: 1rem;
+    font-size: 5px;
+    margin-top: 6em;
 }
 
 
 
 .btn{
+
     background-color: white;
     border: -1px;
     border:.5px solid lightseagreen;
     color: rgb(6, 180, 238);
     font-size:6px;
-    margin-left:15rem;
-    margin-top: 0;
+    margin-left:3em;
+    margin-top: 1em;
     padding: .2rem;
     text-transform: uppercase;
     width: 100px;
@@ -90,3 +79,20 @@
 font-size: 6px;
 color:rgb(6, 180, 238);
 }
+/* @media screen and (min-width:500px) {
+
+    .content{
+        width: 40%;
+        height: 40%;
+        margin: 1em;
+        padding: 0.2em 2em;
+        text-align: center;
+        flex-direction: column;
+        border:  #3399ff solid 0.09em;
+    
+    
+}
+
+}    */
+
+
