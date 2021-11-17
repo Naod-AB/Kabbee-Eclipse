@@ -16,7 +16,8 @@
 h2,h4{
   color: #3399ff;
 }
-h2,a{
+
+.content a{
   text-align: center;
   align-items: center;
   font-weight: bold;
@@ -33,7 +34,7 @@ hr{
 /* for the region that contains the buttons*/
 .btnbx{
     margin-top: 5em;
-    margin-bottom: 20em;
+    margin-bottom: 17em;
   }
   /* ------------------------------- */
 
