@@ -32,7 +32,7 @@ hr {
 p{
     text-align: center;
     border-color: #3399ff;
-    margin: 2.5% 0 2% 0;
+    margin: 2.5% 0 5% 0;
     color: #3399ff;
     font-family:  Calibri;
     font-size: 1.5rem;
@@ -46,6 +46,7 @@ p{
   background-color: white;
 }
 .check{
+  margin-top: 1%;
   width: 400px;
   height: 50px;
   border-color: rgb(42, 129, 209);
