@@ -40,3 +40,20 @@ p{
     font-size: 1.5rem;
 }
 
+#div{
+  text-align: 50%;
+  text-size-adjust: 5px;
+  width: 300px;
+  padding-right: 30%;
+  padding-left: 37%; ;
+  
+}
+
+
+#name{
+width: 310px;
+height: 30px;
+border: 1px solid #0385ff;
+background-color: white;
+color: #0385ff;
+}
