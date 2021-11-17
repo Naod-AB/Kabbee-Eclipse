@@ -5,14 +5,14 @@ a{
     font-weight: bold;
 }
 .title{
-    margin-top: 15%;
+    margin-top: 10%;
     font-size:4vw;
 }
 .slogan{
     font-size: 2.5vw;
 }
 .touch{
-    margin-top: 15%;
+    margin-top: 10%;
     font-size: 2vw;
 }
 
@@ -23,6 +23,7 @@ a{
   
   .content {
     width: 95%;
+    height: 40em;
     margin: 1em;
     padding: 0.2em 2em;
     text-align: center;

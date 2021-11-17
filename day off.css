@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+/*borders*/
+
+.border3{
+    border:#0084ff 1.5px solid;
+    width: 1330px ;
+   height: 620px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.fas{
+    color:rgb(4, 149, 233);
+    margin-left: 1rem;
+    margin-top: 1rem;
+    zoom: 195%;
+}
+
+.border4{
+    background: #0084ff;
+    border: 1px solid black;
+    width: 350px;
+    height: 250px;
+    margin: 8rem;
+    margin-left: 28rem;
+    box-shadow: black 7px 7px 7px;
+
+}
+/*input date*/
+.date{
+    size: 50px;
+    margin: 100px;
+    margin-right: 10px;
+}
+
+/*submit button*/
+.submit{
+    margin-left: 50px;
+}
+a:link{
+    color: rgb(4, 149, 233) ;
+    text-decoration: none;
+}
+
+a:visited{
+    color:rgb(3, 3, 48)  ;
+    cursor: pointer;
+}
