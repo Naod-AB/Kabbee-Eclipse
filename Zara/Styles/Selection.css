@@ -39,4 +39,14 @@ p{
     font-family:  Calibri;
     font-size: 1.5rem;
 }
-
+button{
+  color:white;
+  width: 305px;
+  height: 45px;
+  margin-bottom: 25px;
+  background-color: #1E90FF;
+}
+.catagory{
+  align-items: center;
+  padding-left: 38%;
+}

@@ -12,6 +12,7 @@
   text-align: center;
   flex-direction: column;
   border: #3399ff solid 0.09em;
+  font-family: Arial;
 }
 
 .content a,
@@ -47,7 +48,7 @@ hr {
 .head1 {
   width: 100%;
   margin-top: 25em;
-  height: 10rem;
+  height: 6rem;
   font-size: 3.5rem;
   margin: 0;
 }
@@ -55,7 +56,8 @@ hr {
   font-size: 1.5rem;
 }
 .head3 {
-  margin-top: 15em;
+  font-size: 1rem;
+  margin-top: 10em;
 }
 /* ------------------------------- */
 /* ------------------------------- */
@@ -157,13 +159,7 @@ hr {
 
 /* CSS specific for check-out.html */
 /* styles for the hole page*/
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:sans-serif;
-  letter-spacing: .3px;
-}
+
 /*............................*/
 /*............................*/
 
