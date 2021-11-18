@@ -7,6 +7,7 @@
 a{
   text-decoration: none;
 }
+
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
@@ -14,7 +15,6 @@ a{
   border:#3399ff 1.5px solid;
   overflow: auto;
 }
-/* template having hr and "please select one option"*/
 /* template having hr and "please select one option"*/
 
 hr {
@@ -40,31 +40,13 @@ hr {
   font-family:  Calibri;
   font-size: 1.3rem;
 }
-
-#div{
-  text-align: 50%;
-  text-size-adjust: 5px;
-  width: 300px;
-  padding-right: 30%;
-  padding-left: 37%; ;
-  
-}
-
-
-#name{
-width: 310px;
-height: 30px;
-border: 1px solid #0385ff;
-background-color: white;
-color: #0385ff;
-}
 #divname{
   text-align: center;
   width: 100px;
   height: 20px;
   margin-left: 37%;
 }
-a:link, .name{
+.name{
   display: block;
   font-family: Calibri;
   background-color: white;

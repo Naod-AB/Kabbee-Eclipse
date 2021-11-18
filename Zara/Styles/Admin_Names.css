@@ -46,7 +46,7 @@ hr {
   height: 20px;
   margin-left: 37%;
 }
-a:link, .name{
+.name{
   display: block;
   font-family: Calibri;
   background-color: white;
