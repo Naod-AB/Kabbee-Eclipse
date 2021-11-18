@@ -1,62 +1,46 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    
-}
+.border{
+    display: flex;
+    justify-content: space-around;
 
-/*border*/
-.border3{ 
-    border:#0084ff 1.5px solid;
-    width: 1330px ;
-   height: 620px;
+}
+.content{ 
+    width: 95%;
+    height: 52em;
     margin: 1rem;
-    padding: 1rem;
-}
-
-/*header*/
-
-.header{
-    font-size: 16px;
-    color: #0084ff;
+    padding: 0.2rem 1em;
     text-align: center;
-    margin-top: .5rem;
+    flex-direction: column;
+    border: #3399ff solid 0.09em;
 }
-.header::after{
-    content: "";
-    display: block;
-    border: 0.05px solid rgb(4, 149, 233) ;
-    width: 300px;
-    margin-left: 30rem;
+
+/*contents*/
+.content a,h2,h4{
+    color: #3399ff;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
 }
-.words{
-    font-size: 11px;
-    margin-left:30rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    color: #0084ff;
-    letter-spacing: 1px;
+
+hr{
+    width: 70%;
+    border:#3399ff solid 1px ;
 }
 
 /*buttons*/
-.button{
-   font-size: 10px;
-   border: 1px solid #0084ff ;
-   display: block; 
-   width: 300px;
-   margin-left: 30rem;
-   margin-bottom: 2rem;
-   color:#0084ff ;
-   background-color: white;
-   padding: .8rem;
-}
-
+.buttons{
+    margin-top: 5em;
+    margin-bottom: 20em;
+    
 /* buttons decoration*/
-.clr a{
-    text-decoration: none;
-    font-size: 12px;
 }
- a:visited{
-     color:rgb(4, 149, 233) ;
- }
+.click{
+    width: 300px;
+    height: 50px;
+    margin: 20px;
+    background-color: #3399ff;
+    color:aliceblue;
+    border:none;
+    font-size: 15px;
+    cursor: pointer;
+}

@@ -15,7 +15,7 @@
   font-family: Arial;
 }
 
-.content a,
+.header,.content
 h2,
 h4 {
   color: #3399ff;
@@ -64,21 +64,28 @@ hr {
 
 /* CSS specific for Option_selection.html */
 
-.btnbx {
+.option {
   margin-top: 5em;
   margin-bottom: 17em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* buttons property only*/
-.btns {
-  width: 300px;
-  height: 50px;
-  margin: 20px;
+
+.default_button{
+  width: 20%;
+  padding: 1em 6em;
+  border:0.09em solid #3399ff;
+  margin-bottom: 2em;
+  background-color: white;
+  text-decoration: none;
+  color: #3399ff;
+}
+.unique_button{
   background-color: #3399ff;
-  color: aliceblue;
-  border: none;
-  font-size: 15px;
-  cursor: pointer;
+  color:white;
 }
 /* ------------------------------- */
 
@@ -151,6 +158,63 @@ hr {
 
 /* CSS specific for actionselection.html */
 
+         /*buttons*/
+.buttons{
+  margin-top: 5em;
+  margin-bottom: 20em;
+  
+     /* buttons decoration*/
+}
+.click{
+  width: 300px;
+  height: 50px;
+  margin: 20px;
+  background-color: #3399ff;
+  color:aliceblue;
+  border:none;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* ------------------------------- */
+
+/* CSS specific for Request dat off.html */
+
+        /*box2*/
+
+.border2{ 
+  width: 35%;
+  height: 15em;
+  border:#3399ff solid 0.09em;
+  justify-content: center;
+  margin: 10rem 25rem;
+  background-color: #3399ff;
+}
+       /*input date*/
+       
+.date{
+  padding: 4em 6em;
+}
+/* ------------------------------- */
+
+
+/* CSS specific for Other.html */
+
+     /* back arrow */
+.fas{
+  display: inline-block;
+  margin-left: 50px;
+  font-size: 40px;
+  text-decoration: none;
+  color: #3399ff;
+}
+
+.kabbee{
+  color: #3399ff;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+}
 /* ------------------------------- */
 
 /* CSS specific for check in section.html */
@@ -210,7 +274,7 @@ color: #3399ff;
 
 /* repeated the Template for all the pages */
 
-  .thirdbox{
+/*   .thirdbox{
       display: flex;
       justify-content: space-around;
   
@@ -244,7 +308,7 @@ hr {
 } 
 /*...............................*/
 /*...............................*/
-
+ */
 
 
 /* styles for the text */

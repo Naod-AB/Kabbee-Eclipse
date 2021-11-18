@@ -1,55 +1,262 @@
-/*
-Border template
-*/
-.container {
-    display: flex;
-    justify-content: space-around;
-    
+/* Border template */
+*{
+  margin: 0;
+  padding: 0;
+  font-family: calibri;
+  text-align: center;
+  text-decoration: none;
+}
+/**/
+.lgborder{
+  margin: 1.5rem 2rem 2rem 1.5rem;
+  width: 95vw;
+  height: 90vh;
+  border:1.5px solid #3399ff ;
+  overflow: auto;
+  
+}
+
+/* template having hr and "select option"*/
+hr {
+  width: 68%;
+  margin: 0 20% 0 17%;
+  border-top-style: hidden;
+  border-width: 0.09em;
+  border-color: #3399ff;
+}
+
+.temp_title{
+  color:#3399ff;
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 1.8em;
+}
+
+.pls{   
+    margin: 2.5% 0 6% 0;
+    color: #3399ff;
+    font-size: 1.3rem;
+}
+
+.action{
+  margin-bottom: 3%;
+}
+
+.selection{
+  margin-bottom: 4%;
+}
+  /*Home page */
+ 
+  .title{
+    margin-top: 7rem;  
+    font-size: 3.7rem;
+    color: #3399ff;
+  }
+
+  .greeting{  
+    margin-top: 3.5rem;
+    color: #3399ff;
+    font-size: 2rem;
+  }
+
+  .touch{   
+    margin-top: 6rem;
+    color: #3399ff;
+    font-size: 1.2rem;
+    font-weight: bolder;   
   }
   
-.sub-container {
-    width: 95%;
-    height: 40em;
-    margin: 1em;
-    padding: 0.2em 2em;
-    text-align: center;
-    border: 0.09em solid #3399ff;
-  }
-
-
-  /*Home page */
-
-
-
   
   /*Selection page */
+  .anchor{
+    padding-top: 2%;
+    display: block;  
+    color:white;
+    width: 305px;
+    height: 40px;
+    margin-bottom: 25px;
+    background-color: #3399ff; 
+  }
+  .catagory{
+    align-items: center;
+    padding-left: 38%;
+  }
+  /*this makes the top content to have fixed position*/
+  .sticky{background-color: #fff;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    width: auto;
+    height: 23%;
+    position: sticky;
+    top: 0;
+  }
 
-
-  /*Stuff Name page */
-
-  
-  /*Visitor Name page */
-  
-  
-  /*Student Name page */
-
-  
-  /*Staff Name page */
-
+  /*Name pages (4 of them) */
+  #divname{  
+    width: 100px;
+    height: 20px;
+    margin-left: 37%;
+  }
+  .name{
+    display: block; 
+    background-color: white !important;
+    color: #3399ff;
+    border: 2px solid #3399ff;
+    width: 310px;
+    height: 20px;
+    padding-top: 20px;  
+    display: inline-block;
+    line-height: 1px;
+  }
   
   /*Action page*/
 
+  .content
+{
+   display: block;
+   color: #3399ff;
+   border: 1px solid #3399ff;
+   font-weight: bold;   
+   padding: 4%;
+   margin-top: 6%;
+}
+.data
+{
+    width: 35%;
+    height: 30%;
+    margin-left: 33%;
+    margin-top: auto;    
+}
+  /*Checkin and checkout page*/
+  .contener{
   
-  /*Checkin page*/
+    margin-top: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  .time{
+    width: 200px;
+    height: 35px;
+    border: 1px solid #3399ff;
+    background-color: white;
+    color: #3399ff;
+    display: block;
+    margin-left: 32.5%;
+    padding: 10px 10% 10px 10%;
+    
+    font-size: 125%;
+  }
+  .checkintime{
+    margin-bottom: 9%;
+  }
 
+ 
+  .text{
+    text-align: center;
+    margin-bottom: 1px;
+    margin-top: 3rem;
+    color: #3399ff;
+    
+    font-size: 100%;
+    padding-left: 25px;
   
-  /*Checkout page*/
+  }
+  #have{
+    margin-top: 2%;
+    margin-bottom: 5px;
+    color: #3399ff;
+    font-size: 100%;
+    padding-left: 27px;
+  }
+  #see{ 
+    margin-bottom: 60px;
+    color: #3399ff;
+    font-size: 100%;
+    padding-left: 27px;
+  }
+ 
+  .button{
+    margin-left: 2%;
+    height: 50px;
+    border: 1px solid #3399ff;
+    color: #3399ff;
+    padding: 10px 8% 10px 8%;
+    font-weight:500;
+  }
+  .larg{
+    padding: 15px 8% 15px 8% !important;
+  }
 
+  #texttop{
+    text-align: center;
+    margin-bottom: 1px;
+    color: #3399ff;
+    
+    font-size: 100%;
+    padding-left: 25px;
   
+  }
   /*Dayoff page*/
 
+/*DATE FORM CSS*/
+.dateform{
+  padding: 1rem;
+  background:#33b8ff;
+  
+  border: 1px solid #3399ff;
+  width: 400px;
+  height: 300px; 
+  margin: 5rem 0px 0px 32%;
+}
+
+/*DATE CHOOSER*/
+.day{
+  margin: 55px 100px 27px 120px;
+  color: white;
+  
+}
+.date{
+  border: 1px solid black;
+  color:white;
+  background:#33b8ff;
+}
+
+/*Apply btn*/
+.apply{  
+  text-align: center;
+  padding: 8px 22px 8px 22px;
+  color: white;
+  border: 1px solid black !important;
+  font-weight: bolder;
+}
+
+/*Input fields*/
+input{
+  
+  border-width: 1px;
+}
+
+/*Message*/
+.enjoy{
+  margin-bottom: 50px ;
+  color: white;
+  font-size: 1.5rem;
+}
 
   /*Other page*/
+.achieve{  
+  background-color: skyblue;
+  width: 400px;
+  height: 350px;
+  border: 1px solid #3399ff;
+  margin: 1% 0 0rem 35% ;
+  text-align: center;
+}
+progress{
+  height: 3rem;
+  
+  
+  
+}
 
   
   
