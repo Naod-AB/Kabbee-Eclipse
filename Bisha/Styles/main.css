@@ -111,7 +111,7 @@ hr {
 }
 
 .nameinput {
-  width: 90%;
+  width: 40%;
   height: 3em;
   color: #3399ff;
   border-top: none;
@@ -123,10 +123,9 @@ hr {
 
 
 .sublink {
-  width: 60%;
-  height: 2.5rem;
- text-align: center;
- padding: .5em;
+  width: 10%;
+  padding: 1em 6em;
+  text-align: center;
   background-color: #3399ff;
   color: white;
   border: none;
@@ -134,9 +133,6 @@ hr {
   box-shadow: lightskyblue 1em 1em 1em;
 }
 
-.subbut:hover {
-  cursor: pointer;
-}
 /* ------------------------------- */
 
 /* CSS specific for actionselection.html */
