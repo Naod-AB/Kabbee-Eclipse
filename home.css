@@ -1,0 +1,48 @@
+/* Display for all */
+.box {
+    display: flex;
+    justify-content: space-around;
+  }
+a{
+    text-decoration: none;
+
+}
+.content {
+    width: 100%;
+    height: 52rem;
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border:  #3399ff solid 0.09em;
+  }
+  .content a {
+      padding: 0;
+      width: 100%;
+      height: 50rem;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-decoration: none;
+      color: #3399ff;
+  }
+  
+.content h1 {
+    width: 100%;
+    margin-top: 25em;
+    height: 10rem;
+    font-size: 3.5rem;
+    margin: 0 ;
+}
+.content h2 {
+    font-size: 1.5rem;
+}
+.content h4 {
+    margin-top: 15em;
+}
+
+
+/* ------------------------------- */
+
+

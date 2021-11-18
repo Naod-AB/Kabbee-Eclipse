@@ -1,49 +1,74 @@
-*{
-    box-sizing: border-box;
-    font-family:sans-serif;
-    letter-spacing: .3px;
-}
-
-h1{color:blue;
-text-align:center;
-text-decoration-color:blue;
-border-bottom: 3px solid rgb(226, 97, 209);
-border-radius: 3rem;
-border-left: 3px;
-padding: auto;
-}
-div.secondbox{
-    margin: 250px;
-    margin-left: 25rem;
-    margin-top: 2px;
-    background:rgb(225, 222, 233);
-    border: 3px solid black;
-    outline-offset: 3px;
-    width: 150px;
-    border: center;
-    padding: 5px;
-    padding: right 20px;;
-}
-div.firstbox{
-    border-style:solid;
-  outline-style: outset;
-  outline-color:grey;
-  margin:30px;
-  margin-left: 80px;
-  margin-right: 80px;
-  background-color: rgb(164, 231, 194);
-}
-div.main{
+.box {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .content {
+    width: 95%;
+    height: 52rem;
+    margin: 1em;
+    padding: 0.2em 2em;
     text-align: center;
-    margin-top: 100px;
-}
-p{
+    flex-direction: column;
+    border: #3399ff solid 0.09em;
+    font-family: Arial;
+  }
+  
+  .content a,
+  h2,
+  h4 {
+    color: #3399ff;
     text-align: center;
-    border:3px solid turquoise;
-    width: max-content;
-    margin-left: 28rem;
-    margin-top: 20px;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  hr {
+    width: 70%;
+    border: #3399ff solid 0.5px;
+  }
+  
 
+/*specfic for check-in*/
+.check-content {
+    width: 60%;
+    margin-top: 10em;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 26em;
+}
+.check-content h4{
+    width: 32%;
+    height: 0.1rem;
+    margin-left: 5em;
+}
+.btn{
+width: 50%;
+height: 3rem;
+background: transparent;
+margin-left: 0em;
+margin-bottom: 7em;
+border-color:#3399ff;
+color: #3399ff;
+    
+}
+.check-content a {
+    width: 15%;
+    text-decoration: none;
+    margin-left: 4em;
+    margin-top: 10em;
+}
+.btn-1{
+  width: 100%;
+  height: 3rem;
+  margin-left: 5em;
+  background: transparent;
+  border-color:#3399ff;
+color: #3399ff;
+  
 }
 
 
