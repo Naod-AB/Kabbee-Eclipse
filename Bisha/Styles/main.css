@@ -8,24 +8,29 @@
   width: 95%;
   height: 52rem;
   margin: 1em;
-  padding: 0.2em 2em;
+  padding: 0.1em 2em;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   border: #3399ff solid 0.09em;
   font-family: Arial;
-}
-
-.header, .content h2,
-h4 {
-  color: #3399ff;
-  text-align: center;
   align-items: center;
+}
+.header h2{
+  margin-top: 0.3em;
+}
+.header {
+  width:5%;
+  height: 2em;
+  color: #3399ff;
   font-weight: bold;
   text-decoration: none;
 }
-
+ .content h4 {
+  color: #3399ff;
+  font-weight: bold;
+}
 hr {
   width: 70%;
   border: #3399ff solid 0.5px;
@@ -52,6 +57,12 @@ hr {
   flex-direction: column;
   text-decoration: none;
   color: #3399ff;
+  position: absolute;
+  box-sizing: border-box;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align:center;
 }
 
 .head1 {
@@ -72,15 +83,6 @@ hr {
 /* ------------------------------- */
 
 /* CSS specific for Option_selection.html */
-
-.option {
-  margin-top: 5em;
-  margin-bottom: 17em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* buttons property only*/
 .unique_button{
   background-color: #3399ff;
@@ -95,7 +97,7 @@ hr {
 
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
 
-.option1 {
+.option {
   width: 80%;
   margin-top: 7em;
   height: 40rem;
