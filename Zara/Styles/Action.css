@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
@@ -29,28 +32,36 @@ hr {
   border-top-style: hidden;
   border-width: 0.09em;
 }
-p{
+.pls{
     text-align: center;
     border-color: #3399ff;
-    margin: 2.5% 0 5% 0;
+    margin: 2.5% 0 6% 0;
     color: #3399ff;
     font-family:  Calibri;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .temp_title{
   text-align: center;
   color:#3399ff;
 }
-#contener{
-  margin-left: 450px;
-  background-color: white;
+
+.content
+{
+   display: block;
+   text-decoration: none;
+   color: #3399ff;
+   border: 1px solid #3399ff;
+   font-weight: bold;
+   font-family: sans-serif;
+   text-align: center;
+   padding: 4%;
+   margin-top: 8%;
 }
-.check{
-  margin-top: 1%;
-  width: 400px;
-  height: 50px;
-  border-color: rgb(42, 129, 209);
-  border-style: solid;
-  background-color: white;
-  color: rgb(42, 129, 209);
+.data
+{
+    width: 35%;
+    height: 30%;
+    margin-left: 33%;
+    margin-top: auto;
+    
 }

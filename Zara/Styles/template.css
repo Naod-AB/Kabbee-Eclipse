@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+a{
+  text-decoration: none;
+}
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
@@ -31,12 +33,12 @@ hr {
   font-size: 1.8em;
   
 }
-p{
-    text-align: center;
-    border-color: #3399ff;
-    margin: 2.5% 0 2% 0;
-    color: #3399ff;
-    font-family:  Calibri;
-    font-size: 1.5rem;
+.pls{
+  text-align: center;
+  border-color: #3399ff;
+  margin: 2.5% 0 6% 0;
+  color: #3399ff;
+  font-family:  Calibri;
+  font-size: 1.3rem;
 }
 

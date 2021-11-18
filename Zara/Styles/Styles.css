@@ -6,7 +6,9 @@ Border template
     justify-content: space-around;
     
   }
-  
+  a{
+    text-decoration: none;
+  }
 .sub-container {
     width: 95%;
     height: 40em;

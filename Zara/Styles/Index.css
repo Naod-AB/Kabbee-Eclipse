@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
@@ -32,6 +35,7 @@ a{
   text-align: center;
   margin-top: 6rem;
   color: #3399ff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
   font-family:  Calibri;
 }
