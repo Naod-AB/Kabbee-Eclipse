@@ -17,15 +17,7 @@
   font-family: Arial;
 }
 
-<<<<<<< HEAD
 .header, .content h2,
-||||||| ccd6db6
-.content a,
-h2,
-=======
-.header,.content
-h2,
->>>>>>> 8d278569fde4f3c35d4cbe81dd6d54432c97b340
 h4 {
   color: #3399ff;
   text-align: center;
@@ -111,7 +103,7 @@ hr {
 
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
 
-.option {
+.option1 {
   width: 80%;
   margin-top: 7em;
   height: 40rem;
@@ -134,6 +126,9 @@ hr {
   border-right: none;
   border-left: none;
   background-color: transparent;
+}
+.option ul {
+  list-style: none;
 }
 
 .subbut {
@@ -227,13 +222,7 @@ hr {
 
 /* repeated the Template for all the pages
 
-<<<<<<< HEAD
 .thirdbox{
-||||||| ccd6db6
-  .thirdbox{
-=======
-/*   .thirdbox{
->>>>>>> 8d278569fde4f3c35d4cbe81dd6d54432c97b340
       display: flex;
       justify-content: space-around;
   
