@@ -56,3 +56,23 @@ border: 1px solid #0385ff;
 background-color: white;
 color: #0385ff;
 }
+#divname{
+  text-align: center;
+  width: 100px;
+  height: 20px;
+  margin-left: 37%;
+}
+a:link, .name{
+  display: block;
+  font-family: Calibri;
+  background-color: white;
+  color: #3399ff;
+  border: 2px solid #3399ff;
+  width: 310px;
+  height: 37px;
+  padding-top: 16px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1px;
+  text-decoration: none;
+}
