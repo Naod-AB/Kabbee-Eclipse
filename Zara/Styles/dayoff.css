@@ -37,3 +37,41 @@ p{
     font-family:  Calibri;
     font-size: 1.5rem;
 }
+
+/*DATE FORM CSS*/
+.dateform{
+  padding: 1rem;
+  background: #3399ff;
+  border: 1px solid black;
+  width: 400px;
+  height: 350px; 
+  margin: 5rem 0px 0px 28rem;
+  
+
+}
+/*DATE CHOOSER*/
+.day{
+  margin: 55px 100px 27px 120px;
+  color: white;
+  
+}
+/*Apply btn*/
+.apply{  
+  margin-left: 150px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  border: 1px solid black;
+  
+}
+/*Input fields*/
+input{
+  background-color: #3399ff;
+  border-width: 1px;
+}
+/*Message*/
+.enjoy{
+  margin-bottom: 50px ;
+  color: white;
+}

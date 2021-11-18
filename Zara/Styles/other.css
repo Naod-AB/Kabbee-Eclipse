@@ -40,3 +40,14 @@ p{
     font-size: 1.5rem;
 }
 
+.achieve{
+  width: 400px;
+  height: 350px;
+  border: 1px solid #3399ff;
+  margin: 3.5rem 0 0rem 28rem ;
+  text-align: center;
+}
+progress{
+  color: red;
+  height: 2rem;
+}
