@@ -126,18 +126,19 @@ hr {
   border-right: none;
   border-left: none;
   background-color: transparent;
-}
-.option ul {
-  list-style: none;
+  margin-bottom: 3em;
 }
 
-.subbut {
+
+.sublink {
   width: 60%;
   height: 2.5rem;
+ text-align: center;
+ padding: .5em;
   background-color: #3399ff;
-  color: midnightblue;
-  margin-top: 4em;
+  color: white;
   border: none;
+  text-decoration: none;
   box-shadow: lightskyblue 1em 1em 1em;
 }
 
