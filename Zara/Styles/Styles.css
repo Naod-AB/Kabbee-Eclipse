@@ -1,48 +1,206 @@
-/*
-Border template
-*/
-.container {
-    display: flex;
-    justify-content: space-around;
-    
-  }
-  a{
-    text-decoration: none;
-  }
-.sub-container {
-    width: 95%;
-    height: 40em;
-    margin: 1em;
-    padding: 0.2em 2em;
-    text-align: center;
-    border: 0.09em solid #3399ff;
-  }
+/* Border template */
+*{
+  margin: 0;
+  padding: 0;
+  font-family: calibri;
+  text-align: center;
+  text-decoration: none;
+}
+
+.lgborder{
+  margin: 1.5rem 2rem 2rem 1.5rem;
+  width: 95vw;
+  height: 90vh;
+  border:#3399ff 1.5px solid;
+  overflow: auto;
+}
+
+/* template having hr and "select option"*/
+hr {
+  width: 68%;
+  margin: 0 20% 0 17%;
+  border-top-style: hidden;
+  border-width: 0.09em;
+  border-color: #3399ff;
+}
+
+.temp_title{
+  color:#3399ff;
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 1.8em;
+}
+
+.pls{   
+    margin: 2.5% 0 6% 0;
+    color: #3399ff;
+    font-size: 1.3rem;
+}
 
 
   /*Home page */
+ 
+  .title{
+    margin-top: 7rem;  
+    font-size: 3.7rem;
+    color: #3399ff;
+  }
 
+  .greeting{  
+    margin-top: 3.5rem;
+    color: #3399ff;
+    font-size: 2rem;
+  }
 
-
+  .touch{   
+    margin-top: 6rem;
+    color: #3399ff;
+    font-size: 1.2rem;
+    font-weight: bolder;   
+  }
+  
   
   /*Selection page */
-
+  .anchor{
+    padding-top: 2%;
+    display: block;  
+    color:white;
+    width: 305px;
+    height: 48px;
+    margin-bottom: 25px;
+    background-color: #3399ff; 
+  }
+  .catagory{
+    align-items: center;
+    padding-left: 38%;
+  }
 
   /*Name pages (4 of them) */
-
+  #divname{  
+    width: 100px;
+    height: 20px;
+    margin-left: 37%;
+  }
+  .name{
+    display: block; 
+    background-color: white !important;
+    color: #3399ff;
+    border: 2px solid #3399ff;
+    width: 310px;
+    height: 20px;
+    padding-top: 20px;  
+    display: inline-block;
+    line-height: 1px;
+  }
   
   /*Action page*/
 
-  
-  /*Checkin page*/
+  .content
+{
+   display: block;
+   color: #3399ff;
+   border: 1px solid #3399ff;
+   font-weight: bold;   
+   padding: 4%;
+   margin-top: 8%;
+}
+.data
+{
+    width: 35%;
+    height: 30%;
+    margin-left: 33%;
+    margin-top: auto;    
+}
+  /*Checkin and checkout page*/
+  #contener{
+    margin-top: 150px;
+    background-color: white;
+  }
 
-  
-  /*Checkout page*/
+  .time{
+    width: 400px;
+    height: 50px;
+    border-color: rgb(42, 129, 209);
+    border-style: solid;
+    background-color: white;
+    color: rgb(42, 129, 209);
+  }
 
+  .done{
+    width: 200px;
+    height: 50px;
+    border-color: rgb(42, 129, 209);
+    border-style: solid;
+    background-color: white;
+    margin-left: 100px;
+    color: rgb(42, 129, 209);  
+  }
+
+  .text{
+    margin-bottom: 1px;
+    margin-top: 50px;
+    color: rgb(42, 129, 209);
+  }
+
+  #have{
+    margin-top: 50px;
+    margin-bottom: 5px;
+    color: rgb(42, 129, 209);
   
+  }
+  #see{ 
+    margin-bottom: 60px;
+    color: rgb(42, 129, 209);
+  }
+  
+
   /*Dayoff page*/
 
+/*DATE FORM CSS*/
+.dateform{
+  padding: 1rem;
+  background: #3399ff;
+  border: 1px solid#3399ff;
+  width: 400px;
+  height: 300px; 
+  margin: 5rem 0px 0px 28rem;
+}
+/*DATE CHOOSER*/
+.day{
+  margin: 55px 100px 27px 120px;
+  color: white;
+}
+
+/*Apply btn*/
+.apply{  
+  padding: 10px;
+  color: white;
+  border: 1px solid skyblue !important;
+}
+
+/*Input fields*/
+input{
+  background-color: #3399ff;
+  border-width: 1px;
+}
+
+/*Message*/
+.enjoy{
+  margin-bottom: 50px ;
+  color: white;
+  font-size: 1.5rem;
+}
 
   /*Other page*/
+.achieve{  
+  width: 400px;
+  height: 350px;
+  border: 1px solid #3399ff;
+  margin: 1% 0 0rem 35% ;
+  text-align: center;
+}
+progress{
+  height: 2rem;
+}
 
   
   
