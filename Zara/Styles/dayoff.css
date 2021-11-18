@@ -4,9 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-a{
-  text-decoration: none;
-}
 
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
@@ -32,7 +29,7 @@ hr {
   font-size: 1.8em;
   
 }
-.pls{
+p{
     text-align: center;
     border-color: #3399ff;
     margin: 2.5% 0 2% 0;
