@@ -1,43 +1,42 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-
 /*borders*/
-.border3{
-    border: 1px solid rgb(4, 149, 233);
-    width: 1330px;
-    height: 620px;
+.border{   
+     display: flex;
+    justify-content: space-around;
+}
+.content{
+    width: 95%;
+    height: 52em;
+    padding: 0.2rem 1em;
     margin: 1rem;
-    padding: 1rem;
+    flex-direction: column;
+    border: #3399ff solid 0.09em;
+    
 }
-
-/*back button*/
-
 .fas{
-    color:rgb(4, 149, 233);
-    margin-left: 1rem;
-    margin-top: 1rem;
-    zoom: 195%;
- 
-
-
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #3399ff;
 }
 
-/*home button*/
-.fa-home{
-   
-    color:rgb(4, 149, 233);
-    margin-left: 36rem;
-    zoom: 200%;
+.kabbee{
+    color: #3399ff;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+hr{
+    width: 70%;
+    border:#3399ff solid 1px ;
 }
 
 /*prossing word*/
-.words{
-    font-size: 35px;
-    color:rgb(4, 149, 233) ;
+.word{
+    font-size: 50px;
+    color:#3399ff ;
     text-align: center;
-    margin-top: 13rem;
+    margin: 5em;
+
 }
