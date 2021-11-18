@@ -1,53 +1,45 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+.border{
+    display: flex;
+    justify-content: space-around;
 }
-/*borders*/
-
-.border3{
-    border:#0084ff 1.5px solid;
-    width: 1330px ;
-   height: 620px;
+.contents{
+    width: 95%;
+    height: 52em;
     margin: 1rem;
-    padding: 1rem;
+    padding: 0.2rem 1em;
+    text-align: center;
+    flex-direction: column;
+    border: #3399ff solid 0.09em;
+}
+.contents,h2,a{
+        color: #3399ff;
+        text-align: center;
+        align-items: center;
+        font-weight: bold;
+        text-decoration: none;
 }
 
+hr{
+    width: 70%;
+    border:#3399ff solid 0.5px ;
+}
 .fas{
-    color:rgb(4, 149, 233);
-    margin-left: 1rem;
-    margin-top: 1rem;
-    zoom: 195%;
-}
-
-.border4{
-    background: #0084ff;
-    border: 1px solid black;
-    width: 350px;
-    height: 250px;
-    margin: 8rem;
-    margin-left: 28rem;
-    box-shadow: black 7px 7px 7px;
-
-}
-/*input date*/
-.date{
-    size: 50px;
-    margin: 100px;
-    margin-right: 10px;
-}
-
-/*submit button*/
-.submit{
-    margin-left: 50px;
-}
-a:link{
-    color: rgb(4, 149, 233) ;
+    display: inline-block;
+    font-size: 40px;
     text-decoration: none;
-}
+    color: #3399ff;
 
-a:visited{
-    color:rgb(3, 3, 48)  ;
-    cursor: pointer;
+} 
+
+
+.border2{ 
+    width: 35%;
+    height: 15em;
+    border:#3399ff solid 0.09em;
+    justify-content: center;
+    margin: 10rem 25rem;
+    background-color: #3399ff;
+}
+.date{
+    padding: 4em 6em;
 }
