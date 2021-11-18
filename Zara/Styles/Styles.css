@@ -6,13 +6,14 @@
   text-align: center;
   text-decoration: none;
 }
-
+/**/
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
   height: 90vh;
-  border:#3399ff 1.5px solid;
+  border:1.5px solid #3399ff ;
   overflow: auto;
+  
 }
 
 /* template having hr and "select option"*/
@@ -36,7 +37,13 @@ hr {
     font-size: 1.3rem;
 }
 
+.action{
+  margin-bottom: 3%;
+}
 
+.selection{
+  margin-bottom: 4%;
+}
   /*Home page */
  
   .title{
@@ -65,7 +72,7 @@ hr {
     display: block;  
     color:white;
     width: 305px;
-    height: 48px;
+    height: 40px;
     margin-bottom: 25px;
     background-color: #3399ff; 
   }
@@ -110,7 +117,7 @@ hr {
    border: 1px solid #3399ff;
    font-weight: bold;   
    padding: 4%;
-   margin-top: 8%;
+   margin-top: 6%;
 }
 .data
 {
@@ -193,28 +200,38 @@ hr {
 /*DATE FORM CSS*/
 .dateform{
   padding: 1rem;
-  background: #3399ff;
-  border: 1px solid#3399ff;
+  background:#33b8ff;
+  
+  border: 1px solid #3399ff;
   width: 400px;
   height: 300px; 
   margin: 5rem 0px 0px 32%;
 }
+
 /*DATE CHOOSER*/
 .day{
   margin: 55px 100px 27px 120px;
   color: white;
+  
+}
+.date{
+  border: 1px solid black;
+  color:white;
+  background:#33b8ff;
 }
 
 /*Apply btn*/
 .apply{  
-  padding: 10px;
+  text-align: center;
+  padding: 8px 22px 8px 22px;
   color: white;
-  border: 1px solid skyblue !important;
+  border: 1px solid black !important;
+  font-weight: bolder;
 }
 
 /*Input fields*/
 input{
-  background-color: #3399ff;
+  
   border-width: 1px;
 }
 
@@ -227,6 +244,7 @@ input{
 
   /*Other page*/
 .achieve{  
+  background-color: skyblue;
   width: 400px;
   height: 350px;
   border: 1px solid #3399ff;
@@ -234,7 +252,10 @@ input{
   text-align: center;
 }
 progress{
-  height: 2rem;
+  height: 3rem;
+  
+  
+  
 }
 
   
