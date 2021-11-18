@@ -44,16 +44,24 @@ hr {
   text-align: center;
   color:#3399ff;
 }
-#contener{
-  margin-left: 450px;
-  background-color: white;
+
+.content
+{
+   display: block;
+   text-decoration: none;
+   color: #3399ff;
+   border: 1px solid #3399ff;
+   font-weight: bold;
+   font-family: sans-serif;
+   text-align: center;
+   padding: 4%;
+   margin-top: 8%;
 }
-.check{
-  margin-top: 1%;
-  width: 400px;
-  height: 50px;
-  border-color: rgb(42, 129, 209);
-  border-style: solid;
-  background-color: white;
-  color: rgb(42, 129, 209);
+.data
+{
+    width: 35%;
+    height: 30%;
+    margin-left: 33%;
+    margin-top: auto;
+    
 }

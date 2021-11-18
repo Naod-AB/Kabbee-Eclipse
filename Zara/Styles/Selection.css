@@ -4,9 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-a{
-  text-decoration: none;
-}
+
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
@@ -17,7 +15,9 @@ a{
 /* template having hr and "please select one option"*/
 
 /* template having hr and "please select one option"*/
-
+a{
+  text-decoration: none;
+}
 hr {
   width: 68%;
   margin: 0 20% 0 17%;
@@ -34,23 +34,24 @@ hr {
   
 }
 .pls{
-  text-align: center;
-  border-color: #3399ff;
-  margin: 2.5% 0 6% 0;
-  color: #3399ff;
-  font-family:  Calibri;
-  font-size: 1.3rem;
+    text-align: center;
+    border-color: #3399ff;
+    margin: 2.5% 0 6% 0;
+    color: #3399ff;
+    font-family:  Calibri;
+    font-size: 1.3rem;
 }
 .anchor{
   text-align: center;
-  display: block;
-  
+  padding-top: 2%;
+  display: block;  
   color:white;
   width: 305px;
-  height: 45px;
+  height: 48px;
   margin-bottom: 25px;
-  background-color: #1E90FF;
+  background-color: #3399ff;
   text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .catagory{
   align-items: center;

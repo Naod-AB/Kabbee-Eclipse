@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+}
 
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
@@ -42,7 +45,7 @@ hr {
 .dateform{
   padding: 1rem;
   background: #3399ff;
-  border: 1px solid black;
+  border: 1px solid#3399ff;
   width: 400px;
   height: 350px; 
   margin: 5rem 0px 0px 28rem;
@@ -62,7 +65,7 @@ hr {
   text-decoration: none;
   padding: 10px;
   color: white;
-  border: 1px solid black;
+  border: 1px solid skyblue;
   
 }
 /*Input fields*/
