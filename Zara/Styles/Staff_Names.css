@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+a{
+  text-decoration: none;
+}
 .lgborder{
   margin: 1.5rem 2rem 2rem 1.5rem;
   width: 95vw;
