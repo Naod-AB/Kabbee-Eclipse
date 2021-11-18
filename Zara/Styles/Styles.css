@@ -4,7 +4,6 @@
   padding: 0;
   font-family: calibri;
   text-align: center;
-  
   text-decoration: none;
 }
 
@@ -121,48 +120,74 @@ hr {
     margin-top: auto;    
 }
   /*Checkin and checkout page*/
-  #contener{
-    margin-top: 150px;
-    background-color: white;
-  }
-
-  .time{
-    width: 400px;
-    height: 50px;
-    border-color: rgb(42, 129, 209);
-    border-style: solid;
-    background-color: white;
-    color: rgb(42, 129, 209);
-  }
-
-  .done{
-    width: 200px;
-    height: 50px;
-    border-color: rgb(42, 129, 209);
-    border-style: solid;
-    background-color: white;
-    margin-left: 100px;
-    color: rgb(42, 129, 209);  
-  }
-
-  .text{
-    margin-bottom: 1px;
-    margin-top: 50px;
-    color: rgb(42, 129, 209);
-  }
-
-  #have{
-    margin-top: 50px;
-    margin-bottom: 5px;
-    color: rgb(42, 129, 209);
+  .contener{
   
+    margin-top: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  .time{
+    width: 200px;
+    height: 35px;
+    border: 1px solid #3399ff;
+    background-color: white;
+    color: #3399ff;
+    display: block;
+    margin-left: 32.5%;
+    padding: 10px 10% 10px 10%;
+    
+    font-size: 125%;
+  }
+  .checkintime{
+    margin-bottom: 9%;
+  }
+
+ 
+  .text{
+    text-align: center;
+    margin-bottom: 1px;
+    margin-top: 3rem;
+    color: #3399ff;
+    
+    font-size: 100%;
+    padding-left: 25px;
+  
+  }
+  #have{
+    margin-top: 2%;
+    margin-bottom: 5px;
+    color: #3399ff;
+    font-size: 100%;
+    padding-left: 27px;
   }
   #see{ 
     margin-bottom: 60px;
-    color: rgb(42, 129, 209);
+    color: #3399ff;
+    font-size: 100%;
+    padding-left: 27px;
   }
-  
+ 
+  .button{
+    margin-left: 2%;
+    height: 50px;
+    border: 1px solid #3399ff;
+    color: #3399ff;
+    padding: 10px 8% 10px 8%;
+    font-weight:500;
+  }
+  .larg{
+    padding: 15px 8% 15px 8% !important;
+  }
 
+  #texttop{
+    text-align: center;
+    margin-bottom: 1px;
+    color: #3399ff;
+    
+    font-size: 100%;
+    padding-left: 25px;
+  
+  }
   /*Dayoff page*/
 
 /*DATE FORM CSS*/
