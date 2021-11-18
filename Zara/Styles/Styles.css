@@ -4,6 +4,7 @@
   padding: 0;
   font-family: calibri;
   text-align: center;
+  
   text-decoration: none;
 }
 
@@ -72,6 +73,13 @@ hr {
   .catagory{
     align-items: center;
     padding-left: 38%;
+  }
+  /*this makes the top content to have fixed position*/
+  .sticky{background-color: #fff;
+    width: auto;
+    height: auto;
+    position: sticky;
+    top: 0;
   }
 
   /*Name pages (4 of them) */
@@ -162,7 +170,7 @@ hr {
   border: 1px solid#3399ff;
   width: 400px;
   height: 300px; 
-  margin: 5rem 0px 0px 28rem;
+  margin: 5rem 0px 0px 32%;
 }
 /*DATE CHOOSER*/
 .day{
