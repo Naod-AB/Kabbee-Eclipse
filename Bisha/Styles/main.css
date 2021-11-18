@@ -8,26 +8,39 @@
   width: 95%;
   height: 52rem;
   margin: 1em;
-  padding: 0.2em 2em;
+  padding: 0.1em 2em;
   text-align: center;
   flex-direction: column;
+  justify-content: space-around;
   border: #3399ff solid 0.09em;
   font-family: Arial;
-}
-
-.content a,
-h2,
-h4 {
-  color: #3399ff;
-  text-align: center;
   align-items: center;
+}
+.header h2{
+  margin-top: 0.3em;
+}
+.header {
+  width:5%;
+  height: 2em;
+  color: #3399ff;
   font-weight: bold;
   text-decoration: none;
 }
-
+ .content h4 {
+  color: #3399ff;
+  font-weight: bold;
+}
 hr {
   width: 70%;
   border: #3399ff solid 0.5px;
+}
+.default_button {
+  width: 20%;
+  border: 0.09em solid #3399ff;
+  padding: 1em 6em;
+  background-color: white;
+  color: #3399ff;
+  text-decoration: none;
 }
 
 /* ------------------------------- */
@@ -43,6 +56,12 @@ hr {
   flex-direction: column;
   text-decoration: none;
   color: #3399ff;
+  position: absolute;
+  box-sizing: border-box;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align:center;
 }
 
 .head1 {
@@ -63,60 +82,28 @@ hr {
 /* ------------------------------- */
 
 /* CSS specific for Option_selection.html */
-
-.btnbx {
-  margin-top: 5em;
-  margin-bottom: 17em;
-}
-
 /* buttons property only*/
-.btns {
-  width: 300px;
-  height: 50px;
-  margin: 20px;
+.unique_button{
   background-color: #3399ff;
-  color: aliceblue;
-  border: none;
-  font-size: 15px;
-  cursor: pointer;
+  color:white;
+  margin-bottom: 2em;
+  text-align: center;
+
 }
 /* ------------------------------- */
+
+
 
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
 
 .option {
-  margin-top: 3em;
-}
-
-.option ul {
-  list-style: none;
+  width: 80%;
+  margin-top: 7em;
+  height: 40rem;
+  align-self:center;
   display: flex;
-  box-sizing: content-box;
   flex-direction: column;
   align-items: center;
-}
-
-.adminbuttons button {
-  margin-top: 3em;
-  margin-bottom: 2em;
-}
-
-.option ul li {
-  width: 30%;
-  margin-bottom: 0.4em;
-}
-
-.option button {
-  width: 100%;
-  border: 0.09em solid #3399ff;
-  border-radius: 0;
-  height: 2.3rem;
-  background-color: white;
-  color: #3399ff;
-}
-
-.option button:hover {
-  cursor: pointer;
 }
 
 /* visitor_names */
@@ -125,28 +112,28 @@ hr {
 }
 
 .nameinput {
-  width: 90%;
+  width: 40%;
   height: 3em;
   color: #3399ff;
   border-top: none;
   border-right: none;
   border-left: none;
   background-color: transparent;
+  margin-bottom: 3em;
 }
 
-.subbut {
-  width: 60%;
-  height: 2.5rem;
+
+.sublink {
+  width: 10%;
+  padding: 1em 6em;
+  text-align: center;
   background-color: #3399ff;
-  color: midnightblue;
-  margin-top: 4em;
+  color: white;
   border: none;
+  text-decoration: none;
   box-shadow: lightskyblue 1em 1em 1em;
 }
 
-.subbut:hover {
-  cursor: pointer;
-}
 /* ------------------------------- */
 
 /* CSS specific for actionselection.html */
@@ -211,6 +198,49 @@ hr {
 /* ------------------------------- */
 
 /* CSS specific for check in section.html */
+.option {
+  width: 60%;
+  margin-top: 10em;
+  justify-content: space-around;
+  flex-direction: column;
+  align-content: center;
+  margin-left: 26em;
+
+}
+.option h4{
+  width: 32%;
+  height: 0.1rem;
+  margin-right: 6em;
+  
+}
+.btn{
+width: 250%;
+height: 3rem;
+background: transparent;
+margin-right: 30em;
+margin-bottom: 7em;
+border-color:#3399ff;
+color: #3399ff;
+padding: .2rem;
+
+}
+.option a {
+  width: 30%;
+  text-decoration: none;
+  margin-left: 4em;
+  margin-top: 10em;
+}
+.btn-1{
+  width: 100%;
+  height: 3rem;
+  margin-left: 1em;
+  margin-bottom: 200rem;
+  background: transparent;
+  border-color:#3399ff;
+  color: #3399ff;
+
+
+}
 
 /* ------------------------------- */
 
@@ -223,9 +253,9 @@ hr {
 
 
 
-/* repeated the Template for all the pages */
+/* repeated the Template for all the pages
 
-  .thirdbox{
+.thirdbox{
       display: flex;
       justify-content: space-around;
   
@@ -256,10 +286,10 @@ hr {
   width: 70%;
   border: #3399ff solid 0.5px;
   
-} 
+} */
 /*...............................*/
 /*...............................*/
-
+ */
 
 
 /* styles for the text */
