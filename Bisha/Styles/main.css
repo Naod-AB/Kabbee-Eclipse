@@ -10,13 +10,14 @@
   margin: 1em;
   padding: 0.2em 2em;
   text-align: center;
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
   border: #3399ff solid 0.09em;
   font-family: Arial;
 }
 
-.content a,
-h2,
+.header, .content h2,
 h4 {
   color: #3399ff;
   text-align: center;
@@ -28,6 +29,15 @@ h4 {
 hr {
   width: 70%;
   border: #3399ff solid 0.5px;
+}
+.default_button {
+  width: 20%;
+  border: 0.09em solid #3399ff;
+  padding: 1em 6em;
+  margin-bottom: 1em;
+  background-color: white;
+  color: #3399ff;
+  text-decoration: none;
 }
 
 /* ------------------------------- */
@@ -82,41 +92,18 @@ hr {
 }
 /* ------------------------------- */
 
+
+
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
 
 .option {
-  margin-top: 3em;
-}
-
-.option ul {
-  list-style: none;
+  width: 80%;
+  margin-top: 7em;
+  height: 40rem;
+  align-self:center;
   display: flex;
-  box-sizing: content-box;
   flex-direction: column;
   align-items: center;
-}
-
-.adminbuttons button {
-  margin-top: 3em;
-  margin-bottom: 2em;
-}
-
-.option ul li {
-  width: 30%;
-  margin-bottom: 0.4em;
-}
-
-.option button {
-  width: 100%;
-  border: 0.09em solid #3399ff;
-  border-radius: 0;
-  height: 2.3rem;
-  background-color: white;
-  color: #3399ff;
-}
-
-.option button:hover {
-  cursor: pointer;
 }
 
 /* visitor_names */
@@ -166,9 +153,9 @@ hr {
 
 
 
-/* repeated the Template for all the pages */
+/* repeated the Template for all the pages
 
-  .thirdbox{
+.thirdbox{
       display: flex;
       justify-content: space-around;
   
@@ -199,7 +186,7 @@ hr {
   width: 70%;
   border: #3399ff solid 0.5px;
   
-} 
+} */
 /*...............................*/
 /*...............................*/
 
