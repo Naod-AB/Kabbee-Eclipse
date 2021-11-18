@@ -83,16 +83,6 @@ hr {
 }
 
 /* buttons property only*/
-
-.default_button{
-  width: 20%;
-  padding: 1em 6em;
-  border:0.09em solid #3399ff;
-  margin-bottom: 2em;
-  background-color: white;
-  text-decoration: none;
-  color: #3399ff;
-}
 .unique_button{
   background-color: #3399ff;
   color:white;
