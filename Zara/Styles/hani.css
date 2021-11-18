@@ -4,6 +4,9 @@
     margin-top: 150px;
     background-color: white;
 }
+a{
+    text-decoration: none;
+  }
 .time{
     width: 400px;
     height: 50px;
