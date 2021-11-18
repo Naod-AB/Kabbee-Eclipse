@@ -29,13 +29,13 @@ hr {
   font-size: 1.8em;
   
 }
-p{
-    text-align: center;
-    border-color: #3399ff;
-    margin: 2.5% 0 2% 0;
-    color: #3399ff;
-    font-family:  Calibri;
-    font-size: 1.5rem;
+.pls{
+  text-align: center;
+  border-color: #3399ff;
+  margin: 2.5% 0 6% 0;
+  color: #3399ff;
+  font-family:  Calibri;
+  font-size: 1.3rem;
 }
 
 /*DATE FORM CSS*/
@@ -74,4 +74,6 @@ input{
 .enjoy{
   margin-bottom: 50px ;
   color: white;
+  text-align: center;
+  font-size: 1.5rem;
 }
