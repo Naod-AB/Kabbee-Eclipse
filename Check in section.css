@@ -22,6 +22,7 @@
     align-items: center;
     font-weight: bold;
     text-decoration: none;
+    
   }
   
   hr {
@@ -39,11 +40,13 @@
     flex-direction: column;
     align-content: center;
     margin-left: 26em;
+  
 }
 .check-content h4{
     width: 32%;
     height: 0.1rem;
     margin-left: 5em;
+    
 }
 .btn{
 width: 50%;
@@ -53,7 +56,7 @@ margin-left: 0em;
 margin-bottom: 7em;
 border-color:#3399ff;
 color: #3399ff;
-    
+  
 }
 .check-content a {
     width: 15%;
@@ -68,6 +71,7 @@ color: #3399ff;
   background: transparent;
   border-color:#3399ff;
 color: #3399ff;
+
   
 }
 
