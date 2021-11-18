@@ -24,6 +24,10 @@ hr {
   border-width: 0.09em;
   border-color: #3399ff;
 }
+.short{
+  margin-left: 32.8%;
+  width: 35%;
+}
 
 .temp_title{
   color:#3399ff;
@@ -68,17 +72,16 @@ hr {
   
   /*Selection page */
   .anchor{
-    padding-top: 2%;
+    padding: 19px;
     display: block;  
     color:white;
     width: 305px;
-    height: 40px;
     margin-bottom: 25px;
     background-color: #3399ff; 
   }
   .catagory{
     align-items: center;
-    padding-left: 38%;
+    padding-left: 37%;
   }
   /*this makes the top content to have fixed position*/
   .sticky{background-color: #fff;
@@ -100,7 +103,7 @@ hr {
     display: block; 
     background-color: white !important;
     color: #3399ff;
-    border: 2px solid #3399ff;
+    border: 1px solid #3399ff;
     width: 310px;
     height: 20px;
     padding-top: 20px;  
@@ -115,7 +118,6 @@ hr {
    display: block;
    color: #3399ff;
    border: 1px solid #3399ff;
-   font-weight: bold;   
    padding: 4%;
    margin-top: 6%;
 }
@@ -128,28 +130,25 @@ hr {
 }
   /*Checkin and checkout page*/
   .contener{
-  
+    
     margin-top: 10%;
     background-color: white;
     text-align: center;
+    color: #3399ff;
   }
   .time{
-    width: 200px;
-    height: 35px;
     border: 1px solid #3399ff;
-    background-color: white;
     color: #3399ff;
-    display: block;
-    margin-left: 32.5%;
-    padding: 10px 10% 10px 10%;
-    
     font-size: 125%;
   }
   .checkintime{
-    margin-bottom: 9%;
+    margin-bottom: 50%;
+    margin-top: 0;
+  }
+  .checkouttime{
+    margin-top: 0;
   }
 
- 
   .text{
     text-align: center;
     margin-bottom: 1px;
@@ -161,11 +160,15 @@ hr {
   
   }
   #have{
-    margin-top: 2%;
-    margin-bottom: 5px;
+    margin-top: 6%;
+    margin-bottom: 15%;
     color: #3399ff;
     font-size: 100%;
     padding-left: 27px;
+  }
+  .gap{
+    margin-top: 8%;
+
   }
   #see{ 
     margin-bottom: 60px;
@@ -176,57 +179,59 @@ hr {
  
   .button{
     margin-left: 2%;
-    height: 50px;
     border: 1px solid #3399ff;
     color: #3399ff;
-    padding: 10px 8% 10px 8%;
+    padding: 4% 20% 4% 20%;
     font-weight:500;
+    font-size: 165%;
+
   }
   .larg{
     padding: 15px 8% 15px 8% !important;
   }
 
-  #texttop{
-    text-align: center;
-    margin-bottom: 1px;
-    color: #3399ff;
-    
-    font-size: 100%;
-    padding-left: 25px;
-  
-  }
   /*Dayoff page*/
 
 /*DATE FORM CSS*/
 .dateform{
   padding: 1rem;
-  background:#33b8ff;
-  
   border: 1px solid #3399ff;
-  width: 400px;
-  height: 300px; 
-  margin: 5rem 0px 0px 32%;
+  width: 600px;
+  height: 320px; 
+  margin: 1% 0px 0 25.5%;
 }
 
 /*DATE CHOOSER*/
 .day{
-  margin: 55px 100px 27px 120px;
+  margin: 0 100px 27px 100px;
   color: white;
   
 }
+label{
+  text-align: center;
+  padding: 0 7% 0 7%;
+  color: #3399ff;
+  /**background: #3399ff;**/
+  
+}
 .date{
-  border: 1px solid black;
-  color:white;
-  background:#33b8ff;
+  
+  border: 1px solid #3399ff;
+  color: #3399ff;
+  padding: 10px 20px;
+  font-size: 120%;
+  margin-left:1%;
+  
 }
 
 /*Apply btn*/
 .apply{  
   text-align: center;
   padding: 8px 22px 8px 22px;
-  color: white;
-  border: 1px solid black !important;
-  font-weight: bolder;
+  color: #3399ff;
+  border: 1px solid #3399ff;
+  font-weight: 600;
+  font-size: larger;
 }
 
 /*Input fields*/
@@ -237,25 +242,25 @@ input{
 
 /*Message*/
 .enjoy{
-  margin-bottom: 50px ;
-  color: white;
+  margin-bottom: 60px ;
+  color: #3399ff;
   font-size: 1.5rem;
 }
 
   /*Other page*/
 .achieve{  
-  background-color: skyblue;
-  width: 400px;
-  height: 350px;
+  
+  padding: 1rem;
   border: 1px solid #3399ff;
-  margin: 1% 0 0rem 35% ;
-  text-align: center;
+  width: 600px;
+  height: 320px; 
+  margin: 1% 0px 0 25.5%;
 }
 progress{
-  height: 3rem;
-  
-  
-  
+  height: 2.5rem;
+}
+.bars{
+  font-size: large;
 }
 
   
