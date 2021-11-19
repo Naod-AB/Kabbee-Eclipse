@@ -5,11 +5,12 @@
 }
 .content{
     width: 95%;
-    height: 52em;
+    height: 52rem;
     padding: 0.2rem 1em;
     margin: 1rem;
     flex-direction: column;
     border: #3399ff solid 0.09em;
+    font-family: Arial;
     
 }
 .fas{
