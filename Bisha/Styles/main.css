@@ -217,7 +217,7 @@ hr {
   margin-top: 10em;
 }
 .btn-1 {
-  width: 100%;
+  width: 30px;
   height: 3rem;
   margin-left: 1em;
   margin-bottom: 200rem;
@@ -298,13 +298,13 @@ hr {
 /* styles for buttons*/
 .btn {
   background-color: white;
-  border: -1px;
+  border: 1px;
   border: 0.5px solid lightseagreen;
   color: rgb(6, 180, 238);
   font-size: 6px;
-  margin-left: 3em;
-  margin-top: 1em;
-  padding: 0.2rem;
+  margin-left: 10rem;
+  margin-top: 0.5em;
+
   text-transform: uppercase;
   width: 100px;
 }
