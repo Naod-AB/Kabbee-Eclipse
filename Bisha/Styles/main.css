@@ -8,7 +8,7 @@
   width: 95%;
   height: 52rem;
   margin: 1em;
-  padding: 0.1em 2em;
+  padding: 0 2em;
   text-align: center;
   display: flex;
   align-items: center;
@@ -19,25 +19,27 @@
 }
 
 .header {
-  width: 5%;
-  height: 2em;
+  height: 1.6rem;
   text-decoration: none;
   color: #3399ff;
+ 
 }
 .header h2 {
-  margin-top: 0;
+  margin-top: 0.2em;
 }
-.content h4 {
-  color: #3399ff;
-  font-weight: bold;
-}
+
 hr {
   width: 70%;
   border: #3399ff solid 0.5px;
 }
+.sub_header {
+  color: #3399ff;
+  margin-top: 3em;
+}
+ 
 .option {
   width: 95%;
-  margin-top: 7em;
+  margin-top: 6em;
   height: 40rem;
   align-self: center;
   display: flex;
@@ -45,12 +47,21 @@ hr {
   align-items: center;
 }
 .default_button {
-  width: 20%;
+  width: 30%;
   border: 0.09em solid #3399ff;
-  padding: 1em 6em;
+  padding: 1em;
   background-color: white;
   color: #3399ff;
   text-decoration: none;
+}
+.blue_button {
+  background-color: #3399ff;
+  color: white;
+  margin-bottom: 2em;
+}
+
+.spaced_button{
+  margin-bottom: 2em;
 }
 
 /* ------------------------------- */
@@ -85,29 +96,27 @@ hr {
 }
 
 /* ------------------------------- */
-/* ------------------------------- */
+
+
 
 /* CSS specific for Option_selection.html */
 
-/* .option {
-  margin-top: 5em;
-  margin-bottom: 17em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}  */
-
-/* buttons property only*/
-.unique_button {
-  background-color: #3399ff;
-  color: white;
-  margin-bottom: 2em;
-}
 /* ------------------------------- */
+
+
+
 
 /* CSS specific for administrator_names.html, student_names.html, staff_names.html, visitor_names.html */
 
+/*student_names*/
+
+.student_button {
+  margin-bottom: .5em;
+  font-weight: lighter;
+}
+
 /* visitor_names */
+
 .form {
   margin-top: 15em;
 }
@@ -120,12 +129,13 @@ hr {
   border-right: none;
   border-left: none;
   background-color: transparent;
+  margin-top: 7em;
   margin-bottom: 3em;
 }
 
 .sublink {
-  width: 5%;
-  padding: 1em 6em;
+  width: 20%;
+  padding: 1em;
   text-align: center;
   background-color: #3399ff;
   color: white;
@@ -136,181 +146,92 @@ hr {
 
 /* ------------------------------- */
 
+
+
 /* CSS specific for actionselection.html */
 
-/*buttons*/
-.buttons {
-  margin-top: 5em;
-  margin-bottom: 20em;
-
-  /* buttons decoration*/
-}
-.click {
-  width: 300px;
-  height: 50px;
-  margin: 20px;
-  background-color: #3399ff;
-  color: aliceblue;
-  border: none;
-  font-size: 15px;
-  cursor: pointer;
-}
 /* ------------------------------- */
+
+
 
 /* CSS specific for Request dat off.html */
 
-/*box2*/
-
-.border2 {
-  width: 35%;
-  height: 15em;
-  border: #3399ff solid 0.09em;
-  justify-content: center;
-  margin: 10rem 25rem;
-  background-color: #3399ff;
+.date_input {
+  
+  background-color: transparent;
+  border: 3em solid #3399ff;
+  margin-bottom: 5em;
+  padding: .5em 2em;
 }
-/*input date*/
 
-.date {
-  padding: 4em 6em;
+.submit_button {
+  width: 15%;
+  padding: 1em
 }
+
 /* ------------------------------- */
+
+
 
 /* CSS specific for Other.html */
 
-/* back arrow */
-.fas {
-  display: inline-block;
-  margin-left: 50px;
-  font-size: 40px;
-  text-decoration: none;
+.word {
   color: #3399ff;
+  margin-top: 3em;
+  font-size: 2rem;
+
 }
 
-.kabbee {
-  color: #3399ff;
-  text-align: center;
-  align-items: center;
-  font-weight: bold;
-  text-decoration: none;
-}
 /* ------------------------------- */
+
+
 
 /* CSS specific for check in section.html */
-.option {
-  width: 60%;
-  margin-top: 10em;
-  justify-content: space-around;
-  flex-direction: column;
-  align-content: center;
-}
-.option h4 {
-  width: 32%;
-  height: 0.1rem;
-  margin-right: 6em;
+
+.checkin_title {
+  margin-bottom: 0;
+  margin-top: 5em;
+  color: #3399ff;
+  font-weight:normal;
 }
 
-.option a {
-  width: 30%;
-  text-decoration: none;
-  margin-left: 4em;
-  margin-top: 10em;
+.time_button {
+  margin-top: 0;
+  font-weight:normal;
+  margin-bottom: 1em;
 }
-.btn-1 {
-  width: 30px;
-  height: 3rem;
-  margin-left: 1em;
-  margin-bottom: 200rem;
-  background: transparent;
-  border-color: #3399ff;
-  color: #3399ff;
+.check_done {
+  width: 15%;
+  margin-top: 15em;
 }
+
 
 /* ------------------------------- */
+
+
 
 /* CSS specific for check-out.html */
 /* styles for the hole page*/
 
-/*............................*/
-/*............................*/
-
-/* repeated the Template for all the pages
-
-.thirdbox{
-      display: flex;
-      justify-content: space-around;
-  
-}
-.content{
-  width: 95%;
-  height: 52rem;
-  margin: 1em;
-  padding: 0.2em 2em;
-  text-align: center;
-  flex-direction: column;
-  border:  #3399ff solid 0.09em;
-
-}
-.content a, h2 {
-  color: #3399ff;
-  text-align: center;
-  align-items: center;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-
-
-
-
-}
-hr {
-  width: 70%;
-  border: #3399ff solid 0.5px;
-  
-} */
-/*...............................*/
-/*...............................*/
-
-/* styles for the text */
-
-.text {
-  font-size: 6px;
-  text-align: center;
-  margin-top: 0.5rem;
+.checkout_title {
   margin-bottom: 0;
-  color: rgb(6, 180, 238);
-  text-transform: uppercase;
-}
-.new {
-  font-size: 4px;
-  margin-top: 0.5rem;
-}
-.text2 {
-  margin-top: 7em;
-}
-.text-1 {
-  font-size: 5px;
-  margin-top: 6em;
-}
-/*.......................*/
-/*........................ */
-
-/* styles for buttons*/
-.btn {
-  background-color: white;
-  border: 1px;
-  border: 0.5px solid lightseagreen;
-  color: rgb(6, 180, 238);
-  font-size: 6px;
-  margin-left: 10rem;
-  margin-top: 0.5em;
-
-  text-transform: uppercase;
-  width: 100px;
-}
-.btn-1 {
-  font-size: 6px;
-  color: rgb(6, 180, 238);
+  color: #3399ff;
+  font-weight:normal;
 }
 
-/* ------------------------------- */
+.good_bye {
+  color: #3399ff;
+  margin-bottom: 7em;
+  margin-top: 2em;
+  font-weight: normal;
+}
+
+.done_button {
+  width: 20%;
+  margin-bottom: em;
+}
+
+/*...............................*/
+/*...............................*/
+
+
