@@ -1,21 +1,24 @@
-.border{
+.box{
     display: flex;
     justify-content: space-around;
 
 }
 .content{ 
     width: 95%;
-    height: 52em;
+    height: 52rem;
     margin: 1rem;
     padding: 0.2rem 1em;
     text-align: center;
-    flex-direction: column;
     border: #3399ff solid 0.09em;
+    font-family: Arial;
 }
 
 /*contents*/
-.content a,h2,h4{
+h2,h4{
     color: #3399ff;
+}
+
+.content a{
     text-align: center;
     align-items: center;
     font-weight: bold;
@@ -24,13 +27,13 @@
 
 hr{
     width: 70%;
-    border:#3399ff solid 1px ;
+    border:#3399ff solid 0.5px ;
 }
 
 /*buttons*/
 .buttons{
     margin-top: 5em;
-    margin-bottom: 20em;
+    margin-bottom: 17em;
     
 /* buttons decoration*/
 }
@@ -38,7 +41,7 @@ hr{
     width: 300px;
     height: 50px;
     margin: 20px;
-    background-color: #3399ff;
+    background-color:#3399ff ;
     color:aliceblue;
     border:none;
     font-size: 15px;
