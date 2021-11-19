@@ -6,7 +6,7 @@
 
 .content {
   width: 95%;
-  height: 52rem;
+  height: 59.2rem;
   margin: 1em;
   padding: 0 2em;
   text-align: center;
@@ -40,7 +40,7 @@ hr {
 .option {
   width: 95%;
   margin-top: 6em;
-  height: 40rem;
+  height: 50rem;
   align-self: center;
   display: flex;
   flex-direction: column;
