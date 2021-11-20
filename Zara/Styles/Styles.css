@@ -93,12 +93,7 @@ hr {
     top: 0;
   }
 
-  /*Name pages (4 of them) */
-  #divname{  
-    width: 100px;
-    height: 20px;
-    margin-left: 37%;
-  }
+
   .name{
     display: block; 
     background-color: white !important;
@@ -268,6 +263,41 @@ progress{
   top: 5.3%;
   left: 4%;
   font-size: 2.8em;
+}
+.nsubmit{
+  display: block;
+  text-align: center;
+  background-color: #3399ff;
+  color:#fff;
+  border: none;
+  text-decoration: none;
+  margin: 5% 10% 5% 38%;
+  padding: 2% 0 2% 0;
+  width: 25%;
+ 
+}
+.nameinput[type="text"]
+{box-sizing: border-box;
+  
+  color: #3399ff;
+ font: 15px ,calibri;
+  padding: 0px 2px 0px 2px;
+  background-color: #3399ff;
+  outline: none;
+}
+.ntext:focus {
+  border: 2px solid #3399ff;
+   border-collapse: inherit;}
+
+  .ntext {
+  width: 25%;
+  height: 3em;
+  color: #3399ff;
+  border: 2px solid #3399ff;
+  margin: 8% 0 3% 0;
+  letter-spacing: 1px;
+  
+ 
 }
   
   
