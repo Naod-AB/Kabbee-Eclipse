@@ -124,14 +124,14 @@ hr {
 .nameinput {
   width: 25%;
   height: 3em;
+  border: none none 1px none;
   color: #3399ff;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-collapse: collapse;
   background-color: transparent;
   margin-top: 7em;
   margin-bottom: 3em;
 }
+
 
 .sublink {
   width: 20%;
@@ -141,7 +141,7 @@ hr {
   color: white;
   border: none;
   text-decoration: none;
-  box-shadow: lightskyblue 1em 1em 1em;
+  
 }
 
 /* ------------------------------- */
