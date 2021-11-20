@@ -262,6 +262,12 @@ progress{
 .bars{
   font-size: large;
 }
-
+.fas{
+  color: #3399ff;
+  position: absolute;
+  top: 5.3%;
+  left: 4%;
+  font-size: 2.8em;
+}
   
   
