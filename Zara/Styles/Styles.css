@@ -277,22 +277,26 @@ progress{
  
 }
 .nameinput[type="text"]
-{
+{box-sizing: border-box;
+  
   color: #3399ff;
  font: 15px ,calibri;
   padding: 0px 2px 0px 2px;
   background-color: #3399ff;
   outline: none;
 }
-.ntext {
+.ntext:focus {
+  border: 2px solid #3399ff;
+   border-collapse: inherit;}
+
+  .ntext {
   width: 25%;
   height: 3em;
   color: #3399ff;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  background-color: transparent;
+  border: 2px solid #3399ff;
   margin: 8% 0 3% 0;
+  letter-spacing: 1px;
+  
  
 }
   
