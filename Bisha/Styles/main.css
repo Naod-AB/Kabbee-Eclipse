@@ -6,7 +6,7 @@
 
 .content {
   width: 95%;
-  height: 52rem;
+  height: 57rem;
   margin: 1em;
   padding: 0 2em;
   text-align: center;
@@ -16,16 +16,21 @@
   justify-content: space-around;
   border: #3399ff solid 0.09em;
   font-family: Arial;
+  overflow: auto;
 }
 
 .header {
-  height: 1.6rem;
+  height: 2rem;
   text-decoration: none;
   color: #3399ff;
+  
  
 }
 .header h2 {
   margin-top: 0.2em;
+  font-size: 2rem;
+
+ 
 }
 
 hr {
@@ -34,22 +39,32 @@ hr {
 }
 .sub_header {
   color: #3399ff;
-  margin-top: 3em;
+  margin-top: 5em;
+  font-size: 1.5rem;
 }
- 
+ .back_but {
+   align-self: flex-start;
+   margin-left: 2em;
+ }
+
+.fas {
+  zoom: 3;
+  color: #3399ff;
+}
 .option {
   width: 95%;
   margin-top: 6em;
-  height: 40rem;
+  height: 35rem;
   align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 .default_button {
   width: 30%;
   border: 0.09em solid #3399ff;
-  padding: 1em;
+  padding: 1.7em;
   background-color: white;
   color: #3399ff;
   text-decoration: none;
@@ -112,14 +127,12 @@ hr {
 
 .student_button {
   margin-bottom: .5em;
+  padding: 1.1em;
   font-weight: lighter;
 }
 
 /* visitor_names */
 
-.form {
-  margin-top: 15em;
-}
 
 .nameinput {
   width: 25%;
@@ -190,7 +203,7 @@ hr {
 
 .checkin_title {
   margin-bottom: 0;
-  margin-top: 5em;
+  margin-top: 1em;
   color: #3399ff;
   font-weight:normal;
 }
