@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>color</title>
+    <style>
+        #container {
+            width: 100%;
+            height: 100%;
+            background: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r92/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r92/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script>
+        // create variables of the window width and height 
+        var WIDTH = window.innerHeight, HEIGHT = window.innerHeight;
+
+        // create the scene 
+        var scene = new THREE.Scene();
+
+        // set some camera attributes 
+        //var VIEW_ANGLE = 45, ASPECT = WIDTH / HEIGHT, NEAR = 1, FAR = 1000; 
+
+        // set the spec for the camera 
+        var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 1000);
+
+        // set the z position of the camera to 90 so we can see 
+        // what's going on  	camera.position.z = 100; 
+
+        // add the camera 
+        scene.add(camera);
+
+        // attach the container to the div id container using JQuery  var view_container = $('#container'); 
+        // check for web compatibility WebGL or canvas 
+        if (window.WebGLRenderingContext) { var renderer = new THREE.WebGLRenderer(); } else {
+            var renderer = new THREE.CanvasRenderer();
+        }
+
+        // define the material for the sphere 
+        var tmaterial = new THREE.MeshLambertMaterial({
+            color: 0x00ff00
+        });
+        var smaterial = new THREE.MeshPhongMaterial(
+            {
+                color: 0x00ffff, side:
+                    THREE.DoubleSide,
+                shading: THREE.SmoothShading,
+                blending: THREE.AdditiveBlending
+            }
+        );
+
+        // set up the geometry for the sphere 
+        var sphere = new THREE.Mesh(new THREE.SphereGeometry(15, 60, 60), smaterial);
+
+        // set the starting postion   sphere.position.x = -10;   sphere.position.y = -10; 
+        //sphere.position.z = 90; 
+
+
+        // add the sphere to the scene     scene.add(sphere); 
+
+        // add lighting 
+        var pLight = new THREE.PointLight(0xffffff, 5, 100);
+        pLight.position.set(50, 50, 50); scene.add(pLight);
+
+        // set up the camera controls and add a listener for the mouse move  	var cameraControls = new THREE.OrbitControls(camera, renderer.domElement);  	cameraControls.addEventListener( 'mousemove', renderer ); 
+
+        // set up the size for the renderer 
+        renderer.setSize(WIDTH, HEIGHT);
+
+        // append the renderer to the div container 
+        view_container.append(renderer.domElement);
+
+        // loop it 
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+        }
+
+        // boolean variables for movement     var move_right = true;     var falling = true; 
+        var move_near = false;
+
+    // move the objectse     function move_object() {       if(move_right) { 
+        // move the object to the right 
+      } else {
+            // move the object to the left 
+        }
+
+        if (falling) {         // move the object down 
+        } else {
+            // move the object up 
+        }
+
+        if (move_near) {
+            // move object closer 
+        } else {
+        }
+
+
+        if (move_right) {         // move the object to the right         sphere.position.x += .1; 
+        } else {
+            // move the object to the left         sphere.position.x -= .1; 
+        }
+
+        if (falling) {
+            // move the object down         sphere.position.y -= .1;       } else { 
+            // move the object up 
+            sphere.position.y += .1;
+        }
+
+        if (move_near) {         // move object closer         sphere.position.z -= .1; 
+        } else {
+            sphere.position.z += .1;
+        } 
+ 
+    }
+
+        if (sphere.position.x > 15) { change_color_sphere(); move_right = false; } else if (sphere.position.x < -15) {
+            change_color_sphere();
+            move_right = true;
+        } 
+ 
+ 
+ 
+      } 
+    }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'; var color = '#'; for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            } return color;
+        } 
+    }
+        // change color of the sphere 
+        function change_color_sphere() {
+            var new_material = new THREE.MeshPhongMaterial({
+                color: getRandomColor()
+            });
+            sphere.material = new_material;
+        }
+
+        // render the scenes 
+        function render() {
+            // call the functions to detect the edges         detect_wall();         detect_floor(); 
+            detect_screen();
+
+            // I would need to separate this into two 
+            // for them to move independently         move_object(); 
+
+            // rotate the sphere 
+            sphere.rotateOnAxis(new THREE.Vector3(0, 0, 1), .02);
+            sphere.rotateOnAxis(new THREE.Vector3(0, 1, 0), .05);
+
+
+
+            // update camera controls 
+            cameraControls.update();
+
+            // render scene and the camera 
+            renderer.render(scene, camera);
+        }
+
+        // start the animation 
+        animate();
+    </script>
+</body>
+
+</html>
