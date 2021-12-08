@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/mbutton.dart';
+import 'package:visitor_management/mbutton.dart';
 
 void main() {
   runApp(MaterialApp(

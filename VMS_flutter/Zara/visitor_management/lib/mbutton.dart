@@ -1,3 +1,5 @@
+ // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
  import 'package:flutter/material.dart';
 class Soption extends StatelessWidget {
   //const Soption({ Key? key }) : super(key: key);
@@ -10,7 +12,7 @@ Soption(this.opti);
                     minWidth: 260.0, 
                       color: Theme.of(context).primaryColor, 
                     textColor: Colors.white,  
-                    child: new Text(opti, style: TextStyle(fontSize: 17)), 
+                    child: Text(opti, style: TextStyle(fontSize: 17)), 
                     onPressed: () => {}, 
                     splashColor: Colors.blue.shade500,
     );
