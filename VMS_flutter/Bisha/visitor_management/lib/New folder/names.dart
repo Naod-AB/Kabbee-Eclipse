@@ -6,8 +6,20 @@ class NameList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child:
-     SingleChildScrollView (child: Column(children: const [
+    return Expanded( child:
+    Theme(data:Theme.of(context).copyWith(
+      scrollbarTheme:  ScrollbarThemeData(
+        thumbColor: MaterialStateProperty.all(Colors.blue),
+        crossAxisMargin: -10,
+      ),
+    ),
+    child: Scrollbar( 
+      thickness: 5.0,
+      isAlwaysShown: true,
+      child: 
+     SingleChildScrollView (
+       
+       child: Column(children: const [
           Buttons(btnName:"Abdu", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
           Buttons(btnName:"Abel", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
           Buttons(btnName:"Biniam", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
@@ -25,6 +37,9 @@ class NameList extends StatelessWidget {
       ],
     ),
     ),
+    ),
+    ),
+
 
    
     );
