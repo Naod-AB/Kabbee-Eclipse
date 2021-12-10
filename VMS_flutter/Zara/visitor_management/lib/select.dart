@@ -1,3 +1,5 @@
+
+
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
@@ -61,13 +63,13 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 Soption('VISITOR'),
-                SizedBox( height: 20.0,),
+                SizedBox( height: 23.0,),
                  Soption('STUDENT'),
-                SizedBox(height: 20.0,),
+                SizedBox(height: 23.0,),
                  Soption('STAFF'),
-                SizedBox(height: 20.0,),
+                SizedBox(height: 23.0,),
                  Soption('ADMINISTRATOR'),
-                SizedBox(height: 20.0,), 
+                SizedBox(height: 23.0,), 
               ],
               ), 
                 ),
