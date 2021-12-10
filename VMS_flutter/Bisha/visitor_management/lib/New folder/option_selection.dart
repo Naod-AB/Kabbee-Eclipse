@@ -6,8 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'main.dart';
-import 'names.dart';
+import 'staff_names.dart';
 import 'buttons.dart';
+import 'Student_names.dart';
+import 'admin_names.dart';
 
 void main() {
   runApp(OptionSelect());
@@ -18,70 +20,15 @@ class OptionSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: VmsTemplate(),
-    );
-  }
-}
-
-class VmsTemplate extends StatelessWidget {
-  const VmsTemplate({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        margin: EdgeInsets.all(20.0),
-        width: 1450,
-        height: 850,
-        padding: EdgeInsets.all(2.0),
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.blue, width: 1.5)),
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'KABBEE',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontFamily: 'Verdana',
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            FractionallySizedBox(
-              widthFactor: 0.7,
-              child: Divider(
-                thickness: 1.5,
-                color: Colors.blueAccent,
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(15)),
-            Container(
-              margin: EdgeInsets.only(
-                top: 20.0,
-                bottom: 140.0,
-              ),
-              child: Text(
-                'PLEASE SELECT ONE OPTION',
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: Colors.blue,
-                  fontFamily: 'Verdana',
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            BlueButtons('VISITOR', ActionPage()),
-            BlueButtons('STUDENT', ActionPage()),
-            BlueButtons('STAFF', ActionPage()),
-            BlueButtons('ADMINISTRATOR', ActionPage()),
-          ],
-        ),
+    return Container(
+      margin: EdgeInsets.only(top: 140.0),
+      child: Column(
+        children: [
+          BlueButtons('VISITOR', ActionPage()),
+          BlueButtons('STUDENT', NameList()),
+          BlueButtons('STAFF', StaffNameList()),
+          BlueButtons('ADMINISTRATOR', AdminNameList()),
+        ],
       ),
     );
   }
