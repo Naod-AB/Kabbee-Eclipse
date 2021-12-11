@@ -6,6 +6,7 @@ import 'package:visitor_management/allbuttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/student_list.dart';
 import 'package:visitor_management/stufflist.dart';
+import 'package:visitor_management/visitor.dart';
 
 class SelectOption extends StatelessWidget {
   const SelectOption({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class SelectOption extends StatelessWidget {
                   height: 20.0, // to create a space between two elements
                 ),
                 Headline("PLEASE SELECT ONE OPTION", 50.0),
-                Soption('VISITOR', StuffList()),
+                Soption('VISITOR', Visitor()),
                 SizedBox(
                   height: 23.0,
                 ),
