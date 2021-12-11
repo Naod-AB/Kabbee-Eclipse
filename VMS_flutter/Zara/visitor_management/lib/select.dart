@@ -1,81 +1,56 @@
-
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/mbutton.dart';
+import 'package:visitor_management/adminlist.dart';
+import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/header.dart';
+import 'package:visitor_management/student_list.dart';
+import 'package:visitor_management/stufflist.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Home(),
-  ));
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class SelectOption extends StatelessWidget {
+  const SelectOption({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(25.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 1.0, color: Colors.blue.shade500),
-        ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'KABEE',
-              textScaleFactor: 1.4,
-              
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.blue.shade500,
-            elevation: 0.0, // Remove shadow
-          ),
-          body: Container(
-            color: Colors.white,
-            child: Center(
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1.0, color: Colors.blue.shade500),
+      ),
+      child: Scaffold(
+        appBar: appBars(),
+        body: Container(
+          color: Colors.white,
+          child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                FractionallySizedBox(
-                    widthFactor: 0.7,
-                 child: Divider(
-                      thickness: 1.6,
-                      color: Colors.blue, 
-                     ),
-                  ),
+                Divide(0.7),
                 SizedBox(
                   height: 20.0, // to create a space between two elements
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 50.0),
-                  child: Text(
-                    "PLEASE SELECT ONE OPTION",
-                    style: TextStyle(
-                      color: Colors.blue.shade500,
-                      fontSize: 15.0,
-                    ),
-                    
-                  ),
+                Headline("PLEASE SELECT ONE OPTION", 50.0),
+                Soption('VISITOR', StuffList()),
+                SizedBox(
+                  height: 23.0,
                 ),
-                Soption('VISITOR'),
-                SizedBox( height: 23.0,),
-                 Soption('STUDENT'),
-                SizedBox(height: 23.0,),
-                 Soption('STAFF'),
-                SizedBox(height: 23.0,),
-                 Soption('ADMINISTRATOR'),
-                SizedBox(height: 23.0,), 
+                Soption('STUDENT', StudentList()),
+                SizedBox(
+                  height: 23.0,
+                ),
+                Soption('STAFF', StuffList()),
+                SizedBox(
+                  height: 23.0,
+                ),
+                Soption('ADMINISTRATOR', AdminList()),
+                SizedBox(
+                  height: 23.0,
+                ),
               ],
-              ), 
-                ),
             ),
           ),
-          ),
-          );
+        ),
+      ),
+    );
   }
 }

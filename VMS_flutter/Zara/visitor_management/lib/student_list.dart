@@ -6,7 +6,7 @@ import 'package:visitor_management/allbuttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/index.dart';
 
-class AdminList extends StatelessWidget {
+class StudentList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +52,7 @@ class AdminList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Nbtn('ADMIN', 300, 35, 15, Actionselector()),
+                          Nbtn('STUDENT', 300, 35, 15, Actionselector()),
                           SizedBox(height: 15.0),
                           Nbtn('ARKAN', 300, 35, 15, Actionselector()),
                           SizedBox(height: 15.0),
