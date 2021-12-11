@@ -7,19 +7,11 @@ import 'package:visitor_management/stufflist.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Awesome(),
     ),
   );
 }
-
-// class HomePage extends StatelessWidget {
-//   const HomePage({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text("testttt");
-//   }
-// }
 
 class Awesome extends StatelessWidget {
   const Awesome({Key? key}) : super(key: key);
