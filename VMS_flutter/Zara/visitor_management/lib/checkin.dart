@@ -2,11 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:visitor_management/hanibuttons.dart';
-
-void main() => runApp(MaterialApp(
-      home: checkin(),
-    ));
+import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/header.dart';
+import 'package:visitor_management/select.dart';
 
 class checkin extends StatelessWidget {
   const checkin({Key? key}) : super(key: key);
@@ -36,25 +34,14 @@ class checkin extends StatelessWidget {
             SizedBox(
               height: 15.0,
             ),
-            Divider(
-              indent: 410.0,
-              endIndent: 410.0,
-              height: 5.0,
-              color: Colors.blue.shade300,
-            ),
+            Divide(0.33),
             SizedBox(height: 120.0),
-            Text(
-              'YOU ARE CHECK IN AT',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.blue.shade400,
-              ),
-            ),
+            Headline('YOU ARE CHECK IN AT', 0.0),
             HaniTime('7:45AM'),
             SizedBox(
               height: 200.0,
             ),
-            HaniBtn(),
+            Nbtn('DONE', 250, 60, 25, SelectOption()),
           ],
         ),
       ),

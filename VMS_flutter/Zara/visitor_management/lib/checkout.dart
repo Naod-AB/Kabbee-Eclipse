@@ -2,11 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:visitor_management/hanibuttons.dart';
-
-void main() => runApp(MaterialApp(
-      home: checkout(),
-    ));
+import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/header.dart';
+import 'package:visitor_management/select.dart';
 
 class checkout extends StatelessWidget {
   const checkout({Key? key}) : super(key: key);
@@ -22,9 +20,7 @@ class checkout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 15.0,
-            ),
+            SizedBox(height: 15.0),
             Text(
               'KABBEE',
               style: TextStyle(
@@ -33,56 +29,19 @@ class checkout extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 15.0,
-            ),
-            Divider(
-              indent: 410.0,
-              endIndent: 410.0,
-              height: 5.0,
-              color: Colors.blue.shade300,
-            ),
+            SizedBox(height: 15.0),
+            Divide(0.33),
             SizedBox(height: 120.0),
-            Text(
-              'YOU ARE CHECKED IN AT',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.blue.shade400,
-              ),
-            ),
+            Headline('YOU ARE CHECK IN AT', 0.0),
             HaniTime('7:45 AM'),
-            SizedBox(
-              height: 30.0,
-            ),
-            Text(
-              'YOU ARE CHECKED OUT AT',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.blue.shade400,
-              ),
-            ),
+            SizedBox(height: 30.0),
+            Headline('YOU ARE CHECK OUT AT', 0.0),
             HaniTime('6:00 PM'),
-            SizedBox(
-              height: 50,
-            ),
-            Text(
-              'HAVE A GOOD EVENING',
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.blue.shade400,
-              ),
-            ),
-            Text(
-              'SEE YOU TOMORROW',
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.blue.shade400,
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            HaniBtn(),
+            SizedBox(height: 30),
+            Headline('HAVE A GOOD EVENING', 0.0),
+            Headline('SEE YOU TOMORROW', 0.0),
+            SizedBox(height: 50.0),
+            Nbtn('DONE', 250, 60, 25, SelectOption()),
           ],
         ),
       ),

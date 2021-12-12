@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/actionselection.dart';
 import 'package:visitor_management/allbuttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/index.dart';
+import 'package:visitor_management/select.dart';
 
-class StuffList extends StatelessWidget {
+class Visitor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,27 +50,23 @@ class StuffList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Nbtn('STAFF', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('ARKAN', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('MARTHA', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('YEMANE', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('EVEN', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('SAMUEL', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('FITSUM', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('SAMUEL', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('AHLEM', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('SEGEN', 300, 35, 15, Actionselector()),
-                      SizedBox(height: 15.0),
-                      Nbtn('RODAS', 300, 35, 15, Actionselector()),
+                      SizedBox(height: 100.0),
+                      FractionallySizedBox(
+                        widthFactor: 0.3,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.blue, width: 1.0),
+                            ),
+                            labelStyle: TextStyle(color: Colors.blue),
+                            border: OutlineInputBorder(),
+                            labelText: 'YOUR NAME',
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 100.0),
+                      Nbtn('DONE', 250, 60, 25, SelectOption()),
                     ],
                   ),
                 ),
