@@ -1,14 +1,19 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
+import 'package:visitor_management/New%20folder/startingpage.dart';
 import 'Student_names.dart';
 import 'option_selection.dart';
 
-
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: ActionPage()));
-}
+// void main() {
+//   runApp(MaterialApp(
+//       debugShowCheckedModeBanner: false, home: ActionPage(OptionSelect())));
+// }
 
 class ActionPage extends StatelessWidget {
+  dynamic specificPage = OptionSelect();
+  ActionPage(dynamic inputPage) {
+    specificPage = inputPage;
+  }
   @override
   Widget build(BuildContext context) {
     //using material instead of scaffold
@@ -23,12 +28,18 @@ class ActionPage extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                Text(
-                  'KABBEE',
-                  style: TextStyle(
-                      color: Colors.blue[600],
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30),
+                TextButton(
+                  onPressed: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => StartingPage()))
+                  },
+                  child: Text(
+                    'KABBEE',
+                    style: TextStyle(
+                        color: Colors.blue[600],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30),
+                  ),
                 ),
                 FractionallySizedBox(
                   widthFactor: 0.7,
@@ -46,7 +57,7 @@ class ActionPage extends StatelessWidget {
                       fontSize: 20),
                 ),
                 Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 80)),
-                OptionSelect(),
+                specificPage,
               ],
             ),
           ),
