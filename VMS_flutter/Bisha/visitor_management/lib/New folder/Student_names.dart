@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:visitor_management/New%20folder/checkout.dart';
 import 'package:visitor_management/New%20folder/main.dart';
 
 import 'buttons.dart';
@@ -32,6 +33,7 @@ class NameList extends StatelessWidget {
                   txtColor: Colors.blueAccent,
                   width: 500,
                   height: 50,
+                  page: ActionPage(Checkout()),
                 ),
                 Buttons(
                   btnName: "Abel",
