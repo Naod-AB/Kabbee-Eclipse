@@ -30,7 +30,7 @@ class OptionSelect extends StatelessWidget {
               txtColor: Colors.white,
               width: 420,
               height: 70,
-              page: VisitorPage()),
+              page: ActionPage(VisitorPage())),
           Buttons(
               btnName: "STUDENT",
               btnColor: Colors.blue,
