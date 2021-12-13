@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MaterialApp(
-      home: checkin(),
-    ));
+// void main() => runApp(const MaterialApp(
+      // home: checkin(),
+    // ));
 
 class checkin extends StatelessWidget {
   const checkin({Key? key}) : super(key: key);

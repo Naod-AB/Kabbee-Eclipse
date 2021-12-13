@@ -10,10 +10,10 @@ import 'staff_names.dart';
 import 'buttons.dart';
 import 'Student_names.dart';
 import 'admin_names.dart';
-
-void main() {
-  runApp(OptionSelect());
-}
+import 'visitor_page.dart';
+// void main() {
+//   runApp(OptionSelect());
+// }
 
 class OptionSelect extends StatelessWidget {
   const OptionSelect({Key? key}) : super(key: key);
@@ -24,49 +24,35 @@ class OptionSelect extends StatelessWidget {
       margin: EdgeInsets.only(top: 140.0),
       child: Column(
         children: [
-          BlueButtons('VISITOR', ActionPage()),
-          BlueButtons('STUDENT', NameList()),
-          BlueButtons('STAFF', StaffNameList()),
-          BlueButtons('ADMINISTRATOR', AdminNameList()),
+          Buttons(
+              btnName: "VISITOR",
+              btnColor: Colors.blue,
+              txtColor: Colors.white,
+              width: 420,
+              height: 70,
+              page: VisitorPage()),
+          Buttons(
+              btnName: "STUDENT",
+              btnColor: Colors.blue,
+              txtColor: Colors.white,
+              width: 420,
+              height: 70,
+              page: ActionPage(NameList())),
+          Buttons(
+              btnName: "STAFF",
+              btnColor: Colors.blue,
+              txtColor: Colors.white,
+              width: 420,
+              height: 70,
+              page: ActionPage(StaffNameList())),
+          Buttons(
+              btnName: "ADMINISTRATOR",
+              btnColor: Colors.blue,
+              txtColor: Colors.white,
+              width: 420,
+              height: 70,
+              page: ActionPage(AdminNameList())),
         ],
-      ),
-    );
-  }
-}
-
-class BlueButtons extends StatelessWidget {
-  dynamic name;
-  dynamic page;
-
-  BlueButtons(dynamic inputName, dynamic linkedpage) {
-    name = inputName;
-    page = linkedpage;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: null,
-      ),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => page));
-        },
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size(380.0, 60.0),
-        ),
-        child: Text(
-          name,
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Verdana',
-            fontSize: 20,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
       ),
     );
   }

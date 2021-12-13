@@ -1,12 +1,16 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, file_names
+
+import 'package:visitor_management/New%20folder/checkout.dart';
+import 'package:visitor_management/New%20folder/main.dart';
 
 import 'buttons.dart';
 import 'package:flutter/material.dart';
-class NameList extends StatelessWidget {
+import 'staff_names.dart';
 
+class NameList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+   return Expanded(
       child:Theme(
         data:Theme.of(context).copyWith(
           scrollbarTheme:  ScrollbarThemeData(
@@ -20,31 +24,33 @@ class NameList extends StatelessWidget {
       child: 
      SingleChildScrollView (
        
-       child: Column(children: const [
-          Buttons(btnName:"Abdu", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Abel", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Biniam", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Bana", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Christina", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Daniel", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Feysel", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Genet", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"henos", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Isaias", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Ismael", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Jolly", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Kevin", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-          Buttons(btnName:"Luam", btnColor: Colors.white,txtColor: Colors.blueAccent,width: 500,height: 50,),
-
-      ],
-    ),
-    ),
-    ),
-    ),
-
-
-   
-    );
+       child: Column(children:  [
+          Buttons(btnName:"Student", ),
+          Buttons(btnName:"Abel",),
+          Buttons(btnName:"Biniam", ),
+          Buttons(btnName:"Bana",),
+          Buttons(btnName:"Christina",),
+          Buttons(btnName:"Daniel", ),
+          Buttons(btnName:"Feysel",),
+          Buttons(btnName:"Genet",),
+          Buttons(btnName:"henos",),
+          Buttons(btnName:"Isaias",),
+          Buttons(btnName:"Ismael",),
+          Buttons(btnName:"Jolly",),
+          Buttons(btnName:"Kevin",),
+          Buttons(btnName:"Luam",),
+          Buttons(btnName:"Meron",),
+          Buttons(btnName:"Melat",),
+          Buttons(btnName:"Niat",),
+          Buttons(btnName:"Natnael",),
+          Buttons(btnName:"Omiega",),
+              ],
+            ),
+          ),
+        ),
+        ),
     
+      //),
+    );
   }
 }
