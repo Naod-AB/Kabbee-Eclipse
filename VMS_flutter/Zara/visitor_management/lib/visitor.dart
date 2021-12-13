@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:visitor_management/allbuttons.dart';
 import 'package:visitor_management/header.dart';
-import 'package:visitor_management/index.dart';
+import 'package:visitor_management/home.dart';
 import 'package:visitor_management/select.dart';
 
 class Visitor extends StatelessWidget {
