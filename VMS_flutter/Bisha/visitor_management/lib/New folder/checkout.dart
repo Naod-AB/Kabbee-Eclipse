@@ -5,57 +5,45 @@ import 'package:visitor_management/New%20folder/startingpage.dart';
 
 import 'buttons.dart';
 
-void main() {
+/* void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Checkout()));
-}
+} */
 
 class Checkout extends StatelessWidget {
   const Checkout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          child: Column(
+    return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'YOU ARE CHECKED IN AT',
-                style: TextStyle(fontSize: 16, color: Colors.blue),
-              ),
-              SizedBox(
-                height: 15,
-              ),
+               Padding(padding: EdgeInsets.all(95)),
+              Text('YOU ARE CHECKED IN AT', style: TextStyle(fontSize: 16, color: Colors.blue),),
               Buttons(
                 btnName: '8:00 AM',
+                height: 70.0,
               ),
               Text(
                 'YOU ARE CHECKED OUT AT',
                 style: TextStyle(fontSize: 16, color: Colors.blue),
               ),
-              SizedBox(
-                height: 15,
+              Buttons(btnName: '8:00 PM',
+                height: 70.0,
               ),
-              Buttons(btnName: '8:00 AM'),
-              SizedBox(
-                height: 40,
-              ),
+             Padding(padding: EdgeInsets.all(10)),
               Text(
                 'HAVE A GOOD EVENING \n SEE YOU TOMORROW',
                 style: TextStyle(fontSize: 16, color: Colors.blue),
               ),
-              SizedBox(
-                height: 100,
-              ),
-              Buttons(
+               Padding(padding: EdgeInsets.all(30.0)),
+              Buttons( 
                 btnName: 'DONE',
+                width: 300.0,
+                height: 70.0,
                 page: StartingPage(),
               )
             ],
-          ),
-        ),
-      ),
+          
     );
   }
 }
