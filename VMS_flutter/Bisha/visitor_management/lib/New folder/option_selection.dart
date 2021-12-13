@@ -10,7 +10,7 @@ import 'staff_names.dart';
 import 'buttons.dart';
 import 'Student_names.dart';
 import 'admin_names.dart';
-
+import 'visitor_page.dart';
 // void main() {
 //   runApp(OptionSelect());
 // }
@@ -30,7 +30,7 @@ class OptionSelect extends StatelessWidget {
               txtColor: Colors.white,
               width: 420,
               height: 70,
-              page: ActionPage(NameList())),
+              page: VisitorPage()),
           Buttons(
               btnName: "STUDENT",
               btnColor: Colors.blue,
