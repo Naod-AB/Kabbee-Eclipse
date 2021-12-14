@@ -35,37 +35,46 @@ class StartingPage extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: 200.0),
-                    child: Text(
-                      'WELCOME TO KABBEE CAMPUS',
-                      style: TextStyle(
-                        fontFamily: 'Verdana',
-                        fontSize: 60.0,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: FittedBox(
+                      child: Text(
+                        'WELCOME TO KABBEE CAMPUS',
+                        style: TextStyle(
+                          fontFamily: 'Verdana',
+                          fontSize: 60.0,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 60.0),
-                    child: Text(
-                      'WE ARE HAPPY TO HAVE YOU HERE!',
-                      style: TextStyle(
-                        fontFamily: 'Verdana',
-                        fontSize: 30.0,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: FittedBox(
+                      child: Text(
+                        'WE ARE HAPPY TO HAVE YOU HERE!',
+                        style: TextStyle(
+                          fontFamily: 'Verdana',
+                          fontSize: 30.0,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 180.0),
-                    child: Text(
-                      'TOUCH THE SCREEN TO ENTER',
-                      style: TextStyle(
-                        fontFamily: 'Verdana',
-                        fontSize: 20.0,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: FittedBox(
+                      child: Text(
+                        'TOUCH THE SCREEN TO ENTER',
+                        style: TextStyle(
+                          fontFamily: 'Verdana',
+                          fontSize: 20.0,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   )

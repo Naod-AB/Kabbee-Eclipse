@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-
-class VisitorPage extends StatelessWidget{
+class VisitorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Image(image: AssetImage("assets/kabbee.jpeg"));
-      
+    return Container(
+        width: 300.0,
+        height: 350.0,
+        child: Image(image: AssetImage("assets/kabbee.jpeg")));
   }
-
- 
 }
