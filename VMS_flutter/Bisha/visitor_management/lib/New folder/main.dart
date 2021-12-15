@@ -4,10 +4,10 @@ import 'package:visitor_management/New%20folder/startingpage.dart';
 import 'Student_names.dart';
 import 'option_selection.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//       debugShowCheckedModeBanner: false, home: ActionPage(OptionSelect())));
-// }
+ //void main() {
+  // runApp(MaterialApp(
+    // debugShowCheckedModeBanner: false, home: ActionPage(OptionSelect())));
+//}
 
 class ActionPage extends StatelessWidget {
   dynamic specificPage = OptionSelect();
