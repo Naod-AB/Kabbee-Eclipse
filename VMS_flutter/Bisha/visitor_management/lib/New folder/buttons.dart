@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-// ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names
-=======
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
->>>>>>> 198a50c019ce27c2f5b9887fe50938af9f8f0244
 
 import 'package:flutter/material.dart';
+import 'package:visitor_management/New%20folder/checkin_1.dart';
+import 'package:visitor_management/New%20folder/main.dart';
 
 class Buttons extends StatelessWidget {
   final String btnName;
