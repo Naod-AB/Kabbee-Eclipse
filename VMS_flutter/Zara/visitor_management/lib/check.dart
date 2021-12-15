@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, camel_case_types
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:visitor_management/buttons.dart';
@@ -7,14 +5,14 @@ import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/selection.dart';
 import 'package:visitor_management/template.dart';
 
-class checkin extends StatelessWidget {
-  const checkin({Key? key}) : super(key: key);
+class Checkin extends StatelessWidget {
+  const Checkin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+      children: const [
         Divide(0.33),
         SizedBox(height: 120.0),
         Headline('YOU ARE CHECK IN AT', 0.0),
@@ -28,23 +26,14 @@ class checkin extends StatelessWidget {
   }
 }
 
-class checkout extends StatelessWidget {
-  const checkout({Key? key}) : super(key: key);
+class Checkout extends StatelessWidget {
+  const Checkout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // SizedBox(height: 15.0),
-        // Text(
-        //   'KABBEE',
-        //   style: TextStyle(
-        //     fontSize: 25.0,
-        //     color: Colors.blue.shade400,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+      children: const [
         SizedBox(height: 15.0),
         Divide(0.33),
         SizedBox(height: 120.0),
