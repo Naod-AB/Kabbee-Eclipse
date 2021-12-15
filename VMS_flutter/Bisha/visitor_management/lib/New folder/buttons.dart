@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // ignore_for_file: use_key_in_widget_constructors, non_constant_identifier_names
+=======
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+>>>>>>> 198a50c019ce27c2f5b9887fe50938af9f8f0244
 
 import 'package:flutter/material.dart';
 
@@ -16,7 +20,7 @@ class Buttons extends StatelessWidget {
       this.btnColor = Colors.white,
       this.txtColor = Colors.blueAccent,
       this.width = 500,
-      this.height = 60,
+      this.height = 50,
       this.fontSize = 20,
       this.page,});
 

@@ -7,11 +7,6 @@ import 'checkin.dart';
 import 'day_off.dart';
 import 'other.dart';
 
-
-void main() =>
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,
-    home:actionselection(),
-  ));
 class actionselection extends StatelessWidget {
 
 
