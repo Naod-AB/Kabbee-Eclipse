@@ -1,8 +1,5 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:visitor_management/home.dart';
-import 'package:visitor_management/selection.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
@@ -36,9 +33,9 @@ class Header extends StatelessWidget {
 
 class Headline extends StatelessWidget {
   // const Headline({Key? key}) : super(key: key);
-  String info;
-  double buttom;
-  Headline(this.info, this.buttom);
+  final String info;
+  final double buttom;
+  const Headline(this.info, this.buttom, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,8 +52,8 @@ class Headline extends StatelessWidget {
 }
 
 class Divide extends StatelessWidget {
-  double width;
-  Divide(this.width);
+  final double width;
+  const Divide(this.width, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -70,10 +67,8 @@ class Divide extends StatelessWidget {
 }
 
 class Template extends StatelessWidget {
-  dynamic specificPage = const SelectOption();
-  Template(dynamic inputPage) {
-    specificPage = inputPage;
-  }
+  final dynamic selectedPage;
+  const Template(this.selectedPage, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +84,7 @@ class Template extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              specificPage,
+              selectedPage,
             ],
           ),
         ),

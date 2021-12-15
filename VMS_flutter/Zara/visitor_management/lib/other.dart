@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:visitor_management/template.dart';
@@ -12,7 +10,7 @@ class Other extends StatelessWidget {
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: const [
           Divide(0.7),
           SizedBox(
             height: 20.0, // to create a space between two elements

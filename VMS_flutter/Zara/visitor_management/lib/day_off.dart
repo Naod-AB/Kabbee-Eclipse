@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 import 'package:visitor_management/template.dart';
@@ -13,8 +11,8 @@ class Dayoff extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Divide(0.7),
-          Headline("PICK A DAY OFF", 50.0),
+          const Divide(0.7),
+          const Headline("PICK A DAY OFF", 50.0),
           DatePickerDialog(
             initialDate: DateTime(2021, 12, 1),
             firstDate: DateTime(2021, 12, 1),
@@ -22,10 +20,6 @@ class Dayoff extends StatelessWidget {
           )
         ],
       ),
-      //  ),
-      //       ),
-      //     ),
-      //   ),
     );
   }
 }

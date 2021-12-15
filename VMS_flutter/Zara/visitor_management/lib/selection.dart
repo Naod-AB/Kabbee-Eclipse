@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/check.dart';
@@ -16,7 +14,7 @@ class SelectOption extends StatelessWidget {
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: const [
           Divide(0.7),
           Headline("PLEASE SELECT ONE OPTION", 50.0),
           Soption('VISITOR', Template(Visitor())),
@@ -48,12 +46,12 @@ class Actionselector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        children: [
+        children: const [
           Divide(0.33),
           Headline('PLEASE SELECT ONE OF THE FOLLOW OPTION', 10.0),
-          Btn('CHECK IN', 350, 50, 13, Template(checkin())),
+          Btn('CHECK IN', 350, 50, 13, Template(Checkin())),
           SizedBox(height: 35.0),
-          Btn('CHECK OUT', 350, 50, 13, Template(checkout())),
+          Btn('CHECK OUT', 350, 50, 13, Template(Checkout())),
           SizedBox(height: 35.0),
           Btn('REQUEST DAY OFF', 350, 50, 13, Template(Dayoff())),
           SizedBox(height: 35.0),

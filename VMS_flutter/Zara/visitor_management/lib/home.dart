@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 import 'package:visitor_management/selection.dart';
@@ -12,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-            margin: EdgeInsets.all(20.0),
+            margin: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.blue, width: 2.0)),
             child: InkWell(
@@ -20,7 +18,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Template(SelectOption()),
+                      builder: (context) => const Template(SelectOption()),
                     ),
                   );
                 },
@@ -38,8 +36,8 @@ class Home extends StatelessWidget {
                             letterSpacing: 1.0,
                           ),
                         ),
-                        SizedBox(height: 40.0),
-                        Text(
+                        const SizedBox(height: 40.0),
+                        const Text(
                           'WE ARE HAPPY TO HAVE YOU HERE!',
                           style: TextStyle(
                             fontSize: 20.0,
@@ -48,10 +46,10 @@ class Home extends StatelessWidget {
                             letterSpacing: 1.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 100.0,
                         ),
-                        Text(
+                        const Text(
                           'TOUCH THE SCREEN TO START',
                           style: TextStyle(
                             fontSize: 10.0,
