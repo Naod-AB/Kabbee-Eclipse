@@ -1,40 +1,55 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
-// import 'package:visitor_management/actionselection.dart';
 
 //Option selection Button Kidane's Code
 class Soption extends StatelessWidget {
-  //const Soption({ Key? key }) : super(key: key);
   final String opti;
-  dynamic page;
-  Soption(this.opti, this.page);
+  final dynamic page;
+  const Soption(this.opti, this.page, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
-
       height: 55.0,
       minWidth: 260.0,
       color: Theme.of(context).primaryColor,
       textColor: Colors.white,
-      child: Text(opti, style: TextStyle(fontSize: 17)),
-      // splashColor: Colors.blue.shade500,
+      child: Text(opti, style: const TextStyle(fontSize: 17)),
     );
   }
 }
 
-//Name List and action selection buttons Esrom's & Merry's Code
+//Name List Esrom's Code
 class Nbtn extends StatelessWidget {
-  // const Nbtn({Key? key}) : super(key: key);
-  String sss;
-  double width;
-  double height;
-  double font;
-  dynamic page;
-  Nbtn(this.sss, this.width, this.height, this.font, this.page);
+  final String sss;
+  final dynamic page;
+  const Nbtn(this.sss, this.page, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+      },
+      child: Text(sss),
+      style: OutlinedButton.styleFrom(
+          textStyle: const TextStyle(fontSize: 15),
+          fixedSize: const Size(300, 35),
+          side: const BorderSide(width: 1, color: Colors.blue)),
+    );
+  }
+}
+
+//Hani and Merry's Code
+class Btn extends StatelessWidget {
+  final String sss;
+  final double width;
+  final double height;
+  final double font;
+  final dynamic page;
+  const Btn(this.sss, this.width, this.height, this.font, this.page, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +61,15 @@ class Nbtn extends StatelessWidget {
       style: OutlinedButton.styleFrom(
           textStyle: TextStyle(fontSize: font),
           fixedSize: Size(width, height),
-          side: BorderSide(width: 1, color: Colors.blue)),
+          side: const BorderSide(width: 1, color: Colors.blue)),
     );
   }
 }
 
 //Code for check in and out time Hani's Code
 class HaniTime extends StatelessWidget {
-  //const NameTime({ Key? key }) : super(key: key);
   final String time;
-  HaniTime(this.time);
+  const HaniTime(this.time, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

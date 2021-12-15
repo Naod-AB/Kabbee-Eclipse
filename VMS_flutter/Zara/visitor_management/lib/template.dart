@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:visitor_management/home.dart';
-// import 'package:visitor_management/index.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
-    title: Header(),
+    title: const Header(),
     centerTitle: true,
     backgroundColor: Colors.white10,
     foregroundColor: Colors.blue.shade500,
@@ -22,9 +19,9 @@ class Header extends StatelessWidget {
     return TextButton(
       onPressed: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
+            context, MaterialPageRoute(builder: (context) => const Home()));
       },
-      child: Text(
+      child: const Text(
         'KABBEE',
         style: TextStyle(
           fontSize: 27.0,
@@ -36,10 +33,9 @@ class Header extends StatelessWidget {
 
 class Headline extends StatelessWidget {
   // const Headline({Key? key}) : super(key: key);
-  String info;
-  double buttom;
-  Headline(this.info, this.buttom);
-
+  final String info;
+  final double buttom;
+  const Headline(this.info, this.buttom, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,10 +52,8 @@ class Headline extends StatelessWidget {
 }
 
 class Divide extends StatelessWidget {
-  // const Divide({Key? key}) : super(key: key);
-  double width;
-  Divide(this.width);
-
+  final double width;
+  const Divide(this.width, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -67,6 +61,33 @@ class Divide extends StatelessWidget {
       child: Divider(
         thickness: 1.3,
         color: Colors.blue.shade500,
+      ),
+    );
+  }
+}
+
+class Template extends StatelessWidget {
+  final dynamic selectedPage;
+  const Template(this.selectedPage, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //using material instead of scaffold
+    return Container(
+      margin: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(3.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue.shade500),
+      ),
+      child: Scaffold(
+        appBar: appBars(),
+        body: Center(
+          child: Column(
+            children: [
+              selectedPage,
+            ],
+          ),
+        ),
       ),
     );
   }

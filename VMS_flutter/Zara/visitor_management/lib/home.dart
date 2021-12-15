@@ -1,32 +1,25 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
-import 'package:visitor_management/select.dart';
-
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    ));
+import 'package:visitor_management/selection.dart';
+import 'package:visitor_management/template.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
-  // get Navigation => null;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-            margin: EdgeInsets.all(20.0),
+            margin: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.blue, width: 2.0)),
             child: InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SelectOption()),
+                    MaterialPageRoute(
+                      builder: (context) => const Template(SelectOption()),
+                    ),
                   );
                 },
                 child: Center(
@@ -43,8 +36,8 @@ class Home extends StatelessWidget {
                             letterSpacing: 1.0,
                           ),
                         ),
-                        SizedBox(height: 40.0),
-                        Text(
+                        const SizedBox(height: 40.0),
+                        const Text(
                           'WE ARE HAPPY TO HAVE YOU HERE!',
                           style: TextStyle(
                             fontSize: 20.0,
@@ -53,10 +46,10 @@ class Home extends StatelessWidget {
                             letterSpacing: 1.0,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 100.0,
                         ),
-                        Text(
+                        const Text(
                           'TOUCH THE SCREEN TO START',
                           style: TextStyle(
                             fontSize: 10.0,
