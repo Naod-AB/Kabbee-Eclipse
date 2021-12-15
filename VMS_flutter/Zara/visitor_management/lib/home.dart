@@ -2,13 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:visitor_management/option_selection.dart';
+import 'package:visitor_management/selection.dart';
 import 'package:visitor_management/template.dart';
-
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    ));
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
