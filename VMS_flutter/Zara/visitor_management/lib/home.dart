@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:visitor_management/select.dart';
+import 'package:visitor_management/template.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -11,9 +12,6 @@ void main() => runApp(MaterialApp(
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
-  // get Navigation => null;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,9 @@ class Home extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SelectOption()),
+                    MaterialPageRoute(
+                      builder: (context) => Template(SelectOption()),
+                    ),
                   );
                 },
                 child: Center(
