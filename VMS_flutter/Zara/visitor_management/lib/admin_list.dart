@@ -5,8 +5,10 @@ import 'package:visitor_management/action_selection.dart';
 import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/template.dart';
+// import 'package:visitor_management/header.dart';
+// import 'package:visitor_management/home.dart';
 
-class StudentList extends StatelessWidget {
+class AdminList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -17,7 +19,7 @@ class StudentList extends StatelessWidget {
           children: [
             Divide(0.7),
             Headline("PLEASE SELECT YOUR NAME", 50.0),
-            Nbtn('STUDENT', 300, 35, 15, Template(Actionselector())),
+            Nbtn('ADMIN', 300, 35, 15, Template(Actionselector())),
             SizedBox(height: 15.0),
             Nbtn('ARKAN', 300, 35, 15, Template(Actionselector())),
             SizedBox(height: 15.0),
@@ -41,13 +43,6 @@ class StudentList extends StatelessWidget {
           ],
         ),
       ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

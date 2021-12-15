@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:visitor_management/home.dart';
@@ -39,7 +39,6 @@ class Headline extends StatelessWidget {
   String info;
   double buttom;
   Headline(this.info, this.buttom);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,10 +55,8 @@ class Headline extends StatelessWidget {
 }
 
 class Divide extends StatelessWidget {
-  // const Divide({Key? key}) : super(key: key);
   double width;
   Divide(this.width);
-
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
