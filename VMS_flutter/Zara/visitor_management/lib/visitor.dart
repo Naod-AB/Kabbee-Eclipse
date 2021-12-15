@@ -33,7 +33,7 @@ class Visitor extends StatelessWidget {
               ),
             ),
             SizedBox(height: 100.0),
-            Nbtn('DONE', 250, 60, 25, Template(SelectOption())),
+            Btn('DONE', 250, 60, 25, Template(SelectOption())),
           ],
         ),
       ),

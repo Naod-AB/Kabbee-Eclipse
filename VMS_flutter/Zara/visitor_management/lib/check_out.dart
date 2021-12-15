@@ -36,7 +36,7 @@ class checkout extends StatelessWidget {
         Headline('HAVE A GOOD EVENING', 0.0),
         Headline('SEE YOU TOMORROW', 0.0),
         SizedBox(height: 50.0),
-        Nbtn('DONE', 250, 60, 25, Template(SelectOption())),
+        Btn('DONE', 250, 60, 25, Template(SelectOption())),
       ],
       //     ),
       //   ),

@@ -19,13 +19,13 @@ class Actionselector extends StatelessWidget {
         children: [
           Divide(0.33),
           Headline('PLEASE SELECT ONE OF THE FOLLOW OPTION', 10.0),
-          Nbtn('CHECK IN', 350, 50, 13, Template(checkin())),
+          Btn('CHECK IN', 350, 50, 13, Template(checkin())),
           SizedBox(height: 35.0),
-          Nbtn('CHECK OUT', 350, 50, 13, Template(checkout())),
+          Btn('CHECK OUT', 350, 50, 13, Template(checkout())),
           SizedBox(height: 35.0),
-          Nbtn('REQUEST DAY OFF', 350, 50, 13, Template(Dayoff())),
+          Btn('REQUEST DAY OFF', 350, 50, 13, Template(Dayoff())),
           SizedBox(height: 35.0),
-          Nbtn('OTHER', 350, 50, 13, Template(Other())),
+          Btn('OTHER', 350, 50, 13, Template(Other())),
         ],
       ),
     );

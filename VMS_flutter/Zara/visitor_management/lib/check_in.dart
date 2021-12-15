@@ -22,7 +22,7 @@ class checkin extends StatelessWidget {
         SizedBox(
           height: 200.0,
         ),
-        Nbtn('DONE', 250, 60, 25, Template(SelectOption())),
+        Btn('DONE', 250, 60, 25, Template(SelectOption())),
       ],
     );
   }

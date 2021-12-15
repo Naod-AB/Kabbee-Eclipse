@@ -26,15 +26,38 @@ class Soption extends StatelessWidget {
   }
 }
 
-//Name List and action selection buttons Esrom's & Merry's Code
+//Name List Esrom's Code
 class Nbtn extends StatelessWidget {
+  // const Nbtn({Key? key}) : super(key: key);
+  String sss;
+
+  dynamic page;
+  Nbtn(this.sss, this.page);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+      },
+      child: Text(sss),
+      style: OutlinedButton.styleFrom(
+          textStyle: TextStyle(fontSize: 15),
+          fixedSize: Size(300, 35),
+          side: BorderSide(width: 1, color: Colors.blue)),
+    );
+  }
+}
+
+//Hani and Merry's Code
+class Btn extends StatelessWidget {
   // const Nbtn({Key? key}) : super(key: key);
   String sss;
   double width;
   double height;
   double font;
   dynamic page;
-  Nbtn(this.sss, this.width, this.height, this.font, this.page);
+  Btn(this.sss, this.width, this.height, this.font, this.page);
 
   @override
   Widget build(BuildContext context) {
