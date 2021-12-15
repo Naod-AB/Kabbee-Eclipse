@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:visitor_management/New%20folder/startingpage.dart';
 import 'option_selection.dart';
@@ -13,6 +14,7 @@ class ActionPage extends StatelessWidget {
   ActionPage(dynamic inputPage) {
     specificPage = inputPage;
   }
+  
   @override
   Widget build(BuildContext context) {
     //using material instead of scaffold

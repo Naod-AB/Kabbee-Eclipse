@@ -2,12 +2,12 @@
 
 import 'package:visitor_management/New%20folder/action_selection.dart';
 import 'package:visitor_management/New%20folder/main.dart';
-
 import 'buttons.dart';
 import 'package:flutter/material.dart';
-import 'staff_names.dart';
 
 class StaffNameList extends StatelessWidget {
+
+  @override
   Widget build(BuildContext context) {
    return Expanded(
       child:Theme(
@@ -85,8 +85,6 @@ class StaffNameList extends StatelessWidget {
           ),
         ),
         ),
-    
-      //),
     );
   }
 }
