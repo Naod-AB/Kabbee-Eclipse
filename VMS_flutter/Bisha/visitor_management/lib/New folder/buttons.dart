@@ -1,8 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/New%20folder/checkin_1.dart';
-import 'package:visitor_management/New%20folder/main.dart';
 
 class Buttons extends StatelessWidget {
   final String btnName;

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:visitor_management/New%20folder/main.dart';
 
 class Other extends StatelessWidget {
   const Other({Key? key}) : super(key: key);

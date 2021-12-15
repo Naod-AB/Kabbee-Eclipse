@@ -1,8 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:visitor_management/New%20folder/buttons.dart';
 import 'package:visitor_management/New%20folder/startingpage.dart';
 
 class VisitorPage extends StatelessWidget {
+  const VisitorPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +22,7 @@ class VisitorPage extends StatelessWidget {
             ),
           ),
           Padding(padding: EdgeInsets.all(5.0)),
-          Container(
+          SizedBox(
             width: 500.0,
             child: TextField(
               keyboardType: TextInputType.text,

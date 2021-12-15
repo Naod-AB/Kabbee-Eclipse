@@ -1,12 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:visitor_management/New%20folder/checkin_1.dart';
 import 'package:visitor_management/New%20folder/checkout.dart';
 import 'package:visitor_management/New%20folder/main.dart';
 import 'buttons.dart';
-import 'checkin.dart';
 import 'day_off.dart';
 import 'other.dart';
 
