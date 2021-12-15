@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/header.dart';
 
-import 'package:visitor_management/select.dart';
+import 'package:visitor_management/option_selection.dart';
 import 'package:visitor_management/template.dart';
 
 class Visitor extends StatelessWidget {

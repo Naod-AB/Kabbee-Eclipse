@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:visitor_management/select.dart';
+import 'package:visitor_management/option_selection.dart';
 import 'package:visitor_management/template.dart';
 
 void main() => runApp(MaterialApp(

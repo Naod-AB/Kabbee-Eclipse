@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/actionselection.dart';
-import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/action_selection.dart';
+import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/template.dart';
 

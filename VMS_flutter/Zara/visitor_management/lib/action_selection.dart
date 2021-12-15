@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/allbuttons.dart';
-import 'package:visitor_management/checkin.dart';
-import 'package:visitor_management/checkout.dart';
+import 'package:visitor_management/buttons.dart';
+import 'package:visitor_management/check_in.dart';
+import 'package:visitor_management/check_out.dart';
 import 'package:visitor_management/day_off.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/other.dart';

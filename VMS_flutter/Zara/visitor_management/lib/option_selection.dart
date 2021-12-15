@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/adminlist.dart';
-import 'package:visitor_management/allbuttons.dart';
+import 'package:visitor_management/admin_list.dart';
+import 'package:visitor_management/buttons.dart';
 import 'package:visitor_management/header.dart';
 import 'package:visitor_management/student_list.dart';
-import 'package:visitor_management/stufflist.dart';
+import 'package:visitor_management/stuff_list.dart';
 import 'package:visitor_management/template.dart';
 import 'package:visitor_management/visitor.dart';
 
