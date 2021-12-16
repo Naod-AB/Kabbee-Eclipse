@@ -10,7 +10,7 @@ class VisitorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(100.0),
+      padding: EdgeInsets.all(10.0),
       child: Column(
         children: [
           Padding(padding: EdgeInsets.all(40.0)),
