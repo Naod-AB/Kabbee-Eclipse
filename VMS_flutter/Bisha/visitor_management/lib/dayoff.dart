@@ -8,16 +8,16 @@ class Dayoff extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(60.0),
+      padding: EdgeInsets.all(0.0),
       child: Column(children: [
-        Text(
-          "PLEASE SELECT YOUR DAY OFF",
-          style: TextStyle(
-            color: Colors.blue[600],
-            wordSpacing: 5.0,
-            fontSize: 20.0,
-          ),
-        ),
+        // Text(
+        //   "PLEASE SELECT YOUR DAY OFF",
+        //   style: TextStyle(
+        //     color: Colors.blue[600],
+        //     wordSpacing: 5.0,
+        //     fontSize: 20.0,
+        //   ),
+        // ),
         DatePickerDialog(
           initialDate: DateTime(2021, 12, 1),
           firstDate: DateTime(2021, 12, 1),
