@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'main.dart';
-import 'staff_names.dart';
 import 'buttons.dart';
-import 'Student_names.dart';
-import 'admin_names.dart';
-import 'visitor_page.dart';
+import 'checkInOut.dart';
+import 'dayoff.dart';
+import 'other.dart';
+import 'template.dart';
+import 'names.dart';
+import 'visitor.dart';
 
 // void main() {
 //   runApp(OptionSelect());
@@ -35,6 +36,30 @@ class OptionSelect extends StatelessWidget {
               page: ActionPage(AdminNameList(),"PLEASE SELECT YOUR NAME",0.7)),
         ],
       ),
+    );
+  }
+}
+
+class ActionSelection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(120.0),
+      child: Column(children: [
+        ActionButtons(
+            btnName: "CHECK IN",
+            page: ActionPage(Checkin1(),"",0.33)),
+        ActionButtons(
+          btnName: "CHECK OUT",
+          page: ActionPage(Checkout(),"",0.33),
+        ),
+        ActionButtons(
+            btnName: "REQUEST DAY OFF",
+            page: ActionPage(Dayoff(),"",0.33)),
+        ActionButtons(
+            btnName: "OTHER",
+            page: ActionPage(Other(),"",0.33)),
+      ]),
     );
   }
 }

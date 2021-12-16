@@ -14,34 +14,18 @@ class ActionSelection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(120.0),
       child: Column(children: [
-        Buttons(
+        ActionButtons(
             btnName: "CHECK IN",
-            btnColor: Colors.white,
-            txtColor: Colors.blueAccent,
-            width: 420,
-            height: 70,
             page: ActionPage(Checkin1(),"",0.33)),
-        Buttons(
+        ActionButtons(
           btnName: "CHECK OUT",
-          btnColor: Colors.white,
-          txtColor: Colors.blueAccent,
-          width: 420,
-          height: 70,
           page: ActionPage(Checkout(),"",0.33),
         ),
-        Buttons(
+        ActionButtons(
             btnName: "REQUEST DAY OFF",
-            btnColor: Colors.white,
-            txtColor: Colors.blueAccent,
-            width: 420,
-            height: 70,
             page: ActionPage(Dayoff(),"",0.33)),
-        Buttons(
+        ActionButtons(
             btnName: "OTHER",
-            btnColor: Colors.white,
-            txtColor: Colors.blueAccent,
-            width: 420,
-            height: 70,
             page: ActionPage(Other(),"",0.33)),
       ]),
     );

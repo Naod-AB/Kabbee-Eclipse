@@ -28,10 +28,9 @@ class Checkin1 extends StatelessWidget {
           height: 70.0,
         ),
         Padding(padding: EdgeInsets.all(30.0)),
-        Buttons(
+        ActionButtons(
           btnName: 'DONE',
           width: 300.0,
-          height: 70.0,
           page: StartingPage(),
         )
       ],

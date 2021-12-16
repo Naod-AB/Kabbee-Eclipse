@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/New%20folder/buttons.dart';
-import 'package:visitor_management/New%20folder/startingpage.dart';
+import 'buttons.dart';
+import 'home.dart';
 
 class VisitorPage extends StatelessWidget {
   const VisitorPage({Key? key}) : super(key: key);
