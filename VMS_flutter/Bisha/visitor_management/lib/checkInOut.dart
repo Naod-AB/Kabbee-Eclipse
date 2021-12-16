@@ -18,24 +18,7 @@ class Checkin1 extends StatelessWidget {
           'YOU ARE CHECKED IN AT',
           style: TextStyle(fontSize: 16, color: Colors.blue),
         ),
-        //
-        Container(
-          height: 50,
-          width: 400,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.blue.shade300),
-          ),
-          child: Center(
-            child: Text(
-              "7:30 AM",
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.blue.shade500,
-              ),
-            ),
-          ),
-        ),
+        ContainersButton("7:45 AM"),
         Padding(padding: EdgeInsets.all(30.0)),
 
         ActionButtons(
@@ -60,19 +43,17 @@ class Checkout extends StatelessWidget {
         Text(
           'YOU ARE CHECKED IN AT',
           style: TextStyle(fontSize: 16, color: Colors.blue),
-        ),
-        Buttons(
-          btnName: '8:00 AM',
-          height: 70.0,
-        ),
+        ),  
+        ContainersButton("8:00 AM"),
+        Padding(padding: EdgeInsets.all(10)),
+        
         Text(
           'YOU ARE CHECKED OUT AT',
           style: TextStyle(fontSize: 16, color: Colors.blue),
         ),
-        Buttons(
-          btnName: '8:00 PM',
-          height: 70.0,
-        ),
+
+        ContainersButton("8:00 PM"),
+
         Padding(padding: EdgeInsets.all(10)),
         Text(
           'HAVE A GOOD EVENING \n SEE YOU TOMORROW',
