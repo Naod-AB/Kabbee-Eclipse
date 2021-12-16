@@ -20,14 +20,14 @@ class ActionSelection extends StatelessWidget {
             txtColor: Colors.blueAccent,
             width: 420,
             height: 70,
-            page: ActionPage(Checkin1())),
+            page: ActionPage(Checkin1(),"",0.33)),
         Buttons(
           btnName: "CHECK OUT",
           btnColor: Colors.white,
           txtColor: Colors.blueAccent,
           width: 420,
           height: 70,
-          page: ActionPage(Checkout()),
+          page: ActionPage(Checkout(),"",0.33),
         ),
         Buttons(
             btnName: "REQUEST DAY OFF",
@@ -35,14 +35,14 @@ class ActionSelection extends StatelessWidget {
             txtColor: Colors.blueAccent,
             width: 420,
             height: 70,
-            page: ActionPage(Dayoff())),
+            page: ActionPage(Dayoff(),"",0.33)),
         Buttons(
             btnName: "OTHER",
             btnColor: Colors.white,
             txtColor: Colors.blueAccent,
             width: 420,
             height: 70,
-            page: ActionPage(Other())),
+            page: ActionPage(Other(),"",0.33)),
       ]),
     );
   }

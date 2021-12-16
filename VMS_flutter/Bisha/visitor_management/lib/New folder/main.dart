@@ -11,8 +11,14 @@ import 'option_selection.dart';
 
 class ActionPage extends StatelessWidget {
   dynamic specificPage = OptionSelect();
-  ActionPage(dynamic inputPage) {
+  dynamic  headTxt=" ";
+  dynamic divwidth;
+
+  ActionPage(dynamic inputPage,dynamic headText, dynamic dwidth) {
     specificPage = inputPage;
+    headTxt=headText;
+    divwidth=dwidth;
+
   }
   
   @override
@@ -43,7 +49,7 @@ class ActionPage extends StatelessWidget {
                   ),
                 ),
                 FractionallySizedBox(
-                  widthFactor: 0.7,
+                  widthFactor: divwidth,
                   child: Divider(
                     thickness: 1.5,
                     color: Colors.blueAccent,
@@ -51,7 +57,7 @@ class ActionPage extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(15)),
                 Text(
-                  'PLEASE SELECT YOUR NAME',
+                  headTxt,
                   style: TextStyle(
                       color: Colors.blue[600],
                       fontWeight: FontWeight.bold,

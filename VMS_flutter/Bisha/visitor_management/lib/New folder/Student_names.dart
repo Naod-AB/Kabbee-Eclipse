@@ -24,60 +24,60 @@ class NameList extends StatelessWidget {
             child: Column(
               children: [
                 Buttons(
-                    btnName: "Student", page: ActionPage(ActionSelection())),
+                    btnName: "Student", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)),
                 Buttons(
-                  btnName: "Abel", page: ActionPage(ActionSelection())
+                  btnName: "Abel", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Biniam", page: ActionPage(ActionSelection())
+                  btnName: "Biniam", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Bana", page: ActionPage(ActionSelection())
+                  btnName: "Bana", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Christina", page: ActionPage(ActionSelection())
+                  btnName: "Christina", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Daniel", page: ActionPage(ActionSelection())
+                  btnName: "Daniel", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Feysel", page: ActionPage(ActionSelection())
+                  btnName: "Feysel", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Genet", page: ActionPage(ActionSelection())
+                  btnName: "Genet", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "henos", page: ActionPage(ActionSelection())
+                  btnName: "henos", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Isaias", page: ActionPage(ActionSelection())
+                  btnName: "Isaias", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Ismael", page: ActionPage(ActionSelection())
+                  btnName: "Ismael", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Jolly", page: ActionPage(ActionSelection())
+                  btnName: "Jolly", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Kevin", page: ActionPage(ActionSelection())
+                  btnName: "Kevin", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Luam", page: ActionPage(ActionSelection())
+                  btnName: "Luam", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Meron", page: ActionPage(ActionSelection())
+                  btnName: "Meron", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Melat", page: ActionPage(ActionSelection())
+                  btnName: "Melat", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Niat", page: ActionPage(ActionSelection())
+                  btnName: "Niat", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Natnael", page: ActionPage(ActionSelection())
+                  btnName: "Natnael", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7)
                 ),
                 Buttons(
-                  btnName: "Omiega", page: ActionPage(ActionSelection())
+                  btnName: "Omiega", page: ActionPage(ActionSelection(),"PLEASE SELECT ONE OF THE FOLLOW OPTION",0.7) 
                 ),
               ],
             ),

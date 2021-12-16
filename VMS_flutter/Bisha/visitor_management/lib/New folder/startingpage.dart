@@ -25,7 +25,7 @@ class StartingPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActionPage(OptionSelect()),
+                  builder: (context) => ActionPage(OptionSelect(),"PLEASE SELECT ONE OPTION",0.7),
                 ),
               ),
             },
