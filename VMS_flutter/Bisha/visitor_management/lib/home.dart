@@ -25,7 +25,8 @@ class StartingPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActionPage(OptionSelect(),"PLEASE SELECT ONE OPTION",0.7),
+                  builder: (context) => ActionPage(
+                      OptionSelect(), "PLEASE SELECT ONE OPTION", 0.7),
                 ),
               ),
             },
@@ -64,7 +65,7 @@ class StartingPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 180.0),
-                    width: MediaQuery.of(context).size.width * 0.2,
+                    width: MediaQuery.of(context).size.width * 0.3,
                     child: FittedBox(
                       child: Text(
                         'TOUCH THE SCREEN TO ENTER',

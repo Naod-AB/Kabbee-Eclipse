@@ -109,3 +109,31 @@ class ActionButtons extends StatelessWidget {
     ]);
   }
 }
+
+class ContainersButton extends StatelessWidget{
+   final String txt;
+   ContainersButton(this.txt);
+   
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+          height: 50,
+          width: 400,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.blue.shade300),
+          ),
+          child: Center(
+            child: Text(
+              txt,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.blue.shade500,
+              ),
+            ),
+          ),
+        );
+  }
+
+} 

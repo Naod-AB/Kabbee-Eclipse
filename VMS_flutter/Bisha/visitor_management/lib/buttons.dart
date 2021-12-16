@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Buttons extends StatelessWidget {
@@ -10,14 +9,15 @@ class Buttons extends StatelessWidget {
   final double fontSize;
   dynamic page;
 
-  Buttons(
-      {this.btnName = '',
-      this.btnColor = Colors.white,
-      this.txtColor = Colors.blueAccent,
-      this.width = 500,
-      this.height = 50,
-      this.fontSize = 20,
-      this.page,});
+  Buttons({
+    this.btnName = '',
+    this.btnColor = Colors.white,
+    this.txtColor = Colors.blueAccent,
+    this.width = 500,
+    this.height = 50,
+    this.fontSize = 20,
+    this.page,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +47,10 @@ class BlueButtons extends StatelessWidget {
   final String btnName;
   dynamic page;
 
-  BlueButtons(
-      {this.btnName = '',
-      this.page,});
+  BlueButtons({
+    this.btnName = '',
+    this.page,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +76,16 @@ class BlueButtons extends StatelessWidget {
   }
 }
 
-
 class ActionButtons extends StatelessWidget {
   final String btnName;
   final double width;
   dynamic page;
 
-  ActionButtons(
-      {this.btnName = '',
-      this.width = 420.0,
-      this.page,});
+  ActionButtons({
+    this.btnName = '',
+    this.width = 420.0,
+    this.page,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -110,30 +111,28 @@ class ActionButtons extends StatelessWidget {
   }
 }
 
-class ContainersButton extends StatelessWidget{
-   final String txt;
-   ContainersButton(this.txt);
-   
+class ContainersButton extends StatelessWidget {
+  final String txt;
+  ContainersButton(this.txt);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-          height: 50,
-          width: 400,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.blue.shade300),
+      height: 70.0,
+      width: 420.0,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.blue.shade300),
+      ),
+      child: Center(
+        child: Text(
+          txt,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.blue.shade500,
           ),
-          child: Center(
-            child: Text(
-              txt,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.blue.shade500,
-              ),
-            ),
-          ),
-        );
+        ),
+      ),
+    );
   }
-
-} 
+}

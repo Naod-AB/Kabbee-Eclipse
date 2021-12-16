@@ -1,29 +1,22 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/New%20folder/startingpage.dart';
-import 'option_selection.dart';
-
- //void main() {
-  // runApp(MaterialApp(
-    // debugShowCheckedModeBanner: false, home: ActionPage(OptionSelect())));
-//}
+import 'selection.dart';
+import 'home.dart';
 
 class ActionPage extends StatelessWidget {
   dynamic specificPage = OptionSelect();
-  dynamic  headTxt=" ";
+  dynamic headTxt = " ";
   dynamic divwidth;
 
-  ActionPage(dynamic inputPage,dynamic headText, dynamic dwidth) {
+  ActionPage(dynamic inputPage, dynamic headText, dynamic dwidth) {
     specificPage = inputPage;
-    headTxt=headText;
-    divwidth=dwidth;
-
+    headTxt = headText;
+    divwidth = dwidth;
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    //using material instead of scaffold
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -63,7 +56,7 @@ class ActionPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
-                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 80)),
+                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 50)),
                 specificPage,
               ],
             ),

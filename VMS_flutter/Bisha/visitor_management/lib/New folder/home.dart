@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/New%20folder/main.dart';
-import 'package:visitor_management/New%20folder/option_selection.dart';
+import 'template.dart';
+import 'selection.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: StartingPage()));
@@ -25,7 +25,8 @@ class StartingPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActionPage(OptionSelect(),"PLEASE SELECT ONE OPTION",0.7),
+                  builder: (context) => ActionPage(
+                      OptionSelect(), "PLEASE SELECT ONE OPTION", 0.7),
                 ),
               ),
             },
@@ -64,7 +65,7 @@ class StartingPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 180.0),
-                    width: MediaQuery.of(context).size.width * 0.2,
+                    width: MediaQuery.of(context).size.width * 0.3,
                     child: FittedBox(
                       child: Text(
                         'TOUCH THE SCREEN TO ENTER',
