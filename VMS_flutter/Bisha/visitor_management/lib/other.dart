@@ -8,7 +8,9 @@ class Other extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Container(
       padding: EdgeInsets.all(100.0),
       child: Column(children: [
         SpinKitRing(color: Colors.blue.shade600, size: 60.0),
@@ -16,6 +18,8 @@ class Other extends StatelessWidget {
         Text("please wait .....",
             style: TextStyle(color: Colors.blue[600], fontSize: 20.0)),
       ]),
+        ),
+        ),
     );
   }
 }

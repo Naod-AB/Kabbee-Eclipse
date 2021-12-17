@@ -15,6 +15,8 @@ class StartingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child: Expanded(
+      child: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(25.0),
           decoration: BoxDecoration(
@@ -83,6 +85,8 @@ class StartingPage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      ),
       ),
     );
   }

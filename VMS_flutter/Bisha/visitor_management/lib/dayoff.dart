@@ -7,7 +7,9 @@ class Dayoff extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Container(
       padding: EdgeInsets.all(0.0),
       child: Column(children: [
 
@@ -17,6 +19,8 @@ class Dayoff extends StatelessWidget {
           lastDate: DateTime(2024, 1, 1),
         )
       ]),
+        ),
+      ),
     );
   }
 }
