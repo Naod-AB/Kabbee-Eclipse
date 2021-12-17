@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 class Buttons extends StatelessWidget {
@@ -9,7 +11,7 @@ class Buttons extends StatelessWidget {
   final double fontSize;
   dynamic page;
 
-  Buttons({
+  Buttons({Key? key, 
     this.btnName = '',
     this.btnColor = Colors.white,
     this.txtColor = Colors.blueAccent,
@@ -17,7 +19,7 @@ class Buttons extends StatelessWidget {
     this.height = 50,
     this.fontSize = 20,
     this.page,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +49,10 @@ class BlueButtons extends StatelessWidget {
   final String btnName;
   dynamic page;
 
-  BlueButtons({
+  BlueButtons({Key? key, 
     this.btnName = '',
     this.page,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +60,13 @@ class BlueButtons extends StatelessWidget {
       ElevatedButton(
         child: Text(
           btnName,
-          style: TextStyle(fontSize: 20.0),
+          style:const TextStyle(fontSize: 20.0),
         ),
         style: ElevatedButton.styleFrom(
           primary: Colors.blue,
           side: const BorderSide(width: 1, color: Colors.blueAccent),
           onPrimary: Colors.white,
-          minimumSize: Size(420.0, 70.0),
+          minimumSize:const Size(420.0, 70.0),
         ),
         onPressed: () {
           Navigator.push(
@@ -81,11 +83,11 @@ class ActionButtons extends StatelessWidget {
   final double width;
   dynamic page;
 
-  ActionButtons({
+  ActionButtons({Key? key, 
     this.btnName = '',
     this.width = 420.0,
     this.page,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,7 @@ class ActionButtons extends StatelessWidget {
       ElevatedButton(
         child: Text(
           btnName,
-          style: TextStyle(fontSize: 20.0),
+          style:const TextStyle(fontSize: 20.0),
         ),
         style: ElevatedButton.styleFrom(
           primary: Colors.white,
@@ -113,7 +115,7 @@ class ActionButtons extends StatelessWidget {
 
 class ContainersButton extends StatelessWidget {
   final String txt;
-  ContainersButton(this.txt);
+  const ContainersButton(this.txt);
 
   @override
   Widget build(BuildContext context) {

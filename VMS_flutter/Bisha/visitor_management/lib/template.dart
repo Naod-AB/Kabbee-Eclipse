@@ -18,29 +18,35 @@ class ActionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Container(
-          margin: const EdgeInsets.all(15.0),
-          padding: const EdgeInsets.all(3.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent),
+      child: Container(
+        margin: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(3.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blueAccent),
+        ),
+        child: Scaffold(
+          appBar: AppBar(
+            title: TextButton(
+              onPressed: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StartingPage()))
+              },
+              child: Text(
+                'KABBEE',
+                style: TextStyle(
+                    color: Colors.blue[600],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.white10,
+            foregroundColor: Colors.blue.shade500,
+            elevation: 0.0,
           ),
-          child: Center(
+          body: Center(
             child: Column(
               children: [
-                TextButton(
-                  onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => StartingPage()))
-                  },
-                  child: Text(
-                    'KABBEE',
-                    style: TextStyle(
-                        color: Colors.blue[600],
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30),
-                  ),
-                ),
                 FractionallySizedBox(
                   widthFactor: divwidth,
                   child: Divider(
@@ -56,7 +62,7 @@ class ActionPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
-                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 50)),
+                Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 100)),
                 specificPage,
               ],
             ),
