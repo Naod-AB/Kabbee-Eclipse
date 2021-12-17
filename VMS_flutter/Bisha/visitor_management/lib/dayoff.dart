@@ -10,18 +10,11 @@ class Dayoff extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(0.0),
       child: Column(children: [
-        // Text(
-        //   "PLEASE SELECT YOUR DAY OFF",
-        //   style: TextStyle(
-        //     color: Colors.blue[600],
-        //     wordSpacing: 5.0,
-        //     fontSize: 20.0,
-        //   ),
-        // ),
+
         DatePickerDialog(
-          initialDate: DateTime(2021, 12, 1),
-          firstDate: DateTime(2021, 12, 1),
-          lastDate: DateTime(2092, 1, 1),
+          initialDate: DateTime(2010, 1, 1),
+          firstDate: DateTime(2010, 1, 1),
+          lastDate: DateTime(2024, 1, 1),
         )
       ]),
     );
