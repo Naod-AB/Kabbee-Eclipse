@@ -11,29 +11,34 @@ class SelectOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Divide(0.7),
-          Headline("PLEASE SELECT ONE OPTION", 50.0),
-          Soption('VISITOR', Template(Visitor())),
-          SizedBox(
-            height: 23.0,
-          ),
-          Soption('STUDENT', Template(StudentList())),
-          SizedBox(
-            height: 23.0,
-          ),
-          Soption('STAFF', Template(StuffList())),
-          SizedBox(
-            height: 23.0,
-          ),
-          Soption('ADMINISTRATOR', Template(AdminList())),
-          SizedBox(
-            height: 23.0,
-          ),
-        ],
+    return Expanded(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            Soption('VISITOR',
+                Template(Visitor(), "PLEASE ENTER YOUR NAME", 50, 0.7)),
+            SizedBox(
+              height: 30,
+            ),
+            Soption('STUDENT',
+                Template(StudentList(), "PLEASE SELECT YOUR NAME", 20, 0.7)),
+            SizedBox(
+              height: 30,
+            ),
+            Soption('STAFF',
+                Template(StuffList(), "PLEASE SELECT YOUR NAME", 20, 0.7)),
+            SizedBox(
+              height: 30,
+            ),
+            Soption('ADMINISTRATOR',
+                Template(AdminList(), "PLEASE SELECT YOUR NAME", 20, 0.7)),
+            SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -44,19 +49,22 @@ class Actionselector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: const [
-          Divide(0.33),
-          Headline('PLEASE SELECT ONE OF THE FOLLOW OPTION', 10.0),
-          Btn('CHECK IN', 350, 50, 13, Template(Checkin())),
-          SizedBox(height: 35.0),
-          Btn('CHECK OUT', 350, 50, 13, Template(Checkout())),
-          SizedBox(height: 35.0),
-          Btn('REQUEST DAY OFF', 350, 50, 13, Template(Dayoff())),
-          SizedBox(height: 35.0),
-          Btn('OTHER', 350, 50, 13, Template(Other())),
-        ],
+    return Expanded(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: const [
+            Btn('CHECK IN', 350, 50, 13, Template(Checkin(), "", 50, 0.7)),
+            SizedBox(height: 35.0),
+            Btn('CHECK OUT', 350, 50, 13, Template(Checkout(), "", 50, 0.7)),
+            SizedBox(height: 35.0),
+            Btn('REQUEST DAY OFF', 350, 50, 13,
+                Template(Dayoff(), "PLEASE SELECT DAY OFF", 30, 0.7)),
+            SizedBox(height: 35.0),
+            Btn('OTHER', 350, 50, 13,
+                Template(Other(), "COMPANY REVIEW", 50, 0.7)),
+          ],
+        ),
       ),
     );
   }

@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:visitor_management/template.dart';
 
 class Other extends StatelessWidget {
   const Other({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Divide(0.7),
-          SizedBox(
-            height: 20.0, // to create a space between two elements
-          ),
-          Headline("COMPANY REVIEW", 50.0),
-          SizedBox(
-            height: 60.0, // to create a space between two elements
-          ),
-          Progress(review: "GOAL ACHIEVEMENT", per: 0.62),
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            SizedBox(
+              height: 20.0, // to create a space between two elements
+            ),
 
-          SizedBox(
-            height: 20.0, // to create a space between two elements
-          ),
-          Progress(review: "QUALITY OF WORK", per: 0.74),
-          SizedBox(
-            height: 20.0, // to create a space between two elements
-          ),
-          Progress(review: "DELIVERY TIME", per: 0.8),
-          SizedBox(
-            height: 20.0, // to create a space between two elements
-          ),
-          Progress(review: "CUSTOMER SATISFACTION", per: 0.97),
+            SizedBox(
+              height: 60.0, // to create a space between two elements
+            ),
+            Progress(review: "GOAL ACHIEVEMENT", per: 0.62),
 
-          // _ProgressState
-        ],
+            SizedBox(
+              height: 20.0, // to create a space between two elements
+            ),
+            Progress(review: "QUALITY OF WORK", per: 0.74),
+            SizedBox(
+              height: 20.0, // to create a space between two elements
+            ),
+            Progress(review: "DELIVERY TIME", per: 0.8),
+            SizedBox(
+              height: 20.0, // to create a space between two elements
+            ),
+            Progress(review: "CUSTOMER SATISFACTION", per: 0.97),
+
+            // _ProgressState
+          ],
+        ),
       ),
     );
   }

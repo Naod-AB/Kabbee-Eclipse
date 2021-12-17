@@ -10,33 +10,65 @@ class AdminList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Divide(0.7),
-            Headline("PLEASE SELECT YOUR NAME", 50.0),
-            Nbtn('ADMIN', Template(Actionselector())),
+            Nbtn(
+                'ADMIN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('ARKAN', Template(Actionselector())),
+            Nbtn(
+                'ARKAN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('MARTHA', Template(Actionselector())),
+            Nbtn(
+                'MARTHA',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('YEMANE', Template(Actionselector())),
+            Nbtn(
+                'YEMANE',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('EVEN', Template(Actionselector())),
+            Nbtn(
+                'EVEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('FITSUM', Template(Actionselector())),
+            Nbtn(
+                'FITSUM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('AHLEM', Template(Actionselector())),
+            Nbtn(
+                'AHLEM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SEGEN', Template(Actionselector())),
+            Nbtn(
+                'SEGEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('RODAS', Template(Actionselector())),
+            Nbtn(
+                'RODAS',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
           ],
         ),
       ),
@@ -51,33 +83,65 @@ class StudentList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Divide(0.7),
-            Headline("PLEASE SELECT YOUR NAME", 50.0),
-            Nbtn('STUDENT', Template(Actionselector())),
+            Nbtn(
+                'STUDENT',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('ARKAN', Template(Actionselector())),
+            Nbtn(
+                'ARKAN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('MARTHA', Template(Actionselector())),
+            Nbtn(
+                'MARTHA',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('YEMANE', Template(Actionselector())),
+            Nbtn(
+                'YEMANE',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('EVEN', Template(Actionselector())),
+            Nbtn(
+                'EVEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('FITSUM', Template(Actionselector())),
+            Nbtn(
+                'FITSUM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('AHLEM', Template(Actionselector())),
+            Nbtn(
+                'AHLEM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SEGEN', Template(Actionselector())),
+            Nbtn(
+                'SEGEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('RODAS', Template(Actionselector())),
+            Nbtn(
+                'RODAS',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
           ],
         ),
       ),
@@ -92,33 +156,65 @@ class StuffList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Divide(0.7),
-            Headline("PLEASE SELECT YOUR NAME", 50.0),
-            Nbtn('STAFF', Template(Actionselector())),
+            Nbtn(
+                'STAFF',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('ARKAN', Template(Actionselector())),
+            Nbtn(
+                'ARKAN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('MARTHA', Template(Actionselector())),
+            Nbtn(
+                'MARTHA',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('YEMANE', Template(Actionselector())),
+            Nbtn(
+                'YEMANE',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('EVEN', Template(Actionselector())),
+            Nbtn(
+                'EVEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('FITSUM', Template(Actionselector())),
+            Nbtn(
+                'FITSUM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SAMUEL', Template(Actionselector())),
+            Nbtn(
+                'SAMUEL',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('AHLEM', Template(Actionselector())),
+            Nbtn(
+                'AHLEM',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('SEGEN', Template(Actionselector())),
+            Nbtn(
+                'SEGEN',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
             SizedBox(height: 15.0),
-            Nbtn('RODAS', Template(Actionselector())),
+            Nbtn(
+                'RODAS',
+                Template(Actionselector(),
+                    "PLEASE SELECT ONE OF THE FOLLOWING OPTION", 40, 0.7)),
           ],
         ),
       ),
@@ -133,28 +229,30 @@ class Visitor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Divide(0.7),
-            Headline("PLEASE ENTER YOUR NAME", 50.0),
             SizedBox(height: 100.0),
-            FractionallySizedBox(
-              widthFactor: 0.3,
+            SizedBox(
+              width: 300,
               child: TextField(
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue, width: 1.0),
                   ),
-                  labelStyle: TextStyle(color: Colors.blue),
+                  labelStyle: TextStyle(
+                    color: Colors.blue,
+                  ),
                   border: OutlineInputBorder(),
                   labelText: 'YOUR NAME',
                 ),
               ),
             ),
             SizedBox(height: 100.0),
-            Btn('DONE', 250, 60, 25, Template(SelectOption())),
+            Btn('DONE', 200, 60, 25,
+                Template(SelectOption(), "PLEASE SELECT ONE OPTION", 50, 0.7)),
           ],
         ),
       ),

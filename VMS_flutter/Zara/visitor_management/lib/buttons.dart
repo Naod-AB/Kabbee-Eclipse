@@ -8,6 +8,7 @@ class Soption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      // padding: EdgeInsets.all(value),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
@@ -74,7 +75,7 @@ class HaniTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: 400,
+      width: 340,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.blue.shade300),

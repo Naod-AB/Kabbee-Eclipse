@@ -4,6 +4,7 @@ import 'package:visitor_management/home.dart';
 PreferredSizeWidget appBars() {
   return AppBar(
     title: const Header(),
+    toolbarHeight: 30,
     centerTitle: true,
     backgroundColor: Colors.white10,
     foregroundColor: Colors.blue.shade500,
@@ -39,7 +40,7 @@ class Headline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, buttom),
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, buttom),
       child: Text(
         info,
         style: TextStyle(
@@ -68,7 +69,12 @@ class Divide extends StatelessWidget {
 
 class Template extends StatelessWidget {
   final dynamic selectedPage;
-  const Template(this.selectedPage, {Key? key}) : super(key: key);
+  final String info;
+  final double buttom;
+  final double width;
+  const Template(this.selectedPage, this.info, this.buttom, this.width,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +90,8 @@ class Template extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
+              Divide(width),
+              Headline(info, buttom),
               selectedPage,
             ],
           ),

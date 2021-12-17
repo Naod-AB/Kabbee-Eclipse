@@ -22,7 +22,8 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Template(SelectOption()),
+                      builder: (context) => const Template(
+                          SelectOption(), "PLEASE SELECT ONE OPTION", 50, 0.7),
                     ),
                   );
                 },
