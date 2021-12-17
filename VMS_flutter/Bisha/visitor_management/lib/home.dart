@@ -14,29 +14,28 @@ class StartingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Expanded(
-      child: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.all(25.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blue, width: 1.5),
-          ),
-          child: InkWell(
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ActionPage(
-                      OptionSelect(), "PLEASE SELECT ONE OPTION", 0.7),
-                ),
+      body: Container(
+        height: 1000.0,
+        margin: EdgeInsets.all(25.0),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blue, width: 1.5),
+        ),
+        child: InkWell(
+          onTap: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    ActionPage(OptionSelect(), "PLEASE SELECT ONE OPTION", 0.7),
               ),
-            },
+            ),
+          },
+          child: SingleChildScrollView(
             child: Center(
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 200.0),
+                    padding: EdgeInsets.only(top: 200.0),
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: FittedBox(
                       child: Text(
@@ -51,7 +50,7 @@ class StartingPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 60.0),
+                    padding: EdgeInsets.only(top: 60.0),
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: FittedBox(
                       child: Text(
@@ -66,7 +65,7 @@ class StartingPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 180.0),
+                    padding: EdgeInsets.only(top: 180.0),
                     width: MediaQuery.of(context).size.width * 0.3,
                     child: FittedBox(
                       child: Text(
@@ -85,8 +84,6 @@ class StartingPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      ),
       ),
     );
   }
