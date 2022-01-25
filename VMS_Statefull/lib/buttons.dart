@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import './home.dart';
+import './selection.dart';
+import './template.dart';
+import 'names.dart';
 
 //Option selection Button Kidane's Code
 class Soption extends StatelessWidget {
   final String category;
-  final dynamic page;
 
-  const Soption(this.category, this.page, {Key? key}) : super(key: key);
+  const Soption(this.category, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: MaterialButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/action', arguments: {
-            'category': category,
-          });
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    Template(Actionselector(category), message, y, z),
+              ));
         },
         height: 55.0,
         minWidth: 260.0,
@@ -53,32 +59,29 @@ class Nbtn extends StatelessWidget {
 //Hani and Merry's Code
 class Btn extends StatelessWidget {
   final String sss;
-  final double width;
-  final double height;
-  final double font;
-  final dynamic page;
   final dynamic args;
+  final String action;
 
-  const Btn(this.sss, this.width, this.height, this.font, this.page, this.args,
-      {Key? key})
-      : super(key: key);
+  const Btn(this.sss, this.args, this.action, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String path;
-    path = args.toString().toLowerCase();
+    path = args.toString().toLowerCase(); //admin (string)
+    path = path + action;
 
     return OutlinedButton(
       onPressed: () {
         Navigator.pushNamed(context, '/$path', arguments: {
-          'selected': sss,
-          'category': args,
+          // '/admin'
+          'category': args, // admin
+          'selected': action, // in or out
         });
       },
       child: Text(sss),
       style: OutlinedButton.styleFrom(
-          textStyle: TextStyle(fontSize: font),
-          fixedSize: Size(width, height),
+          textStyle: const TextStyle(fontSize: 13),
+          fixedSize: const Size(350, 50),
           side: const BorderSide(width: 1, color: Colors.blue)),
     );
   }
@@ -104,6 +107,44 @@ class HaniTime extends StatelessWidget {
             fontSize: 20.0,
             color: Colors.blue.shade500,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class NameButtons extends StatefulWidget {
+  final NameList myname;
+  final Function delete;
+  const NameButtons({Key? key, required this.myname, required this.delete})
+      : super(key: key);
+
+  @override
+  State<NameButtons> createState() => _NameButtonsState();
+}
+
+//moving names and deleting them
+class _NameButtonsState extends State<NameButtons> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        child: Text(
+          widget.myname.name.toString(),
+          style: const TextStyle(
+            fontSize: 28.0,
+            color: Colors.white,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        onPressed: () {
+          widget.delete();
+        },
+        style: ElevatedButton.styleFrom(
+          side: const BorderSide(width: 1, color: Colors.blueAccent),
+          onPrimary: Colors.white,
+          minimumSize: const Size(500, 50),
         ),
       ),
     );

@@ -1,36 +1,41 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/buttons.dart';
-import 'package:visitor_management/check.dart';
-import 'package:visitor_management/name_list.dart';
-import 'package:visitor_management/selection.dart';
-import 'package:visitor_management/template.dart';
+import 'check.dart';
+import 'listout.dart';
+import 'name_list.dart';
+import 'selection.dart';
+import 'template.dart';
 
 String message = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
-
-// void main() => runApp(const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Home(),
-//     ));
+String passing = "";
+double x = 50;
+double y = 40;
+double z = 0.7;
 
 void main() {
   runApp(MaterialApp(
-    // home: Home(),
+    debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
       '/': (Context) => Home(),
-      '/selection': (Context) => Template(SelectOption(), message, 50, 0.7),
-      '/action': (Context) => Template(Actionselector(), message, 50, 0.7),
-      '/admin': (Context) => Template(AdminList(), message, 40, 0.7),
-      '/staff': (Context) => Template(StuffList(), message, 40, 0.7),
-      '/student': (Context) => Template(StudentList(), message, 40, 0.7),
-      '/checkin': (Context) => Template(Checkin(), message, 40, 0.7),
-      '/checkout': (Context) => Template(Checkout(), message, 40, 0.7),
+      '/selection': (Context) => Template(SelectOption(), message, x, z),
+      // '/action': (Context) => Template(Actionselector(), message, x, z),
+      '/adminin': (Context) => Template(AdminList(), message, y, z),
+      '/adminout': (Context) => Template(AdminOut(), message, y, z),
+      '/staffin': (Context) => Template(StaffList(), message, y, z),
+      '/staffout': (Context) => Template(StaffOut(), message, y, z),
+      '/studentin': (Context) => Template(StudentList(), message, y, z),
+      '/studentout': (Context) => Template(StudentOut(), message, y, z),
+      '/staff': (Context) => Template(StaffList(), message, y, z),
+      '/student': (Context) => Template(StudentList(), message, y, z),
+      '/checkin': (Context) => Template(Checkin(), message, y, z), // done
+      '/checkout': (Context) => Template(Checkout(), message, y, z),
     },
   ));
 }
 
+// Done Except day and night feature
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
   @override
@@ -43,13 +48,7 @@ class Home extends StatelessWidget {
                 border: Border.all(color: Colors.blue, width: 2.0)),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          Template(SelectOption(), message, 50, 0.7),
-                    ),
-                  );
+                  Navigator.pushNamed(context, '/selection');
                 },
                 child: Center(
                   child: FittedBox(

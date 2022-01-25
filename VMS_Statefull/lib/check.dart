@@ -1,12 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:visitor_management/buttons.dart';
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables
 
-import 'package:visitor_management/selection.dart';
-import 'package:visitor_management/template.dart';
+import 'package:flutter/material.dart';
+import './time.dart';
+import 'buttons.dart';
+import 'template.dart';
 
 class Checkin extends StatelessWidget {
-  const Checkin({Key? key}) : super(key: key);
+  String? user;
+  String? time;
+  String? timeGreet;
+
+  Checkin({this.user, this.timeGreet, this.time, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +19,16 @@ class Checkin extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            SizedBox(height: 80.0),
-            Headline('YOU ARE CHECK IN AT', 0.0),
-            HaniTime('7:45AM'),
-            SizedBox(
-              height: 200.0,
-            ),
-            // Btn('DONE', 200, 60, 25,
-            //     Template(SelectOption(), "PLEASE SELECT ONE OPTION", 50, 0.33)),
+          children: [
+            Headline(' $timeGreet', 0.0),
+            SizedBox(height: 0.0),
+            Headline(' $user', 0.0),
+            SizedBox(height: 40.0),
+            Headline('YOU ARE CHECKED IN AT', 0.0),
+            SizedBox(height: 30.0),
+            HaniTime(time!),
+            SizedBox(height: 50.0),
+            DoneBtn()
           ],
         ),
       ),
@@ -32,7 +37,12 @@ class Checkin extends StatelessWidget {
 }
 
 class Checkout extends StatelessWidget {
-  const Checkout({Key? key}) : super(key: key);
+  String? saved;
+  String? user;
+  String? current;
+  var timeGreetOut;
+  Checkout({this.saved, this.timeGreetOut, this.current, this.user, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +51,44 @@ class Checkout extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
+          children: [
+            Headline(' Hello $user', 0.0),
             SizedBox(height: 40.0),
-            Headline('YOU ARE CHECK IN AT', 0.0),
-            HaniTime('7:45 AM'),
+            Headline('YOU WERE CHECKED IN AT', 0.0),
+            HaniTime(saved!),
             SizedBox(height: 30.0),
-            Headline('YOU ARE CHECK OUT AT', 0.0),
-            HaniTime('6:00 PM'),
+            Headline('YOU ARE CHECKED OUT AT', 0.0),
+            HaniTime(current!),
             SizedBox(height: 20),
-            Headline('HAVE A GOOD EVENING', 0.0),
+            Headline('Have a $timeGreet,', 0.0),
             Headline('SEE YOU TOMORROW', 0.0),
             SizedBox(height: 50.0),
-            // Btn('DONE', 200, 60, 25,
-            //     Template(SelectOption(), "PLEASE SELECT ONE OPTION", 50, 0.7)),
+            DoneBtn()
           ],
-          //     ),
-          //   ),
         ),
       ),
     );
+  }
+}
+
+class DoneBtn extends StatefulWidget {
+  const DoneBtn({Key? key}) : super(key: key);
+
+  @override
+  State<DoneBtn> createState() => _DoneBtnState();
+}
+
+class _DoneBtnState extends State<DoneBtn> {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            textStyle: const TextStyle(fontSize: 13),
+            fixedSize: const Size(350, 50),
+            side: const BorderSide(width: 1, color: Colors.blue)),
+        onPressed: () {
+          Navigator.pushNamed(context, '/selection');
+        },
+        child: Text('Done'));
   }
 }

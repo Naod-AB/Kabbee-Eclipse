@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visitor_management/home.dart';
+import 'home.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
