@@ -20,13 +20,13 @@ class Checkin extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Headline(' $timeGreet', 0.0),
+            HeadlineTxt(' $timeGreet', 0.0),
             SizedBox(height: 0.0),
-            Headline(' $user', 0.0),
+            HeadlineTxt(' $user', 0.0),
             SizedBox(height: 40.0),
-            Headline('YOU ARE CHECKED IN AT', 0.0),
+            HeadlineTxt('YOU ARE CHECKED IN AT', 0.0),
             SizedBox(height: 30.0),
-            HaniTime(time!),
+            CheckTimeboxes(time!),
             SizedBox(height: 50.0),
             DoneBtn()
           ],
@@ -52,16 +52,16 @@ class Checkout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Headline(' Hello $user', 0.0),
+            HeadlineTxt(' Hello $user', 0.0),
             SizedBox(height: 40.0),
-            Headline('YOU WERE CHECKED IN AT', 0.0),
-            HaniTime(saved!),
+            HeadlineTxt('YOU WERE CHECKED IN AT', 0.0),
+            CheckTimeboxes(saved!),
             SizedBox(height: 30.0),
-            Headline('YOU ARE CHECKED OUT AT', 0.0),
-            HaniTime(current!),
+            HeadlineTxt('YOU ARE CHECKED OUT AT', 0.0),
+            CheckTimeboxes(current!),
             SizedBox(height: 20),
-            Headline('Have a $timeGreet,', 0.0),
-            Headline('SEE YOU TOMORROW', 0.0),
+            HeadlineTxt('Have a $timeGreet,', 0.0),
+            HeadlineTxt('SEE YOU TOMORROW', 0.0),
             SizedBox(height: 50.0),
             DoneBtn()
           ],

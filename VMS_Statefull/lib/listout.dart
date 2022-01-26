@@ -42,7 +42,6 @@ class _AdminOutState extends State<AdminOut> {
                             setState(() {
                               adminNames.add(name);
                               adminCheckout.remove(name);
-                              //print('NAME: ${name.name} + OUT: ${name.checkin}');
                               updateCheckOut(name.checkin);
                             });
 
@@ -100,7 +99,6 @@ class _StaffOutState extends State<StaffOut> {
                         setState(() {
                           staffNames.add(name);
                           staffCheckout.remove(name);
-                          //print('NAME: ${name.name} + OUT: ${name.checkin}');
                           updateCheckOut(name.checkin);
                         });
 
@@ -159,7 +157,6 @@ class _StudentOutState extends State<StudentOut> {
                         setState(() {
                           studentNames.add(name);
                           studentCheckout.remove(name);
-                         // print('NAME: ${name.name} + OUT: ${name.checkin}');
                           updateCheckOut(name.checkin);
                         });
 

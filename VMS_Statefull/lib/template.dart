@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'main.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
@@ -32,11 +32,10 @@ class Header extends StatelessWidget {
   }
 }
 
-class Headline extends StatelessWidget {
-  // const Headline({Key? key}) : super(key: key);
+class HeadlineTxt extends StatelessWidget {
   final String info;
   final double buttom;
-  const Headline(this.info, this.buttom, {Key? key}) : super(key: key);
+  const HeadlineTxt(this.info, this.buttom, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,9 +51,9 @@ class Headline extends StatelessWidget {
   }
 }
 
-class Divide extends StatelessWidget {
+class Dividerline extends StatelessWidget {
   final double width;
-  const Divide(this.width, {Key? key}) : super(key: key);
+  const Dividerline(this.width, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -78,7 +77,6 @@ class Template extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //using material instead of scaffold
     return Container(
       margin: const EdgeInsets.all(15.0),
       padding: const EdgeInsets.all(3.0),
@@ -90,8 +88,8 @@ class Template extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              Divide(width),
-              Headline(info, buttom),
+              Dividerline(width),
+              HeadlineTxt(info, buttom),
               selectedPage,
             ],
           ),

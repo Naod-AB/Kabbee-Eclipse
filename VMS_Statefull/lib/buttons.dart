@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import './home.dart';
+import 'main.dart';
 import './selection.dart';
 import './template.dart';
 import 'names.dart';
 
 //Option selection Button Kidane's Code
-class Soption extends StatelessWidget {
+class OptionSelectionBtn extends StatelessWidget {
   final String category;
 
-  const Soption(this.category, {Key? key}) : super(key: key);
+  const OptionSelectionBtn(this.category, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,10 +36,10 @@ class Soption extends StatelessWidget {
 }
 
 //Name List Esrom's Code
-class Nbtn extends StatelessWidget {
+class NameListBtn extends StatelessWidget {
   final String sss;
   final dynamic page;
-  const Nbtn(this.sss, this.page, {Key? key}) : super(key: key);
+  const NameListBtn(this.sss, this.page, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +57,12 @@ class Nbtn extends StatelessWidget {
 }
 
 //Hani and Merry's Code
-class Btn extends StatelessWidget {
+class CheckInOutBtns extends StatelessWidget {
   final String sss;
   final dynamic args;
   final String action;
 
-  const Btn(this.sss, this.args, this.action, {Key? key}) : super(key: key);
+  const CheckInOutBtns(this.sss, this.args, this.action, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +88,9 @@ class Btn extends StatelessWidget {
 }
 
 //Code for check in and out time Hani's Code
-class HaniTime extends StatelessWidget {
+class CheckTimeboxes extends StatelessWidget {
   final String time;
-  const HaniTime(this.time, {Key? key}) : super(key: key);
+  const CheckTimeboxes(this.time, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -134,7 +134,7 @@ class _NameButtonsState extends State<NameButtons> {
           widget.myname.name.toString(),
           style: const TextStyle(
             fontSize: 28.0,
-            color: Colors.white,
+            color: Colors.blueAccent,
           ),
           textAlign: TextAlign.center,
         ),
@@ -142,7 +142,7 @@ class _NameButtonsState extends State<NameButtons> {
           widget.delete();
         },
         style: ElevatedButton.styleFrom(
-          side: const BorderSide(width: 1, color: Colors.blueAccent),
+          side: const BorderSide(width: 1, color: Colors.white),
           onPrimary: Colors.white,
           minimumSize: const Size(500, 50),
         ),
