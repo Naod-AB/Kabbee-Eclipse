@@ -50,9 +50,9 @@ class _AdminOutState extends State<AdminOut> {
                                 MaterialPageRoute(
                                   builder: (context) => Template(
                                       Checkout(
-                                          user: name.name,
+                                          userName: name.name,
                                           timeGreetOut: timeGreet,
-                                          saved: name.checkin,
+                                          savedtime: name.checkin,
                                           current: checkoutTime),
                                       "",
                                       50,
@@ -107,9 +107,9 @@ class _StaffOutState extends State<StaffOut> {
                             MaterialPageRoute(
                               builder: (context) => Template(
                                   Checkout(
-                                      user: name.name,
+                                      userName: name.name,
                                       timeGreetOut: timeGreet,
-                                      saved: name.checkin,
+                                      savedtime: name.checkin,
                                       current: checkoutTime),
                                   "",
                                   50,
@@ -165,9 +165,9 @@ class _StudentOutState extends State<StudentOut> {
                             MaterialPageRoute(
                               builder: (context) => Template(
                                   Checkout(
-                                      user: name.name,
+                                      userName: name.name,
                                       timeGreetOut: timeGreet,
-                                      saved: name.checkin,
+                                      savedtime: name.checkin,
                                       current: checkoutTime),
                                   "",
                                   50,

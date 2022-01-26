@@ -6,11 +6,11 @@ import 'buttons.dart';
 import 'template.dart';
 
 class Checkin extends StatelessWidget {
-  String? user;
+  String? userName;
   String? time;
   String? timeGreet;
 
-  Checkin({this.user, this.timeGreet, this.time, Key? key}) : super(key: key);
+  Checkin({this.userName, this.timeGreet, this.time, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Checkin extends StatelessWidget {
           children: [
             HeadlineTxt(' $timeGreet', 0.0),
             SizedBox(height: 0.0),
-            HeadlineTxt(' $user', 0.0),
+            HeadlineTxt(' $userName', 0.0),
             SizedBox(height: 40.0),
             HeadlineTxt('YOU ARE CHECKED IN AT', 0.0),
             SizedBox(height: 30.0),
@@ -37,11 +37,11 @@ class Checkin extends StatelessWidget {
 }
 
 class Checkout extends StatelessWidget {
-  String? saved;
-  String? user;
+  String? savedtime;
+  String? userName;
   String? current;
   var timeGreetOut;
-  Checkout({this.saved, this.timeGreetOut, this.current, this.user, Key? key})
+  Checkout({this.savedtime, this.timeGreetOut, this.current, this.userName, Key? key})
       : super(key: key);
 
   @override
@@ -52,10 +52,10 @@ class Checkout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            HeadlineTxt(' Hello $user', 0.0),
+            HeadlineTxt(' Hello $userName', 0.0),
             SizedBox(height: 40.0),
             HeadlineTxt('YOU WERE CHECKED IN AT', 0.0),
-            CheckTimeboxes(saved!),
+            CheckTimeboxes(savedtime!),
             SizedBox(height: 30.0),
             HeadlineTxt('YOU ARE CHECKED OUT AT', 0.0),
             CheckTimeboxes(current!),
@@ -83,8 +83,8 @@ class _DoneBtnState extends State<DoneBtn> {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-            textStyle: const TextStyle(fontSize: 13),
-            fixedSize: const Size(350, 50),
+            textStyle: const TextStyle(fontSize: 17),
+            fixedSize: const Size(340, 50),
             side: const BorderSide(width: 1, color: Colors.blue)),
         onPressed: () {
           Navigator.pushNamed(context, '/selection');

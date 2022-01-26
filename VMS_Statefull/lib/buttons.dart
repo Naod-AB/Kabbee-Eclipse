@@ -4,11 +4,11 @@ import './selection.dart';
 import './template.dart';
 import 'names.dart';
 
-//Option selection Button Kidane's Code
+//Option selection Buttons 
 class OptionSelectionBtn extends StatelessWidget {
-  final String category;
+  final String userRole;
 
-  const OptionSelectionBtn(this.category, {Key? key}) : super(key: key);
+  const OptionSelectionBtn(this.userRole, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,15 +19,15 @@ class OptionSelectionBtn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    Template(Actionselector(category), message, y, z),
+                    Template(Actionselector(userRole), subheadertxt, width2, widthfactor),
               ));
         },
         height: 55.0,
-        minWidth: 260.0,
+        minWidth: 350.0,
         color: Theme.of(context).primaryColor,
         textColor: Colors.white,
         child: Text(
-          category,
+          userRole,
           style: const TextStyle(fontSize: 17),
         ),
       ),
@@ -35,34 +35,13 @@ class OptionSelectionBtn extends StatelessWidget {
   }
 }
 
-//Name List Esrom's Code
-class NameListBtn extends StatelessWidget {
-  final String sss;
-  final dynamic page;
-  const NameListBtn(this.sss, this.page, {Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-      },
-      child: Text(sss),
-      style: OutlinedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 15),
-          fixedSize: const Size(300, 35),
-          side: const BorderSide(width: 1, color: Colors.blue)),
-    );
-  }
-}
-
-//Hani and Merry's Code
+//check in and out Buttons on Action selection
 class CheckInOutBtns extends StatelessWidget {
-  final String sss;
+  final String checkBtnName;
   final dynamic args;
   final String action;
 
-  const CheckInOutBtns(this.sss, this.args, this.action, {Key? key}) : super(key: key);
+  const CheckInOutBtns(this.checkBtnName, this.args, this.action, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,24 +52,23 @@ class CheckInOutBtns extends StatelessWidget {
     return OutlinedButton(
       onPressed: () {
         Navigator.pushNamed(context, '/$path', arguments: {
-          // '/admin'
           'category': args, // admin
           'selected': action, // in or out
         });
       },
-      child: Text(sss),
+      child: Text(checkBtnName),
       style: OutlinedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 13),
+          textStyle: const TextStyle(fontSize: 16),
           fixedSize: const Size(350, 50),
           side: const BorderSide(width: 1, color: Colors.blue)),
     );
   }
 }
 
-//Code for check in and out time Hani's Code
+//boxes that show time on checkin and checkout
 class CheckTimeboxes extends StatelessWidget {
-  final String time;
-  const CheckTimeboxes(this.time, {Key? key}) : super(key: key);
+  final String timeTxt;
+  const CheckTimeboxes(this.timeTxt, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -102,9 +80,9 @@ class CheckTimeboxes extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          time,
+          timeTxt,
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: 17.0,
             color: Colors.blue.shade500,
           ),
         ),
@@ -132,19 +110,20 @@ class _NameButtonsState extends State<NameButtons> {
       child: ElevatedButton(
         child: Text(
           widget.myname.name.toString(),
-          style: const TextStyle(
-            fontSize: 28.0,
-            color: Colors.blueAccent,
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.blue.shade400,
           ),
           textAlign: TextAlign.center,
         ),
         onPressed: () {
           widget.delete();
-        },
+        }, 
         style: ElevatedButton.styleFrom(
-          side: const BorderSide(width: 1, color: Colors.white),
+          primary: Colors.white,
+          side: const BorderSide(width: 1, color: Colors.blue),
           onPrimary: Colors.white,
-          minimumSize: const Size(500, 50),
+          minimumSize:const Size(350.0, 55.0),
         ),
       ),
     );

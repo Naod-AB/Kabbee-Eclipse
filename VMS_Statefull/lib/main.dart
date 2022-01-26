@@ -9,11 +9,11 @@ import 'selection.dart';
 import 'template.dart';
 import 'daynight.dart';
 
-String message = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
+String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
 String passing = "";
-double x = 50;
-double y = 40;
-double z = 0.7;
+double width1 = 50;
+double width2 = 40;
+double widthfactor = 0.7;
 
 void main() {
   runApp(MaterialApp(
@@ -21,18 +21,17 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (Context) => Home(),
-      '/selection': (Context) => Template(SelectOption(), message, x, z),
-      // '/action': (Context) => Template(Actionselector(), message, x, z),
-      '/adminin': (Context) => Template(AdminList(), message, y, z),
-      '/adminout': (Context) => Template(AdminOut(), message, y, z),
-      '/staffin': (Context) => Template(StaffList(), message, y, z),
-      '/staffout': (Context) => Template(StaffOut(), message, y, z),
-      '/studentin': (Context) => Template(StudentList(), message, y, z),
-      '/studentout': (Context) => Template(StudentOut(), message, y, z),
-      '/staff': (Context) => Template(StaffList(), message, y, z),
-      '/student': (Context) => Template(StudentList(), message, y, z),
-      '/checkin': (Context) => Template(Checkin(), message, y, z), // done
-      '/checkout': (Context) => Template(Checkout(), message, y, z),
+      '/selection': (Context) => Template(SelectOption(), subheadertxt, width1, widthfactor),
+      '/adminin': (Context) => Template(AdminList(), subheadertxt, width2, widthfactor),
+      '/adminout': (Context) => Template(AdminOut(), subheadertxt, width2, widthfactor),
+      '/staffin': (Context) => Template(StaffList(), subheadertxt, width2, widthfactor),
+      '/staffout': (Context) => Template(StaffOut(), subheadertxt, width2, widthfactor),
+      '/studentin': (Context) => Template(StudentList(), subheadertxt, width2, widthfactor),
+      '/studentout': (Context) => Template(StudentOut(), subheadertxt, width2, widthfactor),
+      '/staff': (Context) => Template(StaffList(), subheadertxt, width2, widthfactor),
+      '/student': (Context) => Template(StudentList(), subheadertxt, width2, widthfactor),
+      '/checkin': (Context) => Template(Checkin(), subheadertxt, width2, widthfactor), // done
+      '/checkout': (Context) => Template(Checkout(), subheadertxt, width2, widthfactor),
     },
   ));
 }

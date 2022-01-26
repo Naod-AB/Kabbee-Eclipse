@@ -34,12 +34,12 @@ class Header extends StatelessWidget {
 
 class HeadlineTxt extends StatelessWidget {
   final String info;
-  final double buttom;
-  const HeadlineTxt(this.info, this.buttom, {Key? key}) : super(key: key);
+  final double bottomPadding;
+  const HeadlineTxt(this.info, this.bottomPadding, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, buttom),
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, bottomPadding),
       child: Text(
         info,
         style: TextStyle(
@@ -52,12 +52,12 @@ class HeadlineTxt extends StatelessWidget {
 }
 
 class Dividerline extends StatelessWidget {
-  final double width;
-  const Dividerline(this.width, {Key? key}) : super(key: key);
+  final double widthfactor;
+  const Dividerline(this.widthfactor, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      widthFactor: width,
+      widthFactor: widthfactor,
       child: Divider(
         thickness: 1.3,
         color: Colors.blue.shade500,
@@ -69,9 +69,9 @@ class Dividerline extends StatelessWidget {
 class Template extends StatelessWidget {
   final dynamic selectedPage;
   final String info;
-  final double buttom;
+  final double bottomPadding;
   final double width;
-  const Template(this.selectedPage, this.info, this.buttom, this.width,
+  const Template(this.selectedPage, this.info, this.bottomPadding, this.width,
       {Key? key})
       : super(key: key);
 
@@ -89,7 +89,7 @@ class Template extends StatelessWidget {
           child: Column(
             children: [
               Dividerline(width),
-              HeadlineTxt(info, buttom),
+              HeadlineTxt(info, bottomPadding),
               selectedPage,
             ],
           ),
@@ -98,29 +98,3 @@ class Template extends StatelessWidget {
     );
   }
 }
-
-// @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: appBars(),
-//       body: Center(
-//         child: Container(
-//           margin: EdgeInsets.all(20.0),
-//           padding: EdgeInsets.all(3.0),
-//           decoration: BoxDecoration(
-//             image: DecorationImage(
-//                 image: AssetImage('assets/$daynight'), fit: BoxFit.cover),
-//             border: Border.all(color: Colors.blue.shade500),
-//           ),
-//           child: Column(
-//             children: [
-//               Divide(width),
-//               Headline(info, buttom),
-//               selectedPage,
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

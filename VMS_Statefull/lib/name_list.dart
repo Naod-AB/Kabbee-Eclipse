@@ -56,7 +56,7 @@ class _AdminListState extends State<AdminList> {
                               MaterialPageRoute(
                                 builder: (context) => Template(
                                     Checkin(
-                                      user: name.name,
+                                      userName: name.name,
                                       timeGreet: timeGreet,
                                       time: time,
                                     ),
@@ -125,7 +125,7 @@ class _StudentListState extends State<StudentList> {
                                   MaterialPageRoute(
                                     builder: (context) => Template(
                                         Checkin(
-                                          user: name.name,
+                                          userName: name.name,
                                           timeGreet: timeGreet,
                                           time: time,
                                         ),
@@ -190,7 +190,7 @@ class _StaffListState extends State<StaffList> {
                               MaterialPageRoute(
                                 builder: (context) => Template(
                                     Checkin(
-                                      user: name.name,
+                                      userName: name.name,
                                       timeGreet: timeGreet,
                                       time: time,
                                     ),
