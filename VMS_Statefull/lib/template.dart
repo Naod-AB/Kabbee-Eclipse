@@ -100,3 +100,29 @@ class Template extends StatelessWidget {
     );
   }
 }
+
+// @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: appBars(),
+//       body: Center(
+//         child: Container(
+//           margin: EdgeInsets.all(20.0),
+//           padding: EdgeInsets.all(3.0),
+//           decoration: BoxDecoration(
+//             image: DecorationImage(
+//                 image: AssetImage('assets/$daynight'), fit: BoxFit.cover),
+//             border: Border.all(color: Colors.blue.shade500),
+//           ),
+//           child: Column(
+//             children: [
+//               Divide(width),
+//               Headline(info, buttom),
+//               selectedPage,
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:visitor_management/dyny.dart';
 import 'check.dart';
 import 'listout.dart';
 import 'name_list.dart';
@@ -45,6 +46,8 @@ class Home extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/$daynight'), fit: BoxFit.cover),
                 border: Border.all(color: Colors.blue, width: 2.0)),
             child: InkWell(
                 onTap: () {
