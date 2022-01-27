@@ -4,7 +4,7 @@ import './selection.dart';
 import './template.dart';
 import 'names.dart';
 
-//Option selection Buttons 
+//Option selection Buttons
 class OptionSelectionBtn extends StatelessWidget {
   final String userRole;
 
@@ -18,12 +18,12 @@ class OptionSelectionBtn extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    Template(Actionselector(userRole), subheadertxt, width2, widthfactor),
+                builder: (context) => Template(Actionselector(userRole),
+                    subheadertxt, width2, widthfactor),
               ));
         },
-        height: 55.0,
-        minWidth: 350.0,
+        height: 60.0,
+        minWidth: 300.0,
         color: Theme.of(context).primaryColor,
         textColor: Colors.white,
         child: Text(
@@ -41,7 +41,8 @@ class CheckInOutBtns extends StatelessWidget {
   final dynamic args;
   final String action;
 
-  const CheckInOutBtns(this.checkBtnName, this.args, this.action, {Key? key}) : super(key: key);
+  const CheckInOutBtns(this.checkBtnName, this.args, this.action, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +119,13 @@ class _NameButtonsState extends State<NameButtons> {
         ),
         onPressed: () {
           widget.delete();
-        }, 
+        },
         style: ElevatedButton.styleFrom(
+          elevation: 0.0,
           primary: Colors.white,
           side: const BorderSide(width: 1, color: Colors.blue),
           onPrimary: Colors.white,
-          minimumSize:const Size(350.0, 55.0),
+          minimumSize: const Size(300.0, 55.0),
         ),
       ),
     );

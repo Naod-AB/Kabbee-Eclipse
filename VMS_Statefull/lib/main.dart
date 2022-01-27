@@ -8,6 +8,7 @@ import 'name_list.dart';
 import 'selection.dart';
 import 'template.dart';
 import 'daynight.dart';
+import 'time.dart';
 
 String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTION";
 String subheadername = "PLEASE SELECT YOUR NAME";
@@ -24,16 +25,31 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (Context) => Home(),
-      '/selection': (Context) => Template(SelectOption(), subheaderoption, width1, widthfactor),
-      '/adminin': (Context) => Template(AdminList(), subheadername, width2, widthfactor),
-      '/adminout': (Context) => Template(AdminOut(), subheadername, width2, widthfactor),
-      '/staffin': (Context) => Template(StaffList(), subheadername, width2, widthfactor),
-      '/staffout': (Context) => Template(StaffOut(), subheadername, width2, widthfactor),
-      '/studentin': (Context) => Template(StudentList(), subheadername, width2, widthfactor),
-      '/studentout': (Context) => Template(StudentOut(), subheadername, width2, widthfactor),
-      //'/checkin': (Context) => Template(Checkin(), subheadernone, width2, widthfactor), // done
+      '/selection': (Context) =>
+          Template(SelectOption(), subheaderoption, width1, widthfactor),
+      '/adminin': (Context) =>
+          Template(AdminList(), subheadername, width2, widthfactor),
+      '/adminout': (Context) =>
+          Template(AdminOut(), subheadername, width2, widthfactor),
+      '/staffin': (Context) =>
+          Template(StaffList(), subheadername, width2, widthfactor),
+      '/staffout': (Context) =>
+          Template(StaffOut(), subheadername, width2, widthfactor),
+      '/studentin': (Context) =>
+          Template(StudentList(), subheadername, width2, widthfactor),
+      '/studentout': (Context) =>
+          Template(StudentOut(), subheadername, width2, widthfactor),
+      // '/checkin': (Context) => Template(
+      //     Checkin(
+      //       userName: name.name,
+      //       timeGreet: timeGreet,
+      //       time: time,
+      //     ),
+      //     subheadernone,
+      //     50,
+      //     0.7),
+      // Template(Checkin(), subheadernone, width2, widthfactor), // done
       //'/checkout': (Context) => Template(Checkout(), subheadertxt, width2, widthfactor),
-
     },
   ));
 }

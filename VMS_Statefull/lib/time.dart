@@ -6,19 +6,19 @@ dynamic timeGreet;
 bool? isDay;
 
 clock() {
-  return DateFormat.jms().format(DateTime.now());
+  return DateFormat.jm().format(DateTime.now());
 }
 
 var checkinTime = clock();
 var checkoutTime = clock();
 
 updateCheckin(e) {
-  checkinTime = DateFormat.jms().format(DateTime.now());
+  checkinTime = DateFormat.jm().format(DateTime.now());
   time = checkinTime;
 }
 
 updateCheckOut(saved) {
-  checkoutTime = DateFormat.jms().format(DateTime.now());
+  checkoutTime = DateFormat.jm().format(DateTime.now());
   time = saved;
 }
 
@@ -37,15 +37,15 @@ greet() {
 
   if (timees <= 12 && savedTime.contains('AM'.toLowerCase())) {
     isDay = true;
-    timeGreet = 'Good Moring';
+    timeGreet = 'GOOD MORNING';
   } else if (timees >= 6 &&
       timees < 12 &&
       savedTime.contains('PM'.toLowerCase())) {
     isDay = false;
-    timeGreet = 'Good Evening';
+    timeGreet = 'GOOD EVENING';
   } else if (timees < 6 ||
       timees == 12 && savedTime.contains('PM'.toLowerCase())) {
     isDay = true;
-    timeGreet = 'Good Afternoon';
+    timeGreet = 'GOOD AFTERNOON';
   }
 }

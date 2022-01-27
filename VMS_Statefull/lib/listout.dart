@@ -31,8 +31,10 @@ class _AdminOutState extends State<AdminOut> {
               //this is added inorder to change the error
               adminCheckout.isEmpty
                   ? [
-                      Container(
-                        child: Text('No Users Found '),
+                      Text(
+                        'No Users Found ',
+                        style: TextStyle(fontSize: 24, color: Colors.blue),
+                        textAlign: TextAlign.center,
                       )
                     ]
                   : adminCheckout

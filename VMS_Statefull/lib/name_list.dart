@@ -25,7 +25,6 @@ class _AdminListState extends State<AdminList> {
     checkinTime;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -36,8 +35,10 @@ class _AdminListState extends State<AdminList> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: adminNames.isEmpty
               ? [
-                  Container(
-                    child: Text('No Users found '),
+                  Text(
+                    'No Users Found ',
+                    style: TextStyle(fontSize: 24, color: Colors.blue),
+                    textAlign: TextAlign.center,
                   )
                 ]
               : adminNames
@@ -119,7 +120,7 @@ class _StudentListState extends State<StudentList> {
                               studentCheckout.add(name);
                               studentNames.remove(name);
 
-                             // print('IN: ${name.name}, ${name.checkin} ');
+                              // print('IN: ${name.name}, ${name.checkin} ');
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

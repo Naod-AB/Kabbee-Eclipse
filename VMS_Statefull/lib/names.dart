@@ -7,48 +7,48 @@ class NameList {
 }
 
 List<NameList> adminNames = [
-  NameList(name: 'Admin', checkin: ''),
-  NameList(name: 'Abel ', checkin: ''),
-  NameList(name: 'abigail '),
-  NameList(name: 'Biniam'),
-  NameList(name: 'Beshir'),
-  NameList(name: 'christina'),
-  NameList(name: 'Dahlak'),
-  NameList(name: 'Diana'),
-  NameList(name: 'Elham'),
-  NameList(name: 'Ermias'),
+  NameList(name: 'ADMIN', checkin: ''),
+  NameList(name: 'ABEL ', checkin: ''),
+  NameList(name: 'ABIGAIL '),
+  NameList(name: 'BINIAM'),
+  NameList(name: 'BESHIR'),
+  NameList(name: 'CHRISTINA'),
+  NameList(name: 'DAHLAK'),
+  NameList(name: 'DIANA'),
+  NameList(name: 'ELHAM'),
+  NameList(name: 'ERMIAS'),
 ];
 
 List<NameList> adminCheckout = [];
 
 // Staff namelist
 List<NameList> staffNames = [
-  NameList(name: 'Staff'),
-  NameList(name: 'Filmon '),
-  NameList(name: 'Feruz '),
-  NameList(name: 'fewaz'),
-  NameList(name: 'Beshir'),
-  NameList(name: 'Genet'),
-  NameList(name: 'Gilay'),
-  NameList(name: 'Hermon'),
-  NameList(name: 'Isaias'),
-  NameList(name: 'Ismael'),
+  NameList(name: 'STAFF'),
+  NameList(name: 'FILMON '),
+  NameList(name: 'FERUZ '),
+  NameList(name: 'FEWAZ'),
+  NameList(name: 'BESHIR'),
+  NameList(name: 'GENET'),
+  NameList(name: 'GHILAY'),
+  NameList(name: 'HERMON'),
+  NameList(name: 'ISAIAS'),
+  NameList(name: 'ISMAEL'),
 ];
 
 List<NameList> staffCheckout = [];
 
 // Student namelist
 List<NameList> studentNames = [
-  NameList(name: 'Student'),
-  NameList(name: 'Jemal '),
-  NameList(name: 'Jemila '),
-  NameList(name: 'Kibrom'),
-  NameList(name: 'Beshir'),
-  NameList(name: 'christina'),
-  NameList(name: 'Dahlak'),
-  NameList(name: 'Diana'),
-  NameList(name: 'Eliana'),
-  NameList(name: 'Issias'),
+  NameList(name: 'STUDENT'),
+  NameList(name: 'JEMAL '),
+  NameList(name: 'JEMILA '),
+  NameList(name: 'KIBROM'),
+  NameList(name: 'KIBRET'),
+  NameList(name: 'KISERI'),
+  NameList(name: 'LUAM'),
+  NameList(name: 'LJAM'),
+  NameList(name: 'MERHAWI'),
+  NameList(name: 'MARTHA'),
 ];
 
 List<NameList> studentCheckout = [];
