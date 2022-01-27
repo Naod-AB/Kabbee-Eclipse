@@ -4,7 +4,7 @@ import 'main.dart';
 PreferredSizeWidget appBars() {
   return AppBar(
     title: const Header(),
-    toolbarHeight: 30,
+    toolbarHeight: 28,
     centerTitle: true,
     backgroundColor: Colors.white10,
     foregroundColor: Colors.blue.shade500,
@@ -22,10 +22,14 @@ class Header extends StatelessWidget {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => const Home()));
       },
-      child: const Text(
-        'KABBEE',
-        style: TextStyle(
-          fontSize: 27.0,
+      child: const Padding(
+        padding: EdgeInsets.fromLTRB(0.0,6.0,0.0,0.0),
+        child: Text(
+          'KABBEE',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

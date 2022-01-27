@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:visitor_management/main.dart';
 import './time.dart';
 import 'buttons.dart';
 import 'check.dart';
@@ -24,7 +25,6 @@ class _AdminListState extends State<AdminList> {
     checkinTime;
   }
 
-  final String message = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _AdminListState extends State<AdminList> {
                                       timeGreet: timeGreet,
                                       time: time,
                                     ),
-                                    "PLEASE SELECT ONE OPTION",
+                                    subheadernone,
                                     50,
                                     0.7),
                               ));
