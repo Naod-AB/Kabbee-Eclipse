@@ -91,8 +91,10 @@ class _StaffOutState extends State<StaffOut> {
         child: Column(
           children: staffCheckout.isEmpty
               ? [
-                  Container(
-                    child: Text('No Users Found'),
+                  Text(
+                    'No Users Found ',
+                    style: TextStyle(fontSize: 24, color: Colors.blue),
+                    textAlign: TextAlign.center,
                   )
                 ]
               : staffCheckout
@@ -149,8 +151,10 @@ class _StudentOutState extends State<StudentOut> {
         child: Column(
           children: studentCheckout.isEmpty
               ? [
-                  Container(
-                    child: Text('No Users Found'),
+                  Text(
+                    'No Users Found ',
+                    style: TextStyle(fontSize: 24, color: Colors.blue),
+                    textAlign: TextAlign.center,
                   )
                 ]
               : studentCheckout
