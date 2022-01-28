@@ -1,13 +1,11 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/daynight.dart';
 import 'check.dart';
 import 'listout.dart';
 import 'name_list.dart';
 import 'selection.dart';
 import 'template.dart';
-import 'daynight.dart';
 import 'time.dart';
 
 String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTION";
@@ -19,8 +17,29 @@ double width1 = 50;
 double width2 = 40;
 double widthfactor = 0.7;
 
+ThemeData LightTheme =
+    ThemeData(brightness: Brightness.light, primaryColor: Colors.blue);
+
+ThemeData DarkTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.blue
+    // textTheme: TextTheme(
+    //   bodyText1: TextStyle(),
+    //   bodyText2: TextStyle(),
+    // ).apply(
+    //   bodyColor: Colors.orange,
+    //   displayColor: Colors.white,
+    // ),
+    );
+
+//bool ? _light;
+dynamic now = DateTime.now();
+bool _light =
+    DateTime.now().hour > 6 && DateTime.now().hour < 11 ? true : false;
+
 void main() {
   runApp(MaterialApp(
+    theme: _light ? LightTheme : DarkTheme,
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
@@ -64,8 +83,6 @@ class Home extends StatelessWidget {
         child: Container(
             margin: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/$daynight'), fit: BoxFit.cover),
                 border: Border.all(color: Colors.blue, width: 2.0)),
             child: InkWell(
                 onTap: () {

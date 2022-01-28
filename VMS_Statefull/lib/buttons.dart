@@ -57,8 +57,9 @@ class CheckInOutBtns extends StatelessWidget {
           'selected': action, // in or out
         });
       },
-      child: Text(checkBtnName),
+      child: Text(checkBtnName, style: TextStyle(color: Colors.blue)),
       style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.white,
           textStyle: const TextStyle(fontSize: 16),
           fixedSize: const Size(350, 50),
           side: const BorderSide(width: 1, color: Colors.blue)),
