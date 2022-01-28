@@ -1,31 +1,16 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'check.dart';
+import 'package:visitor_management/variable.dart';
+import 'home.dart';
 import 'listout.dart';
 import 'name_list.dart';
 import 'selection.dart';
 import 'template.dart';
 import 'time.dart';
 
-String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTION";
-String subheadername = "PLEASE SELECT YOUR NAME";
-String subheaderoption = "PLEASE SELECT ONE OPTION";
-String subheadernone = "";
-double width1 = 50;
-double width2 = 40;
-double widthfactor = 0.7;
-
-ThemeData LightTheme =
-    ThemeData(brightness: Brightness.light, primaryColor: Colors.blue);
-
-ThemeData DarkTheme =
-    ThemeData(brightness: Brightness.dark, primaryColor: Colors.blue);
-
-//bool ? _light;
-dynamic now = DateTime.now();
 bool _light =
-    DateTime.now().hour > 6 && DateTime.now().hour < 11 ? true : false;
+    DateTime.now().hour > 6 && DateTime.now().hour < 23 ? true : false;
 
 void main() {
   runApp(MaterialApp(
@@ -35,90 +20,19 @@ void main() {
     routes: {
       '/': (Context) => Home(),
       '/selection': (Context) =>
-          Template(SelectOption(), subheaderoption, width1, widthfactor),
+          Template(SelectOption(), subheaderoption, width50, widthfactorlong),
       '/adminin': (Context) =>
-          Template(AdminList(), subheadername, width2, widthfactor),
+          Template(AdminList(), subheadername, width40, widthfactorlong),
       '/adminout': (Context) =>
-          Template(AdminOut(), subheadername, width2, widthfactor),
+          Template(AdminOut(), subheadername, width40, widthfactorlong),
       '/staffin': (Context) =>
-          Template(StaffList(), subheadername, width2, widthfactor),
+          Template(StaffList(), subheadername, width40, widthfactorlong),
       '/staffout': (Context) =>
-          Template(StaffOut(), subheadername, width2, widthfactor),
+          Template(StaffOut(), subheadername, width40, widthfactorlong),
       '/studentin': (Context) =>
-          Template(StudentList(), subheadername, width2, widthfactor),
+          Template(StudentList(), subheadername, width40, widthfactorlong),
       '/studentout': (Context) =>
-          Template(StudentOut(), subheadername, width2, widthfactor),
-      // '/checkin': (Context) => Template(
-      //     Checkin(
-      //       userName: name.name,
-      //       timeGreet: timeGreet,
-      //       time: time,
-      //     ),
-      //     subheadernone,
-      //     50,
-      //     0.7),
-      // Template(Checkin(), subheadernone, width2, widthfactor), // done
-      //'/checkout': (Context) => Template(Checkout(), subheadertxt, width2, widthfactor),
+          Template(StudentOut(), subheadername, width40, widthfactorlong),
     },
   ));
-}
-
-// Done Except day and night feature
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-            margin: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue, width: 2.0)),
-            child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/selection');
-                },
-                child: Center(
-                  child: FittedBox(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'WELCOME TO KABBEE CAMPUS',
-                          style: TextStyle(
-                            fontSize: 40.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue[400],
-                            letterSpacing: 1.0,
-                          ),
-                        ),
-                        const SizedBox(height: 40.0),
-                        const Text(
-                          'WE ARE HAPPY TO HAVE YOU HERE!',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                            letterSpacing: 1.0,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 100.0,
-                        ),
-                        const Text(
-                          'TOUCH THE SCREEN TO START',
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                            letterSpacing: 1.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ))),
-      ),
-    );
-  }
 }

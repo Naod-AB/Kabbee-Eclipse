@@ -1,25 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-dynamic time;
-dynamic times;
-dynamic timeGreet;
-bool? isDay;
+import 'package:visitor_management/variable.dart';
 
 clock() {
-  return DateFormat.jm().format(DateTime.now());
+  return DateFormat.jms().format(DateTime.now());
 }
 
 var checkinTime = clock();
 var checkoutTime = clock();
 
-updateCheckin(e) {
-  checkinTime = DateFormat.jm().format(DateTime.now());
+updateCheckin() {
+  checkinTime = DateFormat.jms().format(DateTime.now());
   time = checkinTime;
 }
 
-updateCheckOut(saved) {
-  checkoutTime = DateFormat.jm().format(DateTime.now());
-  time = saved;
+updateCheckOut(savedtime) {
+  checkoutTime = DateFormat.jms().format(DateTime.now());
+  time = savedtime;
 }
 
 greet() {
@@ -31,21 +28,24 @@ greet() {
   if (time.contains(':')) {
     time = savedTime.substring(0, 1);
   }
-  var timees = int.parse(time);
+  var hour = int.parse(time);
 
   // check daytime
 
-  if (timees <= 12 && savedTime.contains('AM'.toLowerCase())) {
+  if (hour <= 12 && savedTime.contains('AM'.toLowerCase())) {
     isDay = true;
     timeGreet = 'GOOD MORNING';
-  } else if (timees >= 6 &&
-      timees < 12 &&
-      savedTime.contains('PM'.toLowerCase())) {
+  } else if (hour >= 6 && hour < 12 && savedTime.contains('PM'.toLowerCase())) {
     isDay = false;
     timeGreet = 'GOOD EVENING';
-  } else if (timees < 6 ||
-      timees == 12 && savedTime.contains('PM'.toLowerCase())) {
+  } else if (hour < 6 || hour == 12 && savedTime.contains('PM'.toLowerCase())) {
     isDay = true;
     timeGreet = 'GOOD AFTERNOON';
   }
 }
+
+ThemeData LightTheme =
+    ThemeData(brightness: Brightness.light, primaryColor: Colors.blue);
+
+ThemeData DarkTheme =
+    ThemeData(brightness: Brightness.dark, primaryColor: Colors.blue);

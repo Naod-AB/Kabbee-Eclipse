@@ -6,6 +6,7 @@ import 'check.dart';
 import 'names.dart';
 import 'buttons.dart';
 import 'template.dart';
+import 'package:visitor_management/variable.dart';
 
 class AdminOut extends StatefulWidget {
   const AdminOut({Key? key}) : super(key: key);
@@ -56,9 +57,9 @@ class _AdminOutState extends State<AdminOut> {
                                           timeGreetOut: timeGreet,
                                           savedtime: name.checkin,
                                           current: checkoutTime),
-                                      "",
+                                      subheadernone,
                                       50,
-                                      0.7),
+                                      widthfactorshort),
                                 ));
                           }))
                       .toList(),
@@ -113,9 +114,9 @@ class _StaffOutState extends State<StaffOut> {
                                       timeGreetOut: timeGreet,
                                       savedtime: name.checkin,
                                       current: checkoutTime),
-                                  "",
+                                  subheadernone,
                                   50,
-                                  0.7),
+                                  widthfactorshort),
                             ));
                       }))
                   .toList(),
@@ -171,9 +172,9 @@ class _StudentOutState extends State<StudentOut> {
                                       timeGreetOut: timeGreet,
                                       savedtime: name.checkin,
                                       current: checkoutTime),
-                                  "",
+                                  subheadernone,
                                   50,
-                                  0.7),
+                                  widthfactorshort),
                             ));
                       }))
                   .toList(),

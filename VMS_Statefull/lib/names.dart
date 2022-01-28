@@ -1,5 +1,3 @@
-//import 'check.dart';
-
 class NameList {
   String? name;
   String? checkin;

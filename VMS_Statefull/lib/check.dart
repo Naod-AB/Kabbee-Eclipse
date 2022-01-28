@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import './time.dart';
 import 'buttons.dart';
 import 'template.dart';
+import 'package:visitor_management/variable.dart';
 
 class Checkin extends StatelessWidget {
   String? userName;
@@ -22,7 +22,6 @@ class Checkin extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             HeadlineTxt(' $timeGreet', 0.0),
-            SizedBox(height: 0.0),
             HeadlineTxt(' $userName', 0.0),
             SizedBox(height: 40.0),
             HeadlineTxt('YOU ARE CHECKED IN AT', 0.0),

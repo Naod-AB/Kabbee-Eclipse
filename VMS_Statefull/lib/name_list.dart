@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:visitor_management/main.dart';
+
 import './time.dart';
 import 'buttons.dart';
 import 'check.dart';
 import 'names.dart';
 import 'template.dart';
+import 'package:visitor_management/variable.dart';
 
 class AdminList extends StatefulWidget {
   const AdminList({Key? key}) : super(key: key);
@@ -20,9 +21,7 @@ class _AdminListState extends State<AdminList> {
   void initState() {
     isDay = true;
     greet();
-    super.initState();
     timeGreet;
-    checkinTime;
   }
 
   @override
@@ -46,12 +45,11 @@ class _AdminListState extends State<AdminList> {
                       myname: name,
                       delete: () {
                         setState(() {
-                          updateCheckin(name.checkin);
+                          updateCheckin();
                           name.checkin = time;
                           adminCheckout.add(name);
                           adminNames.remove(name);
 
-                          //print('IN: ${name.name}, ${name.checkin} ');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -63,7 +61,7 @@ class _AdminListState extends State<AdminList> {
                                     ),
                                     subheadernone,
                                     50,
-                                    0.7),
+                                    widthfactorshort),
                               ));
                         });
                       }))
@@ -92,8 +90,6 @@ class _StudentListState extends State<StudentList> {
     timeGreet;
   }
 
-  final String message = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -106,8 +102,10 @@ class _StudentListState extends State<StudentList> {
               //this is added inorder to change the error
               studentNames.isEmpty
                   ? [
-                      Container(
-                        child: Text('Test'),
+                      Text(
+                        'No Users Found ',
+                        style: TextStyle(fontSize: 24, color: Colors.blue),
+                        textAlign: TextAlign.center,
                       )
                     ]
                   : studentNames
@@ -115,12 +113,11 @@ class _StudentListState extends State<StudentList> {
                           myname: name,
                           delete: () {
                             setState(() {
-                              updateCheckin(name.checkin);
+                              updateCheckin();
                               name.checkin = time;
                               studentCheckout.add(name);
                               studentNames.remove(name);
 
-                              // print('IN: ${name.name}, ${name.checkin} ');
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -130,9 +127,9 @@ class _StudentListState extends State<StudentList> {
                                           timeGreet: timeGreet,
                                           time: time,
                                         ),
-                                        "PLEASE SELECT ONE OPTION",
+                                        subheadernone,
                                         50,
-                                        0.7),
+                                        widthfactorshort),
                                   ));
                             });
                           }))
@@ -159,8 +156,6 @@ class _StaffListState extends State<StaffList> {
     timeGreet;
   }
 
-  final String message = "PLEASE SELECT ONE OF THE FOLLOWING OPTIONS";
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -171,8 +166,10 @@ class _StaffListState extends State<StaffList> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: staffNames.isEmpty
               ? [
-                  Container(
-                    child: Text('Test'),
+                  Text(
+                    'No Users Found ',
+                    style: TextStyle(fontSize: 24, color: Colors.blue),
+                    textAlign: TextAlign.center,
                   )
                 ]
               : staffNames
@@ -180,12 +177,11 @@ class _StaffListState extends State<StaffList> {
                       myname: name,
                       delete: () {
                         setState(() {
-                          updateCheckin(name.checkin);
+                          updateCheckin();
                           name.checkin = time;
                           staffCheckout.add(name);
                           staffNames.remove(name);
 
-                          //print('IN: ${name.name}, ${name.checkin} ');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -195,9 +191,9 @@ class _StaffListState extends State<StaffList> {
                                       timeGreet: timeGreet,
                                       time: time,
                                     ),
-                                    "PLEASE SELECT ONE OPTION",
+                                    subheadernone,
                                     50,
-                                    0.7),
+                                    widthfactorshort),
                               ));
                         });
                       }))

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'home.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
     title: const Header(),
-    toolbarHeight: 28,
     centerTitle: true,
-    backgroundColor: Colors.white10,
     foregroundColor: Colors.blue.shade500,
     elevation: 0.0, // Remove shadow
+    backgroundColor: Colors.transparent,
+    toolbarHeight: 35,
   );
 }
 
@@ -23,7 +23,7 @@ class Header extends StatelessWidget {
             context, MaterialPageRoute(builder: (context) => const Home()));
       },
       child: const Padding(
-        padding: EdgeInsets.fromLTRB(0.0,6.0,0.0,0.0),
+        padding: EdgeInsets.fromLTRB(0.0, 6.0, 0.0, 0.0),
         child: Text(
           'KABBEE',
           style: TextStyle(
@@ -39,7 +39,8 @@ class Header extends StatelessWidget {
 class HeadlineTxt extends StatelessWidget {
   final String info;
   final double bottomPadding;
-  const HeadlineTxt(this.info, this.bottomPadding, {Key? key}) : super(key: key);
+  const HeadlineTxt(this.info, this.bottomPadding, {Key? key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -83,7 +84,6 @@ class Template extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(15.0),
-      padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue.shade500),
       ),

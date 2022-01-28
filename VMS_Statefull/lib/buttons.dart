@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import './selection.dart';
 import './template.dart';
 import 'names.dart';
+import 'package:visitor_management/variable.dart';
 
 //Option selection Buttons
 class OptionSelectionBtn extends StatelessWidget {
@@ -19,7 +19,7 @@ class OptionSelectionBtn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => Template(Actionselector(userRole),
-                    subheadertxt, width2, widthfactor),
+                    subheadertxt, width40, widthfactorshort),
               ));
         },
         height: 60.0,
@@ -52,10 +52,7 @@ class CheckInOutBtns extends StatelessWidget {
 
     return OutlinedButton(
       onPressed: () {
-        Navigator.pushNamed(context, '/$path', arguments: {
-          'category': args, // admin
-          'selected': action, // in or out
-        });
+        Navigator.pushNamed(context, '/$path');
       },
       child: Text(checkBtnName, style: TextStyle(color: Colors.blue)),
       style: OutlinedButton.styleFrom(
