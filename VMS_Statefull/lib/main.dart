@@ -12,7 +12,6 @@ String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTION";
 String subheadername = "PLEASE SELECT YOUR NAME";
 String subheaderoption = "PLEASE SELECT ONE OPTION";
 String subheadernone = "";
-//String passing = "";
 double width1 = 50;
 double width2 = 40;
 double widthfactor = 0.7;
@@ -20,17 +19,8 @@ double widthfactor = 0.7;
 ThemeData LightTheme =
     ThemeData(brightness: Brightness.light, primaryColor: Colors.blue);
 
-ThemeData DarkTheme = ThemeData(
-    brightness: Brightness.dark,
-    primaryColor: Colors.blue
-    // textTheme: TextTheme(
-    //   bodyText1: TextStyle(),
-    //   bodyText2: TextStyle(),
-    // ).apply(
-    //   bodyColor: Colors.orange,
-    //   displayColor: Colors.white,
-    // ),
-    );
+ThemeData DarkTheme =
+    ThemeData(brightness: Brightness.dark, primaryColor: Colors.blue);
 
 //bool ? _light;
 dynamic now = DateTime.now();
