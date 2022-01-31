@@ -7,16 +7,14 @@ clock() {
 }
 
 var checkinTime = clock();
-var checkoutTime = clock();
+var checkoutTime;
 
 updateCheckin() {
-  checkinTime = DateFormat.jms().format(DateTime.now());
-  time = checkinTime;
+  time = DateFormat.jms().format(DateTime.now());
 }
 
-updateCheckOut(savedtime) {
+updateCheckOut() {
   checkoutTime = DateFormat.jms().format(DateTime.now());
-  time = savedtime;
 }
 
 greet() {

@@ -5,8 +5,8 @@ class NameList {
 }
 
 List<NameList> adminNames = [
-  NameList(name: 'ADMIN', checkin: ''),
-  NameList(name: 'ABEL ', checkin: ''),
+  NameList(name: 'ADMIN'),
+  NameList(name: 'ABEL '),
   NameList(name: 'ABIGAIL '),
   NameList(name: 'BINIAM'),
   NameList(name: 'BESHIR'),
