@@ -38,16 +38,17 @@ class OptionSelectionBtn extends StatelessWidget {
 //check in and out Buttons on Action selection
 class CheckInOutBtns extends StatelessWidget {
   final String checkBtnName;
-  final dynamic args;
+  final dynamic userRole;
   final String action;
 
-  const CheckInOutBtns(this.checkBtnName, this.args, this.action, {Key? key})
+  const CheckInOutBtns(this.checkBtnName, this.userRole, this.action,
+      {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String path;
-    path = args.toString().toLowerCase(); //admin (string)
+    path = userRole.toString().toLowerCase(); //admin (string)
     path = path + action;
 
     return OutlinedButton(

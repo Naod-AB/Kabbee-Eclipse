@@ -45,7 +45,7 @@ class _AdminOutState extends State<AdminOut> {
                             setState(() {
                               adminNames.add(name);
                               adminCheckout.remove(name);
-                              updateCheckOut(name.checkin);
+                              updateCheckOut();
                             });
 
                             Navigator.push(
@@ -104,7 +104,7 @@ class _StaffOutState extends State<StaffOut> {
                         setState(() {
                           staffNames.add(name);
                           staffCheckout.remove(name);
-                          updateCheckOut(name.checkin);
+                          updateCheckOut();
                         });
 
                         Navigator.push(
@@ -164,7 +164,7 @@ class _StudentOutState extends State<StudentOut> {
                         setState(() {
                           studentNames.add(name);
                           studentCheckout.remove(name);
-                          updateCheckOut(name.checkin);
+                          updateCheckOut();
                         });
 
                         Navigator.push(

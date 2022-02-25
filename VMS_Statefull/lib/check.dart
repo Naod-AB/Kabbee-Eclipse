@@ -36,9 +36,9 @@ class Checkin extends StatelessWidget {
 }
 
 class Checkout extends StatelessWidget {
-  String? savedtime;
+  var savedtime;
   String? userName;
-  String? current;
+  var current;
   var timeGreetOut;
   Checkout(
       {this.savedtime,
@@ -59,10 +59,10 @@ class Checkout extends StatelessWidget {
             HeadlineTxt(' HELLO $userName', 0.0),
             SizedBox(height: 40.0),
             HeadlineTxt('YOU WERE CHECKED IN AT', 0.0),
-            CheckTimeboxes(savedtime!),
+            CheckTimeboxes(savedtime),
             SizedBox(height: 30.0),
             HeadlineTxt('YOU ARE CHECKED OUT AT', 0.0),
-            CheckTimeboxes(current!),
+            CheckTimeboxes(current),
             SizedBox(height: 20),
             HeadlineTxt('HAVE A $timeGreet,', 0.0),
             HeadlineTxt('SEE YOU TOMORROW', 0.0),
