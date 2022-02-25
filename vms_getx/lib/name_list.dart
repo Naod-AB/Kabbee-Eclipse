@@ -19,16 +19,16 @@ class AdminList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: adminNames
-              .map((name) => NameButtons(
-                  myname: name,
+              .map((person) => NameButtons(
+                  name: person,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
-                    adminCheckout.add(name);
-                    adminNames.remove(name);
-                    name.checkin = timeController.time.toString();
+                    timeController.greeting();
+                    adminCheckout.add(person);
+                    adminNames.remove(person);
+                    person.checkin = timeController.time.toString();
                     Get.offNamed(
-                        '/checkin?name=${name.name}&time=${name.checkin}&timeGreet=${timeController.timeGreet}');
+                        '/checkin?name=${person.name}&time=${person.checkin}&timeGreet=${timeController.timeGreet}');
                   }))
               .toList(),
         ),
@@ -49,16 +49,16 @@ class StaffList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: staffNames
-              .map((name) => NameButtons(
-                  myname: name,
+              .map((person) => NameButtons(
+                  name: person,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
-                    staffCheckout.add(name);
-                    staffNames.remove(name);
-                    name.checkin = timeController.time.toString();
+                    timeController.greeting();
+                    staffCheckout.add(person);
+                    staffNames.remove(person);
+                    person.checkin = timeController.time.toString();
                     Get.offNamed(
-                        '/checkin?name=${name.name}&time=${name.checkin}&timeGreet=${timeController.timeGreet}');
+                        '/checkin?name=${person.name}&time=${person.checkin}&timeGreet=${timeController.timeGreet}');
                   }))
               .toList(),
         ),
@@ -79,16 +79,16 @@ class StudentList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: studentNames
-              .map((name) => NameButtons(
-                  myname: name,
+              .map((person) => NameButtons(
+                  name: person,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
-                    studentCheckout.add(name);
-                    studentNames.remove(name);
-                    name.checkin = timeController.time.toString();
+                    timeController.greeting();
+                    studentCheckout.add(person);
+                    studentNames.remove(person);
+                    person.checkin = timeController.time.toString();
                     Get.offNamed(
-                        '/checkin?name=${name.name}&time=${name.checkin}&timeGreet=${timeController.timeGreet}');
+                        '/checkin?name=${person.name}&time=${person.checkin}&timeGreet=${timeController.timeGreet}');
                   }))
               .toList(),
         ),

@@ -28,7 +28,7 @@ class TimeController extends GetxController {
     return DateFormat.jms().format(DateTime.now());
   }
 
-  greet() {
+  greeting() {
     String savedTime = clock().toLowerCase();
 
     // get hour only

@@ -16,10 +16,10 @@ class AdminOut extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: adminCheckout
               .map((name) => NameButtons(
-                  myname: name,
+                  name: name,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
+                    timeController.greeting();
                     adminCheckout.remove(name);
                     adminNames.add(name);
                     timeController.savedtime.value = name.checkin.toString();
@@ -45,10 +45,10 @@ class StaffOut extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: staffCheckout
               .map((name) => NameButtons(
-                  myname: name,
+                  name: name,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
+                    timeController.greeting();
                     staffCheckout.remove(name);
                     staffNames.add(name);
                     timeController.savedtime.value = name.checkin.toString();
@@ -74,10 +74,10 @@ class StudentOut extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: studentCheckout
               .map((name) => NameButtons(
-                  myname: name,
+                  name: name,
                   delete: () {
                     timeController.updateTime();
-                    timeController.greet();
+                    timeController.greeting();
                     studentCheckout.remove(name);
                     studentNames.add(name);
 

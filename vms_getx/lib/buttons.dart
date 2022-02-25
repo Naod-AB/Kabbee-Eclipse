@@ -174,9 +174,9 @@ class DoneBtn extends StatelessWidget {
 class NameButtons extends StatelessWidget {
   // NameButtons();
 
-  final NameList myname;
+  final NameList name;
   final Function delete;
-  const NameButtons({Key? key, required this.myname, required this.delete})
+  const NameButtons({Key? key, required this.name, required this.delete})
       : super(key: key);
   // : super(key: key);
 
@@ -186,7 +186,7 @@ class NameButtons extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         child: Text(
-          myname.name.toString(),
+          name.name.toString(),
           style: TextStyle(
             fontSize: 20.0,
             color: Colors.blue.shade400,
