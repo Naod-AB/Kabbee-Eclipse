@@ -18,7 +18,7 @@ class AdminList extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: staffNames
+          children: adminNames
               .map((name) => NameButtons(
                   myname: name,
                   delete: () {
