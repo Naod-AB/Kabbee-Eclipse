@@ -102,7 +102,8 @@ class CheckInOutBtns extends StatelessWidget {
         } else if (staffNames.isEmpty && path.toString() == 'staffin' ||
             staffCheckout.isEmpty && path.toString() == 'staffout') {
           inEmptyDialog();
-        } else if (studentNames.isEmpty && path.toString() == 'studentin') {
+        } else if (studentNames.isEmpty && path.toString() == 'studentin' ||
+            studentCheckout.isEmpty && path.toString() == 'studentout') {
           inEmptyDialog();
         } else {
           Get.toNamed('/$path');
