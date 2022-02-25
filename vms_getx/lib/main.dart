@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 void main() {
   runApp(GetMaterialApp(
-    theme: Themes.light,
+    //  theme: Themes.light,
     darkTheme: Themes.dark,
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
@@ -61,7 +61,7 @@ void main() {
 }
 
 class Themes {
-  static final light = ThemeData.light().copyWith();
+  // static final light = ThemeData.light();
   static final dark = ThemeData.dark().copyWith(
     backgroundColor: Colors.black,
     primaryColor: Colors.blue,
