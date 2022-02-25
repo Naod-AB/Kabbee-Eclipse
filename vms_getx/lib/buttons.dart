@@ -47,16 +47,18 @@ class CheckInOutBtns extends StatelessWidget {
     emptyDialog() {
       Get.defaultDialog(
         title: 'CHECKING OUT?',
+        titleStyle: TextStyle(color: Colors.blue),
         titlePadding: const EdgeInsetsDirectional.all(20),
         content: SizedBox(
             width: 250,
             child: Text(
               'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED OUT',
+              style: TextStyle(color: Colors.blue),
               textAlign: TextAlign.center,
             )),
         contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         actions: [
-          TextButton(
+          OutlinedButton(
               onPressed: () {
                 Get.back();
               },
@@ -65,41 +67,43 @@ class CheckInOutBtns extends StatelessWidget {
       );
     }
 
+    var pathChecker = path.toString().substring(path.length - 3);
+
     inEmptyDialog() {
       Get.defaultDialog(
-        title: 'CHECKING IN?',
-        titlePadding: const EdgeInsetsDirectional.all(20),
+        title: pathChecker.contains('out') ? 'CHECKING OUT?' : 'CHECKING IN?',
+        titleStyle: TextStyle(color: Colors.blue),
+        titlePadding: EdgeInsetsDirectional.all(20),
         content: SizedBox(
             width: 250,
             child: Text(
-              'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED IN',
+              pathChecker.contains('out')
+                  ? 'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED OUT'
+                  : 'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED IN',
+              style: TextStyle(color: Colors.blue),
               textAlign: TextAlign.center,
             )),
-        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         actions: [
-          TextButton(
+          OutlinedButton(
               onPressed: () {
                 Get.back();
               },
-              child: const Text('OKAY'))
+              child: Text('OKAY '))
         ],
       );
     }
 
     return OutlinedButton(
       onPressed: () {
-        if (adminNames.isEmpty && path.toString() == 'adminin') {
+        if (adminNames.isEmpty && path.toString() == 'adminin' ||
+            adminCheckout.isEmpty && path.toString() == 'adminout') {
           inEmptyDialog();
-        } else if (staffNames.isEmpty && path.toString() == 'staffin') {
+        } else if (staffNames.isEmpty && path.toString() == 'staffin' ||
+            staffCheckout.isEmpty && path.toString() == 'staffout') {
           inEmptyDialog();
         } else if (studentNames.isEmpty && path.toString() == 'studentin') {
           inEmptyDialog();
-        } else if (adminCheckout.isEmpty && path.toString() == 'adminout') {
-          emptyDialog();
-        } else if (staffCheckout.isEmpty && path.toString() == 'staffout') {
-          emptyDialog();
-        } else if (studentCheckout.isEmpty && path.toString() == 'studentout') {
-          emptyDialog();
         } else {
           Get.toNamed('/$path');
         }

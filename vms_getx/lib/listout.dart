@@ -15,16 +15,16 @@ class AdminOut extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: adminCheckout
-              .map((name) => NameButtons(
-                  name: name,
+              .map((person) => NameButtons(
+                  name: person,
                   delete: () {
                     timeController.updateTime();
                     timeController.greeting();
-                    adminCheckout.remove(name);
-                    adminNames.add(name);
-                    timeController.savedtime.value = name.checkin.toString();
+                    adminCheckout.remove(person);
+                    adminNames.add(person);
+                    timeController.savedtime.value = person.checkin.toString();
                     Get.offNamed(
-                        '/checkout?name=${name.name}&savedtime=${timeController.savedtime}&timeGreet=${timeController.timeGreet}&current=${timeController.time}');
+                        '/checkout?name=${person.name}&savedtime=${timeController.savedtime}&timeGreet=${timeController.timeGreet}&current=${timeController.time}');
                   }))
               .toList(),
         ),

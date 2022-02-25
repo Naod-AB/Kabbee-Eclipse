@@ -21,16 +21,16 @@ List<NameList> adminCheckout = [];
 
 // Staff namelist
 List<NameList> staffNames = [
-  NameList(name: 'STAFF'),
   NameList(name: 'FILMON '),
-  NameList(name: 'FERUZ '),
-  NameList(name: 'FEWAZ'),
-  NameList(name: 'BESHIR'),
-  NameList(name: 'GENET'),
-  NameList(name: 'GHILAY'),
-  NameList(name: 'HERMON'),
-  NameList(name: 'ISAIAS'),
-  NameList(name: 'ISMAEL'),
+  // NameList(name: 'STAFF'),
+  // NameList(name: 'FERUZ '),
+  // NameList(name: 'FEWAZ'),
+  // NameList(name: 'BESHIR'),
+  // NameList(name: 'GENET'),
+  // NameList(name: 'GHILAY'),
+  // NameList(name: 'HERMON'),
+  // NameList(name: 'ISAIAS'),
+  // NameList(name: 'ISMAEL'),
 ];
 
 List<NameList> staffCheckout = [];

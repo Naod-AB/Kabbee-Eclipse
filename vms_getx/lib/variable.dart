@@ -18,7 +18,7 @@ class TimeController extends GetxController {
   var time = ''.obs;
   var timeGreet = ''.obs;
   var savedtime = ''.obs;
-  var current = ''.obs;
+  // var current = ''.obs;
 
   updateTime() {
     time.value = DateFormat.jms().format(DateTime.now());
@@ -37,6 +37,7 @@ class TimeController extends GetxController {
     if (time.contains(':')) {
       time = savedTime.substring(0, 1);
     }
+
     var hour = int.parse(time);
 
     // check daytime
