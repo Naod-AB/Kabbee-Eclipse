@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'check.dart';
 import 'variable.dart';
@@ -17,39 +15,39 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     getPages: [
-      GetPage(name: '/', page: () => Home()),
+      GetPage(name: '/', page: () => const Home()),
       GetPage(
           name: '/selection',
           page: () => Template(
-              SelectOption(), subheaderoption, width50, widthfactorlong)),
+              const SelectOption(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/actionSelection',
           page: () => Template(
               Actionselector(), subheadertxt, width40, widthfactorshort)),
       GetPage(
           name: '/adminin',
-          page: () =>
-              Template(AdminList(), subheaderoption, width50, widthfactorlong)),
+          page: () => Template(
+              const AdminList(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/adminout',
-          page: () =>
-              Template(AdminOut(), subheaderoption, width50, widthfactorlong)),
+          page: () => Template(
+              const AdminOut(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/staffin',
-          page: () =>
-              Template(StaffList(), subheaderoption, width50, widthfactorlong)),
+          page: () => Template(
+              const StaffList(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/staffout',
-          page: () =>
-              Template(StaffOut(), subheaderoption, width50, widthfactorlong)),
+          page: () => Template(
+              const StaffOut(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/studentin',
           page: () => Template(
-              StudentList(), subheaderoption, width50, widthfactorlong)),
+              const StudentList(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/studentout',
           page: () => Template(
-              StudentOut(), subheaderoption, width50, widthfactorlong)),
+              const StudentOut(), subheaderoption, width50, widthfactorlong)),
       GetPage(
           name: '/checkin',
           page: () =>
@@ -63,10 +61,7 @@ void main() {
 }
 
 class Themes {
-  static final light = ThemeData.light().copyWith(
-      //buttonColor: Colors.blue,
-
-      );
+  static final light = ThemeData.light().copyWith();
   static final dark = ThemeData.dark().copyWith(
     backgroundColor: Colors.black,
     primaryColor: Colors.blue,

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'names.dart';
@@ -48,70 +46,55 @@ class CheckInOutBtns extends StatelessWidget {
 
     emptyDialog() {
       Get.defaultDialog(
-        title: 'Checking Out?',
-        titlePadding: EdgeInsetsDirectional.all(20),
+        title: 'CHECKING OUT?',
+        titlePadding: const EdgeInsetsDirectional.all(20),
         content: SizedBox(
             width: 250,
             child: Text(
-              'Currently, there are no users checked in as ${userRole.toString().toLowerCase()}',
+              'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED OUT',
               textAlign: TextAlign.center,
             )),
-        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-        // confirm: Padding(
-        //   padding: EdgeInsets.all(20),
-        //   child: CheckInOutBtns('CHECK IN', userRole, "in"),
-        // ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         actions: [
           TextButton(
               onPressed: () {
                 Get.back();
               },
-              child: Text('back '))
+              child: const Text('OKAY '))
         ],
       );
     }
 
     inEmptyDialog() {
       Get.defaultDialog(
-        title: 'Checking In?',
-        titlePadding: EdgeInsetsDirectional.all(20),
+        title: 'CHECKING IN?',
+        titlePadding: const EdgeInsetsDirectional.all(20),
         content: SizedBox(
             width: 250,
             child: Text(
-              'Currently,all users have been checked in.',
+              'ALL ${userRole.toString().toUpperCase()}S HAVE ALREADY CHECKED IN',
               textAlign: TextAlign.center,
             )),
-        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-        // confirm: Padding(
-        //   padding: EdgeInsets.all(20),
-        //   child: CheckInOutBtns('CHECK IN', userRole, "in"),
-        // ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         actions: [
           TextButton(
               onPressed: () {
                 Get.back();
               },
-              child: Text('back '))
+              child: const Text('OKAY'))
         ],
       );
     }
 
     return OutlinedButton(
       onPressed: () {
-        // Get.toNamed('/$path');
-
-        //
-        // if (adminNames.isEmpty && path.toString() == 'adminin') {
-        //   inEmptyDialog();
-        // } else if (staffNames.isEmpty && path.toString() == 'staffin') {
-        //   inEmptyDialog();
-        // } else if (studentNames.isEmpty && path.toString() == 'studentin') {
-        //   inEmptyDialog();
-        // } else {
-        //   Get.toNamed('/$path');
-        // }
-
-        if (adminCheckout.isEmpty && path.toString() == 'adminout') {
+        if (adminNames.isEmpty && path.toString() == 'adminin') {
+          inEmptyDialog();
+        } else if (staffNames.isEmpty && path.toString() == 'staffin') {
+          inEmptyDialog();
+        } else if (studentNames.isEmpty && path.toString() == 'studentin') {
+          inEmptyDialog();
+        } else if (adminCheckout.isEmpty && path.toString() == 'adminout') {
           emptyDialog();
         } else if (staffCheckout.isEmpty && path.toString() == 'staffout') {
           emptyDialog();
@@ -121,7 +104,7 @@ class CheckInOutBtns extends StatelessWidget {
           Get.toNamed('/$path');
         }
       },
-      child: Text(checkBtnName, style: TextStyle(color: Colors.blue)),
+      child: Text(checkBtnName, style: const TextStyle(color: Colors.blue)),
       style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           textStyle: const TextStyle(fontSize: 16),
@@ -157,12 +140,44 @@ class CheckTimeboxes extends StatelessWidget {
   }
 }
 
+class DoneBtn extends StatelessWidget {
+  double top;
+  DoneBtn(this.top, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, top, 0, 0),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0.0,
+            primary: Colors.white,
+            side: const BorderSide(width: 1, color: Colors.blue),
+            onPrimary: Colors.white,
+            minimumSize: const Size(200.0, 55.0),
+          ),
+          onPressed: () {
+            Get.toNamed('/selection');
+          },
+          child: Text(
+            'DONE',
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.blue.shade400,
+            ),
+            textAlign: TextAlign.center,
+          )),
+    );
+  }
+}
+
 class NameButtons extends StatelessWidget {
   // NameButtons();
 
   final NameList myname;
   final Function delete;
-  NameButtons({required this.myname, required this.delete});
+  const NameButtons({Key? key, required this.myname, required this.delete})
+      : super(key: key);
   // : super(key: key);
 
   @override

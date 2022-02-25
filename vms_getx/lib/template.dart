@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 PreferredSizeWidget appBars() {
   return AppBar(
-    //automaticallyImplyLeading: false,
     title: const Header(),
     centerTitle: true,
     foregroundColor: Colors.blue.shade500,

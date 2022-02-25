@@ -4,7 +4,6 @@ import 'buttons.dart';
 
 class SelectOption extends StatelessWidget {
   const SelectOption({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -23,10 +22,7 @@ class SelectOption extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class Actionselector extends StatelessWidget {
-  // final String userRole = Get.parameters['userRole'].toString().toLowerCase();
-
   final String role = Get.parameters['role'].toString().toLowerCase();
 
   Actionselector({Key? key}) : super(key: key);

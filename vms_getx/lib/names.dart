@@ -1,26 +1,20 @@
 class NameList {
-  String? name;
-  String? checkin;
+  var name;
+  var checkin;
   NameList({this.name, this.checkin});
 }
-// var name = NameList(name: '', checkin: 25).obs;
-// void convertToUpperCase() {
-//   student.update((student) {
-//     student!.name = student.name.toUpperCase();
-//   });
-// }
 
 List<NameList> adminNames = [
   NameList(name: 'ADMIN'),
   NameList(name: 'ABEL '),
-  // NameList(name: 'ABIGAIL '),
-  // NameList(name: 'BINIAM'),
-  // NameList(name: 'BESHIR'),
-  // NameList(name: 'CHRISTINA'),
-  // NameList(name: 'DAHLAK'),
-  // NameList(name: 'DIANA'),
-  // NameList(name: 'ELHAM'),
-  // NameList(name: 'ERMIAS'),
+  NameList(name: 'ABIGAIL '),
+  NameList(name: 'BINIAM'),
+  NameList(name: 'BESHIR'),
+  NameList(name: 'CHRISTINA'),
+  NameList(name: 'DAHLAK'),
+  NameList(name: 'DIANA'),
+  NameList(name: 'ELHAM'),
+  NameList(name: 'ERMIAS'),
 ];
 
 List<NameList> adminCheckout = [];
@@ -29,14 +23,14 @@ List<NameList> adminCheckout = [];
 List<NameList> staffNames = [
   NameList(name: 'STAFF'),
   NameList(name: 'FILMON '),
-  // NameList(name: 'FERUZ '),
-  // NameList(name: 'FEWAZ'),
-  // NameList(name: 'BESHIR'),
-  // NameList(name: 'GENET'),
-  // NameList(name: 'GHILAY'),
-  // NameList(name: 'HERMON'),
-  // NameList(name: 'ISAIAS'),
-  // NameList(name: 'ISMAEL'),
+  NameList(name: 'FERUZ '),
+  NameList(name: 'FEWAZ'),
+  NameList(name: 'BESHIR'),
+  NameList(name: 'GENET'),
+  NameList(name: 'GHILAY'),
+  NameList(name: 'HERMON'),
+  NameList(name: 'ISAIAS'),
+  NameList(name: 'ISMAEL'),
 ];
 
 List<NameList> staffCheckout = [];
