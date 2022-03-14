@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import './variable.dart';
 import 'buttons.dart';
+import 'model.dart';
 
 TimeController timeController = Get.put(TimeController());
 
@@ -20,18 +21,19 @@ class AdminList extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: x.data!.length,
                 itemBuilder: ((context, index) => Column(children: [
-                      if (x.data![index].check == true &&
+                      if (x.data![index].checkStatus == true &&
                           x.data![index].role == "Admin")
                         NameButtons(
                           name: x.data![index].name,
                           delete: () {
                             timeController.greeting();
                             timeController.updateTime();
+
                             var gize = timeController.time;
                             updateJsonTime(
                                 time: gize.toString(),
                                 id: x.data![index].id,
-                                check: false);
+                                checkStatus: false);
 
                             Get.offNamed(
                                 '/checkin?name=${x.data![index].name}&time=$gize&timeGreet=${timeController.timeGreet}');
@@ -52,10 +54,6 @@ class AdminList extends StatelessWidget {
   }
 }
 
-void noUserDialogs() {
-  print('error has found');
-}
-
 class StaffList extends StatelessWidget {
   const StaffList({Key? key}) : super(key: key);
 
@@ -71,7 +69,7 @@ class StaffList extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: x.data!.length,
                 itemBuilder: ((context, index) => Column(children: [
-                      if (x.data![index].check == true &&
+                      if (x.data![index].checkStatus == true &&
                           x.data![index].role == "Staff")
                         NameButtons(
                           name: x.data![index].name,
@@ -82,7 +80,7 @@ class StaffList extends StatelessWidget {
                             updateJsonTime(
                                 time: gize.toString(),
                                 id: x.data![index].id,
-                                check: false);
+                                checkStatus: false);
 
                             Get.offNamed(
                                 '/checkin?name=${x.data![index].name}&time=$gize&timeGreet=${timeController.timeGreet}');
@@ -118,7 +116,7 @@ class StudentList extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: x.data!.length,
                 itemBuilder: ((context, index) => Column(children: [
-                      if (x.data![index].check == true &&
+                      if (x.data![index].checkStatus == true &&
                           x.data![index].role == "Student")
                         NameButtons(
                           name: x.data![index].name,
@@ -129,7 +127,7 @@ class StudentList extends StatelessWidget {
                             updateJsonTime(
                                 time: gize.toString(),
                                 id: x.data![index].id,
-                                check: false);
+                                checkStatus: false);
 
                             Get.offNamed(
                                 '/checkin?name=${x.data![index].name}&time=$gize&timeGreet=${timeController.timeGreet}');

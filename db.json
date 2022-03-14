@@ -4,211 +4,211 @@
       "id": 1,
       "name": "ADMIN",
       "role": "Admin",
-      "checkedInTime": "10:41:45 PM",
-      "check": true
+      "checkedInTime": "9:29:50 AM",
+      "checkStatus": true
     },
     {
       "id": 2,
       "name": "ABEL",
       "role": "Admin",
-      "checkedInTime": "9:05:29 PM",
-      "check": true
+      "checkedInTime": "9:30:25 AM",
+      "checkStatus": false
     },
     {
       "id": 3,
       "name": "ABIGAIL",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 4,
       "name": "BINIAM",
       "role": "Admin",
-      "checkedInTime": "",
-      "check": true
+      "checkedInTime": "9:32:13 AM",
+      "checkStatus": false
     },
     {
       "id": 5,
       "name": "BESHIR",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 6,
       "name": "CHRISTINA",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 7,
       "name": "DAHLAK",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 8,
       "name": "DIANA",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 9,
       "name": "ELHAM",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 10,
       "name": "ERMIAS",
       "role": "Admin",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 11,
       "name": "STAFF",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 12,
       "name": "FILMON",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 13,
       "name": "FERUZ",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 14,
       "name": "FEWAZ",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 15,
       "name": "BILAL",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 16,
       "name": "GENET",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 17,
       "name": "GHILAY",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 18,
       "name": "HERMON",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 19,
       "name": "ISAIAS",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 20,
       "name": "ISMAEL",
       "role": "Staff",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 21,
       "name": "STUDENT",
       "role": "Student",
-      "checkedInTime": "9:05:57 PM",
-      "check": false
+      "checkedInTime": "8:47:15 AM",
+      "checkStatus": true
     },
     {
       "id": 22,
       "name": "JEMAL",
       "role": "Student",
       "checkedInTime": "9:06:07 PM",
-      "check": false
+      "checkStatus": true
     },
     {
       "id": 23,
       "name": "JEMILA",
       "role": "Student",
       "checkedInTime": "9:28:26 PM",
-      "check": false
+      "checkStatus": true
     },
     {
       "id": 24,
       "name": "KIBROM",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 25,
       "name": "KIBRET",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 26,
       "name": "KBRI",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 27,
       "name": "LUWAM",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 28,
       "name": "MERHAWI",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 29,
       "name": "MARTHA",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     },
     {
       "id": 30,
       "name": "RODAS",
       "role": "Student",
       "checkedInTime": "",
-      "check": true
+      "checkStatus": true
     }
   ]
 }

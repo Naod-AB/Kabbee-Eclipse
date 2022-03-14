@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import './variable.dart';
 import 'buttons.dart';
+import 'model.dart';
 import 'name_list.dart';
 
 class AdminOut extends StatelessWidget {
@@ -20,7 +21,7 @@ class AdminOut extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: x.data!.length,
                   itemBuilder: ((context, index) => Column(children: [
-                        if (x.data![index].check == false &&
+                        if (x.data![index].checkStatus == false &&
                             x.data![index].role == 'Admin')
                           NameButtons(
                             name: x.data![index].name,
@@ -31,7 +32,7 @@ class AdminOut extends StatelessWidget {
 
                               updateJsonTime(
                                   id: x.data![index].id,
-                                  check: true,
+                                  checkStatus: true,
                                   time: x.data![index].time);
 
                               Get.offNamed(
@@ -41,7 +42,10 @@ class AdminOut extends StatelessWidget {
                       ]))),
             );
           } else if (x.hasError) {
-            return Text('Error 1${x.error}');
+            return Chip(
+              avatar: Icon(Icons.error),
+              label: Text('${x.error}'),
+            );
           }
 
           return const CircularProgressIndicator();
@@ -64,7 +68,7 @@ class StaffOut extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: x.data!.length,
                   itemBuilder: ((context, index) => Column(children: [
-                        if (x.data![index].check == false &&
+                        if (x.data![index].checkStatus == false &&
                             x.data![index].role == 'Staff')
                           NameButtons(
                             name: x.data![index].name,
@@ -75,7 +79,7 @@ class StaffOut extends StatelessWidget {
 
                               updateJsonTime(
                                   id: x.data![index].id,
-                                  check: true,
+                                  checkStatus: true,
                                   time: x.data![index].time);
 
                               Get.offNamed(
@@ -85,7 +89,10 @@ class StaffOut extends StatelessWidget {
                       ]))),
             );
           } else if (x.hasError) {
-            return Text('Error 1${x.error}');
+            return Chip(
+              avatar: Icon(Icons.error),
+              label: Text('${x.error}'),
+            );
           }
 
           return const CircularProgressIndicator();
@@ -108,7 +115,7 @@ class StudentOut extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: x.data!.length,
                   itemBuilder: ((context, index) => Column(children: [
-                        if (x.data![index].check == false &&
+                        if (x.data![index].checkStatus == false &&
                             x.data![index].role == 'Student')
                           NameButtons(
                             name: x.data![index].name,
@@ -119,7 +126,7 @@ class StudentOut extends StatelessWidget {
 
                               updateJsonTime(
                                   id: x.data![index].id,
-                                  check: true,
+                                  checkStatus: true,
                                   time: x.data![index].time);
 
                               Get.offNamed(
@@ -129,7 +136,10 @@ class StudentOut extends StatelessWidget {
                       ]))),
             );
           } else if (x.hasError) {
-            return Text('Error 1${x.error}');
+            return Chip(
+              avatar: Icon(Icons.error),
+              label: Text('${x.error}'),
+            );
           }
 
           return const CircularProgressIndicator();

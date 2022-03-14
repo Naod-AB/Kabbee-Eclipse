@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:vms_getx/name_list.dart';
 import 'package:vms_getx/variable.dart';
 
+import 'model.dart';
+
 class OptionSelectionBtn extends StatelessWidget {
   final String userRole;
 
@@ -48,7 +50,18 @@ class CheckInOutBtns extends StatelessWidget {
         builder: (context, x) {
           return OutlinedButton(
             onPressed: () {
-              Get.toNamed('/$path');
+              if (x.hasError) {
+                Get.defaultDialog(
+                  title: 'Network Error',
+                  textCancel: "close",
+                  content: const Text('Something went wrong!'),
+                  onCancel: () {
+                    Get.back();
+                  },
+                );
+              } else {
+                Get.toNamed('/$path');
+              }
             },
             child:
                 Text(checkBtnName, style: const TextStyle(color: Colors.blue)),

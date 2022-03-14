@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
+import 'model.dart';
+
 String subheadertxt = "PLEASE SELECT ONE OF THE FOLLOWING OPTION";
 String subheadername = "PLEASE SELECT YOUR NAME";
 String subheaderoption = "PLEASE SELECT ONE OPTION";
@@ -15,28 +17,8 @@ double widthfactorlong = 0.7;
 double widthfactorshort = 0.33;
 bool? isDay;
 
-class NameListJson {
-  var id;
-  var name;
-  var role;
-  var time;
-  var check;
-
-  NameListJson({this.id, this.name, this.check, this.role, this.time});
-
-  factory NameListJson.fromJson(Map<String, dynamic> json) {
-    return NameListJson(
-      id: json['id'],
-      name: json['name'],
-      role: json['role'],
-      check: json['check'],
-      time: json['checkedInTime'],
-    );
-  }
-}
-
 Future<NameListJson> updateJsonTime(
-    {String? time, int? id, bool? check}) async {
+    {String? time, int? id, bool? checkStatus}) async {
   final response = await http.patch(
     Uri.parse('http://localhost:3000/users/$id'),
     headers: <String, String>{
@@ -44,7 +26,7 @@ Future<NameListJson> updateJsonTime(
     },
     body: jsonEncode(<String, dynamic>{
       'checkedInTime': time,
-      'check': check,
+      'checkStatus': checkStatus,
     }),
   );
   if (response.statusCode == 200) {
