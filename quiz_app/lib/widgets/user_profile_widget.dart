@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+import 'package:quiz_app/screens/category_screen/category_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../controllers/string_extension.dart';
 
@@ -40,57 +41,62 @@ Widget customText(
 //! Profile Card
 Widget profileCardContent(context) {
   var mediaQueryHeight = MediaQuery.of(context).size.height;
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(25),
-      color: orangeColor,
-    ),
-    margin: EdgeInsets.only(bottom: 30),
-    height: mediaQueryHeight / 6,
-    child: Stack(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Obx(
-              () => controller.imageFile.value == ''
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image(
-                        width: 110,
-                        height: 110,
-                        image: AssetImage('assets/images/avatar.png'),
-                        fit: BoxFit.cover,
+  return InkWell(
+    onTap: (){
+      Get.to(CategoryPage());
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: orangeColor,
+      ),
+      margin: EdgeInsets.only(bottom: 30),
+      height: mediaQueryHeight / 6,
+      child: Stack(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Obx(
+                () => controller.imageFile.value == ''
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image(
+                          width: 110,
+                          height: 110,
+                          image: AssetImage('assets/images/avatar.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.file(
+                          File(controller.imageFile.value),
+                          fit: BoxFit.cover,
+                          width: 110,
+                          height: 110,
+                        ),
                       ),
-                    )
-                  : ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.file(
-                        File(controller.imageFile.value),
-                        fit: BoxFit.cover,
-                        width: 110,
-                        height: 110,
-                      ),
-                    ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Obx(() => customText(
-                    "${controller.firstName.value.toCapitalized()}\n${controller.lastName.value.toCapitalized()}",
-                    30,
-                    true,
-                    false,
-                    Colors.black)),
-                customText('test@test.com', 15, false, false, Colors.black45),
-              ],
-            )
-          ],
-        ),
-        // buildEditIcon(),
-      ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Obx(() => customText(
+                      "${controller.firstName.value.toCapitalized()}\n${controller.lastName.value.toCapitalized()}",
+                      30,
+                      true,
+                      false,
+                      Colors.black)),
+                  customText('test@test.com', 15, false, false, Colors.black45),
+                ],
+              )
+            ],
+          ),
+          // buildEditIcon(),
+        ],
+      ),
     ),
   );
 }
