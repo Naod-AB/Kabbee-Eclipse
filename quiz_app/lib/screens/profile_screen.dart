@@ -15,6 +15,7 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
