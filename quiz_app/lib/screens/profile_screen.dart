@@ -24,7 +24,7 @@ class ProfileScreen extends GetView<ProfileController> {
           children: [
             profileCardContent(context),
             customText('Account', 20, false, false, primaryColor),
-            SizedBox(height: 15),
+            SizedBox(height: 16),
             buildTileGroup(
               Column(
                 children: [
