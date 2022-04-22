@@ -1,16 +1,16 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../profile_screen.dart';
 import '../../../constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:quez_app/constants.dart';
+//import 'package:quez_app/constants.dart';
 
-AppBar QuizeAppbar(String iconUrl) {
+AppBar QuizeAppbar() {
   return AppBar(
-    //backgroundColor: appbarColor,
-    title: Center(
-      child: CircleAvatar(child: SvgPicture.asset(iconUrl)),
-    ),
+    backgroundColor: appbarColor,
+    // leading:  Padding(
+    //   padding: const EdgeInsets.only(left: defaultPadding),
+    //   child: IconButton(icon:Icon(Icons.arrow_back), onPressed: () {  },),
+    // ),
     actions: [
       Padding(
         padding: const EdgeInsets.only(right: defaultPadding / 2),
@@ -21,7 +21,7 @@ AppBar QuizeAppbar(String iconUrl) {
             child: CircleAvatar(
               foregroundImage: AssetImage("assets/images/profile_pic_demo.jpg"),
             )),
-      ),
+      )
     ],
   );
 }

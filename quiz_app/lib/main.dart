@@ -15,13 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: quizAppTheme().copyWith(
-         brightness: Brightness.light,
-      ),
-      initialBinding: ProfileBinding(),
-      home: CategoryPage()//ProfileScreen(),
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: quizAppTheme().copyWith(
+          brightness: Brightness.light,
+        ),
+        initialBinding: ProfileBinding(),
+        // ignore: prefer_const_constructors
+        home: CategoryPage() //ProfileScreen(),
+        );
   }
 }

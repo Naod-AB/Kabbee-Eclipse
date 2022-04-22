@@ -16,34 +16,43 @@ class ChooseType extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: bgColor,
-        appBar: QuizeAppbar(Get.arguments[1]),
-        body: Column(
-          children: [
-            SizedBox(height: defaultPadding,),
-            Text("Select Type ",style: Theme.of(context).primaryTextTheme.headline1),
-            Expanded(
-              
-                child: ListView(
-                     children: [                    
-                    SizedBox(height: defaultPadding*3,),              
-                    ChoiceCard(
-                      imgeSrc: "assets/icons/Practice_test.svg",
-                      cardtext: "Practice Test", 
-                      onpressed: () {  },),
-                    SizedBox(height: defaultPadding*3,),
-                    ChoiceCard(
-                      imgeSrc: "assets/icons/final_text.svg", 
-                      cardtext: "Evalution Exam", 
-                      onpressed: () {  },),
-                    SizedBox(height: defaultPadding*3,),
-                                      ],
-                )
-             ),
-          ],
-        )
-      ),
+          backgroundColor: bgColor,
+          appBar: QuizeAppbar(Get.arguments[1]),
+          body: Column(
+            children: [
+              SizedBox(
+                height: defaultPadding,
+              ),
+              Text("Select Type ",
+                  style: Theme.of(context).primaryTextTheme.headline1),
+              Expanded(
+                  child: ListView(
+                children: [
+                  SizedBox(
+                    height: defaultPadding * 3,
+                  ),
+                  ChoiceCard(
+                    imgPosY: -110,
+                    imgeSrc: "assets/icons/Practice_test.svg",
+                    cardtext: "Practice Test",
+                    onpressed: () {},
+                  ),
+                  SizedBox(
+                    height: defaultPadding * 3,
+                  ),
+                  ChoiceCard(
+                    imgPosY: -110,
+                    imgeSrc: "assets/icons/exam.svg",
+                    cardtext: "Evalution Exam",
+                    onpressed: () {},
+                  ),
+                  SizedBox(
+                    height: defaultPadding * 3,
+                  ),
+                ],
+              )),
+            ],
+          )),
     );
-           
   }
 }
