@@ -15,7 +15,6 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -24,7 +23,7 @@ class ProfileScreen extends GetView<ProfileController> {
           children: [
             profileCardContent(context),
             customText('Account', 20, false, false, primaryColor),
-            SizedBox(height: 16),
+            SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
