@@ -22,7 +22,7 @@ class Courses {
 List<Courses> frontendCourses = [
   Courses(
       id: 1,
-      courseName: "HTML",
+      courseName: "HTML & CSS",
       category: "Front-End",
       icon: "assets/icons/html.svg"),
   Courses(
@@ -32,9 +32,9 @@ List<Courses> frontendCourses = [
       icon: "assets/icons/dart.svg"),
   Courses(
       id: 3,
-      courseName: "Angular",
+      courseName: "Flutter",
       category: "Front-End",
-      icon: "assets/icons/html.svg"),
+      icon: "assets/icons/flutter.svg"),
 ];
 List<Courses> cloudCourse = [
   Courses(
