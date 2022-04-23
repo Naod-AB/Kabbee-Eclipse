@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'controllers/profile_bindings.dart';
-import '../screens/profile_screen.dart';
+//import '../screens/profile_screen.dart';
 import 'screens/category_screen/category_screen.dart';
 import 'theme.dart';
 
