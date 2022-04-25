@@ -20,18 +20,22 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.black,
       body: Column(
         children: [
+           const SizedBox(
+            height: 80,
+          ),
           const Center(
+            
             child: Text(
-              'LOGIN',
+              'Login',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 60,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
           ),
           // ),
           const SizedBox(
-            height: 85,
+            height: 15,
           ),
           Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
             const TextInputField(
@@ -53,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             GestureDetector(
               child: const RoundedButton(
-                buttonName: 'LOG IN',
+                buttonName: 'Login',
                 page:  CategoryPage(),
               ),
             ),

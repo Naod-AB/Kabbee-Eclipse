@@ -10,7 +10,7 @@ import '../controllers/string_extension.dart';
 import '../controllers/profile_controllers.dart';
 import 'package:image_picker/image_picker.dart';
 import '../screens/Profile/edit_profile_screen.dart';
-import '../screens/final_Practice_score.dart';
+import '../screens/Score/final_practice_score.dart';
 
 ProfileController controller = Get.find();
 
@@ -63,7 +63,7 @@ Widget profileCardContent(context) {
                         child: const Image(
                           width: 110,
                           height: 110,
-                          image: const AssetImage('assets/images/avatar.png'),
+                          image: AssetImage('assets/images/avatar.png'),
                           fit: BoxFit.cover,
                         ),
                       )
