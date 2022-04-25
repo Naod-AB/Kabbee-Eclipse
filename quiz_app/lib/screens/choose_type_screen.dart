@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
-import '../common_components/default_card.dart';
-import 'components/appbar.dart';
+import '../../widgets/common_components/appbar.dart';
+import '../../widgets/common_components/default_card.dart';
 
 class ChooseType extends StatelessWidget {
   const ChooseType({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class ChooseType extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(Get.arguments[1]),
+          appBar: quizeAppbar2(Get.arguments[1]),
           body: Column(
             children: [
               const SizedBox(

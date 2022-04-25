@@ -1,15 +1,7 @@
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import '../../widgets/pallete.dart';
-
 import 'login_screen.dart';
-//import 'package:google_fonts/google_fonts.dart';
-//import 'package:quizflash/screens/Login_screen.dart';
-
-//import 'login-screen.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -24,10 +16,12 @@ class _SplashState extends State<Splash> {
     //todo:implement initState
     super.initState();
     Timer(const Duration(milliseconds: 4000), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -45,7 +39,7 @@ class _SplashState extends State<Splash> {
           ),
 
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
 
             //padding: EdgeInsets.only(top: 100, bottom: 20),
             child: SizedBox(
@@ -78,10 +72,10 @@ class _SplashState extends State<Splash> {
                         boxShadow: [
                           BoxShadow(
                             color:
-                                Color.fromARGB(146, 6, 23, 46).withOpacity(0.3),
+                                const Color.fromARGB(146, 6, 23, 46).withOpacity(0.3),
                             spreadRadius: 1,
                             blurRadius: 7,
-                            offset: Offset(0.30, 250.0),
+                            offset: const Offset(0.30, 250.0),
                           ),
                         ],
                       ),

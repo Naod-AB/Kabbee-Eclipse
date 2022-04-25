@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Models/courses.dart';
 import '../../constants.dart';
-import '../choose_type/choose_type_screen.dart';
-import '../common_components/default_card.dart';
+import 'choose_type_screen.dart';
+import '../../widgets/common_components/appbar.dart';
+import '../../widgets/common_components/default_card.dart';
+import '../../Models/courses.dart';
 
-import '../common_components/appbar.dart';
-
-class FrontEndChoices extends StatelessWidget {
-  const FrontEndChoices({Key? key}) : super(key: key);
+class BackendChoices extends StatelessWidget {
+  const BackendChoices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(),
+          appBar: quizeAppbar(),
           body: Column(
             children: [
               const SizedBox(
@@ -28,17 +27,17 @@ class FrontEndChoices extends StatelessWidget {
                 child: ListView.separated(
                   padding:
                       const EdgeInsets.symmetric(vertical: defaultPadding * 3),
-                  itemCount: frontendCourses.length,
+                  itemCount: backCourse.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                        imgPosY: -100,
-                        imgeSrc: frontendCourses[index].icon!,
-                        cardtext: frontendCourses[index].courseName,
+                        imgPosY: -110,
+                        imgeSrc: backCourse[index].icon!,
+                        cardtext: backCourse[index].courseName,
                         onpressed: () {
                           Get.to(const ChooseType(), arguments: [
-                            frontendCourses[index].id,
-                            frontendCourses[index].icon
+                            backCourse[index].id,
+                            backCourse[index].icon
                           ]);
                         });
                   },

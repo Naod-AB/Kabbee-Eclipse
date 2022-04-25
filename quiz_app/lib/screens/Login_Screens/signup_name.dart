@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quiz_app/screens/category_screen/category_screen.dart';
-
+import 'package:quiz_app/screens/Login_Screens/login_screen.dart';
 import '../../widgets/user_profile_widget.dart';
 import '../../widgets/widgets.dart';
 
@@ -10,7 +9,7 @@ class SignupName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size  size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 34, 34, 34),
@@ -21,7 +20,6 @@ class SignupName extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50.0),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children: [
@@ -70,53 +68,14 @@ class SignupName extends StatelessWidget {
                   height: 138,
                 ),
                 GestureDetector(
-                  child: RoundedButton(
-                    buttonName: 'LOG IN',
-                    page: const CategoryPage(),
+                  child: const RoundedButton(
+                    buttonName: 'Register',
+                    page:  LoginPage(),
                   ),
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                /*Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
-                  child: Container(
-                    height: size.height * 0.08,
-                    width: size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[500]!.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Icon(
-                            Icons.lock,
-                            size: 28,
-                            color: Color(0x64FFA500),
-                          ),
-                        ),
-                        hintText: 'Confirm password',
-                        hintStyle: TextStyle(
-                          //fontFamily: cai
-                          fontSize: 16,
-                          color: Colors.white38,
-                          // fontFamily: 'Cairo',
-                          //fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      obscureText: true,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                )*/
               ],
             ),
           ],

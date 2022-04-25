@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
-import 'package:quiz_app/screens/Login_Pages/splashnew.dart';
 import 'controllers/profile_bindings.dart';
+import 'screens/Login_Screens/splash_screen.dart';
 import 'theme.dart';
 
 void main() {

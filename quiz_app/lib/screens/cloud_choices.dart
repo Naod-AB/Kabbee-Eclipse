@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants.dart';
-import '../choose_type/choose_type_screen.dart';
-import '../common_components/default_card.dart';
-
-import '../common_components/appbar.dart';
+import '../../widgets/common_components/appbar.dart';
+import '../../widgets/common_components/default_card.dart';
 import '../../Models/courses.dart';
+import 'choose_type_screen.dart';
 
 class CloudChoices extends StatelessWidget {
   const CloudChoices({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class CloudChoices extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(),
+          appBar: quizeAppbar(),
           body: Column(
             children: [
               const SizedBox(

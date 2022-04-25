@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
-import 'package:quiz_app/screens/category_screen/category_screen.dart';
-import 'package:quiz_app/screens/final%20Practice&Score.dart';
+import 'package:quiz_app/screens/final_practice_score.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../controllers/string_extension.dart';
 

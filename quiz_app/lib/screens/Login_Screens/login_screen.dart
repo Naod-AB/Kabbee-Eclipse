@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/screens/category_screen.dart';
 
 import '../../widgets/pallete.dart';
 import '../../widgets/widgets.dart';
@@ -52,9 +53,9 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             GestureDetector(
-              child: RoundedButton(
+              child: const RoundedButton(
                 buttonName: 'LOG IN',
-                page: SignupEmail(),
+                page:  CategoryPage(),
               ),
             ),
             const SizedBox(
@@ -74,8 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               InkWell(
                 onTap: () {
-                  // Navigator.pushNamed(context, '/Login1');
-                  Get.to(() => SignupEmail());
+                  Get.to(() => const SignupEmail());
                 },
                 child: const Text(
                   'Sign up',

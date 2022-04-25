@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/screens/cloud_services/cloud_choices.dart';
 import '../../constants.dart';
-import '../common_components/default_card.dart';
-import '../front_end_choices/choose_langugae_screen.dart';
-import '../Back_End/back_end_choices.dart';
+import '../../widgets/common_components/appbar.dart';
+import '../../widgets/common_components/default_card.dart';
+import 'back_end_choices.dart';
+import 'choose_langugae_screen.dart';
+import 'cloud_choices.dart';
 
-import '../common_components/appbar.dart';
+
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class CategoryPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(),
+          appBar: quizeAppbar(),
           body: Center(
             child: SingleChildScrollView(
               child: Column(
