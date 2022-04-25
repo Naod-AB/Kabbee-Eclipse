@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../constants.dart';
-import 'choose_type_screen.dart';
+import '../../Models/courses.dart';
+import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
-import '../../Models/courses.dart';
+import 'choose_type_screen.dart';
 
-class BackendChoices extends StatelessWidget {
-  const BackendChoices({Key? key}) : super(key: key);
+
+class FrontEndChoices extends StatelessWidget {
+  const FrontEndChoices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +28,17 @@ class BackendChoices extends StatelessWidget {
                 child: ListView.separated(
                   padding:
                       const EdgeInsets.symmetric(vertical: defaultPadding * 3),
-                  itemCount: backCourse.length,
+                  itemCount: frontendCourses.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                        imgPosY: -110,
-                        imgeSrc: backCourse[index].icon!,
-                        cardtext: backCourse[index].courseName,
+                        imgPosY: -100,
+                        imgeSrc: frontendCourses[index].icon!,
+                        cardtext: frontendCourses[index].courseName,
                         onpressed: () {
                           Get.to(const ChooseType(), arguments: [
-                            backCourse[index].id,
-                            backCourse[index].icon
+                            frontendCourses[index].id,
+                            frontendCourses[index].icon
                           ]);
                         });
                   },

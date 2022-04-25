@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/screens/category_screen.dart';
-
 import '../../widgets/pallete.dart';
 import '../../widgets/widgets.dart';
+import '../Category/category_screen.dart';
 import 'signup_email.dart';
 
 class LoginPage extends StatefulWidget {

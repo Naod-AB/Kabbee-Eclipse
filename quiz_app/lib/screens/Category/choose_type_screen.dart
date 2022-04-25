@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../constants.dart';
+import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 

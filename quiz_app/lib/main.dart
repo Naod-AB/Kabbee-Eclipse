@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'controllers/profile_bindings.dart';
-import 'screens/Login_Screens/splash_screen.dart';
-import 'theme.dart';
+import 'screens/Login/splash_screen.dart';
+import 'widgets/theme.dart';
 
 void main() {
   runApp(const MyApp());

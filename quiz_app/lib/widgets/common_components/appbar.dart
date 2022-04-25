@@ -4,12 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-import '../../../constants.dart';
-
-import '../../screens/profile_screen.dart';
+import '../../screens/Profile/profile_screen.dart';
+import '../theme.dart';
 import '../../widgets/user_profile_widget.dart';
-
 
 AppBar quizeAppbar() {
   return AppBar(
@@ -47,7 +44,6 @@ AppBar quizeAppbar2(String iconUrl) {
     ],
   );
 }
-
 
 Widget profilePic() {
   return Obx(

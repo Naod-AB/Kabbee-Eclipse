@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/user_profile_widget.dart';
+import '../../widgets/user_profile_widget.dart';
+
 
 class MyScoresScreen extends StatelessWidget {
   const MyScoresScreen({Key? key}) : super(key: key);

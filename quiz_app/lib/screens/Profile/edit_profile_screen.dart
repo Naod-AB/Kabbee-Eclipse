@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/profile_controllers.dart';
-import '../widgets/user_profile_widget.dart';
+
+import '../../controllers/profile_controllers.dart';
+import '../../widgets/user_profile_widget.dart';
+
 
 class EditProfileScreen extends GetView<ProfileController> {
   const EditProfileScreen({Key? key}) : super(key: key);

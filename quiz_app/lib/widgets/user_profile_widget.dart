@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
-import 'package:quiz_app/screens/final_practice_score.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../controllers/string_extension.dart';
-
 import '../controllers/profile_controllers.dart';
-import '../screens/edit_profile_screen.dart';
 import 'package:image_picker/image_picker.dart';
+import '../screens/Profile/edit_profile_screen.dart';
+import '../screens/final_Practice_score.dart';
 
 ProfileController controller = Get.find();
 

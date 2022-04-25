@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quiz_app/screens/Login_Screens/login_screen.dart';
 import '../../widgets/user_profile_widget.dart';
 import '../../widgets/widgets.dart';
+import 'login_screen.dart';
 
 class SignupName extends StatelessWidget {
   const SignupName({Key? key}) : super(key: key);
