@@ -3,10 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../widgets/widgets.dart';
 
-import 'login2.dart';
+import 'Signup_password.dart';
 
-class Login1 extends StatelessWidget {
-  const Login1({Key? key}) : super(key: key);
+class SignupEmail extends StatelessWidget {
+  const SignupEmail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class Login1 extends StatelessWidget {
                 ),
                 RoundedButton(
                   buttonName: 'NEXT',
-                  page: Login2(),
+                  page: SignupPassword(),
                 ),
                 const SizedBox(
                   height: 55,
