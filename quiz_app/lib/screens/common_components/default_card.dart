@@ -1,16 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constants.dart';
 
-//import 'package:quez_app/constants.dart';
 class ChoiceCard extends StatelessWidget {
   final String imgeSrc, cardtext;
   double? imgPosX, textPosx, imgPosY, textPosy, imgheig, imgwid;
-  //double? test = 300;
-  //double  screenWidth= MediaQuery.of(context).size.width
-  final VoidCallback
-      onpressed; // this will be usefull when we using the Inkwell for Onpress
+
+  final VoidCallback onpressed;
   ChoiceCard(
       {Key? key,
       required this.imgeSrc,
@@ -31,7 +30,7 @@ class ChoiceCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: defaultPadding * 1.5),
       child: Stack(
-        overflow: Overflow.visible,
+        clipBehavior: Clip.none,
         children: [
           InkWell(
             onTap: onpressed,
@@ -42,21 +41,6 @@ class ChoiceCard extends StatelessWidget {
                   color: pColor, borderRadius: BorderRadius.circular(25)),
             ),
           ),
-          // Positioned(
-          //     top: 15,
-          //     left: 15,
-          //     child: Container(
-          //       width: 85,
-          //       height: 80,
-          //       decoration: BoxDecoration(
-          //         border: Border.all(style: BorderStyle.solid),
-          //         borderRadius: BorderRadius.circular(40)
-          //       ),
-          //       child: Center(
-          //         child: Text("10/10",style:TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
-          //       ),
-          //     )
-          //   ),
           Positioned(
               height: imgheig,
               width: imgwid,

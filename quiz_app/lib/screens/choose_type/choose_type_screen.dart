@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:quez_app/Models/courses.dart';
-// import 'package:quez_app/constants.dart';
-// import 'package:get/get.dart';
-// import 'package:quez_app/screens/common_components/default_card.dart';
-
 import '../../constants.dart';
 import '../common_components/default_card.dart';
 import 'components/appbar.dart';
@@ -20,7 +15,7 @@ class ChooseType extends StatelessWidget {
           appBar: QuizeAppbar(Get.arguments[1]),
           body: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: defaultPadding,
               ),
               Text("Select Type ",
@@ -28,7 +23,7 @@ class ChooseType extends StatelessWidget {
               Expanded(
                   child: ListView(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
@@ -37,7 +32,7 @@ class ChooseType extends StatelessWidget {
                     cardtext: "Practice Test",
                     onpressed: () {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
@@ -46,7 +41,7 @@ class ChooseType extends StatelessWidget {
                     cardtext: "Evalution Exam",
                     onpressed: () {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                 ],

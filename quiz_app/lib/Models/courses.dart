@@ -11,12 +11,6 @@ class Courses {
       this.recommnedationLinks,
       required this.category,
       this.icon});
-
-  // Courses(id: 5, courseName: "Spring-boot",category: "Front-End"),
-  // Courses(id: 6, courseName: "NodeJs",category: "Back-End"),
-  // Courses(id: 7, courseName: "AWS",category: "Cloud-Computing"),
-  // Courses(id: 8, courseName: "PHP",category: "Back-End"),
-
 }
 
 List<Courses> frontendCourses = [

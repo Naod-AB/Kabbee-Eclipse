@@ -5,15 +5,8 @@ import '../../constants.dart';
 import '../common_components/default_card.dart';
 import '../front_end_choices/choose_langugae_screen.dart';
 import '../Back_End/back_end_choices.dart';
-// import 'component/appbar.dart';
+
 import '../common_components/appbar.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:quez_app/constants.dart';
-// import 'package:quez_app/screens/category_screen/component/appbar.dart';
-// //import 'package:quez_app/screens/common_componens/default_card.dart'
-// import 'package:quez_app/screens/common_components/default_card.dart';
-// import 'package:quez_app/screens/front_end_choices/choose_langugae_screen.dart';
-// //import 'package:quez_app/screens/front_end_choices/choose_langugae_screen.dart'dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
@@ -28,12 +21,12 @@ class CategoryPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding,
                   ),
                   Text("Select Category",
                       style: Theme.of(context).primaryTextTheme.headline1),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
@@ -42,10 +35,10 @@ class CategoryPage extends StatelessWidget {
                     imgeSrc: "assets/icons/front end icons_small.svg",
                     cardtext: "Front-End",
                     onpressed: () {
-                      Get.to(FrontEndChoices());
+                      Get.to(const FrontEndChoices());
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
@@ -54,10 +47,10 @@ class CategoryPage extends StatelessWidget {
                     imgPosX: 185,
                     cardtext: "Cloud-Service",
                     onpressed: () {
-                      Get.to(CloudChoices());
+                      Get.to(const CloudChoices());
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
@@ -67,7 +60,7 @@ class CategoryPage extends StatelessWidget {
                     imgeSrc: "assets/icons/logos_nodejs-icon_small.svg",
                     cardtext: "Back-End",
                     onpressed: () {
-                      Get.to(BackendChoices());
+                      Get.to(const BackendChoices());
                     },
                   )
                 ],

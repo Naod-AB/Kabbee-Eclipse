@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/screens/profile_screen.dart';
+
+import 'common_components/appbar.dart';
 
 class FinalScore extends StatelessWidget {
+  const FinalScore({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 17, 17, 17),
-          actions: [
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
-                },
-                child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/avatar.png'))),
-            Padding(
-                padding: EdgeInsets.only(
-              right: 10,
-            )),
-          ],
-        ),
+        // appBar: AppBar(
+        //   backgroundColor: Color.fromARGB(255, 17, 17, 17),
+        //   actions: [
+        //     GestureDetector(
+        //         onTap: () {
+        //           Navigator.push(context,
+        //               MaterialPageRoute(builder: (context) => ProfileScreen()));
+        //         },
+        //         child: CircleAvatar(
+        //             backgroundImage: AssetImage('assets/images/avatar.png'))),
+        //     Padding(
+        //         padding: EdgeInsets.only(
+        //       right: 10,
+        //     )),
+        //   ],
+        // ),
+        appBar: QuizeAppbar(),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/photo.jpg"),
               fit: BoxFit.cover,
@@ -32,7 +36,7 @@ class FinalScore extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
+              const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
               Title(
                 color: Colors.white,
                 child: Text(
@@ -44,11 +48,11 @@ class FinalScore extends StatelessWidget {
                       fontFamily: GoogleFonts.roboto().fontFamily),
                 ),
               ),
-              Padding(padding: EdgeInsets.all(20)),
+              const Padding(padding: EdgeInsets.all(20)),
               Container(
                 width: 250.0,
                 height: 250.0,
-                decoration: new BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.transparent,
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white),
@@ -56,7 +60,7 @@ class FinalScore extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text(
                       '10/10',
                       style: TextStyle(
@@ -67,7 +71,7 @@ class FinalScore extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.all(20)),
+              const Padding(padding: EdgeInsets.all(20)),
               Visibility(
                 visible: true,
                 child: ElevatedButton(
@@ -77,12 +81,12 @@ class FinalScore extends StatelessWidget {
                       fixedSize: const Size(200, 40),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
-                      side: BorderSide(
+                      side: const BorderSide(
                           color: Color.fromARGB(255, 255, 165, 0), width: 1.5),
                       primary: Colors.transparent),
                 ),
               ),
-              Padding(padding: EdgeInsets.all(15)),
+              const Padding(padding: EdgeInsets.all(15)),
               ElevatedButton(
                 child: const Text(
                   'DONE',
@@ -92,7 +96,7 @@ class FinalScore extends StatelessWidget {
                     fixedSize: const Size(200, 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
-                    primary: Color.fromARGB(255, 255, 165, 0)),
+                    primary: const Color.fromARGB(255, 255, 165, 0)),
               ),
             ],
           ),

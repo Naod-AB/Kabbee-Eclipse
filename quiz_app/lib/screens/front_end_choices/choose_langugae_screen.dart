@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:quez_app/Models/courses.dart';
-// import 'package:quez_app/constants.dart';
-// import 'package:get/get.dart';
-// import 'package:quez_app/screens/choose_type/choose_type_screen.dart';
-// import 'package:quez_app/screens/front_end_choices/component/appbar.dart';
 
 import '../../Models/courses.dart';
 import '../../constants.dart';
 import '../choose_type/choose_type_screen.dart';
 import '../common_components/default_card.dart';
-// import 'component/appbar.dart';
+
 import '../common_components/appbar.dart';
-//import '../category_screen/component/appbar.dart';
 
 class FrontEndChoices extends StatelessWidget {
   const FrontEndChoices({Key? key}) : super(key: key);
@@ -25,7 +19,7 @@ class FrontEndChoices extends StatelessWidget {
           appBar: QuizeAppbar(),
           body: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: defaultPadding,
               ),
               Text("Select Language",
@@ -42,7 +36,7 @@ class FrontEndChoices extends StatelessWidget {
                         imgeSrc: frontendCourses[index].icon!,
                         cardtext: frontendCourses[index].courseName,
                         onpressed: () {
-                          Get.to(ChooseType(), arguments: [
+                          Get.to(const ChooseType(), arguments: [
                             frontendCourses[index].id,
                             frontendCourses[index].icon
                           ]);
@@ -54,29 +48,6 @@ class FrontEndChoices extends StatelessWidget {
                     );
                   },
                 ),
-                // child: Column(
-                // children: [
-                //   SizedBox(height: defaultPadding,),
-                //   Text("Select Language",style: Theme.of(context).primaryTextTheme.headline1),
-
-                //   SizedBox(height: defaultPadding*3,),
-                //   ChoiceCard(
-                //     imgeSrc: "assets/icons/html.svg",
-                //     cardtext: "HTML",
-                //     onpressed: () {  },),
-                //   SizedBox(height: defaultPadding*3,),
-                //   ChoiceCard(
-                //     imgeSrc: "assets/icons/dart.svg",
-                //     cardtext: "Dart",
-                //     onpressed: () {  },),
-                //   SizedBox(height: defaultPadding*3,),
-                //   ChoiceCard(
-                //     imgeSrc: "assets/icons/flutter.svg",
-                //     cardtext: "Flutter",
-                //     onpressed: () {  },)
-                // ],
-
-                // ),
               ),
             ],
           )),

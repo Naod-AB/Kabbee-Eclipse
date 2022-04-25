@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
 
 import '../controllers/profile_controllers.dart';
@@ -10,7 +8,7 @@ import 'package:get/get.dart';
 import 'my_scores_screen.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +17,11 @@ class ProfileScreen extends GetView<ProfileController> {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             profileCardContent(context),
             customText('Account', 20, false, false, primaryColor),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
@@ -61,9 +59,9 @@ class ProfileScreen extends GetView<ProfileController> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             customText('Other', 20, false, false, primaryColor),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
@@ -85,8 +83,8 @@ class ProfileScreen extends GetView<ProfileController> {
                       customText(
                           'Achievements', 13, false, false, secondaryColor),
                       GestureDetector(
-                        onTap: () => Get.to(() => MyScoresScreen()),
-                        child: Icon(
+                        onTap: () => Get.to(() => const MyScoresScreen()),
+                        child: const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                         ),
