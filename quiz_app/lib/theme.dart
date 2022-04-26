@@ -8,6 +8,7 @@ ThemeData quizAppTheme() {
   const appbarColor = Color(0xFF111111);
   const bgColor = Color(0xFF000000);
   const textColor = Color(0xFFFFFFFF);
+  
   final ThemeData base = ThemeData(
     scaffoldBackgroundColor: bgColor,
     appBarTheme: appbarTheme(),
