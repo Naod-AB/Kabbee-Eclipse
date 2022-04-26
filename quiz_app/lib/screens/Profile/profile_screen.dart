@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../controllers/profile_controllers.dart';
-import '../controllers/string_extension.dart';
-import '../widgets/user_profile_widget.dart';
+import '../../controllers/profile_controllers.dart';
+import '../../controllers/string_extension.dart';
+import '../../widgets/user_profile_widget.dart';
 import 'package:get/get.dart';
-
 import 'my_scores_screen.dart';
+
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({Key? key}) : super(key: key);

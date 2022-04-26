@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Models/courses.dart';
-import '../../constants.dart';
-import '../choose_type/choose_type_screen.dart';
-import '../common_components/default_card.dart';
+import '../../widgets/theme.dart';
+import '../../widgets/common_components/appbar.dart';
+import '../../widgets/common_components/default_card.dart';
+import 'choose_type_screen.dart';
 
-import '../common_components/appbar.dart';
 
 class FrontEndChoices extends StatelessWidget {
   const FrontEndChoices({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class FrontEndChoices extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(),
+          appBar: quizeAppbar(),
           body: Column(
             children: [
               const SizedBox(

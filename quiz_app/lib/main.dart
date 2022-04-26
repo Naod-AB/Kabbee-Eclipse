@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
-import 'package:quiz_app/screens/Login_Pages/splashnew.dart';
 import 'controllers/profile_bindings.dart';
-import 'screens/category_screen/category_screen.dart';
-import 'theme.dart';
+import 'screens/Login/splash_screen.dart';
+import 'widgets/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Quiz APP',
       debugShowCheckedModeBanner: false,
       theme: quizAppTheme().copyWith(
         brightness: Brightness.light,

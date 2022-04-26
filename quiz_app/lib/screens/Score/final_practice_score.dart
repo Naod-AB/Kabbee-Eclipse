@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'common_components/appbar.dart';
+import '../../widgets/common_components/appbar.dart';
+
+
+
 
 class FinalScore extends StatelessWidget {
   const FinalScore({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class FinalScore extends StatelessWidget {
         //     )),
         //   ],
         // ),
-        appBar: QuizeAppbar(),
+        appBar: quizeAppbar(),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
