@@ -69,7 +69,7 @@ class SignupPassword extends StatelessWidget {
                     inputAction: TextInputAction.next,
                   ),
                   const SizedBox(
-                    height: 221,
+                    height: 225,
                   ),
                   GestureDetector(
                     child: RoundedButton(
