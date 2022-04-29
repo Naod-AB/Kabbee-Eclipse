@@ -1,34 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:quiz_app/Models/Questions.dart';
 
 void main() {
   runApp(QuestionSample2());
 }
 
+class RadioModel {
+  int id;
+  final String buttonText;
+  final String text;
+
+  RadioModel(
+    this.id,
+    this.buttonText,
+    this.text,
+  );
+}
+
 class QuestionControl extends GetxController {
-  RxList sampleData = [].obs;
-  RxList groupValue = [-1].obs;
-  RxList value = [].obs;
+  List questions = [
+    {
+      "id": 1,
+      "question":
+          "Flutter is an open-source UI software development kit created by ______",
+      "options": ['Apple', 'Google', 'Facebook', 'Microsoft'],
+      "answer": "Google",
+    },
+    {
+      "id": 2,
+      "question": "When google release Flutter.",
+      "options": ['Jun 2017', 'July 2017', 'May 2017', 'May 2018'],
+      "answer": "Jun 2017",
+    },
+    {
+      "id": 3,
+      "question": "A memory location that holds a single letter or number.",
+      "options": ['Double', 'Int', 'Char', 'Word'],
+      "answer": "Char",
+    },
+    {
+      "id": 4,
+      "question": "What command do you use to output data to the screen?",
+      "options": ['Cin', 'Count', 'Cout', 'Output'],
+      "answer": "Output",
+    },
+  ].obs;
+
+  RxList groupValue = [-1, 0, 5, 9, 13].obs;
+  RxList value = [
+    [0, 1, 2, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+  ].obs;
   RxInt qnIndex = 1.obs;
-  @override
-  void onInit() {
-    sampleData.add(RadioModel(false, 'A', 'April 18', 'text1'));
-    sampleData.add(RadioModel(false, 'B', 'April 17', 'text2'));
-    sampleData.add(RadioModel(false, 'C', 'April 16', 'text3'));
-    sampleData.add(RadioModel(false, 'D', 'April 15', 'text4'));
-
-    groupValue.add(0);
-    groupValue.add(5);
-    groupValue.add(9);
-    groupValue.add(13);
-
-    value.add([0, 1, 2, 4]);
-    value.add([5, 6, 7, 8]);
-    value.add([9, 10, 11, 12]);
-    value.add([13, 14, 15, 16]);
-
-    super.onInit();
-  }
 }
 
 class QuestionSample2 extends StatelessWidget {
@@ -37,6 +63,7 @@ class QuestionSample2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('sample_data.length == ${controller.questions.length}');
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -51,7 +78,7 @@ class QuestionSample2 extends StatelessWidget {
                 () => Text(
                   controller.qnIndex.toString() +
                       '/' +
-                      controller.sampleData.length.toString(),
+                      controller.questions.length.toString(),
                   style: TextStyle(fontSize: 30),
                 ),
               ),
@@ -61,22 +88,28 @@ class QuestionSample2 extends StatelessWidget {
               //page view
 
               SizedBox(
-                height: 100.0 * controller.sampleData.length,
+                height: 500.0,
                 // color: Colors.green,
                 child: PageView.builder(
-                    itemCount: controller.sampleData.length,
+                    itemCount: controller.questions.length,
                     onPageChanged: (y) {
+                      print(
+                          'sample_data.length == ${controller.questions.length}');
                       controller.qnIndex.value = y + 1;
                     },
                     itemBuilder: (context, snapshot) {
+                      var x = controller.questions[snapshot]['options'];
+                      // print('options list${x}');
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Text(controller.questions[snapshot]['question']
+                              .toString()),
                           SizedBox(
-                            height: 80.0 * controller.sampleData.length,
+                            height: 280.0,
                             // choice cards
                             child: ListView.builder(
-                              itemCount: controller.sampleData.length, //4
+                              itemCount: 4, //4
                               itemBuilder: (context, index) => ButtonBar(
                                 alignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -85,27 +118,27 @@ class QuestionSample2 extends StatelessWidget {
                                     color: Colors.black12,
                                     child: Obx(
                                       () => RadioListTile<int>(
-                                        title: Row(
-                                          children: [
-                                            Text(controller
-                                                .sampleData[index].buttonText),
-                                            // Spacer(),
-                                            SizedBox(width: 20),
-                                            Text(controller
-                                                .sampleData[index].text),
-                                            Spacer(),
-                                          ],
-                                        ),
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        groupValue: controller.groupValue[
-                                            snapshot], // group value[0] 0
-                                        value: controller.value[index]
-                                            [snapshot], //value[0] 0,1
-                                        onChanged: (newValue) =>
+                                          title: Row(
+                                            children: [
+                                              Text(x[index].toString()),
+                                              Spacer(),
+                                              SizedBox(width: 20),
+                                              // Text(controller
+                                              //     .questions[index].text),
+                                              Spacer(),
+                                            ],
+                                          ),
+                                          controlAffinity:
+                                              ListTileControlAffinity.trailing,
+                                          groupValue: controller.groupValue[
+                                              snapshot], // group value[0] 0
+                                          value: controller.value[snapshot]
+                                              [index], //value[0] 0,1
+                                          onChanged: (newValue) {
                                             controller.groupValue[snapshot] =
-                                                newValue as int,
-                                      ),
+                                                newValue as int;
+                                            print(x[index].toString());
+                                          }),
                                     ),
                                   ),
                                 ],
@@ -114,7 +147,7 @@ class QuestionSample2 extends StatelessWidget {
                           ),
 
                           // display done btn
-                          controller.sampleData.length - 1 == snapshot
+                          controller.questions.length - 1 == snapshot
                               ? ElevatedButton(
                                   onPressed: () {}, child: const Text('Done'))
                               : Container(),
@@ -135,17 +168,17 @@ class QuestionSample2 extends StatelessWidget {
 //   _QuestionWidgetState createState() => _QuestionWidgetState();
 // }
 // class _QuestionWidgetState extends State<QuestionsSample> {
-//   List<RadioModel> sampleData = [];
+//   List<RadioModel> questions = [];
 //   List<int> groupValue = [];
 //   List<List<int>> value = [];
 //   int qnIndex = 1;
 //   @override
 //   void initState() {
 //     super.initState();
-//     sampleData.add(RadioModel(false, 'A', 'April 18', 'text1'));
-//     sampleData.add(RadioModel(false, 'B', 'April 17', 'text2'));
-//     sampleData.add(RadioModel(false, 'C', 'April 16', 'text3'));
-//     sampleData.add(RadioModel(false, 'D', 'April 15', 'text4'));
+//     questions.add(RadioModel(false, 'A', 'April 18', 'text1'));
+//     questions.add(RadioModel(false, 'B', 'April 17', 'text2'));
+//     questions.add(RadioModel(false, 'C', 'April 16', 'text3'));
+//     questions.add(RadioModel(false, 'D', 'April 15', 'text4'));
 //     groupValue.add(0);
 //     groupValue.add(5);
 //     groupValue.add(9);
@@ -172,7 +205,7 @@ class QuestionSample2 extends StatelessWidget {
 //             mainAxisAlignment: MainAxisAlignment.center,
 //             children: [
 //               Text(
-//                 qnIndex.toString() + '/' + sampleData.length.toString(),
+//                 qnIndex.toString() + '/' + questions.length.toString(),
 //                 style: TextStyle(fontSize: 30),
 //               ),
 //               //page view
@@ -180,7 +213,7 @@ class QuestionSample2 extends StatelessWidget {
 //                 height: 500,
 //                 // color: Colors.green,
 //                 child: PageView.builder(
-//                     itemCount: sampleData.length,
+//                     itemCount: questions.length,
 //                     onPageChanged: (y) {
 //                       setState(() {
 //                         qnIndex = y + 1;
@@ -191,10 +224,10 @@ class QuestionSample2 extends StatelessWidget {
 //                         mainAxisAlignment: MainAxisAlignment.center,
 //                         children: [
 //                           SizedBox(
-//                             height: 80.0 * sampleData.length,
+//                             height: 80.0 * questions.length,
 //                             // choice cards
 //                             child: ListView.builder(
-//                               itemCount: sampleData.length, //4
+//                               itemCount: questions.length, //4
 //                               itemBuilder: (context, index) => ButtonBar(
 //                                 alignment: MainAxisAlignment.center,
 //                                 children: <Widget>[
@@ -204,9 +237,9 @@ class QuestionSample2 extends StatelessWidget {
 //                                     child: RadioListTile(
 //                                       title: Row(
 //                                         children: [
-//                                           Text(sampleData[index].buttonText),
+//                                           Text(questions[index].buttonText),
 //                                           Spacer(),
-//                                           Text(sampleData[index].text),
+//                                           Text(questions[index].text),
 //                                           Spacer(),
 //                                         ],
 //                                       ),
@@ -226,7 +259,7 @@ class QuestionSample2 extends StatelessWidget {
 //                             ),
 //                           ),
 //                           // display done btn
-//                           sampleData.length - 1 == snapshot
+//                           questions.length - 1 == snapshot
 //                               ? ElevatedButton(
 //                                   onPressed: () {}, child: const Text('Done'))
 //                               : Container(),
@@ -241,18 +274,3 @@ class QuestionSample2 extends StatelessWidget {
 //     );
 //   }
 // }
-
-class RadioModel {
-  bool isSelected;
-  final String buttonText;
-  final String text;
-  final String text1;
-  String? answer;
-
-  RadioModel(
-    this.isSelected,
-    this.buttonText,
-    this.text,
-    this.text1,
-  );
-}
