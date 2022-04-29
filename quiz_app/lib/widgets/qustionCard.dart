@@ -24,7 +24,6 @@ class QuestionCard extends StatelessWidget {
           height: 500,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 88, 79, 79),
-            //color: Color.fromARGB(255, 237, 4, 4),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
@@ -34,19 +33,7 @@ class QuestionCard extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               Column(children: [
-                // ...List.generate(
-                //     question.options!.toList().length,
-                //     (index) => Option(
-                //         text: question.options![index].toString(),
-                //         index: index,
-                //         press: () {}))
-                // for (var i = 0; i < question.options.length; i++)
-                // Option(question: question.options[i],index: i)
-                Option(question: question.options)
-                // question.options[i].((choice) =>  Text(choice)).toList(),
-
-                // .map((choices) => Option(question: choices.options))
-                // .toList()
+                Option(question: question.options),
               ])
             ],
           ),
