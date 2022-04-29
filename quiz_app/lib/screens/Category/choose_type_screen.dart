@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
+import '../question_screen.dart';
 
 class ChooseType extends StatelessWidget {
   const ChooseType({Key? key}) : super(key: key);
@@ -30,7 +32,9 @@ class ChooseType extends StatelessWidget {
                     imgPosY: -110,
                     imgeSrc: "assets/icons/Practice_test.svg",
                     cardtext: "Practice Test",
-                    onpressed: () {},
+                    onpressed: () {
+                      Get.to(QuestionSample2());
+                    },
                   ),
                   const SizedBox(
                     height: defaultPadding * 3,

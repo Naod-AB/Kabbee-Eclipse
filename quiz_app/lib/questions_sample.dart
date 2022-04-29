@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-// import 'package:quiz_app/Models/Questions.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
+import 'package:quiz_app/widgets/common_components/appbar.dart';
+
+import 'widgets/pallete.dart';
+import 'widgets/rounded_button.dart';
 
 void main() {
   runApp(QuestionSample2());
@@ -61,122 +66,144 @@ class QuestionControl extends GetxController {
 
 class QuestionSample2 extends StatelessWidget {
   QuestionSample2({Key? key}) : super(key: key);
+
   final QuestionControl controller = Get.put(QuestionControl());
+  ProfileController _questionController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("ListItem"),
-        ),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        appBar: quizeAppbar(),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Obx(
                 () => Text(
-                  controller.qnIndex.toString() +
-                      '/' +
-                      controller.questions.length.toString(),
-                  style: TextStyle(fontSize: 30),
-                ),
+                    controller.qnIndex.toString() +
+                        '/' +
+                        controller.questions.length.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(color: Colors.white)),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              //page view
-
+              SizedBox(height: 20),
               SizedBox(
-                height: 500.0,
-                // color: Colors.green,
+                height: 600.0,
                 child: PageView.builder(
                     itemCount: controller.questions.length,
                     onPageChanged: (pageNumber) {
                       controller.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
-                      var x = controller.questions[snapshot]['options'];
+                      var options = controller.questions[snapshot]['options'];
 
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(controller.questions[snapshot]['question']
-                              .toString()),
-                          SizedBox(
-                            height: 280.0,
-                            // choice cards
-                            child: ListView.builder(
-                              itemCount: 4, //4
-                              itemBuilder: (context, index) => ButtonBar(
-                                alignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    width: 300,
-                                    color: Colors.black12,
-                                    child: Obx(
-                                      () => RadioListTile<int>(
-                                          title: Row(
-                                            children: [
-                                              Text(x[index].toString()),
-                                              Spacer(),
-                                              SizedBox(width: 20),
-                                              // Text(controller
-                                              //     .questions[index].text),
-                                              Spacer(),
-                                            ],
-                                          ),
-                                          controlAffinity:
-                                              ListTileControlAffinity.trailing,
-                                          groupValue: controller.groupValue[
-                                              snapshot], // group value[0] 0
-                                          value: controller.value[snapshot]
-                                              [index], //value[0] 0,1
-                                          onChanged: (newValue) {
-                                            controller.groupValue[snapshot] =
-                                                newValue as int;
-                                            // if (controller.chosenAnswers
-                                            //     .contains(controller
-                                            //             .questions[snapshot]
-                                            //         ['id'])) {
-                                            //   controller.chosenAnswers.removeAt(
-                                            //       controller.questions[snapshot]
-                                            //           ['id']);
-                                            //   // print(controller.chosenAnswers);
-                                            // }
-                                            // print(controller.chosenAnswers);
+                      return Container(
+                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 88, 79, 79),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Spacer(
+                              flex: 1,
+                            ),
+                            Text(
+                              controller.questions[snapshot]['question']
+                                  .toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: Colors.white),
+                            ),
+                            Spacer(
+                              flex: 2,
+                            ),
+                            Container(
+                              height: 400.0,
+                              child: ListView.builder(
+                                itemCount: 4,
+                                itemBuilder: (context, index) => ButtonBar(
+                                  alignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Obx(
+                                      () => Container(
+                                        width: 300,
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: controller.groupValue[
+                                                          snapshot] ==
+                                                      controller.value[snapshot]
+                                                          [index]
+                                                  ? kblue
+                                                  : Color.fromARGB(
+                                                      255, 117, 110, 110),
+                                              width: 2),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        child: RadioListTile<int>(
+                                            activeColor: kblue,
+                                            title: Row(
+                                              children: [
+                                                Text(
+                                                  options[index].toString(),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline5!
+                                                      .copyWith(
+                                                          color: Colors.white),
+                                                ),
+                                                Spacer(),
+                                              ],
+                                            ),
+                                            controlAffinity:
+                                                ListTileControlAffinity
+                                                    .trailing,
+                                            groupValue:
+                                                controller.groupValue[snapshot],
+                                            value: controller.value[snapshot]
+                                                [index],
+                                            onChanged: (newValue) {
+                                              controller.groupValue[snapshot] =
+                                                  newValue as int;
 
-                                            controller.chosenAnswers.add(
-                                                ChosenModel(
-                                                    controller
-                                                            .questions[snapshot]
-                                                        ['id'] as int,
-                                                    x[index].toString()));
-                                            print(controller.chosenAnswers);
-                                            // controller.chosenAnswers.add(1, 'test');
-
-                                            // print(controller.questions[0]);
-                                          }),
+                                              controller.chosenAnswers.add(
+                                                  ChosenModel(
+                                                      controller.questions[
+                                                              snapshot]['id']
+                                                          as int,
+                                                      options[index]
+                                                          .toString()));
+                                              print(controller.chosenAnswers);
+                                            }),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-
-                          // display done btn
-                          controller.questions.length - 1 == snapshot
-                              ? ElevatedButton(
-                                  onPressed: () {
-                                    print(controller.chosenAnswers[0]);
-                                  },
-                                  child: const Text('Done'))
-                              : Container(),
-                        ],
+                          ],
+                        ),
                       );
                     }),
               ),
+              Spacer(),
+              Obx(
+                () => controller.questions.length == controller.qnIndex.value
+                    ? const RoundedButton(
+                        buttonName: 'Done',
+                        page: '',
+                      )
+                    : Container(),
+              ),
+              Spacer(),
             ],
           ),
         ),
