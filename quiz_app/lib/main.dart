@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       initialBinding: ProfileBinding(),
+      debugShowMaterialGrid: false,
       home: const Splash(),
     );
   }
