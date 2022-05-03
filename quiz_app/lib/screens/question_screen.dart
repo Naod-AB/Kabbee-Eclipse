@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/get.dart';
-import 'package:quiz_app/controllers/profile_controllers.dart';
-import 'package:quiz_app/screens/Score/final_practice_score.dart';
-import 'package:quiz_app/widgets/common_components/appbar.dart';
+import '../controllers/profile_controllers.dart';
+import '../screens/Score/final_practice_score.dart';
+import '../widgets/common_components/appbar.dart';
 
 import '../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
 import '/widgets/rounded_button.dart';
 
-class QuestionSample2 extends StatelessWidget {
-  QuestionSample2({Key? key}) : super(key: key);
+class QuestionScreen extends StatelessWidget {
+  QuestionScreen({Key? key, required this.icon}) : super(key: key);
+  dynamic icon;
 
   final QuestionControl controller = Get.put(QuestionControl());
-  ProfileController _questionController = Get.put(ProfileController());
+  final ProfileController _questionController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        appBar: quizeAppbar(),
+        appBar: QuizeAppbar(icon, context),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Column(
@@ -144,7 +145,7 @@ class QuestionSample2 extends StatelessWidget {
                 () => controller.questions.length == controller.qnIndex.value
                     ? const RoundedButton(
                         buttonName: 'Done',
-                        page: FinalScore(),
+                        page: '/finalScore',
                       )
                     : Container(),
               ),

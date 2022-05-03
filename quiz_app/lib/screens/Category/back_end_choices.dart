@@ -1,10 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-
-
+import '../../routes/router.gr.dart';
 import '../../widgets/theme.dart';
-import 'choose_type_screen.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 import '../../Models/courses.dart';
@@ -17,7 +14,7 @@ class BackendChoices extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: quizeAppbar(),
+          appBar: quizeAppbar(context),
           body: Column(
             children: [
               const SizedBox(
@@ -37,10 +34,8 @@ class BackendChoices extends StatelessWidget {
                         imgeSrc: backCourse[index].icon!,
                         cardtext: backCourse[index].courseName,
                         onpressed: () {
-                          Get.to(const ChooseType(), arguments: [
-                            backCourse[index].id,
-                            backCourse[index].icon
-                          ]);
+                          context.router
+                              .push(ChooseType(icon: backCourse[index].icon));
                         });
                   },
                   separatorBuilder: (BuildContext context, int index) {

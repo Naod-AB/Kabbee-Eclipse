@@ -3,9 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/common_components/appbar.dart';
 
-
-
-
 class FinalScore extends StatelessWidget {
   const FinalScore({Key? key}) : super(key: key);
 
@@ -13,23 +10,7 @@ class FinalScore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Color.fromARGB(255, 17, 17, 17),
-        //   actions: [
-        //     GestureDetector(
-        //         onTap: () {
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => ProfileScreen()));
-        //         },
-        //         child: CircleAvatar(
-        //             backgroundImage: AssetImage('assets/images/avatar.png'))),
-        //     Padding(
-        //         padding: EdgeInsets.only(
-        //       right: 10,
-        //     )),
-        //   ],
-        // ),
-        appBar: quizeAppbar(),
+        appBar: quizeAppbar(context),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(

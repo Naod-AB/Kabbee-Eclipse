@@ -1,11 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import '../../routes/router.gr.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 import '../../Models/courses.dart';
-import 'choose_type_screen.dart';
 
 class CloudChoices extends StatelessWidget {
   const CloudChoices({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class CloudChoices extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: quizeAppbar(),
+          appBar: quizeAppbar(context),
           body: Column(
             children: [
               const SizedBox(
@@ -35,10 +34,8 @@ class CloudChoices extends StatelessWidget {
                         imgeSrc: cloudCourse[index].icon!,
                         cardtext: cloudCourse[index].courseName,
                         onpressed: () {
-                          Get.to(const ChooseType(), arguments: [
-                            cloudCourse[index].id,
-                            cloudCourse[index].icon
-                          ]);
+                          context.router
+                              .push(ChooseType(icon: cloudCourse[index].icon));
                         });
                   },
                   separatorBuilder: (BuildContext context, int index) {

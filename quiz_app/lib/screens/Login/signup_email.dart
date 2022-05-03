@@ -66,7 +66,7 @@ class SignupEmail extends StatelessWidget {
                   ),
                   RoundedButton(
                     buttonName: 'NEXT',
-                    page: const SignupPassword(),
+                    page: '/signup_password',
                   ),
                   const SizedBox(
                     height: 45,

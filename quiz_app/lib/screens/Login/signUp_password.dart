@@ -74,7 +74,7 @@ class SignupPassword extends StatelessWidget {
                   GestureDetector(
                     child: RoundedButton(
                       buttonName: 'NEXT',
-                      page: const SignupName(),
+                      page: '/signup_name',
                     ),
                   ),
                   const SizedBox(

@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:auto_route/auto_route.dart';
 import 'pallete.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -26,7 +26,7 @@ class RoundedButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          Get.to(page);
+          context.router.pushNamed(page);
         },
         child: Text(
           buttonName,

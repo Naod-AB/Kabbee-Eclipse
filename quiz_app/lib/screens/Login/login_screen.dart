@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
+
 import '../../widgets/pallete.dart';
 import '../../widgets/widgets.dart';
 import '../Category/category_screen.dart';
-import 'screens.dart';
+
+import 'package:auto_route/auto_route.dart';
+import 'package:quiz_app/routes/router.gr.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   child: const RoundedButton(
                     buttonName: 'Login',
-                    page: CategoryPage(),
+                    page: '/category',
                   ),
                 ),
                 const SizedBox(
@@ -113,7 +115,8 @@ class _LoginPageState extends State<LoginPage> {
                   Flexible(
                     child: InkWell(
                       onTap: () {
-                        Get.to(() => const SignupEmail());
+                        // Get.to(() => const SignupEmail());
+                        context.router.pushNamed('/signup_email');
                       },
                       child: const Text(
                         'Sign up',

@@ -1,14 +1,14 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../screens/Profile/profile_screen.dart';
 import '../theme.dart';
 import '../../widgets/user_profile_widget.dart';
 
-AppBar quizeAppbar() {
+AppBar quizeAppbar(BuildContext context) {
   return AppBar(
     backgroundColor: appbarColor,
     actions: [
@@ -16,7 +16,7 @@ AppBar quizeAppbar() {
         padding: const EdgeInsets.only(right: defaultPadding / 2),
         child: GestureDetector(
           onTap: () {
-            Get.to(const ProfileScreen());
+            context.router.pushNamed('/profile');
           },
           child: profilePic(),
         ),
@@ -25,25 +25,48 @@ AppBar quizeAppbar() {
   );
 }
 
-AppBar quizeAppbar2(String iconUrl) {
+AppBar QuizeAppbar(String iconUrl, BuildContext context) {
   return AppBar(
-    title: Center(
-      child: CircleAvatar(child: SvgPicture.asset(iconUrl)),
+    backgroundColor: appbarColor,
+    title: CircleAvatar(
+      child: SvgPicture.asset(iconUrl),
+      backgroundColor: Colors.transparent,
     ),
     actions: [
       Padding(
         padding: const EdgeInsets.only(right: defaultPadding / 2),
-        child: InkWell(
+        child: GestureDetector(
             onTap: () {
-              Get.to(const ProfileScreen());
+              context.router.pushNamed('/profile');
             },
-            child: const CircleAvatar(
-              foregroundImage: AssetImage("assets/images/profile_pic_demo.jpg"),
-            )),
+            child: profilePic()),
       ),
     ],
   );
+
+  // ),
 }
+
+// AppBar quizeAppbar2(String iconUrl) {
+//   return AppBar(
+//     title: Center(
+//       child: CircleAvatar(child: SvgPicture.asset(iconUrl)),
+//     ),
+//     backgroundColor: appbarColor,
+//     actions: [
+//       Padding(
+//         padding: const EdgeInsets.only(right: defaultPadding / 2),
+//         child: InkWell(
+//             onTap: () {
+//              Get.to(ProfileScreen());
+//             },
+//             child: const CircleAvatar(
+//               foregroundImage: AssetImage("assets/images/profile_pic_demo.jpg"),
+//             )),
+//       ),
+//     ],
+//   );
+// }
 
 Widget profilePic() {
   return Obx(

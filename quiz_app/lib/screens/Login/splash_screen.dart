@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../widgets/pallete.dart';
-import 'screens.dart';
+import 'package:auto_route/auto_route.dart';
+import '../../routes/router.gr.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -16,8 +17,7 @@ class _SplashState extends State<Splash> {
     //todo:implement initState
     super.initState();
     Timer(const Duration(milliseconds: 4000), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+      context.router.push(LoginRoute());
     });
   }
 

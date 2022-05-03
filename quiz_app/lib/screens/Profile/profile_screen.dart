@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../controllers/profile_controllers.dart';
@@ -6,7 +7,6 @@ import '../../widgets/user_profile_widget.dart';
 import 'package:get/get.dart';
 import 'my_scores_screen.dart';
 
-
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -14,10 +14,14 @@ class ProfileScreen extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('Profile'),
+        centerTitle: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
+          // physics: const NeverScrollableScrollPhysics(),
           children: [
             profileCardContent(context),
             customText('Account', 20, false, false, primaryColor),
@@ -83,7 +87,9 @@ class ProfileScreen extends GetView<ProfileController> {
                       customText(
                           'Achievements', 13, false, false, secondaryColor),
                       GestureDetector(
-                        onTap: () => Get.to(() => const MyScoresScreen()),
+                        onTap: () {
+                          context.router.pushNamed('/my_scores');
+                        },
                         child: const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,

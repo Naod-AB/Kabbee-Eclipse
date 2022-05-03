@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,68 +40,63 @@ Widget customText(
 //! Profile Card
 Widget profileCardContent(context) {
   var mediaQueryHeight = MediaQuery.of(context).size.height;
-  return InkWell(
-    onTap: () {
-      Get.to(const FinalScore());
-    },
-    child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
-        color: orangeColor,
-      ),
-      margin: const EdgeInsets.only(bottom: 30),
-      height: mediaQueryHeight / 6,
-      child: Stack(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Obx(
-                () => controller.imageFile.value == ''
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: const Image(
-                          width: 110,
-                          height: 110,
-                          image: AssetImage('assets/images/avatar.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: !kIsWeb
-                            ? Image.file(
-                                File(controller.imageFile.value),
-                                fit: BoxFit.cover,
-                                width: 110,
-                                height: 110,
-                              )
-                            : Image.network(
-                                controller.imageFile.value,
-                                fit: BoxFit.cover,
-                                width: 110,
-                                height: 110,
-                              ),
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(25),
+      color: orangeColor,
+    ),
+    margin: const EdgeInsets.only(bottom: 30),
+    height: mediaQueryHeight / 6,
+    child: Stack(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Obx(
+              () => controller.imageFile.value == ''
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: const Image(
+                        width: 110,
+                        height: 110,
+                        image: AssetImage('assets/images/avatar.png'),
+                        fit: BoxFit.cover,
                       ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Obx(() => customText(
-                      "${controller.firstName.value.toCapitalized()}\n${controller.lastName.value.toCapitalized()}",
-                      30,
-                      true,
-                      false,
-                      Colors.black)),
-                  customText('test@test.com', 15, false, false, Colors.black45),
-                ],
-              )
-            ],
-          ),
-        ],
-      ),
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: !kIsWeb
+                          ? Image.file(
+                              File(controller.imageFile.value),
+                              fit: BoxFit.cover,
+                              width: 110,
+                              height: 110,
+                            )
+                          : Image.network(
+                              controller.imageFile.value,
+                              fit: BoxFit.cover,
+                              width: 110,
+                              height: 110,
+                            ),
+                    ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(() => customText(
+                    "${controller.firstName.value.toCapitalized()}\n${controller.lastName.value.toCapitalized()}",
+                    30,
+                    true,
+                    false,
+                    Colors.black)),
+                customText('test@test.com', 15, false, false, Colors.black45),
+              ],
+            )
+          ],
+        ),
+      ],
     ),
   );
 }
@@ -215,7 +211,7 @@ Widget buildTextField(String hint, IconData icon, TextEditingController ctrl,
 }
 
 //! Floating Action Button
-Widget editIcon(context) {
+Widget editIcon(BuildContext context) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
@@ -236,7 +232,7 @@ Widget editIcon(context) {
         controller.genderIndex.value = controller.gender.value;
         controller.editedImage.value = controller.imageFile.value;
         clearFieldsAndDisableButton();
-        Get.to(() => const EditProfileScreen());
+        context.router.pushNamed('/edit_profile');
       },
     ),
   );

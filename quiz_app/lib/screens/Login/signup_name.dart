@@ -114,7 +114,7 @@ class SignupName extends StatelessWidget {
                   GestureDetector(
                     child: const RoundedButton(
                       buttonName: 'REGISTER',
-                      page: LoginPage(),
+                      page: '/login',
                     ),
                   ),
                   const SizedBox(
