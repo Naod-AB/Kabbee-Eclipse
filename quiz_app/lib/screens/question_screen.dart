@@ -1,23 +1,25 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import '/routes/router.gr.dart';
+import '../Models/model.dart';
 import '../controllers/profile_controllers.dart';
-import '../screens/Score/final_practice_score.dart';
-import '../widgets/common_components/appbar.dart';
 
+import '/widgets/rounded_button.dart';
+import '../widgets/common_components/appbar.dart';
 import '../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
-import '/widgets/rounded_button.dart';
 
 class QuestionScreen extends StatelessWidget {
   QuestionScreen({Key? key, required this.icon}) : super(key: key);
   dynamic icon;
 
   final QuestionControl controller = Get.put(QuestionControl());
-  final ProfileController _questionController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    var isCorrect = false;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -119,15 +121,22 @@ class QuestionScreen extends StatelessWidget {
                                             onChanged: (newValue) {
                                               controller.groupValue[snapshot] =
                                                   newValue as int;
-
-                                              controller.chosenAnswers.add(
-                                                  ChosenModel(
-                                                      controller.questions[
-                                                              snapshot]['id']
-                                                          as int,
-                                                      options[index]
-                                                          .toString()));
-                                              print(controller.chosenAnswers);
+                                              if (options[index].toString() ==
+                                                  controller.questions[snapshot]
+                                                          ['answer']
+                                                      .toString()) {
+                                                isCorrect = true;
+                                                print('object');
+                                              } else {
+                                                isCorrect = false;
+                                              }
+                                              updateJsonTime(
+                                                answer: options[index],
+                                                id: controller
+                                                    .questions[snapshot]['id'],
+                                                isCorrect: isCorrect,
+                                              );
+                                              print(options[index]);
                                             }),
                                       ),
                                     ),
@@ -143,10 +152,19 @@ class QuestionScreen extends StatelessWidget {
               Spacer(),
               Obx(
                 () => controller.questions.length == controller.qnIndex.value
-                    ? const RoundedButton(
-                        buttonName: 'Done',
-                        page: '/finalScore',
-                      )
+                    ? ElevatedButton(
+                        onPressed: () async {
+                          controller.count = await fetchCorrectAnswers();
+
+                          context.router.push(FinalScore(
+                              outOf: controller.questions.length,
+                              score: controller.count));
+                        },
+                        child: Text('Done'))
+                    // ? const RoundedButton(
+                    //     buttonName: 'Done',
+                    //     page: '/finalScore',
+                    //   )
                     : Container(),
               ),
               Spacer(),

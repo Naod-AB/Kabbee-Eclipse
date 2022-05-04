@@ -8,7 +8,7 @@ class ChosenModel {
 
   @override
   String toString() {
-    return '{questionNumber: ${questionNumber}, questionAnswer: ${questionAnswer}}';
+    return '$questionNumber $questionAnswer';
   }
 }
 
@@ -51,4 +51,6 @@ class QuestionControl extends GetxController {
     [13, 14, 15, 16]
   ].obs;
   RxInt qnIndex = 1.obs;
+  int count = 0;
+  RxBool isCorrect = false.obs;
 }

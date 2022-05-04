@@ -84,8 +84,11 @@ class AppRouter extends _i16.RootStackRouter {
           child: _i11.QuestionScreen(key: args.key, icon: args.icon));
     },
     FinalScore.name: (routeData) {
+      final args = routeData.argsAs<FinalScoreArgs>();
       return _i16.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.FinalScore());
+          routeData: routeData,
+          child: _i12.FinalScore(
+              key: args.key, outOf: args.outOf, score: args.score));
     },
     ProfileScreen.name: (routeData) {
       return _i16.MaterialPageX<dynamic>(
@@ -241,10 +244,28 @@ class QuestionScreenArgs {
 
 /// generated route for
 /// [_i12.FinalScore]
-class FinalScore extends _i16.PageRouteInfo<void> {
-  const FinalScore() : super(FinalScore.name, path: '/finalScore');
+class FinalScore extends _i16.PageRouteInfo<FinalScoreArgs> {
+  FinalScore({_i17.Key? key, required int outOf, required int score})
+      : super(FinalScore.name,
+            path: '/finalScore',
+            args: FinalScoreArgs(key: key, outOf: outOf, score: score));
 
   static const String name = 'FinalScore';
+}
+
+class FinalScoreArgs {
+  const FinalScoreArgs({this.key, required this.outOf, required this.score});
+
+  final _i17.Key? key;
+
+  final int outOf;
+
+  final int score;
+
+  @override
+  String toString() {
+    return 'FinalScoreArgs{key: $key, outOf: $outOf, score: $score}';
+  }
 }
 
 /// generated route for

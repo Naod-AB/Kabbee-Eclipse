@@ -1,0 +1,24 @@
+{
+  "answers": [
+    {
+      "id": 1,
+      "answer": "Apple",
+      "isCorrect": false
+    },
+    {
+      "id": 2,
+      "answer": "Jun 2017",
+      "isCorrect": true
+    },
+    {
+      "id": 3,
+      "answer": "Int",
+      "isCorrect": false
+    },
+    {
+      "id": 4,
+      "answer": "Output",
+      "isCorrect": true
+    }
+  ]
+}
