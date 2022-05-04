@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Models/users.dart';
 import '../../controllers/profile_controllers.dart';
 import '../../widgets/user_profile_widget.dart';
 
 
 class EditProfileScreen extends GetView<ProfileController> {
-  const EditProfileScreen({Key? key}) : super(key: key);
-
+   EditProfileScreen({Key? key}) : super(key: key);
+  Users user = Users();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   controller.genderIndex.value ? Icons.male : Icons.female,
                   customText('Gender', 18, true, false, primaryColor),
                   null,
-                  genderToggle(2),
+                  genderToggle(2,),
                   false,
                 )),
             const SizedBox(height: 30),

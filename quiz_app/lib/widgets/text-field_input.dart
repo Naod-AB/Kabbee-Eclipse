@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../Models/users.dart';
 import 'pallete.dart';
 
 class TextInputField extends StatelessWidget {
@@ -8,12 +10,14 @@ class TextInputField extends StatelessWidget {
     required this.hint,
     this.inputType,
     this.inputAction,
+    this.isPass
   }) : super(key: key);
 
   final IconData icon;
   final String hint;
   final TextInputType? inputType;
   final TextInputAction? inputAction;
+  final isPass;
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +57,19 @@ class TextInputField extends StatelessWidget {
 }
 
 class Regi extends StatelessWidget {
-  const Regi({
-    Key? key,
+   Users user;   
+   TextEditingController controller;   
+   GlobalKey<FormFieldState> fieldkey;
+   Regi({
+    Key? key, 
+    required this.controller,
+    required this.fieldkey,
+    required this.user,
     required this.icon,
     required this.hint,
+    required this.isPass,
+    
+    this.validator,
     this.inputType,
     this.inputAction,
   }) : super(key: key);
@@ -65,7 +78,9 @@ class Regi extends StatelessWidget {
   final String hint;
   final TextInputType? inputType;
   final TextInputAction? inputAction;
-
+  final String? Function(String?)? validator;
+  final bool isPass;
+   
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -81,9 +96,17 @@ class Regi extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: TextField(
+            child: TextFormField(
+              key: fieldkey,
+              validator: validator,
+              onSaved: (value){
+                if(hint.contains("first"))
+                {user.firstName =value!;}else
+                {user.lastName = value!;}
+              },
               decoration: InputDecoration(
-                border: InputBorder.none,
+                fillColor:  Colors.grey[500]!.withOpacity(0.5),
+                border: InputBorder.none ,
                 suffixIcon: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Icon(
@@ -98,7 +121,7 @@ class Regi extends StatelessWidget {
               style: kBodyText,
               keyboardType: inputType,
               textInputAction: inputAction,
-              obscureText: true,
+              obscureText: isPass,
             ),
           ),
         ),

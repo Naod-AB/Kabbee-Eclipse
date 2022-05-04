@@ -116,7 +116,7 @@ Widget genderToggle(int numberOfSwitches) {
     totalSwitches: numberOfSwitches,
     labels: const ['Male', 'Female'],
 
-    // icons: const [FontAwesomeIcons.mars, FontAwesomeIcons.venus],
+    // icons: const [FontAwesomeIcons.mars, FontAwesomeIcons.venus], 
     activeBgColors: [
       [orangeColor],
       [orangeColor],
@@ -124,6 +124,7 @@ Widget genderToggle(int numberOfSwitches) {
     onToggle: (index) {
       controller.genderIndex.value = !controller.genderIndex.value;
       controller.isBtnNull.value = true;
+      //gender=controller.selectedGender.value;
     },
   );
 }
@@ -236,7 +237,7 @@ Widget editIcon(context) {
         controller.genderIndex.value = controller.gender.value;
         controller.editedImage.value = controller.imageFile.value;
         clearFieldsAndDisableButton();
-        Get.to(() => const EditProfileScreen());
+        Get.to(() =>  EditProfileScreen());
       },
     ),
   );

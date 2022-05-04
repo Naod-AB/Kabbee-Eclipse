@@ -1,0 +1,28 @@
+{
+  "Users": [
+    {
+      "id": 12,
+      "email": "mgemal@gmail.com",
+      "firstName": "Mohammed",
+      "lastName": "Mohammed",
+      "password": "Mohammed123",
+      "gender": "male"
+    },
+    {
+      "id": "2",
+      "email": "m@g.com",
+      "firstName": "Mohammed",
+      "lastName": "gemal",
+      "password": "Mohammed123",
+      "gender": "male"
+    },
+    {
+      "id": "6",
+      "email": "mgemal376@gmail.com",
+      "firstName": "Mohammed",
+      "lastName": "Mohammed",
+      "password": "Mohammed123",
+      "gender": "male"
+    }
+  ]
+}
