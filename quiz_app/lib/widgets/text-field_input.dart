@@ -22,7 +22,7 @@ class Regi extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-        height: size.height * 0.09,
+        height: size.height * 0.08,
         width: size.width * 0.8,
         decoration: BoxDecoration(
           color: Colors.grey[500]!.withOpacity(0.5),
@@ -60,9 +60,7 @@ class Regi extends StatelessWidget {
 class TextG extends StatelessWidget {
   const TextG({
     Key? key,
-    //required this.genderToggle,
   }) : super(key: key);
-  //final dynamic genderToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +81,8 @@ class TextG extends StatelessWidget {
               style: kText,
             ),
             Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5),
+              child: Container(
+                alignment: Alignment.centerRight,
                 child: genderToggle(2),
               ),
             ),

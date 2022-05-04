@@ -40,8 +40,6 @@ class _SplashState extends State<Splash> {
 
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-
-            //padding: EdgeInsets.only(top: 100, bottom: 20),
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 800,
@@ -92,8 +90,7 @@ class _SplashState extends State<Splash> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   //crossAxisAlignment: CrossAxisAlignment.center,
-                                  //theme: ThemeData(
-                                  //GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
+
                                   children: const [
                                     Text(
                                       'K',
@@ -121,7 +118,6 @@ class _SplashState extends State<Splash> {
                                       ),
                                     ),
                                   ],
-                                  // ),
                                 ),
                               ),
                             ],

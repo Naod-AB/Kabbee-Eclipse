@@ -75,15 +75,25 @@ class _LoginPageState extends State<LoginPage> {
                       controlAffinity: ListTileControlAffinity.leading,
                       activeColor: kblue,
                       checkColor: kblack,
+                      side: BorderSide(
+                        color: kWhite1, //your desire colour here
+                        width: 1.5,
+                      ),
                     ),
                   ],
                 ),
                 InkWell(
                   onTap: () {},
-                  child: const Center(
-                    child: Text(
-                      'Forgot Password?',
-                      style: kColorText,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 27),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Forgot Password?',
+                          style: kColorText,
+                        ),
+                      ),
                     ),
                   ),
                 ),
