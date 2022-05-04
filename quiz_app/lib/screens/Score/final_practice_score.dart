@@ -67,7 +67,9 @@ class FinalScore extends StatelessWidget {
                 visible: true,
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.router.pushNamed('/review_screen');
+                  },
                   style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 40),
                       shape: RoundedRectangleBorder(
