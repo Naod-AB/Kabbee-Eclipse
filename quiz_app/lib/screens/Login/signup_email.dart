@@ -60,7 +60,7 @@ class SignupEmail extends StatelessWidget {
                   controller: controller,
                   key: emailKey,                 
                   validator:(value){
-                  if (!EmailValidator.validate(value)) 
+                  if (!EmailValidator.validate(value!)) 
                   {
                     return 'You need A valid email Address';
                       }

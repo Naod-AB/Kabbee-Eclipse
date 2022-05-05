@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:password_validator/password_validator.dart';
+
 
 
 import '../../Models/users.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/user_profile_widget.dart';
-import '../../widgets/widgets.dart';
-import 'screens.dart';
 
 class SignupPassword extends StatelessWidget {
    Users user;
@@ -15,11 +12,11 @@ class SignupPassword extends StatelessWidget {
    TextEditingController confirmController;
    GlobalKey<FormFieldState> passKey;
    GlobalKey<FormFieldState> confirmKey;
-   PasswordValidator passwordValidator = new PasswordValidator(
-     uppercase: 1,
-     min: 6,
-     digits: 1
-   );
+  //  PasswordValidator passwordValidator = new PasswordValidator(
+  //    uppercase: 1,
+  //    min: 6,
+  //    digits: 1
+  //  );
    SignupPassword({Key? key, 
       required this.user,
       required this.passController,
@@ -65,11 +62,11 @@ class SignupPassword extends StatelessWidget {
                     user.password=value;
                   },                 
                   validator:(value){
-                  if (!passwordValidator.validate(value)) 
-                  {
-                    return 'Enter a Valid Password';
-                      }
-                  },
+                  // if (!passwordValidator.validate(value)) 
+                  // {
+                  //   return 'Enter a Valid Password';
+                  //     }
+                 },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor:  Colors.grey[500]!.withOpacity(0.5),

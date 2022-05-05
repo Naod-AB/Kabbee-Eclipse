@@ -1,14 +1,12 @@
-import 'dart:html';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/Utilities/size_config.dart';
 import 'package:quiz_app/api.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
-import 'package:quiz_app/screens/Login/list_signup_pages.dart';
 import 'package:quiz_app/screens/Login/login_screen.dart';
 import 'package:quiz_app/widgets/rounded_button_mine.dart';
 import 'package:quiz_app/widgets/theme.dart';
