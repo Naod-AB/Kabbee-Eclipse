@@ -1,18 +1,21 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../routes/router.gr.dart';
+
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 
 class ChooseType extends StatelessWidget {
-  const ChooseType({Key? key}) : super(key: key);
+  ChooseType({Key? key, required this.icon}) : super(key: key);
+  dynamic icon;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: quizeAppbar2(Get.arguments[1]),
+          appBar: QuizeAppbar(icon, context),
           body: Column(
             children: [
               const SizedBox(
@@ -30,7 +33,9 @@ class ChooseType extends StatelessWidget {
                     imgPosY: -110,
                     imgeSrc: "assets/icons/Practice_test.svg",
                     cardtext: "Practice Test",
-                    onpressed: () {},
+                    onpressed: () {
+                      context.router.push(QuestionScreen(icon: icon));
+                    },
                   ),
                   const SizedBox(
                     height: defaultPadding * 3,
@@ -39,7 +44,9 @@ class ChooseType extends StatelessWidget {
                     imgPosY: -110,
                     imgeSrc: "assets/icons/exam.svg",
                     cardtext: "Evalution Exam",
-                    onpressed: () {},
+                    onpressed: () {
+                      context.router.push(QuestionScreen(icon: icon));
+                    },
                   ),
                   const SizedBox(
                     height: defaultPadding * 3,

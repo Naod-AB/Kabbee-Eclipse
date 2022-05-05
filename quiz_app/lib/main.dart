@@ -2,25 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'controllers/profile_bindings.dart';
-import 'screens/Login/splash_screen.dart';
+
+import 'routes/router.gr.dart';
+
 import 'widgets/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp.router(
       title: 'Quiz APP',
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
       theme: quizAppTheme().copyWith(
         brightness: Brightness.light,
       ),
       initialBinding: ProfileBinding(),
-      home: const Splash(),
+      debugShowMaterialGrid: false,
     );
   }
 }

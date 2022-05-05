@@ -29,24 +29,27 @@ class PasswordInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: Center(
-          child: TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Icon(
-                  icon,
-                  size: 28,
-                  color: kblue,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Icon(
+                    icon,
+                    size: 28,
+                    color: kblue,
+                  ),
                 ),
+                hintText: hint,
+                hintStyle: kText,
               ),
-              hintText: hint,
-              hintStyle: kBodyText,
+              obscureText: true,
+              style: kText,
+              keyboardType: inputType,
+              textInputAction: inputAction,
             ),
-            obscureText: true,
-            style: kBodyText,
-            keyboardType: inputType,
-            textInputAction: inputAction,
           ),
         ),
       ),

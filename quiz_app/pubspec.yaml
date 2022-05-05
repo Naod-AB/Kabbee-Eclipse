@@ -42,9 +42,10 @@ dependencies:
   motion_toast: ^2.1.6
   flutter_svg: ^1.0.3
   google_fonts: ^2.3.1 
-  email_validator: '^1.0.6'
+  email_validator: ^1.0.6
   password_validator: ^0.0.1
   http: ^0.13.4
+  auto_route: ^3.2.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,6 +56,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  auto_route_generator: ^3.2.3
+  build_runner: ^2.1.10
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

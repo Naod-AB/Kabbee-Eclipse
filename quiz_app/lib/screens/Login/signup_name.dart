@@ -5,7 +5,7 @@ import '../../Models/users.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/user_profile_widget.dart';
 import '../../widgets/widgets.dart';
-import 'login_screen.dart';
+//import 'screens.dart';
 
 class SignupName extends StatelessWidget {
    Users user;

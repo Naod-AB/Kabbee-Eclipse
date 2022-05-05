@@ -7,7 +7,7 @@ import '../../Models/users.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/user_profile_widget.dart';
 import '../../widgets/widgets.dart';
-import 'signup_name.dart';
+import 'screens.dart';
 
 class SignupPassword extends StatelessWidget {
    Users user;
@@ -148,8 +148,9 @@ class SignupPassword extends StatelessWidget {
                 // ),
               ],
             ),
-          ],
-        ),
+          ]
+          ),
+        
       
     );
   }

@@ -1,13 +1,13 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quiz_app/widgets/pallete.dart';
 
 import '../../Models/users.dart';
 import '../../Utilities/size_config.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/widgets.dart';
-
-import 'signUp_password.dart';
+import 'screens.dart';
 
 class SignupEmail extends StatelessWidget {
       //final _formKey = GlobalKey<FormState>();
@@ -93,8 +93,9 @@ class SignupEmail extends StatelessWidget {
                
               ],
             ),
-          ],
+          ]
         ),
+        
       ); ;
   }
 

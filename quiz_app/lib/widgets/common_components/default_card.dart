@@ -17,7 +17,7 @@ class ChoiceCard extends StatelessWidget {
       required this.onpressed,
       this.textPosx = 40,
       this.textPosy = 15,
-      this.imgPosX = 205,
+      this.imgPosX = 30,
       this.imgPosY = -35,
       this.imgheig = 260,
       this.imgwid = 100})
@@ -44,7 +44,7 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               height: imgheig,
               width: imgwid,
-              left: imgPosX,
+              right: imgPosX,
               top: imgPosY,
               child: SvgPicture.asset(imgeSrc)),
           Positioned(

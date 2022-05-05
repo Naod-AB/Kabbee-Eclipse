@@ -24,5 +24,28 @@
       "password": "Mohammed123",
       "gender": "male"
     }
+  ],
+
+  "answers": [
+    {
+      "id": 1,
+      "answer": "Apple",
+      "isCorrect": false
+    },
+    {
+      "id": 2,
+      "answer": "July 2017",
+      "isCorrect": false
+    },
+    {
+      "id": 3,
+      "answer": "Char",
+      "isCorrect": true
+    },
+    {
+      "id": 4,
+      "answer": "Output",
+      "isCorrect": true
+    }
   ]
 }
