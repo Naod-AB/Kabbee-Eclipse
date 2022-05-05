@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -180,7 +181,8 @@ class _OneSignupPageState extends State<OneSignupPage> {
             _formKey.currentState!.save();// saving the data in the in a local API (Json format)
            user.gender=controller.selectedGender.value;
             await createUser(user);
-       // Get.to(LoginPage());
+            context.router.pushNamed("/login");
+      // Get.to(LoginPage());
 
                 
                               }

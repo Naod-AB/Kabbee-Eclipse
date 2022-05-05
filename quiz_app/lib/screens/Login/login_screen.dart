@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../Models/users.dart';
 import '../../Utilities/size_config.dart';
+import '../../api.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/widgets.dart';
+import '../../widgets/rounded_button_mine.dart' as button;
 import '../Category/category_screen.dart';
 
 import 'package:auto_route/auto_route.dart';
@@ -18,188 +21,211 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool rememberMe = false;
+  String error="";
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
+  GlobalKey<FormFieldState> passKey =GlobalKey<FormFieldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-            SizedBox(
-            height: SizeConfig.screenHeight * 0.04,
-          ),
-           Center(
-            
-            child: Text(
-              'Login',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: getProportionateScreenWidth(40),
-                  fontWeight: FontWeight.bold),
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*0.05),
+        child: Column(
+          children: [
+              SizedBox(
+              height: SizeConfig.screenHeight * 0.04,
             ),
-          ),
-          // ),
-          const SizedBox(
-            height: 15,
-          ),
-          Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            const TextInputField(
-              icon: FontAwesomeIcons.solidEnvelope,
-              hint: 'Enter email',
-              inputType: TextInputType.emailAddress,
-              inputAction: TextInputAction.next,
+             Center(
               
-            ),
-             SizedBox(
-              height: SizeConfig.screenHeight *0.02,
-            ),
-            const PasswordInput(
-              icon: FontAwesomeIcons.lock,
-              hint: 'Enter password',
-              inputAction: TextInputAction.done,
-            ),
-             SizedBox(
-              height:SizeConfig.screenHeight *0.03, //25,
-            ),
-            GestureDetector(
-              child:  RoundedButton(
-                buttonName: 'Login',
-                page:  CategoryPage(),
+              child: Text(
+                'Login',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: getProportionateScreenWidth(40),
+                    fontWeight: FontWeight.bold),
               ),
             ),
-             SizedBox(
-              height:SizeConfig.screenHeight *0.03
+            // ),
+            const SizedBox(
+              height: 15,
             ),
-          ]),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 80,
-              ),
-              const Center(
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                 Regi(
-                  icon: FontAwesomeIcons.solidEnvelope,
-                  hint: 'Enter email',
-                  inputType: TextInputType.emailAddress,
-                  inputAction: TextInputAction.next, 
-                  controller: null, 
-                  fieldkey: null, 
-                  isPass: null, 
-                  user: null,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const PasswordInput(
-                  icon: FontAwesomeIcons.lock,
-                  hint: 'Enter password',
-                  inputAction: TextInputAction.done,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    CheckboxListTile(
-                      title: const Text(
-                        'Remember me',
-                        style: TextStyle(fontSize: 16, color: kWhite1),
-                      ),
-                      value: rememberMe,
-                      onChanged: (value) {
-                        setState(() {
-                          rememberMe = value!;
-                        });
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*0.05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center, 
+                children: [
+                     TextFormField( 
+                      key:emailKey,
+                      controller: emailController,
+                      validator: (value){
+                        if(value!.isEmpty)
+                         return "Email canot be empty ";
                       },
-                      controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: kblue,
-                      checkColor: kblack,
-                      side: BorderSide(
-                        color: kWhite1, //your desire colour here
-                        width: 1.5,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor:  Colors.grey[500]!.withOpacity(0.5),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
+                        suffixIcon: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Icon(
+                            FontAwesomeIcons.solidEnvelope,
+                            size: 28,
+                            color: kblue,
+                          ),
+                        ),
+                        hintText: 'Enter email',
+                        hintStyle: kBodyText,
                       ),
-                    ),
-                  ],
+                      style: kBodyText,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction:TextInputAction.next,
+                      obscureText: false,
+                     ),
+                 SizedBox(
+                  height: SizeConfig.screenHeight *0.02,
+                ),  
+
+
+                 TextFormField( 
+                      key: passKey,
+                      controller: passwordController,
+                      validator: (value){
+                          if(value!.isEmpty)
+                          return "Password canot be empty";
+                      },
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor:  Colors.grey[500]!.withOpacity(0.5),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
+                        suffixIcon: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Icon(
+                            FontAwesomeIcons.lock,
+                            size: 28,
+                            color: kblue,
+                          ),
+                        ),
+                        hintText: 'Enter Password',
+                        hintStyle: kBodyText,
+                      ),
+                      style: kBodyText,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction:TextInputAction.next,
+                      obscureText: true,
+                     ),
+                 SizedBox(
+                  height:SizeConfig.screenHeight *0.02,
+                  //width:SizeConfig.screenHeight *0.5 //25,
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 27),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Forgot Password?',
-                          style: kColorText,
+                Text(error,style: TextStyle(color: Colors.red),),
+                Padding(
+                  padding:  EdgeInsets.only(left: SizeConfig.screenHeight *0.08),
+                  child: CheckboxListTile(
+                        title: const Text(
+                          'Remember me',
+                          style: TextStyle(fontSize: 16, color: kWhite1),
+                        ),
+                        value: rememberMe,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberMe = value!;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: kblue,
+                        checkColor: kblack,
+                        side: BorderSide(
+                          color: kWhite1, //your desire colour here
+                          width: 1.5,
                         ),
                       ),
-                    ),
-                  ),
                 ),
-                const SizedBox(
-                  height: 25,
+                    SizedBox(
+                  height:SizeConfig.screenHeight *0.03, //25,
                 ),
+                
                 GestureDetector(
-                  child: const RoundedButton(
-                    buttonName: 'Login',
-                    page: '/category',
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-              ]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Flexible(
-                    child: Text(
-                      'Don`t have an account',
-                      style: kText,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Flexible(
-                    child: InkWell(
-                      onTap: () {
-                        // Get.to(() => const SignupEmail());
-                        context.router.pushNamed('/signup_email');
-                      },
-                      child: const Text(
-                        'Sign up',
-                        style: kColorText,
+                  child:  Expanded(
+                    child: button.RoundedButton(
+                      buttonName: 'Login', 
+                      pressed:authenticateUser
                       ),
-                    ),
+                  )
+                  // (
+                  //   buttonName: 'Login',
+                  //   page:  CategoryPage(),
+                  // ),
+                ),
+                 SizedBox(
+                  height:SizeConfig.screenHeight *0.03
+                ),
+                 SizedBox(width: SizeConfig.screenWidth *0.1,),
+                 Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Flexible(
+                        child: Text(
+                          'Don`t have an account',
+                          style: kText,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Flexible(
+                        child: InkWell(
+                          onTap: () {
+                            // Get.to(() => const SignupEmail());
+                            context.router.pushNamed('/signup');
+                          },
+                          child: const Text(
+                            'Sign up',
+                            style: kColorText,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ], 
-          ),
-          // ),
+              ]),
+            ),
 
-           SizedBox(
-           height:SizeConfig.screenHeight *0.03,
-          ),
-        ],
+           
+             SizedBox(
+             height:SizeConfig.screenHeight *0.03,
+            ),
+          ],
+        ),
       ),
     );
   }
-}
+  void authenticateUser() async {
+     
+     var pass = passwordController.text.trim();
+     var email = emailController.text.trim();
+     if(emailKey.currentState!.validate()
+        &&passKey.currentState!.validate() ){
+          Users? user = await fetchUser(email);
+          if(user!=null && user.password==pass)                                
+           { 
+             setState(() {
+               error ="";
+             });
+             context.router.pushNamed('/category');
+           } else {
+             print(pass);
+             print(email);
+             //print(user!.password);
+             setState(() {
+               error = "Email address or Password is incorrect";
+             });
+           }
+         }
+
+       
+      }
+
+  }
+
