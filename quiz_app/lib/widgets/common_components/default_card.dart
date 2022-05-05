@@ -17,7 +17,7 @@ class ChoiceCard extends StatelessWidget {
       required this.onpressed,
       this.textPosx = 40,
       this.textPosy = 15,
-      this.imgPosX = 30,
+      this.imgPosX = 10,
       this.imgPosY = -35,
       this.imgheig = 260,
       this.imgwid = 100})
@@ -32,7 +32,7 @@ class ChoiceCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          InkWell(
+          GestureDetector(
             onTap: onpressed,
             child: Container(
               width: screenwidth * 0.8,
@@ -44,9 +44,10 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               height: imgheig,
               width: imgwid,
-              right: imgPosX,
+              //right: imgPosX,
               top: imgPosY,
-              child: SvgPicture.asset(imgeSrc)),
+              child: SvgPicture.asset(imgeSrc),
+              right: imgPosX),
           Positioned(
               left: textPosx,
               bottom: textPosy,
