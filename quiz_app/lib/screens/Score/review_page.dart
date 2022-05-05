@@ -2,18 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import '../../controllers/question_controller.dart';
+import '../../widgets/common_components/appbar.dart';
 import '/routes/router.gr.dart';
-import '../Models/model.dart';
-import '../controllers/profile_controllers.dart';
 
-import '/widgets/rounded_button.dart';
-import '../widgets/common_components/appbar.dart';
-import '../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
 
-class QuestionScreen extends StatelessWidget {
-  QuestionScreen({Key? key, required this.icon}) : super(key: key);
-  dynamic icon;
+class ReviewScreen extends StatelessWidget {
+  ReviewScreen({Key? key}) : super(key: key);
 
   final QuestionControl controller = Get.put(QuestionControl());
 
@@ -23,7 +19,6 @@ class QuestionScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        appBar: QuizeAppbar(icon, context),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Column(
@@ -89,55 +84,46 @@ class QuestionScreen extends StatelessWidget {
                                                           snapshot] ==
                                                       controller.value[snapshot]
                                                           [index]
-                                                  ? kblue
-                                                  : Color.fromARGB(
-                                                      255, 117, 110, 110),
+                                                  ? options[index] ==
+                                                          controller.questions[
+                                                                  snapshot]
+                                                              ['answer']
+                                                      ? Colors.green
+                                                      : kblue
+                                                  : options[index] ==
+                                                          controller.questions[
+                                                                  snapshot]
+                                                              ['answer']
+                                                      ? Colors.green
+                                                      : Color.fromARGB(
+                                                          255, 117, 110, 110),
                                               width: 2),
                                           borderRadius:
                                               BorderRadius.circular(15),
                                         ),
                                         child: RadioListTile<int>(
-                                            activeColor: kblue,
-                                            title: Row(
-                                              children: [
-                                                Text(
-                                                  options[index].toString(),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline5!
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                ),
-                                                Spacer(),
-                                              ],
-                                            ),
-                                            controlAffinity:
-                                                ListTileControlAffinity
-                                                    .trailing,
-                                            groupValue:
-                                                controller.groupValue[snapshot],
-                                            value: controller.value[snapshot]
-                                                [index],
-                                            onChanged: (newValue) {
-                                              controller.groupValue[snapshot] =
-                                                  newValue as int;
-                                              if (options[index].toString() ==
-                                                  controller.questions[snapshot]
-                                                          ['answer']
-                                                      .toString()) {
-                                                isCorrect = true;
-                                                print('object');
-                                              } else {
-                                                isCorrect = false;
-                                              }
-                                              updateJsonTime(
-                                                answer: options[index],
-                                                id: controller
-                                                    .questions[snapshot]['id'],
-                                                isCorrect: isCorrect,
-                                              );
-                                              print(options[index]);
-                                            }),
+                                          activeColor: kblue,
+                                          title: Row(
+                                            children: [
+                                              Text(
+                                                options[index].toString(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline5!
+                                                    .copyWith(
+                                                        color: Colors.white),
+                                              ),
+                                              Spacer(),
+                                            ],
+                                          ),
+                                          controlAffinity:
+                                              ListTileControlAffinity.trailing,
+                                          groupValue:
+                                              controller.groupValue[snapshot],
+                                          value: controller.value[snapshot]
+                                              [index],
+                                          onChanged: (value) => null,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -153,9 +139,7 @@ class QuestionScreen extends StatelessWidget {
               Obx(
                 () => controller.questions.length == controller.qnIndex.value
                     ? ElevatedButton(
-                        onPressed: () async {
-                          controller.count = await fetchCorrectAnswers();
-
+                        onPressed: () {
                           context.router.push(FinalScore(
                               outOf: controller.questions.length,
                               score: controller.count));

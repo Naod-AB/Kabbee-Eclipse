@@ -13,6 +13,7 @@ import '../screens/Profile/my_scores_screen.dart';
 import '../screens/Profile/profile_screen.dart';
 import '../screens/Category/front_end_choices.dart';
 import '../screens/Score/final_practice_score.dart';
+import '../screens/Score/review_page.dart';
 import '../screens/question_screen.dart';
 
 @MaterialAutoRouter(
@@ -30,6 +31,7 @@ import '../screens/question_screen.dart';
     AutoRoute(path: '/choose-type', page: ChooseType),
     AutoRoute(path: '/questions', page: QuestionScreen),
     AutoRoute(path: '/finalScore', page: FinalScore),
+    AutoRoute(path: '/review_screen', page: ReviewScreen),
     AutoRoute(path: '/profile', page: ProfileScreen),
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),
     AutoRoute(path: '/my_scores', page: MyScoresScreen),

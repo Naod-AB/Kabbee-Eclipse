@@ -1,10 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/widgets/user_profile_widget.dart';
 
+import '../../controllers/question_controller.dart';
 import '../../widgets/common_components/appbar.dart';
 
 class FinalScore extends StatelessWidget {
-  const FinalScore({Key? key}) : super(key: key);
+  FinalScore({Key? key, required this.outOf, required this.score})
+      : super(key: key);
+  int outOf;
+  int score;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +51,9 @@ class FinalScore extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
+                  children: <Widget>[
                     Text(
-                      '10/10',
+                      '$score/$outOf',
                       style: TextStyle(
                           color: Color.fromARGB(255, 255, 165, 0),
                           fontSize: 64,
@@ -60,7 +67,9 @@ class FinalScore extends StatelessWidget {
                 visible: true,
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.router.pushNamed('/review_screen');
+                  },
                   style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 40),
                       shape: RoundedRectangleBorder(
@@ -75,7 +84,10 @@ class FinalScore extends StatelessWidget {
                 child: const Text(
                   'DONE',
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  context.router.pushNamed('/category');
+                  Get.delete<QuestionControl>();
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(200, 40),
                     shape: RoundedRectangleBorder(
