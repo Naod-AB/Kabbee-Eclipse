@@ -62,10 +62,10 @@ class SignupPassword extends StatelessWidget {
                     user.password=value;
                   },                 
                   validator:(value){
-                  // if (!passwordValidator.validate(value)) 
-                  // {
-                  //   return 'Enter a Valid Password';
-                  //     }
+                  if (!validateStructure(value!)) 
+                   {
+                    return 'Enter a Valid Password';
+                      }
                  },
                   decoration: InputDecoration(
                     filled: true,
@@ -134,15 +134,7 @@ class SignupPassword extends StatelessWidget {
                         child: Icon(Icons.question_mark)) 
                     )
                   ],)
-                // GestureDetector(
-                //   child: RoundedButton(
-                //     buttonName: 'Next',
-                //     page: const SignupName(),
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 55,
-                // ),
+               
               ],
             ),
           ]
@@ -150,5 +142,10 @@ class SignupPassword extends StatelessWidget {
         
       
     );
+  }
+  bool validateStructure(String value){
+        String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+        RegExp regExp = new RegExp(pattern);
+        return regExp.hasMatch(value);
   }
 }

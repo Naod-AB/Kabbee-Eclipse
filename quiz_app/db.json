@@ -47,14 +47,6 @@
       "lastName": "Work",
       "password": "Help123",
       "gender": "male"
-    },
-    {
-      "id": "203",
-      "email": "gemal@gmail.com",
-      "firstName": "Gemal",
-      "lastName": "Mohamed",
-      "password": "Gemal123",
-      "gender": "male"
     }
   ],
   "answers": [
