@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Models/users.dart';
 import '../../controllers/profile_controllers.dart';
 import '../../widgets/user_profile_widget.dart';
 
 class EditProfileScreen extends GetView<ProfileController> {
-  const EditProfileScreen({Key? key}) : super(key: key);
-
+   EditProfileScreen({Key? key}) : super(key: key);
+  Users user = Users();
   @override
   Widget build(BuildContext context) {
     return SafeArea(

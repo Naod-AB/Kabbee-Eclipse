@@ -7,6 +7,7 @@ import '../screens/Login/login_screen.dart';
 import '../screens/Login/signUp_password.dart';
 import '../screens/Login/signup_email.dart';
 import '../screens/Login/signup_name.dart';
+import '../screens/Login/signup_onepage.dart';
 import '../screens/Login/splash_screen.dart';
 import '../screens/Profile/edit_profile_screen.dart';
 import '../screens/Profile/my_scores_screen.dart';
@@ -21,9 +22,10 @@ import '../screens/question_screen.dart';
   routes: <AutoRoute>[
     AutoRoute(page: Splash, initial: true),
     AutoRoute(path: '/login', page: LoginPage),
-    AutoRoute(path: '/signup_email', page: SignupEmail),
-    AutoRoute(path: '/signup_password', page: SignupPassword),
-    AutoRoute(path: '/signup_name', page: SignupName),
+   // AutoRoute(path: '/signup_email', page: SignupEmail),
+    //AutoRoute(path: '/signup_password', page: SignupPassword),
+    //AutoRoute(path: '/signup_name', page: SignupName),
+    AutoRoute(path: '/signup', page:OneSignupPage),
     AutoRoute(path: '/category', page: CategoryPage),
     AutoRoute(path: '/frontend', page: FrontEndChoices),
     AutoRoute(path: '/backend', page: BackendChoices),

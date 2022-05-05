@@ -1,131 +1,173 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quiz_app/widgets/pallete.dart';
-
+import 'package:quiz_app/Utilities/size_config.dart';
+import '../../Models/users.dart';
+import '../../widgets/pallete.dart';
+import '../../widgets/user_profile_widget.dart';
 import '../../widgets/widgets.dart';
-import 'screens.dart';
+//import 'screens.dart';
 
 class SignupName extends StatelessWidget {
-  const SignupName({Key? key}) : super(key: key);
+   Users user;
+   TextEditingController firstNameController ;
+   TextEditingController lastNameController;
+   GlobalKey<FormFieldState> firtNameKey;
+   GlobalKey<FormFieldState> lastNameKey;
+   SignupName({
+    Key? key,
+    required this.firstNameController,
+    required this.firtNameKey,
+    required this.lastNameController,
+    required this.lastNameKey,
+    required this.user
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 34, 34, 34),
-        leading: const BackButton(),
-        elevation: 0,
-      ),
-      backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 60.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+    Size  size = MediaQuery.of(context).size;
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*0.05),//50.0),
+      child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'Create account',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.30),
-                ),
+               Text(
+                'Create account',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: getProportionateScreenWidth(30),//40,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.30),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'please tell us more about you',
-                  style: TextStyle(
-                      color: kWhite1,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w100,
-                      letterSpacing: 0.50),
-                ),
+               Text(
+                'please tell us more about you',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: getProportionateScreenWidth(10),//20,
+                    fontWeight: FontWeight.w100,
+                    letterSpacing: 0.50),
               ),
-              const SizedBox(
-                height: 15,
+               SizedBox(
+                height:  15,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Regi(
-                    icon: FontAwesomeIcons.solidUser,
-                    hint: 'Enter first name',
-                    inputType: TextInputType.name,
-                    inputAction: TextInputAction.next,
+                  TextFormField( 
+                  onSaved: (value){
+                    user.firstName = value;
+                  },
+                  controller: firstNameController,
+                  key: firtNameKey,                 
+                  validator:(value){
+                   if(value!.isEmpty)
+                       return "First Name cannot be empty";
+                             
+                  },
+                  
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor:  Colors.grey[500]!.withOpacity(0.5),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
+                    suffixIcon: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Icon(
+                        FontAwesomeIcons.solidUser,
+                        size: 28,
+                        color: kblue,
+                      ),
+                    ),
+                    hintText: 'Enter First Name',
+                    hintStyle: kBodyText,
                   ),
+                  style: kBodyText,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction:TextInputAction.next,
+                  obscureText: false,
+                  ),
+                  //  Regi(
+                  //   icon: FontAwesomeIcons.solidUser,
+                  //   hint: 'Enter first name',
+                  //   inputType: TextInputType.name,
+                  //   inputAction: TextInputAction.next,
+                  //   isPass: controller.hidePassword.value,
+                  //   validator: (value){
+                  //     if(value!.isEmpty)
+                  //     return "First Name cannot be empty";
+                  //           }, 
+                  //   controller: firstNameController,                     
+                  //   fieldkey: firtNameKey,
+                  //   user: user,
+                  // ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const Regi(
-                    icon: FontAwesomeIcons.solidUser,
-                    hint: 'Enter last name',
-                    inputType: TextInputType.name,
-                    inputAction: TextInputAction.next,
+                  TextFormField( 
+                  onSaved: (value){
+                    user.lastName = value;
+                  },
+                  controller: lastNameController,
+                  key: lastNameKey,                 
+                  validator:(value){
+                   if(value!.isEmpty)
+                       return "Last Name cannot be empty";
+                             
+                  },
+                  
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor:  Colors.grey[500]!.withOpacity(0.5),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
+                    suffixIcon: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Icon(
+                        FontAwesomeIcons.solidUser,
+                        size: 28,
+                        color: kblue,
+                      ),
+                    ),
+                    hintText: 'Enter Last Name',
+                    hintStyle: kBodyText,
                   ),
+                  style: kBodyText,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction:TextInputAction.next,
+                  obscureText: false,
+                  ),
+                  //  Regi(
+                  //   icon: FontAwesomeIcons.solidUser,
+                  //   hint: 'Enter last name',
+                  //   inputType: TextInputType.name,
+                  //   inputAction: TextInputAction.next,
+                  //   isPass: !controller.hidePassword.value,
+                  //   validator: (value){
+                  //     if(value!.isEmpty)
+                  //     return "Last Name cannot be empty";                
+                  //     }, 
+                  //   controller: lastNameController, 
+                  //   fieldkey: lastNameKey, 
+                  //   user: user,
+                  // ),
                   const SizedBox(
                     height: 15,
                   ),
-                  /*buildTile(
-                    controller.genderIndex.value ? Icons.male : Icons.female,
-                    customText('Gender', 18, true, false, primaryColor),
-                    null,
-                    genderToggle(2),
-                    false,
-                  ),*/
-                  TextG(
-                      //genderToggle(2),
-                      ),
-                  //genderValueContainer(),
-                  /*Container(
-                    height: size.height * 0.08,
-                    width: size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[500]!.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        //crossAxisAlignment: CrossAxisAlignment.stretch,
-                        // mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Gender',
-                            style: kBodyText,
-                          ),
-                          suffixText:Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20),
-                            child: genderToggle(2),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),*/
+                  genderToggle(2),
                   const SizedBox(
-                    height: 110,
+                    height: 100,
                   ),
-                  GestureDetector(
-                    child: const RoundedButton(
-                      buttonName: 'REGISTER',
-                      page: '/login',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
+                  // GestureDetector(
+                  //   child: const RoundedButton(
+                  //     buttonName: 'Register',
+                  //     page:  LoginPage(),
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 30,
+                  // ),
                 ],
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
+    );    
+      }
 }

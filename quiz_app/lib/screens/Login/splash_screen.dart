@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../../Utilities/size_config.dart';
 import '../../widgets/pallete.dart';
 import 'package:auto_route/auto_route.dart';
 import '../../routes/router.gr.dart';
@@ -23,6 +24,7 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Center(
         child: Container(
@@ -40,8 +42,6 @@ class _SplashState extends State<Splash> {
 
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-
-            //padding: EdgeInsets.only(top: 100, bottom: 20),
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 800,
@@ -92,8 +92,7 @@ class _SplashState extends State<Splash> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   //crossAxisAlignment: CrossAxisAlignment.center,
-                                  //theme: ThemeData(
-                                  //GoogleFonts.josefinSansTextTheme(Theme.of(context).textTheme),
+
                                   children: const [
                                     Text(
                                       'K',
@@ -121,7 +120,6 @@ class _SplashState extends State<Splash> {
                                       ),
                                     ),
                                   ],
-                                  // ),
                                 ),
                               ),
                             ],
@@ -133,11 +131,11 @@ class _SplashState extends State<Splash> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
+                    children:  [
                       Text(
                         'Q',
                         style: TextStyle(
-                            fontSize: 45,
+                            fontSize: getProportionateScreenWidth(43),//,45,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),
@@ -145,7 +143,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'uiz Ap',
                         style: TextStyle(
-                            fontSize: 38,
+                            fontSize: getProportionateScreenWidth(38),//38,
                             fontWeight: FontWeight.w900,
                             color: kWhite,
                             letterSpacing: 2),
@@ -153,7 +151,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'p',
                         style: TextStyle(
-                            fontSize: 38,
+                            fontSize:getProportionateScreenWidth(38),// 38,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),
