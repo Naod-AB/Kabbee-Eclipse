@@ -6,7 +6,7 @@ import '../../controllers/profile_controllers.dart';
 import '../../widgets/user_profile_widget.dart';
 
 class EditProfileScreen extends GetView<ProfileController> {
-   EditProfileScreen({Key? key}) : super(key: key);
+  EditProfileScreen({Key? key}) : super(key: key);
   Users user = Users();
   @override
   Widget build(BuildContext context) {
@@ -26,15 +26,23 @@ class EditProfileScreen extends GetView<ProfileController> {
               const SizedBox(height: 30),
               editProfilePic(context),
               const SizedBox(height: 20),
-              buildTextField('Enter first name', Icons.person,
-                  controller.firstNameController.value, false, null),
+              buildTextField(
+                  '${controller.userInfo.value.firstName}',
+                  Icons.person,
+                  controller.firstNameController.value,
+                  false,
+                  null),
               const SizedBox(height: 20),
-              buildTextField('Enter last name', Icons.person,
-                  controller.lastNameController.value, false, null),
+              buildTextField(
+                  '${controller.userInfo.value.lastName}',
+                  Icons.person,
+                  controller.lastNameController.value,
+                  false,
+                  null),
               const SizedBox(height: 20),
               Obx(
                 () => buildTextField(
-                    'Enter password ',
+                    'Enter new password ',
                     Icons.lock,
                     controller.passwordController.value,
                     true,
@@ -42,7 +50,9 @@ class EditProfileScreen extends GetView<ProfileController> {
               ),
               const SizedBox(height: 20),
               Obx(() => buildTile(
-                    controller.genderIndex.value ? Icons.male : Icons.female,
+                    controller.userInfo.value.gender == 'Male'
+                        ? Icons.male
+                        : Icons.female,
                     customText('Gender', 18, true, false, primaryColor),
                     null,
                     genderToggle(2),
