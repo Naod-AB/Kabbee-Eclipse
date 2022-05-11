@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -22,6 +24,9 @@ class OneSignupPage extends StatefulWidget {
 
   OneSignupPage({Key? key}) : super(key: key);
 
+  
+  
+
   @override
   State<OneSignupPage> createState() => _OneSignupPageState();
 }
@@ -35,13 +40,28 @@ class _OneSignupPageState extends State<OneSignupPage> {
   // var firstNameFieldKey = GlobalKey<FormFieldState>();
   // var lastNameFieldKey = GlobalKey<FormFieldState>(); 
   int _index=0;
+   List<Users> allUsers=[];
    @override
    void dispose() {
     // TODO: implement dispose
     
     controller.dispose();
   }
-
+  @override
+  void initState() {
+     getAllUsers();
+    
+    super.initState();
+  }
+ Future<void> getAllUsers()async{
+   List<Users> temp;
+   
+    temp = await fetchAllUsers();
+    setState(() {
+     allUsers=temp;
+   });
+   
+ }
   @override
   Widget build(BuildContext context) {   
     
@@ -73,19 +93,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                 ],
                               );
                             },
-                    // onStepTapped: (currentIndex){
-                    //    if(currentIndex>_index){
-
-                    //      if(controller.emailFieldKey.value.currentState!.validate())
-                    //             setState(() {                        
-                    //               _index=currentIndex;
-                    //             });
-                    //             } else{
-                    //               setState(() {
-                    //                 _index=currentIndex;
-                    //               });
-                    //             }
-                    //     },
+                    
                     type: StepperType.horizontal,
                     currentStep: _index,
                     steps: [
@@ -99,7 +107,8 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                   user: user,
                                   controller: controller.emailController.value,//_emailController ,
                                   emailKey: controller.emailFieldKey.value,//emailFieldkey, 
-                                  validator: emailValidator,)
+                                  validator: emailValidator, 
+                                  allUsers: allUsers,)
                                   )
                       ),
                       Step(
@@ -127,7 +136,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                       lastNameController: controller.lastNameController.value,//_lastNameController, 
                                       lastNameKey: controller.lastNameFieldKey.value,//lastNameFieldKey, 
                                       user: user,)
-                                  ),                        
+                                  ),                         
                                   ]),
                 ),
               ),
@@ -177,8 +186,11 @@ class _OneSignupPageState extends State<OneSignupPage> {
       if(controller.firstNameFieldKey.value.currentState!.validate()&&
           controller.lastNameFieldKey.value.currentState!.validate()){
             _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-           user.gender=controller.selectedGender.value;
+           user.gender=controller.genderIndex.value?"Male":"Female";
+           var  id = Random();
+             user.id=id.nextInt(1000);
             await createUser(user);
+           // Get.dialog(Text("Created an account successfully "));
             context.router.pushNamed("/login");
       // Get.to(LoginPage());
 

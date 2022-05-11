@@ -15,7 +15,7 @@ class Users {
         this.password,
         this.gender,
     });
-    String? id;
+    dynamic? id;
     String? email;
     String? firstName;
     String? lastName;
@@ -26,7 +26,7 @@ class Users {
       print("inide the fromJson");
       return Users(
         id:json["id"],
-        email: json["email"],
+        email: json["email"], 
         firstName: json["firstName"],
         lastName: json["lastName"],
         password: json["password"],

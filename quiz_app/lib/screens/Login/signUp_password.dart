@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 
 import '../../Models/users.dart';
+import '../../Utilities/size_config.dart';
 import '../../widgets/pallete.dart';
 import '../../widgets/user_profile_widget.dart';
 
-class SignupPassword extends StatelessWidget {
+class SignupPassword extends StatefulWidget {
    Users user;
    TextEditingController passController ;
    TextEditingController confirmController;
@@ -25,27 +26,32 @@ class SignupPassword extends StatelessWidget {
       required this.confirmKey}) : super(key: key);
 
   @override
+  State<SignupPassword> createState() => _SignupPasswordState();
+}
+
+class _SignupPasswordState extends State<SignupPassword> {
+  @override
   Widget build(BuildContext context) {
-   
+    bool hidP = false;
        return  Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50.0),
+        padding:  EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*0.05),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
+             Text(
               'Create account',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 40,
+                  fontSize: getProportionateScreenWidth(30),
                   fontWeight: FontWeight.bold,
                   letterSpacing: 0.30),
             ),
-            const Text(
+             Text(
               'please enter your password',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: getProportionateScreenWidth(10),
                   fontWeight: FontWeight.w100,
                   letterSpacing: 0.50),
             ),
@@ -56,10 +62,10 @@ class SignupPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                  TextFormField( 
-                  controller: passController,
-                  key: passKey,
+                  controller: widget.passController,
+                  key: widget.passKey,
                   onSaved: (value){
-                    user.password=value;
+                    widget.user.password=value;
                   },                 
                   validator:(value){
                   if (!validateStructure(value!)) 
@@ -73,7 +79,20 @@ class SignupPassword extends StatelessWidget {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
                     suffixIcon:  Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child:passwordVisibilityBtn(),
+                      child:IconButton(
+                           icon:Icon(
+                              controller.x.value ? Icons.visibility_off : Icons.visibility,
+                              color: controller.x.value ? orangeColor : Colors.white,
+                            ), 
+                            onPressed: () { 
+                              setState(() {
+                                 controller.x.value=!controller.x.value;
+                               print(controller.x.value);
+                              });
+                              
+                             },
+                        ),
+                      //passwordVisibilityBtn(),
                       //  Icon(
                       //   FontAwesomeIcons.solidEnvelope,
                       //   size: 28,
@@ -86,16 +105,16 @@ class SignupPassword extends StatelessWidget {
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction:TextInputAction.next,
-                  obscureText: true,
+                  obscureText: controller.x.value,
                  ),
                 const SizedBox(
                   height: 15,
                 ),
                 TextFormField( 
-                  controller: confirmController,
-                  key: confirmKey,                 
+                  controller: widget.confirmController,
+                  key: widget.confirmKey,                 
                   validator:(value){
-                  if (confirmController.text!=passController.text) 
+                  if (widget.confirmController.text!=widget.passController.text) 
                   {
                     return 'The Two password need to be  the same ';
                       }
@@ -106,7 +125,20 @@ class SignupPassword extends StatelessWidget {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)) ,
                     suffixIcon:  Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: passwordVisibilityBtn(),
+                      child: IconButton(
+                           icon:Icon(
+                              controller.y.value ? Icons.visibility_off : Icons.visibility,
+                              color: controller.y.value ? orangeColor : Colors.white,
+                            ), 
+                            onPressed: () { 
+                              setState(() {
+                                 controller.y.value=!controller.y.value;
+                               print(controller.y.value);
+                              });
+                              
+                             },
+                        ),
+                      //passwordVisibilityBtn(),
                     ),
                     hintText: 'Confirm Password',
                     hintStyle: kBodyText,
@@ -114,7 +146,7 @@ class SignupPassword extends StatelessWidget {
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction:TextInputAction.next,
-                  obscureText: true,
+                  obscureText: controller.y.value,
                  ),
                 const SizedBox(
                   height: 10,
@@ -123,7 +155,7 @@ class SignupPassword extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Tooltip(
-                      message: "* Password have to have 6 or more in length \n * Need to have at least on UpperCase letter \n * at least one digit  ",
+                      message: "* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  ",
                       waitDuration: Duration(microseconds: 500),
                       showDuration: Duration(seconds: 1),
                       child:Container(
@@ -143,6 +175,7 @@ class SignupPassword extends StatelessWidget {
       
     );
   }
+
   bool validateStructure(String value){
         String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
         RegExp regExp = new RegExp(pattern);
