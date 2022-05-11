@@ -8,6 +8,7 @@ import 'routes/router.gr.dart';
 import 'widgets/theme.dart';
 
 void main() {
+  // ProfileBinding().dependencies();
   runApp(MyApp());
 }
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
       title: 'Quiz APP',
+      smartManagement: SmartManagement.keepFactory,
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,

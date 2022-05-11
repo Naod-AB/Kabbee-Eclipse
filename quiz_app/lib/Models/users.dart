@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 Users usersFromJson(String str) => Users.fromJson(json.decode(str));
@@ -39,7 +37,7 @@ class Users {
         "lastName": lastName,
         "password": password,
         "gender": gender,
-    };
+      };
 }
 
 // class Users{

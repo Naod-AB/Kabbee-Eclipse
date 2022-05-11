@@ -78,13 +78,13 @@
     },
     {
       "id": 3,
-      "answer": "Char",
-      "isCorrect": true
+      "answer": "Int",
+      "isCorrect": false
     },
     {
       "id": 4,
-      "answer": "Output",
-      "isCorrect": true
+      "answer": "Count",
+      "isCorrect": false
     }
   ]
 }

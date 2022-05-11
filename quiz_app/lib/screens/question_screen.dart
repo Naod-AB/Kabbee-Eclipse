@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import '../widgets/theme.dart';
 import '/routes/router.gr.dart';
 import '../Models/model.dart';
 import '../controllers/profile_controllers.dart';
@@ -19,6 +20,7 @@ class QuestionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     var isCorrect = false;
     return SafeArea(
       child: Scaffold(
@@ -61,13 +63,17 @@ class QuestionScreen extends StatelessWidget {
                             Spacer(
                               flex: 1,
                             ),
-                            Text(
-                              controller.questions[snapshot]['question']
-                                  .toString(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline5!
-                                  .copyWith(color: Colors.white),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Text(
+                                controller.questions[snapshot]['question']
+                                    .toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: Colors.white),
+                              ),
                             ),
                             Spacer(
                               flex: 2,
@@ -152,15 +158,38 @@ class QuestionScreen extends StatelessWidget {
               Spacer(),
               Obx(
                 () => controller.questions.length == controller.qnIndex.value
-                    ? ElevatedButton(
-                        onPressed: () async {
-                          controller.count = await fetchCorrectAnswers();
+                    // ? ElevatedButton(
+                    //     onPressed: () async {
+                    //       controller.count = await fetchCorrectAnswers();
 
-                          context.router.push(FinalScore(
-                              outOf: controller.questions.length,
-                              score: controller.count));
-                        },
-                        child: Text('Done'))
+                    //       context.router.push(FinalScore(
+                    //           outOf: controller.questions.length,
+                    //           score: controller.count));
+                    //     },
+                    //     child: Text('Done')):
+
+                    ? Container(
+                        height: size.height * 0.08,
+                        width: size.width * 0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: pColor,
+                        ),
+                        child: TextButton(
+                          onPressed: () async {
+                            controller.count = await fetchCorrectAnswers();
+
+                            context.router.push(FinalScore(
+                                outOf: controller.questions.length,
+                                score: controller.count));
+                          },
+                          child: Text(
+                            'DONE',
+                            style: kBodyText.copyWith(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      )
                     // ? const RoundedButton(
                     //     buttonName: 'Done',
                     //     page: '/finalScore',

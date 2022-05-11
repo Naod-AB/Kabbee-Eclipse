@@ -43,7 +43,7 @@ dependencies:
   flutter_svg: ^1.0.3
   google_fonts: ^2.3.1 
   email_validator: ^2.0.1
-  #password_validator: ^0.0.1
+
   http: ^0.13.4
   auto_route: ^3.2.4
 dev_dependencies:

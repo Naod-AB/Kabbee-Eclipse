@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quiz_app/Models/users.dart';
 
 import '../widgets/user_profile_widget.dart';
 
@@ -13,7 +14,7 @@ class ProfileController extends GetxController {
   RxBool genderIndex = true.obs;
   RxBool gender = true.obs;
   RxInt type = 0.obs;
-  RxInt stepperIndex=0.obs;
+  RxInt stepperIndex = 0.obs;
 
   RxBool isBtnNull = false.obs;
   RxBool hidePassword = true.obs;
@@ -34,21 +35,26 @@ class ProfileController extends GetxController {
     );
     if (pickedFile != null) {
       editedImage.value = pickedFile.path;
-      showSnackbar(context, 'Image', 'chosen', 'success');
+      showSnackbar(context, 'Image', 'Image chosen successfuly', 'success');
 
       isBtnNull.value = true;
     } else {
-      showSnackbar(context, 'Image', 'error', 'error');
+      showSnackbar(context, 'Image', 'Failed to choose image', 'error');
     }
   }
-    //Fieldforms globalkeys
-    
+
+  //Fieldforms globalkeys
+  Rx<Users> userInfo = Users().obs;
+
   Rx<GlobalKey<FormFieldState>> emailFieldKey = GlobalKey<FormFieldState>().obs;
   Rx<GlobalKey<FormFieldState>> passFieldKey = GlobalKey<FormFieldState>().obs;
-  Rx<GlobalKey<FormFieldState>> confirmFieldKey = GlobalKey<FormFieldState>().obs;
-  Rx<GlobalKey<FormFieldState>> firstNameFieldKey = GlobalKey<FormFieldState>().obs;
-  Rx<GlobalKey<FormFieldState>> lastNameFieldKey = GlobalKey<FormFieldState>().obs;
-   //Textfield controllers
+  Rx<GlobalKey<FormFieldState>> confirmFieldKey =
+      GlobalKey<FormFieldState>().obs;
+  Rx<GlobalKey<FormFieldState>> firstNameFieldKey =
+      GlobalKey<FormFieldState>().obs;
+  Rx<GlobalKey<FormFieldState>> lastNameFieldKey =
+      GlobalKey<FormFieldState>().obs;
+  //Textfield controllers
   Rx<TextEditingController> firstNameController = TextEditingController().obs;
   Rx<TextEditingController> lastNameController = TextEditingController().obs;
   Rx<TextEditingController> passwordController = TextEditingController().obs;

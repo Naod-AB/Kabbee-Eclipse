@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../Models/users.dart';
+import '../widgets/user_profile_widget.dart';
 
 class NameListJson {
   var id;
@@ -59,7 +61,6 @@ Future<int> fetchCorrectAnswers() async {
 
 // List<NameListJson> parseAnswers(String responseBody) {
 //   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  
 
 //   for (var item in parsed['isCorrect']) {
 //     print('item $item');
@@ -70,3 +71,25 @@ Future<int> fetchCorrectAnswers() async {
 //   //     .map<NameListJson>((json) => NameListJson.fromJson(json))
 //   //     .toList();
 // }
+
+Future<Users> updateJprofile({
+  required String id,
+}) async {
+  final response = await http.patch(
+    Uri.parse('http://localhost:3000/Users/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'firstName': controller.firstName.value,
+      'lastName': controller.lastName.value,
+      'password': controller.password.value,
+      'gender': controller.gender.value ? 'Male' : 'Female',
+    }),
+  );
+  if (response.statusCode == 200) {
+    return Users.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception(Error);
+  }
+}

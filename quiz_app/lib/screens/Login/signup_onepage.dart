@@ -19,9 +19,7 @@ import 'signUp_password.dart';
 import 'signup_email.dart';
 import 'signup_name.dart';
 
-
 class OneSignupPage extends StatefulWidget {
-
   OneSignupPage({Key? key}) : super(key: key);
 
   
@@ -32,9 +30,9 @@ class OneSignupPage extends StatefulWidget {
 }
 
 class _OneSignupPageState extends State<OneSignupPage> {
-  ProfileController controller= Get.find();
-  //var emailFieldkey = GlobalKey<FormFieldState>();  
-  final _formKey =GlobalKey<FormState>();
+  ProfileController controller = Get.find();
+  //var emailFieldkey = GlobalKey<FormFieldState>();
+  final _formKey = GlobalKey<FormState>();
   // var passFieldKey = GlobalKey<FormFieldState>();
   // var confirmFieldKey = GlobalKey<FormFieldState>();
   // var firstNameFieldKey = GlobalKey<FormFieldState>();
@@ -44,7 +42,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
    @override
    void dispose() {
     // TODO: implement dispose
-    
+
     controller.dispose();
   }
   @override
@@ -63,10 +61,9 @@ class _OneSignupPageState extends State<OneSignupPage> {
    
  }
   @override
-  Widget build(BuildContext context) {   
-    
-    Users user = Users() ; 
-    EmailValidator emailValidator=EmailValidator();
+  Widget build(BuildContext context) {
+    Users user = Users();
+    EmailValidator emailValidator = EmailValidator();
 
     return Scaffold(
       appBar: AppBar(
@@ -76,7 +73,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
       ),
       backgroundColor: Colors.black,
       body: Form(
-        key:_formKey,
+        key: _formKey,
         child: Container(
           height: SizeConfig.screenHeight *0.85 ,
           child: Column(
@@ -138,25 +135,27 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                       user: user,)
                                   ),                         
                                   ]),
+                 ),
                 ),
-              ),
-              SizedBox(height: 30,),
-              Padding(
-                padding:  EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth*0.09),
-                child: Row(
-                  children: [
-                    if(_index!=0)
-                    Expanded(
-                      child: RoundedButton(
-                        buttonName: "Back",
-                         
-                        pressed:(){
-                          setState(() {
-                            _index--;
-                          });
-                        }
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.screenWidth * 0.09),
+                  child: Row(
+                    children: [
+                      if (_index != 0)
+                        Expanded(
+                          child: RoundedButton(
+                              buttonName: "Back",
+                              pressed: () {
+                                setState(() {
+                                  _index--;
+                                });
+                              }),
                         ),
-                    ),
+                    
                     SizedBox(width: SizeConfig.screenWidth*0.01,),
                     Expanded(
                       child: RoundedButton(
@@ -194,56 +193,46 @@ class _OneSignupPageState extends State<OneSignupPage> {
             context.router.pushNamed("/login");
       // Get.to(LoginPage());
 
-                
+                                }
                               }
-                            }
-                          }
-                        ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ) 
-          ),
+                            }),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )),
       ),
     );
-
   }
 
-
-void fieldValidation(){
-
-      if(_index==0){                   
-      if(controller.emailFieldKey.value.currentState!.validate()){
+  void fieldValidation() {
+    if (_index == 0) {
+      if (controller.emailFieldKey.value.currentState!.validate()) {
         //print(emailFieldkey.currentState!.errorText);
-          setState(() {
-        _index+=1;
-      });
+        setState(() {
+          _index += 1;
+        });
       }
-    }else if(_index==1){
-      if(controller.passFieldKey.value.currentState!.validate()&&
-          controller.confirmFieldKey.value.currentState!.validate()){
+    } else if (_index == 1) {
+      if (controller.passFieldKey.value.currentState!.validate() &&
+          controller.confirmFieldKey.value.currentState!.validate()) {
         print("passFieldKey.currentState!.errorText");
         print(_index);
-          setState(() {
-        _index+=1;
-        print(_index);
-      });
+        setState(() {
+          _index += 1;
+          print(_index);
+        });
       }
-
-    } else if(_index==2){
+    } else if (_index == 2) {
       print(_index);
-      if(controller.firstNameFieldKey.value.currentState!.validate()&&
-          controller.lastNameFieldKey.value.currentState!.validate()){
-            _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-          
-        Get.to(LoginPage());
+      if (controller.firstNameFieldKey.value.currentState!.validate() &&
+          controller.lastNameFieldKey.value.currentState!.validate()) {
+        _formKey.currentState!
+            .save(); // saving the data in the in a local API (Json format)
 
-      
+        Get.to(LoginPage());
       }
     }
   }
-
 }
- 
