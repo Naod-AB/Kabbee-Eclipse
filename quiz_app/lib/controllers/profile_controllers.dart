@@ -8,6 +8,8 @@ import '../widgets/user_profile_widget.dart';
 class ProfileController extends GetxController {
   RxString selectedGender = 'male'.obs;
   RxBool activeBtn = false.obs;
+  RxBool x = true.obs;
+  RxBool y = true.obs;
 
   RxBool genderIndex = true.obs;
   RxBool gender = true.obs;

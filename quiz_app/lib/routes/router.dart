@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:quiz_app/screens/rule_and%20terms.dart';
 import '../screens/Category/back_end_choices.dart';
 import '../screens/Category/category_screen.dart';
 import '../screens/Category/choose_type_screen.dart';
@@ -22,6 +23,7 @@ import '../screens/question_screen.dart';
   routes: <AutoRoute>[
     AutoRoute(page: Splash, initial: true),
     AutoRoute(path: '/login', page: LoginPage),
+    AutoRoute(path: '/terms', page: TermsConditions),
    // AutoRoute(path: '/signup_email', page: SignupEmail),
     //AutoRoute(path: '/signup_password', page: SignupPassword),
     //AutoRoute(path: '/signup_name', page: SignupName),

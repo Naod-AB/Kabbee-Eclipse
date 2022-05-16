@@ -147,18 +147,10 @@ class _LoginPageState extends State<LoginPage> {
                   height:SizeConfig.screenHeight *0.03, //25,
                 ),
                 
-                GestureDetector(
-                  child:  Expanded(
-                    child: button.RoundedButton(
-                      buttonName: 'Login', 
-                      pressed:authenticateUser
-                      ),
-                  )
-                  // (
-                  //   buttonName: 'Login',
-                  //   page:  CategoryPage(),
-                  // ),
-                ),
+                button.RoundedButton(
+                  buttonName: 'Login', 
+                  pressed:authenticateUser
+                  ),
                  SizedBox(
                   height:SizeConfig.screenHeight *0.03
                 ),
@@ -166,25 +158,21 @@ class _LoginPageState extends State<LoginPage> {
                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Flexible(
-                        child: Text(
-                          'Don`t have an account',
-                          style: kText,
-                        ),
+                      Text(
+                        'Don`t have an account',
+                        style: kText,
                       ),
                       const SizedBox(
                         width: 15,
                       ),
-                      Flexible(
-                        child: InkWell(
-                          onTap: () {
-                            // Get.to(() => const SignupEmail());
-                            context.router.pushNamed('/signup');
-                          },
-                          child: const Text(
-                            'Sign up',
-                            style: kColorText,
-                          ),
+                      InkWell(
+                        onTap: () {
+                          // Get.to(() => const SignupEmail());
+                          context.router.pushNamed('/signup');
+                        },
+                        child: const Text(
+                          'Sign up',
+                          style: kColorText,
                         ),
                       ),
                     ],
@@ -204,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
   void authenticateUser() async {
      
      var pass = passwordController.text.trim();
-     var email = emailController.text.trim();
+     var email = emailController.text.trim().toLowerCase();
      if(emailKey.currentState!.validate()
         &&passKey.currentState!.validate() ){
           Users? user = await fetchUser(email);
@@ -215,9 +203,7 @@ class _LoginPageState extends State<LoginPage> {
              });
              context.router.pushNamed('/category');
            } else {
-             print(pass);
-             print(email);
-             //print(user!.password);
+             
              setState(() {
                error = "Email address or Password is incorrect";
              });
