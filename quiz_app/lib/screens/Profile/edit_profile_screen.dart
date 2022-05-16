@@ -26,19 +26,11 @@ class EditProfileScreen extends GetView<ProfileController> {
               const SizedBox(height: 30),
               editProfilePic(context),
               const SizedBox(height: 20),
-              buildTextField(
-                  '${controller.userInfo.value.firstName}',
-                  Icons.person,
-                  controller.firstNameController.value,
-                  false,
-                  null),
+              buildTextField(controller.firstName.value, Icons.person,
+                  controller.firstNameController.value, false, null),
               const SizedBox(height: 20),
-              buildTextField(
-                  '${controller.userInfo.value.lastName}',
-                  Icons.person,
-                  controller.lastNameController.value,
-                  false,
-                  null),
+              buildTextField(controller.lastName.value, Icons.person,
+                  controller.lastNameController.value, false, null),
               const SizedBox(height: 20),
               Obx(
                 () => buildTextField(
@@ -50,9 +42,7 @@ class EditProfileScreen extends GetView<ProfileController> {
               ),
               const SizedBox(height: 20),
               Obx(() => buildTile(
-                    controller.userInfo.value.gender == 'Male'
-                        ? Icons.male
-                        : Icons.female,
+                    controller.gender.value ? Icons.male : Icons.female,
                     customText('Gender', 18, true, false, primaryColor),
                     null,
                     genderToggle(2),

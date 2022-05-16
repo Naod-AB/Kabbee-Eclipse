@@ -408,21 +408,15 @@ void updateProfile() {
     controller.firstName.value =
         controller.firstNameController.value.text.trimLeft();
     print('Firstname');
-  } else {
-    controller.firstName.value = controller.userInfo.value.firstName.toString();
   }
   if (controller.lastNameController.value.text.trimLeft().isNotEmpty) {
     controller.lastName.value =
         controller.lastNameController.value.text.trimLeft();
-  } else {
-    controller.lastName.value = controller.userInfo.value.lastName.toString();
   }
 
   if (controller.passwordController.value.text.trimLeft().isNotEmpty) {
     controller.password.value =
         controller.passwordController.value.text.toString().trimLeft();
-  } else {
-    controller.password.value = controller.userInfo.value.password.toString();
   }
   updateProfileImage();
 

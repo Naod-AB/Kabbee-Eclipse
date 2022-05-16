@@ -59,19 +59,6 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
-// List<NameListJson> parseAnswers(String responseBody) {
-//   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-//   for (var item in parsed['isCorrect']) {
-//     print('item $item');
-//   }
-
-//   return 1;
-//   // parsed
-//   //     .map<NameListJson>((json) => NameListJson.fromJson(json))
-//   //     .toList();
-// }
-
 Future<Users> updateJprofile({
   required String id,
 }) async {

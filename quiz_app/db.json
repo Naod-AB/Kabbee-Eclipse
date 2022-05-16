@@ -27,18 +27,18 @@
     {
       "id": "30",
       "email": "miki@gmail.com",
-      "firstName": "Naod",
-      "lastName": "Miki father",
-      "password": "Miki123",
-      "gender": "Female"
+      "firstName": "Naodd",
+      "lastName": "Mikii",
+      "password": "test123",
+      "gender": "Male"
     },
     {
       "id": "101",
       "email": "mgemal375@gmail.com",
-      "firstName": "Mohammed",
+      "firstName": "Naod",
       "lastName": "Gemal",
-      "password": "Mohammed123",
-      "gender": "male"
+      "password": "test123",
+      "gender": "Male"
     },
     {
       "id": "202",

@@ -15,6 +15,11 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.firstName.value =
+        controller.userInfo.value.firstName.toString().toCapitalized();
+    controller.lastName.value =
+        controller.userInfo.value.lastName.toString().toCapitalized();
+
     controller.gender.value =
         controller.userInfo.value.gender.toString() == 'Male' ? true : false;
     return Scaffold(
@@ -38,11 +43,9 @@ class ProfileScreen extends GetView<ProfileController> {
                     Icons.person,
                     customText('Full Name', 18, true, false, primaryColor),
                     Obx(() => customText(
-                        controller.userInfo.value.firstName
-                                .toString()
-                                .toCapitalized() +
+                        controller.firstName.value.toString().toCapitalized() +
                             ' ' +
-                            controller.userInfo.value.lastName
+                            controller.lastName.value
                                 .toString()
                                 .toCapitalized(),
                         13,
