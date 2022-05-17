@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/Models/scores.dart';
 import 'package:quiz_app/api.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 
@@ -103,11 +104,9 @@ class ProfileScreen extends GetView<ProfileController> {
                       customText(
                           'Achievements', 13, false, false, secondaryColor),
                       GestureDetector(
-                        onTap: () async {
-                          var scores = await fetchUserScores(
-                              controller.userInfo.value!.id);
-                          print(scores!.courseName);
-                          print(scores.courseScore);
+                        onTap: () {
+                          // print(scores!.courseName);
+                          // print(scores.courseScore);
                           context.router.pushNamed('/my_scores');
                         },
                         child: const Icon(

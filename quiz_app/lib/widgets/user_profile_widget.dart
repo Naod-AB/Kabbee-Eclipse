@@ -362,7 +362,7 @@ Widget passwordVisibilityBtn() {
   );
 }
 
-Widget sampleCard(context, IconData icon) {
+Widget sampleCard(context, IconData icon, String score) {
   var mediaQueryHeight = MediaQuery.of(context).size.height;
 
   return Container(
@@ -390,8 +390,8 @@ Widget sampleCard(context, IconData icon) {
           CircleAvatar(
             radius: 50,
             backgroundColor: const Color.fromRGBO(34, 34, 34, 1),
-            child: Center(
-                child: customText('10/10', 25, true, false, primaryColor)),
+            child:
+                Center(child: customText(score, 25, true, false, primaryColor)),
           ),
         ],
       ),

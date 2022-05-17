@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quiz_app/Models/scores.dart';
 
+// import '../../api.dart';
 import '../../widgets/user_profile_widget.dart';
 
 class MyScoresScreen extends StatelessWidget {
@@ -8,6 +10,7 @@ class MyScoresScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchScore();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -23,29 +26,34 @@ class MyScoresScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: customText('FRONT END', 18, false, false, primaryColor),
+                child: customText(controller.scores!.courseName.toString(), 18,
+                    false, false, primaryColor),
               ),
               const SizedBox(height: 7),
-              sampleCard(context, FontAwesomeIcons.css3),
+              sampleCard(context, FontAwesomeIcons.css3,
+                  controller.scores!.courseScore.toString()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: customText('API', 18, false, false, primaryColor),
               ),
               const SizedBox(height: 7),
-              sampleCard(context, FontAwesomeIcons.networkWired),
+              sampleCard(context, FontAwesomeIcons.networkWired,
+                  controller.scores!.courseScore.toString()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: customText('BACK END ', 18, false, false, primaryColor),
               ),
               const SizedBox(height: 7),
-              sampleCard(context, FontAwesomeIcons.aws),
+              sampleCard(context, FontAwesomeIcons.aws,
+                  controller.scores!.courseScore.toString()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child:
                     customText('AVERAGE SCORE', 18, false, false, primaryColor),
               ),
               const SizedBox(height: 7),
-              sampleCard(context, FontAwesomeIcons.handsClapping),
+              sampleCard(context, FontAwesomeIcons.handsClapping,
+                  controller.scores!.courseScore.toString()),
             ],
           ),
         ),
