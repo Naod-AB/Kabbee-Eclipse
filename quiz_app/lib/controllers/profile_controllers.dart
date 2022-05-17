@@ -28,7 +28,7 @@ class ProfileController extends GetxController {
   var password = 'test123'.obs;
 
   /// Get from gallery
-
+  
   getFromGallery(ImageSource imgSource, context) async {
     final pickedFile = await ImagePicker().pickImage(
       source: imgSource,
@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
   }
 
   //Fieldforms globalkeys
-  Rx<Users> userInfo = Users().obs;
+  Rx<Users?> userInfo = Users().obs;
 
   Rx<GlobalKey<FormFieldState>> emailFieldKey = GlobalKey<FormFieldState>().obs;
   Rx<GlobalKey<FormFieldState>> passFieldKey = GlobalKey<FormFieldState>().obs;

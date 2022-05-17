@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../Models/courses.dart';
 import '../../routes/router.gr.dart';
@@ -8,8 +10,8 @@ import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 
 class FrontEndChoices extends StatelessWidget {
-  const FrontEndChoices({Key? key}) : super(key: key);
-
+   FrontEndChoices({Key? key}) : super(key: key);
+  QuestionControl qController = Get.put(QuestionControl());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,6 +41,9 @@ class FrontEndChoices extends StatelessWidget {
                           //   frontendCourses[index].id,
                           //   frontendCourses[index].icon
                           // ]);
+                          qController.chosenCourse.value = frontendCourses[index].courseName;
+                          print("this is the course");
+                          print(qController.chosenCourse.value);
                           context.router.push(
                               ChooseType(icon: frontendCourses[index].icon));
                         });

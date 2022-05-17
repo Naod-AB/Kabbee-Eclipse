@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/api.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 
 import '../../controllers/profile_controllers.dart';
@@ -16,12 +17,12 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     controller.firstName.value =
-        controller.userInfo.value.firstName.toString().toCapitalized();
+        controller.userInfo.value!.firstName.toString().toCapitalized();
     controller.lastName.value =
-        controller.userInfo.value.lastName.toString().toCapitalized();
+        controller.userInfo.value!.lastName.toString().toCapitalized();
 
     controller.gender.value =
-        controller.userInfo.value.gender.toString() == 'Male' ? true : false;
+        controller.userInfo.value!.gender.toString() == 'Male' ? true : false;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -43,9 +44,11 @@ class ProfileScreen extends GetView<ProfileController> {
                     Icons.person,
                     customText('Full Name', 18, true, false, primaryColor),
                     Obx(() => customText(
-                        controller.firstName.value.toString().toCapitalized() +
+                        controller.userInfo.value!.firstName
+                                .toString()
+                                .toCapitalized() +
                             ' ' +
-                            controller.lastName.value
+                            controller.userInfo.value!.lastName
                                 .toString()
                                 .toCapitalized(),
                         13,
@@ -100,7 +103,11 @@ class ProfileScreen extends GetView<ProfileController> {
                       customText(
                           'Achievements', 13, false, false, secondaryColor),
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          var scores = await fetchUserScores(
+                              controller.userInfo.value!.id);
+                          print(scores!.courseName);
+                          print(scores.courseScore);
                           context.router.pushNamed('/my_scores');
                         },
                         child: const Icon(
