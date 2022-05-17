@@ -8,6 +8,7 @@ import '../../widgets/user_profile_widget.dart';
 class EditProfileScreen extends GetView<ProfileController> {
   EditProfileScreen({Key? key}) : super(key: key);
   Users user = Users();
+  GlobalKey<FormFieldState> pkey = GlobalKey<FormFieldState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,30 +28,32 @@ class EditProfileScreen extends GetView<ProfileController> {
               editProfilePic(context),
               const SizedBox(height: 20),
               buildTextField(
-                  '${controller.userInfo.value.firstName}',
+                  '${controller.userInfo.value!.firstName}',
                   Icons.person,
                   controller.firstNameController.value,
                   false,
                   null),
               const SizedBox(height: 20),
               buildTextField(
-                  '${controller.userInfo.value.lastName}',
+                  '${controller.userInfo.value!.lastName}',
                   Icons.person,
                   controller.lastNameController.value,
                   false,
                   null),
               const SizedBox(height: 20),
               Obx(
-                () => buildTextField(
+                () => buildTextFieldP(
                     'Enter new password ',
                     Icons.lock,
                     controller.passwordController.value,
                     true,
-                    passwordVisibilityBtn()),
+                    passwordVisibilityBtn(),
+                    pkey),
+                    
               ),
               const SizedBox(height: 20),
               Obx(() => buildTile(
-                    controller.userInfo.value.gender == 'Male'
+                    controller.userInfo.value!.gender == 'Male'
                         ? Icons.male
                         : Icons.female,
                     customText('Gender', 18, true, false, primaryColor),
@@ -60,7 +63,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   )),
               const SizedBox(height: 30),
               Obx(
-                () => buildButton(context, 'UPDATE'),
+                () => buildButton(context, 'UPDATE',pkey),
               ),
               const SizedBox(height: 30),
             ],

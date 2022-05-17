@@ -42,9 +42,9 @@ Widget customText(
 //! Profile Card
 Widget profileCardContent(context) {
   controller.firstName.value =
-      controller.userInfo.value.firstName.toString().toCapitalized();
+      controller.userInfo.value!.firstName.toString().toCapitalized();
   controller.lastName.value =
-      controller.userInfo.value.lastName.toString().toCapitalized();
+      controller.userInfo.value!.lastName.toString().toCapitalized();
 
   var mediaQueryHeight = MediaQuery.of(context).size.height;
   return Container(
@@ -99,7 +99,7 @@ Widget profileCardContent(context) {
                     true,
                     false,
                     Colors.black)),
-                customText('${controller.userInfo.value.email}', 15, false,
+                customText('${controller.userInfo.value!.email}', 15, false,
                     false, Colors.black45),
               ],
             )
@@ -253,7 +253,7 @@ Widget editIcon(BuildContext context) {
   );
 }
 
-Widget buildButton(BuildContext context, text) {
+Widget buildButton(BuildContext context, text,GlobalKey<FormFieldState>? key) {
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -266,12 +266,14 @@ Widget buildButton(BuildContext context, text) {
         )),
     onPressed: controller.isBtnNull.value
         ? () {
+          if(key!.currentState!.validate()){
             showSnackbar(
                 context, 'Update', 'Profile Updated Successfully', 'success');
 
-            context.router.navigateBack();
+            context.router.navigateBack(); 
             updateProfile();
-            updateJprofile(id: controller.userInfo.value.id.toString());
+            updateJprofile(id: controller.userInfo.value!.id.toString());
+          }
           }
         : null,
     child: customText(text, 20, false, false, primaryColor),
@@ -409,20 +411,20 @@ void updateProfile() {
         controller.firstNameController.value.text.trimLeft();
     print('Firstname');
   } else {
-    controller.firstName.value = controller.userInfo.value.firstName.toString();
+    controller.firstName.value = controller.userInfo.value!.firstName.toString();
   }
   if (controller.lastNameController.value.text.trimLeft().isNotEmpty) {
     controller.lastName.value =
         controller.lastNameController.value.text.trimLeft();
   } else {
-    controller.lastName.value = controller.userInfo.value.lastName.toString();
+    controller.lastName.value = controller.userInfo.value!.lastName.toString();
   }
 
   if (controller.passwordController.value.text.trimLeft().isNotEmpty) {
     controller.password.value =
         controller.passwordController.value.text.toString().trimLeft();
   } else {
-    controller.password.value = controller.userInfo.value.password.toString();
+    controller.password.value = controller.userInfo.value!.password.toString();
   }
   updateProfileImage();
 
@@ -482,3 +484,46 @@ showSnackbar(
     default:
   }
 }
+Widget buildTextFieldP(String hint, IconData icon, TextEditingController ctrl,
+    bool ispassword, Widget? suffix,GlobalKey key) {
+  return TextFormField(
+    key: key,
+    validator: (value){
+      if(!validateStructure(value!)){
+        return "Enter a valide Password";
+      }
+    },
+    obscureText: ispassword ? controller.hidePassword.value : false,
+    style: const TextStyle(color: Colors.white),
+    controller: ctrl,
+    onChanged: (value) {
+      if (value.trimLeft().isNotEmpty) controller.isBtnNull.value = true;
+    },
+    decoration: InputDecoration(
+        fillColor: tileColor,
+        filled: true,
+        hintStyle: const TextStyle(color: Colors.white),
+        focusColor: orangeColor,
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: orangeColor, width: 1.0),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        prefixIcon: Icon(
+          icon,
+          color: orangeColor,
+        ),
+        suffixIcon: suffix,
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: orangeColor,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        hintText: hint),
+  );
+}
+ bool validateStructure(String value){
+        String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+        RegExp regExp = new RegExp(pattern);
+        return regExp.hasMatch(value);
+  }

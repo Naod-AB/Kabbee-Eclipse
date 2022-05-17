@@ -13,6 +13,7 @@ class ChosenModel {
 }
 
 class QuestionControl extends GetxController {
+  RxString chosenCourse=''.obs;
   List questions = [
     {
       "id": 1,

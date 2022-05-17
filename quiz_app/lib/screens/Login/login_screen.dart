@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
 
 import '../../Models/users.dart';
 import '../../Utilities/size_config.dart';
@@ -22,6 +24,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool rememberMe = false;
   String error="";
+  ProfileController profileController = Get.find();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
@@ -195,8 +198,8 @@ class _LoginPageState extends State<LoginPage> {
      var email = emailController.text.trim().toLowerCase();
      if(emailKey.currentState!.validate()
         &&passKey.currentState!.validate() ){
-          Users? user = await fetchUser(email);
-          if(user!=null && user.password==pass)                                
+         profileController.userInfo.value = await fetchUser(email);
+          if(profileController.userInfo.value!=null && profileController.userInfo.value!.password==pass)                                
            { 
              setState(() {
                error ="";
