@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quiz_app/controllers/question_controller.dart';
 import '../../routes/router.gr.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
@@ -7,7 +9,8 @@ import '../../widgets/common_components/default_card.dart';
 import '../../Models/courses.dart';
 
 class BackendChoices extends StatelessWidget {
-  const BackendChoices({Key? key}) : super(key: key);
+  QuestionControl qController = Get.find();
+  BackendChoices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,10 @@ class BackendChoices extends StatelessWidget {
                         imgeSrc: backCourse[index].icon!,
                         cardtext: backCourse[index].courseName,
                         onpressed: () {
+                          qController.chosenCourse.value =
+                              backCourse[index].courseName;
+                          qController.chosenCourseType.value =
+                              backCourse[index].category;
                           context.router
                               .push(ChooseType(icon: backCourse[index].icon));
                         });

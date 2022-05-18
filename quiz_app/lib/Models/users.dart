@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 Users usersFromJson(String str) => Users.fromJson(json.decode(str));
@@ -15,7 +13,7 @@ class Users {
         this.password,
         this.gender,
     });
-    String? id;
+    dynamic? id;
     String? email;
     String? firstName;
     String? lastName;
@@ -26,7 +24,7 @@ class Users {
       print("inide the fromJson");
       return Users(
         id:json["id"],
-        email: json["email"],
+        email: json["email"], 
         firstName: json["firstName"],
         lastName: json["lastName"],
         password: json["password"],
@@ -39,7 +37,7 @@ class Users {
         "lastName": lastName,
         "password": password,
         "gender": gender,
-    };
+      };
 }
 
 // class Users{

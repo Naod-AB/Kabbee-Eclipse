@@ -55,16 +55,22 @@ class AppRouter extends _i15.RootStackRouter {
           routeData: routeData, child: const _i4.CategoryPage());
     },
     FrontEndChoices.name: (routeData) {
+      final args = routeData.argsAs<FrontEndChoicesArgs>(
+          orElse: () => const FrontEndChoicesArgs());
       return _i15.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.FrontEndChoices());
+          routeData: routeData, child: _i5.FrontEndChoices(key: args.key));
     },
     BackendChoices.name: (routeData) {
+      final args = routeData.argsAs<BackendChoicesArgs>(
+          orElse: () => const BackendChoicesArgs());
       return _i15.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.BackendChoices());
+          routeData: routeData, child: _i6.BackendChoices(key: args.key));
     },
     CloudChoices.name: (routeData) {
+      final args = routeData.argsAs<CloudChoicesArgs>(
+          orElse: () => const CloudChoicesArgs());
       return _i15.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.CloudChoices());
+          routeData: routeData, child: _i7.CloudChoices(key: args.key));
     },
     ChooseType.name: (routeData) {
       final args = routeData.argsAs<ChooseTypeArgs>();
@@ -187,26 +193,65 @@ class CategoryRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.FrontEndChoices]
-class FrontEndChoices extends _i15.PageRouteInfo<void> {
-  const FrontEndChoices() : super(FrontEndChoices.name, path: '/frontend');
+class FrontEndChoices extends _i15.PageRouteInfo<FrontEndChoicesArgs> {
+  FrontEndChoices({_i16.Key? key})
+      : super(FrontEndChoices.name,
+            path: '/frontend', args: FrontEndChoicesArgs(key: key));
 
   static const String name = 'FrontEndChoices';
 }
 
+class FrontEndChoicesArgs {
+  const FrontEndChoicesArgs({this.key});
+
+  final _i16.Key? key;
+
+  @override
+  String toString() {
+    return 'FrontEndChoicesArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i6.BackendChoices]
-class BackendChoices extends _i15.PageRouteInfo<void> {
-  const BackendChoices() : super(BackendChoices.name, path: '/backend');
+class BackendChoices extends _i15.PageRouteInfo<BackendChoicesArgs> {
+  BackendChoices({_i16.Key? key})
+      : super(BackendChoices.name,
+            path: '/backend', args: BackendChoicesArgs(key: key));
 
   static const String name = 'BackendChoices';
 }
 
+class BackendChoicesArgs {
+  const BackendChoicesArgs({this.key});
+
+  final _i16.Key? key;
+
+  @override
+  String toString() {
+    return 'BackendChoicesArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i7.CloudChoices]
-class CloudChoices extends _i15.PageRouteInfo<void> {
-  const CloudChoices() : super(CloudChoices.name, path: '/cloud');
+class CloudChoices extends _i15.PageRouteInfo<CloudChoicesArgs> {
+  CloudChoices({_i16.Key? key})
+      : super(CloudChoices.name,
+            path: '/cloud', args: CloudChoicesArgs(key: key));
 
   static const String name = 'CloudChoices';
+}
+
+class CloudChoicesArgs {
+  const CloudChoicesArgs({this.key});
+
+  final _i16.Key? key;
+
+  @override
+  String toString() {
+    return 'CloudChoicesArgs{key: $key}';
+  }
 }
 
 /// generated route for

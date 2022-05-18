@@ -16,11 +16,25 @@ class SignupEmail extends StatelessWidget {
       TextEditingController controller;
       EmailValidator validator ;
       Users user;
+      List<Users> allUsers;
    SignupEmail({Key? key,
    required this.user,
    required this.validator,
    required this.emailKey,
-   required this.controller}) : super(key: key);
+   required this.controller,
+   required this.allUsers}) : super(key: key);
+
+   bool isEmailRegistered(String email){
+     bool isAvailable=false;
+    ///// print(allUsers);
+     for(user in allUsers){
+       
+       if(user.email==email){
+         isAvailable=true;
+       }
+     }
+     return isAvailable;
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +69,7 @@ class SignupEmail extends StatelessWidget {
                 
                 TextFormField( 
                   onSaved: (value){
-                    user.email = value;
+                    user.email = value!.toLowerCase();
                   },
                   controller: controller,
                   key: emailKey,                 
@@ -63,7 +77,11 @@ class SignupEmail extends StatelessWidget {
                   if (!EmailValidator.validate(value!)) 
                   {
                     return 'You need A valid email Address';
+                      }else if(isEmailRegistered(value)){
+                        print(isEmailRegistered(value));
+                        return 'Email is already registered ';
                       }
+                      print(isEmailRegistered(value));
                   },
                   decoration: InputDecoration(
                     filled: true,

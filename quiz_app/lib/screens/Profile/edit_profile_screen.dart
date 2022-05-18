@@ -6,8 +6,9 @@ import '../../controllers/profile_controllers.dart';
 import '../../widgets/user_profile_widget.dart';
 
 class EditProfileScreen extends GetView<ProfileController> {
-   EditProfileScreen({Key? key}) : super(key: key);
+  EditProfileScreen({Key? key}) : super(key: key);
   Users user = Users();
+  GlobalKey<FormFieldState> pkey = GlobalKey<FormFieldState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,23 +27,34 @@ class EditProfileScreen extends GetView<ProfileController> {
               const SizedBox(height: 30),
               editProfilePic(context),
               const SizedBox(height: 20),
-              buildTextField('Enter first name', Icons.person,
-                  controller.firstNameController.value, false, null),
+              buildTextField(
+                  '${controller.userInfo.value!.firstName}',
+                  Icons.person,
+                  controller.firstNameController.value,
+                  false,
+                  null),
               const SizedBox(height: 20),
-              buildTextField('Enter last name', Icons.person,
-                  controller.lastNameController.value, false, null),
+              buildTextField(
+                  '${controller.userInfo.value!.lastName}',
+                  Icons.person,
+                  controller.lastNameController.value,
+                  false,
+                  null),
               const SizedBox(height: 20),
               Obx(
-                () => buildTextField(
-                    'Enter password ',
+                () => buildTextFieldP(
+                    'Enter new password ',
                     Icons.lock,
                     controller.passwordController.value,
                     true,
-                    passwordVisibilityBtn()),
+                    passwordVisibilityBtn(),
+                    pkey),
               ),
               const SizedBox(height: 20),
               Obx(() => buildTile(
-                    controller.genderIndex.value ? Icons.male : Icons.female,
+                    controller.userInfo.value!.gender == 'Male'
+                        ? Icons.male
+                        : Icons.female,
                     customText('Gender', 18, true, false, primaryColor),
                     null,
                     genderToggle(2),
@@ -50,7 +62,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   )),
               const SizedBox(height: 30),
               Obx(
-                () => buildButton(context, 'UPDATE'),
+                () => buildButton(context, 'UPDATE', pkey),
               ),
               const SizedBox(height: 30),
             ],

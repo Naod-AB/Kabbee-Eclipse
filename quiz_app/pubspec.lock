@@ -317,6 +317,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  grouped_list:
+    dependency: "direct main"
+    description:
+      name: grouped_list
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   html:
     dependency: transitive
     description:
@@ -351,28 +358,44 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.8.5+3"
+=======
+    version: "0.8.5+1"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
   image_picker_android:
     dependency: transitive
     description:
       name: image_picker_android
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.8.4+13"
+=======
+    version: "0.8.4+12"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
   image_picker_for_web:
     dependency: transitive
     description:
       name: image_picker_for_web
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.8"
+=======
+    version: "2.1.7"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
   image_picker_ios:
     dependency: transitive
     description:
       name: image_picker_ios
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.8.5+2"
+=======
+    version: "0.8.5+1"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
   image_picker_platform_interface:
     dependency: transitive
     description:

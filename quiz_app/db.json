@@ -1,46 +1,42 @@
 {
   "Users": [
     {
+<<<<<<< HEAD
       "id": "12",
       "email": "mgemal@gmail.com",
       "firstName": "Mohammed",
+=======
+      "id": 638,
+      "email": "selam@gmail.com",
+      "firstName": "Mohamemd",
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "lastName": "Mohammed",
-      "password": "Mohammed123",
-      "gender": "male"
+      "password": "Mohammed@123",
+      "gender": "Male"
+    }
+  ],
+  "Scores": [
+    {
+      "id": "HTML_CSS"
     },
     {
-      "id": "2",
-      "email": "m@g.com",
-      "firstName": "Mohammed",
-      "lastName": "gemal",
-      "password": "Mohammed123",
-      "gender": "male"
+      "id": "Dart",
+      "courseName": "Dart",
+      "courseType": "Front-End",
+      "courseScore": 1,
+      "userId": 638
     },
     {
-      "id": "6",
-      "email": "mgemal376@gmail.com",
-      "firstName": "Mohammed",
-      "lastName": "Mohammed",
-      "password": "Mohammed123",
-      "gender": "male"
+      "id": "Flutter"
     },
     {
-      "id": "30",
-      "email": "miki@gmail.com",
-      "firstName": "Miki",
-      "lastName": "Miki father",
-      "password": "Miki123",
-      "gender": "male"
+      "id": "javascript"
     },
     {
-      "id": "101",
-      "email": "mgemal375@gmail.com",
-      "firstName": "Mohammed",
-      "lastName": "Gemal",
-      "password": "Mohammed123",
-      "gender": "male"
+      "id": "MongoDB"
     },
     {
+<<<<<<< HEAD
       "id": "202",
       "email": "help@gmail.com",
       "firstName": "Please",
@@ -55,6 +51,18 @@
       "lastName": "asmie",
       "password": "Asmie@123",
       "gender": "male"
+=======
+      "id": "Atlas_Cloud"
+    },
+    {
+      "id": "Machine_Learning"
+    },
+    {
+      "id": "Cloud_Computing"
+    },
+    {
+      "id": "Analaytics"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
     }
   ],
   "answers": [
@@ -65,12 +73,16 @@
     },
     {
       "id": 2,
-      "answer": "July 2017",
+      "answer": "May 2017",
       "isCorrect": false
     },
     {
       "id": 3,
+<<<<<<< HEAD
       "answer": "Double",
+=======
+      "answer": "Word",
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "isCorrect": false
     },
     {

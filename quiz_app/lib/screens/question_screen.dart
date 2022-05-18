@@ -2,7 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+<<<<<<< HEAD
 import 'package:quiz_app/screens/Score/evalu_screen.dart';
+=======
+import 'package:quiz_app/Models/scores.dart';
+import 'package:quiz_app/api.dart';
+import '../widgets/theme.dart';
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
 import '/routes/router.gr.dart';
 import '../Models/model.dart';
 
@@ -15,9 +21,11 @@ class QuestionScreen extends StatelessWidget {
   dynamic icon;
 
   final QuestionControl controller = Get.put(QuestionControl());
+  final ProfileController pController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     var isCorrect = false;
     return SafeArea(
       child: Scaffold(
@@ -61,13 +69,17 @@ class QuestionScreen extends StatelessWidget {
                             Spacer(
                               flex: 1,
                             ),
-                            Text(
-                              controller.questions[snapshot]['question']
-                                  .toString(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline5!
-                                  .copyWith(color: Colors.white),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Text(
+                                controller.questions[snapshot]['question']
+                                    .toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: Colors.white),
+                              ),
                             ),
                             Spacer(
                               flex: 2,
@@ -152,6 +164,7 @@ class QuestionScreen extends StatelessWidget {
               Spacer(),
               Obx(
                 () => controller.questions.length == controller.qnIndex.value
+<<<<<<< HEAD
                     ? ElevatedButton(
                         onPressed: () async {
                           controller.count = await fetchCorrectAnswers();
@@ -166,6 +179,47 @@ class QuestionScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),
                         child: const Text('Done'))
+=======
+                    // ? ElevatedButton(
+                    //     onPressed: () async {
+                    //       controller.count = await fetchCorrectAnswers();
+
+                    //       context.router.push(FinalScore(
+                    //           outOf: controller.questions.length,
+                    //           score: controller.count));
+                    //     },
+                    //     child: Text('Done')):
+
+                    ? Container(
+                        height: size.height * 0.08,
+                        width: size.width * 0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: pColor,
+                        ),
+                        child: TextButton(
+                          onPressed: () async {
+                            controller.count = await fetchCorrectAnswers();
+
+                            CourseScore score = CourseScore(
+                                courseName: controller.chosenCourse.value,
+                                courseType: controller.chosenCourseType.value,
+                                courseScore: controller.count,
+                                userId: pController.userInfo.value!.id);
+                            print("after clicking done button ");
+                            saveUserScore(score);
+                            context.router.push(FinalScore(
+                                outOf: controller.questions.length,
+                                score: controller.count));
+                          },
+                          child: Text(
+                            'DONE',
+                            style: kBodyText.copyWith(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      )
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
                     // ? const RoundedButton(
                     //     buttonName: 'Done',
                     //     page: '/finalScore',
