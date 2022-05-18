@@ -11,28 +11,35 @@
   ],
   "Scores": [
     {
-      "id": 862,
-      "courseName": "HTML & CSS",
-      "courseScore": 1,
-      "userId": 638
+      "id": "HTML_CSS"
     },
     {
-      "id": 866,
+      "id": "Dart",
       "courseName": "Dart",
+      "courseType": "Front-End",
       "courseScore": 1,
       "userId": 638
     },
     {
-      "id": 829,
-      "courseName": "Flutter",
-      "courseScore": 3,
-      "userId": 638
+      "id": "Flutter"
     },
     {
-      "id": 102,
-      "courseName": "HTML & CSS",
-      "courseScore": 1,
-      "userId": 638
+      "id": "javascript"
+    },
+    {
+      "id": "MongoDB"
+    },
+    {
+      "id": "Atlas_Cloud"
+    },
+    {
+      "id": "Machine_Learning"
+    },
+    {
+      "id": "Cloud_Computing"
+    },
+    {
+      "id": "Analaytics"
     }
   ],
   "answers": [
@@ -43,18 +50,18 @@
     },
     {
       "id": 2,
-      "answer": "Jun 2017",
-      "isCorrect": true
+      "answer": "May 2017",
+      "isCorrect": false
     },
     {
       "id": 3,
-      "answer": "Double",
+      "answer": "Word",
       "isCorrect": false
     },
     {
       "id": 4,
-      "answer": "Cin",
-      "isCorrect": false
+      "answer": "Output",
+      "isCorrect": true
     }
   ]
 }

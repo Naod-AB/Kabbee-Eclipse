@@ -65,8 +65,10 @@ class AppRouter extends _i15.RootStackRouter {
           routeData: routeData, child: _i6.BackendChoices(key: args.key));
     },
     CloudChoices.name: (routeData) {
+      final args = routeData.argsAs<CloudChoicesArgs>(
+          orElse: () => const CloudChoicesArgs());
       return _i15.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.CloudChoices());
+          routeData: routeData, child: _i7.CloudChoices(key: args.key));
     },
     ChooseType.name: (routeData) {
       final args = routeData.argsAs<ChooseTypeArgs>();
@@ -217,10 +219,23 @@ class BackendChoicesArgs {
 
 /// generated route for
 /// [_i7.CloudChoices]
-class CloudChoices extends _i15.PageRouteInfo<void> {
-  const CloudChoices() : super(CloudChoices.name, path: '/cloud');
+class CloudChoices extends _i15.PageRouteInfo<CloudChoicesArgs> {
+  CloudChoices({_i16.Key? key})
+      : super(CloudChoices.name,
+            path: '/cloud', args: CloudChoicesArgs(key: key));
 
   static const String name = 'CloudChoices';
+}
+
+class CloudChoicesArgs {
+  const CloudChoicesArgs({this.key});
+
+  final _i16.Key? key;
+
+  @override
+  String toString() {
+    return 'CloudChoicesArgs{key: $key}';
+  }
 }
 
 /// generated route for

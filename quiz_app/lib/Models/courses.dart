@@ -16,7 +16,7 @@ class Courses {
 List<Courses> frontendCourses = [
   Courses(
       id: 1,
-      courseName: "HTML & CSS",
+      courseName: "HTML_CSS",
       category: "Front-End",
       icon: "assets/icons/html.svg"),
   Courses(
@@ -33,7 +33,7 @@ List<Courses> frontendCourses = [
 List<Courses> cloudCourse = [
   Courses(
       id: 1,
-      courseName: "Machine Learning",
+      courseName: "Machine_Learning",
       category: "cloud_services",
       icon: "assets/icons/Machine_logo.svg"),
   Courses(
@@ -60,7 +60,7 @@ List<Courses> backCourse = [
       icon: "assets/icons/monogodb_icon.svg"),
   Courses(
       id: 3,
-      courseName: "Atlas Cloud",
+      courseName: "Atlas_Cloud",
       category: "Back_end",
       icon: "assets/icons/atlas_icon.svg"),
 ];

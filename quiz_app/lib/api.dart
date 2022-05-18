@@ -7,13 +7,16 @@ import 'package:quiz_app/Models/users.dart';
 import 'package:quiz_app/widgets/user_profile_widget.dart';
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
-  final response = await http.post(Uri.parse('http://localhost:3000/Scores'),
+  final response = await http.patch(
+      Uri.parse('http://localhost:3000/Scores/${score.courseName}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': Random().nextInt(1000),
+        'id': score.courseName,
+        // 'id': Random().nextInt(1000),
         'courseName': score.courseName,
+        'courseType': score.courseType,
         'courseScore': score.courseScore,
         'userId': score.userId
       }));
@@ -57,12 +60,15 @@ Future<Users> createUser(Users user) async {
   }
 }
 
-Future<CourseScore?> fetchUserScores(int userId) async {
+Future fetchUserScores(int userId) async {
   final response =
       await http.get(Uri.parse('http://localhost:3000/Scores?userId=$userId'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      return CourseScore.fromJson(jsonDecode(response.body)[0]);
+      final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+
+      print('😠 $parsed');
+      return parsed;
     } else {
       return null;
     }

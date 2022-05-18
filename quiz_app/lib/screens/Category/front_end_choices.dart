@@ -10,7 +10,7 @@ import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
 
 class FrontEndChoices extends StatelessWidget {
-   FrontEndChoices({Key? key}) : super(key: key);
+  FrontEndChoices({Key? key}) : super(key: key);
   QuestionControl qController = Get.put(QuestionControl());
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,10 @@ class FrontEndChoices extends StatelessWidget {
                           //   frontendCourses[index].id,
                           //   frontendCourses[index].icon
                           // ]);
-                          qController.chosenCourse.value = frontendCourses[index].courseName;
+                          qController.chosenCourse.value =
+                              frontendCourses[index].courseName;
+                          qController.chosenCourseType.value =
+                              frontendCourses[index].category;
                           print("this is the course");
                           print(qController.chosenCourse.value);
                           context.router.push(

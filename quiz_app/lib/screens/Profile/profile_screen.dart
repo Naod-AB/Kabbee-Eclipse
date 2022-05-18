@@ -104,9 +104,10 @@ class ProfileScreen extends GetView<ProfileController> {
                       customText(
                           'Achievements', 13, false, false, secondaryColor),
                       GestureDetector(
-                        onTap: () {
-                          // print(scores!.courseName);
-                          // print(scores.courseScore);
+                        onTap: () async {
+                          controller.scores = await fetchUserScores(
+                              controller.userInfo.value!.id);
+
                           context.router.pushNamed('/my_scores');
                         },
                         child: const Icon(

@@ -48,11 +48,11 @@ class ProfileController extends GetxController {
   //Fieldforms globalkeys
   Rx<Users?> userInfo = Users().obs;
   // Rx<CourseScore?> score = CourseScore().obs;
-  CourseScore? scores;
+  List? scores;
 
-  fetchScore() async {
-    scores = await fetchUserScores(controller.userInfo.value!.id);
-  }
+  // fetchScore() async {
+  //   scores = await fetchUserScores(controller.userInfo.value!.id);
+  // }
   // Future<CourseScore?> scores = ;
 
   Rx<GlobalKey<FormFieldState>> emailFieldKey = GlobalKey<FormFieldState>().obs;

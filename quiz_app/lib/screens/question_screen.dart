@@ -19,7 +19,7 @@ class QuestionScreen extends StatelessWidget {
   dynamic icon;
 
   final QuestionControl controller = Get.put(QuestionControl());
-  final ProfileController pController =Get.put(ProfileController());
+  final ProfileController pController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -181,13 +181,15 @@ class QuestionScreen extends StatelessWidget {
                         child: TextButton(
                           onPressed: () async {
                             controller.count = await fetchCorrectAnswers();
-                            CourseScore score = CourseScore(   
-                              courseName:controller.chosenCourse.value, 
-                              courseScore: controller.count, 
-                              userId: pController.userInfo.value!.id);
-                              print("after clicking done button ");
+
+                            CourseScore score = CourseScore(
+                                courseName: controller.chosenCourse.value,
+                                courseType: controller.chosenCourseType.value,
+                                courseScore: controller.count,
+                                userId: pController.userInfo.value!.id);
+                            print("after clicking done button ");
                             saveUserScore(score);
-                            context.router.push(FinalScore( 
+                            context.router.push(FinalScore(
                                 outOf: controller.questions.length,
                                 score: controller.count));
                           },
