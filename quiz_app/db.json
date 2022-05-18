@@ -11,14 +11,14 @@
   ],
   "Scores": [
     {
-      "id": "HTML_CSS"
+      "id": "HTML_CSS",
+      "courseName": "HTML_CSS",
+      "courseType": "Front-End",
+      "courseScore": 2,
+      "userId": 638
     },
     {
-      "id": "Dart",
-      "courseName": "Dart",
-      "courseType": "Front-End",
-      "courseScore": 1,
-      "userId": 638
+      "id": "Dart"
     },
     {
       "id": "Flutter"
@@ -45,8 +45,8 @@
   "answers": [
     {
       "id": 1,
-      "answer": "Apple",
-      "isCorrect": false
+      "answer": "Google",
+      "isCorrect": true
     },
     {
       "id": 2,
