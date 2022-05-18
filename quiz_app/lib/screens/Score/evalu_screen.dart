@@ -2,31 +2,94 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quiz_app/screens/Score/evalu_screen.dart';
+import 'package:quiz_app/controllers/count_down.dart';
+//import 'package:quiz_app/screens/Score/final_practice_score.dart';
 import '/routes/router.gr.dart';
-import '../Models/model.dart';
+import '../../Models/model.dart';
+import '../../controllers/count_down.dart';
 
-import '../widgets/common_components/appbar.dart';
-import '../controllers/question_controller.dart';
+import '../../widgets/common_components/appbar_evalu.dart';
+import '../../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
 
-class QuestionScreen extends StatelessWidget {
-  QuestionScreen({Key? key, required this.icon}) : super(key: key);
+RxBool isEnabled = true.obs;
+
+class evaluationScreens extends StatelessWidget {
+  evaluationScreens({Key? key, required this.icon}) : super(key: key);
   dynamic icon;
 
   final QuestionControl controller = Get.put(QuestionControl());
+  Future<bool> _onWillPop() async {
+    return false; //<-- SEE HERE
+  }
 
   @override
   Widget build(BuildContext context) {
     var isCorrect = false;
+    // int? newValue;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        appBar: QuizeAppbar(icon, context),
+        appBar: evaluAppbar(icon, context),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
+          padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
           child: Column(
             children: [
+              //                Expanded(
+
+              //             child:Alert(
+              //   context: context,
+              //   //type: AlertType.warning,
+              //   title: "Exam information",
+              //   desc:
+              //       "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
+              //   buttons: [
+              //     DialogButton(
+              //       child: Text(
+              //         "CANCEL",
+              //         style: TextStyle(color: Colors.white, fontSize: 20),
+              //       ),
+              //       onPressed: () => Navigator.pop(context),
+              //       color: Color.fromRGBO(0, 179, 134, 1.0),
+              //     ),
+              //     DialogButton(
+              //       child: Text(
+              //         "OK",
+              //         style: TextStyle(color: Colors.white, fontSize: 20),
+              //       ),
+              //       onPressed: () => context.router.push(evaluationScreen(icon: icon)),
+              //       gradient: LinearGradient(colors: [
+              //         Color.fromARGB(255, 233, 235, 64),
+              //         Color.fromARGB(255, 192, 164, 4)
+              //       ]),
+              //     )
+              //   ],
+              // ).show();
+              //           ),
+              Expanded(
+                child: MyTimer(),
+              ),
+              // Expanded(
+              //     child: StepProgressIndicator(
+              //   totalSteps: controller.questions.length,
+              //   currentStep: 1,
+              //   size: 15,
+              //   padding: 0,
+              //   selectedColor: Colors.yellow,
+              //   unselectedColor: Colors.cyan,
+              //   roundedEdges: Radius.circular(10),
+              //   selectedGradientColor: LinearGradient(
+              //     begin: Alignment.topLeft,
+              //     end: Alignment.bottomRight,
+              //     colors: [Colors.yellowAccent, Colors.deepOrange],
+              //   ),
+              //   unselectedGradientColor: LinearGradient(
+              //     begin: Alignment.topLeft,
+              //     end: Alignment.bottomRight,
+              //     colors: [Colors.black, Colors.blue],
+              //   ),
+              // )),
+              Spacer(),
               Obx(
                 () => Text(
                     controller.qnIndex.toString() +
@@ -37,7 +100,7 @@ class QuestionScreen extends StatelessWidget {
                         .headline4!
                         .copyWith(color: Colors.white)),
               ),
-              SizedBox(height: 20),
+              // SizedBox(height: 15),
               SizedBox(
                 height: 600.0,
                 child: PageView.builder(
@@ -58,7 +121,7 @@ class QuestionScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Spacer(
+                            const Spacer(
                               flex: 1,
                             ),
                             Text(
@@ -155,13 +218,14 @@ class QuestionScreen extends StatelessWidget {
                     ? ElevatedButton(
                         onPressed: () async {
                           controller.count = await fetchCorrectAnswers();
-                          isEnabled.value = true;
+                          isEnabled.value = false;
+                          // isActive.value = false;
                           context.router.push(FinalScore(
                               outOf: controller.questions.length,
                               score: controller.count));
                         },
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(300, 80),
+                            fixedSize: const Size(300, 40),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),

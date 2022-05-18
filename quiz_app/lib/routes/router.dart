@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:flutter/cupertino.dart';
 import '../screens/Category/back_end_choices.dart';
 import '../screens/Category/category_screen.dart';
 import '../screens/Category/choose_type_screen.dart';
@@ -14,25 +15,30 @@ import '../screens/Profile/my_scores_screen.dart';
 import '../screens/Profile/profile_screen.dart';
 import '../screens/Category/front_end_choices.dart';
 import '../screens/Score/final_practice_score.dart';
+import '../screens/Score/evaluationscore_screen.dart';
 import '../screens/Score/review_page.dart';
 import '../screens/question_screen.dart';
+import '../screens/Score/evalu_screen.dart'; // add evaluation screen
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: Splash, initial: true),
     AutoRoute(path: '/login', page: LoginPage),
-   // AutoRoute(path: '/signup_email', page: SignupEmail),
+    // AutoRoute(path: '/signup_email', page: SignupEmail),
     //AutoRoute(path: '/signup_password', page: SignupPassword),
     //AutoRoute(path: '/signup_name', page: SignupName),
-    AutoRoute(path: '/signup', page:OneSignupPage),
+    AutoRoute(path: '/signup', page: OneSignupPage),
     AutoRoute(path: '/category', page: CategoryPage),
     AutoRoute(path: '/frontend', page: FrontEndChoices),
     AutoRoute(path: '/backend', page: BackendChoices),
     AutoRoute(path: '/cloud', page: CloudChoices),
     AutoRoute(path: '/choose-type', page: ChooseType),
     AutoRoute(path: '/questions', page: QuestionScreen),
+    AutoRoute(
+        path: '/evaluation', page: evaluationScreens), // add evaluation screen
     AutoRoute(path: '/finalScore', page: FinalScore),
+    AutoRoute(path: '/ExamScore', page: ExamScore),
     AutoRoute(path: '/review_screen', page: ReviewScreen),
     AutoRoute(path: '/profile', page: ProfileScreen),
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),

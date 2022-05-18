@@ -88,13 +88,13 @@ class ReviewScreen extends StatelessWidget {
                                                           controller.questions[
                                                                   snapshot]
                                                               ['answer']
-                                                      ? Colors.green
-                                                      : kblue
+                                                      ? kblue
+                                                      : kred
                                                   : options[index] ==
                                                           controller.questions[
                                                                   snapshot]
                                                               ['answer']
-                                                      ? Colors.green
+                                                      ? kblue
                                                       : Color.fromARGB(
                                                           255, 117, 110, 110),
                                               width: 2),
@@ -144,7 +144,12 @@ class ReviewScreen extends StatelessWidget {
                               outOf: controller.questions.length,
                               score: controller.count));
                         },
-                        child: Text('Done'))
+                        style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(300, 40),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            primary: const Color.fromARGB(255, 255, 165, 0)),
+                        child: const Text('Done'))
                     // ? const RoundedButton(
                     //     buttonName: 'Done',
                     //     page: '/finalScore',

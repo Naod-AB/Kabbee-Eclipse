@@ -6,10 +6,9 @@ import 'package:quiz_app/widgets/user_profile_widget.dart';
 
 import '../../controllers/question_controller.dart';
 import '../../widgets/common_components/appbar.dart';
-import 'evalu_screen.dart';
 
-class FinalScore extends StatelessWidget {
-  FinalScore({Key? key, required this.outOf, required this.score})
+class ExamScore extends StatelessWidget {
+  ExamScore({Key? key, required this.outOf, required this.score})
       : super(key: key);
   int outOf;
   int score;
@@ -65,7 +64,7 @@ class FinalScore extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
-                visible: isEnabled.value,
+                visible: true,
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
                   onPressed: () {
