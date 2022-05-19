@@ -1,9 +1,5 @@
 import 'package:auto_route/annotations.dart';
-<<<<<<< HEAD
-import 'package:flutter/cupertino.dart';
-=======
 //import 'package:quiz_app/screens/rule_and%20terms.dart';
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
 import '../screens/Category/back_end_choices.dart';
 import '../screens/Category/category_screen.dart';
 import '../screens/Category/choose_type_screen.dart';
@@ -13,7 +9,7 @@ import '../screens/Login/signUp_password.dart';
 import '../screens/Login/signup_email.dart';
 import '../screens/Login/signup_name.dart';
 import '../screens/Login/signup_onepage.dart';
-import '../screens/Login/splash_screen.dart'; 
+import '../screens/Login/splash_screen.dart';
 import '../screens/Profile/edit_profile_screen.dart';
 import '../screens/Profile/my_scores_screen.dart';
 import '../screens/Profile/profile_screen.dart';
@@ -29,18 +25,15 @@ import '../screens/Score/evalu_screen.dart'; // add evaluation screen
   routes: <AutoRoute>[
     AutoRoute(page: Splash, initial: true),
     AutoRoute(path: '/login', page: LoginPage),
-<<<<<<< HEAD
     // AutoRoute(path: '/signup_email', page: SignupEmail),
-=======
     //AutoRoute(path: '/terms', page: TermsConditions),
-   // AutoRoute(path: '/signup_email', page: SignupEmail),
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
+    // AutoRoute(path: '/signup_email', page: SignupEmail),
     //AutoRoute(path: '/signup_password', page: SignupPassword),
     //AutoRoute(path: '/signup_name', page: SignupName),
     AutoRoute(path: '/signup', page: OneSignupPage),
     AutoRoute(path: '/category', page: CategoryPage),
     AutoRoute(path: '/frontend', page: FrontEndChoices),
-    AutoRoute(path: '/backend', page: BackendChoices), 
+    AutoRoute(path: '/backend', page: BackendChoices),
     AutoRoute(path: '/cloud', page: CloudChoices),
     AutoRoute(path: '/choose-type', page: ChooseType),
     AutoRoute(path: '/questions', page: QuestionScreen),

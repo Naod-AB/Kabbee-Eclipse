@@ -42,6 +42,7 @@ AppBar evaluAppbar(String iconUrl, BuildContext context) {
       child: SvgPicture.asset(iconUrl),
       backgroundColor: Colors.transparent,
     ),
+    centerTitle: true,
     actions: [
       Padding(
         padding: const EdgeInsets.only(right: defaultPadding / 2),

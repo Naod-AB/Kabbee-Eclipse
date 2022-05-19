@@ -11,6 +11,8 @@ import '../../controllers/count_down.dart';
 import '../../widgets/common_components/appbar_evalu.dart';
 import '../../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 RxBool isEnabled = true.obs;
 
@@ -35,6 +37,50 @@ class evaluationScreens extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
           child: Column(
             children: [
+              Expanded(
+                child: TimerCountdown(
+                  format: CountDownTimerFormat.hoursMinutesSeconds,
+                  endTime: DateTime.now().add(
+                    Duration(
+                      // days: 0,
+                      hours: 0,
+                      minutes: 1,
+                      seconds: 00,
+                    ),
+                  ),
+                  onEnd: () {
+                    Alert(
+                      context: context,
+                      //style: alertStyle,
+                      type: AlertType.info,
+                      // isCloseButton: false,
+                      title: "exam Time",
+                      desc:
+                          "oops sorry your limit time is reached. thank you!!!",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "ok",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () async {
+                            controller.count = await fetchCorrectAnswers();
+                            isEnabled.value = false;
+                            // isActive.value = false;
+                            context.router.push(FinalScore(
+                                outOf: controller.questions.length,
+                                score: controller.count));
+                          },
+                          color: Color.fromARGB(255, 207, 122, 11),
+                          radius: BorderRadius.circular(8.0),
+                        ),
+                      ],
+                    ).show();
+
+                    print("Timer finished");
+                  },
+                ),
+              ),
               //                Expanded(
 
               //             child:Alert(
@@ -66,9 +112,45 @@ class evaluationScreens extends StatelessWidget {
               //   ],
               // ).show();
               //           ),
-              Expanded(
-                child: MyTimer(),
-              ),
+              // Expanded(
+              //   child: TimerCountdown(
+              //     format: CountDownTimerFormat.hoursMinutesSeconds,
+              //     endTime: DateTime.now().add(
+              //       Duration(
+              //         // days: 0,
+              //         hours: 0,
+              //         minutes: 1,
+              //         seconds: 00,
+              //       ),
+              //     ),
+              //     onEnd: () {
+              //       Alert(
+              //         context: context,
+              //         //style: alertStyle,
+              //         type: AlertType.info,
+              //         // isCloseButton: false,
+              //         title: "exam Time",
+              //         desc:
+              //             "oops sorry your limit time is reached. thank you!!!",
+              //         buttons: [
+              //           DialogButton(
+              //             child: Text(
+              //               "ok",
+              //               style: TextStyle(color: Colors.white, fontSize: 20),
+              //             ),
+              //             onPressed: () => context.router.push(FinalScore(
+              //                 outOf: controller.questions.length,
+              //                 score: controller.count)),
+              //             color: Color.fromARGB(255, 207, 122, 11),
+              //             radius: BorderRadius.circular(8.0),
+              //           ),
+              //         ],
+              //       ).show();
+
+              //       print("Timer finished");
+              //     },
+              //   ),
+              // ),
               // Expanded(
               //     child: StepProgressIndicator(
               //   totalSteps: controller.questions.length,
@@ -237,6 +319,51 @@ class evaluationScreens extends StatelessWidget {
                     : Container(),
               ),
               Spacer(),
+
+              // Expanded(
+              //   child: TimerCountdown(
+              //     format: CountDownTimerFormat.hoursMinutesSeconds,
+              //     endTime: DateTime.now().add(
+              //       Duration(
+              //         // days: 0,
+              //         hours: 0,
+              //         minutes: 1,
+              //         seconds: 00,
+              //       ),
+              //     ),
+              //     onEnd: () {
+              //       Alert(
+              //         context: context,
+              //         //style: alertStyle,
+              //         type: AlertType.info,
+              //         // isCloseButton: false,
+              //         title: "exam Time",
+              //         desc:
+              //             "oops sorry your limit time is reached. thank you!!!",
+              //         buttons: [
+              //           DialogButton(
+              //             child: Text(
+              //               "ok",
+              //               style: TextStyle(color: Colors.white, fontSize: 20),
+              //             ),
+              //             onPressed: () async {
+              //               controller.count = await fetchCorrectAnswers();
+              //               isEnabled.value = false;
+              //               // isActive.value = false;
+              //               context.router.push(FinalScore(
+              //                   outOf: controller.questions.length,
+              //                   score: controller.count));
+              //             },
+              //             color: Color.fromARGB(255, 207, 122, 11),
+              //             radius: BorderRadius.circular(8.0),
+              //           ),
+              //         ],
+              //       ).show();
+
+              //       print("Timer finished");
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),

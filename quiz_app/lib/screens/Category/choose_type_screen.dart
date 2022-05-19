@@ -2,15 +2,8 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:get/get.dart';
-//import '../../routes/router.gr.dart';
+import '../../routes/router.gr.dart';
 
-import '../../routes/router.gr.dart';
-=======
-import '../../routes/router.gr.dart';
- 
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -52,7 +45,7 @@ class ChooseType extends StatelessWidget {
                   const SizedBox(
                     height: defaultPadding * 3,
                   ),
-                  ChoiceCard( 
+                  ChoiceCard(
                     imgPosY: -110,
                     imgeSrc: "assets/icons/exam.svg",
                     cardtext: "Evalution Exam",

@@ -2,13 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-<<<<<<< HEAD
-import 'package:quiz_app/screens/Score/evalu_screen.dart';
-=======
 import 'package:quiz_app/Models/scores.dart';
 import 'package:quiz_app/api.dart';
+import '../controllers/profile_controllers.dart';
 import '../widgets/theme.dart';
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
 import '/routes/router.gr.dart';
 import '../Models/model.dart';
 
@@ -164,22 +161,6 @@ class QuestionScreen extends StatelessWidget {
               Spacer(),
               Obx(
                 () => controller.questions.length == controller.qnIndex.value
-<<<<<<< HEAD
-                    ? ElevatedButton(
-                        onPressed: () async {
-                          controller.count = await fetchCorrectAnswers();
-                          isEnabled.value = true;
-                          context.router.push(FinalScore(
-                              outOf: controller.questions.length,
-                              score: controller.count));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(300, 80),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                            primary: const Color.fromARGB(255, 255, 165, 0)),
-                        child: const Text('Done'))
-=======
                     // ? ElevatedButton(
                     //     onPressed: () async {
                     //       controller.count = await fetchCorrectAnswers();
@@ -219,7 +200,6 @@ class QuestionScreen extends StatelessWidget {
                           ),
                         ),
                       )
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
                     // ? const RoundedButton(
                     //     buttonName: 'Done',
                     //     page: '/finalScore',
