@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/api.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 
+import '../../Models/model.dart';
 import '../../controllers/profile_controllers.dart';
 import '../../controllers/string_extension.dart';
 import '../../widgets/user_profile_widget.dart';
@@ -134,6 +135,7 @@ class ProfileScreen extends GetView<ProfileController> {
                               onPressed: () {
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
+                                logOut();
                               },
                             )
                           ],

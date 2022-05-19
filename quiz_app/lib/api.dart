@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:http/http.dart' as http;
 import 'package:quiz_app/Models/scores.dart';
 import 'package:quiz_app/Models/users.dart';
-import 'package:quiz_app/widgets/user_profile_widget.dart';
 
 // Save User Score
 
@@ -16,21 +14,15 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
       },
       body: jsonEncode(<String, dynamic>{
         'id': score.courseName,
-        // 'id': Random().nextInt(1000),
         'courseName': score.courseName,
         'courseType': score.courseType,
         'courseScore': score.courseScore,
         'userId': score.userId
       }));
-  if (response.statusCode == 201) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
+  if (response.statusCode == 200) {
     print("this is inside the scoreSave api function ");
     return CourseScore.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    // print(response.statusCode);
     throw Exception('Failed to Save score.');
   }
 }
@@ -52,12 +44,8 @@ Future<Users> createUser(Users user) async {
     }),
   );
   if (response.statusCode == 201) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
     return Users.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
     print(response.statusCode);
     throw Exception('Failed to create User.');
   }

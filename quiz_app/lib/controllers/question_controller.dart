@@ -16,6 +16,13 @@ class QuestionControl extends GetxController {
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
   RxBool isEnabled = true.obs;
+  int optionList = 0;
+
+  RxInt h = 0.obs;
+  RxInt m = 0.obs;
+  RxInt s = 15.obs;
+
+  bool isFinished = false;
 
   List<ChosenModel> chosenAnswers = [];
 

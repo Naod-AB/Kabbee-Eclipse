@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/controllers/question_controller.dart';
 import '../Models/users.dart';
+import '../controllers/profile_controllers.dart';
 import '../widgets/user_profile_widget.dart';
 
 class NameListJson {
@@ -82,4 +85,25 @@ Future<Users> updateJprofile({
   } else {
     throw Exception(Error);
   }
+}
+
+// Delete answers
+Future deleteSavedAnswers(int optionLength) async {
+  for (var i = 1; i < optionLength + 1; i++) {
+    final response = await http.patch(
+      Uri.parse('http://localhost:3000/answers/$i'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, bool>{
+        'isCorrect': false,
+      }),
+    );
+  }
+}
+
+// Logout
+logOut() {
+  Get.delete<ProfileController>();
+  Get.delete<QuestionControl>();
 }

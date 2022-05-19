@@ -3,14 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Models/model.dart';
 import '../../controllers/question_controller.dart';
 
 class FinalScore extends StatelessWidget {
-  FinalScore({Key? key, required this.outOf, required this.score})
+  FinalScore(
+      {Key? key,
+      required this.outOf,
+      required this.score,
+      required this.optionList})
       : super(key: key);
 
   int outOf;
   int score;
+  int optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
 
@@ -86,6 +92,7 @@ class FinalScore extends StatelessWidget {
                   'DONE',
                 ),
                 onPressed: () {
+                  deleteSavedAnswers(controller.optionList);
                   context.router.pushNamed('/category');
                   Get.delete<QuestionControl>();
                 },

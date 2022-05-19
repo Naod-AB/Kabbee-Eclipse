@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
+import '../../Models/model.dart';
 import '../../controllers/question_controller.dart';
 import '../../widgets/common_components/appbar.dart';
 import '/routes/router.gr.dart';
@@ -48,9 +49,10 @@ class ReviewScreen extends StatelessWidget {
                           pcontroller.questionApi![snapshot]['options'];
 
                       return Container(
+                        padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 88, 79, 79),
+                          color: Color.fromARGB(176, 34, 34, 34),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
@@ -144,9 +146,8 @@ class ReviewScreen extends StatelessWidget {
                         controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
-                          context.router.push(FinalScore(
-                              outOf: pcontroller.questionApi!.length,
-                              score: controller.count));
+                          deleteSavedAnswers(controller.optionList);
+                          context.router.push(CategoryRoute());
                           controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(

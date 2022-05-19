@@ -62,7 +62,8 @@ class evaluationScreens extends StatelessWidget {
                     },
                     itemBuilder: (context, snapshot) {
                       var options =
-                          pcontroller.questionApi![snapshot]['options'];
+                          pcontroller.questionApi![snapshot]['options'] as List;
+                      controller.optionList = options.length;
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -92,7 +93,7 @@ class evaluationScreens extends StatelessWidget {
                             Container(
                               height: 400.0,
                               child: ListView.builder(
-                                itemCount: 4,
+                                itemCount: options.length,
                                 itemBuilder: (context, index) => ButtonBar(
                                   alignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -148,6 +149,7 @@ class evaluationScreens extends StatelessWidget {
                                               } else {
                                                 isCorrect = false;
                                               }
+
                                               updateJsonTime(
                                                 answer: options[index],
                                                 id: pcontroller
@@ -184,10 +186,12 @@ class evaluationScreens extends StatelessWidget {
                               courseType: controller.chosenCourseType.value,
                               courseScore: controller.count,
                               userId: pcontroller.userInfo.value!.id);
+                          controller.isFinished = true;
                           saveUserScore(score);
                           context.router.push(FinalScore(
                               outOf: pcontroller.questionApi!.length,
-                              score: controller.count));
+                              score: controller.count,
+                              optionList: controller.optionList));
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),

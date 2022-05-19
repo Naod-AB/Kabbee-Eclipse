@@ -63,7 +63,7 @@ class QuestionScreen extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 88, 79, 79),
+                          color: Color.fromARGB(176, 34, 34, 34),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
@@ -190,8 +190,10 @@ class QuestionScreen extends StatelessWidget {
                             print("after clicking done button ");
                             saveUserScore(score);
                             context.router.push(FinalScore(
-                                outOf: pController.questionApi!.length,
-                                score: controller.count));
+                              outOf: pController.questionApi!.length,
+                              score: controller.count,
+                              optionList: controller.optionList,
+                            ));
                             controller.qnIndex.value = 1;
                           },
                           child: Text(

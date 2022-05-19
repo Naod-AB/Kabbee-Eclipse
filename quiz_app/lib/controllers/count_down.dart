@@ -17,30 +17,41 @@ class MyTimer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool x = true;
     Spacer();
-    return TimerCountdown(
-      format: CountDownTimerFormat.hoursMinutesSeconds,
-      endTime: DateTime.now().add(
-        Duration(
-          hours: 0,
-          minutes: 0,
-          seconds: 15,
-        ),
-      ),
-      onEnd: () async {
-        controller.count = await fetchCorrectAnswers();
-        controller.isEnabled.value = false;
-        CourseScore score = CourseScore(
-            courseName: controller.chosenCourse.value,
-            courseType: controller.chosenCourseType.value,
-            courseScore: controller.count,
-            userId: pcontroller.userInfo.value!.id);
-        saveUserScore(score);
-        context.router.push(FinalScore(
-            outOf: pcontroller.questionApi!.length, score: controller.count));
-        controller.qnIndex.value = 1;
 
-        print("Timer finished");
-      },
+    return Obx(
+      () => TimerCountdown(
+        format: CountDownTimerFormat.hoursMinutesSeconds,
+        endTime: DateTime.now().add(
+          Duration(
+            hours: controller.h.value,
+            minutes: controller.m.value,
+            seconds: controller.s.value,
+          ),
+        ),
+        onEnd: () async {
+          if (controller.isFinished) {
+          } else {
+            controller.count = await fetchCorrectAnswers();
+            print('timer ended');
+            controller.s.value = 0;
+            controller.isEnabled.value = false;
+            CourseScore score = CourseScore(
+                courseName: controller.chosenCourse.value,
+                courseType: controller.chosenCourseType.value,
+                courseScore: controller.count,
+                userId: pcontroller.userInfo.value!.id);
+            saveUserScore(score);
+            context.router.push(FinalScore(
+              outOf: pcontroller.questionApi!.length,
+              score: controller.count,
+              optionList: controller.optionList,
+            ));
+            controller.qnIndex.value = 1;
+
+            print("Timer finished");
+          }
+        },
+      ),
     );
   }
 }

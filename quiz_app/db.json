@@ -22,21 +22,21 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 3,
-      "userId": 314
+      "courseScore": 0,
+      "userId": 638
     },
     {
       "id": "Dart",
       "courseName": "Dart",
       "courseType": "Front-End",
-      "courseScore": 1,
+      "courseScore": 0,
       "userId": 638
     },
     {
       "id": "Flutter",
       "courseName": "Flutter",
       "courseType": "Front-End",
-      "courseScore": 2,
+      "courseScore": 0,
       "userId": 638
     },
     {
@@ -74,19 +74,14 @@
       "isCorrect": false
     },
     {
-      "id": 2,
-      "answer": "Jun 2017",
-      "isCorrect": true
-    },
-    {
       "id": 3,
-      "answer": "Int",
+      "answer": "Char",
       "isCorrect": false
     },
     {
       "id": 4,
-      "answer": "Output",
-      "isCorrect": true
+      "answer": "Cin",
+      "isCorrect": false
     }
   ],
   "dart_practice": [
