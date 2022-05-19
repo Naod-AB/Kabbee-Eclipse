@@ -1,0 +1,88 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "quiz_app",
+            "cwd": "quiz_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "quiz_app (profile mode)",
+            "cwd": "quiz_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "quiz_app (release mode)",
+            "cwd": "quiz_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "vms_Api",
+            "cwd": "vms_Api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "vms_Api (profile mode)",
+            "cwd": "vms_Api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "vms_Api (release mode)",
+            "cwd": "vms_Api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "vms_getx",
+            "cwd": "vms_getx",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "vms_getx (profile mode)",
+            "cwd": "vms_getx",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "vms_getx (release mode)",
+            "cwd": "vms_getx",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "VMS_Statefull",
+            "cwd": "VMS_Statefull",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "VMS_Statefull (profile mode)",
+            "cwd": "VMS_Statefull",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "VMS_Statefull (release mode)",
+            "cwd": "VMS_Statefull",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

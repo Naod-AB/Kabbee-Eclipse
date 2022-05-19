@@ -25,8 +25,10 @@ import '../screens/Profile/edit_profile_screen.dart' as _i13;
 import '../screens/Profile/my_scores_screen.dart' as _i14;
 import '../screens/Profile/profile_screen.dart' as _i12;
 import '../screens/question_screen.dart' as _i9;
+import '../screens/Score/evalu_screen.dart' as _i17; // add evaluation screen
 import '../screens/Score/final_practice_score.dart' as _i10;
 import '../screens/Score/review_page.dart' as _i11;
+import '../screens/Score/evaluationscore_screen.dart' as _i118;
 
 class AppRouter extends _i15.RootStackRouter {
   AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
@@ -108,6 +110,17 @@ class AppRouter extends _i15.RootStackRouter {
     MyScoresScreen.name: (routeData) {
       return _i15.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i14.MyScoresScreen());
+    },
+    ExamScoresScreen.name: (routeData) {
+      return _i15.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i14.MyScoresScreen());
+    },
+    // add evaluation screen
+    evaluationScreen.name: (routeData) {
+      final args = routeData.argsAs<evaluationScreenArgs>();
+      return _i15.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i17.evaluationScreens(key: args.key, icon: args.icon));
     }
   };
 
@@ -122,11 +135,14 @@ class AppRouter extends _i15.RootStackRouter {
         _i15.RouteConfig(CloudChoices.name, path: '/cloud'),
         _i15.RouteConfig(ChooseType.name, path: '/choose-type'),
         _i15.RouteConfig(QuestionScreen.name, path: '/questions'),
+        _i15.RouteConfig(evaluationScreen.name,
+            path: '/evaluation'), // add evaluation screen
         _i15.RouteConfig(FinalScore.name, path: '/finalScore'),
         _i15.RouteConfig(ReviewScreen.name, path: '/review_screen'),
         _i15.RouteConfig(ProfileScreen.name, path: '/profile'),
         _i15.RouteConfig(EditProfileScreen.name, path: '/edit_profile'),
-        _i15.RouteConfig(MyScoresScreen.name, path: '/my_scores')
+        _i15.RouteConfig(MyScoresScreen.name, path: '/my_scores'),
+        _i15.RouteConfig(ExamScoresScreen.name, path: '/Exam_scores'),
       ];
 }
 
@@ -310,6 +326,33 @@ class FinalScoreArgs {
   }
 }
 
+/// exam score screen
+/// generated route for
+/// [_i118.ExamScore]
+class ExamScore extends _i15.PageRouteInfo<ExamScoreArgs> {
+  ExamScore({_i16.Key? key, required int outOf, required int score})
+      : super(ExamScore.name,
+            path: '/ExamScore',
+            args: ExamScoreArgs(key: key, outOf: outOf, score: score));
+
+  static const String name = 'ExamScore';
+}
+
+class ExamScoreArgs {
+  const ExamScoreArgs({this.key, required this.outOf, required this.score});
+
+  final _i16.Key? key;
+
+  final int outOf;
+
+  final int score;
+
+  @override
+  String toString() {
+    return 'ExamScoreArgs{key: $key, outOf: $outOf, score: $score}';
+  }
+}
+
 /// generated route for
 /// [_i11.ReviewScreen]
 class ReviewScreen extends _i15.PageRouteInfo<ReviewScreenArgs> {
@@ -366,4 +409,39 @@ class MyScoresScreen extends _i15.PageRouteInfo<void> {
   const MyScoresScreen() : super(MyScoresScreen.name, path: '/my_scores');
 
   static const String name = 'MyScoresScreen';
+}
+
+/// exam score class
+
+/// generated route for
+/// [_i14.MyScoresScreen]
+class ExamScoresScreen extends _i15.PageRouteInfo<void> {
+  const ExamScoresScreen() : super(ExamScoresScreen.name, path: '/Exam_scores');
+
+  static const String name = 'ExamScoresScreen';
+}
+
+// add evaluation screen
+/// generated route for
+/// [_i17.evaluationScreens]
+class evaluationScreen extends _i15.PageRouteInfo<evaluationScreenArgs> {
+  evaluationScreen({_i16.Key? key, required dynamic icon})
+      : super(evaluationScreen.name,
+            path: '/evaluation',
+            args: evaluationScreenArgs(key: key, icon: icon));
+
+  static const String name = 'evaluationScreen';
+}
+
+class evaluationScreenArgs {
+  const evaluationScreenArgs({this.key, required this.icon});
+
+  final _i16.Key? key;
+
+  final dynamic icon;
+
+  @override
+  String toString() {
+    return 'evaluationScreenArgs{key: $key, icon: $icon}';
+  }
 }

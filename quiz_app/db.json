@@ -1,9 +1,15 @@
 {
   "Users": [
     {
+<<<<<<< HEAD
+      "id": "12",
+      "email": "mgemal@gmail.com",
+      "firstName": "Mohammed",
+=======
       "id": 638,
       "email": "selam@gmail.com",
       "firstName": "Mohamemd",
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "lastName": "Mohammed",
       "password": "Mohammed@123",
       "gender": "Male"
@@ -30,6 +36,22 @@
       "id": "MongoDB"
     },
     {
+<<<<<<< HEAD
+      "id": "202",
+      "email": "help@gmail.com",
+      "firstName": "Please",
+      "lastName": "Work",
+      "password": "Help123",
+      "gender": "male"
+    },
+    {
+      "id": "203",
+      "email": "asi@gmail.com",
+      "firstName": "asmie",
+      "lastName": "asmie",
+      "password": "Asmie@123",
+      "gender": "male"
+=======
       "id": "Atlas_Cloud"
     },
     {
@@ -40,6 +62,7 @@
     },
     {
       "id": "Analaytics"
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
     }
   ],
   "answers": [
@@ -55,13 +78,17 @@
     },
     {
       "id": 3,
+<<<<<<< HEAD
+      "answer": "Double",
+=======
       "answer": "Word",
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "isCorrect": false
     },
     {
       "id": 4,
-      "answer": "Output",
-      "isCorrect": true
+      "answer": "Count",
+      "isCorrect": false
     }
   ]
 }

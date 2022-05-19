@@ -16,3 +16,4 @@ const Color kWhite1 = Color.fromARGB(153, 255, 255, 255);
 const Color kblue = Color(0xFFFFA500);
 const Color kblack = Colors.black;
 const Color kWhite = Colors.white;
+const Color kred = Colors.red;

@@ -1,10 +1,22 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+import 'package:get/get.dart';
+//import '../../routes/router.gr.dart';
+
+import '../../routes/router.gr.dart';
+=======
 import '../../routes/router.gr.dart';
  
+>>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../Score/evalu_screen.dart';
 
 class ChooseType extends StatelessWidget {
   ChooseType({Key? key, required this.icon}) : super(key: key);
@@ -45,7 +57,42 @@ class ChooseType extends StatelessWidget {
                     imgeSrc: "assets/icons/exam.svg",
                     cardtext: "Evalution Exam",
                     onpressed: () {
-                      context.router.push(QuestionScreen(icon: icon));
+                      Alert(
+                        context: context,
+                        //type: AlertType.warning,
+                        title: "Exam information",
+                        desc:
+                            "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
+                        buttons: [
+                          DialogButton(
+                            child: Text(
+                              "CANCEL",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                            color: Color.fromRGBO(0, 179, 134, 1.0),
+                          ),
+                          DialogButton(
+                            child: Text(
+                              "OK",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            onPressed: () =>
+                                // Get.off(evaluationScreens(icon: icon)),
+
+                                context.router
+                                    .push(evaluationScreen(icon: icon)),
+                            gradient: LinearGradient(colors: [
+                              Color.fromARGB(255, 233, 235, 64),
+                              Color.fromARGB(255, 192, 164, 4)
+                            ]),
+                          )
+                        ],
+                      ).show();
+
+                      // context.router.push(evaluationScreen(icon: icon));
                     },
                   ),
                   const SizedBox(
