@@ -47,8 +47,9 @@ class FrontEndChoices extends StatelessWidget {
                               frontendCourses[index].category;
                           print("this is the course");
                           print(qController.chosenCourse.value);
-                          context.router.push(
-                              ChooseType(icon: frontendCourses[index].icon));
+                          context.router.push(ChooseType(
+                              icon: frontendCourses[index].icon,
+                              path: frontendCourses[index].courseName));
                         });
                   },
                   separatorBuilder: (BuildContext context, int index) {

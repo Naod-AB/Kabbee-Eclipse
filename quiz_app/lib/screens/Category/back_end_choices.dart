@@ -41,8 +41,9 @@ class BackendChoices extends StatelessWidget {
                               backCourse[index].courseName;
                           qController.chosenCourseType.value =
                               backCourse[index].category;
-                          context.router
-                              .push(ChooseType(icon: backCourse[index].icon));
+                          context.router.push(ChooseType(
+                              icon: backCourse[index].icon,
+                              path: backCourse[index].courseName));
                         });
                   },
                   separatorBuilder: (BuildContext context, int index) {

@@ -1,15 +1,9 @@
 {
   "Users": [
     {
-<<<<<<< HEAD
-      "id": "12",
-      "email": "mgemal@gmail.com",
-      "firstName": "Mohammed",
-=======
       "id": 638,
       "email": "selam@gmail.com",
       "firstName": "Mohamemd",
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "lastName": "Mohammed",
       "password": "Mohammed@123",
       "gender": "Male"
@@ -24,10 +18,18 @@
       "userId": 638
     },
     {
-      "id": "Dart"
+      "id": "Dart",
+      "courseName": "Dart",
+      "courseType": "Front-End",
+      "courseScore": 1,
+      "userId": 638
     },
     {
-      "id": "Flutter"
+      "id": "Flutter",
+      "courseName": "Flutter",
+      "courseType": "Front-End",
+      "courseScore": 2,
+      "userId": 638
     },
     {
       "id": "javascript"
@@ -36,22 +38,6 @@
       "id": "MongoDB"
     },
     {
-<<<<<<< HEAD
-      "id": "202",
-      "email": "help@gmail.com",
-      "firstName": "Please",
-      "lastName": "Work",
-      "password": "Help123",
-      "gender": "male"
-    },
-    {
-      "id": "203",
-      "email": "asi@gmail.com",
-      "firstName": "asmie",
-      "lastName": "asmie",
-      "password": "Asmie@123",
-      "gender": "male"
-=======
       "id": "Atlas_Cloud"
     },
     {
@@ -62,7 +48,6 @@
     },
     {
       "id": "Analaytics"
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
     }
   ],
   "answers": [
@@ -73,22 +58,294 @@
     },
     {
       "id": 2,
-      "answer": "May 2017",
+      "answer": "May 2018",
       "isCorrect": false
     },
     {
       "id": 3,
-<<<<<<< HEAD
       "answer": "Double",
-=======
-      "answer": "Word",
->>>>>>> 82c97bb74cc14ae30ed45be1b591880faa204630
       "isCorrect": false
     },
     {
       "id": 4,
-      "answer": "Count",
-      "isCorrect": false
+      "answer": "Output",
+      "isCorrect": true
+    }
+  ],
+  "dart_practice": [
+    {
+      "id": 1,
+      "question": "Practice Dart>> Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Practice >> When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Practice >> A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Practice >> What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
+    }
+  ],
+  "dart_final": [
+    {
+      "id": 1,
+      "question": "Final Dart>>  Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Final >>  When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Final >>  A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Final >>  What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
+    }
+  ],
+  "HTML_CSS_practice": [
+    {
+      "id": 1,
+      "question": "Practice Html>> Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Practice >> When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Practice >> A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Practice >> What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
+    }
+  ],
+  "HTML_CSS_final": [
+    {
+      "id": 1,
+      "question": "Final Html >>  Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Final >>  When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Final >>  A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Final >>  What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
+    }
+  ],
+  "flutter_practice": [
+    {
+      "id": 1,
+      "question": "Practice Flutter>> Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Practice >> When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Practice >> A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Practice >> What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
+    }
+  ],
+  "flutter_final": [
+    {
+      "id": 1,
+      "question": "Final Flutter >>  Flutter is an open-source UI software development kit created by ______",
+      "options": [
+        "Apple",
+        "Google",
+        "Facebook",
+        "Microsoft"
+      ],
+      "answer": "Google"
+    },
+    {
+      "id": 2,
+      "question": "Final >>  When google release Flutter.",
+      "options": [
+        "Jun 2017",
+        "July 2017",
+        "May 2017",
+        "May 2018"
+      ],
+      "answer": "Jun 2017"
+    },
+    {
+      "id": 3,
+      "question": "Final >>  A memory location that holds a single letter or number.",
+      "options": [
+        "Double",
+        "Int",
+        "Char",
+        "Word"
+      ],
+      "answer": "Char"
+    },
+    {
+      "id": 4,
+      "question": "Final >>  What command do you use to output data to the screen?",
+      "options": [
+        "Cin",
+        "Count",
+        "Cout",
+        "Output"
+      ],
+      "answer": "Output"
     }
   ]
 }
