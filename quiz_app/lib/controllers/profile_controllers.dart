@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/Models/users.dart';
 
-import '../Models/scores.dart';
-import '../api.dart';
 import '../widgets/user_profile_widget.dart';
 
 class ProfileController extends GetxController {
@@ -29,8 +27,6 @@ class ProfileController extends GetxController {
 
   var password = 'test123'.obs;
 
-  /// Get from gallery
-
   getFromGallery(ImageSource imgSource, context) async {
     final pickedFile = await ImagePicker().pickImage(
       source: imgSource,
@@ -45,15 +41,10 @@ class ProfileController extends GetxController {
     }
   }
 
-  //Fieldforms globalkeys
   Rx<Users?> userInfo = Users().obs;
-  // Rx<CourseScore?> score = CourseScore().obs;
-  List? scores;
 
-  // fetchScore() async {
-  //   scores = await fetchUserScores(controller.userInfo.value!.id);
-  // }
-  // Future<CourseScore?> scores = ;
+  List? scores;
+  List? questionApi;
 
   Rx<GlobalKey<FormFieldState>> emailFieldKey = GlobalKey<FormFieldState>().obs;
   Rx<GlobalKey<FormFieldState>> passFieldKey = GlobalKey<FormFieldState>().obs;
@@ -63,18 +54,10 @@ class ProfileController extends GetxController {
       GlobalKey<FormFieldState>().obs;
   Rx<GlobalKey<FormFieldState>> lastNameFieldKey =
       GlobalKey<FormFieldState>().obs;
-  //Textfield controllers
+
   Rx<TextEditingController> firstNameController = TextEditingController().obs;
   Rx<TextEditingController> lastNameController = TextEditingController().obs;
   Rx<TextEditingController> passwordController = TextEditingController().obs;
   Rx<TextEditingController> confirmController = TextEditingController().obs;
   Rx<TextEditingController> emailController = TextEditingController().obs;
-
-  // late var scores;
-  // @override
-  // void onInit() {
-
-  //   super.onInit();
-  // }
-
 }

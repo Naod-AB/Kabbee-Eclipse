@@ -129,11 +129,11 @@ class _SplashState extends State<Splash> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children:  [
+                    children: [
                       Text(
                         'Q',
                         style: TextStyle(
-                            fontSize: getProportionateScreenWidth(43),//,45,
+                            fontSize: getProportionateScreenWidth(43), //,45,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),
@@ -141,7 +141,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'uiz Ap',
                         style: TextStyle(
-                            fontSize: getProportionateScreenWidth(38),//38,
+                            fontSize: getProportionateScreenWidth(38), //38,
                             fontWeight: FontWeight.w900,
                             color: kWhite,
                             letterSpacing: 2),
@@ -149,7 +149,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'p',
                         style: TextStyle(
-                            fontSize:getProportionateScreenWidth(38),// 38,
+                            fontSize: getProportionateScreenWidth(38), // 38,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),

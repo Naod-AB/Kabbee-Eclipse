@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
 import '../../controllers/question_controller.dart';
 import '../../widgets/common_components/appbar.dart';
 import '/routes/router.gr.dart';
@@ -12,6 +13,7 @@ class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
 
   final QuestionControl controller = Get.put(QuestionControl());
+  final ProfileController pcontroller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class ReviewScreen extends StatelessWidget {
                 () => Text(
                     controller.qnIndex.toString() +
                         '/' +
-                        controller.questions.length.toString(),
+                        pcontroller.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -37,12 +39,13 @@ class ReviewScreen extends StatelessWidget {
               SizedBox(
                 height: 600.0,
                 child: PageView.builder(
-                    itemCount: controller.questions.length,
+                    itemCount: pcontroller.questionApi!.length,
                     onPageChanged: (pageNumber) {
                       controller.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
-                      var options = controller.questions[snapshot]['options'];
+                      var options =
+                          pcontroller.questionApi![snapshot]['options'];
 
                       return Container(
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -57,7 +60,7 @@ class ReviewScreen extends StatelessWidget {
                               flex: 1,
                             ),
                             Text(
-                              controller.questions[snapshot]['question']
+                              pcontroller.questionApi![snapshot]['question']
                                   .toString(),
                               style: Theme.of(context)
                                   .textTheme
@@ -85,13 +88,13 @@ class ReviewScreen extends StatelessWidget {
                                                       controller.value[snapshot]
                                                           [index]
                                                   ? options[index] ==
-                                                          controller.questions[
+                                                          pcontroller.questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
                                                       : kred
                                                   : options[index] ==
-                                                          controller.questions[
+                                                          pcontroller.questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
@@ -137,12 +140,14 @@ class ReviewScreen extends StatelessWidget {
               ),
               Spacer(),
               Obx(
-                () => controller.questions.length == controller.qnIndex.value
+                () => pcontroller.questionApi!.length ==
+                        controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
                           context.router.push(FinalScore(
-                              outOf: controller.questions.length,
+                              outOf: pcontroller.questionApi!.length,
                               score: controller.count));
+                          controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 40),
@@ -150,10 +155,6 @@ class ReviewScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),
                         child: const Text('Done'))
-                    // ? const RoundedButton(
-                    //     buttonName: 'Done',
-                    //     page: '/finalScore',
-                    //   )
                     : Container(),
               ),
               Spacer(),

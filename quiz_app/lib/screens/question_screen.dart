@@ -12,16 +12,20 @@ import '../Models/model.dart';
 import '../widgets/common_components/appbar.dart';
 import '../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
+import 'Score/evalu_screen.dart';
 
 class QuestionScreen extends StatelessWidget {
-  QuestionScreen({Key? key, required this.icon}) : super(key: key);
+  QuestionScreen({Key? key, required this.icon, required this.path})
+      : super(key: key);
   dynamic icon;
+  String path;
 
   final QuestionControl controller = Get.put(QuestionControl());
   final ProfileController pController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    print('Question Path > $path');
     Size size = MediaQuery.of(context).size;
     var isCorrect = false;
     return SafeArea(
@@ -36,7 +40,8 @@ class QuestionScreen extends StatelessWidget {
                 () => Text(
                     controller.qnIndex.toString() +
                         '/' +
-                        controller.questions.length.toString(),
+                        // controller.questions.length.toString(),
+                        pController.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -46,12 +51,13 @@ class QuestionScreen extends StatelessWidget {
               SizedBox(
                 height: 600.0,
                 child: PageView.builder(
-                    itemCount: controller.questions.length,
+                    itemCount: pController.questionApi!.length,
                     onPageChanged: (pageNumber) {
                       controller.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
-                      var options = controller.questions[snapshot]['options'];
+                      var options =
+                          pController.questionApi![snapshot]['options'];
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -70,7 +76,7 @@ class QuestionScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
                               child: Text(
-                                controller.questions[snapshot]['question']
+                                pController.questionApi![snapshot]['question']
                                     .toString(),
                                 style: Theme.of(context)
                                     .textTheme
@@ -131,7 +137,8 @@ class QuestionScreen extends StatelessWidget {
                                               controller.groupValue[snapshot] =
                                                   newValue as int;
                                               if (options[index].toString() ==
-                                                  controller.questions[snapshot]
+                                                  pController
+                                                      .questionApi![snapshot]
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
@@ -141,8 +148,9 @@ class QuestionScreen extends StatelessWidget {
                                               }
                                               updateJsonTime(
                                                 answer: options[index],
-                                                id: controller
-                                                    .questions[snapshot]['id'],
+                                                id: pController
+                                                        .questionApi![snapshot]
+                                                    ['id'],
                                                 isCorrect: isCorrect,
                                               );
                                               print(options[index]);
@@ -160,17 +168,8 @@ class QuestionScreen extends StatelessWidget {
               ),
               Spacer(),
               Obx(
-                () => controller.questions.length == controller.qnIndex.value
-                    // ? ElevatedButton(
-                    //     onPressed: () async {
-                    //       controller.count = await fetchCorrectAnswers();
-
-                    //       context.router.push(FinalScore(
-                    //           outOf: controller.questions.length,
-                    //           score: controller.count));
-                    //     },
-                    //     child: Text('Done')):
-
+                () => pController.questionApi!.length ==
+                        controller.qnIndex.value
                     ? Container(
                         height: size.height * 0.08,
                         width: size.width * 0.8,
@@ -181,6 +180,7 @@ class QuestionScreen extends StatelessWidget {
                         child: TextButton(
                           onPressed: () async {
                             controller.count = await fetchCorrectAnswers();
+                            controller.isEnabled.value = true;
 
                             CourseScore score = CourseScore(
                                 courseName: controller.chosenCourse.value,
@@ -190,8 +190,9 @@ class QuestionScreen extends StatelessWidget {
                             print("after clicking done button ");
                             saveUserScore(score);
                             context.router.push(FinalScore(
-                                outOf: controller.questions.length,
+                                outOf: pController.questionApi!.length,
                                 score: controller.count));
+                            controller.qnIndex.value = 1;
                           },
                           child: Text(
                             'DONE',

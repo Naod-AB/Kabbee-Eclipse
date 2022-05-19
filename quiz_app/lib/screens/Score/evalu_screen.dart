@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_app/controllers/count_down.dart';
-//import 'package:quiz_app/screens/Score/final_practice_score.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
+
+import '../../Models/scores.dart';
+import '../../api.dart';
 import '/routes/router.gr.dart';
 import '../../Models/model.dart';
 import '../../controllers/count_down.dart';
@@ -14,21 +17,22 @@ import '/widgets/pallete.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-RxBool isEnabled = true.obs;
-
 class evaluationScreens extends StatelessWidget {
-  evaluationScreens({Key? key, required this.icon}) : super(key: key);
+  evaluationScreens({Key? key, required this.icon, required this.path})
+      : super(key: key);
   dynamic icon;
+  String path;
 
   final QuestionControl controller = Get.put(QuestionControl());
+  final ProfileController pcontroller = Get.put(ProfileController());
   Future<bool> _onWillPop() async {
-    return false; //<-- SEE HERE
+    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     var isCorrect = false;
-    // int? newValue;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -37,167 +41,35 @@ class evaluationScreens extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
           child: Column(
             children: [
-              Expanded(
-                child: TimerCountdown(
-                  format: CountDownTimerFormat.hoursMinutesSeconds,
-                  endTime: DateTime.now().add(
-                    Duration(
-                      // days: 0,
-                      hours: 0,
-                      minutes: 1,
-                      seconds: 00,
-                    ),
-                  ),
-                  onEnd: () {
-                    Alert(
-                      context: context,
-                      //style: alertStyle,
-                      type: AlertType.info,
-                      // isCloseButton: false,
-                      title: "exam Time",
-                      desc:
-                          "oops sorry your limit time is reached. thank you!!!",
-                      buttons: [
-                        DialogButton(
-                          child: Text(
-                            "ok",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                          onPressed: () async {
-                            controller.count = await fetchCorrectAnswers();
-                            isEnabled.value = false;
-                            // isActive.value = false;
-                            context.router.push(FinalScore(
-                                outOf: controller.questions.length,
-                                score: controller.count));
-                          },
-                          color: Color.fromARGB(255, 207, 122, 11),
-                          radius: BorderRadius.circular(8.0),
-                        ),
-                      ],
-                    ).show();
-
-                    print("Timer finished");
-                  },
-                ),
-              ),
-              //                Expanded(
-
-              //             child:Alert(
-              //   context: context,
-              //   //type: AlertType.warning,
-              //   title: "Exam information",
-              //   desc:
-              //       "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
-              //   buttons: [
-              //     DialogButton(
-              //       child: Text(
-              //         "CANCEL",
-              //         style: TextStyle(color: Colors.white, fontSize: 20),
-              //       ),
-              //       onPressed: () => Navigator.pop(context),
-              //       color: Color.fromRGBO(0, 179, 134, 1.0),
-              //     ),
-              //     DialogButton(
-              //       child: Text(
-              //         "OK",
-              //         style: TextStyle(color: Colors.white, fontSize: 20),
-              //       ),
-              //       onPressed: () => context.router.push(evaluationScreen(icon: icon)),
-              //       gradient: LinearGradient(colors: [
-              //         Color.fromARGB(255, 233, 235, 64),
-              //         Color.fromARGB(255, 192, 164, 4)
-              //       ]),
-              //     )
-              //   ],
-              // ).show();
-              //           ),
-              // Expanded(
-              //   child: TimerCountdown(
-              //     format: CountDownTimerFormat.hoursMinutesSeconds,
-              //     endTime: DateTime.now().add(
-              //       Duration(
-              //         // days: 0,
-              //         hours: 0,
-              //         minutes: 1,
-              //         seconds: 00,
-              //       ),
-              //     ),
-              //     onEnd: () {
-              //       Alert(
-              //         context: context,
-              //         //style: alertStyle,
-              //         type: AlertType.info,
-              //         // isCloseButton: false,
-              //         title: "exam Time",
-              //         desc:
-              //             "oops sorry your limit time is reached. thank you!!!",
-              //         buttons: [
-              //           DialogButton(
-              //             child: Text(
-              //               "ok",
-              //               style: TextStyle(color: Colors.white, fontSize: 20),
-              //             ),
-              //             onPressed: () => context.router.push(FinalScore(
-              //                 outOf: controller.questions.length,
-              //                 score: controller.count)),
-              //             color: Color.fromARGB(255, 207, 122, 11),
-              //             radius: BorderRadius.circular(8.0),
-              //           ),
-              //         ],
-              //       ).show();
-
-              //       print("Timer finished");
-              //     },
-              //   ),
-              // ),
-              // Expanded(
-              //     child: StepProgressIndicator(
-              //   totalSteps: controller.questions.length,
-              //   currentStep: 1,
-              //   size: 15,
-              //   padding: 0,
-              //   selectedColor: Colors.yellow,
-              //   unselectedColor: Colors.cyan,
-              //   roundedEdges: Radius.circular(10),
-              //   selectedGradientColor: LinearGradient(
-              //     begin: Alignment.topLeft,
-              //     end: Alignment.bottomRight,
-              //     colors: [Colors.yellowAccent, Colors.deepOrange],
-              //   ),
-              //   unselectedGradientColor: LinearGradient(
-              //     begin: Alignment.topLeft,
-              //     end: Alignment.bottomRight,
-              //     colors: [Colors.black, Colors.blue],
-              //   ),
-              // )),
+              MyTimer(),
               Spacer(),
               Obx(
                 () => Text(
                     controller.qnIndex.toString() +
                         '/' +
-                        controller.questions.length.toString(),
+                        pcontroller.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
                         .copyWith(color: Colors.white)),
               ),
-              // SizedBox(height: 15),
               SizedBox(
                 height: 600.0,
                 child: PageView.builder(
-                    itemCount: controller.questions.length,
+                    itemCount: pcontroller.questionApi!.length,
                     onPageChanged: (pageNumber) {
                       controller.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
-                      var options = controller.questions[snapshot]['options'];
+                      var options =
+                          pcontroller.questionApi![snapshot]['options'];
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 88, 79, 79),
+                          // color: const Color.fromARGB(255, 88, 79, 79),
+                          color: Color.fromARGB(176, 34, 34, 34),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
@@ -207,7 +79,7 @@ class evaluationScreens extends StatelessWidget {
                               flex: 1,
                             ),
                             Text(
-                              controller.questions[snapshot]['question']
+                              pcontroller.questionApi![snapshot]['question']
                                   .toString(),
                               style: Theme.of(context)
                                   .textTheme
@@ -267,7 +139,8 @@ class evaluationScreens extends StatelessWidget {
                                               controller.groupValue[snapshot] =
                                                   newValue as int;
                                               if (options[index].toString() ==
-                                                  controller.questions[snapshot]
+                                                  pcontroller
+                                                      .questionApi![snapshot]
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
@@ -277,11 +150,15 @@ class evaluationScreens extends StatelessWidget {
                                               }
                                               updateJsonTime(
                                                 answer: options[index],
-                                                id: controller
-                                                    .questions[snapshot]['id'],
+                                                id: pcontroller
+                                                        .questionApi![snapshot]
+                                                    ['id'],
                                                 isCorrect: isCorrect,
                                               );
-                                              print(options[index]);
+
+                                              print(pcontroller
+                                                      .questionApi![snapshot]
+                                                  ['id']);
                                             }),
                                       ),
                                     ),
@@ -296,74 +173,31 @@ class evaluationScreens extends StatelessWidget {
               ),
               Spacer(),
               Obx(
-                () => controller.questions.length == controller.qnIndex.value
+                () => pcontroller.questionApi!.length ==
+                        controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () async {
                           controller.count = await fetchCorrectAnswers();
-                          isEnabled.value = false;
-                          // isActive.value = false;
+                          controller.isEnabled.value = false;
+                          CourseScore score = CourseScore(
+                              courseName: controller.chosenCourse.value,
+                              courseType: controller.chosenCourseType.value,
+                              courseScore: controller.count,
+                              userId: pcontroller.userInfo.value!.id);
+                          saveUserScore(score);
                           context.router.push(FinalScore(
-                              outOf: controller.questions.length,
+                              outOf: pcontroller.questionApi!.length,
                               score: controller.count));
                         },
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(300, 40),
+                            fixedSize: const Size(300, 50),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),
                         child: const Text('Done'))
-                    // ? const RoundedButton(
-                    //     buttonName: 'Done',
-                    //     page: '/finalScore',
-                    //   )
                     : Container(),
               ),
-              Spacer(),
-
-              // Expanded(
-              //   child: TimerCountdown(
-              //     format: CountDownTimerFormat.hoursMinutesSeconds,
-              //     endTime: DateTime.now().add(
-              //       Duration(
-              //         // days: 0,
-              //         hours: 0,
-              //         minutes: 1,
-              //         seconds: 00,
-              //       ),
-              //     ),
-              //     onEnd: () {
-              //       Alert(
-              //         context: context,
-              //         //style: alertStyle,
-              //         type: AlertType.info,
-              //         // isCloseButton: false,
-              //         title: "exam Time",
-              //         desc:
-              //             "oops sorry your limit time is reached. thank you!!!",
-              //         buttons: [
-              //           DialogButton(
-              //             child: Text(
-              //               "ok",
-              //               style: TextStyle(color: Colors.white, fontSize: 20),
-              //             ),
-              //             onPressed: () async {
-              //               controller.count = await fetchCorrectAnswers();
-              //               isEnabled.value = false;
-              //               // isActive.value = false;
-              //               context.router.push(FinalScore(
-              //                   outOf: controller.questions.length,
-              //                   score: controller.count));
-              //             },
-              //             color: Color.fromARGB(255, 207, 122, 11),
-              //             radius: BorderRadius.circular(8.0),
-              //           ),
-              //         ],
-              //       ).show();
-
-              //       print("Timer finished");
-              //     },
-              //   ),
-              // ),
+              // Spacer(),
             ],
           ),
         ),

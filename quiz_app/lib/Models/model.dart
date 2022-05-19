@@ -20,6 +20,7 @@ class NameListJson {
   }
 }
 
+// Add Choices
 Future<NameListJson> updateJsonTime({
   required String answer,
   required int id,
@@ -42,6 +43,7 @@ Future<NameListJson> updateJsonTime({
   }
 }
 
+// For Score page
 Future<int> fetchCorrectAnswers() async {
   final response = await http.get(
     Uri.parse('http://localhost:3000/answers'),
@@ -59,6 +61,7 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
+// To update profile to Api
 Future<Users> updateJprofile({
   required String id,
 }) async {

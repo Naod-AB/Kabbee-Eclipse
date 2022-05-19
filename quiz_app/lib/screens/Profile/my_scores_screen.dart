@@ -27,36 +27,45 @@ class MyScoresScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
-        child: Expanded(
-          child: GroupedListView<dynamic, String>(
-            elements: controller.scores!,
-            groupBy: (element) => element['courseType'],
-            order: GroupedListOrder.ASC,
-            groupSeparatorBuilder: (value) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(10, 30, 10, 15),
-                child: customText(value.toUpperCase(), 20, true, false, kblue),
-              );
-            },
-            itemBuilder: (context, element) {
-              return Card(
-                color: Colors.white12,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customText(element['courseName'], 19, false, false,
-                          primaryColor),
-                      customText(element['courseScore'].toString() + ' / 4', 19,
-                          false, false, primaryColor),
-                    ],
-                  ),
+        child: controller.scores!.any(
+          (data) => data['courseType'] == null,
+        )
+            ? const ScoreAlertBox()
+            : Expanded(
+                child: GroupedListView<dynamic, String>(
+                  elements: controller.scores!,
+                  groupBy: (element) => element['courseType'],
+                  order: GroupedListOrder.ASC,
+                  groupSeparatorBuilder: (value) {
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 30, 10, 15),
+                      child: customText(
+                          value.toUpperCase(), 20, true, false, kblue),
+                    );
+                  },
+                  itemBuilder: (context, element) {
+                    return Card(
+                      color: Colors.white12,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customText(element['courseName'], 19, false, false,
+                                primaryColor),
+                            customText(
+                                element['courseScore'].toString() + ' / 4',
+                                19,
+                                false,
+                                false,
+                                primaryColor),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        ),
+              ),
       ),
     ));
   }

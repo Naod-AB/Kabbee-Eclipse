@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/Models/scores.dart';
 import 'package:quiz_app/api.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 
@@ -9,8 +8,6 @@ import '../../controllers/profile_controllers.dart';
 import '../../controllers/string_extension.dart';
 import '../../widgets/user_profile_widget.dart';
 import 'package:get/get.dart';
-import '../Login/login_screen.dart';
-import 'my_scores_screen.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -33,7 +30,6 @@ class ProfileScreen extends GetView<ProfileController> {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
-          // physics: const NeverScrollableScrollPhysics(),
           children: [
             profileCardContent(context),
             customText('Account', 20, false, false, primaryColor),
@@ -136,7 +132,6 @@ class ProfileScreen extends GetView<ProfileController> {
                               child: const Text('Yes'),
                               isDestructiveAction: true,
                               onPressed: () {
-                                // context.router.popUntilRoot();
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
                               },
@@ -146,8 +141,6 @@ class ProfileScreen extends GetView<ProfileController> {
                       );
 
                       print('object');
-
-                      // context.router.popUntilRouteWithName('/login');
                     },
                     child: buildTile(
                         Icons.exit_to_app,

@@ -41,8 +41,12 @@ class CloudChoices extends StatelessWidget {
                               cloudCourse[index].courseName;
                           qController.chosenCourseType.value =
                               cloudCourse[index].category;
-                          context.router
-                              .push(ChooseType(icon: cloudCourse[index].icon));
+
+                          print("this is the course");
+                          print(qController.chosenCourse.value);
+                          context.router.push(ChooseType(
+                              icon: cloudCourse[index].icon,
+                              path: cloudCourse[index].courseName));
                         });
                   },
                   separatorBuilder: (BuildContext context, int index) {
