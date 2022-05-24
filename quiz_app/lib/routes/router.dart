@@ -11,7 +11,7 @@ import '../screens/Profile/my_scores_screen.dart';
 import '../screens/Profile/profile_screen.dart';
 import '../screens/Category/front_end_choices.dart';
 import '../screens/Score/final_practice_score.dart';
-import '../screens/Score/evaluationscore_screen.dart';
+//import '../screens/Score/evaluationscore_screen.dart';
 import '../screens/Score/review_page.dart';
 import '../screens/question_screen.dart';
 import '../screens/Score/evalu_screen.dart';
@@ -30,7 +30,7 @@ import '../screens/Score/evalu_screen.dart';
     AutoRoute(path: '/questions', page: QuestionScreen),
     AutoRoute(path: '/evaluation', page: evaluationScreens),
     AutoRoute(path: '/finalScore', page: FinalScore),
-    AutoRoute(path: '/ExamScore', page: ExamScore),
+    //AutoRoute(path: '/ExamScore', page: ExamScore),
     AutoRoute(path: '/review_screen', page: ReviewScreen),
     AutoRoute(path: '/profile', page: ProfileScreen),
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),

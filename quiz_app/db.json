@@ -9,12 +9,12 @@
       "gender": "Male"
     },
     {
-      "id": 314,
+      "id": 475,
       "email": "asi@gmail.com",
       "firstName": "asi",
-      "lastName": "asi",
-      "password": "Asi@1234",
-      "gender": "Female"
+      "lastName": "asmie",
+      "password": "Asmie@123",
+      "gender": "Male"
     }
   ],
   "Scores": [
@@ -22,22 +22,22 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 0,
-      "userId": 638
+      "courseScore": 2,
+      "userId": 475
     },
     {
       "id": "Dart",
       "courseName": "Dart",
       "courseType": "Front-End",
       "courseScore": 0,
-      "userId": 638
+      "userId": 475
     },
     {
       "id": "Flutter",
       "courseName": "Flutter",
       "courseType": "Front-End",
       "courseScore": 0,
-      "userId": 638
+      "userId": 475
     },
     {
       "id": "javascript",
@@ -66,22 +66,26 @@
     {
       "id": 1,
       "answer": "Apple",
-      "isCorrect": false
+      "isCorrect": false,
+      "isSelected":false
     },
     {
       "id": 2,
       "answer": "July 2017",
-      "isCorrect": false
+      "isCorrect": false,
+      "isSelected":false
     },
     {
       "id": 3,
       "answer": "Char",
-      "isCorrect": false
+      "isCorrect": true,
+      "isSelected":false
     },
     {
       "id": 4,
-      "answer": "Cin",
-      "isCorrect": false
+      "answer": "Output",
+      "isCorrect": true,
+      "isSelected":false
     }
   ],
   "dart_practice": [

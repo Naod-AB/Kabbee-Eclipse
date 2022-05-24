@@ -145,11 +145,12 @@ class evaluationScreens extends StatelessWidget {
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
-                                                print('object');
+                                                // print('object');
                                               } else {
                                                 isCorrect = false;
                                               }
-
+                                              // print(
+                                              //     'ListTileControlAffinity.trailing');
                                               updateJsonTime(
                                                 answer: options[index],
                                                 id: pcontroller

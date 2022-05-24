@@ -26,7 +26,7 @@ import '../screens/Profile/my_scores_screen.dart' as _i16;
 import '../screens/Profile/profile_screen.dart' as _i14;
 import '../screens/question_screen.dart' as _i9;
 import '../screens/Score/evalu_screen.dart' as _i10;
-import '../screens/Score/evaluationscore_screen.dart' as _i12;
+//import '../screens/Score/evaluationscore_screen.dart' as _i12;
 import '../screens/Score/final_practice_score.dart' as _i11;
 import '../screens/Score/review_page.dart' as _i13;
 
@@ -103,13 +103,13 @@ class AppRouter extends _i17.RootStackRouter {
               score: args.score,
               optionList: args.optionList));
     },
-    ExamScore.name: (routeData) {
-      final args = routeData.argsAs<ExamScoreArgs>();
-      return _i17.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i12.ExamScore(
-              key: args.key, outOf: args.outOf, score: args.score));
-    },
+    // ExamScore.name: (routeData) {
+    //   final args = routeData.argsAs<ExamScoreArgs>();
+    //   return _i17.MaterialPageX<dynamic>(
+    //       routeData: routeData,
+    //       child: _i12.ExamScore(
+    //           key: args.key, outOf: args.outOf, score: args.score));
+    // },
     ReviewScreen.name: (routeData) {
       final args = routeData.argsAs<ReviewScreenArgs>(
           orElse: () => const ReviewScreenArgs());
