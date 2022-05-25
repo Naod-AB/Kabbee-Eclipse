@@ -25,7 +25,8 @@ class QuestionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Question Path > $path');
+    pController.questionApi!.shuffle();
+
     Size size = MediaQuery.of(context).size;
     var isCorrect = false;
     return SafeArea(
@@ -58,6 +59,7 @@ class QuestionScreen extends StatelessWidget {
                     itemBuilder: (context, snapshot) {
                       var options =
                           pController.questionApi![snapshot]['options'];
+
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -142,7 +144,7 @@ class QuestionScreen extends StatelessWidget {
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
-                                                print('object');
+                                                // print('object');
                                               } else {
                                                 isCorrect = false;
                                               }
