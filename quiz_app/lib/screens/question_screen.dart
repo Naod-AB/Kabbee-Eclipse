@@ -33,7 +33,7 @@ class QuestionScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         appBar: QuizeAppbar(icon, context),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
+          padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
           child: Column(
             children: [
               Obx(
@@ -49,7 +49,7 @@ class QuestionScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               SizedBox(
-                height: 600.0,
+                height: 500.0,
                 child: PageView.builder(
                     itemCount: pController.questionApi!.length,
                     onPageChanged: (pageNumber) {
@@ -69,9 +69,9 @@ class QuestionScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Spacer(
-                              flex: 1,
-                            ),
+                            // Spacer(
+                            //  flex: 1,
+                            //),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
@@ -84,11 +84,12 @@ class QuestionScreen extends StatelessWidget {
                                     .copyWith(color: Colors.white),
                               ),
                             ),
-                            Spacer(
-                              flex: 2,
-                            ),
-                            Container(
-                              height: 400.0,
+                            // Spacer(
+                            //  flex: 2,
+                            //),
+                            SizedBox(height: 10),
+                            Expanded(
+                              //height: 400.0,
                               child: ListView.builder(
                                 itemCount: 4,
                                 itemBuilder: (context, index) => ButtonBar(
