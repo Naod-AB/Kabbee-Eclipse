@@ -32,6 +32,7 @@ class evaluationScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isCorrect = false;
+    pcontroller.questionApi!.shuffle();
 
     return SafeArea(
       child: Scaffold(
