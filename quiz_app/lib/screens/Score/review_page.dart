@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
 import '../../Models/model.dart';
 import '../../controllers/question_controller.dart';
-import '../../widgets/common_components/appbar.dart';
+
 import '/routes/router.gr.dart';
 
 import '/widgets/pallete.dart';
@@ -146,6 +146,7 @@ class ReviewScreen extends StatelessWidget {
                         controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
+                          print(controller.optionList);
                           deleteSavedAnswers(controller.optionList);
                           context.router.push(CategoryRoute());
                           controller.qnIndex.value = 1;

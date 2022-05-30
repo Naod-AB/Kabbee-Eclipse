@@ -15,6 +15,14 @@
       "lastName": "asmie",
       "password": "Asmie@123",
       "gender": "Male"
+    },
+    {
+      "id": 929,
+      "email": "miki@eclipse.com",
+      "firstName": "Miki",
+      "lastName": "Eclipse",
+      "password": "Miki@123",
+      "gender": "Male"
     }
   ],
   "Scores": [
@@ -29,25 +37,25 @@
       "id": "Dart",
       "courseName": "Dart",
       "courseType": "Front-End",
-      "courseScore": 0,
-      "userId": 475
+      "courseScore": 3,
+      "userId": 638
     },
     {
       "id": "Flutter",
       "courseName": "Flutter",
       "courseType": "Front-End",
-      "courseScore": 0,
-      "userId": 475
+      "courseScore": 4,
+      "userId": 638
     },
     {
-      "id": "javascript",
-      "courseName": "javascript",
+      "id": "javascript"
+    },
+    {
+      "id": "MongoDB",
+      "courseName": "MongoDB",
       "courseType": "Back_end",
       "courseScore": 2,
-      "userId": null
-    },
-    {
-      "id": "MongoDB"
+      "userId": 638
     },
     {
       "id": "Atlas_Cloud"
@@ -56,7 +64,11 @@
       "id": "Machine_Learning"
     },
     {
-      "id": "Cloud_Computing"
+      "id": "Cloud_Computing",
+      "courseName": "Cloud_Computing",
+      "courseType": "cloud_services",
+      "courseScore": 1,
+      "userId": 638
     },
     {
       "id": "Analaytics"
@@ -65,13 +77,13 @@
   "answers": [
     {
       "id": 1,
-      "answer": "Apple",
+      "answer": "Google",
       "isCorrect": false,
       "isSelected": false
     },
     {
       "id": 2,
-      "answer": "July 2017",
+      "answer": "Jun 2017",
       "isCorrect": false,
       "isSelected": false
     },

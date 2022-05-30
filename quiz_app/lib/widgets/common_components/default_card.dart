@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import '../pallete.dart';
 import '../theme.dart';
-import 'circularScrore.dart';
 
 class ChoiceCard extends StatelessWidget {
   final String imgeSrc, cardtext;
@@ -18,8 +16,8 @@ class ChoiceCard extends StatelessWidget {
       required this.imgeSrc,
       required this.cardtext,
       required this.onpressed,
-      this.child = const SizedBox.shrink(),
-      this.textPosx = 18,
+      this.child,
+      this.textPosx = 40,
       this.textPosy = 15,
       this.imgPosX = 10,
       this.imgPosY = -35,
@@ -50,8 +48,7 @@ class ChoiceCard extends StatelessWidget {
               width: imgwid,
               //right: imgPosX,
               top: imgPosY,
-              child: Hero(
-                  tag: '$imgeSrc+tagname', child: SvgPicture.asset(imgeSrc)),
+              child: SvgPicture.asset(imgeSrc),
               right: imgPosX),
           Positioned(
               left: textPosx,
@@ -78,20 +75,6 @@ class ChoiceCard extends StatelessWidget {
     );
   }
 }
-
-//  DefaultTextStyle(
-//                                       style: const TextStyle(
-//                                           fontSize: 40,
-//                                           fontWeight: FontWeight.w900,
-//                                           color: kWhite),
-//                                       child: AnimatedTextKit(
-//                                         animatedTexts: [
-//                                           TyperAnimatedText('abbe',
-//                                               speed: const Duration(
-//                                                   milliseconds: 900))
-//                                         ],
-//                                         pause: const Duration(seconds: 4),
-//                                       ))
 
 const colorizeColors = [kWhite, Color(0xFFC0A404), Colors.black];
 const colorizeTextStyle = TextStyle(

@@ -14,8 +14,6 @@ import '../../controllers/count_down.dart';
 import '../../widgets/common_components/appbar_evalu.dart';
 import '../../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
-import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class evaluationScreens extends StatelessWidget {
   evaluationScreens({Key? key, required this.icon, required this.path})
@@ -32,7 +30,6 @@ class evaluationScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isCorrect = false;
-    var isSelected = false;
     pcontroller.questionApi!.shuffle();
 
     return SafeArea(
@@ -71,7 +68,6 @@ class evaluationScreens extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         decoration: BoxDecoration(
-                          // color: const Color.fromARGB(255, 88, 79, 79),
                           color: Color.fromARGB(176, 34, 34, 34),
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -147,21 +143,16 @@ class evaluationScreens extends StatelessWidget {
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
-                                                isSelected = true;
-                                                // print('object');
                                               } else {
                                                 isCorrect = false;
-                                                isSelected = true;
                                               }
-                                              // print(
-                                              //     'ListTileControlAffinity.trailing');
+
                                               updateJsonTime(
                                                 answer: options[index],
                                                 id: pcontroller
                                                         .questionApi![snapshot]
                                                     ['id'],
                                                 isCorrect: isCorrect,
-                                                isSelected: isSelected,
                                               );
 
                                               print(pcontroller
@@ -185,72 +176,20 @@ class evaluationScreens extends StatelessWidget {
                         controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () async {
-                          var unanswered = await fetchSelectedQuestion();
-                          if (unanswered != pcontroller.questionApi!.length) {
-                            Alert(
-                              context: context,
-                              //type: AlertType.warning,
-                              title: "Notice",
-                              desc:
-                                  "hello you have unanswered question . Do you want go back and check or continue to score page ?",
-                              buttons: [
-                                DialogButton(
-                                  child: Text(
-                                    "back",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  color: Color.fromRGBO(0, 179, 134, 1.0),
-                                ),
-                                DialogButton(
-                                  child: Text(
-                                    "continue",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () async {
-                                    controller.count =
-                                        await fetchCorrectAnswers();
-                                    controller.isEnabled.value = false;
-                                    CourseScore score = CourseScore(
-                                        courseName:
-                                            controller.chosenCourse.value,
-                                        courseType:
-                                            controller.chosenCourseType.value,
-                                        courseScore: controller.count,
-                                        userId: pcontroller.userInfo.value!.id);
-                                    controller.isFinished = true;
-                                    saveUserScore(score);
-                                    context.router.push(FinalScore(
-                                        outOf: pcontroller.questionApi!.length,
-                                        score: controller.count,
-                                        optionList: controller.optionList));
+                          controller.count = await fetchCorrectAnswers();
+                          controller.isEnabled.value = false;
+                          CourseScore score = CourseScore(
+                              courseName: controller.chosenCourse.value,
+                              courseType: controller.chosenCourseType.value,
+                              courseScore: controller.count,
+                              userId: pcontroller.userInfo.value!.id);
+                          controller.isFinished = true;
 
-                                    // controller.qnIndex.value = 1;
-                                  },
-                                  gradient: LinearGradient(colors: [
-                                    Color.fromARGB(255, 233, 235, 64),
-                                    Color.fromARGB(255, 192, 164, 4)
-                                  ]),
-                                )
-                              ],
-                            ).show();
-                          } else {
-                            controller.count = await fetchCorrectAnswers();
-                            controller.isEnabled.value = false;
-                            CourseScore score = CourseScore(
-                                courseName: controller.chosenCourse.value,
-                                courseType: controller.chosenCourseType.value,
-                                courseScore: controller.count,
-                                userId: pcontroller.userInfo.value!.id);
-                            controller.isFinished = true;
-                            saveUserScore(score);
-                            context.router.push(FinalScore(
-                                outOf: pcontroller.questionApi!.length,
-                                score: controller.count,
-                                optionList: controller.optionList));
-                          }
+                          saveUserScore(score);
+                          context.router.push(FinalScore(
+                              outOf: pcontroller.questionApi!.length,
+                              score: controller.count,
+                              optionList: controller.optionList));
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),
@@ -260,7 +199,6 @@ class evaluationScreens extends StatelessWidget {
                         child: const Text('Done'))
                     : Container(),
               ),
-              // Spacer(),
             ],
           ),
         ),
