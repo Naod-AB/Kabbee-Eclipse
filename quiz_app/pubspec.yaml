@@ -46,7 +46,7 @@ dependencies:
   grouped_list: ^4.1.0
 
 
-
+  url_launcher: ^6.1.2
   http: ^0.13.4
   auto_route: ^3.2.4
   flutter_timer_countdown: ^1.0.3

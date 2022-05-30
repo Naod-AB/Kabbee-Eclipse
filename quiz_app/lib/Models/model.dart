@@ -2,10 +2,12 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:quiz_app/controllers/question_controller.dart';
+import '../controllers/question_controller.dart';
 import '../Models/users.dart';
 import '../controllers/profile_controllers.dart';
 import '../widgets/user_profile_widget.dart';
+
+final QuestionControl qcontroller = Get.put(QuestionControl());
 
 class NameListJson {
   var id;
@@ -97,8 +99,12 @@ Future deleteSavedAnswers(int optionLength) async {
       },
       body: jsonEncode(<String, bool>{
         'isCorrect': false,
+        // "isSelected": false,
       }),
     );
+    print('patch response');
+
+    Get.delete<QuestionControl>();
   }
 }
 
@@ -107,3 +113,11 @@ logOut() {
   Get.delete<ProfileController>();
   Get.delete<QuestionControl>();
 }
+
+
+
+//! hot fixes
+
+//? issue with deleting saved answers
+//? the system was saving practice scores
+//? review answers shows up on evaluation screen

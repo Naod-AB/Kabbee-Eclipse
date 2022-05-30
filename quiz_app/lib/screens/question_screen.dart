@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_app/Models/scores.dart';
-import 'package:quiz_app/api.dart';
+
 import '../controllers/profile_controllers.dart';
 import '../widgets/theme.dart';
 import '/routes/router.gr.dart';
@@ -12,7 +12,6 @@ import '../Models/model.dart';
 import '../widgets/common_components/appbar.dart';
 import '../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
-import 'Score/evalu_screen.dart';
 
 class QuestionScreen extends StatelessWidget {
   QuestionScreen({Key? key, required this.icon, required this.path})
@@ -41,7 +40,6 @@ class QuestionScreen extends StatelessWidget {
                 () => Text(
                     controller.qnIndex.toString() +
                         '/' +
-                        // controller.questions.length.toString(),
                         pController.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
@@ -58,8 +56,9 @@ class QuestionScreen extends StatelessWidget {
                     },
                     itemBuilder: (context, snapshot) {
                       var options =
-                          pController.questionApi![snapshot]['options'];
+                          pController.questionApi![snapshot]['options'] as List;
 
+                      controller.optionList = options.length;
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -190,7 +189,7 @@ class QuestionScreen extends StatelessWidget {
                                 courseScore: controller.count,
                                 userId: pController.userInfo.value!.id);
                             print("after clicking done button ");
-                            saveUserScore(score);
+
                             context.router.push(FinalScore(
                               outOf: pController.questionApi!.length,
                               score: controller.count,
@@ -205,10 +204,6 @@ class QuestionScreen extends StatelessWidget {
                           ),
                         ),
                       )
-                    // ? const RoundedButton(
-                    //     buttonName: 'Done',
-                    //     page: '/finalScore',
-                    //   )
                     : Container(),
               ),
               Spacer(),

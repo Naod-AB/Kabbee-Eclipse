@@ -49,12 +49,13 @@ class ChoiceCard extends StatelessWidget {
               child: SvgPicture.asset(imgeSrc),
               right: imgPosX),
           Positioned(
-              left: textPosx,
-              bottom: textPosy,
-              child: Text(
-                cardtext,
-                style: Theme.of(context).textTheme.headline1,
-              ))
+            left: textPosx,
+            bottom: textPosy,
+            child: Text(
+              cardtext,
+              style: Theme.of(context).textTheme.headline1,
+            ),
+          )
         ],
       ),
     );
