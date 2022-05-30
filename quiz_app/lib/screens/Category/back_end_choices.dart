@@ -36,7 +36,7 @@ class BackendChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                       child: CircularScore(),
+                        child: CircularScore(),
                         imgPosY: -110,
                         imgeSrc: backCourse[index].icon!,
                         cardtext: backCourse[index].courseName,

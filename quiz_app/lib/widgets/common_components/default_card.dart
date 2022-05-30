@@ -11,7 +11,7 @@ import 'circularScrore.dart';
 class ChoiceCard extends StatelessWidget {
   final String imgeSrc, cardtext;
   double? imgPosX, textPosx, imgPosY, textPosy, imgheig, imgwid;
-Widget? child;
+  Widget? child;
   final VoidCallback onpressed;
   ChoiceCard(
       {Key? key,
@@ -57,28 +57,24 @@ Widget? child;
               left: textPosx,
               bottom: textPosy,
               child: DefaultTextStyle(
-                  // cardtext,
-                  // style: Theme.of(context).textTheme.headline1,
-                  style: const TextStyle(
-                      fontSize: 40, fontWeight: FontWeight.w900, color: kWhite),
-                  child: AnimatedTextKit(animatedTexts: [
-                    ColorizeAnimatedText(cardtext,
-                        textStyle: colorizeTextStyle,
-                        colors: colorizeColors,
-                        speed: Duration(milliseconds: 1000))
-                  ])))
-              // child: Text(
-              //   cardtext,
-              //   style: Theme.of(context).textTheme.headline1,
-              // )),
-              //  Positioned(
-              // left: textPosx,
-              // top: textPosy,
-              // child: child!
-              // )
+                //  cardtext,
+                // style: Theme.of(context).textTheme.headline1,
+                style: const TextStyle(
+                    fontSize: 40, fontWeight: FontWeight.w900, color: kWhite),
+                child: AnimatedTextKit(animatedTexts: [
+                  ColorizeAnimatedText(cardtext,
+                      textStyle: colorizeTextStyle,
+                      colors: colorizeColors,
+                      speed: Duration(milliseconds: 1000))
+                ]),
+              )),
+          // child: Text(
+          //   cardtext,
+          //   style: Theme.of(context).textTheme.headline1,
+          // )),
+          Positioned(left: textPosx, top: textPosy, child: child!)
         ],
       ),
-
     );
   }
 }

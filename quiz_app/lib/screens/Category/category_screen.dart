@@ -43,7 +43,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
-                     child: CircularScore(),
+                    child: CircularScore(),
                     imgPosY: -130,
                     imgeSrc: "assets/icons/aws icons_small.svg",
                     //imgPosX: 185,
@@ -56,7 +56,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
-                     child: CircularScore(),
+                    child: CircularScore(),
                     imgheig: 280,
                     //imgPosX: 185,
                     imgPosY: -130,

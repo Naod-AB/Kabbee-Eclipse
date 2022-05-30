@@ -34,7 +34,7 @@ class CloudChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                       child: CircularScore(),
+                        child: CircularScore(),
                         imgPosY: -110,
                         imgeSrc: cloudCourse[index].icon!,
                         cardtext: cloudCourse[index].courseName,

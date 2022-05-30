@@ -34,7 +34,7 @@ class FrontEndChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                       child: CircularScore(),
+                        child: CircularScore(),
                         imgPosY: -100,
                         imgeSrc: frontendCourses[index].icon!,
                         cardtext: frontendCourses[index].courseName,

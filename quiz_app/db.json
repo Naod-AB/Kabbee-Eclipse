@@ -22,8 +22,8 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 2,
-      "userId": 475
+      "courseScore": 0,
+      "userId": 638
     },
     {
       "id": "Dart",
@@ -78,14 +78,14 @@
     {
       "id": 3,
       "answer": "Char",
-      "isCorrect": true,
-      "isSelected": true
+      "isCorrect": false,
+      "isSelected": false
     },
     {
       "id": 4,
       "answer": "Cin",
       "isCorrect": false,
-      "isSelected": true
+      "isSelected": false
     }
   ],
   "dart_practice": [

@@ -119,7 +119,7 @@ class _SplashState extends State<Splash> {
                                         animatedTexts: [
                                           TyperAnimatedText('abbe',
                                               speed: const Duration(
-                                                  milliseconds: 800))
+                                                  milliseconds: 500))
                                         ],
                                         pause: const Duration(seconds: 4),
                                       )),
@@ -134,7 +134,7 @@ class _SplashState extends State<Splash> {
                                             animatedTexts: [
                                               WavyAnimatedText('e',
                                                   speed: const Duration(
-                                                      milliseconds: 300))
+                                                      milliseconds: 100))
                                             ],
                                             pause: Duration(seconds: 4),
                                           ))
