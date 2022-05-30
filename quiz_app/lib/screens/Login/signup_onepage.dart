@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -17,36 +19,51 @@ import 'signUp_password.dart';
 import 'signup_email.dart';
 import 'signup_name.dart';
 
-
 class OneSignupPage extends StatefulWidget {
-
   OneSignupPage({Key? key}) : super(key: key);
+
+  
+  
 
   @override
   State<OneSignupPage> createState() => _OneSignupPageState();
 }
 
 class _OneSignupPageState extends State<OneSignupPage> {
-  ProfileController controller= Get.find();
-  //var emailFieldkey = GlobalKey<FormFieldState>();  
-  final _formKey =GlobalKey<FormState>();
+  ProfileController controller = Get.find();
+  //var emailFieldkey = GlobalKey<FormFieldState>();
+  final _formKey = GlobalKey<FormState>();
   // var passFieldKey = GlobalKey<FormFieldState>();
   // var confirmFieldKey = GlobalKey<FormFieldState>();
   // var firstNameFieldKey = GlobalKey<FormFieldState>();
   // var lastNameFieldKey = GlobalKey<FormFieldState>(); 
   int _index=0;
+   List<Users> allUsers=[];
    @override
    void dispose() {
     // TODO: implement dispose
-    
+
     controller.dispose();
   }
-
   @override
-  Widget build(BuildContext context) {   
+  void initState() {
+     getAllUsers();
     
-    Users user = Users() ; 
-    EmailValidator emailValidator=EmailValidator();
+    super.initState();
+  }
+ Future<void> getAllUsers()async{
+   List<Users> temp;
+   
+    temp = await fetchAllUsers();
+    setState(() {
+     allUsers=temp;
+   });
+   
+ }
+  @override
+  Widget build(BuildContext context) {
+    Users user = Users();
+    EmailValidator emailValidator = EmailValidator();
 
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +73,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
       ),
       backgroundColor: Colors.black,
       body: Form(
-        key:_formKey,
+        key: _formKey,
         child: Container(
           height: SizeConfig.screenHeight *0.85 ,
           child: Column(
@@ -73,19 +90,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                 ],
                               );
                             },
-                    // onStepTapped: (currentIndex){
-                    //    if(currentIndex>_index){
-
-                    //      if(controller.emailFieldKey.value.currentState!.validate())
-                    //             setState(() {                        
-                    //               _index=currentIndex;
-                    //             });
-                    //             } else{
-                    //               setState(() {
-                    //                 _index=currentIndex;
-                    //               });
-                    //             }
-                    //     },
+                    
                     type: StepperType.horizontal,
                     currentStep: _index,
                     steps: [
@@ -99,7 +104,8 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                   user: user,
                                   controller: controller.emailController.value,//_emailController ,
                                   emailKey: controller.emailFieldKey.value,//emailFieldkey, 
-                                  validator: emailValidator,)
+                                  validator: emailValidator, 
+                                  allUsers: allUsers,)
                                   )
                       ),
                       Step(
@@ -127,27 +133,29 @@ class _OneSignupPageState extends State<OneSignupPage> {
                                       lastNameController: controller.lastNameController.value,//_lastNameController, 
                                       lastNameKey: controller.lastNameFieldKey.value,//lastNameFieldKey, 
                                       user: user,)
-                                  ),                        
+                                  ),                         
                                   ]),
+                 ),
                 ),
-              ),
-              SizedBox(height: 30,),
-              Padding(
-                padding:  EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth*0.09),
-                child: Row(
-                  children: [
-                    if(_index!=0)
-                    Expanded(
-                      child: RoundedButton(
-                        buttonName: "Back",
-                         
-                        pressed:(){
-                          setState(() {
-                            _index--;
-                          });
-                        }
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.screenWidth * 0.09),
+                  child: Row(
+                    children: [
+                      if (_index != 0)
+                        Expanded(
+                          child: RoundedButton(
+                              buttonName: "Back",
+                              pressed: () {
+                                setState(() {
+                                  _index--;
+                                });
+                              }),
                         ),
-                    ),
+                    
                     SizedBox(width: SizeConfig.screenWidth*0.01,),
                     Expanded(
                       child: RoundedButton(
@@ -177,61 +185,54 @@ class _OneSignupPageState extends State<OneSignupPage> {
       if(controller.firstNameFieldKey.value.currentState!.validate()&&
           controller.lastNameFieldKey.value.currentState!.validate()){
             _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-           user.gender=controller.selectedGender.value;
+           user.gender=controller.genderIndex.value?"Male":"Female";
+           var  id = Random();
+             user.id=id.nextInt(1000);
             await createUser(user);
+           // Get.dialog(Text("Created an account successfully "));
             context.router.pushNamed("/login");
       // Get.to(LoginPage());
 
-                
+                                }
                               }
-                            }
-                          }
-                        ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ) 
-          ),
+                            }),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )),
       ),
     );
-
   }
 
-
-void fieldValidation(){
-
-      if(_index==0){                   
-      if(controller.emailFieldKey.value.currentState!.validate()){
+  void fieldValidation() {
+    if (_index == 0) {
+      if (controller.emailFieldKey.value.currentState!.validate()) {
         //print(emailFieldkey.currentState!.errorText);
-          setState(() {
-        _index+=1;
-      });
+        setState(() {
+          _index += 1;
+        });
       }
-    }else if(_index==1){
-      if(controller.passFieldKey.value.currentState!.validate()&&
-          controller.confirmFieldKey.value.currentState!.validate()){
+    } else if (_index == 1) {
+      if (controller.passFieldKey.value.currentState!.validate() &&
+          controller.confirmFieldKey.value.currentState!.validate()) {
         print("passFieldKey.currentState!.errorText");
         print(_index);
-          setState(() {
-        _index+=1;
-        print(_index);
-      });
+        setState(() {
+          _index += 1;
+          print(_index);
+        });
       }
-
-    } else if(_index==2){
+    } else if (_index == 2) {
       print(_index);
-      if(controller.firstNameFieldKey.value.currentState!.validate()&&
-          controller.lastNameFieldKey.value.currentState!.validate()){
-            _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-          
-        Get.to(LoginPage());
+      if (controller.firstNameFieldKey.value.currentState!.validate() &&
+          controller.lastNameFieldKey.value.currentState!.validate()) {
+        _formKey.currentState!
+            .save(); // saving the data in the in a local API (Json format)
 
-      
+        Get.to(LoginPage());
       }
     }
   }
-
 }
- 

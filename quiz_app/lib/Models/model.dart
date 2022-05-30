@@ -1,27 +1,42 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 import 'dart:convert';
+import 'dart:developer';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/controllers/question_controller.dart';
+import '../Models/users.dart';
+import '../controllers/profile_controllers.dart';
+import '../widgets/user_profile_widget.dart';
 
 class NameListJson {
   var id;
   var answer;
   bool isCorrect;
+  bool isSelected;
 
-  NameListJson({this.id, this.answer, required this.isCorrect});
+  NameListJson(
+      {this.id,
+      this.answer,
+      required this.isCorrect,
+      required this.isSelected});
 
   factory NameListJson.fromJson(Map<String, dynamic> json) {
     return NameListJson(
       id: json['id'],
       answer: json['answer'],
       isCorrect: json['isCorrect'],
+      isSelected: json['isSeleced'],
     );
   }
 }
 
+// Add Choices
 Future<NameListJson> updateJsonTime({
   required String answer,
   required int id,
   required bool isCorrect,
+  required bool isSelected,
 }) async {
   final response = await http.patch(
     Uri.parse('http://localhost:3000/answers/$id'),
@@ -31,8 +46,21 @@ Future<NameListJson> updateJsonTime({
     body: jsonEncode(<String, dynamic>{
       'answer': answer,
       'isCorrect': isCorrect,
+      'isSelected': isSelected,
     }),
   );
+
+  final responseque = await http.patch(
+    Uri.parse('http://localhost:3000/answers/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'isSelected': isSelected,
+    }),
+  );
+
+  log('log is ${response.statusCode}');
   if (response.statusCode == 200) {
     return NameListJson.fromJson(jsonDecode(response.body));
   } else {
@@ -40,6 +68,7 @@ Future<NameListJson> updateJsonTime({
   }
 }
 
+// For Score page
 Future<int> fetchCorrectAnswers() async {
   final response = await http.get(
     Uri.parse('http://localhost:3000/answers'),
@@ -57,16 +86,66 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
-// List<NameListJson> parseAnswers(String responseBody) {
-//   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  
+// For unanswered
+Future<int> fetchSelectedQuestion() async {
+  final response = await http.get(
+    Uri.parse('http://localhost:3000/answers'),
+  );
+  var count = 0;
 
-//   for (var item in parsed['isCorrect']) {
-//     print('item $item');
-//   }
+  // print(response.body);
+  final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  for (var item in parsed) {
+    if (item['isSelected'] == true) {
+      count++;
+    }
+  }
 
-//   return 1;
-//   // parsed
-//   //     .map<NameListJson>((json) => NameListJson.fromJson(json))
-//   //     .toList();
-// }
+  return count;
+}
+
+// To update profile to Api
+Future<Users> updateJprofile({
+  required String id,
+}) async {
+  final response = await http.patch(
+    Uri.parse('http://localhost:3000/Users/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'firstName': controller.firstName.value,
+      'lastName': controller.lastName.value,
+      'password': controller.password.value,
+      'gender': controller.gender.value ? 'Male' : 'Female',
+    }),
+  );
+  if (response.statusCode == 200) {
+    return Users.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception(Error);
+  }
+}
+
+// Delete answers
+Future deleteSavedAnswers(int optionLength) async {
+  for (var i = 1; i < optionLength + 1; i++) {
+    final response = await http.patch(
+      Uri.parse('http://localhost:3000/answers/$i'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, bool>{
+        'isCorrect': false,
+        'isSelected': false,
+      }),
+    );
+  }
+  Get.delete<QuestionControl>();
+}
+
+// Logout
+logOut() {
+  Get.delete<ProfileController>();
+  Get.delete<QuestionControl>();
+}

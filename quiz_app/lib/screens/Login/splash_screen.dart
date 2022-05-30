@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../Utilities/size_config.dart';
 import '../../widgets/pallete.dart';
@@ -51,79 +52,77 @@ class _SplashState extends State<Splash> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 200),
-                    child: Flexible(
-                      child: Container(
-                        height: 260,
-                        width: 270,
-                        //margin: EdgeInsets.symmetric(vertical: 40),
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            //fit: BoxFit.cover,
-                            image: AssetImage('assets/images/bgm.jpg'),
-                            colorFilter: ColorFilter.mode(
-                                Colors.black12, BlendMode.darken),
-                          ),
-                          borderRadius: BorderRadius.circular(90),
-                          // border: Border.all(
-                          //  width: 1,
-                          // ),
-
-                          //borderRadius: BorderRadius.all(Radius.circular(50)),
-
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color.fromARGB(146, 6, 23, 46)
-                                  .withOpacity(0.3),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0.30, 250.0),
-                            ),
-                          ],
+                    child: Container(
+                      height: 260,
+                      width: 270,
+                      //margin: EdgeInsets.symmetric(vertical: 40),
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          //fit: BoxFit.cover,
+                          image: AssetImage('assets/images/bgm.jpg'),
+                          colorFilter: ColorFilter.mode(
+                              Colors.black12, BlendMode.darken),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 32),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            //crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: kblack,
-                                radius: 70,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  //crossAxisAlignment: CrossAxisAlignment.center,
+                        borderRadius: BorderRadius.circular(90),
+                        // border: Border.all(
+                        //  width: 1,
+                        // ),
 
-                                  children: const [
-                                    Text(
-                                      'K',
-                                      style: TextStyle(
-                                          fontSize: 43,
-                                          fontWeight: FontWeight.w900,
-                                          color: kblue),
-                                    ),
-                                    Text(
-                                      'abbe',
+                        //borderRadius: BorderRadius.all(Radius.circular(50)),
+
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(146, 6, 23, 46)
+                                .withOpacity(0.3),
+                            spreadRadius: 1,
+                            blurRadius: 7,
+                            offset: const Offset(0.30, 250.0),
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 32),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          //crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: kblack,
+                              radius: 70,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                //crossAxisAlignment: CrossAxisAlignment.center,
+
+                                children: const [
+                                  Text(
+                                    'K',
+                                    style: TextStyle(
+                                        fontSize: 43,
+                                        fontWeight: FontWeight.w900,
+                                        color: kblue),
+                                  ),
+                                  Text(
+                                    'abbe',
+                                    style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.w900,
+                                        //fontFamily: 'Raleway',
+                                        color: kWhite),
+                                  ),
+                                  Flexible(
+                                    //flex: 3,
+                                    child: Text(
+                                      'e',
                                       style: TextStyle(
                                           fontSize: 40,
                                           fontWeight: FontWeight.w900,
-                                          //fontFamily: 'Raleway',
-                                          color: kWhite),
+                                          color: kblue),
                                     ),
-                                    Flexible(
-                                      //flex: 3,
-                                      child: Text(
-                                        'e',
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.w900,
-                                            color: kblue),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -131,11 +130,11 @@ class _SplashState extends State<Splash> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children:  [
+                    children: [
                       Text(
                         'Q',
                         style: TextStyle(
-                            fontSize: getProportionateScreenWidth(43),//,45,
+                            fontSize: getProportionateScreenWidth(43), //,45,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),
@@ -143,7 +142,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'uiz Ap',
                         style: TextStyle(
-                            fontSize: getProportionateScreenWidth(38),//38,
+                            fontSize: getProportionateScreenWidth(38), //38,
                             fontWeight: FontWeight.w900,
                             color: kWhite,
                             letterSpacing: 2),
@@ -151,7 +150,7 @@ class _SplashState extends State<Splash> {
                       Text(
                         'p',
                         style: TextStyle(
-                            fontSize:getProportionateScreenWidth(38),// 38,
+                            fontSize: getProportionateScreenWidth(38), // 38,
                             fontWeight: FontWeight.w900,
                             color: kblue,
                             letterSpacing: 1),

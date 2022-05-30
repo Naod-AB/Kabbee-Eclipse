@@ -2,22 +2,28 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/widgets/user_profile_widget.dart';
 
+import '../../Models/model.dart';
 import '../../controllers/question_controller.dart';
-import '../../widgets/common_components/appbar.dart';
 
 class FinalScore extends StatelessWidget {
-  FinalScore({Key? key, required this.outOf, required this.score})
+  FinalScore(
+      {Key? key,
+      required this.outOf,
+      required this.score,
+      required this.optionList})
       : super(key: key);
+
   int outOf;
   int score;
+  int optionList;
+
+  final QuestionControl controller = Get.put(QuestionControl());
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Scaffold(
-        appBar: quizeAppbar(context),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -26,6 +32,7 @@ class FinalScore extends StatelessWidget {
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
               Title(
@@ -64,7 +71,7 @@ class FinalScore extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
-                visible: true,
+                visible: controller.isEnabled.value,
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
                   onPressed: () {
@@ -85,6 +92,7 @@ class FinalScore extends StatelessWidget {
                   'DONE',
                 ),
                 onPressed: () {
+                  deleteSavedAnswers(controller.optionList);
                   context.router.pushNamed('/category');
                   Get.delete<QuestionControl>();
                 },

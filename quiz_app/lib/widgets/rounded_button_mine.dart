@@ -7,15 +7,15 @@ import 'package:quiz_app/widgets/theme.dart';
 import 'pallete.dart';
 
 class RoundedButton extends StatelessWidget {
-   RoundedButton({
+  RoundedButton({
     Key? key,
-    this.isActive=true,
+    this.isActive = true,
     required this.buttonName,
     required this.pressed,
   }) : super(key: key);
-  bool isActive ;
+  bool isActive;
   final String buttonName;
-  final Callback  pressed;
+  final Callback pressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class RoundedButton extends StatelessWidget {
       width: size.width * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: isActive? pColor:Colors.grey,
+        color: isActive ? pColor : Colors.grey,
       ),
       child: TextButton(
         onPressed: pressed,
