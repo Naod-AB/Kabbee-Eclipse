@@ -52,6 +52,7 @@ dependencies:
   flutter_timer_countdown: ^1.0.3
   rflutter_alert: ^2.0.4
   step_progress_indicator: ^1.0.2
+  animated_text_kit: ^4.2.1
   #flutter_countdown_timer: ^4.1.0
   #simple_progress_bar: ^0.0.4
 dev_dependencies:

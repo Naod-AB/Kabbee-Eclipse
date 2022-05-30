@@ -27,6 +27,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
+                    child: CircularScore(),
                     imgPosY: -130,
                     //imgPosX: 185,
                     imgeSrc: "assets/icons/front end icons_small.svg",

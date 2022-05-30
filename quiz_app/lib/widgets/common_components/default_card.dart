@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -46,7 +44,6 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               height: imgheig,
               width: imgwid,
-              //right: imgPosX,
               top: imgPosY,
               child: SvgPicture.asset(imgeSrc),
               right: imgPosX),
@@ -54,8 +51,6 @@ class ChoiceCard extends StatelessWidget {
               left: textPosx,
               bottom: textPosy,
               child: DefaultTextStyle(
-                //  cardtext,
-                // style: Theme.of(context).textTheme.headline1,
                 style: const TextStyle(
                     fontSize: 40, fontWeight: FontWeight.w900, color: kWhite),
                 child: AnimatedTextKit(animatedTexts: [
@@ -65,11 +60,7 @@ class ChoiceCard extends StatelessWidget {
                       speed: Duration(milliseconds: 1000))
                 ]),
               )),
-          // child: Text(
-          //   cardtext,
-          //   style: Theme.of(context).textTheme.headline1,
-          // )),
-          Positioned(left: textPosx, top: textPosy, child: child!)
+          Positioned(left: textPosx, top: textPosy, child: child ?? Container())
         ],
       ),
     );
@@ -78,6 +69,6 @@ class ChoiceCard extends StatelessWidget {
 
 const colorizeColors = [kWhite, Color(0xFFC0A404), Colors.black];
 const colorizeTextStyle = TextStyle(
-  fontSize: 40.0,
+  fontSize: 30.0,
   fontWeight: FontWeight.w900,
 );
