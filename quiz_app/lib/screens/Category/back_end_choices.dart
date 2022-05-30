@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../routes/router.gr.dart';
+import '../../widgets/common_components/circularScrore.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -30,6 +33,7 @@ class BackendChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
+                       child: CircularScore(),
                         imgPosY: -110,
                         imgeSrc: backCourse[index].icon!,
                         cardtext: backCourse[index].courseName,
