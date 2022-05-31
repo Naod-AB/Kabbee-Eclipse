@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:grouped_list/grouped_list.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
-
 import 'package:quiz_app/widgets/pallete.dart';
-
 import '../../widgets/score_alert_box.dart';
 import '../../widgets/user_profile_widget.dart';
 
 class MyScoresScreen extends StatelessWidget {
-   MyScoresScreen({Key? key}) : super(key: key);
-ProfileController profileController = Get.find();
+  MyScoresScreen({Key? key}) : super(key: key);
+  ProfileController profileController = Get.find();
   @override
   Widget build(BuildContext context) {
-    int colorCode;
+    var colorCode;
+    // print(' profile Score is >${profileController.scores.}');
 
     return SafeArea(
         child: Scaffold(
@@ -45,7 +43,8 @@ ProfileController profileController = Get.find();
                     );
                   },
                   itemBuilder: (context, element) {
-                    colorCode = (element['courseScore'] / profileController.questionApi!.length * 100).ceil();
+                    colorCode = element['percentage'];
+                    // print(colorCode.runtimeType);
 
                     return Stack(
                       children: [
@@ -58,8 +57,8 @@ ProfileController profileController = Get.find();
                               children: [
                                 customText(element['courseName'], 19, false,
                                     false, primaryColor),
-                                customText('$colorCode %', 19, true, false,
-                                    primaryColor),
+                                customText('${element['percentage']} %', 19,
+                                    true, false, primaryColor),
                               ],
                             ),
                           ),

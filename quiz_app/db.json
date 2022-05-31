@@ -31,11 +31,16 @@
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
       "courseScore": 1,
-      "percentage": "25 %",
+      "percentage": 25,
       "userId": 638
     },
     {
-      "id": "Dart"
+      "id": "Dart",
+      "courseName": "Dart",
+      "courseType": "Front-End",
+      "courseScore": 0,
+      "percentage": 0,
+      "userId": 638
     },
     {
       "id": "Flutter"
@@ -53,7 +58,12 @@
       "id": "Machine_Learning"
     },
     {
-      "id": "Cloud_Computing"
+      "id": "Cloud_Computing",
+      "courseName": "Cloud_Computing",
+      "courseType": "cloud_services",
+      "courseScore": 2,
+      "percentage": 50,
+      "userId": 638
     },
     {
       "id": "Analaytics"

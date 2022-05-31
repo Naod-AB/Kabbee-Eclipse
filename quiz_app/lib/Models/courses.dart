@@ -5,10 +5,12 @@ class Courses {
   String? recommnedationLinks;
   String category;
   String? icon;
+  int? percentage;
   Courses(
       {required this.id,
       required this.courseName,
       this.recommnedationLinks,
+      this.percentage,
       required this.category,
       this.icon});
 }
@@ -16,16 +18,19 @@ class Courses {
 List<Courses> frontendCourses = [
   Courses(
       id: 1,
+      percentage: 0,
       courseName: "HTML_CSS",
       category: "Front-End",
       icon: "assets/icons/html.svg"),
   Courses(
       id: 2,
+      percentage: 0,
       courseName: "Dart",
       category: "Front-End",
       icon: "assets/icons/dart.svg"),
   Courses(
       id: 3,
+      percentage: 0,
       courseName: "Flutter",
       category: "Front-End",
       icon: "assets/icons/flutter.svg"),

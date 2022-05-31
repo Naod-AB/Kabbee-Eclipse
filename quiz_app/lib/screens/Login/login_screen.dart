@@ -201,6 +201,9 @@ class _LoginPageState extends State<LoginPage> {
       profileController.userInfo.value = await fetchUser(email);
       if (profileController.userInfo.value != null &&
           profileController.userInfo.value!.password == pass) {
+        profileController.scores =
+            await fetchUserScores(profileController.userInfo.value!.id);
+        print('from login >>>> ${profileController.scores}');
         setState(() {
           error = "";
         });
