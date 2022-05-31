@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
 import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../Models/courses.dart';
@@ -13,6 +14,7 @@ import '../../widgets/common_components/default_card.dart';
 class FrontEndChoices extends StatelessWidget {
   FrontEndChoices({Key? key}) : super(key: key);
   QuestionControl qController = Get.put(QuestionControl());
+  ProfileController pController = Get.find();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,25 +36,22 @@ class FrontEndChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
-                        child: CircularScore(),
-                        imgPosY: -100,
-                        imgeSrc: frontendCourses[index].icon!,
-                        cardtext: frontendCourses[index].courseName,
-                        onpressed: () {
-                          // Get.to(const ChooseType(), arguments: [
-                          //   frontendCourses[index].id,
-                          //   frontendCourses[index].icon
-                          // ]);
-                          qController.chosenCourse.value =
-                              frontendCourses[index].courseName;
-                          qController.chosenCourseType.value =
-                              frontendCourses[index].category;
-                          print("this is the course");
-                          print(qController.chosenCourse.value);
-                          context.router.push(ChooseType(
-                              icon: frontendCourses[index].icon,
-                              path: frontendCourses[index].courseName));
-                        });
+                      child: CircularScore(),
+                      imgPosY: -100,
+                      imgeSrc: frontendCourses[index].icon!,
+                      cardtext: frontendCourses[index].courseName,
+                      onpressed: () {
+                        qController.chosenCourse.value =
+                            frontendCourses[index].courseName;
+                        qController.chosenCourseType.value =
+                            frontendCourses[index].category;
+                        print("this is the course");
+                        print(qController.chosenCourse.value);
+                        context.router.push(ChooseType(
+                            icon: frontendCourses[index].icon,
+                            path: frontendCourses[index].courseName));
+                      },
+                    );
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(
