@@ -11,6 +11,7 @@ class CourseScore {
     this.courseName,
     this.courseType,
     this.courseScore,
+    this.coursePercentage,
     this.userId,
   });
 
@@ -19,12 +20,14 @@ class CourseScore {
   String? courseType;
   int? courseScore;
   int? userId;
+  String? coursePercentage;
 
   factory CourseScore.fromJson(Map<String, dynamic> json) => CourseScore(
         courseId: json["courseId"],
         courseName: json["courseName"],
         courseType: json["courseType"],
         courseScore: json["courseScore"],
+        coursePercentage: json["percentage"],
         userId: json["userId"],
       );
 
@@ -33,6 +36,7 @@ class CourseScore {
         "courseName": courseName,
         "courseType": courseType,
         "courseScore": courseScore,
+        "percentage": coursePercentage,
         "userId": userId,
       };
 }

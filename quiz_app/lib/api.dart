@@ -22,6 +22,7 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'courseName': score.courseName,
         'courseType': score.courseType,
         'courseScore': score.courseScore,
+        'percentage': score.coursePercentage,
         'userId': score.userId
       }));
   if (response.statusCode == 200) {

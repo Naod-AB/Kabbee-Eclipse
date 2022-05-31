@@ -128,7 +128,7 @@ class AppRouter extends _i17.RootStackRouter {
     },
     MyScoresScreen.name: (routeData) {
       return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i16.MyScoresScreen());
+          routeData: routeData, child:  _i16.MyScoresScreen());
     }
   };
 

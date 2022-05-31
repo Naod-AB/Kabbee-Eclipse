@@ -30,32 +30,21 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 0,
+      "courseScore": 1,
+      "percentage": "25 %",
       "userId": 638
     },
     {
-      "id": "Dart",
-      "courseName": "Dart",
-      "courseType": "Front-End",
-      "courseScore": 3,
-      "userId": 638
+      "id": "Dart"
     },
     {
-      "id": "Flutter",
-      "courseName": "Flutter",
-      "courseType": "Front-End",
-      "courseScore": 4,
-      "userId": 638
+      "id": "Flutter"
     },
     {
       "id": "javascript"
     },
     {
-      "id": "MongoDB",
-      "courseName": "MongoDB",
-      "courseType": "Back_end",
-      "courseScore": 2,
-      "userId": 638
+      "id": "MongoDB"
     },
     {
       "id": "Atlas_Cloud"
@@ -64,11 +53,7 @@
       "id": "Machine_Learning"
     },
     {
-      "id": "Cloud_Computing",
-      "courseName": "Cloud_Computing",
-      "courseType": "cloud_services",
-      "courseScore": 1,
-      "userId": 638
+      "id": "Cloud_Computing"
     },
     {
       "id": "Analaytics"

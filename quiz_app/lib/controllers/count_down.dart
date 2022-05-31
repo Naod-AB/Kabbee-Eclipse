@@ -33,12 +33,16 @@ class MyTimer extends StatelessWidget {
           } else {
             controller.count = await fetchCorrectAnswers();
             print('timer ended');
+            String scorePercent =
+                ('${controller.count / pcontroller.questionApi!.length * 100} %');
+
             controller.s.value = 0;
             controller.isEnabled.value = false;
             CourseScore score = CourseScore(
                 courseName: controller.chosenCourse.value,
                 courseType: controller.chosenCourseType.value,
                 courseScore: controller.count,
+                coursePercentage: scorePercent,
                 userId: pcontroller.userInfo.value!.id);
             saveUserScore(score);
             context.router.push(FinalScore(
