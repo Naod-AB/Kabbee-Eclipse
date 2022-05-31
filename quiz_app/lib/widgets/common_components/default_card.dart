@@ -6,18 +6,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../pallete.dart';
 import '../theme.dart';
+import 'circularScrore.dart';
 
 class ChoiceCard extends StatelessWidget {
   final String imgeSrc, cardtext;
   double? imgPosX, textPosx, imgPosY, textPosy, imgheig, imgwid;
-
+Widget? child;
   final VoidCallback onpressed;
   ChoiceCard(
       {Key? key,
       required this.imgeSrc,
       required this.cardtext,
       required this.onpressed,
-      this.textPosx = 40,
+      this.child = const SizedBox.shrink(),
+      this.textPosx = 18,
       this.textPosy = 15,
       this.imgPosX = 10,
       this.imgPosY = -35,
@@ -65,8 +67,18 @@ class ChoiceCard extends StatelessWidget {
                         colors: colorizeColors,
                         speed: Duration(milliseconds: 1000))
                   ])))
+              // child: Text(
+              //   cardtext,
+              //   style: Theme.of(context).textTheme.headline1,
+              // )),
+              //  Positioned(
+              // left: textPosx,
+              // top: textPosy,
+              // child: child!
+              // )
         ],
       ),
+
     );
   }
 }

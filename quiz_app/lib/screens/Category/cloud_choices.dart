@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/question_controller.dart';
 import '../../routes/router.gr.dart';
+import '../../widgets/common_components/circularScrore.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -33,6 +34,7 @@ class CloudChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
+                       child: CircularScore(),
                         imgPosY: -110,
                         imgeSrc: cloudCourse[index].icon!,
                         cardtext: cloudCourse[index].courseName,

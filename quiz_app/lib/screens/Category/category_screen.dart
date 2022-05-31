@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:quiz_app/widgets/common_components/circularScrore.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -26,6 +29,8 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
+                    child: CircularScore(),
+                    //textPosx: 25,
                     imgPosY: -130,
                     //imgPosX: 185,
                     imgeSrc: "assets/icons/front end icons_small.svg",
@@ -38,6 +43,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
+                     child: CircularScore(),
                     imgPosY: -130,
                     imgeSrc: "assets/icons/aws icons_small.svg",
                     //imgPosX: 185,
@@ -50,6 +56,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding * 3,
                   ),
                   ChoiceCard(
+                     child: CircularScore(),
                     imgheig: 280,
                     //imgPosX: 185,
                     imgPosY: -130,

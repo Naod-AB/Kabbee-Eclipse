@@ -5,6 +5,7 @@ import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../Models/courses.dart';
 import '../../routes/router.gr.dart';
+import '../../widgets/common_components/circularScrore.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -33,6 +34,7 @@ class FrontEndChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return ChoiceCard(
+                       child: CircularScore(),
                         imgPosY: -100,
                         imgeSrc: frontendCourses[index].icon!,
                         cardtext: frontendCourses[index].courseName,
