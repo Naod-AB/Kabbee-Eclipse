@@ -50,15 +50,15 @@ Future<NameListJson> updateJsonTime({
     }),
   );
 
-  final responseque = await http.patch(
-    Uri.parse('http://localhost:3000/answers/$id'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, dynamic>{
-      'isSelected': isSelected,
-    }),
-  );
+  // final responseque = await http.patch(
+  //   Uri.parse('http://localhost:3000/answers/$id'),
+  //   headers: <String, String>{
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //   },
+  //   body: jsonEncode(<String, dynamic>{
+  //     'isSelected': isSelected,
+  //   }),
+  // );
 
   log('log is ${response.statusCode}');
   if (response.statusCode == 200) {

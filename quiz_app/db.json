@@ -22,7 +22,7 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 2,
+      "courseScore": 0,
       "userId": 475
     },
     {
@@ -67,25 +67,25 @@
       "id": 1,
       "answer": "Apple",
       "isCorrect": false,
-      "isSelected":false
+      "isSelected": false
     },
     {
       "id": 2,
-      "answer": "July 2017",
+      "answer": "Jun 2017",
       "isCorrect": false,
-      "isSelected":false
+      "isSelected": false
     },
     {
       "id": 3,
-      "answer": "Char",
-      "isCorrect": true,
-      "isSelected":false
+      "answer": "Double",
+      "isCorrect": false,
+      "isSelected": false
     },
     {
       "id": 4,
-      "answer": "Output",
-      "isCorrect": true,
-      "isSelected":false
+      "answer": "Cin",
+      "isCorrect": false,
+      "isSelected": false
     }
   ],
   "dart_practice": [
