@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_const
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:quiz_app/api.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 
@@ -25,7 +28,7 @@ class ProfileScreen extends GetView<ProfileController> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         centerTitle: false,
       ),
       body: Padding(
@@ -59,8 +62,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(),
                   Obx(() => buildTile(
                       Icons.lock,
-                      customText(
-                          'Change Password', 18, true, false, primaryColor),
+                      customText('Password', 18, true, false, primaryColor),
                       customText(controller.password.value, 13, false, true,
                           secondaryColor),
                       null,
@@ -83,17 +85,18 @@ class ProfileScreen extends GetView<ProfileController> {
             buildTileGroup(
               Column(
                 children: [
-                  buildTile(
-                      Icons.dark_mode,
-                      customText('Dark Mode', 18, true, false, primaryColor),
-                      customText(
-                          'Change theme', 13, false, false, secondaryColor),
-                      Switch.adaptive(
-                        value: true,
-                        activeColor: orangeColor,
-                        onChanged: (value) {},
-                      ),
-                      true),
+                  // buildTile(
+                  //     Icons.dark_mode,
+                  //     customText('Dark Mode', 18, true, false, primaryColor),
+                  //     customText(
+                  //         'Change theme', 13, false, false, secondaryColor),
+                  //     Switch.adaptive(
+                  //       value: true,
+                  //       activeColor: orangeColor,
+                  //       onChanged: (value) {},
+                  //     ),
+                  //     true),
+
                   buildDivider(),
                   buildTile(
                       Icons.celebration,
@@ -114,6 +117,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       ),
                       true),
                   buildDivider(),
+
                   GestureDetector(
                     onTap: () {
                       showCupertinoDialog<void>(
@@ -158,7 +162,14 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
       ),
-      floatingActionButton: editIcon(context),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          contactEditIcon(context),
+          editIcon(context),
+        ],
+      ),
     );
   }
 }

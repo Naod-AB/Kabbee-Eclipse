@@ -75,6 +75,9 @@ class FinalScore extends StatelessWidget {
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
                   onPressed: () {
+                    print(' reviewlist number ${controller.optionList}');
+
+                    deleteSavedAnswers(controller.optionList);
                     context.router.pushNamed('/review_screen');
                   },
                   style: ElevatedButton.styleFrom(
@@ -92,6 +95,7 @@ class FinalScore extends StatelessWidget {
                   'DONE',
                 ),
                 onPressed: () {
+                  print(' done number ${controller.optionList}');
                   deleteSavedAnswers(controller.optionList);
                   context.router.pushNamed('/category');
                   Get.delete<QuestionControl>();

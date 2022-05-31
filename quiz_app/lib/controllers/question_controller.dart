@@ -36,5 +36,4 @@ class QuestionControl extends GetxController {
   RxInt qnIndex = 1.obs;
   int count = 0;
   RxBool isCorrect = false.obs;
-  bool isSelected = false;
 }

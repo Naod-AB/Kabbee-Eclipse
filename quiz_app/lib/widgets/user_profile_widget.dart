@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
@@ -14,10 +15,35 @@ import '../controllers/profile_controllers.dart';
 import 'package:image_picker/image_picker.dart';
 import '../screens/Profile/edit_profile_screen.dart';
 import '../screens/Score/final_practice_score.dart';
+import 'pallete.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 ProfileController controller = Get.find();
 
-// Color tileColor = Color.fromRGBO(25, 25, 25, 1);
+// ! url launchers
+void launchTelegram() async {
+  String url = "https://telegram.me/+cbjhHF7ug-pkZjlk";
+  print("launchingUrl: $url");
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
+    print('works');
+  } else {
+    print('nope');
+  }
+}
+
+void launchWebsite() async {
+  String url = "https://kabbee.org/";
+  print("launchingUrl: $url");
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
+    print('works');
+  } else {
+    print('nope');
+  }
+}
+
 Color orangeColor = const Color(0xFFFFA500);
 Color tileColor = const Color(0xFF111111);
 Color primaryColor = const Color(0xFFeeeeee);
@@ -191,6 +217,28 @@ Widget buildTile(IconData? leadingIcon, Widget? title, Widget? subtitle,
   );
 }
 
+Widget buildTile2(IconData? leadingIcon, Widget? title, Widget? subtitle,
+    Widget? trailing, bool padding, Color? iconColor) {
+  return Padding(
+    padding:
+        padding ? const EdgeInsets.only(left: 10, right: 10) : EdgeInsets.zero,
+    child: ListTile(
+      contentPadding: const EdgeInsets.symmetric(vertical: 1, horizontal: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0),
+      ),
+      title: title,
+      subtitle: subtitle,
+      leading: Icon(
+        leadingIcon,
+        size: 40,
+        color: iconColor,
+      ),
+      trailing: trailing,
+    ),
+  );
+}
+
 Widget buildTextField(String hint, IconData icon, TextEditingController ctrl,
     bool ispassword, Widget? suffix) {
   return TextFormField(
@@ -248,6 +296,93 @@ Widget editIcon(BuildContext context) {
         controller.editedImage.value = controller.imageFile.value;
         clearFieldsAndDisableButton();
         context.router.pushNamed('/edit_profile');
+      },
+    ),
+  );
+}
+
+Widget contactEditIcon(BuildContext context) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+      color: orangeColor,
+    ),
+    height: 70,
+    width: 70,
+    padding: const EdgeInsets.all(5),
+    child: FloatingActionButton(
+      backgroundColor: Colors.black,
+      foregroundColor: Colors.white,
+      elevation: 0,
+      child: const Icon(
+        Icons.call,
+        size: 30,
+      ),
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(50),
+            ),
+          ),
+          backgroundColor: kblue,
+          builder: (context) {
+            return Container(
+              margin: EdgeInsets.only(top: 3),
+              decoration: const BoxDecoration(
+                  color: Color(0xFF222222),
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(50))),
+              child: Wrap(
+                runSpacing: 9,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                    child: Center(
+                      child: customText(
+                          'Contact Us', 26, true, false, primaryColor),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      launchTelegram();
+                    },
+                    child: buildTile2(
+                        FontAwesomeIcons.telegram,
+                        customText(' Telegram', 18, false, false, primaryColor),
+                        null,
+                        null,
+                        true,
+                        Color(0xFF40B3E0)),
+                  ),
+                  buildTile2(
+                      FontAwesomeIcons.solidEnvelope,
+                      customText(
+                          ' quizapp@gmail.com', 18, false, false, primaryColor),
+                      null,
+                      null,
+                      true,
+                      kblue),
+                  GestureDetector(
+                    onTap: () {
+                      launchWebsite();
+                    },
+                    child: buildTile2(
+                        FontAwesomeIcons.earthAmericas,
+                        customText(
+                            ' www.kabbee.org', 18, false, false, primaryColor),
+                        null,
+                        null,
+                        true,
+                        Colors.green),
+                  ),
+                  const SizedBox(height: 100),
+                ],
+              ),
+            );
+          },
+        );
       },
     ),
   );

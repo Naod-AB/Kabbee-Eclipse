@@ -1,10 +1,15 @@
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:quiz_app/Models/scores.dart';
 import 'package:quiz_app/Models/users.dart';
 
+import 'controllers/profile_controllers.dart';
+
 // Save User Score
+final ProfileController pController = Get.find();
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
   final response = await http.patch(
@@ -21,6 +26,9 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
       }));
   if (response.statusCode == 200) {
     print("this is inside the scoreSave api function ");
+
+    log('${score.userId}');
+    log('user id${pController.userInfo.value!.id}');
     return CourseScore.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to Save score.');
