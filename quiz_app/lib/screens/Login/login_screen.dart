@@ -26,12 +26,14 @@ class _LoginPageState extends State<LoginPage> {
   String error = "";
   ProfileController profileController = Get.find();
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
+    String selam = 'selam@gmail.com';
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -196,14 +198,16 @@ class _LoginPageState extends State<LoginPage> {
 
   void authenticateUser() async {
     var pass = passwordController.text.trim();
+
     var email = emailController.text.trim().toLowerCase();
+    print('email ${emailController.text}');
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
       profileController.userInfo.value = await fetchUser(email);
       if (profileController.userInfo.value != null &&
           profileController.userInfo.value!.password == pass) {
         profileController.scores =
             await fetchUserScores(profileController.userInfo.value!.id);
-        print('from login >>>> ${profileController.scores}');
+        // print('from login >>>> ${profileController.scores}');
         setState(() {
           error = "";
         });
