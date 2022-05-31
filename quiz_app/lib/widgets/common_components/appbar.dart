@@ -29,7 +29,7 @@ AppBar QuizeAppbar(String iconUrl, BuildContext context) {
   return AppBar(
     backgroundColor: appbarColor,
     title: CircleAvatar(
-      child: SvgPicture.asset(iconUrl),
+      child: Hero(tag: '', child: SvgPicture.asset(iconUrl)),
       backgroundColor: Colors.transparent,
     ),
     centerTitle: true,

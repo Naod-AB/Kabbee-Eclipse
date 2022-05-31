@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../Utilities/size_config.dart';
@@ -18,7 +19,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     //todo:implement initState
     super.initState();
-    Timer(const Duration(milliseconds: 4000), () {
+    Timer(const Duration(milliseconds: 5000), () {
       context.router.push(LoginRoute());
     });
   }
@@ -93,32 +94,58 @@ class _SplashState extends State<Splash> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 //crossAxisAlignment: CrossAxisAlignment.center,
 
-                                children: const [
-                                  Text(
+                                children: [
+                                  const Text(
                                     'K',
                                     style: TextStyle(
                                         fontSize: 43,
                                         fontWeight: FontWeight.w900,
                                         color: kblue),
                                   ),
-                                  Text(
-                                    'abbe',
-                                    style: TextStyle(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.w900,
-                                        //fontFamily: 'Raleway',
-                                        color: kWhite),
-                                  ),
-                                  Flexible(
-                                    //flex: 3,
-                                    child: Text(
-                                      'e',
-                                      style: TextStyle(
+                                  // Text(
+                                  //   'abbe',
+                                  //   style: TextStyle(
+                                  //       fontSize: 40,
+                                  //       fontWeight: FontWeight.w900,
+                                  //       //fontFamily: 'Raleway',
+                                  //       color: kWhite),
+                                  // ),
+                                  DefaultTextStyle(
+                                      style: const TextStyle(
                                           fontSize: 40,
                                           fontWeight: FontWeight.w900,
-                                          color: kblue),
-                                    ),
-                                  ),
+                                          color: kWhite),
+                                      child: AnimatedTextKit(
+                                        animatedTexts: [
+                                          TyperAnimatedText('abbe',
+                                              speed: const Duration(
+                                                  milliseconds: 800))
+                                        ],
+                                        pause: const Duration(seconds: 4),
+                                      )),
+                                  Flexible(
+                                      //flex: 3,
+                                      child: DefaultTextStyle(
+                                          style: const TextStyle(
+                                              fontSize: 40,
+                                              fontWeight: FontWeight.w900,
+                                              color: kWhite),
+                                          child: AnimatedTextKit(
+                                            animatedTexts: [
+                                              WavyAnimatedText('e',
+                                                  speed: const Duration(
+                                                      milliseconds: 300))
+                                            ],
+                                            pause: Duration(seconds: 4),
+                                          ))
+                                      //  Text(
+                                      //   'e',
+                                      //   style: TextStyle(
+                                      //       fontSize: 40,
+                                      //       fontWeight: FontWeight.w900,
+                                      //       color: kblue),
+                                      // ),
+                                      ),
                                 ],
                               ),
                             ),
