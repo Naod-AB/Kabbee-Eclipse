@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(const Duration(milliseconds: 4000), () {
-      context.router.push(LoginRoute());
+      context.router.push(const LoginRoute());
     });
   }
 
@@ -50,15 +50,15 @@ class _SplashState extends State<Splash> {
                   Padding(
                     padding: const EdgeInsets.only(top: 200),
                     child: Container(
-                      height: 260,
-                      width: 270,
+                      height: 280,
+                      width: 350,
                       decoration: BoxDecoration(
                         image: const DecorationImage(
                           image: AssetImage('assets/images/bgm.jpg'),
                           colorFilter: ColorFilter.mode(
                               Colors.black12, BlendMode.darken),
                         ),
-                        borderRadius: BorderRadius.circular(90),
+                        borderRadius: BorderRadius.circular(140),
                         boxShadow: [
                           BoxShadow(
                             color: const Color.fromARGB(146, 6, 23, 46)
@@ -83,36 +83,36 @@ class _SplashState extends State<Splash> {
                                   const Text(
                                     'K',
                                     style: TextStyle(
-                                        fontSize: 43,
+                                        fontSize: 38,
                                         fontWeight: FontWeight.w900,
                                         color: kblue),
                                   ),
                                   DefaultTextStyle(
                                       style: const TextStyle(
-                                          fontSize: 40,
+                                          fontSize: 32,
                                           fontWeight: FontWeight.w900,
                                           color: kWhite),
                                       child: AnimatedTextKit(
                                         animatedTexts: [
                                           TyperAnimatedText('abbe',
                                               speed: const Duration(
-                                                  milliseconds: 800))
+                                                  milliseconds: 300))
                                         ],
                                         pause: const Duration(seconds: 4),
                                       )),
                                   Flexible(
                                       child: DefaultTextStyle(
                                           style: const TextStyle(
-                                              fontSize: 40,
+                                              fontSize: 36,
                                               fontWeight: FontWeight.w900,
-                                              color: kWhite),
+                                              color: kblue),
                                           child: AnimatedTextKit(
                                             animatedTexts: [
                                               WavyAnimatedText('e',
                                                   speed: const Duration(
-                                                      milliseconds: 300))
+                                                      milliseconds: 500))
                                             ],
-                                            pause: Duration(seconds: 4),
+                                            pause: Duration(seconds: 2),
                                           ))),
                                 ],
                               ),

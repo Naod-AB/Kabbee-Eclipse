@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:quiz_app/widgets/pallete.dart';
 
 import '../../Models/model.dart';
 import '../../controllers/question_controller.dart';
@@ -47,28 +49,27 @@ class FinalScore extends StatelessWidget {
                 ),
               ),
               const Padding(padding: EdgeInsets.all(20)),
+              
               Container(
-                width: 250.0,
-                height: 250.0,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
+                  width: 250.0,
+                  height: 250.0,
+                  child: CircularPercentIndicator(
+                    radius: 125,
+                    lineWidth: 15.0,
+                    backgroundColor: Color.fromARGB(255, 255, 204, 109),
+                    percent: score / outOf,
+                    progressColor: kblue,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    animation: true,
+                    animationDuration: 2000,
+                    center: Text(
                       '$score/$outOf',
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 255, 165, 0),
                           fontSize: 64,
                           fontWeight: FontWeight.bold),
                     ),
-                  ],
-                ),
-              ),
+                  )),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
                 visible: controller.isEnabled.value,
