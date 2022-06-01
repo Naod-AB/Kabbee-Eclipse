@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: quizAppTheme().copyWith(
         brightness: Brightness.light,
       ),
-      // initialBinding: ProfileBinding(),
+      initialBinding: ProfileBinding(),
       debugShowMaterialGrid: false,
     );
   }
