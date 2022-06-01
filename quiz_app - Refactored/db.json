@@ -51,13 +51,23 @@
       "userId": 638
     },
     {
-      "id": "javascript"
+      "id": "javascript",
+      "courseName": "javascript",
+      "courseType": "Back_end",
+      "courseScore": 0,
+      "percentage": 0,
+      "userId": 638
     },
     {
       "id": "MongoDB"
     },
     {
-      "id": "Atlas_Cloud"
+      "id": "Atlas_Cloud",
+      "courseName": "Atlas_Cloud",
+      "courseType": "Back_end",
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 638
     },
     {
       "id": "Machine_Learning",
@@ -79,8 +89,8 @@
       "id": "Analaytics",
       "courseName": "Analaytics",
       "courseType": "cloud_services",
-      "courseScore": 2,
-      "percentage": 50,
+      "courseScore": 0,
+      "percentage": 0,
       "userId": 638
     }
   ],
@@ -105,7 +115,7 @@
     },
     {
       "id": 4,
-      "answer": "Output",
+      "answer": "Count",
       "isCorrect": false,
       "isSelected": false
     }
