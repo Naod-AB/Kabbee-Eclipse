@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
 import 'package:quiz_app/controllers/question_controller.dart';
 
-// import '../../Models/courses.dart';
-
 import '../../routes/router.gr.dart';
-import '../../widgets/common_components/circularScrore.dart';
+import '../../widgets/common_components/circularScore.dart';
 import '../../widgets/theme.dart';
 import '../../widgets/common_components/appbar.dart';
 import '../../widgets/common_components/default_card.dart';
@@ -20,7 +18,6 @@ class LanguageChoices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('courses 👉 ${courses}');
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
@@ -39,11 +36,18 @@ class LanguageChoices extends StatelessWidget {
                   itemCount: courses.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    // return Text(courses[index]['courseName']);
-                    int scorePercentage = courses[index]['percentage'];
+                    int percentage = 0;
+                    for (var element in pController.scores!) {
+                      if (courses[index]['courseName'] ==
+                          element['courseName']) {
+                        percentage = element['percentage'];
+                        break;
+                      }
+                    }
+
                     return ChoiceCard(
                       child: CircularScore(
-                        scorePercent: scorePercentage,
+                        scorePercent: percentage,
                       ),
                       imgPosY: -100,
                       imgeSrc: courses[index]['icon'],
@@ -53,8 +57,6 @@ class LanguageChoices extends StatelessWidget {
                             courses[index]['courseName'];
                         qController.chosenCourseType.value =
                             courses[index]['category'];
-                        print("this is the course");
-                        print(qController.chosenCourse.value);
                         context.router.push(ChooseType(
                             icon: courses[index]['icon'],
                             path: courses[index]['courseName']));

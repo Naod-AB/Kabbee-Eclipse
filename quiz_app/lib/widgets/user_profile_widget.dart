@@ -7,42 +7,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
-import 'package:quiz_app/Models/users.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import '../Models/model.dart';
 import '../controllers/string_extension.dart';
 import '../controllers/profile_controllers.dart';
 import 'package:image_picker/image_picker.dart';
-import '../screens/Profile/edit_profile_screen.dart';
-import '../screens/Score/final_practice_score.dart';
 import 'pallete.dart';
 
-import 'package:url_launcher/url_launcher.dart';
-
 ProfileController controller = Get.find();
-
-// ! url launchers
-void launchTelegram() async {
-  String url = "https://telegram.me/+cbjhHF7ug-pkZjlk";
-  print("launchingUrl: $url");
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url));
-    print('works');
-  } else {
-    print('nope');
-  }
-}
-
-void launchWebsite() async {
-  String url = "https://kabbee.org/";
-  print("launchingUrl: $url");
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url));
-    print('works');
-  } else {
-    print('nope');
-  }
-}
 
 Color orangeColor = const Color(0xFFFFA500);
 Color tileColor = const Color(0xFF111111);
@@ -50,7 +22,6 @@ Color primaryColor = const Color(0xFFeeeeee);
 Color secondaryColor = Colors.white60;
 
 // Custom widgets
-
 Widget customText(
     String text, double size, bool isBold, bool isPassword, Color textColor) {
   return Text(
@@ -119,7 +90,6 @@ Widget profileCardContent(context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Obx(() => customText(
-                    // "${controller.firstName.value = controller.userInfo.value.firstName.toString().toCapitalized()}\n${controller.userInfo.value.lastName.toString().toCapitalized()}",
                     "${controller.firstName.value}\n${controller.lastName.value}",
                     30,
                     true,
@@ -146,19 +116,13 @@ Widget genderToggle(int numberOfSwitches) {
     inactiveFgColor: primaryColor,
     totalSwitches: numberOfSwitches,
     labels: const ['Male', 'Female'],
-
-    // icons: const [FontAwesomeIcons.mars, FontAwesomeIcons.venus],
     activeBgColors: [
       [orangeColor],
       [orangeColor],
     ],
     onToggle: (index) {
-      // controller.genderIndex.value == 'Male'
-      //     ? controller.genderIndex.value = 'Female'
-      //     : controller.genderIndex.value = 'Male';
       controller.genderIndex.value = !controller.genderIndex.value;
       controller.isBtnNull.value = true;
-      //gender=controller.selectedGender.value;
     },
   );
 }
@@ -172,7 +136,6 @@ Widget genderValueContainer() {
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
       child: Text(
         controller.gender.value ? 'Male' : 'Female',
-        // controller.userInfo.value.gender.toString().toCapitalized(),
         style: TextStyle(color: primaryColor),
       ),
     ),
@@ -181,7 +144,6 @@ Widget genderValueContainer() {
 
 Widget buildTileGroup(Widget tiles) {
   return Container(
-    // padding: EdgeInsets.only(left: 10, right: 10),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10), color: tileColor),
     child: tiles,
@@ -291,8 +253,6 @@ Widget editIcon(BuildContext context) {
         size: 30,
       ),
       onPressed: () {
-        // controller.genderIndex.value =
-        //     controller.userInfo.value.gender.toString();
         controller.editedImage.value = controller.imageFile.value;
         clearFieldsAndDisableButton();
         context.router.pushNamed('/edit_profile');
@@ -346,7 +306,7 @@ Widget contactEditIcon(BuildContext context) {
                   ),
                   GestureDetector(
                     onTap: () {
-                      launchTelegram();
+                      controller.launchTelegram();
                     },
                     child: buildTile2(
                         FontAwesomeIcons.telegram,
@@ -366,7 +326,7 @@ Widget contactEditIcon(BuildContext context) {
                       kblue),
                   GestureDetector(
                     onTap: () {
-                      launchWebsite();
+                      controller.launchWebsite();
                     },
                     child: buildTile2(
                         FontAwesomeIcons.earthAmericas,

@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/Models/users.dart';
 
+import '../routes/router.gr.dart';
 import '../widgets/user_profile_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileController extends GetxController {
   RxString selectedGender = 'male'.obs;
@@ -27,6 +31,7 @@ class ProfileController extends GetxController {
 
   var password = 'test123'.obs;
 
+// functions
   getFromGallery(ImageSource imgSource, context) async {
     final pickedFile = await ImagePicker().pickImage(
       source: imgSource,
@@ -38,6 +43,28 @@ class ProfileController extends GetxController {
       isBtnNull.value = true;
     } else {
       showSnackbar(context, 'Image', 'Failed to choose image', 'error');
+    }
+  }
+
+  void launchTelegram() async {
+    String url = "https://telegram.me/+cbjhHF7ug-pkZjlk";
+    print("launchingUrl: $url");
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+      print('works');
+    } else {
+      print('nope');
+    }
+  }
+
+  void launchWebsite() async {
+    String url = "https://kabbee.org/";
+    print("launchingUrl: $url");
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+      print('works');
+    } else {
+      print('nope');
     }
   }
 

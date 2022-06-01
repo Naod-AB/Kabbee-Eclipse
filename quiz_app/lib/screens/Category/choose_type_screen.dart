@@ -83,7 +83,6 @@ class ChooseType extends StatelessWidget {
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () async {
-                              // Get.off(evaluationScreens(icon: icon)),
                               controller.questionApi = await fetchQuestionsApi(
                                   path.toLowerCase() + "_final");
 
@@ -99,8 +98,6 @@ class ChooseType extends StatelessWidget {
                           )
                         ],
                       ).show();
-
-                      // context.router.push(evaluationScreen(icon: icon));
                     },
                   ),
                   const SizedBox(
