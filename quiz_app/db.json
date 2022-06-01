@@ -30,8 +30,8 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 0,
-      "percentage": 10,
+      "courseScore": 4,
+      "percentage": 100,
       "userId": 638
     },
     {
@@ -39,15 +39,15 @@
       "courseName": "Dart",
       "courseType": "Front-End",
       "courseScore": 0,
-      "percentage": 20,
+      "percentage": 0,
       "userId": 638
     },
     {
       "id": "Flutter",
       "courseName": "Flutter",
       "courseType": "Front-End",
-      "courseScore": 2,
-      "percentage": 50,
+      "courseScore": 4,
+      "percentage": 100,
       "userId": 638
     },
     {
@@ -99,13 +99,13 @@
     },
     {
       "id": 3,
-      "answer": "Word",
+      "answer": "Char",
       "isCorrect": false,
       "isSelected": false
     },
     {
       "id": 4,
-      "answer": "Count",
+      "answer": "Output",
       "isCorrect": false,
       "isSelected": false
     }

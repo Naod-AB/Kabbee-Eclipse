@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grouped_list/grouped_list.dart';
+
 import 'package:quiz_app/controllers/profile_controllers.dart';
 import 'package:quiz_app/widgets/pallete.dart';
 import '../../widgets/score_alert_box.dart';
 import '../../widgets/user_profile_widget.dart';
 
-class MyScoresScreen extends StatelessWidget {
+class MyScoresScreen extends GetView<ProfileController> {
   MyScoresScreen({Key? key}) : super(key: key);
-  ProfileController profileController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     var colorCode;
-    // print(' profile Score is >${profileController.scores.}');
 
     return SafeArea(
         child: Scaffold(
@@ -51,7 +51,7 @@ class MyScoresScreen extends StatelessWidget {
                         Card(
                           color: Colors.white12,
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                            padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

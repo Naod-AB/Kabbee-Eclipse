@@ -62,7 +62,6 @@ class ChooseType extends StatelessWidget {
                     onpressed: () {
                       Alert(
                         context: context,
-                        //type: AlertType.warning,
                         title: "Exam information",
                         desc:
                             "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
@@ -83,7 +82,6 @@ class ChooseType extends StatelessWidget {
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () async {
-                              // Get.off(evaluationScreens(icon: icon)),
                               controller.questionApi = await fetchQuestionsApi(
                                   path.toLowerCase() + "_final");
 
@@ -99,8 +97,6 @@ class ChooseType extends StatelessWidget {
                           )
                         ],
                       ).show();
-
-                      // context.router.push(evaluationScreen(icon: icon));
                     },
                   ),
                   const SizedBox(

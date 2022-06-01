@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
 import 'package:quiz_app/controllers/question_controller.dart';
 
-// import '../../Models/courses.dart';
-
 import '../../routes/router.gr.dart';
 import '../../widgets/common_components/circularScore.dart';
 import '../../widgets/theme.dart';

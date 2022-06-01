@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
 import '../../Utilities/size_config.dart';
 import '../../widgets/pallete.dart';
 import 'package:auto_route/auto_route.dart';
@@ -7,24 +9,15 @@ import '../../routes/router.gr.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-class Splash extends StatefulWidget {
+class Splash extends GetView<ProfileController> {
   const Splash({Key? key}) : super(key: key);
 
   @override
-  State<Splash> createState() => _SplashState();
-}
-
-class _SplashState extends State<Splash> {
-  @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 4000), () {
       context.router.push(const LoginRoute());
     });
-  }
 
-  @override
-  Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       body: Center(

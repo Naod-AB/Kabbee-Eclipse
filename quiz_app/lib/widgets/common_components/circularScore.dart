@@ -25,7 +25,6 @@ class CircularScore extends StatelessWidget {
         child: Text(
           ("${scorePercent.toString()}%"),
           textAlign: TextAlign.center,
-          //style: TextStyle(fontSize: 5, color: Colors.white),
           style: Theme.of(context)
               .textTheme
               .headline1!

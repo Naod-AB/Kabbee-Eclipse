@@ -143,7 +143,6 @@ class QuestionScreen extends StatelessWidget {
                                                           ['answer']
                                                       .toString()) {
                                                 isCorrect = true;
-                                                // print('object');
                                               } else {
                                                 isCorrect = false;
                                               }

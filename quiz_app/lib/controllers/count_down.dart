@@ -15,7 +15,6 @@ class MyTimer extends StatelessWidget {
   dynamic icon;
   @override
   Widget build(BuildContext context) {
-    bool x = true;
     Spacer();
 
     return Obx(
