@@ -177,11 +177,16 @@ class evaluationScreens extends StatelessWidget {
                     ? ElevatedButton(
                         onPressed: () async {
                           controller.count = await fetchCorrectAnswers();
+                          double scorePercent = controller.count /
+                              pcontroller.questionApi!.length *
+                              100;
+
                           controller.isEnabled.value = false;
                           CourseScore score = CourseScore(
                               courseName: controller.chosenCourse.value,
                               courseType: controller.chosenCourseType.value,
                               courseScore: controller.count,
+                              coursePercentage: scorePercent,
                               userId: pcontroller.userInfo.value!.id);
                           controller.isFinished = true;
 

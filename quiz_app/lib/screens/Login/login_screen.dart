@@ -3,16 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/controllers/profile_controllers.dart';
 
-import '../../Models/users.dart';
 import '../../Utilities/size_config.dart';
 import '../../api.dart';
 import '../../widgets/pallete.dart';
-import '../../widgets/widgets.dart';
 import '../../widgets/rounded_button_mine.dart' as button;
-import '../Category/category_screen.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:quiz_app/routes/router.gr.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,16 +18,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _obscureText = true;
   bool rememberMe = false;
   String error = "";
   ProfileController profileController = Get.find();
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
+    String selam = 'selam@gmail.com';
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -103,13 +102,28 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: Colors.grey[500]!.withOpacity(0.5),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          suffixIcon: const Padding(
+                          suffixIcon: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Icon(
-                              FontAwesomeIcons.lock,
-                              size: 28,
-                              color: kblue,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              child: Icon(
+                                _obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: _obscureText
+                                    ? Color.fromARGB(255, 255, 165, 0)
+                                    : Color.fromARGB(255, 255, 165, 0),
+                              ),
                             ),
+                            // child: Icon(
+                            //   FontAwesomeIcons.lock,
+                            //   size: 28,
+                            //   color: kblue,
+                            // ),
                           ),
                           hintText: 'Enter Password',
                           hintStyle: kBodyText,
@@ -117,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: kBodyText,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
-                        obscureText: true,
+                        obscureText: _obscureText,
                       ),
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.02,
@@ -196,11 +210,16 @@ class _LoginPageState extends State<LoginPage> {
 
   void authenticateUser() async {
     var pass = passwordController.text.trim();
+
     var email = emailController.text.trim().toLowerCase();
+    print('email ${emailController.text}');
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
       profileController.userInfo.value = await fetchUser(email);
       if (profileController.userInfo.value != null &&
           profileController.userInfo.value!.password == pass) {
+        profileController.scores =
+            await fetchUserScores(profileController.userInfo.value!.id);
+        // print('from login >>>> ${profileController.scores}');
         setState(() {
           error = "";
         });
