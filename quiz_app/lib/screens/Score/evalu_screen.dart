@@ -190,7 +190,7 @@ class evaluationScreens extends StatelessWidget {
                             print('answered is $answered');
                             Alert(
                               context: context,
-                              //type: AlertType.warning,
+                              type: AlertType.warning,
                               title: "Notice",
                               desc:
                                   "hello you have unanswered question . Do you want go back and check or continue to score page ?",

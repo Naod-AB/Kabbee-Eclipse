@@ -62,7 +62,7 @@ class ChooseType extends StatelessWidget {
                     onpressed: () {
                       Alert(
                         context: context,
-                        //type: AlertType.warning,
+                        type: AlertType.warning,
                         title: "Exam information",
                         desc:
                             "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",

@@ -129,6 +129,29 @@ Future fetchQuestionsApi(String path) async {
   }
 }
 
+//new api method
+
+// var headersList = {
+//   'Accept': '*/*',
+//   'User-Agent': 'Thunder Client (https://www.thunderclient.com)'
+// };
+// Future fetchQuestionsApi(String path) async {
+//   //var url = Uri.parse('https://shalombr.pythonanywhere.com/api/practice/');
+//   var response = Uri.parse('https://shalombr.pythonanywhere.com/api/practice/');
+//   var req = http.Request('get', response);
+//   req.headers.addAll(headersList);
+
+//   // var req;
+//   var res = await req.send();
+//   final resBody = await res.stream.bytesToString();
+
+//   if (res.statusCode >= 200 && res.statusCode < 300) {
+//     print(resBody);
+//   } else {
+//     print(res.reasonPhrase);
+//   }
+// }
+
 // fetch categories
 Future fetchCourses(String category) async {
   final response = await http
