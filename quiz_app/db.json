@@ -31,7 +31,7 @@
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
       "courseScore": 0,
-      "percentage": 0,
+      "percentage": 10,
       "userId": 638
     },
     {
@@ -39,7 +39,7 @@
       "courseName": "Dart",
       "courseType": "Front-End",
       "courseScore": 0,
-      "percentage": 0,
+      "percentage": 20,
       "userId": 638
     },
     {
@@ -928,64 +928,55 @@
       "id": 1,
       "courseName": "HTML_CSS",
       "category": "Front-End",
-      "icon": "assets/icons/html.svg",
-      "percentage": 25
+      "icon": "assets/icons/html.svg"
     },
     {
       "id": 2,
       "courseName": "Dart",
       "category": "Front-End",
-      "icon": "assets/icons/dart.svg",
-      "percentage": 50
+      "icon": "assets/icons/dart.svg"
     },
     {
       "id": 3,
       "courseName": "Flutter",
       "category": "Front-End",
-      "icon": "assets/icons/flutter.svg",
-      "percentage": 50
+      "icon": "assets/icons/flutter.svg"
     },
     {
       "id": 4,
       "courseName": "Machine_Learning",
       "category": "cloud_services",
-      "icon": "assets/icons/Machine_logo.svg",
-      "percentage": 0
+      "icon": "assets/icons/Machine_logo.svg"
     },
     {
       "id": 5,
       "courseName": "Cloud_Computing",
       "category": "cloud_services",
-      "icon": "assets/icons/computing_icon.svg",
-      "percentage": 0
+      "icon": "assets/icons/computing_icon.svg"
     },
     {
       "id": 6,
       "courseName": "Analaytics",
       "category": "cloud_services",
-      "icon": "assets/icons/analytics_logo.svg",
-      "percentage": 0
+      "icon": "assets/icons/analytics_logo.svg"
     },
     {
       "id": 7,
       "courseName": "javascript",
       "category": "Back_end",
-      "icon": "assets/icons/javascript_icon.svg",
-      "percentage": 0
+      "icon": "assets/icons/javascript_icon.svg"
     },
     {
       "id": 8,
       "courseName": "MongoDB",
       "category": "Back_end",
-      "icon": "assets/icons/monogodb_icon.svg",
-      "percentage": 0
+      "icon": "assets/icons/monogodb_icon.svg"
     },
     {
       "id": 9,
       "courseName": "Atlas_Cloud",
       "category": "Back_end",
-      "icon": "assets/icons/atlas_icon.svg",
-      "percentage": 0
+      "icon": "assets/icons/atlas_icon.svg"
     }
   ]
 }
