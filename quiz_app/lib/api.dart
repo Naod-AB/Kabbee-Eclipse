@@ -22,6 +22,7 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'courseName': score.courseName,
         'courseType': score.courseType,
         'courseScore': score.courseScore,
+        'percentage': score.coursePercentage,
         'userId': score.userId
       }));
   if (response.statusCode == 200) {
@@ -125,5 +126,19 @@ Future fetchQuestionsApi(String path) async {
     }
   } else {
     throw Exception('Failed to load Path');
+  }
+}
+
+// fetch categories
+Future fetchCourses(String category) async {
+  final response = await http
+      .get(Uri.parse('http://localhost:3000/Courses/?category=$category'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    final parsedCourses = jsonDecode(response.body);
+    // print('parsedCourses 👉 $parsedCourses');
+
+    return parsedCourses;
+  } else {
+    throw Exception('Failed to fetch Courses');
   }
 }

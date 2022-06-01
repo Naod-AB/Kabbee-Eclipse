@@ -10,20 +10,20 @@ import '../widgets/user_profile_widget.dart';
 
 final QuestionControl qcontroller = Get.put(QuestionControl());
 
-class NameListJson {
+class checkAnswer {
   var id;
   var answer;
   bool isCorrect;
   bool isSelected;
 
-  NameListJson(
+  checkAnswer(
       {this.id,
       this.answer,
       required this.isCorrect,
       required this.isSelected});
 
-  factory NameListJson.fromJson(Map<String, dynamic> json) {
-    return NameListJson(
+  factory checkAnswer.fromJson(Map<String, dynamic> json) {
+    return checkAnswer(
       id: json['id'],
       answer: json['answer'],
       isCorrect: json['isCorrect'],
@@ -33,7 +33,7 @@ class NameListJson {
 }
 
 // Add Choices
-Future<NameListJson> updateJsonTime({
+Future<checkAnswer> updateJsonTime({
   required String answer,
   required int id,
   required bool isCorrect,
@@ -63,7 +63,7 @@ Future<NameListJson> updateJsonTime({
 
   log('log is ${response.statusCode}');
   if (response.statusCode == 200) {
-    return NameListJson.fromJson(jsonDecode(response.body));
+    return checkAnswer.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Error);
   }

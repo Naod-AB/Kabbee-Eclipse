@@ -67,7 +67,7 @@ class ChoiceCard extends StatelessWidget {
   }
 }
 
-const colorizeColors = [kWhite, Color(0xFFC0A404), Colors.black];
+const colorizeColors = [kWhite, kblue, Colors.black];
 const colorizeTextStyle = TextStyle(
   fontSize: 30.0,
   fontWeight: FontWeight.w900,

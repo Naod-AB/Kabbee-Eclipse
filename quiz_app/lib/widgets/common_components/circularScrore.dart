@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CircularScore extends StatelessWidget {
-  const CircularScore({
-    Key? key,
-  }) : super(key: key);
+  CircularScore({Key? key, this.scorePercent}) : super(key: key);
+
+  int? scorePercent;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CircularScore extends StatelessWidget {
       //color: Colors.yellow,
       child: Center(
         child: Text(
-          "10/10",
+          scorePercent.toString(),
           textAlign: TextAlign.center,
           //style: TextStyle(fontSize: 5, color: Colors.white),
           style: Theme.of(context)
