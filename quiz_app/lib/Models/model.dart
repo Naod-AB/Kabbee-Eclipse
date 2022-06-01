@@ -14,14 +14,20 @@ class NameListJson {
   var id;
   var answer;
   bool isCorrect;
+  bool isSelected;
 
-  NameListJson({this.id, this.answer, required this.isCorrect});
+  NameListJson(
+      {this.id,
+      this.answer,
+      required this.isCorrect,
+      required this.isSelected});
 
   factory NameListJson.fromJson(Map<String, dynamic> json) {
     return NameListJson(
       id: json['id'],
       answer: json['answer'],
       isCorrect: json['isCorrect'],
+      isSelected: json['isSelected'],
     );
   }
 }
@@ -31,6 +37,7 @@ Future<NameListJson> updateJsonTime({
   required String answer,
   required int id,
   required bool isCorrect,
+  required bool isSelected,
 }) async {
   final response = await http.patch(
     Uri.parse('http://localhost:3000/answers/$id'),
@@ -40,6 +47,7 @@ Future<NameListJson> updateJsonTime({
     body: jsonEncode(<String, dynamic>{
       'answer': answer,
       'isCorrect': isCorrect,
+      'isSelected': isSelected,
     }),
   );
 
@@ -72,6 +80,24 @@ Future<int> fetchCorrectAnswers() async {
   final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
   for (var item in parsed) {
     if (item['isCorrect'] == true) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+// For unanswered
+Future<int> fetchSelectedQuestion() async {
+  final response = await http.get(
+    Uri.parse('http://localhost:3000/answers'),
+  );
+  var count = 0;
+
+  // print(response.body);
+  final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  for (var item in parsed) {
+    if (item['isSelected'] == true) {
       count++;
     }
   }
@@ -112,7 +138,7 @@ Future deleteSavedAnswers(int optionLength) async {
       },
       body: jsonEncode(<String, bool>{
         'isCorrect': false,
-        // "isSelected": false,
+        "isSelected": false,
       }),
     );
     print('patch response');
