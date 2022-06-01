@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +6,6 @@ import 'package:quiz_app/controllers/question_controller.dart';
 
 // import '../../Models/courses.dart';
 
-import '../../api.dart';
 import '../../routes/router.gr.dart';
 import '../../widgets/common_components/circularScore.dart';
 import '../../widgets/theme.dart';
@@ -23,7 +20,6 @@ class LanguageChoices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('courses 👉 ${courses}');
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
@@ -46,10 +42,7 @@ class LanguageChoices extends StatelessWidget {
                     for (var element in pController.scores!) {
                       if (courses[index]['courseName'] ==
                           element['courseName']) {
-                        log('course name is ${element['courseName']}');
-                        log('course score is ${element['percentage']}');
                         percentage = element['percentage'];
-
                         break;
                       }
                     }

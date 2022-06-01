@@ -43,7 +43,12 @@
       "userId": 638
     },
     {
-      "id": "Flutter"
+      "id": "Flutter",
+      "courseName": "Flutter",
+      "courseType": "Front-End",
+      "courseScore": 2,
+      "percentage": 50,
+      "userId": 638
     },
     {
       "id": "javascript"
@@ -55,7 +60,12 @@
       "id": "Atlas_Cloud"
     },
     {
-      "id": "Machine_Learning"
+      "id": "Machine_Learning",
+      "courseName": "Machine_Learning",
+      "courseType": "cloud_services",
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 638
     },
     {
       "id": "Cloud_Computing",
@@ -66,7 +76,12 @@
       "userId": 638
     },
     {
-      "id": "Analaytics"
+      "id": "Analaytics",
+      "courseName": "Analaytics",
+      "courseType": "cloud_services",
+      "courseScore": 2,
+      "percentage": 50,
+      "userId": 638
     }
   ],
   "answers": [
@@ -84,13 +99,13 @@
     },
     {
       "id": 3,
-      "answer": "Char",
+      "answer": "Word",
       "isCorrect": false,
       "isSelected": false
     },
     {
       "id": 4,
-      "answer": "Cin",
+      "answer": "Count",
       "isCorrect": false,
       "isSelected": false
     }

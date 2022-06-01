@@ -6,6 +6,8 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:quiz_app/widgets/pallete.dart';
 
 import '../../Models/model.dart';
+import '../../api.dart';
+import '../../controllers/profile_controllers.dart';
 import '../../controllers/question_controller.dart';
 
 class FinalScore extends StatelessWidget {
@@ -21,6 +23,7 @@ class FinalScore extends StatelessWidget {
   int optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
+   ProfileController pController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +98,10 @@ class FinalScore extends StatelessWidget {
                 child: const Text(
                   'DONE',
                 ),
-                onPressed: () {
+                onPressed: () async{
+                  pController.scores =  await fetchUserScores(
+                              pController.userInfo.value!.id);
+                              
                   print(' done number ${controller.optionList}');
                   deleteSavedAnswers(controller.optionList);
                   context.router.pushNamed('/category');
