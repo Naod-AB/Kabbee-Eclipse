@@ -38,9 +38,9 @@
       "id": "Dart",
       "courseName": "Dart",
       "courseType": "Front-End",
-      "courseScore": 0,
-      "percentage": 0,
-      "userId": 638
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 475
     },
     {
       "id": "Flutter",

@@ -52,8 +52,8 @@ class QuestionScreen extends StatelessWidget {
                         .copyWith(color: Colors.white)),
               ),
               SizedBox(height: 20),
-              SizedBox(
-                height: 600.0,
+              Container(
+                height: 550.0,
                 child: PageView.builder(
                     itemCount: pController.questionApi!.length,
                     onPageChanged: (pageNumber) {
@@ -64,113 +64,120 @@ class QuestionScreen extends StatelessWidget {
                           pController.questionApi![snapshot]['options'] as List;
 
                       controller.optionList = options.length;
-                      return Container(
-                        padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
-                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(176, 34, 34, 34),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Spacer(
-                              flex: 1,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                pController.questionApi![snapshot]['question']
-                                    .toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline5!
-                                    .copyWith(color: Colors.white),
+                      return Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
+                          margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(176, 34, 34, 34),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Spacer(
+                                flex: 1,
                               ),
-                            ),
-                            Spacer(
-                              flex: 2,
-                            ),
-                            Container(
-                              height: 400.0,
-                              child: ListView.builder(
-                                itemCount: 4,
-                                itemBuilder: (context, index) => ButtonBar(
-                                  alignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Obx(
-                                      () => Container(
-                                        width: 300,
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: controller.groupValue[
-                                                          snapshot] ==
-                                                      controller.value[snapshot]
-                                                          [index]
-                                                  ? kblue
-                                                  : Color.fromARGB(
-                                                      255, 117, 110, 110),
-                                              width: 2),
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                        child: RadioListTile<int>(
-                                            activeColor: kblue,
-                                            title: Row(
-                                              children: [
-                                                Text(
-                                                  options[index].toString(),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline5!
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                ),
-                                                Spacer(),
-                                              ],
-                                            ),
-                                            controlAffinity:
-                                                ListTileControlAffinity
-                                                    .trailing,
-                                            groupValue:
-                                                controller.groupValue[snapshot],
-                                            value: controller.value[snapshot]
-                                                [index],
-                                            onChanged: (newValue) {
-                                              controller.groupValue[snapshot] =
-                                                  newValue as int;
-                                              if (options[index].toString() ==
-                                                  pController
-                                                      .questionApi![snapshot]
-                                                          ['answer']
-                                                      .toString()) {
-                                                isCorrect = true;
-                                                isSelected = true;
-                                                // print('object');
-                                              } else {
-                                                isCorrect = false;
-                                                isSelected = true;
-                                              }
-                                              updateJsonTime(
-                                                answer: options[index],
-                                                id: pController
-                                                        .questionApi![snapshot]
-                                                    ['id'],
-                                                isCorrect: isCorrect,
-                                                isSelected: isSelected,
-                                              );
-                                              isSelected = false;
-                                              print(options[index]);
-                                            }),
-                                      ),
-                                    ),
-                                  ],
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Text(
+                                  pController.questionApi![snapshot]['question']
+                                      .toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline5!
+                                      .copyWith(color: Colors.white),
                                 ),
                               ),
-                            ),
-                          ],
+                              Spacer(
+                                flex: 2,
+                              ),
+                              Container(
+                                height: 400.0,
+                                child: Expanded(
+                                  child: ListView.builder(
+                                    itemCount: 4,
+                                    itemBuilder: (context, index) => ButtonBar(
+                                      alignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Obx(
+                                          () => Container(
+                                            width: 300,
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: controller.groupValue[
+                                                              snapshot] ==
+                                                          controller.value[
+                                                              snapshot][index]
+                                                      ? kblue
+                                                      : Color.fromARGB(
+                                                          255, 117, 110, 110),
+                                                  width: 2),
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            child: RadioListTile<int>(
+                                                activeColor: kblue,
+                                                title: Row(
+                                                  children: [
+                                                    Text(
+                                                      options[index].toString(),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline5!
+                                                          .copyWith(
+                                                              color:
+                                                                  Colors.white),
+                                                    ),
+                                                    Spacer(),
+                                                  ],
+                                                ),
+                                                controlAffinity:
+                                                    ListTileControlAffinity
+                                                        .trailing,
+                                                groupValue: controller
+                                                    .groupValue[snapshot],
+                                                value: controller
+                                                    .value[snapshot][index],
+                                                onChanged: (newValue) {
+                                                  controller.groupValue[
+                                                          snapshot] =
+                                                      newValue as int;
+                                                  if (options[index]
+                                                          .toString() ==
+                                                      pController.questionApi![
+                                                              snapshot]
+                                                              ['answer']
+                                                          .toString()) {
+                                                    isCorrect = true;
+                                                    isSelected = true;
+                                                    // print('object');
+                                                  } else {
+                                                    isCorrect = false;
+                                                    isSelected = true;
+                                                  }
+                                                  updateJsonTime(
+                                                    answer: options[index],
+                                                    id: pController
+                                                            .questionApi![
+                                                        snapshot]['id'],
+                                                    isCorrect: isCorrect,
+                                                    isSelected: isSelected,
+                                                  );
+                                                  isSelected = false;
+                                                  print(options[index]);
+                                                }),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }),
@@ -268,7 +275,7 @@ class QuestionScreen extends StatelessWidget {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(300, 50),
+                            fixedSize: const Size(250, 50),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),

@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    String selam = 'selam@gmail.com';
+    // String selam = 'selam@gmail.com';
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               SizedBox(
-                height: SizeConfig.screenHeight * 0.04,
+                height: SizeConfig.screenHeight * 0.08,
               ),
               Center(
                 child: Text(
@@ -141,29 +141,30 @@ class _LoginPageState extends State<LoginPage> {
                         error,
                         style: TextStyle(color: Colors.red),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: SizeConfig.screenHeight * 0.08),
-                        child: CheckboxListTile(
-                          title: const Text(
-                            'Remember me',
-                            style: TextStyle(fontSize: 16, color: kWhite1),
-                          ),
-                          value: rememberMe,
-                          onChanged: (value) {
-                            setState(() {
-                              rememberMe = value!;
-                            });
-                          },
-                          controlAffinity: ListTileControlAffinity.leading,
-                          activeColor: kblue,
-                          checkColor: kblack,
-                          side: BorderSide(
-                            color: kWhite1, //your desire colour here
-                            width: 1.5,
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(
+                      //       left: SizeConfig.screenHeight * 0.08),
+                      //   child: CheckboxListTile(
+                      //     title: const Text(
+                      //       'Remember me',
+                      //       style: TextStyle(fontSize: 16, color: kWhite1),
+                      //     ),
+                      //     value: rememberMe,
+                      //     onChanged: (value) {
+                      //       setState(() {
+                      //         rememberMe = value!;
+                      //       });
+                      //     },
+                      //     controlAffinity: ListTileControlAffinity.leading,
+                      //     activeColor: kblue,
+                      //     checkColor: kblack,
+                      //     side: BorderSide(
+                      //       color: kWhite1, //your desire colour here
+                      //       width: 1.5,
+                      //     ),
+                      //   ),
+                      // ),
+
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.03, //25,
                       ),

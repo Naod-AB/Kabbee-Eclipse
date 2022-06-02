@@ -137,8 +137,7 @@ class ProfileScreen extends GetView<ProfileController> {
                               child: const Text('Yes'),
                               isDestructiveAction: true,
                               onPressed: () {
-                                context.router.removeUntil(
-                                    (route) => route.name == LoginRoute.name);
+                                context.router.push(Splash());
                                 logOut();
                               },
                             )

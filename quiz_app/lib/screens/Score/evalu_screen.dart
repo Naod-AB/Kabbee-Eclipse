@@ -55,7 +55,7 @@ class evaluationScreens extends StatelessWidget {
                         .copyWith(color: Colors.white)),
               ),
               SizedBox(
-                height: 600.0,
+                height: 550.0,
                 child: PageView.builder(
                     itemCount: pcontroller.questionApi!.length,
                     onPageChanged: (pageNumber) {
@@ -241,20 +241,26 @@ class evaluationScreens extends StatelessWidget {
                           } else {
                             controller.count = await fetchCorrectAnswers();
                             controller.isEnabled.value = false;
+                            double scorePercent = controller.count /
+                                pcontroller.questionApi!.length *
+                                100;
                             CourseScore score = CourseScore(
                                 courseName: controller.chosenCourse.value,
                                 courseType: controller.chosenCourseType.value,
                                 courseScore: controller.count,
+                                coursePercentage: scorePercent,
                                 userId: pController.userInfo.value!.id);
                             print("after clicking done button ");
                             controller.isFinished = false;
-                            // isSelected = false;
-                            saveUserScore(score);
-                            context.router.push(FinalScore(
-                                outOf: pController.questionApi!.length,
-                                score: controller.count,
-                                optionList: controller.optionList));
-                            controller.qnIndex.value = 1;
+
+                            if (score.coursePercentage != null) {
+                              saveUserScore(score);
+                              context.router.push(FinalScore(
+                                  outOf: pController.questionApi!.length,
+                                  score: controller.count,
+                                  optionList: controller.optionList));
+                              controller.qnIndex.value = 1;
+                            }
                           }
                         },
                         style: ElevatedButton.styleFrom(

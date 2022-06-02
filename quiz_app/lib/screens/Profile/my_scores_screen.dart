@@ -13,7 +13,7 @@ class MyScoresScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     var colorCode;
-
+    print('controller.scores>> ${controller.scores}');
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
