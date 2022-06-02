@@ -10,7 +10,6 @@ import 'package:quiz_app/ui/utils/theme.dart';
 
 import '../../../routes/router.gr.dart';
 
-
 class LanguageChoices extends StatelessWidget {
   LanguageChoices({Key? key, required this.courses}) : super(key: key);
   dynamic courses;
@@ -38,11 +37,13 @@ class LanguageChoices extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     int percentage = 0;
-                    for (var element in pController.scores!) {
-                      if (courses[index]['courseName'] ==
-                          element['courseName']) {
-                        percentage = element['percentage'];
-                        break;
+                    if (pController.scores != null) {
+                      for (var element in pController.scores!) {
+                        if (courses[index]['courseName'] ==
+                            element['courseName']) {
+                          percentage = element['percentage'];
+                          break;
+                        }
                       }
                     }
 
