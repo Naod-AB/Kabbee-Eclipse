@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void authenticateUser() async {
     var pass = passwordController.text.trim();
-
+    bool isAdmin = false;
     var email = emailController.text.trim().toLowerCase();
     print('email ${emailController.text}');
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
@@ -224,7 +224,11 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           error = "";
         });
-        context.router.pushNamed('/category');
+        if (isAdmin == true) {
+          context.router.pushNamed('/dashboard');
+        } else {
+          context.router.pushNamed('/category');
+        }
       } else {
         setState(() {
           error = "Email address or Password is incorrect";

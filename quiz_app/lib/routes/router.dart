@@ -16,14 +16,24 @@ import '../screens/Score/final_practice_score.dart';
 import '../screens/Score/review_page.dart';
 import '../screens/question_screen.dart';
 import '../screens/Score/evalu_screen.dart';
+import 'package:quiz_app/second_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: Splash, initial: true),
-    AutoRoute(path: '/login', page: LoginPage),
-    AutoRoute(path: '/signup', page: OneSignupPage),
     AutoRoute(path: '/category', page: CategoryPage),
+    AutoRoute(path: 'login', page: LoginPage),
+    AutoRoute(
+      path: '/dashboard',
+      page: DashboardPage,
+      children: [
+        AutoRoute(path: 'profile', page: ProfileScreen),
+        AutoRoute(path: 'categories', page: CategoriesPage),
+      ],
+    ),
+    AutoRoute(path: '/signup', page: OneSignupPage),
+
     // AutoRoute(path: '/frontend', page: FrontEndChoices),
     // AutoRoute(path: '/backend', page: BackendChoices),
     // AutoRoute(path: '/cloud', page: CloudChoices),
@@ -34,7 +44,7 @@ import '../screens/Score/evalu_screen.dart';
     AutoRoute(path: '/finalScore', page: FinalScore),
     //AutoRoute(path: '/ExamScore', page: ExamScore),
     AutoRoute(path: '/review_screen', page: ReviewScreen),
-    AutoRoute(path: '/profile', page: ProfileScreen),
+
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),
     AutoRoute(path: '/my_scores', page: MyScoresScreen),
   ],
