@@ -213,13 +213,16 @@ class evaluationScreens extends StatelessWidget {
                                     controller.count =
                                         await fetchCorrectAnswers();
                                     controller.isEnabled.value = false;
-
+                                    double scorePercent = controller.count /
+                                        pcontroller.questionApi!.length *
+                                        100;
                                     CourseScore score = CourseScore(
                                         courseName:
                                             controller.chosenCourse.value,
                                         courseType:
                                             controller.chosenCourseType.value,
                                         courseScore: controller.count,
+                                        coursePercentage: scorePercent,
                                         userId: pController.userInfo.value!.id);
                                     print("after clicking done button ");
                                     controller.isFinished = true;
@@ -240,13 +243,17 @@ class evaluationScreens extends StatelessWidget {
                           } else {
                             controller.count = await fetchCorrectAnswers();
                             controller.isEnabled.value = false;
+                            double scorePercent = controller.count /
+                                pcontroller.questionApi!.length *
+                                100;
                             CourseScore score = CourseScore(
                                 courseName: controller.chosenCourse.value,
                                 courseType: controller.chosenCourseType.value,
                                 courseScore: controller.count,
+                                coursePercentage: scorePercent,
                                 userId: pController.userInfo.value!.id);
                             print("after clicking done button ");
-                            controller.isFinished = false;
+                            controller.isFinished = true;
                             // isSelected = false;
                             saveUserScore(score);
                             context.router.push(FinalScore(
