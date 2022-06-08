@@ -30,9 +30,9 @@
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 4,
-      "percentage": 100,
-      "userId": 638
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 475
     },
     {
       "id": "Dart",
@@ -46,9 +46,9 @@
       "id": "Flutter",
       "courseName": "Flutter",
       "courseType": "Front-End",
-      "courseScore": 4,
-      "percentage": 100,
-      "userId": 638
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 475
     },
     {
       "id": "javascript"
@@ -65,15 +65,15 @@
       "courseType": "cloud_services",
       "courseScore": 1,
       "percentage": 25,
-      "userId": 638
+      "userId": 475
     },
     {
       "id": "Cloud_Computing",
       "courseName": "Cloud_Computing",
       "courseType": "cloud_services",
-      "courseScore": 2,
-      "percentage": 50,
-      "userId": 638
+      "courseScore": 1,
+      "percentage": 25,
+      "userId": 475
     },
     {
       "id": "Analaytics",
@@ -87,7 +87,7 @@
   "answers": [
     {
       "id": 1,
-      "answer": "Google",
+      "answer": "Apple",
       "isCorrect": false,
       "isSelected": false
     },
@@ -99,13 +99,13 @@
     },
     {
       "id": 3,
-      "answer": "Char",
+      "answer": "Double",
       "isCorrect": false,
       "isSelected": false
     },
     {
       "id": 4,
-      "answer": "Output",
+      "answer": "Cin",
       "isCorrect": false,
       "isSelected": false
     }
