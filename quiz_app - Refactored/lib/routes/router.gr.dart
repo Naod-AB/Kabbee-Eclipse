@@ -40,7 +40,7 @@ class AppRouter extends _i13.RootStackRouter {
     },
     LoginRoute.name: (routeData) {
       return _i13.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.LoginPage());
+          routeData: routeData, child:  _i2.LoginPage());
     },
     OneSignupRoute.name: (routeData) {
       final args = routeData.argsAs<OneSignupRouteArgs>(
