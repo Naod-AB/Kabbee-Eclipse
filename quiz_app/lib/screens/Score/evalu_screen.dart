@@ -15,6 +15,7 @@ import '../../controllers/count_down.dart';
 import '../../widgets/common_components/appbar_evalu.dart';
 import '../../controllers/question_controller.dart';
 import '/widgets/pallete.dart';
+//import 'dart:async';
 
 class evaluationScreens extends StatelessWidget {
   evaluationScreens({Key? key, required this.icon, required this.path})
@@ -214,13 +215,16 @@ class evaluationScreens extends StatelessWidget {
                                     controller.count =
                                         await fetchCorrectAnswers();
                                     controller.isEnabled.value = false;
-
+                                    double scorePercent = controller.count /
+                                        pcontroller.questionApi!.length *
+                                        100;
                                     CourseScore score = CourseScore(
                                         courseName:
                                             controller.chosenCourse.value,
                                         courseType:
                                             controller.chosenCourseType.value,
                                         courseScore: controller.count,
+                                        coursePercentage: scorePercent,
                                         userId: pController.userInfo.value!.id);
                                     print("after clicking done button ");
                                     controller.isFinished = true;
@@ -251,7 +255,7 @@ class evaluationScreens extends StatelessWidget {
                                 coursePercentage: scorePercent,
                                 userId: pController.userInfo.value!.id);
                             print("after clicking done button ");
-                            controller.isFinished = false;
+                            controller.isFinished = true;
 
                             if (score.coursePercentage != null) {
                               saveUserScore(score);
