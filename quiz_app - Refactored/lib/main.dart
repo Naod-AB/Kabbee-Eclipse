@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: quizAppTheme().copyWith(
         brightness: Brightness.light,
       ),
-      initialBinding: ProfileBinding(),
+      // initialBinding: ProfileBinding(),
       debugShowMaterialGrid: false,
     );
   }

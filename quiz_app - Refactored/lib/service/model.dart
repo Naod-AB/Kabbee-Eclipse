@@ -8,6 +8,17 @@ import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
+class ChosenModel {
+  final int questionNumber;
+  final String questionAnswer;
+
+  ChosenModel(this.questionNumber, this.questionAnswer);
+
+  @override
+  String toString() {
+    return '$questionNumber $questionAnswer';
+  }
+}
 
 final QuestionControl qcontroller = Get.put(QuestionControl());
 

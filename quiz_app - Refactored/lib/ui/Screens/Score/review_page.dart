@@ -32,7 +32,7 @@ class ReviewScreen extends StatelessWidget {
                 () => Text(
                     controller.qnIndex.toString() +
                         '/' +
-                        pcontroller.questionApi!.length.toString(),
+                        controller.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -42,13 +42,13 @@ class ReviewScreen extends StatelessWidget {
               SizedBox(
                 height: 600.0,
                 child: PageView.builder(
-                    itemCount: pcontroller.questionApi!.length,
+                    itemCount: controller.questionApi!.length,
                     onPageChanged: (pageNumber) {
                       controller.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
                       var options =
-                          pcontroller.questionApi![snapshot]['options'];
+                          controller.questionApi![snapshot]['options'];
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -64,7 +64,7 @@ class ReviewScreen extends StatelessWidget {
                               flex: 1,
                             ),
                             Text(
-                              pcontroller.questionApi![snapshot]['question']
+                              controller.questionApi![snapshot]['question']
                                   .toString(),
                               style: Theme.of(context)
                                   .textTheme
@@ -92,13 +92,13 @@ class ReviewScreen extends StatelessWidget {
                                                       controller.value[snapshot]
                                                           [index]
                                                   ? options[index] ==
-                                                          pcontroller.questionApi![
+                                                          controller.questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
                                                       : kred
                                                   : options[index] ==
-                                                          pcontroller.questionApi![
+                                                          controller.questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
@@ -144,7 +144,7 @@ class ReviewScreen extends StatelessWidget {
               ),
               Spacer(),
               Obx(
-                () => pcontroller.questionApi!.length ==
+                () => controller.questionApi!.length ==
                         controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
