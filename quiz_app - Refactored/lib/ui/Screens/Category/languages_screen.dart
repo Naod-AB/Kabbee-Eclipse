@@ -21,7 +21,7 @@ class LanguageChoices extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: quizeAppbar(context),
+          appBar: quizAppBar(context:context, iconUrl: ''),
           body: Column(
             children: [
               const SizedBox(

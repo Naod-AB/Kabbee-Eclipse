@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/common_widgets/default_card.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
@@ -18,7 +19,8 @@ class ChooseType extends StatelessWidget {
   dynamic icon;
   String path;
 
-  final ProfileController controller = Get.put(ProfileController());
+  final ProfileController pController = Get.put(ProfileController());
+  final QuestionControl controller = Get.put(QuestionControl());
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ChooseType extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(icon, context),
+          appBar: quizAppBar(context:context, iconUrl:icon ),
           body: Column(
             children: [
               const SizedBox(
@@ -47,11 +49,9 @@ class ChooseType extends StatelessWidget {
                     onpressed: () async {
                       controller.questionApi = await fetchQuestionsApi(
                           path.toLowerCase() + "_practice");
-
-                      print(path.toLowerCase() + "_practice");
                       String paths = path.toLowerCase() + "_practice";
                       context.router
-                          .push(QuestionScreen(icon: icon, path: paths));
+                          .push(QuestionsScreen(icon: icon, path: paths, isFinal: false));
                     },
                   ),
                   const SizedBox(
@@ -70,16 +70,16 @@ class ChooseType extends StatelessWidget {
                             "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
                         buttons: [
                           DialogButton(
-                            child: Text(
+                            child: const Text(
                               "CANCEL",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () => Navigator.pop(context),
-                            color: Color.fromRGBO(0, 179, 134, 1.0),
+                            color: const Color.fromRGBO(0, 179, 134, 1.0),
                           ),
                           DialogButton(
-                            child: Text(
+                            child: const Text(
                               "OK",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
@@ -87,13 +87,11 @@ class ChooseType extends StatelessWidget {
                             onPressed: () async {
                               controller.questionApi = await fetchQuestionsApi(
                                   path.toLowerCase() + "_final");
-
-                              print(path.toLowerCase() + "_final");
                               String paths = path.toLowerCase() + "_final";
                               context.router.push(
-                                  EvaluationScreens(icon: icon, path: paths));
+                                  QuestionsScreen(icon: icon, path: paths, isFinal: true));
                             },
-                            gradient: LinearGradient(colors: [
+                            gradient: const LinearGradient(colors: [
                               Color.fromARGB(255, 233, 235, 64),
                               Color.fromARGB(255, 192, 164, 4)
                             ]),

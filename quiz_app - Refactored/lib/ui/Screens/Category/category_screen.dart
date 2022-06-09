@@ -17,7 +17,7 @@ class CategoryPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: quizeAppbar(context),
+           appBar: quizAppBar(context: context, iconUrl: ''),
           body: Center(
             child: SingleChildScrollView(
               child: Column(

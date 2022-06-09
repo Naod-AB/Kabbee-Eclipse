@@ -4,9 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 import 'package:quiz_app/routes/router.gr.dart';
-
 
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
@@ -14,6 +12,8 @@ import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/string_extension.dart';
+
+import '../../../webviewSlider.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -118,6 +118,28 @@ class ProfileScreen extends GetView<ProfileController> {
                         ),
                       ),
                       true),
+                  buildDivider(),
+                  buildTile(
+                      Icons.recommend_outlined,
+                      customText(
+                          'Recommendations', 18, true, false, primaryColor),
+                      customText('kabbee recommend you to Visit', 13, false,
+                          false, secondaryColor),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Webslider()),
+                          );
+                        },
+                        child: const Icon(
+                          Icons.view_carousel_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                      true),
+
                   buildDivider(),
 
                   GestureDetector(

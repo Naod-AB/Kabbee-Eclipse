@@ -217,13 +217,18 @@ class QuestionScreen extends _i13.PageRouteInfo<QuestionScreenArgs> {
   QuestionScreen({_i14.Key? key, required dynamic icon, required String path})
       : super(QuestionScreen.name,
             path: '/questions',
-            args: QuestionScreenArgs(key: key, icon: icon, path: path));
+            args: QuestionsScreenArgs(
+                key: key, icon: icon, path: path, isFinal: isFinal));
 
-  static const String name = 'QuestionScreen';
+  static const String name = 'QuestionsScreen';
 }
 
-class QuestionScreenArgs {
-  const QuestionScreenArgs({this.key, required this.icon, required this.path});
+class QuestionsScreenArgs {
+  const QuestionsScreenArgs(
+      {this.key,
+      required this.icon,
+      required this.path,
+      required this.isFinal});
 
   final _i14.Key? key;
 
@@ -261,7 +266,7 @@ class EvaluationScreensArgs {
 
   @override
   String toString() {
-    return 'EvaluationScreensArgs{key: $key, icon: $icon, path: $path}';
+    return 'QuestionsScreenArgs{key: $key, icon: $icon, path: $path, isFinal: $isFinal}';
   }
 }
 
