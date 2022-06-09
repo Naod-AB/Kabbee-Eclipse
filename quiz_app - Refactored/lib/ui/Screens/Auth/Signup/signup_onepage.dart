@@ -7,6 +7,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart';
@@ -21,51 +22,30 @@ import 'signUp_password.dart';
 import 'signup_email.dart';
 import 'signup_name.dart';
 
-class OneSignupPage extends StatefulWidget {
-  OneSignupPage({Key? key}) : super(key: key);
+// class OneSignupPage extends StatefulWidget {
+//   OneSignupPage({Key? key}) : super(key: key);
 
   
   
 
-  @override
-  State<OneSignupPage> createState() => _OneSignupPageState();
-}
+//   @override
+//   State<OneSignupPage> createState() => _OneSignupPageState();
+// }
 
-class _OneSignupPageState extends State<OneSignupPage> {
-  ProfileController controller = Get.find();
-  //var emailFieldkey = GlobalKey<FormFieldState>();
+class OneSignupPage extends StatelessWidget {
+  ProfileController profilecontroller = Get.find();
+  AuthController  authController = Get.put(AuthController());
   final _formKey = GlobalKey<FormState>();
-  // var passFieldKey = GlobalKey<FormFieldState>();
-  // var confirmFieldKey = GlobalKey<FormFieldState>();
-  // var firstNameFieldKey = GlobalKey<FormFieldState>();
-  // var lastNameFieldKey = GlobalKey<FormFieldState>(); 
-  int _index=0;
-   List<Users> allUsers=[];
-   @override
-   void dispose() {
-    // TODO: implement dispose
 
-    controller.dispose();
-  }
-  @override
-  void initState() {
-     getAllUsers();
-    
-    super.initState();
-  }
- Future<void> getAllUsers()async{
-   List<Users> temp;
+  OneSignupPage({Key? key}) : super(key: key);
+ 
    
-    temp = await fetchAllUsers();
-    setState(() {
-     allUsers=temp;
-   });
-   
- }
+ 
   @override
   Widget build(BuildContext context) {
     Users user = Users();
     EmailValidator emailValidator = EmailValidator();
+
 
     return Scaffold(
       appBar: AppBar(
@@ -83,7 +63,7 @@ class _OneSignupPageState extends State<OneSignupPage> {
               Theme(
                 data: ThemeData(canvasColor: bgColor),
                 child: Expanded(
-                  child: Stepper(
+                  child: Obx(()=> Stepper(
                     controlsBuilder: (context, ControlsDetails details) {
                               return Row(
                                 children: <Widget>[
@@ -94,49 +74,49 @@ class _OneSignupPageState extends State<OneSignupPage> {
                             },
                     
                     type: StepperType.horizontal,
-                    currentStep: _index,
+                    currentStep: authController.signUpIndex.value,
                     steps: [
                             
                       Step(
-                              state: _index==0?StepState.editing:StepState.complete,                        
-                              isActive: _index>=0,
+                              state: authController.signUpIndex.value==0?StepState.editing:StepState.complete,                        
+                              isActive: authController.signUpIndex.value>=0,
                               title:  Text( "Email",style:TextStyle(color: Colors.white),) ,
                               content:Center(
                                 child:SignupEmail(
                                   user: user,
-                                  controller: controller.emailController.value,//_emailController ,
-                                  emailKey: controller.emailFieldKey.value,//emailFieldkey, 
+                                  controller: profilecontroller.emailController.value,//_emailController ,
+                                  emailKey: profilecontroller.emailFieldKey.value,//emailFieldkey, 
                                   validator: emailValidator, 
-                                  allUsers: allUsers,)
+                                  allUsers: authController.allusers,)
                                   )
                       ),
                       Step(
-                              state: _index<=1?StepState.editing:StepState.complete,
-                              isActive: _index>=1,
+                              state: authController.signUpIndex.value<=1?StepState.editing:StepState.complete,
+                              isActive: authController.signUpIndex.value>=1,
                               title:  Text( "Password",style:TextStyle(color: Colors.white)) ,
                               content: Center(
                                 child: SignupPassword(
                                   user: user,
-                                  passController: controller.passwordController.value,//_passwordController, 
-                                  passKey: controller.passFieldKey.value,//passFieldKey, 
-                                  confirmController: controller.confirmController.value,// _confimController, 
-                                  confirmKey: controller.confirmFieldKey.value//confirmFieldKey,
+                                  passController: profilecontroller.passwordController.value,//_passwordController, 
+                                  passKey: profilecontroller.passFieldKey.value,//passFieldKey, 
+                                  confirmController: profilecontroller.confirmController.value,// _confimController, 
+                                  confirmKey: profilecontroller.confirmFieldKey.value//confirmFieldKey,
                                   )
                                 )
                               ),
                       Step(
-                                  state:_index<=1?StepState.editing:StepState.complete,
-                                  isActive: _index>=2,
+                                  state:authController.signUpIndex.value<=1?StepState.editing:StepState.complete,
+                                  isActive: authController.signUpIndex.value>=2,
                                   title: const Text( "Full Name",style:TextStyle(color: Colors.white)) ,
                                   content://Container()
                                     SignupName(
-                                      firstNameController: controller.firstNameController.value,//_firstNameController, 
-                                      firtNameKey: controller.firstNameFieldKey.value,//firstNameFieldKey, 
-                                      lastNameController: controller.lastNameController.value,//_lastNameController, 
-                                      lastNameKey: controller.lastNameFieldKey.value,//lastNameFieldKey, 
+                                      firstNameController: profilecontroller.firstNameController.value,//_firstNameController, 
+                                      firtNameKey: profilecontroller.firstNameFieldKey.value,//firstNameFieldKey, 
+                                      lastNameController: profilecontroller.lastNameController.value,//_lastNameController, 
+                                      lastNameKey: profilecontroller.lastNameFieldKey.value,//lastNameFieldKey, 
                                       user: user,)
                                   ),                         
-                                  ]),
+                                  ])),
                  ),
                 ),
                 SizedBox(
@@ -147,14 +127,15 @@ class _OneSignupPageState extends State<OneSignupPage> {
                       horizontal: SizeConfig.screenWidth * 0.09),
                   child: Row(
                     children: [
-                      if (_index != 0)
+                      if (authController.signUpIndex.value != 0)
                         Expanded(
                           child: RoundedButton(
                               buttonName: "Back",
                               pressed: () {
-                                setState(() {
-                                  _index--;
-                                });
+                                authController.signUpIndex.value--;
+                                // setState(() {
+                                //   _index--;
+                                // });
                               }),
                         ),
                     
@@ -163,31 +144,34 @@ class _OneSignupPageState extends State<OneSignupPage> {
                       child: RoundedButton(
                         buttonName: "Next", 
                         pressed:() async {
-
-      if(_index==0){                   
-      if(controller.emailFieldKey.value.currentState!.validate()){
+     print(authController.signUpIndex.value);
+      if(authController.signUpIndex.value==0){                   
+      if(profilecontroller.emailFieldKey.value.currentState!.validate()){
         //print(emailFieldkey.currentState!.errorText);
-          setState(() {
-        _index+=1;
-      });
+        authController.signUpIndex.value++;
+        print(authController.signUpIndex.value);
+      //     setState(() {
+      //   _index+=1;
+      // });
       }
-    }else if(_index==1){
-      if(controller.passFieldKey.value.currentState!.validate()&&
-          controller.confirmFieldKey.value.currentState!.validate()){
+    }else if(authController.signUpIndex.value==1){
+      if(profilecontroller.passFieldKey.value.currentState!.validate()&&
+          profilecontroller.confirmFieldKey.value.currentState!.validate()){
         // print("passFieldKey.currentState!.errorText");
         // print(_index);
-          setState(() {
-        _index+=1;
-       // print(_index);
-      });
+         authController.signUpIndex.value++;
+      //     setState(() {
+      //   _index+=1;
+      //  // print(_index);
+      // });
       }
 
-    } else if(_index==2){
-      print(_index);
-      if(controller.firstNameFieldKey.value.currentState!.validate()&&
-          controller.lastNameFieldKey.value.currentState!.validate()){
+    } else if(authController.signUpIndex.value==2){
+      print(authController.signUpIndex.value);
+      if(profilecontroller.firstNameFieldKey.value.currentState!.validate()&&
+          profilecontroller.lastNameFieldKey.value.currentState!.validate()){
             _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-           user.gender=controller.genderIndex.value?"Male":"Female";
+           user.gender=profilecontroller.genderIndex.value?"Male":"Female";
            var  id = Random();
              user.id=id.nextInt(1000);
             await createUser(user);
@@ -209,27 +193,29 @@ class _OneSignupPageState extends State<OneSignupPage> {
   }
 
   void fieldValidation() {
-    if (_index == 0) {
-      if (controller.emailFieldKey.value.currentState!.validate()) {
+    if (authController.signUpIndex.value == 0) {
+      if (profilecontroller.emailFieldKey.value.currentState!.validate()) {
         //print(emailFieldkey.currentState!.errorText);
-        setState(() {
-          _index += 1;
-        });
+         authController.signUpIndex.value++;
+        // setState(() {
+        //   _index += 1;
+        // });
       }
-    } else if (_index == 1) {
-      if (controller.passFieldKey.value.currentState!.validate() &&
-          controller.confirmFieldKey.value.currentState!.validate()) {
+    } else if (authController.signUpIndex.value == 1) {
+      if (profilecontroller.passFieldKey.value.currentState!.validate() &&
+          profilecontroller.confirmFieldKey.value.currentState!.validate()) {
         print("passFieldKey.currentState!.errorText");
-        print(_index);
-        setState(() {
-          _index += 1;
-          print(_index);
-        });
+        print(authController.signUpIndex.value);
+         authController.signUpIndex.value++;
+        // setState(() {
+        //   _index += 1;
+        //   print(_index);
+        // });
       }
-    } else if (_index == 2) {
-      print(_index);
-      if (controller.firstNameFieldKey.value.currentState!.validate() &&
-          controller.lastNameFieldKey.value.currentState!.validate()) {
+    } else if (authController.signUpIndex.value == 2) {
+      print(authController.signUpIndex.value);
+      if (profilecontroller.firstNameFieldKey.value.currentState!.validate() &&
+          profilecontroller.lastNameFieldKey.value.currentState!.validate()) {
         _formKey.currentState!
             .save(); // saving the data in the in a local API (Json format)
 

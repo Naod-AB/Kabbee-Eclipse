@@ -18,7 +18,7 @@ class Splash extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 4000), () {
-      context.router.push(const LoginRoute());
+      context.router.push( LoginRoute());
     });
 
     SizeConfig().init(context);

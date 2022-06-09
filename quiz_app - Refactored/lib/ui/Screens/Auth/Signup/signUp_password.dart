@@ -7,8 +7,11 @@ import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
 
-class SignupPassword extends StatefulWidget {
-  Users user;
+
+
+class SignupPassword extends StatelessWidget {
+  ProfileController profileController = Get.put(ProfileController());
+    Users user;
   TextEditingController passController;
   TextEditingController confirmController;
   GlobalKey<FormFieldState> passKey;
@@ -27,12 +30,6 @@ class SignupPassword extends StatefulWidget {
       required this.confirmKey})
       : super(key: key);
 
-  @override
-  State<SignupPassword> createState() => _SignupPasswordState();
-}
-
-class _SignupPasswordState extends State<SignupPassword> {
-  ProfileController controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     bool hidP = false;
@@ -64,10 +61,10 @@ class _SignupPasswordState extends State<SignupPassword> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextFormField(
-                  controller: widget.passController,
-                  key: widget.passKey,
+                  controller: passController,
+                  key: passKey,
                   onSaved: (value) {
-                    widget.user.password = value;
+                    user.password = value;
                   },
                   validator: (value) {
                     if (!validateStructure(value!)) {
@@ -83,17 +80,18 @@ class _SignupPasswordState extends State<SignupPassword> {
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: IconButton(
                         icon: Icon(
-                          controller.x.value
+                          profileController.x.value
                               ? Icons.visibility_off
                               : Icons.visibility,
                           color:
-                              controller.x.value ? orangeColor : Colors.white,
+                              profileController.x.value ? orangeColor : Colors.white,
                         ),
                         onPressed: () {
-                          setState(() {
-                            controller.x.value = !controller.x.value;
-                            print(controller.x.value);
-                          });
+                          profileController.x.value = !profileController.x.value;
+                          // setState(() {
+                          //   profileController.x.value = !profileController.x.value;
+                          //   print(profileController.x.value);
+                          // });
                         },
                       ),
                       //passwordVisibilityBtn(),
@@ -109,17 +107,17 @@ class _SignupPasswordState extends State<SignupPassword> {
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  obscureText: controller.x.value,
+                  obscureText: profileController.x.value,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 TextFormField(
-                  controller: widget.confirmController,
-                  key: widget.confirmKey,
+                  controller: confirmController,
+                  key: confirmKey,
                   validator: (value) {
-                    if (widget.confirmController.text !=
-                        widget.passController.text) {
+                    if (confirmController.text !=
+                        passController.text) {
                       return 'The Two password need to be  the same ';
                     }
                   },
@@ -132,17 +130,18 @@ class _SignupPasswordState extends State<SignupPassword> {
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: IconButton(
                         icon: Icon(
-                          controller.y.value
+                          profileController.y.value
                               ? Icons.visibility_off
                               : Icons.visibility,
                           color:
-                              controller.y.value ? orangeColor : Colors.white,
+                              profileController.y.value ? orangeColor : Colors.white,
                         ),
                         onPressed: () {
-                          setState(() {
-                            controller.y.value = !controller.y.value;
-                            print(controller.y.value);
-                          });
+                          profileController.y.value = !profileController.y.value;
+                          // setState(() {
+                          //   profileController.y.value = !profileController.y.value;
+                          //   print(profileController.y.value);
+                          // });
                         },
                       ),
                       //passwordVisibilityBtn(),
@@ -153,7 +152,7 @@ class _SignupPasswordState extends State<SignupPassword> {
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  obscureText: controller.y.value,
+                  obscureText: profileController.y.value,
                 ),
                 const SizedBox(
                   height: 10,
