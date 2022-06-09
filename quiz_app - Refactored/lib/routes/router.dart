@@ -18,8 +18,8 @@ import 'package:quiz_app/ui/Screens/Splash/splash_screen.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: Splash, initial: true),
-    AutoRoute(path: '/login', page: LoginPage),
+    AutoRoute(page: LoginPage, initial: true),
+    //AutoRoute(path: '/login', page: LoginPage),
     AutoRoute(path: '/signup', page: OneSignupPage),
     AutoRoute(path: '/category', page: CategoryPage),
     // AutoRoute(path: '/frontend', page: FrontEndChoices),

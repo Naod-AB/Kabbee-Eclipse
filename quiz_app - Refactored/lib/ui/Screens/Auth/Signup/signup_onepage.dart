@@ -22,20 +22,12 @@ import 'signUp_password.dart';
 import 'signup_email.dart';
 import 'signup_name.dart';
 
-// class OneSignupPage extends StatefulWidget {
-//   OneSignupPage({Key? key}) : super(key: key);
 
-  
-  
-
-//   @override
-//   State<OneSignupPage> createState() => _OneSignupPageState();
-// }
 
 class OneSignupPage extends StatelessWidget {
   ProfileController profilecontroller = Get.find();
   AuthController  authController = Get.put(AuthController());
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   OneSignupPage({Key? key}) : super(key: key);
  
@@ -55,7 +47,7 @@ class OneSignupPage extends StatelessWidget {
       ),
       backgroundColor: Colors.black,
       body: Form(
-        key: _formKey,
+        key: formKey,
         child: Container(
           height: SizeConfig.screenHeight *0.85 ,
           child: Column(
@@ -133,9 +125,7 @@ class OneSignupPage extends StatelessWidget {
                               buttonName: "Back",
                               pressed: () {
                                 authController.signUpIndex.value--;
-                                // setState(() {
-                                //   _index--;
-                                // });
+                               
                               }),
                         ),
                     
@@ -143,45 +133,8 @@ class OneSignupPage extends StatelessWidget {
                     Expanded(
                       child: RoundedButton(
                         buttonName: "Next", 
-                        pressed:() async {
-     print(authController.signUpIndex.value);
-      if(authController.signUpIndex.value==0){                   
-      if(profilecontroller.emailFieldKey.value.currentState!.validate()){
-        //print(emailFieldkey.currentState!.errorText);
-        authController.signUpIndex.value++;
-        print(authController.signUpIndex.value);
-      //     setState(() {
-      //   _index+=1;
-      // });
-      }
-    }else if(authController.signUpIndex.value==1){
-      if(profilecontroller.passFieldKey.value.currentState!.validate()&&
-          profilecontroller.confirmFieldKey.value.currentState!.validate()){
-        // print("passFieldKey.currentState!.errorText");
-        // print(_index);
-         authController.signUpIndex.value++;
-      //     setState(() {
-      //   _index+=1;
-      //  // print(_index);
-      // });
-      }
-
-    } else if(authController.signUpIndex.value==2){
-      print(authController.signUpIndex.value);
-      if(profilecontroller.firstNameFieldKey.value.currentState!.validate()&&
-          profilecontroller.lastNameFieldKey.value.currentState!.validate()){
-            _formKey.currentState!.save();// saving the data in the in a local API (Json format)
-           user.gender=profilecontroller.genderIndex.value?"Male":"Female";
-           var  id = Random();
-             user.id=id.nextInt(1000);
-            await createUser(user);
-           // Get.dialog(Text("Created an account successfully "));
-            context.router.pushNamed("/login");
-      // Get.to(LoginPage());
-
-                                }
-                              }
-                            }),
+                        pressed: ()=>authController.signUp(user, profilecontroller ,formKey ,context)
+                        ),
                       ),
                     ],
                   ),
@@ -192,35 +145,5 @@ class OneSignupPage extends StatelessWidget {
     );
   }
 
-  void fieldValidation() {
-    if (authController.signUpIndex.value == 0) {
-      if (profilecontroller.emailFieldKey.value.currentState!.validate()) {
-        //print(emailFieldkey.currentState!.errorText);
-         authController.signUpIndex.value++;
-        // setState(() {
-        //   _index += 1;
-        // });
-      }
-    } else if (authController.signUpIndex.value == 1) {
-      if (profilecontroller.passFieldKey.value.currentState!.validate() &&
-          profilecontroller.confirmFieldKey.value.currentState!.validate()) {
-        print("passFieldKey.currentState!.errorText");
-        print(authController.signUpIndex.value);
-         authController.signUpIndex.value++;
-        // setState(() {
-        //   _index += 1;
-        //   print(_index);
-        // });
-      }
-    } else if (authController.signUpIndex.value == 2) {
-      print(authController.signUpIndex.value);
-      if (profilecontroller.firstNameFieldKey.value.currentState!.validate() &&
-          profilecontroller.lastNameFieldKey.value.currentState!.validate()) {
-        _formKey.currentState!
-            .save(); // saving the data in the in a local API (Json format)
-
-        Get.to(LoginPage());
-      }
-    }
-  }
+  
 }

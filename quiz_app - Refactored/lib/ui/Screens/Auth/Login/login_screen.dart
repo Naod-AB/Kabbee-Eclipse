@@ -1,75 +1,104 @@
 // import 'package:flutter/material.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:get/get.dart';
+// import 'package:wc_form_validators/wc_form_validators.dart';
 
-// import '../../../utils/pallete.dart';
-// import '../Controllers/auth_controller.dart';
-// class LoginPage extends StatelessWidget {
-//    LoginPage({Key? key}) : super(key: key);
-//     GlobalKey<FormState> formKey = GlobalKey<FormState>();
+// class LoginPage extends StatefulWidget {
+//   const LoginPage({ Key? key}) : super(key: key);
 
 //   @override
+//   _LoginPageState createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<LoginPage> {
+//   TextEditingController email = TextEditingController();
+//   TextEditingController password = TextEditingController();
+//   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+//   @override
 //   Widget build(BuildContext context) {
-//     AuthController authController = Get.put(AuthController());
-    
+//     print("reloading");
 //     return Scaffold(
-//       body: Form(
-//             key:formKey, 
-//             child: Column( 
-//               children: [
-//                 SizedBox(height: 40,),
-//                 TextFormField(
-//                   controller: authController.loginEmailController,
-//                   decoration:  InputDecoration(
-//                           filled: true,
-//                          fillColor: Colors.grey[500]!.withOpacity(0.5),
-//                          border: OutlineInputBorder(
-//                              borderRadius:  BorderRadius.circular(15)),
-//                             suffixIcon: const Padding(
-//                             padding: EdgeInsets.symmetric(horizontal: 20.0),
-//                             child: Icon(
-//                               FontAwesomeIcons.solidEnvelope,
-//                               size: 28,
-//                               color: kblue,
-//                             ),
-//                           ),
-//                           hintText: 'Enter email',
-//                           hintStyle: kBodyText,
+//       body: Center(
+//         child: SingleChildScrollView(
+//           child: Column(
+//             children: [
+//               Image.asset('assets/images/flutter_logo.png', scale: 4.0),
+//               Container(
+//                 padding: EdgeInsets.all(10),
+//                 child: Form(
+//                   key: _formKey,
+//                   child: Column(
+//                     children: [
+//                       Text(
+//                         'Flutter Login',
+//                         style: TextStyle(fontSize: 30),
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         child: TextFormField(
+//                           controller: email,
+//                           decoration: InputDecoration(
+//                               border: UnderlineInputBorder(
+//                                   borderSide:
+//                                       BorderSide(width: 1, color: Colors.grey)),
+//                               labelText: 'Email'),
+//                           validator: Validators.compose([
+//                             Validators.required('email is required'),
+//                             Validators.email('invalid email address')
+//                           ]),
 //                         ),
-                 
-//                 ),
-
-
-
-//                  const SizedBox(
-//                     height: 10,
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         child: TextFormField(
+//                           controller: password,
+//                           obscureText: true,
+//                           decoration: InputDecoration(
+//                               border: UnderlineInputBorder(
+//                                   borderSide:
+//                                       BorderSide(width: 1, color: Colors.grey)),
+//                               labelText: 'Password'),
+//                           validator: Validators.compose(
+//                               [Validators.required('password is required')]),
+//                         ),
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         width: MediaQuery.of(context).size.width,
+//                         height: 50,
+//                         child: FlatButton(
+//                           onPressed: () {
+//                             if (_formKey.currentState!.validate()) {
+//                               print(email.text);
+//                               print(password.text);
+//                               print('success');
+//                             }
+//                           },
+//                           child: Text("Login"),
+//                           textColor: Colors.white,
+//                           color: Colors.black,
+//                           shape: new RoundedRectangleBorder(
+//                               borderRadius: new BorderRadius.circular(10)),
+//                         ),
+//                       )
+//                     ],
 //                   ),
-//                  TextFormField(
-//                   controller: authController.loginPasswordController,
-//                   //initialValue: authController.loginPasswordController.text,
-//                   decoration: InputDecoration(
-//                           filled: true,
-//                           fillColor: Colors.grey[500]!.withOpacity(0.5),
-//                           border: OutlineInputBorder(
-//                               borderRadius: BorderRadius.circular(15)),
-//                           suffixIcon: Padding(
-//                             padding: EdgeInsets.symmetric(horizontal: 20.0),
-//                             child: Icon(
-//                               FontAwesomeIcons.solidEnvelope,
-//                               size: 28,
-//                               color: kblue,
-//                             ),
-//                           ),
-//                           hintText: 'Enter email',
-//                           hintStyle: kBodyText,
-//                         ),
-//                 )
-//               ],
-//             )    ,
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
 //       ),
 //     );
 //   }
 // }
+
+
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -82,7 +111,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
-//import 'package:quiz_app/ui/utils/size_config.dart';
+import 'package:quiz_app/ui/utils/size_config.dart';
 
 
 
@@ -100,7 +129,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String selam = 'selam@gmail.com';
-    print("the page is reloading on it self ");
+    //authController.getdata(context);
+    print("the page is reloading on it login ");
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -131,9 +162,9 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextFormField(
+                      Obx(()=> TextFormField(
                         key: emailKey,
-                        controller: emailController,
+                        controller: authController.loginEmailController.value,
                         validator: (value) {
                           if (value!.isEmpty) return "Email canot be empty ";
                         },
@@ -157,13 +188,13 @@ class LoginPage extends StatelessWidget {
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         obscureText: false,
-                      ),
+                      )),
                       SizedBox(
                         height: 10//SizeConfig.screenHeight * 0.02,
                       ),
                       Obx(()=>TextFormField(
                         key: passKey,
-                        controller: passwordController,
+                        controller: authController.loginPasswordController.value,
                         validator: (value) {
                           if (value!.isEmpty) return "Password canot be empty";
                         },
@@ -217,7 +248,8 @@ class LoginPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(
                             left:40 ),//SizeConfig.screenHeight * 0.08
-                        child: Obx(()=>CheckboxListTile(
+                        child: Obx(
+                          ()=>CheckboxListTile(
                           title: const Text(
                             'Remember me',
                             style: TextStyle(fontSize: 16, color: kWhite1),
@@ -239,11 +271,17 @@ class LoginPage extends StatelessWidget {
                         ),)
                       ),
                       SizedBox(
-                        height:15//SizeConfig.screenHeight * 0.03, //25,
+                        height:15 //SizeConfig.screenHeight * 0.03, //25,
                       ),
                       button.RoundedButton(
                           buttonName: 'Login',
-                          pressed:()=> authenticateUser(context)),
+                          pressed:()=> authController.
+                          authenticateUser(
+                             context: context,
+                             email: authController.loginEmailController.value,
+                             emailKey: emailKey,
+                             passKey: passKey,
+                             password: authController.loginPasswordController.value)),
                       SizedBox(height:15 ),//SizeConfig.screenHeight * 0.03
                       SizedBox(
                         width: 50,//SizeConfig.screenWidth * 0.1,
@@ -283,33 +321,4 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void authenticateUser(BuildContext context) async {
-    var pass = passwordController.text.trim();
-
-    var email = emailController.text.trim().toLowerCase();
-    print('email ${emailController.text}');
-    if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
-      profileController.userInfo.value = await fetchUser(email);
-      if (profileController.userInfo.value != null &&
-          profileController.userInfo.value!.password == pass) {
-        profileController.scores =
-            await fetchUserScores(profileController.userInfo.value!.id);
-        // print('from login >>>> ${profileController.scores}');
-        authController.error.value="";
-        // setState(() {
-        //   error = "";
-        // });
-        context.router.pushNamed('/category');
-      } else {
-        print("else to add the error");
-        print(authController.error.value);
-        authController.error.value="Email address or Password is incorrect";
-        print(authController.error.value);
-
-        // setState(() {
-        //   error = "Email address or Password is incorrect";
-        // });
-      }
-    }
   }
-}
