@@ -120,9 +120,6 @@ class LoginPage extends StatelessWidget {
   
   ProfileController profileController = Get.find();
   AuthController authController = Get.put(AuthController());
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
