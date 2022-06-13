@@ -1,6 +1,108 @@
+// import 'package:flutter/material.dart';
+// import 'package:wc_form_validators/wc_form_validators.dart';
+
+// class LoginPage extends StatefulWidget {
+//   const LoginPage({ Key? key}) : super(key: key);
+
+//   @override
+//   _LoginPageState createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<LoginPage> {
+//   TextEditingController email = TextEditingController();
+//   TextEditingController password = TextEditingController();
+//   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+//   @override
+//   Widget build(BuildContext context) {
+//     print("reloading");
+//     return Scaffold(
+//       body: Center(
+//         child: SingleChildScrollView(
+//           child: Column(
+//             children: [
+//               Image.asset('assets/images/flutter_logo.png', scale: 4.0),
+//               Container(
+//                 padding: EdgeInsets.all(10),
+//                 child: Form(
+//                   key: _formKey,
+//                   child: Column(
+//                     children: [
+//                       Text(
+//                         'Flutter Login',
+//                         style: TextStyle(fontSize: 30),
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         child: TextFormField(
+//                           controller: email,
+//                           decoration: InputDecoration(
+//                               border: UnderlineInputBorder(
+//                                   borderSide:
+//                                       BorderSide(width: 1, color: Colors.grey)),
+//                               labelText: 'Email'),
+//                           validator: Validators.compose([
+//                             Validators.required('email is required'),
+//                             Validators.email('invalid email address')
+//                           ]),
+//                         ),
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         child: TextFormField(
+//                           controller: password,
+//                           obscureText: true,
+//                           decoration: InputDecoration(
+//                               border: UnderlineInputBorder(
+//                                   borderSide:
+//                                       BorderSide(width: 1, color: Colors.grey)),
+//                               labelText: 'Password'),
+//                           validator: Validators.compose(
+//                               [Validators.required('password is required')]),
+//                         ),
+//                       ),
+//                       SizedBox(
+//                         height: 20,
+//                       ),
+//                       Container(
+//                         width: MediaQuery.of(context).size.width,
+//                         height: 50,
+//                         child: FlatButton(
+//                           onPressed: () {
+//                             if (_formKey.currentState!.validate()) {
+//                               print(email.text);
+//                               print(password.text);
+//                               print('success');
+//                             }
+//                           },
+//                           child: Text("Login"),
+//                           textColor: Colors.white,
+//                           color: Colors.black,
+//                           shape: new RoundedRectangleBorder(
+//                               borderRadius: new BorderRadius.circular(10)),
+//                         ),
+//                       )
+//                     ],
+//                   ),
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 
 
 // ;
@@ -11,45 +113,39 @@ import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
 
-class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true;
-  bool rememberMe = false;
-  String error = "";
+class LoginPage extends StatelessWidget {
+  
   
   ProfileController profileController = Get.find();
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
     String selam = 'selam@gmail.com';
+    //authController.getdata(context);
+    print("the page is reloading on it login ");
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth * 0.05),
+            EdgeInsets.symmetric(horizontal:20 ),//SizeConfig.screenWidth * 0.05
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: SizeConfig.screenHeight * 0.04,
+                height: 20 //SizeConfig.screenHeight * 0.04,
               ),
               Center(
                 child: Text(
                   'Login',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: getProportionateScreenWidth(40),
+                      fontSize: 20,//getProportionateScreenWidth(40),
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -59,13 +155,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth * 0.05),
+                    horizontal: 25),//SizeConfig.screenWidth * 0.05
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextFormField(
+                      Obx(()=> TextFormField(
                         key: emailKey,
-                        controller: emailController,
+                        controller: authController.loginEmailController.value,
                         validator: (value) {
                           if (value!.isEmpty) return "Email canot be empty ";
                         },
@@ -89,13 +185,13 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         obscureText: false,
-                      ),
+                      )),
                       SizedBox(
-                        height: SizeConfig.screenHeight * 0.02,
+                        height: 10//SizeConfig.screenHeight * 0.02,
                       ),
-                      TextFormField(
+                      Obx(()=>TextFormField(
                         key: passKey,
-                        controller: passwordController,
+                        controller: authController.loginPasswordController.value,
                         validator: (value) {
                           if (value!.isEmpty) return "Password canot be empty";
                         },
@@ -108,18 +204,20 @@ class _LoginPageState extends State<LoginPage> {
                             padding: EdgeInsets.symmetric(horizontal: 20.0),
                             child: GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
+                                print(!authController.obsecure.value);
+                                authController.obsecure.value=!authController.obsecure.value;
+                                // setState(() {
+                                //   _obscureText = !_obscureText;
+                                // });
                               },
                               child: Icon(
-                                _obscureText
+                                authController.obsecure.value
                                     ? Icons.visibility
                                     : Icons.visibility_off,
-                                color: _obscureText
+                                color: authController.obsecure.value
                                     ? Color.fromARGB(255, 255, 165, 0)
                                     : Color.fromARGB(255, 255, 165, 0),
-                              ),
+                              ) 
                             ),
                             // child: Icon(
                             //   FontAwesomeIcons.lock,
@@ -133,29 +231,32 @@ class _LoginPageState extends State<LoginPage> {
                         style: kBodyText,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
-                        obscureText: _obscureText,
-                      ),
+                        obscureText: authController.obsecure.value,
+                      ),),
                       SizedBox(
-                        height: SizeConfig.screenHeight * 0.02,
+                        height: 10//SizeConfig.screenHeight * 0.02,
                         //width:SizeConfig.screenHeight *0.5 //25,
                       ),
+                      Obx(()=>
                       Text(
-                        error,
+                        authController.error.value,
                         style: TextStyle(color: Colors.red),
-                      ),
+                      ),) ,
                       Padding(
                         padding: EdgeInsets.only(
-                            left: SizeConfig.screenHeight * 0.08),
-                        child: CheckboxListTile(
+                            left:40 ),//SizeConfig.screenHeight * 0.08
+                        child: Obx(
+                          ()=>CheckboxListTile(
                           title: const Text(
                             'Remember me',
                             style: TextStyle(fontSize: 16, color: kWhite1),
                           ),
-                          value: rememberMe,
+                          value: authController.rememberMe.value,
                           onChanged: (value) {
-                            setState(() {
-                              rememberMe = value!;
-                            });
+                            authController.rememberMe.value=value!;
+                            // setState(() {
+                            //   rememberMe = value!;
+                            // });
                           },
                           controlAffinity: ListTileControlAffinity.leading,
                           activeColor: kblue,
@@ -164,16 +265,23 @@ class _LoginPageState extends State<LoginPage> {
                             color: kWhite1, //your desire colour here
                             width: 1.5,
                           ),
-                        ),
+                        ),)
                       ),
                       SizedBox(
-                        height: SizeConfig.screenHeight * 0.03, //25,
+                        height:15 //SizeConfig.screenHeight * 0.03, //25,
                       ),
                       button.RoundedButton(
-                          buttonName: 'Login', pressed: authenticateUser),
-                      SizedBox(height: SizeConfig.screenHeight * 0.03),
+                          buttonName: 'Login',
+                          pressed:()=> authController.
+                          authenticateUser(
+                             context: context,
+                             email: authController.loginEmailController.value,
+                             emailKey: emailKey,
+                             passKey: passKey,
+                             password: authController.loginPasswordController.value)),
+                      SizedBox(height:15 ),//SizeConfig.screenHeight * 0.03
                       SizedBox(
-                        width: SizeConfig.screenWidth * 0.1,
+                        width: 50,//SizeConfig.screenWidth * 0.1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -201,7 +309,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               SizedBox(
-                height: SizeConfig.screenHeight * 0.03,
+                height: 15,//SizeConfig.screenHeight * 0.03,
               ),
             ],
           ),
@@ -210,27 +318,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void authenticateUser() async {
-    var pass = passwordController.text.trim();
-
-    var email = emailController.text.trim().toLowerCase();
-    print('email ${emailController.text}');
-    if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
-      profileController.userInfo.value = await fetchUser(email);
-      if (profileController.userInfo.value != null &&
-          profileController.userInfo.value!.password == pass) {
-        profileController.scores =
-            await fetchUserScores(profileController.userInfo.value!.id);
-        // print('from login >>>> ${profileController.scores}');
-        setState(() {
-          error = "";
-        });
-        context.router.pushNamed('/category');
-      } else {
-        setState(() {
-          error = "Email address or Password is incorrect";
-        });
-      }
-    }
   }
-}

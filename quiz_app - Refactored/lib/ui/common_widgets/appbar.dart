@@ -8,28 +8,11 @@ import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
-AppBar quizeAppbar(BuildContext context) {
-  return AppBar(
-    backgroundColor: appbarColor,
-    actions: [
-      Padding(
-        padding: const EdgeInsets.only(right: defaultPadding / 2),
-        child: GestureDetector(
-          onTap: () {
-            context.router.pushNamed('/profile');
-          },
-          child: profilePic(),
-        ),
-      )
-    ],
-  );
-}
-
-AppBar QuizeAppbar(String iconUrl, BuildContext context) {
+AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
   return AppBar(
     backgroundColor: appbarColor,
     title: CircleAvatar(
-      child: SvgPicture.asset(iconUrl),
+      child: iconUrl != null ?  SvgPicture.asset(iconUrl) : SvgPicture.asset(''),
       backgroundColor: Colors.transparent,
     ),
     centerTitle: true,
@@ -44,9 +27,48 @@ AppBar QuizeAppbar(String iconUrl, BuildContext context) {
       ),
     ],
   );
-
-  // ),
 }
+
+
+// AppBar quizeAppbar(BuildContext context) {
+//   return AppBar(
+//     backgroundColor: appbarColor,
+//     actions: [
+//       Padding(
+//         padding: const EdgeInsets.only(right: defaultPadding / 2),
+//         child: GestureDetector(
+//           onTap: () {
+//             context.router.pushNamed('/profile');
+//           },
+//           child: profilePic(),
+//         ),
+//       )
+//     ],
+//   );
+// }
+
+// AppBar QuizeAppbar(String iconUrl, BuildContext context) {
+//   return AppBar(
+//     backgroundColor: appbarColor,
+//     title: CircleAvatar(
+//       child: SvgPicture.asset(iconUrl),
+//       backgroundColor: Colors.transparent,
+//     ),
+//     centerTitle: true,
+//     actions: [
+//       Padding(
+//         padding: const EdgeInsets.only(right: defaultPadding / 2),
+//         child: GestureDetector(
+//             onTap: () {
+//               context.router.pushNamed('/profile');
+//             },
+//             child: profilePic()),
+//       ),
+//     ],
+//   );
+
+//   // ),
+// }
 
 // AppBar quizeAppbar2(String iconUrl) {
 //   return AppBar(

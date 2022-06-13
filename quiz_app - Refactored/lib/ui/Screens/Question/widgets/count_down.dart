@@ -23,9 +23,9 @@ class MyTimer extends StatelessWidget {
         format: CountDownTimerFormat.hoursMinutesSeconds,
         endTime: DateTime.now().add(
           Duration(
-            hours: controller.h.value,
-            minutes: controller.m.value,
-            seconds: controller.s.value,
+            hours: controller.hour.value,
+            minutes: controller.minutes.value,
+            seconds: controller.seconds.value,
           ),
         ),
         onEnd: () async {
@@ -34,10 +34,10 @@ class MyTimer extends StatelessWidget {
             controller.count = await fetchCorrectAnswers();
             print('timer ended');
             int scorePercent =
-                (controller.count / pcontroller.questionApi!.length * 100)
+                (controller.count / controller.questionApi!.length * 100)
                     .toInt();
 
-            controller.s.value = 0;
+            controller.seconds.value = 0;
             controller.isEnabled.value = false;
             CourseScore score = CourseScore(
                 courseName: controller.chosenCourse.value,
@@ -47,7 +47,7 @@ class MyTimer extends StatelessWidget {
                 userId: pcontroller.userInfo.value!.id);
             saveUserScore(score);
             context.router.push(FinalScore(
-              outOf: pcontroller.questionApi!.length,
+              outOf: controller.questionApi!.length,
               score: controller.count,
               optionList: controller.optionList,
             ));

@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
-import 'package:quiz_app/ui/common_widgets/alert_box.dart';
-
+import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/common_widgets/default_card.dart';
 
 import 'package:quiz_app/ui/utils/theme.dart';
 
+import '../../common_widgets/alert_box.dart';
 import '../CommonControllers/question_controller.dart';
 
 class ChooseType extends StatelessWidget {
@@ -20,7 +20,6 @@ class ChooseType extends StatelessWidget {
   dynamic icon;
   String path;
 
-  final ProfileController controller = Get.put(ProfileController());
   final QuestionControl questionController = Get.put(QuestionControl());
 
   @override
@@ -28,7 +27,7 @@ class ChooseType extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-          appBar: QuizeAppbar(icon, context),
+          appBar: quizAppBar(context: context, iconUrl: icon),
           body: Column(
             children: [
               const SizedBox(
@@ -47,13 +46,11 @@ class ChooseType extends StatelessWidget {
                     imgeSrc: "assets/icons/Practice_test.svg",
                     cardtext: "Practice Test",
                     onpressed: () async {
-                      controller.questionApi = await fetchQuestionsApi(
+                      questionController.questionApi = await fetchQuestionsApi(
                           path.toLowerCase() + "_practice");
-
-                      print(path.toLowerCase() + "_practice");
                       String paths = path.toLowerCase() + "_practice";
-                      context.router
-                          .push(QuestionScreen(icon: icon, path: paths));
+                      context.router.push(QuestionsScreen(
+                          icon: icon, path: paths, isFinal: false));
                     },
                   ),
                   const SizedBox(
@@ -67,8 +64,8 @@ class ChooseType extends StatelessWidget {
                       quizAlertBox(
                           context,
                           'Exam information',
-                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
                           "OK",
+                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
                           path,
                           icon,
                           questionController,

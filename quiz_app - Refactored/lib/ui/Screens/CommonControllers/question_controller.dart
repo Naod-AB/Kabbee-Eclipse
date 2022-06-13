@@ -1,31 +1,21 @@
 import 'package:get/get.dart';
 
-class ChosenModel {
-  final int questionNumber;
-  final String questionAnswer;
-
-  ChosenModel(this.questionNumber, this.questionAnswer);
-
-  @override
-  String toString() {
-    return '$questionNumber $questionAnswer';
-  }
-}
-
 class QuestionControl extends GetxController {
+  // To hold
+  // List<ChosenModel> chosenAnswers = [];
+  // RxBool isCorrect = false.obs;
+  // bool isSelected = false;
+  List? questionApi;
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
-  RxBool isEnabled = true.obs;
+  bool isFinal = false;
+  
   int optionList = 0;
-
-  RxInt h = 0.obs;
-  RxInt m = 0.obs;
-  RxInt s = 15.obs;
-
+  
+  RxBool isEnabled = true.obs;
   bool isFinished = false;
 
-  List<ChosenModel> chosenAnswers = [];
-
+// Groupping Radio button for each question
   RxList groupValue = [-1, 0, 5, 9, 13].obs;
   RxList value = [
     [0, 1, 2, 4],
@@ -35,6 +25,11 @@ class QuestionControl extends GetxController {
   ].obs;
   RxInt qnIndex = 1.obs;
   int count = 0;
-  RxBool isCorrect = false.obs;
-  bool isSelected = false;
+
+  // For Evaluation question Timer
+  RxInt hour = 0.obs;
+  RxInt minutes = 0.obs;
+  RxInt seconds = 15.obs;
+
+  
 }

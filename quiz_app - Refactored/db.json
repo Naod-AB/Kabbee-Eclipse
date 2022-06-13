@@ -23,7 +23,16 @@
       "lastName": "Eclipse",
       "password": "Miki@123",
       "gender": "Male"
+    },
+    {
+      "id": 471,
+      "email": "peace@gmail.com",
+      "firstName": "Peace",
+      "lastName": "Africa",
+      "password": "Peace@123",
+      "gender": "Female"
     }
+    
   ],
   "Scores": [
     {

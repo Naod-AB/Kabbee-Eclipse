@@ -3,20 +3,24 @@ import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 
 import 'routes/router.gr.dart';
 
 
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
   // ProfileBinding().dependencies();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  final _appRouter = AppRouter();
+  final _appRouter = AppRouter(); 
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: quizAppTheme().copyWith(
         brightness: Brightness.light,
       ),
-      initialBinding: ProfileBinding(),
+      initialBinding: ProfileBinding( ),
       debugShowMaterialGrid: false,
     );
   }

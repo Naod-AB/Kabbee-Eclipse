@@ -1,24 +1,35 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'package:auto_route/auto_route.dart';
 
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:quiz_app/ui/Screens/Auth/Login/login_screen.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
+
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
 import '../../../routes/router.gr.dart';
 
 class Splash extends GetView<ProfileController> {
-  const Splash({Key? key}) : super(key: key);
+  Splash({Key? key}) : super(key: key);
+  ProfileController controller = Get.put(ProfileController());
+  QuestionControl qController = Get.put(QuestionControl());
+  
 
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 4000), () {
-      context.router.push(const LoginRoute());
+  //    Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => const LoginPage()),
+  // );
+     context.router.push( const LoginRoute());
     });
 
     SizeConfig().init(context);

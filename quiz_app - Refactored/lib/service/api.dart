@@ -14,7 +14,7 @@ final ProfileController pController = Get.find();
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
   final response = await http.patch(
-      Uri.parse('http://localhost:3000/Scores/${score.courseName}'),
+      Uri.parse('http://10.0.2.2:3000/Scores/${score.courseName}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -40,7 +40,7 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
 // Create User
 Future<Users> createUser(Users user) async {
   final response = await http.post(
-    Uri.parse('http://localhost:3000/Users'),
+    Uri.parse('http://10.0.2.2:3000/Users'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -64,7 +64,7 @@ Future<Users> createUser(Users user) async {
 // Fetch MY Scores
 Future fetchUserScores(int userId) async {
   final response =
-      await http.get(Uri.parse('http://localhost:3000/Scores?userId=$userId'));
+      await http.get(Uri.parse('http://10.0.2.2:3000/Scores?userId=$userId'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -82,7 +82,7 @@ Future fetchUserScores(int userId) async {
 // Fetch User
 Future<Users?> fetchUser(String email) async {
   final response =
-      await http.get(Uri.parse('http://localhost:3000/Users?email=$email'));
+      await http.get(Uri.parse('http://10.0.2.2:3000/Users?email=$email'));
 
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
@@ -97,7 +97,7 @@ Future<Users?> fetchUser(String email) async {
 
 // Fetch all users
 Future<List<Users>> fetchAllUsers() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/Users'));
+  final response = await http.get(Uri.parse('http://10.0.2.2:3000/Users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     return parseUsers(response.body);
   } else {
@@ -114,7 +114,7 @@ List<Users> parseUsers(String responseBody) {
 
 // Get Questions
 Future fetchQuestionsApi(String path) async {
-  final response = await http.get(Uri.parse('http://localhost:3000/$path'));
+  final response = await http.get(Uri.parse('http://10.0.2.2:3000/$path'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       final parsedPath = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -156,7 +156,7 @@ Future fetchQuestionsApi(String path) async {
 // fetch categories
 Future fetchCourses(String category) async {
   final response = await http
-      .get(Uri.parse('http://localhost:3000/Courses/?category=$category'));
+      .get(Uri.parse('http://10.0.2.2:3000/Courses/?category=$category'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final parsedCourses = jsonDecode(response.body);
     // print('parsedCourses 👉 $parsedCourses');
