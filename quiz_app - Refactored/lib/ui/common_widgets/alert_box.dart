@@ -56,7 +56,7 @@ quizAlertBox(
                 questionAlertCtrl.count = await fetchCorrectAnswers();
                 questionAlertCtrl.isEnabled.value = false;
                 int scorePercent = (questionAlertCtrl.count /
-                        controller.questionApi!.length *
+                        questionAlertCtrl.questionApi!.length *
                         100)
                     .toInt();
                 print('scorePercent.runtimeType ${scorePercent.runtimeType}');
@@ -71,17 +71,18 @@ quizAlertBox(
                 saveUserScore(score);
 
                 context.router.push(FinalScore(
-                    outOf: controller.questionApi!.length,
+                    outOf: questionAlertCtrl.questionApi!.length,
                     score: questionAlertCtrl.count,
                     optionList: questionAlertCtrl.optionList));
               }
             : () async {
-                controller.questionApi = await fetchQuestionsApi(
+                questionAlertCtrl.questionApi = await fetchQuestionsApi(
                     path.toString().toLowerCase() + "_final");
 
                 // print(path.toLowerCase() + "_final");
                 String paths = path.toString().toLowerCase() + "_final";
-                context.router.push(EvaluationScreens(icon: icon, path: paths));
+                context.router.push(
+                    QuestionsScreen(icon: icon, path: paths, isFinal: true));
               },
         color: kblue,
       )
