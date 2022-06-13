@@ -5,12 +5,14 @@ import 'package:get/get.dart';
 import 'package:quiz_app/routes/router.gr.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/common_widgets/alert_box.dart';
+
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/common_widgets/default_card.dart';
+
 import 'package:quiz_app/ui/utils/theme.dart';
 
-
-import 'package:rflutter_alert/rflutter_alert.dart';
+import '../CommonControllers/question_controller.dart';
 
 class ChooseType extends StatelessWidget {
   ChooseType({Key? key, required this.icon, required this.path})
@@ -19,10 +21,10 @@ class ChooseType extends StatelessWidget {
   String path;
 
   final ProfileController controller = Get.put(ProfileController());
+  final QuestionControl questionController = Get.put(QuestionControl());
 
   @override
   Widget build(BuildContext context) {
-    print('path > $path');
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
@@ -62,44 +64,15 @@ class ChooseType extends StatelessWidget {
                     imgeSrc: "assets/icons/exam.svg",
                     cardtext: "Evalution Exam",
                     onpressed: () {
-                      Alert(
-                        context: context,
-                        type: AlertType.warning,
-                        title: "Exam information",
-                        desc:
-                            "hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?",
-                        buttons: [
-                          DialogButton(
-                            child: Text(
-                              "CANCEL",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                            color: Color.fromRGBO(0, 179, 134, 1.0),
-                          ),
-                          DialogButton(
-                            child: Text(
-                              "OK",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () async {
-                              controller.questionApi = await fetchQuestionsApi(
-                                  path.toLowerCase() + "_final");
-
-                              print(path.toLowerCase() + "_final");
-                              String paths = path.toLowerCase() + "_final";
-                              context.router.push(
-                                  EvaluationScreens(icon: icon, path: paths));
-                            },
-                            gradient: LinearGradient(colors: [
-                              Color.fromARGB(255, 233, 235, 64),
-                              Color.fromARGB(255, 192, 164, 4)
-                            ]),
-                          )
-                        ],
-                      ).show();
+                      quizAlertBox(
+                          context,
+                          'Exam information',
+                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
+                          "OK",
+                          path,
+                          icon,
+                          questionController,
+                          true);
                     },
                   ),
                   const SizedBox(

@@ -20,7 +20,7 @@ class CourseScore {
   String? courseType;
   int? courseScore;
   int? userId;
-  double? coursePercentage;
+  int? coursePercentage;
 
   factory CourseScore.fromJson(Map<String, dynamic> json) => CourseScore(
         courseId: json["courseId"],

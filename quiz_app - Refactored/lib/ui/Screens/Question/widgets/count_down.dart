@@ -8,10 +8,7 @@ import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 
-
 import '../../../../routes/router.gr.dart';
-
-
 
 class MyTimer extends StatelessWidget {
   QuestionControl controller = Get.put(QuestionControl());
@@ -36,8 +33,9 @@ class MyTimer extends StatelessWidget {
           } else {
             controller.count = await fetchCorrectAnswers();
             print('timer ended');
-            double scorePercent =
-                controller.count / pcontroller.questionApi!.length * 100;
+            int scorePercent =
+                (controller.count / pcontroller.questionApi!.length * 100)
+                    .toInt();
 
             controller.s.value = 0;
             controller.isEnabled.value = false;
