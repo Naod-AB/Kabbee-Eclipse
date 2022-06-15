@@ -29,7 +29,7 @@ class Splash extends GetView<ProfileController> {
   //   context,
   //   MaterialPageRoute(builder: (context) => const LoginPage()),
   // );
-     context.router.push( const LoginRoute());
+     context.router.replace( const LoginRoute());
     });
 
     SizeConfig().init(context);

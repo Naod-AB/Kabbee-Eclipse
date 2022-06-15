@@ -1,8 +1,6 @@
 
 
-//import 'dart:html';
 
-//import 'dart:js';
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
@@ -34,10 +32,7 @@ class AuthController extends GetxController{
    
    //allusers = await fetchAllUsers();
    }
-  // @override
-  // void onInit(){
-
-  // } 
+   
    void createOpenBox()async{
     print("Box not initialized ");
     box1 = await Hive.openBox('logindata');
@@ -46,21 +41,10 @@ class AuthController extends GetxController{
     getdata();
   }
     void getdata()async{
-    if(box1.get('email')!=null && box1.get('pass')!=null){
-      //profileController.userInfo.value  = await fetchUser(box1.get('email').toString());
-      //   email.text = box1.get('email');
-    //   isChecked = true;
-    //   setState(() {
-    //   });
-    // }
-    // if(box1.get('pass')!=null){
-    //   pass.text = box1.get('pass');
-    //   isChecked = true;
-    //   setState(() {
-    //   });
-    print("Box already opned ");
+    if(box1.get('email')!=null){
     loginEmailController.value.text= box1.get('email');
-    loginPasswordController.value.text = box1.get('pass');
+    print("no null");
+    //loginPasswordController.value.text = box1.get('pass');
     }
   }
 
@@ -118,11 +102,16 @@ class AuthController extends GetxController{
                       if(rememberMe.value){
                         print("remmeber me");
                         box1.put('email', emails);
-                        box1.put('pass', pass);
+                        //box1.put('pass', pass);
+                              }else
+                               if(box1.get('email')!=null){
+                                box1.delete('email');
+                                print("email deleted");
+                                print(box1.get("email"));
                               }
                           }
                           print(box1.get('email').toString());
-                          print(box1.get('pass').toString());
+                          //print(box1.get('pass').toString());
                   profileController.scores =
                       await fetchUserScores(profileController.userInfo.value!.id);
                   error.value="";
