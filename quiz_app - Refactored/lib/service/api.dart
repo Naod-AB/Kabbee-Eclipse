@@ -156,7 +156,7 @@ Future fetchQuestionsApi(String path) async {
 // fetch categories
 Future fetchCourses(String category) async {
   final response = await http
-      .get(Uri.parse('http://localhost:3000/Courses/?category=$category'));
+      .get(Uri.parse('http://10.0.2.2:3000/Courses/?category=$category'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final parsedCourses = jsonDecode(response.body);
     // print('parsedCourses 👉 $parsedCourses');

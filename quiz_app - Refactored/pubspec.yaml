@@ -60,6 +60,7 @@ dependencies:
   wc_form_validators: ^1.0.0
   carousel_slider: ^4.1.1
   smooth_page_indicator: ^1.0.0+2
+  auto_size_text: ^3.0.0
   #flutter_countdown_timer: ^4.1.0
   #simple_progress_bar: ^0.0.4
 dev_dependencies:

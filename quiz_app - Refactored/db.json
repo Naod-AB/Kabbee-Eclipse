@@ -32,15 +32,14 @@
       "password": "Peace@123",
       "gender": "Female"
     }
-    
   ],
   "Scores": [
     {
       "id": "HTML_CSS",
       "courseName": "HTML_CSS",
       "courseType": "Front-End",
-      "courseScore": 4,
-      "percentage": 100,
+      "courseScore": 0,
+      "percentage": 0,
       "userId": 638
     },
     {

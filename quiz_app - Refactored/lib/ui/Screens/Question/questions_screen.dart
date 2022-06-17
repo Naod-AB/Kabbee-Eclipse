@@ -15,7 +15,9 @@ import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../common_widgets/alert_box.dart';
+import '../../common_widgets/alert_box.dart';
 import '/routes/router.gr.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class QuestionsScreen extends StatelessWidget {
   QuestionsScreen(
@@ -129,7 +131,7 @@ class QuestionsScreen extends StatelessWidget {
                                                 activeColor: kblue,
                                                 title: Row(
                                                   children: [
-                                                    Text(
+                                                    AutoSizeText(
                                                       options[index].toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
