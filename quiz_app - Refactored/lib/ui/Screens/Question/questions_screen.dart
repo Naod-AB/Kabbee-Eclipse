@@ -113,7 +113,8 @@ class QuestionsScreen extends StatelessWidget {
                                         Obx(
                                           () => Container(
                                             width: 300,
-                                            padding: const EdgeInsets.all(10),
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 0),
                                             decoration: BoxDecoration(
                                               border: Border.all(
                                                   color: controller.groupValue[
@@ -129,7 +130,7 @@ class QuestionsScreen extends StatelessWidget {
                                             ),
                                             child: RadioListTile<int>(
                                                 activeColor: kblue,
-                                                title: Row(
+                                                title: Wrap(
                                                   children: [
                                                     AutoSizeText(
                                                       options[index].toString(),
@@ -139,6 +140,7 @@ class QuestionsScreen extends StatelessWidget {
                                                           .copyWith(
                                                               color:
                                                                   Colors.white),
+                                                      maxLines: 2,
                                                     ),
                                                     const Spacer(),
                                                   ],
