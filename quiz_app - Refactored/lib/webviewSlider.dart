@@ -138,7 +138,6 @@ class _WebsliderState extends State<Webslider> {
               name.toString().toUpperCase(),
               style: const TextStyle(
                   fontSize: 42,
-                  
                   fontWeight: FontWeight.w900,
                   color: Colors.amber),
             ),
@@ -150,7 +149,7 @@ class _WebsliderState extends State<Webslider> {
               //color: Color.fromARGB(255, 74, 78, 81),
               child: SvgPicture.asset(
                 urlImage!,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
             ),
           ],

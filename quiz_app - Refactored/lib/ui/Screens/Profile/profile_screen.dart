@@ -20,85 +20,91 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.firstName.value =
-        controller.userInfo.value!.firstName.toString().toCapitalized();
-    controller.lastName.value =
-        controller.userInfo.value!.lastName.toString().toCapitalized();
+    bool isUserAdmin = false;
 
-    controller.gender.value =
-        controller.userInfo.value!.gender.toString() == 'Male' ? true : false;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('Account'),
         centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
           children: [
+            //!  Personal section
             profileCardContent(context),
-            customText('Account', 20, false, false, primaryColor),
+            customText('Profile', 20, false, false, primaryColor),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
                   buildTile(
                     Icons.person,
-                    customText('Full Name', 18, true, false, primaryColor),
-                    Obx(() => customText(
-                        controller.userInfo.value!.firstName
-                                .toString()
-                                .toCapitalized() +
-                            ' ' +
-                            controller.userInfo.value!.lastName
-                                .toString()
-                                .toCapitalized(),
-                        13,
-                        false,
-                        false,
-                        secondaryColor)),
-                    null,
+                    customText('Personal', 18, true, false, primaryColor),
+                    customText('View and update profile', 13, false, false,
+                        secondaryColor),
+                    GestureDetector(
+                      onTap: () {
+                        print('object');
+                        context.router.pushNamed('/personal_details');
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                    ),
                     true,
                   ),
                   buildDivider(),
-                  Obx(() => buildTile(
-                      Icons.lock,
-                      customText('Password', 18, true, false, primaryColor),
-                      customText(controller.password.value, 13, false, true,
-                          secondaryColor),
-                      null,
-                      true)),
-                  buildDivider(),
-                  Obx(() => buildTile(
-                        controller.gender.value ? Icons.male : Icons.female,
-                        customText('Gender', 18, true, false, primaryColor),
-                        customText('Selected gender', 13, false, false,
-                            secondaryColor),
-                        genderValueContainer(),
-                        true,
-                      )),
                 ],
               ),
             ),
+
+            // Admin settings
+
+            if (isUserAdmin == true)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  customText('Admin Settings', 20, false, false, primaryColor),
+                  const SizedBox(height: 15),
+                  buildTileGroup(
+                    Column(
+                      children: [
+                        buildTile(
+                          Icons.dashboard,
+                          customText(
+                              'Dashboard', 18, true, false, primaryColor),
+                          customText('View and update profile', 13, false,
+                              false, secondaryColor),
+                          GestureDetector(
+                            onTap: () {
+                              print('Go to admin dashboard');
+                              // context.router.pushNamed('/personal_details');
+                            },
+                            child: const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            ),
+                          ),
+                          true,
+                        ),
+                        buildDivider(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+            // Other features section
             const SizedBox(height: 20),
             customText('Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
-                  // buildTile(
-                  //     Icons.dark_mode,
-                  //     customText('Dark Mode', 18, true, false, primaryColor),
-                  //     customText(
-                  //         'Change theme', 13, false, false, secondaryColor),
-                  //     Switch.adaptive(
-                  //       value: true,
-                  //       activeColor: orangeColor,
-                  //       onChanged: (value) {},
-                  //     ),
-                  //     true),
-
                   buildDivider(),
                   buildTile(
                       Icons.celebration,
@@ -139,9 +145,7 @@ class ProfileScreen extends GetView<ProfileController> {
                         ),
                       ),
                       true),
-
                   buildDivider(),
-
                   GestureDetector(
                     onTap: () {
                       showCupertinoDialog<void>(
@@ -169,8 +173,6 @@ class ProfileScreen extends GetView<ProfileController> {
                           ],
                         ),
                       );
-
-                      print('object');
                     },
                     child: buildTile(
                         Icons.exit_to_app,
@@ -186,14 +188,7 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          contactEditIcon(context),
-          editIcon(context),
-        ],
-      ),
+      floatingActionButton: contactEditIcon(context),
     );
   }
 }
