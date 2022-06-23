@@ -4,15 +4,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:quiz_app/routes/router.gr.dart';
-
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
-import 'package:quiz_app/ui/utils/string_extension.dart';
 
+import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
@@ -20,7 +18,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    bool isUserAdmin = false;
+    bool isUserAdmin = true;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -46,7 +44,6 @@ class ProfileScreen extends GetView<ProfileController> {
                         secondaryColor),
                     GestureDetector(
                       onTap: () {
-                        print('object');
                         context.router.pushNamed('/personal_details');
                       },
                       child: const Icon(
@@ -80,9 +77,9 @@ class ProfileScreen extends GetView<ProfileController> {
                           customText('View and update profile', 13, false,
                               false, secondaryColor),
                           GestureDetector(
-                            onTap: () {
-                              print('Go to admin dashboard');
-                              // context.router.pushNamed('/personal_details');
+                            onTap: () async {
+                              controller.userList = await fetchUsers();
+                              context.router.pushNamed('/users');
                             },
                             child: const Icon(
                               Icons.arrow_forward_ios,

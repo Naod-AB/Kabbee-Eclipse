@@ -46,7 +46,7 @@ class UserDetailsScreen extends GetView<ProfileController> {
             customText('Password', 18, false, false, kblue),
             const SizedBox(height: 15),
             userInfoTiles(
-                controller.userInfo.value!.password.toString(), true, false),
+                controller.userInfo.value!.password.toString(), true, true),
             const SizedBox(height: 20),
             customText('Gender', 18, false, false, kblue),
             const SizedBox(height: 15),

@@ -30,6 +30,7 @@ class ProfileController extends GetxController {
   RxString password = 'test123'.obs;
 
   Rx<Users?> userInfo = Users().obs;
+  List? userList;
 
   List? scores;
 

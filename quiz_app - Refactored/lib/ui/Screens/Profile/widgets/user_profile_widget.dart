@@ -175,8 +175,8 @@ Widget buildTile(IconData? leadingIcon, Widget? title, Widget? subtitle,
   );
 }
 
-Widget buildTile2(IconData? leadingIcon, Widget? title, Widget? subtitle,
-    Widget? trailing, bool padding, Color? iconColor) {
+Widget buildBottomSheetTiles(IconData? leadingIcon, Widget? title,
+    Widget? subtitle, Widget? trailing, bool padding, Color? iconColor) {
   return Padding(
     padding:
         padding ? const EdgeInsets.only(left: 10, right: 10) : EdgeInsets.zero,
@@ -197,6 +197,55 @@ Widget buildTile2(IconData? leadingIcon, Widget? title, Widget? subtitle,
   );
 }
 
+// admin users
+Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
+    Widget? trailing, bool padding, bool isAdmin) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(10),
+    child: ListTile(
+      contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
+      title: customText(title, 17, true, false, primaryColor),
+      subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
+      leading: Container(
+        child: isAdmin
+            ? Stack(
+                children: [
+                  leadingImage,
+                  const Positioned(
+                    top: 25,
+                    right: 1,
+                    child: FractionalTranslation(
+                      translation: Offset(0.5, -0.5),
+                      child: Icon(
+                        Icons.verified_user,
+                        color: kblue,
+                        size: 17,
+                      ),
+                    ),
+                  )
+                ],
+              )
+            : leadingImage,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+      trailing: PopupMenuButton(
+          position: PopupMenuPosition.under,
+          icon: const Icon(
+            Icons.more_horiz,
+            color: Colors.white,
+          ),
+          color: kblue,
+          itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: customText('Block', 16, true, false, Colors.black),
+                ),
+              ]),
+    ),
+  );
+}
+
 Widget userInfoTiles(String title, bool padding, bool isPassword) {
   return Container(
     decoration: BoxDecoration(
@@ -211,7 +260,7 @@ Widget userInfoTiles(String title, bool padding, bool isPassword) {
         borderRadius: BorderRadius.circular(0),
       ),
       title: Text(
-        title,
+        isPassword ? "." * title.length : title,
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
       ),
     ),
@@ -320,7 +369,7 @@ Widget contactEditIcon(BuildContext context) {
                     onTap: () {
                       controller.launchTelegram();
                     },
-                    child: buildTile2(
+                    child: buildBottomSheetTiles(
                         FontAwesomeIcons.telegram,
                         customText(' Telegram', 18, false, false, primaryColor),
                         null,
@@ -328,7 +377,7 @@ Widget contactEditIcon(BuildContext context) {
                         true,
                         Color(0xFF40B3E0)),
                   ),
-                  buildTile2(
+                  buildBottomSheetTiles(
                       FontAwesomeIcons.solidEnvelope,
                       customText(
                           ' quizapp@gmail.com', 18, false, false, primaryColor),
@@ -340,7 +389,7 @@ Widget contactEditIcon(BuildContext context) {
                     onTap: () {
                       controller.launchWebsite();
                     },
-                    child: buildTile2(
+                    child: buildBottomSheetTiles(
                         FontAwesomeIcons.earthAmericas,
                         customText(
                             ' www.kabbee.org', 18, false, false, primaryColor),

@@ -108,8 +108,25 @@ Future<List<Users>> fetchAllUsers() async {
 // Parse Users
 List<Users> parseUsers(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
+  print('parseUsers $parsed');
   return parsed.map<Users>((json) => Users.fromJson(json)).toList();
+}
+
+//! fetching users
+
+Future fetchUsers() async {
+  final response = await http.get(Uri.parse('http://localhost:3000/Users'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    if (!jsonDecode(response.body).isEmpty) {
+      final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+
+      return parsed;
+    } else {
+      return null;
+    }
+  } else {
+    throw Exception('Failed to load User scores');
+  }
 }
 
 // Get Questions
