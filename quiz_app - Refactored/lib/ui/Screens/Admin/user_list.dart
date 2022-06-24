@@ -10,6 +10,17 @@ class UsersListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List activeUsers = controller.userList!
+        .where((element) => element["status"] == 'active')
+        .toList();
+    List blockedUsers = controller.userList!
+        .where((element) => element["status"] == 'blocked')
+        .toList();
+
+    // print(
+    //     'USERS >  ${controller.userList?.map((user) => user["status"] == 'blocked')}');
+    print(
+        'USERS >  ${controller.userList!.where((element) => element["status"] == 'blocked')}');
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -31,21 +42,24 @@ class UsersListPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              activeList(),
-              blockedList(),
+              activeList(activeUsers),
+              blockedList(blockedUsers),
             ],
           )),
     );
   }
 
-  Widget activeList() {
+  Widget activeList(List activeUsers) {
     return Padding(
       padding: const EdgeInsets.only(top: 25),
       child: ListView.builder(
-        itemCount: 3,
+        itemCount: activeUsers.length,
         itemBuilder: (context, index) {
-          var user = controller.userList![index];
-          bool isAdmin =
+          var user = activeUsers[index];
+
+          bool isUserAdmin = activeUsers[index]['role'] == 'admin';
+
+          bool isCurrentUserAdmin =
               user['firstName'] == controller.userInfo.value!.firstName;
 
           return Card(
@@ -56,22 +70,25 @@ class UsersListPage extends StatelessWidget {
                     ' ' +
                     user['lastName'].toString().toCapitalized(),
                 user['email'],
-                null,
-                false,
-                isAdmin,
+                isCurrentUserAdmin,
+                true,
+                isUserAdmin,
               ));
         },
       ),
     );
   }
 
-  Widget blockedList() {
+  Widget blockedList(List blockedUsers) {
     return Padding(
       padding: const EdgeInsets.only(top: 25),
       child: ListView.builder(
-        itemCount: 1,
+        itemCount: blockedUsers.length,
         itemBuilder: (context, index) {
-          var user = controller.userList![3];
+          var user = blockedUsers[index];
+          bool isUserAdmin = blockedUsers[index]['role'] == 'admin';
+          bool isCurrentUserAdmin =
+              user['firstName'] == controller.userInfo.value!.firstName;
 
           return Card(
               color: Colors.white12,
@@ -81,12 +98,9 @@ class UsersListPage extends StatelessWidget {
                       ' ' +
                       user['lastName'].toString().toCapitalized(),
                   user['email'],
-                  const Icon(
-                    Icons.more_horiz,
-                    color: Colors.white,
-                  ),
+                  isCurrentUserAdmin,
                   false,
-                  false));
+                  isUserAdmin));
         },
       ),
     );

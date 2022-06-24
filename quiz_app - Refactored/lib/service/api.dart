@@ -50,7 +50,9 @@ Future<Users> createUser(Users user) async {
       'firstName': user.firstName!,
       'lastName': user.lastName!,
       'password': user.password!,
-      'gender': user.gender!
+      'gender': user.gender!,
+      'status': 'active',
+      'role': 'user',
     }),
   );
   if (response.statusCode == 201) {

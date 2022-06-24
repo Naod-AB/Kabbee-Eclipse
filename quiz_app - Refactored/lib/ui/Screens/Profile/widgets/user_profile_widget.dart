@@ -199,7 +199,7 @@ Widget buildBottomSheetTiles(IconData? leadingIcon, Widget? title,
 
 // admin users
 Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
-    Widget? trailing, bool padding, bool isAdmin) {
+    bool isCurrentUserAdmin, bool isUserActive, bool isUserAdmin) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(10),
     child: ListTile(
@@ -207,7 +207,7 @@ Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
       title: customText(title, 17, true, false, primaryColor),
       subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
       leading: Container(
-        child: isAdmin
+        child: isUserAdmin
             ? Stack(
                 children: [
                   leadingImage,
@@ -230,18 +230,21 @@ Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
           borderRadius: BorderRadius.circular(50),
         ),
       ),
-      trailing: PopupMenuButton(
-          position: PopupMenuPosition.under,
-          icon: const Icon(
-            Icons.more_horiz,
-            color: Colors.white,
-          ),
-          color: kblue,
-          itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: customText('Block', 16, true, false, Colors.black),
-                ),
-              ]),
+      trailing: isCurrentUserAdmin
+          ? customText('You', 14, true, false, kblue)
+          : PopupMenuButton(
+              position: PopupMenuPosition.under,
+              icon: const Icon(
+                Icons.more_horiz,
+                color: Colors.white,
+              ),
+              color: kblue,
+              itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: customText(isUserActive ? 'Block' : 'Activate', 16,
+                          true, false, Colors.black),
+                    ),
+                  ]),
     ),
   );
 }

@@ -6,7 +6,9 @@
       "firstName": "Mohamemd",
       "lastName": "Mohammed",
       "password": "Mohammed@123",
-      "gender": "Male"
+      "gender": "Male",
+      "status": "active",
+      "role": "admin"
     },
     {
       "id": 475,
@@ -14,7 +16,9 @@
       "firstName": "asi",
       "lastName": "asmie",
       "password": "Asmie@123",
-      "gender": "Male"
+      "gender": "Male",
+      "status": "active",
+      "role": "admin"
     },
     {
       "id": 929,
@@ -22,7 +26,9 @@
       "firstName": "Miki",
       "lastName": "Eclipse",
       "password": "Miki@123",
-      "gender": "Male"
+      "gender": "Male",
+      "status": "active",
+      "role": "user"
     },
     {
       "id": 471,
@@ -30,7 +36,19 @@
       "firstName": "Peace",
       "lastName": "Africa",
       "password": "Peace@123",
-      "gender": "Female"
+      "gender": "Female",
+      "status": "active",
+      "role": "user"
+    },
+    {
+      "id": 968,
+      "email": "test@test.com",
+      "firstName": "Test",
+      "lastName": "User",
+      "password": "Test@123",
+      "gender": "Female",
+      "status": "blocked",
+      "role": "user"
     }
   ],
   "Scores": [

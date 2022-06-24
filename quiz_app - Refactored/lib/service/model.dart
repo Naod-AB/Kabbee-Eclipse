@@ -134,7 +134,7 @@ Future<Users> updateJprofile({
     }),
   );
   if (response.statusCode == 200) {
-    print('the esrom ${response.body}');
+    print('updated profile ${response.body}');
     return Users.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Error);

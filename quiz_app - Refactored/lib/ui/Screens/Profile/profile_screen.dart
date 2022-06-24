@@ -18,8 +18,6 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    bool isUserAdmin = true;
-
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -60,7 +58,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Admin settings
 
-            if (isUserAdmin == true)
+            if (controller.userInfo.value!.role == 'admin')
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

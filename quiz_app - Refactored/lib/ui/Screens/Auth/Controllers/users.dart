@@ -12,16 +12,19 @@ class Users {
     this.lastName,
     this.password,
     this.gender,
+    this.status,
+    this.role,
   });
-  dynamic? id;
+  dynamic id;
   String? email;
   String? firstName;
   String? lastName;
   String? password;
   String? gender;
+  String? status;
+  String? role;
 
   factory Users.fromJson(Map<String, dynamic> json) {
-    print("inide the fromJson");
     return Users(
       id: json["id"],
       email: json["email"],
@@ -29,6 +32,8 @@ class Users {
       lastName: json["lastName"],
       password: json["password"],
       gender: json["gender"],
+      status: json["status"],
+      role: json["role"],
     );
   }
 
