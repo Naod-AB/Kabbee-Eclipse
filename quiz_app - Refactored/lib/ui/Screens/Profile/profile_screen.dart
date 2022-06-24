@@ -28,28 +28,30 @@ class ProfileScreen extends GetView<ProfileController> {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
           children: [
-            //!  Personal section
+            //  Personal section
+
             profileCardContent(context),
             customText('Profile', 20, false, false, primaryColor),
             const SizedBox(height: 15),
+
             buildTileGroup(
               Column(
                 children: [
-                  buildTile(
-                    Icons.person,
-                    customText('Personal', 18, true, false, primaryColor),
-                    customText('View and update profile', 13, false, false,
-                        secondaryColor),
-                    GestureDetector(
-                      onTap: () {
-                        context.router.pushNamed('/personal_details');
-                      },
-                      child: const Icon(
+                  GestureDetector(
+                    onTap: () {
+                      context.router.pushNamed('/personal_details');
+                    },
+                    child: buildTile(
+                      Icons.person,
+                      customText('Personal', 18, true, false, primaryColor),
+                      customText('View and update profile', 13, false, false,
+                          secondaryColor),
+                      const Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.white,
                       ),
+                      true,
                     ),
-                    true,
                   ),
                   buildDivider(),
                 ],
@@ -68,23 +70,23 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildTileGroup(
                     Column(
                       children: [
-                        buildTile(
-                          Icons.dashboard,
-                          customText(
-                              'Dashboard', 18, true, false, primaryColor),
-                          customText('View and update profile', 13, false,
-                              false, secondaryColor),
-                          GestureDetector(
-                            onTap: () async {
-                              controller.userList = await fetchUsers();
-                              context.router.pushNamed('/users');
-                            },
-                            child: const Icon(
+                        GestureDetector(
+                          onTap: () async {
+                            controller.userList = await fetchUsers();
+                            context.router.pushNamed('/users');
+                          },
+                          child: buildTile(
+                            Icons.dashboard,
+                            customText(
+                                'Dashboard', 18, true, false, primaryColor),
+                            customText('View and update profile', 13, false,
+                                false, secondaryColor),
+                            const Icon(
                               Icons.arrow_forward_ios,
                               color: Colors.white,
                             ),
+                            true,
                           ),
-                          true,
                         ),
                         buildDivider(),
                       ],
@@ -94,6 +96,7 @@ class ProfileScreen extends GetView<ProfileController> {
               ),
 
             // Other features section
+
             const SizedBox(height: 20),
             customText('Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),
@@ -101,45 +104,45 @@ class ProfileScreen extends GetView<ProfileController> {
               Column(
                 children: [
                   buildDivider(),
-                  buildTile(
-                      Icons.celebration,
-                      customText('My Scores', 18, true, false, primaryColor),
-                      customText(
-                          'Achievements', 13, false, false, secondaryColor),
-                      GestureDetector(
-                        onTap: () async {
-                          controller.scores = await fetchUserScores(
-                              controller.userInfo.value!.id);
+                  GestureDetector(
+                    onTap: () async {
+                      controller.scores =
+                          await fetchUserScores(controller.userInfo.value!.id);
 
-                          context.router.pushNamed('/my_scores');
-                        },
-                        child: const Icon(
+                      context.router.pushNamed('/my_scores');
+                    },
+                    child: buildTile(
+                        Icons.celebration,
+                        customText('My Scores', 18, true, false, primaryColor),
+                        customText(
+                            'Achievements', 13, false, false, secondaryColor),
+                        const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                         ),
-                      ),
-                      true),
+                        true),
+                  ),
                   buildDivider(),
-                  buildTile(
-                      Icons.recommend_outlined,
-                      customText(
-                          'Recommendations', 18, true, false, primaryColor),
-                      customText('kabbee recommend you to Visit', 13, false,
-                          false, secondaryColor),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Webslider()),
-                          );
-                        },
-                        child: const Icon(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Webslider()),
+                      );
+                    },
+                    child: buildTile(
+                        Icons.recommend_outlined,
+                        customText(
+                            'Recommendations', 18, true, false, primaryColor),
+                        customText('kabbee recommend you to Visit', 13, false,
+                            false, secondaryColor),
+                        const Icon(
                           Icons.view_carousel_outlined,
                           color: Colors.white,
                         ),
-                      ),
-                      true),
+                        true),
+                  ),
                   buildDivider(),
                   GestureDetector(
                     onTap: () {
