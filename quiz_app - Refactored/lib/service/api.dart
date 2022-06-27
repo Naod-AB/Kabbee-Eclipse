@@ -9,6 +9,8 @@ import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 
+import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
+
 // Save User Score
 final ProfileController pController = Get.find();
 
@@ -27,8 +29,6 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'userId': score.userId
       }));
   if (response.statusCode == 200) {
-    print("this is inside the scoreSave api function ");
-
     log('${score.userId}');
     log('user id${pController.userInfo.value!.id}');
     return CourseScore.fromJson(jsonDecode(response.body));
@@ -58,7 +58,6 @@ Future<Users> createUser(Users user) async {
   if (response.statusCode == 201) {
     return Users.fromJson(jsonDecode(response.body));
   } else {
-    print(response.statusCode);
     throw Exception('Failed to create User.');
   }
 }
@@ -71,7 +70,6 @@ Future fetchUserScores(int userId) async {
     if (!jsonDecode(response.body).isEmpty) {
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
 
-      print('😠 $parsed');
       return parsed;
     } else {
       return null;
@@ -110,13 +108,13 @@ Future<List<Users>> fetchAllUsers() async {
 // Parse Users
 List<Users> parseUsers(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  print('parseUsers $parsed');
+
   return parsed.map<Users>((json) => Users.fromJson(json)).toList();
 }
 
-//! fetching users
+// fetching users for adminList
 
-Future fetchUsers() async {
+Future<List> fetchUsers() async {
   final response = await http.get(Uri.parse('http://localhost:3000/Users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
@@ -124,10 +122,43 @@ Future fetchUsers() async {
 
       return parsed;
     } else {
-      return null;
+      return [];
     }
   } else {
-    throw Exception('Failed to load User scores');
+    throw Exception('Failed to load User Lists');
+  }
+}
+
+Future<Users> updateUsersList({
+  required String id,
+  required int index,
+  required bool status,
+}) async {
+  final response = await http.patch(
+    Uri.parse('http://localhost:3000/Users/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'password': controller.updatedPassword.value,
+      'status': status ? 'blocked' : 'active',
+    }),
+  );
+  if (response.statusCode == 200) {
+    if (status == true) {
+      controller.blockedUsers.add(controller.activeUsers[index]);
+      controller.activeUsers.removeAt(index);
+    } else {
+      controller.activeUsers.add(controller.blockedUsers[index]);
+      controller.blockedUsers.removeAt(index);
+    }
+
+    controller.activeUsersCount.value = controller.activeUsers.length;
+    controller.blockedUsersCount.value = controller.blockedUsers.length;
+
+    return Users.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception(Error);
   }
 }
 
@@ -138,8 +169,6 @@ Future fetchQuestionsApi(String path) async {
     if (!jsonDecode(response.body).isEmpty) {
       final parsedPath = jsonDecode(response.body).cast<Map<String, dynamic>>();
 
-      print('😠 $parsedPath');
-      print('response.body is ${response.body}');
       return parsedPath;
     } else {
       return null;
@@ -178,7 +207,6 @@ Future fetchCourses(String category) async {
       .get(Uri.parse('http://localhost:3000/Courses/?category=$category'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final parsedCourses = jsonDecode(response.body);
-    // print('parsedCourses 👉 $parsedCourses');
 
     return parsedCourses;
   } else {

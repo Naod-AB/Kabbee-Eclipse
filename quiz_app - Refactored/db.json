@@ -15,9 +15,9 @@
       "email": "asi@gmail.com",
       "firstName": "asi",
       "lastName": "asmie",
-      "password": "Asmie@123",
+      "password": "This#pass123",
       "gender": "Male",
-      "status": "active",
+      "status": "blocked",
       "role": "admin"
     },
     {
@@ -25,7 +25,7 @@
       "email": "miki@eclipse.com",
       "firstName": "Miki",
       "lastName": "Eclipse",
-      "password": "Miki@123",
+      "password": "Miki#pass123",
       "gender": "Male",
       "status": "active",
       "role": "user"
@@ -35,7 +35,7 @@
       "email": "peace@gmail.com",
       "firstName": "Peace",
       "lastName": "Africa",
-      "password": "Peace@123",
+      "password": "Peace#pass123",
       "gender": "Female",
       "status": "active",
       "role": "user"
@@ -45,7 +45,7 @@
       "email": "test@test.com",
       "firstName": "Test",
       "lastName": "User",
-      "password": "Test@123",
+      "password": "This#pass123",
       "gender": "Female",
       "status": "blocked",
       "role": "user"
