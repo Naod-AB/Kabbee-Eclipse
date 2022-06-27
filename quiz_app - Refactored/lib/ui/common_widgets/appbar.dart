@@ -12,13 +12,13 @@ AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
   return AppBar(
     backgroundColor: appbarColor,
     title: CircleAvatar(
-      child: iconUrl != null ?  SvgPicture.asset(iconUrl) : SvgPicture.asset(''),
+      child: iconUrl != null ? SvgPicture.asset(iconUrl) : SvgPicture.asset(''),
       backgroundColor: Colors.transparent,
     ),
     centerTitle: true,
     actions: [
       Padding(
-        padding: const EdgeInsets.only(right: defaultPadding / 2),
+        padding: const EdgeInsets.all(defaultPadding / 3),
         child: GestureDetector(
             onTap: () {
               context.router.pushNamed('/profile');
@@ -28,7 +28,6 @@ AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
     ],
   );
 }
-
 
 // AppBar quizeAppbar(BuildContext context) {
 //   return AppBar(

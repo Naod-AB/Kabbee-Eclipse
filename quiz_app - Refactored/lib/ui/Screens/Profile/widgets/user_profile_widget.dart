@@ -166,7 +166,7 @@ Widget buildTile(IconData? leadingIcon, Widget? title, Widget? subtitle,
         ),
         child: Icon(
           leadingIcon,
-          size: 25,
+          size: 27,
           color: Colors.white,
         ),
       ),
@@ -710,6 +710,61 @@ Widget buildTextFieldP(String hint, IconData? icon, TextEditingController ctrl,
           borderRadius: BorderRadius.circular(15),
         ),
         hintText: hint),
+  );
+}
+
+Widget buildDashBoardTiles(
+  BuildContext context,
+  String text,
+  double size,
+  String totalNumber,
+  double totalNumberSize,
+) {
+  return Container(
+    width: 376.0,
+    height: 140,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: tileColor,
+        border: Border.all(color: kblue, width: 3)),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'TOTAL',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                ),
+              ),
+              Text(
+                text,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                ),
+              )
+            ],
+          ),
+          Text(
+            totalNumber,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: totalNumberSize,
+            ),
+          )
+        ],
+      ),
+    ),
   );
 }
 

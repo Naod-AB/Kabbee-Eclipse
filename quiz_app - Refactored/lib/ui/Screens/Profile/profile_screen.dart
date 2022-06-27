@@ -72,8 +72,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            controller.userList = await fetchUsers();
-                            context.router.pushNamed('/users');
+                            context.router.pushNamed('/dahboard');
                           },
                           child: buildTile(
                             Icons.dashboard,

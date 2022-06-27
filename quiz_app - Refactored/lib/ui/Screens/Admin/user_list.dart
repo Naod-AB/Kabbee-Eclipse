@@ -17,10 +17,6 @@ class UsersListPage extends StatelessWidget {
         .where((element) => element["status"] == 'blocked')
         .toList();
 
-    // print(
-    //     'USERS >  ${controller.userList?.map((user) => user["status"] == 'blocked')}');
-    print(
-        'USERS >  ${controller.userList!.where((element) => element["status"] == 'blocked')}');
     return DefaultTabController(
       length: 2,
       child: Scaffold(

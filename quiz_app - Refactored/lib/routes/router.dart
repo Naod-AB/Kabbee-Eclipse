@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:quiz_app/ui/Screens/Admin/dashboard.dart';
 import 'package:quiz_app/ui/Screens/Auth/Login/login_screen.dart';
 import 'package:quiz_app/ui/Screens/Auth/Signup/signup_onepage.dart';
 import 'package:quiz_app/ui/Screens/Category/category_screen.dart';
@@ -33,6 +34,7 @@ import '../ui/Screens/Profile/user_details_screen.dart';
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),
     AutoRoute(path: '/my_scores', page: MyScoresScreen),
     AutoRoute(path: '/users', page: UsersListPage),
+    AutoRoute(path: '/dahboard', page: DashboardPage),
   ],
 )
 class $AppRouter {}
