@@ -26,7 +26,7 @@ List<Data> webviewdata = [
   Data(
       name: 'flutter',
       urlImage: 'assets/icons/flutter.svg',
-      url: 'https://flutter.dev'),
+      url: 'https://flutter.dev/'),
   Data(
       name: 'Machine',
       urlImage: 'assets/icons/Machine_logo.svg',
@@ -34,23 +34,23 @@ List<Data> webviewdata = [
   Data(
       name: 'computing',
       urlImage: "assets/icons/computing_icon.svg",
-      url: 'https://www.w3schools.com/html'),
+      url: 'https://www.khanacademy.org/computing'),
   Data(
       name: 'analytics',
       urlImage: "assets/icons/analytics_logo.svg",
-      url: 'https://www.w3schools.com/html'),
+      url: 'https://analytics.google.com/analytics/web'),
   Data(
       name: 'javascript',
       urlImage: "assets/icons/javascript_icon.svg",
-      url: 'https://www.w3schools.com/js'),
+      url: 'https://www.w3schools.com/js/'),
   Data(
       name: 'monogodb',
       urlImage: "assets/icons/monogodb_icon.svg",
-      url: 'https://www.w3schools.com/html'),
+      url: 'https://www.tutorialspoint.com/mongodb/index.htm'),
   Data(
       name: 'atlas',
       urlImage: "assets/icons/atlas_icon.svg",
-      url: 'https://www.w3schools.com/html'),
+      url: 'https://atlasti.com/video-tutorials/atlas-ti-mac-video-tutorials'),
 ];
 
 class Webslider extends StatefulWidget {
