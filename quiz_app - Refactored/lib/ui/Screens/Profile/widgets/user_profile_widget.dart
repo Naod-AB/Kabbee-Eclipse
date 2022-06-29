@@ -198,8 +198,15 @@ Widget buildBottomSheetTiles(IconData? leadingIcon, Widget? title,
 }
 
 // admin users
-Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
-    bool isCurrentUserAdmin, bool isUserActive, bool isUserAdmin) {
+Widget buildUsersTiles(
+    Widget leadingImage,
+    String title,
+    String subtitle,
+    bool isCurrentUserAdmin,
+    bool isUserActive,
+    bool isUserAdmin,
+    user,
+    int index) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(10),
     child: ListTile(
@@ -241,6 +248,23 @@ Widget buildUsersTiles(Widget leadingImage, String title, String subtitle,
               color: kblue,
               itemBuilder: (context) => [
                     PopupMenuItem(
+                      onTap: () {
+                        final String listId = user['id'].toString();
+
+                        isUserActive
+                            ? {
+                                controller.updatedPassword.value =
+                                    'This#pass123',
+                                updateUsersList(
+                                    id: listId, status: true, index: index),
+                              }
+                            : {
+                                controller.updatedPassword.value =
+                                    '${user['firstName']}' '#pass123',
+                                updateUsersList(
+                                    id: listId, status: false, index: index)
+                              };
+                      },
                       child: customText(isUserActive ? 'Block' : 'Activate', 16,
                           true, false, Colors.black),
                     ),
@@ -505,7 +529,6 @@ Widget passwordVisibilityBtn() {
   return GestureDetector(
     onTap: () {
       controller.hidePassword.value = !controller.hidePassword.value;
-      print('object');
     },
     child: Icon(
       controller.hidePassword.value ? Icons.visibility_off : Icons.visibility,
@@ -555,18 +578,9 @@ Widget sampleCard(context, IconData icon, String score) {
 
 void updateProfile(
     GlobalKey<FormFieldState> passwordKey, BuildContext context) {
-  print('profile updated');
-
   controller.gender.value = controller.genderIndex.value;
   controller.userInfo.value!.gender =
       controller.gender.value ? 'Male' : 'Female';
-  print('gender is a ${controller.userInfo.value!.gender}');
-
-  // incase
-  // i need
-  // to
-  // delete
-  // ......
 
   if (controller.firstNameController.value.text.trimLeft().isNotEmpty) {
     controller.firstName.value =
@@ -574,11 +588,6 @@ void updateProfile(
 
     controller.userInfo.value!.firstName = controller.firstName.value;
   }
-  //  else {
-  //     controller.firstName.value =
-  //         controller.firstNameController.value.text.trimLeft();
-  //     controller.userInfo.value!.firstName = controller.firstName.value;
-  //   }
 
   if (controller.lastNameController.value.text.trimLeft().isNotEmpty) {
     controller.lastName.value =
@@ -586,10 +595,6 @@ void updateProfile(
 
     controller.userInfo.value!.lastName = controller.lastName.value;
   }
-
-  //  else {
-  //   controller.lastName.value = controller.userInfo.value!.lastName.toString();
-  // }
 
   if (controller.passwordController.value.text.trimLeft().isNotEmpty &&
       passwordKey.currentState!.validate()) {

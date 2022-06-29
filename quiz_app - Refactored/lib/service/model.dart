@@ -88,7 +88,6 @@ Future<int> fetchCorrectAnswers() async {
   );
   var count = 0;
 
-  // print(response.body);
   final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
   for (var item in parsed) {
     if (item['isCorrect'] == true) {
@@ -106,7 +105,6 @@ Future<int> fetchSelectedQuestion() async {
   );
   var count = 0;
 
-  // print(response.body);
   final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
   for (var item in parsed) {
     if (item['isSelected'] == true) {
@@ -134,12 +132,13 @@ Future<Users> updateJprofile({
     }),
   );
   if (response.statusCode == 200) {
-    print('updated profile ${response.body}');
     return Users.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Error);
   }
 }
+
+// Update the user lists
 
 // Delete answers
 Future deleteSavedAnswers(int optionLength) async {
