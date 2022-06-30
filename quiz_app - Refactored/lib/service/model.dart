@@ -52,7 +52,7 @@ Future<checkAnswer> updateJsonTime({
   required bool isSelected,
 }) async {
   final response = await http.patch(
-    Uri.parse('http://10.0.2.2:3000/answers/$id'),
+    Uri.parse('http://localhost:3000/answers/$id'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -64,7 +64,7 @@ Future<checkAnswer> updateJsonTime({
   );
 
   // final responseque = await http.patch(
-  //   Uri.parse('http://10.0.2.2:3000/answers/$id'),
+  //   Uri.parse('http://localhost:3000/answers/$id'),
   //   headers: <String, String>{
   //     'Content-Type': 'application/json; charset=UTF-8',
   //   },
@@ -84,11 +84,10 @@ Future<checkAnswer> updateJsonTime({
 // For Score page
 Future<int> fetchCorrectAnswers() async {
   final response = await http.get(
-    Uri.parse('http://10.0.2.2:3000/answers'),
+    Uri.parse('http://localhost:3000/answers'),
   );
   var count = 0;
 
-  // print(response.body);
   final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
   for (var item in parsed) {
     if (item['isCorrect'] == true) {
@@ -102,11 +101,10 @@ Future<int> fetchCorrectAnswers() async {
 // For unanswered
 Future<int> fetchSelectedQuestion() async {
   final response = await http.get(
-    Uri.parse('http://10.0.2.2:3000/answers'),
+    Uri.parse('http://localhost:3000/answers'),
   );
   var count = 0;
 
-  // print(response.body);
   final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
   for (var item in parsed) {
     if (item['isSelected'] == true) {
@@ -122,7 +120,7 @@ Future<Users> updateJprofile({
   required String id,
 }) async {
   final response = await http.patch(
-    Uri.parse('http://10.0.2.2:3000/Users/$id'),
+    Uri.parse('http://localhost:3000/Users/$id'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -140,11 +138,13 @@ Future<Users> updateJprofile({
   }
 }
 
+// Update the user lists
+
 // Delete answers
 Future deleteSavedAnswers(int optionLength) async {
   for (var i = 1; i < optionLength + 1; i++) {
     final response = await http.patch(
-      Uri.parse('http://10.0.2.2:3000/answers/$i'),
+      Uri.parse('http://localhost:3000/answers/$i'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:convert';
 
 class ProfileController extends GetxController {
   // RxString selectedGender = 'male'.obs;
@@ -30,8 +33,16 @@ class ProfileController extends GetxController {
   RxString password = 'test123'.obs;
 
   Rx<Users?> userInfo = Users().obs;
+  List? userList;
 
   List? scores;
+  RxList activeUsers = [].obs;
+  RxList blockedUsers = [].obs;
+
+  RxInt activeUsersCount = 0.obs;
+  RxInt blockedUsersCount = 0.obs;
+
+  RxString updatedPassword = ''.obs;
 
   Rx<GlobalKey<FormFieldState>> emailFieldKey = GlobalKey<FormFieldState>().obs;
   Rx<GlobalKey<FormFieldState>> passFieldKey = GlobalKey<FormFieldState>().obs;
@@ -57,7 +68,6 @@ class ProfileController extends GetxController {
     if (pickedFile != null) {
       editedImage.value = pickedFile.path;
       showSnackbar(context, 'Image', 'Image chosen successfuly', 'success');
-
       isBtnNull.value = true;
     } else {
       showSnackbar(context, 'Image', 'Failed to choose image', 'error');

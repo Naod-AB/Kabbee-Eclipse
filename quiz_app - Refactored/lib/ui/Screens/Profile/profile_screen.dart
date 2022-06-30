@@ -4,15 +4,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:quiz_app/routes/router.gr.dart';
-
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
-import 'package:quiz_app/ui/utils/string_extension.dart';
 
+import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
@@ -20,128 +18,131 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.firstName.value =
-        controller.userInfo.value!.firstName.toString().toCapitalized();
-    controller.lastName.value =
-        controller.userInfo.value!.lastName.toString().toCapitalized();
-
-    controller.gender.value =
-        controller.userInfo.value!.gender.toString() == 'Male' ? true : false;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('Account'),
         centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: ListView(
           children: [
+            //  Personal section
+
             profileCardContent(context),
-            customText('Account', 20, false, false, primaryColor),
+            customText('Profile', 20, false, false, primaryColor),
             const SizedBox(height: 15),
+
             buildTileGroup(
               Column(
                 children: [
-                  buildTile(
-                    Icons.person,
-                    customText('Full Name', 18, true, false, primaryColor),
-                    Obx(() => customText(
-                        controller.userInfo.value!.firstName
-                                .toString()
-                                .toCapitalized() +
-                            ' ' +
-                            controller.userInfo.value!.lastName
-                                .toString()
-                                .toCapitalized(),
-                        13,
-                        false,
-                        false,
-                        secondaryColor)),
-                    null,
-                    true,
+                  GestureDetector(
+                    onTap: () {
+                      context.router.pushNamed('/personal_details');
+                    },
+                    child: buildTile(
+                      Icons.person,
+                      customText('Personal', 18, true, false, primaryColor),
+                      customText('View and update profile', 13, false, false,
+                          secondaryColor),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                      true,
+                    ),
                   ),
                   buildDivider(),
-                  Obx(() => buildTile(
-                      Icons.lock,
-                      customText('Password', 18, true, false, primaryColor),
-                      customText(controller.password.value, 13, false, true,
-                          secondaryColor),
-                      null,
-                      true)),
-                  buildDivider(),
-                  Obx(() => buildTile(
-                        controller.gender.value ? Icons.male : Icons.female,
-                        customText('Gender', 18, true, false, primaryColor),
-                        customText('Selected gender', 13, false, false,
-                            secondaryColor),
-                        genderValueContainer(),
-                        true,
-                      )),
                 ],
               ),
             ),
+
+            // Admin settings
+
+            if (controller.userInfo.value!.role == 'admin')
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  customText('Admin Settings', 20, false, false, primaryColor),
+                  const SizedBox(height: 15),
+                  buildTileGroup(
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            context.router.pushNamed('/dahboard');
+                          },
+                          child: buildTile(
+                            Icons.dashboard,
+                            customText(
+                                'Dashboard', 18, true, false, primaryColor),
+                            customText('View and update profile', 13, false,
+                                false, secondaryColor),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            ),
+                            true,
+                          ),
+                        ),
+                        buildDivider(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+            // Other features section
+
             const SizedBox(height: 20),
             customText('Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
-                  // buildTile(
-                  //     Icons.dark_mode,
-                  //     customText('Dark Mode', 18, true, false, primaryColor),
-                  //     customText(
-                  //         'Change theme', 13, false, false, secondaryColor),
-                  //     Switch.adaptive(
-                  //       value: true,
-                  //       activeColor: orangeColor,
-                  //       onChanged: (value) {},
-                  //     ),
-                  //     true),
-
                   buildDivider(),
-                  buildTile(
-                      Icons.celebration,
-                      customText('My Scores', 18, true, false, primaryColor),
-                      customText(
-                          'Achievements', 13, false, false, secondaryColor),
-                      GestureDetector(
-                        onTap: () async {
-                          controller.scores = await fetchUserScores(
-                              controller.userInfo.value!.id);
+                  GestureDetector(
+                    onTap: () async {
+                      controller.scores =
+                          await fetchUserScores(controller.userInfo.value!.id);
 
-                          context.router.pushNamed('/my_scores');
-                        },
-                        child: const Icon(
+                      context.router.pushNamed('/my_scores');
+                    },
+                    child: buildTile(
+                        Icons.celebration,
+                        customText('My Scores', 18, true, false, primaryColor),
+                        customText(
+                            'Achievements', 13, false, false, secondaryColor),
+                        const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                         ),
-                      ),
-                      true),
+                        true),
+                  ),
                   buildDivider(),
-                  buildTile(
-                      Icons.recommend_outlined,
-                      customText(
-                          'Recommendations', 18, true, false, primaryColor),
-                      customText('kabbee recommend you to Visit', 13, false,
-                          false, secondaryColor),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Webslider()),
-                          );
-                        },
-                        child: const Icon(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Webslider()),
+                      );
+                    },
+                    child: buildTile(
+                        Icons.recommend_outlined,
+                        customText(
+                            'Recommendations', 18, true, false, primaryColor),
+                        customText('kabbee recommend you to Visit', 13, false,
+                            false, secondaryColor),
+                        const Icon(
                           Icons.view_carousel_outlined,
                           color: Colors.white,
                         ),
-                      ),
-                      true),
-
+                        true),
+                  ),
                   buildDivider(),
-
                   GestureDetector(
                     onTap: () {
                       showCupertinoDialog<void>(
@@ -169,8 +170,6 @@ class ProfileScreen extends GetView<ProfileController> {
                           ],
                         ),
                       );
-
-                      print('object');
                     },
                     child: buildTile(
                         Icons.exit_to_app,
@@ -186,14 +185,7 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          contactEditIcon(context),
-          editIcon(context),
-        ],
-      ),
+      floatingActionButton: contactEditIcon(context),
     );
   }
 }
