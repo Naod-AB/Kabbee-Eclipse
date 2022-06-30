@@ -69,7 +69,8 @@ class ChooseType extends StatelessWidget {
                           path,
                           icon,
                           questionController,
-                          true);
+                          true,
+                          false);
                     },
                   ),
                   const SizedBox(

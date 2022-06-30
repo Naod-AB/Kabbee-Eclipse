@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../routes/router.gr.dart';
 import '../../service/api.dart';
 import '../../service/model.dart';
@@ -18,7 +19,8 @@ quizAlertBox(
     path,
     icon,
     QuestionControl questionAlertCtrl,
-    bool isFirst) {
+    bool isFirst,
+    bool isback) {
   Alert(
     context: context,
     type: AlertType.warning,
@@ -34,7 +36,8 @@ quizAlertBox(
     ),
     buttons: [
       DialogButton(
-        child: const Text(
+        child: Text(
+          //isback ? "" :
           "CANCEL",
           style: TextStyle(
             color: Colors.white,
@@ -42,7 +45,7 @@ quizAlertBox(
           ),
         ),
         onPressed: () => Navigator.pop(context),
-        color: Colors.transparent,
+        color: kblue,
         border:
             Border.all(color: Colors.red, width: 1, style: BorderStyle.solid),
       ),
@@ -51,40 +54,43 @@ quizAlertBox(
           confirmationText,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
-        onPressed: !isFirst
-            ? () async {
-                questionAlertCtrl.count = await fetchCorrectAnswers();
-                questionAlertCtrl.isEnabled.value = false;
-                int scorePercent = (questionAlertCtrl.count /
-                        questionAlertCtrl.questionApi!.length *
-                        100)
-                    .toInt();
-                print('scorePercent.runtimeType ${scorePercent.runtimeType}');
-                CourseScore score = CourseScore(
-                    courseName: questionAlertCtrl.chosenCourse.value,
-                    courseType: questionAlertCtrl.chosenCourseType.value,
-                    courseScore: questionAlertCtrl.count,
-                    coursePercentage: scorePercent,
-                    userId: controller.userInfo.value!.id);
-                print("after clicking done button ");
-                questionAlertCtrl.isFinished = true;
-                saveUserScore(score);
+        onPressed: isback
+            ? null
+            : !isFirst
+                ? () async {
+                    questionAlertCtrl.count = await fetchCorrectAnswers();
+                    questionAlertCtrl.isEnabled.value = false;
+                    int scorePercent = (questionAlertCtrl.count /
+                            questionAlertCtrl.questionApi!.length *
+                            100)
+                        .toInt();
+                    print(
+                        'scorePercent.runtimeType ${scorePercent.runtimeType}');
+                    CourseScore score = CourseScore(
+                        courseName: questionAlertCtrl.chosenCourse.value,
+                        courseType: questionAlertCtrl.chosenCourseType.value,
+                        courseScore: questionAlertCtrl.count,
+                        coursePercentage: scorePercent,
+                        userId: controller.userInfo.value!.id);
+                    print("after clicking done button ");
+                    questionAlertCtrl.isFinished = true;
+                    saveUserScore(score);
+                    // () => Navigator.pop(context, false);
+                    context.router.push(FinalScore(
+                        outOf: questionAlertCtrl.questionApi!.length,
+                        score: questionAlertCtrl.count,
+                        optionList: questionAlertCtrl.optionList));
+                  }
+                : () async {
+                    questionAlertCtrl.questionApi = await fetchQuestionsApi(
+                        path.toString().toLowerCase() + "_final");
 
-                context.router.push(FinalScore(
-                    outOf: questionAlertCtrl.questionApi!.length,
-                    score: questionAlertCtrl.count,
-                    optionList: questionAlertCtrl.optionList));
-              }
-            : () async {
-                questionAlertCtrl.questionApi = await fetchQuestionsApi(
-                    path.toString().toLowerCase() + "_final");
-
-                // print(path.toLowerCase() + "_final");
-                String paths = path.toString().toLowerCase() + "_final";
-                context.router.push(
-                    QuestionsScreen(icon: icon, path: paths, isFinal: true));
-              },
-        color: kblue,
+                    // print(path.toLowerCase() + "_final");
+                    String paths = path.toString().toLowerCase() + "_final";
+                    context.router.push(QuestionsScreen(
+                        icon: icon, path: paths, isFinal: true));
+                  },
+        color: Colors.transparent,
       )
     ],
   ).show();
