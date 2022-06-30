@@ -26,9 +26,10 @@ quizAlertBox(
     type: AlertType.warning,
     title: title,
     desc: description,
-    style: const AlertStyle(
+    style: AlertStyle(
       isOverlayTapDismiss: false,
       backgroundColor: Color(0xFF333333),
+      buttonsDirection: isback ? ButtonsDirection.column : ButtonsDirection.row,
       titleStyle: TextStyle(
           color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
       descStyle: TextStyle(
@@ -45,9 +46,11 @@ quizAlertBox(
           ),
         ),
         onPressed: () => Navigator.pop(context),
-        color: kblue,
-        border:
-            Border.all(color: Colors.red, width: 1, style: BorderStyle.solid),
+        color: isback ? kblue : Colors.transparent,
+        border: Border.all(
+            color: isback ? Colors.transparent : Colors.red,
+            width: 1,
+            style: BorderStyle.solid),
       ),
       DialogButton(
         child: Text(
@@ -90,7 +93,7 @@ quizAlertBox(
                     context.router.push(QuestionsScreen(
                         icon: icon, path: paths, isFinal: true));
                   },
-        color: Colors.transparent,
+        color: isback ? Colors.transparent : kblue,
       )
     ],
   ).show();
