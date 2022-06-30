@@ -45,8 +45,16 @@ class QuestionsScreen extends StatelessWidget {
       child: WillPopScope(
         onWillPop: isFinal
             ? () {
-                return quizAlertBox(context, "navigate", "", "u can't navigate",
-                    path, icon, controller, false, true);
+                return quizAlertBox(
+                    context,
+                    "navigate",
+                    "",
+                    "hello you can't back during exam starts",
+                    path,
+                    icon,
+                    controller,
+                    false,
+                    true);
               }
             : null,
 
