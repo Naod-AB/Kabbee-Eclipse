@@ -45,12 +45,19 @@ class QuestionsScreen extends StatelessWidget {
       child: WillPopScope(
         onWillPop: isFinal
             ? () {
-                return quizAlertBox(context, "navigate", "", "u can't navigate",
-                    path, icon, controller, false, true);
+                return quizAlertBox(
+                    context,
+                    "navigate",
+                    "",
+                    "hello you can't back during exam starts",
+                    path,
+                    icon,
+                    controller,
+                    false,
+                    true);
               }
             : null,
 
-<<<<<<< HEAD
         //(
         //   title:
         //       Text("hello you can't back during exam starts"),
@@ -216,109 +223,6 @@ class QuestionsScreen extends StatelessWidget {
                                                             snapshot]['id']);
                                                   }),
                                             ),
-=======
-                          return Container(
-                            padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
-                            margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(176, 34, 34, 34),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // const Spacer(
-                                //   flex: 1,
-                                // ),
-                                Text(
-                                  controller.questionApi![snapshot]['question']
-                                      .toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5!
-                                      .copyWith(color: Colors.white),
-                                ),
-                                // const Spacer(
-                                //   flex: 2,
-                                // ),
-                                Container(
-                                  height: 400.0,
-                                  child: ListView.builder(
-                                    itemCount: options.length,
-                                    itemBuilder: (context, index) => ButtonBar(
-                                      alignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Obx(
-                                          () => Container(
-                                            width: 300,
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 0),
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: controller.groupValue[
-                                                              snapshot] ==
-                                                          controller.value[
-                                                              snapshot][index]
-                                                      ? kblue
-                                                      : const Color.fromARGB(
-                                                          255, 117, 110, 110),
-                                                  width: 2),
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                            ),
-                                            child: RadioListTile<int>(
-                                                activeColor: kblue,
-                                                title: Wrap(
-                                                  children: [
-                                                    AutoSizeText(
-                                                      options[index].toString(),
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headline5!
-                                                          .copyWith(
-                                                              color:
-                                                                  Colors.white),
-                                                      maxLines: 2,
-                                                    ),
-                                                    const Spacer(),
-                                                  ],
-                                                ),
-                                                controlAffinity:
-                                                    ListTileControlAffinity
-                                                        .trailing,
-                                                groupValue: controller
-                                                    .groupValue[snapshot],
-                                                value: controller
-                                                    .value[snapshot][index],
-                                                onChanged: (newValue) {
-                                                  controller.groupValue[
-                                                          snapshot] =
-                                                      newValue as int;
-                                                  if (options[index]
-                                                          .toString() ==
-                                                      controller.questionApi![
-                                                              snapshot]
-                                                              ['answer']
-                                                          .toString()) {
-                                                    isCorrect = true;
-                                                    isSelected = true;
-                                                  } else {
-                                                    isCorrect = false;
-                                                    isSelected = true;
-                                                  }
-
-                                                  updateJsonTime(
-                                                    answer: options[index],
-                                                    id: controller.questionApi![
-                                                        snapshot]['id'],
-                                                    isCorrect: isCorrect,
-                                                    isSelected: isSelected,
-                                                  );
-
-                                                  print(controller.questionApi![
-                                                      snapshot]['id']);
-                                                }),
->>>>>>> 1ed6da9d80544455cae5eb2c1a0b42a23747bb6c
                                           ),
                                         ],
                                       ),
