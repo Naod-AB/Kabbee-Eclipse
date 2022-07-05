@@ -213,3 +213,13 @@ Future fetchCourses(String category) async {
     throw Exception('Failed to fetch Courses');
   }
 }
+
+Future<List> fetchDashboard() async {
+  final response = await http.get(Uri.parse('http://localhost:3000/Courses'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    final dashboardData = jsonDecode(response.body);
+    return dashboardData;
+  } else {
+    throw Exception('Failed to fetch Courses');
+  }
+}

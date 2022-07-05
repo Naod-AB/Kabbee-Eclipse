@@ -27,11 +27,14 @@ class DashboardPage extends GetView<ProfileController> {
           child: ListView(
             children: [
               SizedBox(height: 25),
-              buildDashBoardTiles(context, 'USERS', 32, '08', 64),
+              buildDashBoardTiles(context, 'USERS', 32,
+                  '0' + controller.usersLength.toString(), 64),
               SizedBox(height: 20),
-              buildDashBoardTiles(context, 'COURSES', 32, '09', 64),
+              buildDashBoardTiles(context, 'COURSES', 32,
+                  '0' + controller.courseLength.length.toString(), 64),
               SizedBox(height: 20),
-              buildDashBoardTiles(context, 'CATEGORIES', 32, '03', 64),
+              buildDashBoardTiles(context, 'CATEGORIES', 32,
+                  '0' + controller.categoryLength.length.toString(), 64),
               SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {

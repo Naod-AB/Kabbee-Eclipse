@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_const
 
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
+import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
 
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
@@ -72,14 +75,15 @@ class ProfileScreen extends GetView<ProfileController> {
                       children: [
                         GestureDetector(
                           onTap: () async {
+                            await controller.getDashBoardData();
                             context.router.pushNamed('/dahboard');
                           },
                           child: buildTile(
                             Icons.dashboard,
                             customText(
                                 'Dashboard', 18, true, false, primaryColor),
-                            customText('View and update profile', 13, false,
-                                false, secondaryColor),
+                            customText(
+                                'Statistics', 13, false, false, secondaryColor),
                             const Icon(
                               Icons.arrow_forward_ios,
                               color: Colors.white,
@@ -96,6 +100,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Other features section
 
+// ......
             const SizedBox(height: 20),
             customText('Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),

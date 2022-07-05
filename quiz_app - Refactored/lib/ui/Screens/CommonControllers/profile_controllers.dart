@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
+import '../../../service/api.dart';
+
 class ProfileController extends GetxController {
   // RxString selectedGender = 'male'.obs;
   // RxBool activeBtn = false.obs;
@@ -88,5 +90,22 @@ class ProfileController extends GetxController {
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     } else {}
+  }
+
+  // Dashboard Data
+
+  List categoryLength = [];
+  List courseLength = [];
+  int usersLength = 0;
+
+  getDashBoardData() async {
+    List fetchCoursesAndCategories = await fetchDashboard();
+    List fetchUsers = await fetchAllUsers();
+
+    categoryLength =
+        fetchCoursesAndCategories.map((e) => e['category']).toSet().toList();
+    courseLength =
+        fetchCoursesAndCategories.map((e) => e['courseName']).toSet().toList();
+    usersLength = fetchUsers.length;
   }
 }

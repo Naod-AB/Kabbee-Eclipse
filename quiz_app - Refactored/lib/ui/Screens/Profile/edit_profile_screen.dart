@@ -62,7 +62,7 @@ class EditProfileScreen extends GetView<ProfileController> {
               editProfilePic(context),
               const SizedBox(height: 40),
               Obx(
-                () => buildButton(context, 'UPDATE', pkey),
+                () => buildUpdateButton(context, 'UPDATE', pkey),
               ),
               const SizedBox(height: 30),
             ],
