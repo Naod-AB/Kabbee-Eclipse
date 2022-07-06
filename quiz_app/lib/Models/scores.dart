@@ -15,7 +15,7 @@ class CourseScore {
     this.userId,
   });
 
-  int? courseId;
+  String? courseId;
   String? courseName;
   String? courseType;
   int? courseScore;

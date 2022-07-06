@@ -436,7 +436,8 @@ Widget contactEditIcon(BuildContext context) {
   );
 }
 
-Widget buildButton(BuildContext context, text, GlobalKey<FormFieldState>? key) {
+Widget buildUpdateButton(
+    BuildContext context, text, GlobalKey<FormFieldState>? key) {
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -448,8 +449,8 @@ Widget buildButton(BuildContext context, text, GlobalKey<FormFieldState>? key) {
           ),
         )),
     onPressed: controller.isBtnNull.value
-        ? () {
-            updateProfile(key!, context);
+        ? () async {
+            await updateProfile(key!, context);
           }
         : null,
     child: customText(text, 20, false, false, primaryColor),
@@ -575,9 +576,7 @@ Widget sampleCard(context, IconData icon, String score) {
 }
 
 //!  FUNTIONS
-
-void updateProfile(
-    GlobalKey<FormFieldState> passwordKey, BuildContext context) {
+updateProfile(GlobalKey<FormFieldState> passwordKey, BuildContext context) {
   controller.gender.value = controller.genderIndex.value;
   controller.userInfo.value!.gender =
       controller.gender.value ? 'Male' : 'Female';

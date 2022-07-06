@@ -20,7 +20,7 @@ class QuestionControl extends GetxController {
 
   RxInt h = 0.obs;
   RxInt m = 0.obs;
-  RxInt s = 15.obs;
+  RxInt s = 25.obs;
 
   bool isFinished = false;
 
