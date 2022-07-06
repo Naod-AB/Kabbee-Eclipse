@@ -10,6 +10,7 @@ import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
+import '../Profile/widgets/user_profile_widget.dart';
 
 class FinalScore extends StatelessWidget {
   FinalScore(
@@ -78,15 +79,14 @@ class FinalScore extends StatelessWidget {
               Visibility(
                 visible: controller.isEnabled.value,
                 child: ElevatedButton(
-                  child: const Text('REVIEW'),
+                  child: customText('REVIEW', 20, false, false, primaryColor),
                   onPressed: () {
                     print(' reviewlist number ${controller.optionList}');
 
-                    deleteSavedAnswers(controller.optionList);
                     context.router.pushNamed('/review_screen');
                   },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(200, 40),
+                      fixedSize: const Size(300, 50),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
                       side: const BorderSide(
@@ -102,9 +102,7 @@ class FinalScore extends StatelessWidget {
                   maintainAnimation: true,
                   maintainState: true,
                   child: ElevatedButton(
-                    child: const Text(
-                      'DONE',
-                    ),
+                    child: customText('DONE', 20, false, false, primaryColor),
                     onPressed: () async {
                       pController.scores =
                           await fetchUserScores(pController.userInfo.value!.id);
@@ -115,7 +113,7 @@ class FinalScore extends StatelessWidget {
                       Get.delete<QuestionControl>();
                     },
                     style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(200, 40),
+                        fixedSize: const Size(300, 50),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                         primary: const Color.fromARGB(255, 255, 165, 0)),

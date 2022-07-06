@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,11 +7,11 @@ import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
+import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
-
+import '../Profile/widgets/user_profile_widget.dart';
 import '/routes/router.gr.dart';
-
 
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
@@ -23,11 +24,13 @@ class ReviewScreen extends StatelessWidget {
     var isCorrect = false;
     return SafeArea(
       child: Scaffold(
+        appBar: quizAppBar(context: context),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Column(
             children: [
+              // Question Number
               Obx(
                 () => Text(
                     controller.qnIndex.toString() +
@@ -39,8 +42,10 @@ class ReviewScreen extends StatelessWidget {
                         .copyWith(color: Colors.white)),
               ),
               SizedBox(height: 20),
+              // Questions
+
               SizedBox(
-                height: 600.0,
+                height: 540.0,
                 child: PageView.builder(
                     itemCount: controller.questionApi!.length,
                     onPageChanged: (pageNumber) {
@@ -77,7 +82,7 @@ class ReviewScreen extends StatelessWidget {
                             Container(
                               height: 400.0,
                               child: ListView.builder(
-                                itemCount: 4,
+                                itemCount: controller.optionList,
                                 itemBuilder: (context, index) => ButtonBar(
                                   alignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -112,7 +117,7 @@ class ReviewScreen extends StatelessWidget {
                                           activeColor: kblue,
                                           title: Row(
                                             children: [
-                                              Text(
+                                              AutoSizeText(
                                                 options[index].toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
@@ -120,7 +125,7 @@ class ReviewScreen extends StatelessWidget {
                                                     .copyWith(
                                                         color: Colors.white),
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                             ],
                                           ),
                                           controlAffinity:
@@ -142,23 +147,23 @@ class ReviewScreen extends StatelessWidget {
                       );
                     }),
               ),
-              Spacer(),
+              const Spacer(),
               Obx(
-                () => controller.questionApi!.length ==
-                        controller.qnIndex.value
+                () => controller.questionApi!.length == controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
                           print(controller.optionList);
                           deleteSavedAnswers(controller.optionList);
-                          context.router.push(CategoryRoute());
+                          context.router.push(const CategoryRoute());
                           controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(300, 40),
+                            fixedSize: const Size(300, 50),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             primary: const Color.fromARGB(255, 255, 165, 0)),
-                        child: const Text('Done'))
+                        child:
+                            customText('DONE', 20, false, false, primaryColor))
                     : Container(),
               ),
               Spacer(),
