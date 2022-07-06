@@ -5,11 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:quiz_app/service/api.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
-
 
 class FinalScore extends StatelessWidget {
   FinalScore(
@@ -80,9 +79,10 @@ class FinalScore extends StatelessWidget {
                 child: ElevatedButton(
                   child: const Text('REVIEW'),
                   onPressed: () {
-                    print(' reviewlist number ${controller.optionList}');
+                    print(
+                        ' reviewlist number ${controller.questionApi!.length}');
 
-                    deleteSavedAnswers(controller.optionList);
+                    deleteSavedAnswers(controller.questionApi!.length);
                     context.router.pushNamed('/review_screen');
                   },
                   style: ElevatedButton.styleFrom(
@@ -109,8 +109,8 @@ class FinalScore extends StatelessWidget {
                       pController.scores =
                           await fetchUserScores(pController.userInfo.value!.id);
 
-                      print(' done number ${controller.optionList}');
-                      deleteSavedAnswers(controller.optionList);
+                      print(' done number ${controller.questionApi!.length}');
+                      deleteSavedAnswers(controller.questionApi!.length);
                       context.router.pushNamed('/category');
                       Get.delete<QuestionControl>();
                     },

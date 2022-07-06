@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
@@ -39,17 +39,28 @@ class MyTimer extends StatelessWidget {
 
             controller.seconds.value = 0;
             controller.isEnabled.value = false;
+            String checkid = pcontroller.userInfo.value!.id.toString() +
+                controller.chosenCourse.value;
             CourseScore score = CourseScore(
+                courseId: checkid,
                 courseName: controller.chosenCourse.value,
                 courseType: controller.chosenCourseType.value,
                 courseScore: controller.count,
                 coursePercentage: scorePercent,
                 userId: pcontroller.userInfo.value!.id);
-            saveUserScore(score);
+            // saveUserScore(score);
+            print('checkid timer is ${checkid}');
+            if (score.courseId != checkid) {
+              saveUserScore(score);
+              // print('create score ${score}');
+            } else {
+              createUserScore(score);
+              // print('save score ${score}');
+            }
             context.router.push(FinalScore(
               outOf: controller.questionApi!.length,
               score: controller.count,
-              optionList: controller.optionList,
+              optionList: controller.questionApi!.length,
             ));
             controller.qnIndex.value = 1;
 

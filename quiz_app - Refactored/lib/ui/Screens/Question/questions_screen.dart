@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:quiz_app/ui/Screens/Question/widgets/count_down.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
-import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
+//import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -57,28 +57,6 @@ class QuestionsScreen extends StatelessWidget {
                     true);
               }
             : null,
-
-        //(
-        //   title:
-        //       Text("hello you can't back during exam starts"),
-        //   actions: <Widget>[
-        //     FlatButton(
-        //       onPressed: () => Navigator.pop(context, false),
-        //       child: Text("OK"),
-        //     ),
-        //     // FlatButton(
-        //     //   onPressed: () => Navigator.pop(context, true),
-        //     //   child: Text("yes"),
-        //     // ),
-        //   ],
-        // }),
-        //               );
-        // if (Value != null) {
-        //   return Future.value(Value);
-        // } else {
-        //   return Future.value(false);
-        // }
-
         child: Scaffold(
           backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           appBar: quizAppBar(
@@ -241,60 +219,9 @@ class QuestionsScreen extends StatelessWidget {
                               onPressed: () async {
                                 var answered = await fetchSelectedQuestion();
                                 // if (unanswered != 4)
-                                if (isFinal && answered != 4) {
-                                  // Alert(
-                                  //   context: context,
-                                  //   type: AlertType.warning,
-                                  //   title: "Notice",
-                                  //   desc:
-                                  //       "hello you have unanswered question . Do you want go back and check or continue to score page ?",
-                                  //   buttons: [
-                                  //     DialogButton(
-                                  //       child: const Text(
-                                  //         "back",
-                                  //         style: TextStyle(
-                                  //             color: Colors.white, fontSize: 20),
-                                  //       ),
-                                  //       onPressed: () => Navigator.pop(context),
-                                  //       color: const Color.fromRGBO(0, 179, 134, 1.0),
-                                  //     ),
-                                  //     DialogButton(
-                                  //       child: const Text(
-                                  //         "continue",
-                                  //         style: TextStyle(
-                                  //             color: Colors.white, fontSize: 20),
-                                  //       ),
-                                  //       onPressed: () async {
-                                  //         controller.count =
-                                  //             await fetchCorrectAnswers();
-                                  //         int scorePercent = (controller.count /
-                                  //                 controller.questionApi!.length *
-                                  //                 100)
-                                  //             .toInt();
-                                  //         CourseScore score = CourseScore(
-                                  //             courseName:
-                                  //                 controller.chosenCourse.value,
-                                  //             courseType:
-                                  //                 controller.chosenCourseType.value,
-                                  //             courseScore: controller.count,
-                                  //             coursePercentage: scorePercent,
-                                  //             userId: pController.userInfo.value!.id);
-                                  //         controller.isFinished = true;
-                                  //         saveUserScore(score);
-                                  //         context.router.push(FinalScore(
-                                  //             outOf: controller.questionApi!.length,
-                                  //             score: controller.count,
-                                  //             optionList: controller.optionList));
-                                  //         // controller.qnIndex.value = 1;
-                                  //       },
-                                  //       gradient: const LinearGradient(colors: [
-                                  //         Color.fromARGB(255, 233, 235, 64),
-                                  //         Color.fromARGB(255, 192, 164, 4)
-                                  //       ]),
-                                  //     )
-                                  //   ],
-                                  // ).show();
-
+                                if (isFinal &&
+                                    answered !=
+                                        controller.questionApi!.length) {
                                   quizAlertBox(
                                       context,
                                       'Notice',
@@ -313,7 +240,12 @@ class QuestionsScreen extends StatelessWidget {
                                           controller.questionApi!.length *
                                           100)
                                       .toInt();
+                                  String checkid = pcontroller
+                                          .userInfo.value!.id
+                                          .toString() +
+                                      controller.chosenCourse.value;
                                   CourseScore score = CourseScore(
+                                      courseId: checkid,
                                       courseName: controller.chosenCourse.value,
                                       courseType:
                                           controller.chosenCourseType.value,
@@ -323,13 +255,22 @@ class QuestionsScreen extends StatelessWidget {
                                   controller.isFinished = true;
 
                                   if (isFinal) {
-                                    saveUserScore(score);
+                                    // saveUserScore(score);
                                     controller.isEnabled.value = false;
+                                    print('checkid is ${checkid}');
+                                    if (score.courseId != checkid) {
+                                      saveUserScore(score);
+                                      // print('create score ${score}');
+                                    } else {
+                                      createUserScore(score);
+                                      // print('save score ${score}');
+                                    }
                                   }
                                   context.router.push(FinalScore(
                                       outOf: controller.questionApi!.length,
                                       score: controller.count,
-                                      optionList: controller.optionList));
+                                      optionList:
+                                          controller.questionApi!.length));
                                   controller.qnIndex.value = 1;
                                 }
                               },

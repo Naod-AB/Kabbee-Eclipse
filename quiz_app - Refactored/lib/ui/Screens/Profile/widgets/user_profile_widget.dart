@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:quiz_app/service/api.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
@@ -643,7 +643,7 @@ showSnackbar(
         ),
         description: Text(message),
         borderRadius: 0,
-        animationType: ANIMATION.fromBottom,
+        // animationType: ANIMATION.fromBottom,
         animationDuration: const Duration(milliseconds: 300),
         toastDuration: const Duration(seconds: 2),
       ).show(context);
@@ -659,7 +659,7 @@ showSnackbar(
         ),
         description: Text(message),
         borderRadius: 0,
-        animationType: ANIMATION.fromBottom,
+        //animationType: ANIMATION.fromBottom,
         animationDuration: const Duration(milliseconds: 500),
         toastDuration: const Duration(seconds: 2),
       ).show(context);

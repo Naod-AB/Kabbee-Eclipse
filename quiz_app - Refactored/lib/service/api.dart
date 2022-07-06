@@ -9,19 +9,21 @@ import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 
+import '../ui/Screens/CommonControllers/question_controller.dart';
 import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
+import '../ui/Screens/Question/models/checkanswer.dart';
 
 // Save User Score
 final ProfileController pController = Get.find();
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
   final response = await http.patch(
-      Uri.parse('http://localhost:3000/Scores/${score.courseName}'),
+      Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': score.courseName,
+        'id': score.courseId,
         'courseName': score.courseName,
         'courseType': score.courseType,
         'courseScore': score.courseScore,
@@ -37,10 +39,38 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
   }
 }
 
+// create user score
+
+Future<CourseScore> createUserScore(CourseScore score) async {
+  final response =
+      await http.post(Uri.parse('https://eclipse-api.herokuapp.com/scores'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, dynamic>{
+            'id': score.courseId,
+            'courseName': score.courseName,
+            'courseType': score.courseType,
+            'courseScore': score.courseScore,
+            'percentage': score.coursePercentage,
+            'userId': score.userId
+          }));
+  if (response.statusCode == 201) {
+    print("this is inside the create scoreSave api function ");
+
+    log(' log of create ${score.courseId}');
+    // log('user id${pController.userInfo.value!.id}');
+    // print('creat escore response is${response.body}');
+    return CourseScore.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to create score.');
+  }
+}
+
 // Create User
 Future<Users> createUser(Users user) async {
   final response = await http.post(
-    Uri.parse('http://localhost:3000/Users'),
+    Uri.parse('https://eclipse-api.herokuapp.com/users'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -51,8 +81,8 @@ Future<Users> createUser(Users user) async {
       'lastName': user.lastName!,
       'password': user.password!,
       'gender': user.gender!,
-      'status': 'active',
-      'role': 'user',
+      'status': 'ACTIVE',
+      'role': 'USER',
     }),
   );
   if (response.statusCode == 201) {
@@ -64,11 +94,11 @@ Future<Users> createUser(Users user) async {
 
 // Fetch MY Scores
 Future fetchUserScores(int userId) async {
-  final response =
-      await http.get(Uri.parse('http://localhost:3000/Scores?userId=$userId'));
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/scores/filter/?userId=$userId'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      final parsed = jsonDecode(response.body);
 
       return parsed;
     } else {
@@ -81,12 +111,13 @@ Future fetchUserScores(int userId) async {
 
 // Fetch User
 Future<Users?> fetchUser(String email) async {
-  final response =
-      await http.get(Uri.parse('http://localhost:3000/Users?email=$email'));
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=$email'));
 
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      return Users.fromJson(jsonDecode(response.body)[0]);
+      print('from response is ${response.body[0]}');
+      return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
     } else {
       return null;
     }
@@ -97,7 +128,8 @@ Future<Users?> fetchUser(String email) async {
 
 // Fetch all users
 Future<List<Users>> fetchAllUsers() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/Users'));
+  final response =
+      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     return parseUsers(response.body);
   } else {
@@ -115,10 +147,11 @@ List<Users> parseUsers(String responseBody) {
 // fetching users for adminList
 
 Future<List> fetchUsers() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/Users'));
+  final response =
+      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      final parsed = jsonDecode(response.body)["_embedded"]["users"];
 
       return parsed;
     } else {
@@ -135,7 +168,7 @@ Future<Users> updateUsersList({
   required bool status,
 }) async {
   final response = await http.patch(
-    Uri.parse('http://localhost:3000/Users/$id'),
+    Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -164,10 +197,11 @@ Future<Users> updateUsersList({
 
 // Get Questions
 Future fetchQuestionsApi(String path) async {
-  final response = await http.get(Uri.parse('http://localhost:3000/$path'));
+  final response =
+      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/questions'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      final parsedPath = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      final parsedPath = jsonDecode(response.body)["_embedded"]["questions"];
 
       return parsedPath;
     } else {
@@ -178,33 +212,10 @@ Future fetchQuestionsApi(String path) async {
   }
 }
 
-//new api method
-
-// var headersList = {
-//   'Accept': '*/*',
-//   'User-Agent': 'Thunder Client (https://www.thunderclient.com)'
-// };
-// Future fetchQuestionsApi(String path) async {
-//   //var url = Uri.parse('https://shalombr.pythonanywhere.com/api/practice/');
-//   var response = Uri.parse('https://shalombr.pythonanywhere.com/api/practice/');
-//   var req = http.Request('get', response);
-//   req.headers.addAll(headersList);
-
-//   // var req;
-//   var res = await req.send();
-//   final resBody = await res.stream.bytesToString();
-
-//   if (res.statusCode >= 200 && res.statusCode < 300) {
-//     print(resBody);
-//   } else {
-//     print(res.reasonPhrase);
-//   }
-// }
-
 // fetch categories
 Future fetchCourses(String category) async {
-  final response = await http
-      .get(Uri.parse('http://localhost:3000/Courses/?category=$category'));
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/courses/filter/?category=$category'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final parsedCourses = jsonDecode(response.body);
 
@@ -212,4 +223,132 @@ Future fetchCourses(String category) async {
   } else {
     throw Exception('Failed to fetch Courses');
   }
+}
+
+//  from model.dart //
+
+class ChosenModel {
+  final int questionNumber;
+  final String questionAnswer;
+
+  ChosenModel(this.questionNumber, this.questionAnswer);
+
+  @override
+  String toString() {
+    return '$questionNumber $questionAnswer';
+  }
+}
+
+final QuestionControl qcontroller = Get.put(QuestionControl());
+
+// Add Choices
+Future<checkAnswer> updateJsonTime({
+  required String answer,
+  required int id,
+  required bool isCorrect,
+  required bool isSelected,
+}) async {
+  final response = await http.patch(
+    Uri.parse('https://eclipse-api.herokuapp.com/answers/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'answer': answer,
+      'isCorrect': isCorrect,
+      'isSelected': isSelected,
+    }),
+  );
+
+  log('log is ${response.statusCode}');
+  if (response.statusCode == 200) {
+    return checkAnswer.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception(Error);
+  }
+}
+
+// For Score page
+Future<int> fetchCorrectAnswers() async {
+  final response = await http.get(
+    Uri.parse('https://eclipse-api.herokuapp.com/answers'),
+  );
+  var count = 0;
+
+  final parsed = jsonDecode(response.body)["_embedded"]["answers"];
+  for (var item in parsed) {
+    if (item['isCorrect'] == true) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+// For unanswered
+Future<int> fetchSelectedQuestion() async {
+  final response = await http.get(
+    Uri.parse('https://eclipse-api.herokuapp.com/answers'),
+  );
+  var count = 0;
+
+  final parsed = jsonDecode(response.body)["_embedded"]["answers"];
+  for (var item in parsed) {
+    if (item['isSelected'] == true) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+// To update profile to Api
+Future<Users> updateJprofile({
+  required String id,
+}) async {
+  final response = await http.patch(
+    Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      'firstName': controller.firstName.value,
+      'lastName': controller.lastName.value,
+      'password': controller.password.value,
+      'gender': controller.gender.value ? 'Male' : 'Female',
+    }),
+  );
+  if (response.statusCode == 200) {
+    return Users.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception(Error);
+  }
+}
+
+// Update the user lists
+
+// Delete answers
+Future deleteSavedAnswers(var pLength) async {
+  for (var i = 1; i < pLength + 1; i++) {
+    final response = await http.patch(
+      Uri.parse('https://eclipse-api.herokuapp.com/answers/$i'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, bool>{
+        'isCorrect': false,
+        "isSelected": false,
+      }),
+    );
+    print('i is $i');
+    print('patch response delete answer is${response.body}');
+
+    Get.delete<QuestionControl>();
+  }
+}
+
+// Logout
+logOut() {
+  Get.delete<ProfileController>();
+  Get.delete<QuestionControl>();
 }

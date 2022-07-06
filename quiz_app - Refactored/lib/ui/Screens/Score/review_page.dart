@@ -2,15 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
-
+import '../../../service/api.dart';
 import '/routes/router.gr.dart';
-
 
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
@@ -144,12 +143,11 @@ class ReviewScreen extends StatelessWidget {
               ),
               Spacer(),
               Obx(
-                () => controller.questionApi!.length ==
-                        controller.qnIndex.value
+                () => controller.questionApi!.length == controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
-                          print(controller.optionList);
-                          deleteSavedAnswers(controller.optionList);
+                          print(controller.questionApi!.length);
+                          deleteSavedAnswers(controller.questionApi!.length);
                           context.router.push(CategoryRoute());
                           controller.qnIndex.value = 1;
                         },
