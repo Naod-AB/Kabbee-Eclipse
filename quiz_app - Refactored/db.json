@@ -125,25 +125,25 @@
       "id": 1,
       "answer": "Apple",
       "isCorrect": false,
-      "isSelected": false
+      "isSelected": true
     },
     {
       "id": 2,
-      "answer": "July 2017",
-      "isCorrect": false,
-      "isSelected": false
+      "answer": "Jun 2017",
+      "isCorrect": true,
+      "isSelected": true
     },
     {
       "id": 3,
-      "answer": "Char",
+      "answer": "Double",
       "isCorrect": false,
-      "isSelected": false
+      "isSelected": true
     },
     {
       "id": 4,
-      "answer": "Count",
+      "answer": "Cin",
       "isCorrect": false,
-      "isSelected": false
+      "isSelected": true
     }
   ],
   "dart_practice": [

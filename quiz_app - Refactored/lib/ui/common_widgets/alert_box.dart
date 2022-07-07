@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../routes/router.gr.dart';
 import '../../service/api.dart';
-import '../../service/model.dart';
+//import '../../service/model.dart';
 import '../Screens/CommonControllers/question_controller.dart';
 import '../Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
 import '../Screens/Question/models/scores.dart';
 
+final QuestionControl controller = Get.put(QuestionControl());
+final ProfileController pcontroller = Get.put(ProfileController());
 quizAlertBox(
     BuildContext context,
     String title,
@@ -67,22 +70,33 @@ quizAlertBox(
                             questionAlertCtrl.questionApi!.length *
                             100)
                         .toInt();
+                    String checkid = pcontroller.userInfo.value!.id.toString() +
+                        controller.chosenCourse.value;
                     print(
                         'scorePercent.runtimeType ${scorePercent.runtimeType}');
                     CourseScore score = CourseScore(
+                        courseId: checkid,
                         courseName: questionAlertCtrl.chosenCourse.value,
                         courseType: questionAlertCtrl.chosenCourseType.value,
                         courseScore: questionAlertCtrl.count,
                         coursePercentage: scorePercent,
-                        userId: controller.userInfo.value!.id);
+                        userId: pcontroller.userInfo.value!.id);
                     print("after clicking done button ");
                     questionAlertCtrl.isFinished = true;
-                    saveUserScore(score);
+                    // saveUserScore(score);
+                    print('checkid unanswered is ${checkid}');
+                    if (score.courseId != checkid) {
+                      saveUserScore(score);
+                      // print('create score ${score}');
+                    } else {
+                      createUserScore(score);
+                      // print('save score ${score}');
+                    }
                     // () => Navigator.pop(context, false);
                     context.router.push(FinalScore(
                         outOf: questionAlertCtrl.questionApi!.length,
                         score: questionAlertCtrl.count,
-                        optionList: questionAlertCtrl.optionList));
+                        optionList: questionAlertCtrl.questionApi!.length));
                   }
                 : () async {
                     questionAlertCtrl.questionApi = await fetchQuestionsApi(

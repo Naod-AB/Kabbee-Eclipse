@@ -47,7 +47,6 @@ dependencies:
   hive:
   hive_flutter:
 
-
   url_launcher: ^6.1.2
   http: ^0.13.4
   auto_route: ^3.2.4
@@ -61,8 +60,16 @@ dependencies:
   carousel_slider: ^4.1.1
   smooth_page_indicator: ^1.0.0+2
   auto_size_text: ^3.0.0
+  flutter_launcher_icons: ^0.9.3
   #flutter_countdown_timer: ^4.1.0
   #simple_progress_bar: ^0.0.4
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/quiz.png"
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

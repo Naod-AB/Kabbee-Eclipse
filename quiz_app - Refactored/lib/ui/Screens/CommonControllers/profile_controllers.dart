@@ -109,3 +109,5 @@ class ProfileController extends GetxController {
     usersLength = fetchUsers.length;
   }
 }
+
+fetchDashboard() {}

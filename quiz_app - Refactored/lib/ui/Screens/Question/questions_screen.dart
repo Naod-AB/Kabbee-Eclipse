@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:quiz_app/ui/Screens/Question/widgets/count_down.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
-import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
+//import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../common_widgets/alert_box.dart';
 import '../../common_widgets/alert_box.dart';
+import '../Profile/widgets/user_profile_widget.dart';
 import '/routes/router.gr.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -57,28 +58,6 @@ class QuestionsScreen extends StatelessWidget {
                     true);
               }
             : null,
-
-        //(
-        //   title:
-        //       Text("hello you can't back during exam starts"),
-        //   actions: <Widget>[
-        //     FlatButton(
-        //       onPressed: () => Navigator.pop(context, false),
-        //       child: Text("OK"),
-        //     ),
-        //     // FlatButton(
-        //     //   onPressed: () => Navigator.pop(context, true),
-        //     //   child: Text("yes"),
-        //     // ),
-        //   ],
-        // }),
-        //               );
-        // if (Value != null) {
-        //   return Future.value(Value);
-        // } else {
-        //   return Future.value(false);
-        // }
-
         child: Scaffold(
           backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           appBar: quizAppBar(
@@ -122,8 +101,8 @@ class QuestionsScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                           margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                           decoration: BoxDecoration(
-                            color: Colors.green,
-                            // color: const Color.fromARGB(176, 34, 34, 34),
+                            // color: Colors.green,
+                            color: const Color.fromARGB(176, 34, 34, 34),
 
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -171,7 +150,7 @@ class QuestionsScreen extends StatelessWidget {
                                           ),
                                           child: RadioListTile<int>(
                                               activeColor: kblue,
-                                              title: Row(
+                                              title: Wrap(
                                                 children: [
                                                   AutoSizeText(
                                                     options[index].toString(),
@@ -181,6 +160,7 @@ class QuestionsScreen extends StatelessWidget {
                                                         .copyWith(
                                                             color:
                                                                 Colors.white),
+                                                    maxLines: 2,
                                                   ),
                                                   const Spacer(),
                                                 ],
@@ -335,7 +315,9 @@ class QuestionsScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)),
                               primary: const Color.fromARGB(255, 255, 165, 0)),
-                          child: const Text('Done'))
+                          child: customText(
+                              'DONE', 20, false, false, primaryColor),
+                        )
 
                       // ? const RoundedButton(
                       //     buttonName: 'Done',

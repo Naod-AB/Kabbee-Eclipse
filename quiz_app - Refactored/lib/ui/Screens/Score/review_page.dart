@@ -3,7 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quiz_app/service/model.dart';
+//import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
@@ -11,6 +11,7 @@ import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
 import '../Profile/widgets/user_profile_widget.dart';
+import '../../../service/api.dart';
 import '/routes/router.gr.dart';
 
 class ReviewScreen extends StatelessWidget {
@@ -152,10 +153,14 @@ class ReviewScreen extends StatelessWidget {
                 () => controller.questionApi!.length == controller.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
-                          print(controller.optionList);
-                          deleteSavedAnswers(controller.optionList);
-                          context.router.push(const CategoryRoute());
-                          controller.qnIndex.value = 1;
+                          // print(controller.optionList);
+                          // deleteSavedAnswers(controller.optionList);
+                          // context.router.push(const CategoryRoute());
+
+                          print(controller.questionApi!.length);
+                          deleteSavedAnswers(controller.questionApi!.length);
+                          context.router.push(CategoryRoute());
+                          // controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),
