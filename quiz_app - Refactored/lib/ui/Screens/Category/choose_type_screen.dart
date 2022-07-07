@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +16,17 @@ import '../../common_widgets/alert_box.dart';
 import '../CommonControllers/question_controller.dart';
 
 class ChooseType extends StatelessWidget {
-  ChooseType({Key? key, required this.icon, required this.path})
+  ChooseType(
+      {Key? key,
+      required this.icon,
+      required this.path,
+      required this.ptype,
+      this.ftype})
       : super(key: key);
   dynamic icon;
   String path;
+  String? ptype = "PRACTICE";
+  String? ftype = "FINAL";
 
   final QuestionControl questionController = Get.put(QuestionControl());
 
@@ -46,11 +54,18 @@ class ChooseType extends StatelessWidget {
                     imgeSrc: "assets/icons/Practice_test.svg",
                     cardtext: "Practice Test",
                     onpressed: () async {
-                      questionController.questionApi = await fetchQuestionsApi(
-                          path.toLowerCase() + "_practice");
-                      String paths = path.toLowerCase() + "_practice";
+                      String ptype = "PRACTICE";
+                      questionController.questionApi =
+                          await fetchQuestionsApi(path.toUpperCase(), ptype);
+                      String paths = path.toUpperCase();
+                      String ptypes = "PRACTICE";
+                      print('path is ${path.toUpperCase()} and type is $ptype');
                       context.router.push(QuestionsScreen(
-                          icon: icon, path: paths, isFinal: false));
+                        icon: icon,
+                        path: paths,
+                        isFinal: false,
+                        ptype: ptypes,
+                      ));
                     },
                   ),
                   const SizedBox(

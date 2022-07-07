@@ -22,11 +22,18 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 class QuestionsScreen extends StatelessWidget {
   QuestionsScreen(
-      {Key? key, required this.icon, required this.path, required this.isFinal})
+      {Key? key,
+      required this.icon,
+      required this.path,
+      required this.isFinal,
+      this.ptype,
+      this.ftype})
       : super(key: key);
   dynamic icon;
   String path;
   bool isFinal;
+  String? ptype;
+  String? ftype;
 
   final QuestionControl controller = Get.put(QuestionControl());
   final ProfileController pcontroller = Get.put(ProfileController());
