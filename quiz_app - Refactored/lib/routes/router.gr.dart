@@ -65,8 +65,13 @@ class AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<ChooseTypeArgs>();
       return _i16.MaterialPageX<dynamic>(
           routeData: routeData,
-          child:
-              _i6.ChooseType(key: args.key, icon: args.icon, path: args.path));
+          child: _i6.ChooseType(
+            key: args.key,
+            icon: args.icon,
+            path: args.path,
+            ptype: args.ptype,
+            ftype: args.ftype,
+          ));
     },
     QuestionsScreen.name: (routeData) {
       final args = routeData.argsAs<QuestionsScreenArgs>();
@@ -142,6 +147,8 @@ class AppRouter extends _i16.RootStackRouter {
         _i16.RouteConfig(UsersListRoute.name, path: '/users'),
         _i16.RouteConfig(DashboardRoute.name, path: '/dahboard')
       ];
+
+  // static get ptype => null;
 }
 
 /// generated route for
@@ -237,13 +244,20 @@ class ChooseType extends _i16.PageRouteInfo<ChooseTypeArgs> {
 }
 
 class ChooseTypeArgs {
-  const ChooseTypeArgs({this.key, required this.icon, required this.path});
+  const ChooseTypeArgs(
+      {this.key,
+      required this.icon,
+      required this.path,
+      this.ptype,
+      this.ftype});
 
   final _i17.Key? key;
 
   final dynamic icon;
 
   final String path;
+  final String? ptype;
+  final String? ftype;
 
   @override
   String toString() {
@@ -255,10 +269,13 @@ class ChooseTypeArgs {
 /// [_i7.QuestionsScreen]
 class QuestionsScreen extends _i16.PageRouteInfo<QuestionsScreenArgs> {
   QuestionsScreen(
+      //required icon,
       {_i17.Key? key,
       required dynamic icon,
       required String path,
-      required bool isFinal})
+      required bool isFinal,
+      String? ptype,
+      String? ftype})
       : super(QuestionsScreen.name,
             path: '/questions',
             args: QuestionsScreenArgs(

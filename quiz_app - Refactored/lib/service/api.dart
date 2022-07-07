@@ -196,12 +196,12 @@ Future<Users> updateUsersList({
 }
 
 // Get Questions
-Future fetchQuestionsApi(String path) async {
-  final response =
-      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/questions'));
+Future fetchQuestionsApi(String path, String type) async {
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/questions/filter/?type=$type&topic=$path'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      final parsedPath = jsonDecode(response.body)["_embedded"]["questions"];
+      final parsedPath = jsonDecode(response.body);
 
       return parsedPath;
     } else {

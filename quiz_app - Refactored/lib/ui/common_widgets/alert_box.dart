@@ -99,13 +99,16 @@ quizAlertBox(
                         optionList: questionAlertCtrl.questionApi!.length));
                   }
                 : () async {
+                    String? ftype = "FINAL";
                     questionAlertCtrl.questionApi = await fetchQuestionsApi(
-                        path.toString().toLowerCase() + "_final");
+                        path.toString().toUpperCase(), ftype);
 
-                    // print(path.toLowerCase() + "_final");
-                    String paths = path.toString().toLowerCase() + "_final";
+                    print(
+                        'path of final is${path.toUpperCase()} and type is $ftype');
+                    String paths = path.toString().toUpperCase();
+                    String ftypes = "FINAL";
                     context.router.push(QuestionsScreen(
-                        icon: icon, path: paths, isFinal: true));
+                        icon: icon, path: paths, isFinal: true, ftype: ftypes));
                   },
         color: isback ? Colors.transparent : kblue,
       )
