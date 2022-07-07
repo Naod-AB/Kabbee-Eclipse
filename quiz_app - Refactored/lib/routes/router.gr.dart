@@ -66,12 +66,11 @@ class AppRouter extends _i16.RootStackRouter {
       return _i16.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i6.ChooseType(
-            key: args.key,
-            icon: args.icon,
-            path: args.path,
-            ptype: args.ptype,
-            ftype: args.ftype,
-          ));
+              key: args.key,
+              icon: args.icon,
+              path: args.path,
+              ptype: args.ptype,
+              ftype: args.ftype));
     },
     QuestionsScreen.name: (routeData) {
       final args = routeData.argsAs<QuestionsScreenArgs>();
@@ -81,7 +80,9 @@ class AppRouter extends _i16.RootStackRouter {
               key: args.key,
               icon: args.icon,
               path: args.path,
-              isFinal: args.isFinal));
+              isFinal: args.isFinal,
+              ptype: args.ptype,
+              ftype: args.ftype));
     },
     FinalScore.name: (routeData) {
       final args = routeData.argsAs<FinalScoreArgs>();
@@ -147,8 +148,6 @@ class AppRouter extends _i16.RootStackRouter {
         _i16.RouteConfig(UsersListRoute.name, path: '/users'),
         _i16.RouteConfig(DashboardRoute.name, path: '/dahboard')
       ];
-
-  // static get ptype => null;
 }
 
 /// generated route for
@@ -235,10 +234,16 @@ class LanguageChoicesArgs {
 /// generated route for
 /// [_i6.ChooseType]
 class ChooseType extends _i16.PageRouteInfo<ChooseTypeArgs> {
-  ChooseType({_i17.Key? key, required dynamic icon, required String path})
+  ChooseType(
+      {_i17.Key? key,
+      required dynamic icon,
+      required String path,
+      String? ptype,
+      String? ftype})
       : super(ChooseType.name,
             path: '/choose-type',
-            args: ChooseTypeArgs(key: key, icon: icon, path: path));
+            args: ChooseTypeArgs(
+                key: key, icon: icon, path: path, ptype: ptype, ftype: ftype));
 
   static const String name = 'ChooseType';
 }
@@ -256,12 +261,14 @@ class ChooseTypeArgs {
   final dynamic icon;
 
   final String path;
+
   final String? ptype;
+
   final String? ftype;
 
   @override
   String toString() {
-    return 'ChooseTypeArgs{key: $key, icon: $icon, path: $path}';
+    return 'ChooseTypeArgs{key: $key, icon: $icon, path: $path, ptype: $ptype, ftype: $ftype}';
   }
 }
 
@@ -269,7 +276,6 @@ class ChooseTypeArgs {
 /// [_i7.QuestionsScreen]
 class QuestionsScreen extends _i16.PageRouteInfo<QuestionsScreenArgs> {
   QuestionsScreen(
-      //required icon,
       {_i17.Key? key,
       required dynamic icon,
       required String path,
@@ -279,7 +285,12 @@ class QuestionsScreen extends _i16.PageRouteInfo<QuestionsScreenArgs> {
       : super(QuestionsScreen.name,
             path: '/questions',
             args: QuestionsScreenArgs(
-                key: key, icon: icon, path: path, isFinal: isFinal));
+                key: key,
+                icon: icon,
+                path: path,
+                isFinal: isFinal,
+                ptype: ptype,
+                ftype: ftype));
 
   static const String name = 'QuestionsScreen';
 }
@@ -289,7 +300,9 @@ class QuestionsScreenArgs {
       {this.key,
       required this.icon,
       required this.path,
-      required this.isFinal});
+      required this.isFinal,
+      this.ptype,
+      this.ftype});
 
   final _i17.Key? key;
 
@@ -299,9 +312,13 @@ class QuestionsScreenArgs {
 
   final bool isFinal;
 
+  final String? ptype;
+
+  final String? ftype;
+
   @override
   String toString() {
-    return 'QuestionsScreenArgs{key: $key, icon: $icon, path: $path, isFinal: $isFinal}';
+    return 'QuestionsScreenArgs{key: $key, icon: $icon, path: $path, isFinal: $isFinal, ptype: $ptype, ftype: $ftype}';
   }
 }
 
@@ -310,8 +327,8 @@ class QuestionsScreenArgs {
 class FinalScore extends _i16.PageRouteInfo<FinalScoreArgs> {
   FinalScore(
       {_i17.Key? key,
-      required int outOf,
-      required int score,
+      required double outOf,
+      required double score,
       required int optionList})
       : super(FinalScore.name,
             path: '/finalScore',
@@ -330,9 +347,9 @@ class FinalScoreArgs {
 
   final _i17.Key? key;
 
-  final int outOf;
+  final double outOf;
 
-  final int score;
+  final double score;
 
   final int optionList;
 

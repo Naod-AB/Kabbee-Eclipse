@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,8 +22,8 @@ class FinalScore extends StatelessWidget {
       required this.optionList})
       : super(key: key);
 
-  int outOf;
-  int score;
+  double outOf;
+  double score;
   int optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
@@ -139,12 +141,18 @@ class CircularFinalScore extends StatelessWidget {
     required this.outOf,
     required this.animationDuration,
   }) : super(key: key);
-  int score;
-  int outOf;
+  double score;
+  double outOf;
   int animationDuration;
+  List test = [];
+  // List<String,bool> list=[];
 
   @override
   Widget build(BuildContext context) {
+    test[0] = 'answer x';
+    test[1] = 'answer y';
+
+    log('$score / $outOf');
     return Container(
         width: 250.0,
         height: 250.0,
@@ -152,13 +160,17 @@ class CircularFinalScore extends StatelessWidget {
           radius: 125,
           lineWidth: 15.0,
           backgroundColor: Color.fromARGB(255, 255, 204, 109),
-          percent: score / outOf,
+          percent:
+              (double.parse('$score').toInt() / double.parse('$outOf').toInt())
+                  .floor()
+                  .toDouble(),
           progressColor: kblue,
           circularStrokeCap: CircularStrokeCap.round,
           animation: true,
           animationDuration: animationDuration,
           center: Text(
-            '$score/$outOf',
+            '${double.parse('$score').toInt()} / ${double.parse('$outOf').toInt()}',
+            // '$score/$outOf',
             style: const TextStyle(
                 color: Color.fromARGB(255, 255, 165, 0),
                 fontSize: 64,

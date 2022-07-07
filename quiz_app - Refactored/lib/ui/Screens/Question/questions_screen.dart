@@ -310,10 +310,12 @@ class QuestionsScreen extends StatelessWidget {
                                 saveUserScore(score);
                                 controller.isEnabled.value = false;
                               }
-                              context.router.push(FinalScore(
-                                  outOf: controller.questionApi!.length,
-                                  score: controller.count,
-                                  optionList: controller.optionList));
+                              print('printing score ${controller.count}');
+                              // context.router.push(FinalScore(
+                              //     outOf:
+                              //         controller.questionApi!.length.toDouble(),
+                              //     score: controller.count.toDouble(),
+                              //     optionList: controller.optionList));
                               controller.qnIndex.value = 1;
                             }
                           },
