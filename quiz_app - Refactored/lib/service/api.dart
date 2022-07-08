@@ -131,7 +131,7 @@ Future<List<Users>> fetchAllUsers() async {
   final response =
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
-    return parseUsers(response.body);
+    return parseUsers(jsonDecode(response.body)["_embedded"]["users"]);
   } else {
     throw Exception('Failed to fetch Users');
   }
@@ -139,9 +139,22 @@ Future<List<Users>> fetchAllUsers() async {
 
 // Parse Users
 List<Users> parseUsers(String responseBody) {
-  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+  final parsed = jsonDecode(responseBody)["_embedded"]["users"][0];
 
   return parsed.map<Users>((json) => Users.fromJson(json)).toList();
+}
+//get Dashboard
+
+Future<List> fetchDashboard() async {
+  final response =
+      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/courses'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    final dashboardData = (jsonDecode(response.body)["_embedded"]["courses"]);
+    print('Dashboard response is ${response.body}');
+    return dashboardData;
+  } else {
+    throw Exception('Failed to fetch Courses');
+  }
 }
 
 // fetching users for adminList
@@ -167,6 +180,7 @@ Future<Users> updateUsersList({
   required int index,
   required bool status,
 }) async {
+  print('id of user list is $id');
   final response = await http.patch(
     Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
     headers: <String, String>{
@@ -174,7 +188,7 @@ Future<Users> updateUsersList({
     },
     body: jsonEncode(<String, dynamic>{
       'password': controller.updatedPassword.value,
-      'status': status ? 'blocked' : 'active',
+      'status': status ? 'BLOCKED' : 'ACTIVE',
     }),
   );
   if (response.statusCode == 200) {

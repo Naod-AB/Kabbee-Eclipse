@@ -10,13 +10,13 @@ class UsersListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     controller.activeUsers.value = controller.userList!
-        .where((element) => element["status"] == 'active')
+        .where((element) => element["status"] == 'ACTIVE')
         .toList();
 
     controller.activeUsersCount.value = controller.activeUsers.length;
 
     controller.blockedUsers.value = controller.userList!
-        .where((element) => element["status"] == 'blocked')
+        .where((element) => element["status"] == 'BLOCKED')
         .toList();
     controller.blockedUsersCount.value = controller.blockedUsers.length;
 
@@ -58,7 +58,7 @@ class UsersListPage extends StatelessWidget {
             var user = controller.activeUsers[index];
             bool isUserAdmin = controller.activeUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
-                user['firstName'] == controller.userInfo.value!.firstName;
+                user['email'] == controller.userInfo.value!.email;
             return Card(
                 color: Colors.white12,
                 child: buildUsersTiles(
@@ -90,7 +90,7 @@ class UsersListPage extends StatelessWidget {
             bool isUserAdmin =
                 controller.blockedUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
-                user['firstName'] == controller.userInfo.value!.firstName;
+                user['email'] == controller.userInfo.value!.email;
 
             return Card(
                 color: Colors.white12,
