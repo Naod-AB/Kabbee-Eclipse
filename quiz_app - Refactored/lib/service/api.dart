@@ -112,7 +112,7 @@ Future fetchUserScores(int userId) async {
 // Fetch User
 Future<Users?> fetchUser(String email) async {
   final response = await http.get(Uri.parse(
-      'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=eclipse@test.com'));
+      'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=$email'));
   print(response.statusCode);
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {

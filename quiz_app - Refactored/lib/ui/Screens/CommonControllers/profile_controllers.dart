@@ -97,9 +97,9 @@ class ProfileController extends GetxController {
   List categoryLength = [];
   List courseLength = [];
   int usersLength = 0;
-
+  List fetchCoursesAndCategories = [];
   getDashBoardData() async {
-    List fetchCoursesAndCategories = await fetchDashboard();
+    fetchCoursesAndCategories = await fetchDashboard();
     List fetchUser = await fetchUsers();
 
     categoryLength =

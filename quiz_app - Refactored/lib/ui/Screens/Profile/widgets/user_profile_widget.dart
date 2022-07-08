@@ -783,6 +783,7 @@ Widget buildlanguageTiles(
   Widget leadingImage,
   String title,
   String subtitle,
+  int questionNumber,
 ) {
   return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -797,9 +798,10 @@ Widget buildlanguageTiles(
           ),
         ),
         trailing: Container(
-          height: 5,
-          width: 5,
-          child: Text("4"),
+          color: Color.fromARGB(255, 56, 55, 55),
+          height: 25,
+          width: 25,
+          child: Center(child: Text(questionNumber.toString())),
         ),
       ));
 }
