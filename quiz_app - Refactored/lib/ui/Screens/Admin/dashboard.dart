@@ -62,7 +62,7 @@ class DashboardPage extends GetView<ProfileController> {
               SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
-                  // context.router.pushNamed('/personal_details');
+                  context.router.pushNamed('/adminLanguages');
                 },
                 child: Container(
                   decoration: BoxDecoration(

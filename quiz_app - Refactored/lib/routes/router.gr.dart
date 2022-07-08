@@ -10,9 +10,10 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i16;
-import 'package:flutter/material.dart' as _i17;
+import 'package:auto_route/auto_route.dart' as _i17;
+import 'package:flutter/material.dart' as _i18;
 
+import '../admin_language.dart' as _i16;
 import '../ui/Screens/Admin/dashboard.dart' as _i15;
 import '../ui/Screens/Admin/user_list.dart' as _i14;
 import '../ui/Screens/Auth/Login/login_screen.dart' as _i2;
@@ -29,41 +30,41 @@ import '../ui/Screens/Score/final_practice_score.dart' as _i8;
 import '../ui/Screens/Score/review_page.dart' as _i9;
 import '../ui/Screens/Splash/splash_screen.dart' as _i1;
 
-class AppRouter extends _i16.RootStackRouter {
-  AppRouter([_i17.GlobalKey<_i17.NavigatorState>? navigatorKey])
+class AppRouter extends _i17.RootStackRouter {
+  AppRouter([_i18.GlobalKey<_i18.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i16.PageFactory> pagesMap = {
+  final Map<String, _i17.PageFactory> pagesMap = {
     Splash.name: (routeData) {
       final args =
           routeData.argsAs<SplashArgs>(orElse: () => const SplashArgs());
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i1.Splash(key: args.key));
     },
     LoginRoute.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i2.LoginPage());
     },
     OneSignupRoute.name: (routeData) {
       final args = routeData.argsAs<OneSignupRouteArgs>(
           orElse: () => const OneSignupRouteArgs());
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i3.OneSignupPage(key: args.key));
     },
     CategoryRoute.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.CategoryPage());
     },
     LanguageChoices.name: (routeData) {
       final args = routeData.argsAs<LanguageChoicesArgs>();
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i5.LanguageChoices(key: args.key, courses: args.courses));
     },
     ChooseType.name: (routeData) {
       final args = routeData.argsAs<ChooseTypeArgs>();
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i6.ChooseType(
               key: args.key,
@@ -74,7 +75,7 @@ class AppRouter extends _i16.RootStackRouter {
     },
     QuestionsScreen.name: (routeData) {
       final args = routeData.argsAs<QuestionsScreenArgs>();
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i7.QuestionsScreen(
               key: args.key,
@@ -86,7 +87,7 @@ class AppRouter extends _i16.RootStackRouter {
     },
     FinalScore.name: (routeData) {
       final args = routeData.argsAs<FinalScoreArgs>();
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i8.FinalScore(
               key: args.key,
@@ -97,63 +98,68 @@ class AppRouter extends _i16.RootStackRouter {
     ReviewScreen.name: (routeData) {
       final args = routeData.argsAs<ReviewScreenArgs>(
           orElse: () => const ReviewScreenArgs());
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i9.ReviewScreen(key: args.key));
     },
     ProfileScreen.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i10.ProfileScreen());
     },
     UserDetailsScreen.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i11.UserDetailsScreen());
     },
     EditProfileScreen.name: (routeData) {
       final args = routeData.argsAs<EditProfileScreenArgs>(
           orElse: () => const EditProfileScreenArgs());
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i12.EditProfileScreen(key: args.key));
     },
     MyScoresScreen.name: (routeData) {
       final args = routeData.argsAs<MyScoresScreenArgs>(
           orElse: () => const MyScoresScreenArgs());
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: _i13.MyScoresScreen(key: args.key));
     },
     UsersListRoute.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i14.UsersListPage());
     },
     DashboardRoute.name: (routeData) {
-      return _i16.MaterialPageX<dynamic>(
+      return _i17.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i15.DashboardPage());
+    },
+    AdminLanguage.name: (routeData) {
+      return _i17.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i16.AdminLanguage());
     }
   };
 
   @override
-  List<_i16.RouteConfig> get routes => [
-        _i16.RouteConfig(Splash.name, path: '/'),
-        _i16.RouteConfig(LoginRoute.name, path: '/login'),
-        _i16.RouteConfig(OneSignupRoute.name, path: '/signup'),
-        _i16.RouteConfig(CategoryRoute.name, path: '/category'),
-        _i16.RouteConfig(LanguageChoices.name, path: '/language-choices'),
-        _i16.RouteConfig(ChooseType.name, path: '/choose-type'),
-        _i16.RouteConfig(QuestionsScreen.name, path: '/questions'),
-        _i16.RouteConfig(FinalScore.name, path: '/finalScore'),
-        _i16.RouteConfig(ReviewScreen.name, path: '/review_screen'),
-        _i16.RouteConfig(ProfileScreen.name, path: '/profile'),
-        _i16.RouteConfig(UserDetailsScreen.name, path: '/personal_details'),
-        _i16.RouteConfig(EditProfileScreen.name, path: '/edit_profile'),
-        _i16.RouteConfig(MyScoresScreen.name, path: '/my_scores'),
-        _i16.RouteConfig(UsersListRoute.name, path: '/users'),
-        _i16.RouteConfig(DashboardRoute.name, path: '/dahboard')
+  List<_i17.RouteConfig> get routes => [
+        _i17.RouteConfig(Splash.name, path: '/'),
+        _i17.RouteConfig(LoginRoute.name, path: '/login'),
+        _i17.RouteConfig(OneSignupRoute.name, path: '/signup'),
+        _i17.RouteConfig(CategoryRoute.name, path: '/category'),
+        _i17.RouteConfig(LanguageChoices.name, path: '/language-choices'),
+        _i17.RouteConfig(ChooseType.name, path: '/choose-type'),
+        _i17.RouteConfig(QuestionsScreen.name, path: '/questions'),
+        _i17.RouteConfig(FinalScore.name, path: '/finalScore'),
+        _i17.RouteConfig(ReviewScreen.name, path: '/review_screen'),
+        _i17.RouteConfig(ProfileScreen.name, path: '/profile'),
+        _i17.RouteConfig(UserDetailsScreen.name, path: '/personal_details'),
+        _i17.RouteConfig(EditProfileScreen.name, path: '/edit_profile'),
+        _i17.RouteConfig(MyScoresScreen.name, path: '/my_scores'),
+        _i17.RouteConfig(UsersListRoute.name, path: '/users'),
+        _i17.RouteConfig(DashboardRoute.name, path: '/dahboard'),
+        _i17.RouteConfig(AdminLanguage.name, path: '/adminLanguages')
       ];
 }
 
 /// generated route for
 /// [_i1.Splash]
-class Splash extends _i16.PageRouteInfo<SplashArgs> {
-  Splash({_i17.Key? key})
+class Splash extends _i17.PageRouteInfo<SplashArgs> {
+  Splash({_i18.Key? key})
       : super(Splash.name, path: '/', args: SplashArgs(key: key));
 
   static const String name = 'Splash';
@@ -162,7 +168,7 @@ class Splash extends _i16.PageRouteInfo<SplashArgs> {
 class SplashArgs {
   const SplashArgs({this.key});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -172,7 +178,7 @@ class SplashArgs {
 
 /// generated route for
 /// [_i2.LoginPage]
-class LoginRoute extends _i16.PageRouteInfo<void> {
+class LoginRoute extends _i17.PageRouteInfo<void> {
   const LoginRoute() : super(LoginRoute.name, path: '/login');
 
   static const String name = 'LoginRoute';
@@ -180,8 +186,8 @@ class LoginRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.OneSignupPage]
-class OneSignupRoute extends _i16.PageRouteInfo<OneSignupRouteArgs> {
-  OneSignupRoute({_i17.Key? key})
+class OneSignupRoute extends _i17.PageRouteInfo<OneSignupRouteArgs> {
+  OneSignupRoute({_i18.Key? key})
       : super(OneSignupRoute.name,
             path: '/signup', args: OneSignupRouteArgs(key: key));
 
@@ -191,7 +197,7 @@ class OneSignupRoute extends _i16.PageRouteInfo<OneSignupRouteArgs> {
 class OneSignupRouteArgs {
   const OneSignupRouteArgs({this.key});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -201,7 +207,7 @@ class OneSignupRouteArgs {
 
 /// generated route for
 /// [_i4.CategoryPage]
-class CategoryRoute extends _i16.PageRouteInfo<void> {
+class CategoryRoute extends _i17.PageRouteInfo<void> {
   const CategoryRoute() : super(CategoryRoute.name, path: '/category');
 
   static const String name = 'CategoryRoute';
@@ -209,8 +215,8 @@ class CategoryRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.LanguageChoices]
-class LanguageChoices extends _i16.PageRouteInfo<LanguageChoicesArgs> {
-  LanguageChoices({_i17.Key? key, required dynamic courses})
+class LanguageChoices extends _i17.PageRouteInfo<LanguageChoicesArgs> {
+  LanguageChoices({_i18.Key? key, required dynamic courses})
       : super(LanguageChoices.name,
             path: '/language-choices',
             args: LanguageChoicesArgs(key: key, courses: courses));
@@ -221,7 +227,7 @@ class LanguageChoices extends _i16.PageRouteInfo<LanguageChoicesArgs> {
 class LanguageChoicesArgs {
   const LanguageChoicesArgs({this.key, required this.courses});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final dynamic courses;
 
@@ -233,9 +239,9 @@ class LanguageChoicesArgs {
 
 /// generated route for
 /// [_i6.ChooseType]
-class ChooseType extends _i16.PageRouteInfo<ChooseTypeArgs> {
+class ChooseType extends _i17.PageRouteInfo<ChooseTypeArgs> {
   ChooseType(
-      {_i17.Key? key,
+      {_i18.Key? key,
       required dynamic icon,
       required String path,
       String? ptype,
@@ -256,7 +262,7 @@ class ChooseTypeArgs {
       this.ptype,
       this.ftype});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final dynamic icon;
 
@@ -274,9 +280,9 @@ class ChooseTypeArgs {
 
 /// generated route for
 /// [_i7.QuestionsScreen]
-class QuestionsScreen extends _i16.PageRouteInfo<QuestionsScreenArgs> {
+class QuestionsScreen extends _i17.PageRouteInfo<QuestionsScreenArgs> {
   QuestionsScreen(
-      {_i17.Key? key,
+      {_i18.Key? key,
       required dynamic icon,
       required String path,
       required bool isFinal,
@@ -304,7 +310,7 @@ class QuestionsScreenArgs {
       this.ptype,
       this.ftype});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final dynamic icon;
 
@@ -324,12 +330,12 @@ class QuestionsScreenArgs {
 
 /// generated route for
 /// [_i8.FinalScore]
-class FinalScore extends _i16.PageRouteInfo<FinalScoreArgs> {
+class FinalScore extends _i17.PageRouteInfo<FinalScoreArgs> {
   FinalScore(
-      {_i17.Key? key,
+      {_i18.Key? key,
       required double outOf,
       required double score,
-      required int optionList})
+      int? optionList})
       : super(FinalScore.name,
             path: '/finalScore',
             args: FinalScoreArgs(
@@ -340,18 +346,15 @@ class FinalScore extends _i16.PageRouteInfo<FinalScoreArgs> {
 
 class FinalScoreArgs {
   const FinalScoreArgs(
-      {this.key,
-      required this.outOf,
-      required this.score,
-      required this.optionList});
+      {this.key, required this.outOf, required this.score, this.optionList});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final double outOf;
 
   final double score;
 
-  final int optionList;
+  final int? optionList;
 
   @override
   String toString() {
@@ -361,8 +364,8 @@ class FinalScoreArgs {
 
 /// generated route for
 /// [_i9.ReviewScreen]
-class ReviewScreen extends _i16.PageRouteInfo<ReviewScreenArgs> {
-  ReviewScreen({_i17.Key? key})
+class ReviewScreen extends _i17.PageRouteInfo<ReviewScreenArgs> {
+  ReviewScreen({_i18.Key? key})
       : super(ReviewScreen.name,
             path: '/review_screen', args: ReviewScreenArgs(key: key));
 
@@ -372,7 +375,7 @@ class ReviewScreen extends _i16.PageRouteInfo<ReviewScreenArgs> {
 class ReviewScreenArgs {
   const ReviewScreenArgs({this.key});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -382,7 +385,7 @@ class ReviewScreenArgs {
 
 /// generated route for
 /// [_i10.ProfileScreen]
-class ProfileScreen extends _i16.PageRouteInfo<void> {
+class ProfileScreen extends _i17.PageRouteInfo<void> {
   const ProfileScreen() : super(ProfileScreen.name, path: '/profile');
 
   static const String name = 'ProfileScreen';
@@ -390,7 +393,7 @@ class ProfileScreen extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.UserDetailsScreen]
-class UserDetailsScreen extends _i16.PageRouteInfo<void> {
+class UserDetailsScreen extends _i17.PageRouteInfo<void> {
   const UserDetailsScreen()
       : super(UserDetailsScreen.name, path: '/personal_details');
 
@@ -399,8 +402,8 @@ class UserDetailsScreen extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.EditProfileScreen]
-class EditProfileScreen extends _i16.PageRouteInfo<EditProfileScreenArgs> {
-  EditProfileScreen({_i17.Key? key})
+class EditProfileScreen extends _i17.PageRouteInfo<EditProfileScreenArgs> {
+  EditProfileScreen({_i18.Key? key})
       : super(EditProfileScreen.name,
             path: '/edit_profile', args: EditProfileScreenArgs(key: key));
 
@@ -410,7 +413,7 @@ class EditProfileScreen extends _i16.PageRouteInfo<EditProfileScreenArgs> {
 class EditProfileScreenArgs {
   const EditProfileScreenArgs({this.key});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -420,8 +423,8 @@ class EditProfileScreenArgs {
 
 /// generated route for
 /// [_i13.MyScoresScreen]
-class MyScoresScreen extends _i16.PageRouteInfo<MyScoresScreenArgs> {
-  MyScoresScreen({_i17.Key? key})
+class MyScoresScreen extends _i17.PageRouteInfo<MyScoresScreenArgs> {
+  MyScoresScreen({_i18.Key? key})
       : super(MyScoresScreen.name,
             path: '/my_scores', args: MyScoresScreenArgs(key: key));
 
@@ -431,7 +434,7 @@ class MyScoresScreen extends _i16.PageRouteInfo<MyScoresScreenArgs> {
 class MyScoresScreenArgs {
   const MyScoresScreenArgs({this.key});
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   @override
   String toString() {
@@ -441,7 +444,7 @@ class MyScoresScreenArgs {
 
 /// generated route for
 /// [_i14.UsersListPage]
-class UsersListRoute extends _i16.PageRouteInfo<void> {
+class UsersListRoute extends _i17.PageRouteInfo<void> {
   const UsersListRoute() : super(UsersListRoute.name, path: '/users');
 
   static const String name = 'UsersListRoute';
@@ -449,8 +452,16 @@ class UsersListRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.DashboardPage]
-class DashboardRoute extends _i16.PageRouteInfo<void> {
+class DashboardRoute extends _i17.PageRouteInfo<void> {
   const DashboardRoute() : super(DashboardRoute.name, path: '/dahboard');
 
   static const String name = 'DashboardRoute';
+}
+
+/// generated route for
+/// [_i16.AdminLanguage]
+class AdminLanguage extends _i17.PageRouteInfo<void> {
+  const AdminLanguage() : super(AdminLanguage.name, path: '/adminLanguages');
+
+  static const String name = 'AdminLanguage';
 }

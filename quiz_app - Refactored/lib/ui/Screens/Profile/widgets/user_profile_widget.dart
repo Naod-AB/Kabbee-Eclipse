@@ -778,3 +778,28 @@ bool validateStructure(String value) {
   RegExp regExp = new RegExp(pattern);
   return regExp.hasMatch(value);
 }
+
+Widget buildlanguageTiles(
+  Widget leadingImage,
+  String title,
+  String subtitle,
+) {
+  return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: ListTile(
+        contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
+        title: customText(title, 17, true, false, primaryColor),
+        subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
+        leading: Container(
+          child: leadingImage,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
+        trailing: Container(
+          height: 5,
+          width: 5,
+          child: Text("4"),
+        ),
+      ));
+}

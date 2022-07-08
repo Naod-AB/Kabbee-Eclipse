@@ -14,6 +14,7 @@ import 'package:quiz_app/ui/Screens/Score/final_practice_score.dart';
 import 'package:quiz_app/ui/Screens/Score/review_page.dart';
 import 'package:quiz_app/ui/Screens/Splash/splash_screen.dart';
 
+import '../admin_language.dart';
 import '../ui/Screens/Admin/user_list.dart';
 import '../ui/Screens/Profile/user_details_screen.dart';
 
@@ -35,6 +36,7 @@ import '../ui/Screens/Profile/user_details_screen.dart';
     AutoRoute(path: '/my_scores', page: MyScoresScreen),
     AutoRoute(path: '/users', page: UsersListPage),
     AutoRoute(path: '/dahboard', page: DashboardPage),
+    AutoRoute(path: '/adminLanguages', page: AdminLanguage),
   ],
 )
 class $AppRouter {}
