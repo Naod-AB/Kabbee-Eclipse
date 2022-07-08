@@ -155,7 +155,7 @@ class QuestionsScreen extends StatelessWidget {
                                               ),
                                               child: RadioListTile<int>(
                                                   activeColor: kblue,
-                                                  title: Row(
+                                                  title: Wrap(
                                                     children: [
                                                       AutoSizeText(
                                                         options[index]
@@ -166,6 +166,7 @@ class QuestionsScreen extends StatelessWidget {
                                                             .copyWith(
                                                                 color: Colors
                                                                     .white),
+                                                        maxLines: 2,
                                                       ),
                                                       const Spacer(),
                                                     ],
@@ -243,10 +244,9 @@ class QuestionsScreen extends StatelessWidget {
                                   controller.count =
                                       await fetchCorrectAnswers();
 
-                                  int scorePercent = (controller.count /
-                                          controller.questionApi!.length *
-                                          100)
-                                      .toInt();
+                                  double scorePercent = (controller.count /
+                                      controller.questionApi!.length *
+                                      100);
                                   String checkid = pcontroller
                                           .userInfo.value!.id
                                           .toString() +

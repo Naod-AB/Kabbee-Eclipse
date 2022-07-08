@@ -66,10 +66,10 @@ quizAlertBox(
                 ? () async {
                     questionAlertCtrl.count = await fetchCorrectAnswers();
                     questionAlertCtrl.isEnabled.value = false;
-                    int scorePercent = (questionAlertCtrl.count /
-                            questionAlertCtrl.questionApi!.length *
-                            100)
-                        .toInt();
+                    double scorePercent = (questionAlertCtrl.count /
+                        questionAlertCtrl.questionApi!.length *
+                        100);
+
                     String checkid = pcontroller.userInfo.value!.id.toString() +
                         controller.chosenCourse.value;
                     print(

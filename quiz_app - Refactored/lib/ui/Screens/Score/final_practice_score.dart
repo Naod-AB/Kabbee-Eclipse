@@ -12,15 +12,12 @@ import 'package:quiz_app/ui/utils/pallete.dart';
 
 class FinalScore extends StatelessWidget {
   FinalScore(
-      {Key? key,
-      required this.outOf,
-      required this.score,
-      required this.optionList})
+      {Key? key, required this.outOf, required this.score, this.optionList})
       : super(key: key);
 
   int outOf;
   int score;
-  int optionList;
+  int? optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
   ProfileController pController = Get.find();

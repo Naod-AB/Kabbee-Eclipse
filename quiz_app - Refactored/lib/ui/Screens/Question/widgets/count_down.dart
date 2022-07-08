@@ -33,9 +33,8 @@ class MyTimer extends StatelessWidget {
           } else {
             controller.count = await fetchCorrectAnswers();
             print('timer ended');
-            int scorePercent =
-                (controller.count / controller.questionApi!.length * 100)
-                    .toInt();
+            double scorePercent =
+                (controller.count / controller.questionApi!.length * 100);
 
             controller.seconds.value = 0;
             controller.isEnabled.value = false;
