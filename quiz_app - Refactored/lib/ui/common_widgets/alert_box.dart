@@ -93,9 +93,10 @@ quizAlertBox(
                       // print('save score ${score}');
                     }
                     // () => Navigator.pop(context, false);
+                    print('printing score ${controller.count}');
                     context.router.push(FinalScore(
-                        outOf: questionAlertCtrl.questionApi!.length,
-                        score: questionAlertCtrl.count,
+                        outOf: questionAlertCtrl.questionApi!.length.toDouble(),
+                        score: questionAlertCtrl.count.toDouble(),
                         optionList: questionAlertCtrl.questionApi!.length));
                   }
                 : () async {
@@ -107,6 +108,8 @@ quizAlertBox(
                         'path of final is${path.toUpperCase()} and type is $ftype');
                     String paths = path.toString().toUpperCase();
                     String ftypes = "FINAL";
+
+                    print('printing score ${controller.count}');
                     context.router.push(QuestionsScreen(
                         icon: icon, path: paths, isFinal: true, ftype: ftypes));
                   },

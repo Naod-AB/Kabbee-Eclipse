@@ -57,8 +57,8 @@ class MyTimer extends StatelessWidget {
               // print('save score ${score}');
             }
             context.router.push(FinalScore(
-              outOf: controller.questionApi!.length,
-              score: controller.count,
+              outOf: controller.questionApi!.length.toDouble(),
+              score: controller.count.toDouble(),
               optionList: controller.questionApi!.length,
             ));
             controller.qnIndex.value = 1;

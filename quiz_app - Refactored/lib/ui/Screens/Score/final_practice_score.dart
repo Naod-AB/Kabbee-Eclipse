@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,13 +12,15 @@ import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
+import '../Profile/widgets/user_profile_widget.dart';
+
 class FinalScore extends StatelessWidget {
   FinalScore(
       {Key? key, required this.outOf, required this.score, this.optionList})
       : super(key: key);
 
-  int outOf;
-  int score;
+  double outOf;
+  double score;
   int? optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
@@ -74,7 +78,7 @@ class FinalScore extends StatelessWidget {
               Visibility(
                 visible: controller.isEnabled.value,
                 child: ElevatedButton(
-                  child: const Text('REVIEW'),
+                  child: customText('REVIEW', 20, false, false, primaryColor),
                   onPressed: () {
                     print(
                         ' reviewlist number ${controller.questionApi!.length}');
@@ -83,7 +87,7 @@ class FinalScore extends StatelessWidget {
                     context.router.pushNamed('/review_screen');
                   },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(200, 40),
+                      fixedSize: const Size(300, 50),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
                       side: const BorderSide(
@@ -99,9 +103,7 @@ class FinalScore extends StatelessWidget {
                   maintainAnimation: true,
                   maintainState: true,
                   child: ElevatedButton(
-                    child: const Text(
-                      'DONE',
-                    ),
+                    child: customText('DONE', 20, false, false, primaryColor),
                     onPressed: () async {
                       pController.scores =
                           await fetchUserScores(pController.userInfo.value!.id);
@@ -112,7 +114,7 @@ class FinalScore extends StatelessWidget {
                       Get.delete<QuestionControl>();
                     },
                     style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(200, 40),
+                        fixedSize: const Size(300, 50),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                         primary: const Color.fromARGB(255, 255, 165, 0)),
@@ -136,12 +138,18 @@ class CircularFinalScore extends StatelessWidget {
     required this.outOf,
     required this.animationDuration,
   }) : super(key: key);
-  int score;
-  int outOf;
+  double score;
+  double outOf;
   int animationDuration;
+  List test = [];
+  // List<String,bool> list=[];
 
   @override
   Widget build(BuildContext context) {
+    test[0] = 'answer x';
+    test[1] = 'answer y';
+
+    log('$score / $outOf');
     return Container(
         width: 250.0,
         height: 250.0,
@@ -149,13 +157,17 @@ class CircularFinalScore extends StatelessWidget {
           radius: 125,
           lineWidth: 15.0,
           backgroundColor: Color.fromARGB(255, 255, 204, 109),
-          percent: score / outOf,
+          percent:
+              (double.parse('$score').toInt() / double.parse('$outOf').toInt())
+                  .floor()
+                  .toDouble(),
           progressColor: kblue,
           circularStrokeCap: CircularStrokeCap.round,
           animation: true,
           animationDuration: animationDuration,
           center: Text(
-            '$score/$outOf',
+            '${double.parse('$score').toInt()} / ${double.parse('$outOf').toInt()}',
+            // '$score/$outOf',
             style: const TextStyle(
                 color: Color.fromARGB(255, 255, 165, 0),
                 fontSize: 64,

@@ -20,7 +20,7 @@ class ChooseType extends StatelessWidget {
       {Key? key,
       required this.icon,
       required this.path,
-      required this.ptype,
+      this.ptype,
       this.ftype})
       : super(key: key);
   dynamic icon;

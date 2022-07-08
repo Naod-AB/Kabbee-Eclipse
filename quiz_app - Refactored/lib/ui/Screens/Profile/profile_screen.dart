@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_const
 
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +61,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Admin settings
 
-            if (controller.userInfo.value!.role == 'admin')
+            if (controller.userInfo.value!.role == 'ADMIN')
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

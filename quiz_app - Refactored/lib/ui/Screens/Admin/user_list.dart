@@ -56,7 +56,7 @@ class UsersListPage extends StatelessWidget {
           itemCount: controller.activeUsersCount.value,
           itemBuilder: (context, index) {
             var user = controller.activeUsers[index];
-            bool isUserAdmin = controller.activeUsers[index]['role'] == 'admin';
+            bool isUserAdmin = controller.activeUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
                 user['firstName'] == controller.userInfo.value!.firstName;
             return Card(
@@ -88,7 +88,7 @@ class UsersListPage extends StatelessWidget {
           itemBuilder: (context, index) {
             var user = controller.blockedUsers[index];
             bool isUserAdmin =
-                controller.blockedUsers[index]['role'] == 'admin';
+                controller.blockedUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
                 user['firstName'] == controller.userInfo.value!.firstName;
 
