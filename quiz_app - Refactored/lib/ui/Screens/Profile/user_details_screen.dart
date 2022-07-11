@@ -17,7 +17,7 @@ class UserDetailsScreen extends GetView<ProfileController> {
   //* User Info
 
   Widget build(BuildContext context) {
-    print(controller.userInfo.value!.gender);
+    // print(controller.userInfo.value!.gender);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(

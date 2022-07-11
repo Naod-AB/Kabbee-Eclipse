@@ -98,16 +98,19 @@ class ProfileController extends GetxController {
   List courseLength = [];
   int usersLength = 0;
   List fetchCoursesAndCategories = [];
+  List fetchquestionLengths = [];
+
   getDashBoardData() async {
     fetchCoursesAndCategories = await fetchDashboard();
+    fetchquestionLengths = await fetchquestionLength();
     List fetchUser = await fetchUsers();
 
     categoryLength =
         fetchCoursesAndCategories.map((e) => e['category']).toSet().toList();
-    print('category length is $categoryLength');
+    // print('category length is $categoryLength');
     courseLength =
         fetchCoursesAndCategories.map((e) => e['courseName']).toSet().toList();
     usersLength = fetchUser.length;
-    print('user length is ${fetchUser.length}');
+    // print('user length is ${fetchUser.length}');
   }
 }

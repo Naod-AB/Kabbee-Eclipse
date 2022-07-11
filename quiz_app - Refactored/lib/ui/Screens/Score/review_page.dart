@@ -22,7 +22,6 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isCorrect = false;
     return SafeArea(
       child: Scaffold(
         appBar: quizAppBar(context: context),
@@ -158,7 +157,7 @@ class ReviewScreen extends StatelessWidget {
                           // context.router.push(const CategoryRoute());
 
                           print(controller.questionApi!.length);
-                          deleteSavedAnswers(controller.questionApi!.length);
+                          // deleteSavedAnswers(controller.questionApi!.length);
                           context.router.push(CategoryRoute());
                           // controller.qnIndex.value = 1;
                         },
