@@ -794,14 +794,19 @@ Widget buildlanguageTiles(
         leading: Container(
           child: leadingImage,
           decoration: BoxDecoration(
+            color: Color.fromARGB(255, 56, 56, 55),
             borderRadius: BorderRadius.circular(50),
           ),
         ),
         trailing: Container(
-          color: Color.fromARGB(255, 56, 55, 55),
+          color: Color.fromARGB(255, 56, 56, 55),
           height: 25,
           width: 25,
-          child: Center(child: Text(questionNumber.toString())),
+          child: Center(
+              child: Text(
+            questionNumber.toString(),
+            style: TextStyle(color: Color.fromARGB(255, 255, 155, 0)),
+          )),
         ),
       ));
 }

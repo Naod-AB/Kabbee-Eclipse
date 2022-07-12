@@ -19,14 +19,17 @@ class AdminLanguage extends StatelessWidget {
           itemBuilder: (context, index) {
             var language = controller.fetchCoursesAndCategories[index];
             print(language);
-            return buildlanguageTiles(
-                SvgPicture.asset(
-                  language["icon"],
-                  height: 50,
-                ),
-                language['courseName'],
-                language['category'],
-                4);
+            return Card(
+              color: tileColor,
+              child: buildlanguageTiles(
+                  SvgPicture.asset(
+                    language["icon"],
+                    height: 50,
+                  ),
+                  language['courseName'],
+                  language['category'],
+                  4),
+            );
           },
         ));
   }

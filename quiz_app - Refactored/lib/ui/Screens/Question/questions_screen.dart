@@ -169,7 +169,7 @@ class QuestionsScreen extends StatelessWidget {
                                                                 Colors.white),
                                                     maxLines: 2,
                                                   ),
-                                                  const Spacer(),
+                                                  // const Spacer(),
                                                 ],
                                               ),
                                               controlAffinity:
