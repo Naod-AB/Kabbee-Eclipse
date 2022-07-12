@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
-import 'package:motion_toast/resources/arrays.dart';
+
 import 'package:quiz_app/service/api.dart';
-//import 'package:quiz_app/service/model.dart';
+
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
@@ -18,7 +18,8 @@ import 'package:image_picker/image_picker.dart';
 ProfileController controller = Get.put(ProfileController());
 
 Color orangeColor = const Color(0xFFFFA500);
-Color tileColor = Color.fromRGBO(34, 34, 34, 0.9);
+Color tileColor = Color.fromRGBO(20, 20, 20, 0.9);
+// Color tileColor = Color.fromRGBO(34, 34, 34, 0.9);
 Color primaryColor = const Color(0xFFeeeeee);
 Color secondaryColor = Colors.white60;
 
@@ -193,82 +194,6 @@ Widget buildBottomSheetTiles(IconData? leadingIcon, Widget? title,
         color: iconColor,
       ),
       trailing: trailing,
-    ),
-  );
-}
-
-// admin users
-Widget buildUsersTiles(
-    Widget leadingImage,
-    String title,
-    String subtitle,
-    bool isCurrentUserAdmin,
-    bool isUserActive,
-    bool isUserAdmin,
-    user,
-    int index) {
-  return ClipRRect(
-    borderRadius: BorderRadius.circular(10),
-    child: ListTile(
-      contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
-      title: customText(title, 17, true, false, primaryColor),
-      subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
-      leading: Container(
-        child: isUserAdmin
-            ? Stack(
-                children: [
-                  leadingImage,
-                  const Positioned(
-                    top: 25,
-                    right: 1,
-                    child: FractionalTranslation(
-                      translation: Offset(0.5, -0.5),
-                      child: Icon(
-                        Icons.verified_user,
-                        color: kblue,
-                        size: 17,
-                      ),
-                    ),
-                  )
-                ],
-              )
-            : leadingImage,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-        ),
-      ),
-      trailing: isCurrentUserAdmin
-          ? customText('You', 14, true, false, kblue)
-          : PopupMenuButton(
-              position: PopupMenuPosition.under,
-              icon: const Icon(
-                Icons.more_horiz,
-                color: Colors.white,
-              ),
-              color: kblue,
-              itemBuilder: (context) => [
-                    PopupMenuItem(
-                      onTap: () {
-                        final String listId = user['id'].toString();
-                        print('from file id $listId');
-                        isUserActive
-                            ? {
-                                controller.updatedPassword.value =
-                                    'This#pass123',
-                                updateUsersList(
-                                    id: listId, status: true, index: index),
-                              }
-                            : {
-                                controller.updatedPassword.value =
-                                    '${user['firstName']}' '#pass123',
-                                updateUsersList(
-                                    id: listId, status: false, index: index)
-                              };
-                      },
-                      child: customText(isUserActive ? 'Block' : 'Activate', 16,
-                          true, false, Colors.black),
-                    ),
-                  ]),
     ),
   );
 }
@@ -779,6 +704,82 @@ bool validateStructure(String value) {
   return regExp.hasMatch(value);
 }
 
+// admin users
+Widget buildUsersTiles(
+    Widget leadingImage,
+    String title,
+    String subtitle,
+    bool isCurrentUserAdmin,
+    bool isUserActive,
+    bool isUserAdmin,
+    user,
+    int index) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(12),
+    child: ListTile(
+      contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
+      title: customText(title, 17, true, false, primaryColor),
+      subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
+      leading: Container(
+        child: isUserAdmin
+            ? Stack(
+                children: [
+                  leadingImage,
+                  const Positioned(
+                    top: 25,
+                    right: 1,
+                    child: FractionalTranslation(
+                      translation: Offset(0.5, -0.5),
+                      child: Icon(
+                        Icons.verified_user,
+                        color: kblue,
+                        size: 17,
+                      ),
+                    ),
+                  )
+                ],
+              )
+            : leadingImage,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+      trailing: isCurrentUserAdmin
+          ? customText('You', 14, true, false, kblue)
+          : PopupMenuButton(
+              position: PopupMenuPosition.under,
+              icon: const Icon(
+                Icons.more_horiz,
+                color: Colors.white,
+              ),
+              color: kblue,
+              itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () {
+                        final String listId = user['id'].toString();
+                        print('from file id $listId');
+                        isUserActive
+                            ? {
+                                controller.updatedPassword.value =
+                                    'This#pass123',
+                                updateUsersList(
+                                    id: listId, status: true, index: index),
+                              }
+                            : {
+                                controller.updatedPassword.value =
+                                    '${user['firstName']}' '#pass123',
+                                updateUsersList(
+                                    id: listId, status: false, index: index)
+                              };
+                      },
+                      child: customText(isUserActive ? 'Block' : 'Activate', 16,
+                          true, false, Colors.black),
+                    ),
+                  ]),
+    ),
+  );
+}
+
 Widget buildlanguageTiles(
   Widget leadingImage,
   String title,
@@ -786,7 +787,7 @@ Widget buildlanguageTiles(
   int questionNumber,
 ) {
   return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(12),
       child: ListTile(
         contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
         title: customText(title, 17, true, false, primaryColor),
@@ -798,6 +799,7 @@ Widget buildlanguageTiles(
             borderRadius: BorderRadius.circular(50),
           ),
         ),
+<<<<<<< HEAD
         trailing: Container(
           color: Color.fromARGB(255, 56, 56, 55),
           height: 25,
@@ -807,6 +809,20 @@ Widget buildlanguageTiles(
             questionNumber.toString(),
             style: TextStyle(color: Color.fromARGB(255, 255, 155, 0)),
           )),
+=======
+        trailing: ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: Container(
+            color: Color.fromARGB(255, 56, 55, 55),
+            height: 30,
+            width: 60,
+            child: Center(
+                child: Text(
+              questionNumber.toString(),
+              style: TextStyle(color: kblue),
+            )),
+          ),
+>>>>>>> cf58c2d9c8789f00b7dffcbd7da9ca1c2d0b459f
         ),
       ));
 }

@@ -332,10 +332,7 @@ class QuestionsScreenArgs {
 /// [_i8.FinalScore]
 class FinalScore extends _i17.PageRouteInfo<FinalScoreArgs> {
   FinalScore(
-      {_i18.Key? key,
-      required double outOf,
-      required double score,
-      int? optionList})
+      {_i18.Key? key, required int outOf, required int score, int? optionList})
       : super(FinalScore.name,
             path: '/finalScore',
             args: FinalScoreArgs(
@@ -350,9 +347,9 @@ class FinalScoreArgs {
 
   final _i18.Key? key;
 
-  final double outOf;
+  final int outOf;
 
-  final double score;
+  final int score;
 
   final int? optionList;
 

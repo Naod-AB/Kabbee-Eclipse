@@ -19,8 +19,8 @@ class FinalScore extends StatelessWidget {
       {Key? key, required this.outOf, required this.score, this.optionList})
       : super(key: key);
 
-  double outOf;
-  double score;
+  int outOf;
+  int score;
   int? optionList;
 
   final QuestionControl controller = Get.put(QuestionControl());
@@ -29,6 +29,12 @@ class FinalScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print((double.parse('$score').toInt() / double.parse('$outOf').toInt())
+    //     .floor()
+    //     .toDouble());
+    print('score ${score}');
+    print('outof ${outOf}');
+    // print('percent ${score / outOf}');
     Future.delayed(
         const Duration(milliseconds: 2300), () => isLoading.value = false);
     return Expanded(
@@ -47,7 +53,7 @@ class FinalScore extends StatelessWidget {
               Title(
                 color: Colors.white,
                 child: Text(
-                  'Your Score',
+                  'Your Score is $score out of $outOf',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 36.0,
@@ -69,6 +75,7 @@ class FinalScore extends StatelessWidget {
                               height: 250,
                             );
                     })
+                  // : Container(),
                   : CircularFinalScore(
                       score: score,
                       outOf: outOf,
@@ -83,7 +90,7 @@ class FinalScore extends StatelessWidget {
                     print(
                         ' reviewlist number ${controller.questionApi!.length}');
 
-                    deleteSavedAnswers(controller.questionApi!.length);
+                    // deleteSavedAnswers(controller.questionApi!.length);
                     context.router.pushNamed('/review_screen');
                   },
                   style: ElevatedButton.styleFrom(
@@ -109,7 +116,7 @@ class FinalScore extends StatelessWidget {
                           await fetchUserScores(pController.userInfo.value!.id);
 
                       print(' done number ${controller.questionApi!.length}');
-                      deleteSavedAnswers(controller.questionApi!.length);
+                      // deleteSavedAnswers(controller.questionApi!.length);
                       context.router.pushNamed('/category');
                       Get.delete<QuestionControl>();
                     },
@@ -138,18 +145,12 @@ class CircularFinalScore extends StatelessWidget {
     required this.outOf,
     required this.animationDuration,
   }) : super(key: key);
-  double score;
-  double outOf;
+  int score;
+  int outOf;
   int animationDuration;
-  List test = [];
-  // List<String,bool> list=[];
 
   @override
   Widget build(BuildContext context) {
-    test[0] = 'answer x';
-    test[1] = 'answer y';
-
-    log('$score / $outOf');
     return Container(
         width: 250.0,
         height: 250.0,
@@ -157,17 +158,14 @@ class CircularFinalScore extends StatelessWidget {
           radius: 125,
           lineWidth: 15.0,
           backgroundColor: Color.fromARGB(255, 255, 204, 109),
-          percent:
-              (double.parse('$score').toInt() / double.parse('$outOf').toInt())
-                  .floor()
-                  .toDouble(),
+          percent: score / outOf,
           progressColor: kblue,
           circularStrokeCap: CircularStrokeCap.round,
           animation: true,
           animationDuration: animationDuration,
           center: Text(
-            '${double.parse('$score').toInt()} / ${double.parse('$outOf').toInt()}',
-            // '$score/$outOf',
+            // '${double.parse('$score').toInt()} / ${double.parse('$outOf').toInt()}',
+            '$score/$outOf',
             style: const TextStyle(
                 color: Color.fromARGB(255, 255, 165, 0),
                 fontSize: 64,

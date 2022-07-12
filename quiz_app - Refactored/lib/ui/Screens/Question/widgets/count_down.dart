@@ -50,15 +50,15 @@ class MyTimer extends StatelessWidget {
             // saveUserScore(score);
             print('checkid timer is ${checkid}');
             if (score.courseId != checkid) {
-              saveUserScore(score);
+              // saveUserScore(score);
               // print('create score ${score}');
             } else {
               createUserScore(score);
               // print('save score ${score}');
             }
             context.router.push(FinalScore(
-              outOf: controller.questionApi!.length.toDouble(),
-              score: controller.count.toDouble(),
+              outOf: controller.questionApi!.length,
+              score: controller.count,
               optionList: controller.questionApi!.length,
             ));
             controller.qnIndex.value = 1;

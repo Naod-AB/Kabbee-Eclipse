@@ -41,10 +41,10 @@ class AuthController extends GetxController {
   }
 
   void getdata() async {
-    if (box1.get('email') != null) {
+    if (box1.get('email') != null && box1.get('pass') != null) {
       loginEmailController.value.text = box1.get('email');
       print("no null");
-      //loginPasswordController.value.text = box1.get('pass');
+      loginPasswordController.value.text = box1.get('pass');
     }
   }
 
@@ -105,7 +105,7 @@ class AuthController extends GetxController {
         if (rememberMe.value) {
           print("remmeber me");
           box1.put('email', emails);
-          //box1.put('pass', pass);
+          box1.put('pass', pass);
         } else if (box1.get('email') != null) {
           box1.delete('email');
           print("email deleted");

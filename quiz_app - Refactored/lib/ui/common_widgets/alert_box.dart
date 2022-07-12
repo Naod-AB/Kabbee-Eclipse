@@ -86,7 +86,7 @@ quizAlertBox(
                     // saveUserScore(score);
                     print('checkid unanswered is ${checkid}');
                     if (score.courseId != checkid) {
-                      saveUserScore(score);
+                      // saveUserScore(score);
                       // print('create score ${score}');
                     } else {
                       createUserScore(score);
@@ -95,8 +95,8 @@ quizAlertBox(
                     // () => Navigator.pop(context, false);
                     print('printing score ${controller.count}');
                     context.router.push(FinalScore(
-                        outOf: questionAlertCtrl.questionApi!.length.toDouble(),
-                        score: questionAlertCtrl.count.toDouble(),
+                        outOf: questionAlertCtrl.questionApi!.length,
+                        score: questionAlertCtrl.count,
                         optionList: questionAlertCtrl.questionApi!.length));
                   }
                 : () async {

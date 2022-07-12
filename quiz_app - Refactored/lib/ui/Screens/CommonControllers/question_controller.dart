@@ -34,4 +34,10 @@ class QuestionControl extends GetxController {
   RxInt hour = 0.obs;
   RxInt minutes = 0.obs;
   RxInt seconds = 25.obs;
+
+  //
+  List answers = [];
+  // List choices = [];
+  var choices = List.filled(1, '', growable: true);
+  int scoreCounter = 0;
 }

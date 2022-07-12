@@ -17,6 +17,7 @@ import '../ui/Screens/Question/models/checkanswer.dart';
 final ProfileController pController = Get.find();
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
+  print('id ${score.courseId}');
   final response = await http.patch(
       Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
       headers: <String, String>{
@@ -30,7 +31,8 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'percentage': score.coursePercentage,
         'userId': score.userId
       }));
-  if (response.statusCode == 200) {
+  print(response.statusCode);
+  if (response.statusCode == 204) {
     log('${score.userId}');
     log('user id${pController.userInfo.value!.id}');
     return CourseScore.fromJson(jsonDecode(response.body));
@@ -154,6 +156,18 @@ Future<List> fetchDashboard() async {
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Courses');
+  }
+}
+
+Future<List> fetchquestionLength() async {
+  final response =
+      await http.get(Uri.parse('https://eclipse-api.herokuapp.com/questions'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    final dashboardData = (jsonDecode(response.body)["_embedded"]["questions"]);
+    print('Questions response is ${response.body}');
+    return dashboardData;
+  } else {
+    throw Exception('Failed to fetch Questions');
   }
 }
 
@@ -300,21 +314,21 @@ Future<int> fetchCorrectAnswers() async {
 }
 
 // For unanswered
-Future<int> fetchSelectedQuestion() async {
-  final response = await http.get(
-    Uri.parse('https://eclipse-api.herokuapp.com/answers'),
-  );
-  var count = 0;
+// Future<int> fetchSelectedQuestion() async {
+//   final response = await http.get(
+//     Uri.parse('https://eclipse-api.herokuapp.com/answers'),
+//   );
+//   var count = 0;
 
-  final parsed = jsonDecode(response.body)["_embedded"]["answers"];
-  for (var item in parsed) {
-    if (item['isSelected'] == true) {
-      count++;
-    }
-  }
+//   final parsed = jsonDecode(response.body)["_embedded"]["answers"];
+//   for (var item in parsed) {
+//     if (item['isSelected'] == true) {
+//       count++;
+//     }
+//   }
 
-  return count;
-}
+//   return count;
+// }
 
 // To update profile to Api
 Future<Users> updateJprofile({
@@ -342,24 +356,24 @@ Future<Users> updateJprofile({
 // Update the user lists
 
 // Delete answers
-Future deleteSavedAnswers(var pLength) async {
-  for (var i = 1; i < pLength + 1; i++) {
-    final response = await http.patch(
-      Uri.parse('https://eclipse-api.herokuapp.com/answers/$i'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, bool>{
-        'isCorrect': false,
-        "isSelected": false,
-      }),
-    );
-    print('i is $i');
-    print('patch response delete answer is${response.body}');
+// Future deleteSavedAnswers(var pLength) async {
+//   for (var i = 1; i < pLength + 1; i++) {
+//     final response = await http.patch(
+//       Uri.parse('https://eclipse-api.herokuapp.com/answers/$i'),
+//       headers: <String, String>{
+//         'Content-Type': 'application/json; charset=UTF-8',
+//       },
+//       body: jsonEncode(<String, bool>{
+//         'isCorrect': false,
+//         "isSelected": false,
+//       }),
+//     );
+//     print('i is $i');
+//     print('patch response delete answer is${response.body}');
 
-    Get.delete<QuestionControl>();
-  }
-}
+//     Get.delete<QuestionControl>();
+//   }
+// }
 
 // Logout
 logOut() {
