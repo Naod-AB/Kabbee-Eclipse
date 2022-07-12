@@ -799,17 +799,6 @@ Widget buildlanguageTiles(
             borderRadius: BorderRadius.circular(50),
           ),
         ),
-<<<<<<< HEAD
-        trailing: Container(
-          color: Color.fromARGB(255, 56, 56, 55),
-          height: 25,
-          width: 25,
-          child: Center(
-              child: Text(
-            questionNumber.toString(),
-            style: TextStyle(color: Color.fromARGB(255, 255, 155, 0)),
-          )),
-=======
         trailing: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Container(
@@ -822,7 +811,6 @@ Widget buildlanguageTiles(
               style: TextStyle(color: kblue),
             )),
           ),
->>>>>>> cf58c2d9c8789f00b7dffcbd7da9ca1c2d0b459f
         ),
       ));
 }
