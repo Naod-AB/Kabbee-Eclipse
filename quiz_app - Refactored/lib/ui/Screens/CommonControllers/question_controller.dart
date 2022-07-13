@@ -40,6 +40,6 @@ class QuestionControl extends GetxController {
   //
   List answers = [];
   // List choices = [];
-  var choices = List.filled(1, '', growable: true);
+  List choices = [];
   int scoreCounter = 0;
 }

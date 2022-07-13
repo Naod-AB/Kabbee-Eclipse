@@ -51,6 +51,8 @@ class QuestionsScreen extends StatelessWidget {
     var isCorrect = false;
     var isSelected = false;
     controller.questionApi!.shuffle();
+    controller.choices =
+        List.filled(controller.questionApi!.length, '', growable: true);
 
     return SafeArea(
       child: WillPopScope(
@@ -153,116 +155,125 @@ class QuestionsScreen extends StatelessWidget {
                                           children: <Widget>[
                                             Obx(
                                               () => Container(
-                                                width: 300,
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: controller
-                                                                      .groupValue[
-                                                                  snapshot] ==
-                                                              controller.value[
-                                                                      snapshot]
-                                                                  [index]
-                                                          ? kblue
-                                                          : const Color
-                                                                  .fromARGB(255,
-                                                              117, 110, 110),
-                                                      width: 2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                ),
-                                                child: RadioListTile<int>(
-                                                    activeColor: kblue,
-                                                    title: Wrap(
-                                                      children: [
-                                                        AutoSizeText(
-                                                          options[index]
-                                                              .toString(),
-                                                          style: Theme.of(
-                                                                  context)
-                                                              .textTheme
-                                                              .headline5!
-                                                              .copyWith(
-                                                                  color: Colors
-                                                                      .white),
-                                                          maxLines: 2,
+                                                  width: 300,
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: controller.groupValue[
+                                                                    snapshot] ==
+                                                                controller.value[
+                                                                        snapshot]
+                                                                    [index]
+                                                            ? kblue
+                                                            : const Color
+                                                                    .fromARGB(
+                                                                255,
+                                                                117,
+                                                                110,
+                                                                110),
+                                                        width: 2),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                  ),
+                                                  child: Obx(() {
+                                                    return RadioListTile<int>(
+                                                        activeColor: kblue,
+                                                        title: Wrap(
+                                                          children: [
+                                                            AutoSizeText(
+                                                              options[index]
+                                                                  .toString(),
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .headline5!
+                                                                  .copyWith(
+                                                                      color: Colors
+                                                                          .white),
+                                                              maxLines: 2,
+                                                            ),
+                                                            const Spacer(),
+                                                          ],
                                                         ),
-                                                        const Spacer(),
-                                                      ],
-                                                    ),
-                                                    controlAffinity:
-                                                        ListTileControlAffinity
-                                                            .trailing,
-                                                    groupValue: controller
-                                                        .groupValue[snapshot],
-                                                    value: controller
-                                                        .value[snapshot][index],
-                                                    onChanged: (newValue) {
-                                                      log('list Data  ${controller.choices}');
-                                                      int i = controller
-                                                          .qnIndex.value;
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        groupValue: controller
+                                                                .groupValue[
+                                                            snapshot],
+                                                        value: controller
+                                                                .value[snapshot]
+                                                            [index],
+                                                        onChanged: (newValue) {
+                                                          log('list Data  ${controller.choices}');
+                                                          // int i = controller
+                                                          //     .qnIndex.value;
 
-                                                      controller.choices.insert(
-                                                          i,
-                                                          options[index]
-                                                              .toString());
-                                                      // controller.answers.insert(
-                                                      //     i,
-                                                      //     controller.questionApi![
-                                                      //             snapshot]
-                                                      //         ['answer']);
+                                                          controller.choices
+                                                              .insert(
+                                                                  controller
+                                                                      .qnIndex
+                                                                      .value,
+                                                                  options[index]
+                                                                      .toString());
+                                                          // controller.answers.insert(
+                                                          //     i,
+                                                          //     controller.questionApi![
+                                                          //             snapshot]
+                                                          //         ['answer']);
 
-                                                      // controller.answers.insert(
-                                                      //     i,
-                                                      //     controller.questionApi![
-                                                      //             snapshot]
-                                                      //         ['answer']);
+                                                          // controller.answers.insert(
+                                                          //     i,
+                                                          //     controller.questionApi![
+                                                          //             snapshot]
+                                                          //         ['answer']);
 
-                                                      log('choice ${controller.choices}');
-                                                      // log('correct answer ${controller.answers[i]}');
-                                                      log(' answer ${controller.questionApi![snapshot]['answer']}');
+                                                          log('choice ${controller.choices}');
+                                                          // log('correct answer ${controller.answers[i]}');
+                                                          log(' answer ${controller.questionApi![snapshot]['answer']}');
 
-                                                      controller.groupValue[
-                                                              snapshot] =
-                                                          newValue as int;
-                                                      if (options[index]
-                                                              .toString() ==
-                                                          controller
-                                                              .questionApi![
-                                                                  snapshot]
-                                                                  ['answer']
-                                                              .toString()) {
-                                                        controller
-                                                            .scoreCounter += 1;
-                                                        isCorrect = true;
-                                                        isSelected = true;
-                                                      } else {
-                                                        if (controller
-                                                                .scoreCounter !=
-                                                            0) {
-                                                          controller
-                                                              .scoreCounter -= 1;
-                                                        }
+                                                          controller.groupValue[
+                                                                  snapshot] =
+                                                              newValue as int;
+                                                          if (options[index]
+                                                                  .toString() ==
+                                                              controller
+                                                                  .questionApi![
+                                                                      snapshot]
+                                                                      ['answer']
+                                                                  .toString()) {
+                                                            controller
+                                                                .scoreCounter += 1;
+                                                            isCorrect = true;
+                                                            isSelected = true;
+                                                          } else {
+                                                            if (controller
+                                                                    .scoreCounter !=
+                                                                0) {
+                                                              controller
+                                                                  .scoreCounter -= 1;
+                                                            }
 
-                                                        isCorrect = false;
-                                                        isSelected = true;
-                                                      }
+                                                            isCorrect = false;
+                                                            isSelected = true;
+                                                          }
 
-                                                      // updateJsonTime(
-                                                      //   answer: options[index],
-                                                      //   id: controller
-                                                      //           .questionApi![
-                                                      //       snapshot]['id'],
-                                                      //   isCorrect: isCorrect,
-                                                      //   isSelected: isSelected,
-                                                      // );
+                                                          // updateJsonTime(
+                                                          //   answer: options[index],
+                                                          //   id: controller
+                                                          //           .questionApi![
+                                                          //       snapshot]['id'],
+                                                          //   isCorrect: isCorrect,
+                                                          //   isSelected: isSelected,
+                                                          // );
 
-                                                      // print(controller
-                                                      //         .questionApi![
-                                                      //     snapshot]['id']);
-                                                    }),
-                                              ),
+                                                          // print(controller
+                                                          //         .questionApi![
+                                                          //     snapshot]['id']);
+                                                        });
+                                                  })),
                                             ),
                                           ],
                                         ),
@@ -329,7 +340,9 @@ class QuestionsScreen extends StatelessWidget {
                                   // print(
                                   //     'printing percent ${controller.scoreCounter / controller.questionApi!.length}');
 
-                                  controller.choices.removeAt(0);
+                                  // controller.choices.removeAt(0);
+                                  controller.choices.removeWhere(
+                                      (item) => [''].contains(item));
 
                                   log('After removing  ${controller.choices}');
 
