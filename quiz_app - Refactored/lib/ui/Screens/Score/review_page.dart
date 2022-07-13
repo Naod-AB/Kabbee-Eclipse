@@ -115,7 +115,7 @@ class ReviewScreen extends StatelessWidget {
                                         ),
                                         child: RadioListTile<int>(
                                           activeColor: kblue,
-                                          title: Row(
+                                          title: Wrap(
                                             children: [
                                               AutoSizeText(
                                                 options[index].toString(),
@@ -124,6 +124,7 @@ class ReviewScreen extends StatelessWidget {
                                                     .headline5!
                                                     .copyWith(
                                                         color: Colors.white),
+                                                maxLines: 2,
                                               ),
                                               const Spacer(),
                                             ],

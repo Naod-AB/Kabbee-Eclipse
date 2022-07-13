@@ -105,6 +105,17 @@ class ProfileScreen extends GetView<ProfileController> {
             buildTileGroup(
               Column(
                 children: [
+                  buildTile(
+                      Icons.dark_mode,
+                      customText('Dark Mode', 18, true, false, primaryColor),
+                      customText(
+                          'Change theme', 13, false, false, secondaryColor),
+                      Switch.adaptive(
+                        value: true,
+                        activeColor: orangeColor,
+                        onChanged: (value) {},
+                      ),
+                      true),
                   buildDivider(),
                   GestureDetector(
                     onTap: () async {
