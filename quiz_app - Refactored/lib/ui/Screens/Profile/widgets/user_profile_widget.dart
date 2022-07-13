@@ -795,6 +795,7 @@ Widget buildlanguageTiles(
         leading: Container(
           child: leadingImage,
           decoration: BoxDecoration(
+            color: Color.fromARGB(255, 56, 56, 55),
             borderRadius: BorderRadius.circular(50),
           ),
         ),

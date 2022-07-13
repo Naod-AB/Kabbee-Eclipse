@@ -273,7 +273,10 @@ class QuestionsScreen extends StatelessWidget {
                               );
                             }),
                       ),
-                      const Spacer(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      //const Spacer(),
                       // Done button
                       Obx(
                         () => controller.questionApi!.length ==
