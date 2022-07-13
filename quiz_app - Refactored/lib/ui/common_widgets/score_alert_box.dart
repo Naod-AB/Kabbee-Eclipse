@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
-
-
 class ScoreAlertBox extends StatelessWidget {
-  const ScoreAlertBox({Key? key}) : super(key: key);
+  ScoreAlertBox({Key? key, required this.title, required this.text})
+      : super(key: key);
+
+  String title;
+  String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class ScoreAlertBox extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              customText('Your score list is Empty !', 21, true, false, kblue),
+              customText(title, 21, true, false, kblue),
               Text(
-                'Do Some Exams and check your results here.',
+                text,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: primaryColor, fontSize: 18),
               ),

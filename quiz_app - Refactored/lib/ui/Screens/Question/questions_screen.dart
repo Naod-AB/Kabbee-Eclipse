@@ -76,13 +76,17 @@ class QuestionsScreen extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-            child: controller.questionApi!.length == 0
-                ? Center(child: ScoreAlertBox())
+            child: controller.questionApi!.isEmpty
+                ? Center(
+                    child: ScoreAlertBox(
+                        title: 'No Questions Available',
+                        text:
+                            'Please practice or choose other languages to test on.'))
+                // : Center(child: ScoreAlertBox(title: '', text: ''))
                 : Column(
                     children: [
                       // isFinal ? MyTimer() : Container(), //1
                       isFinal ? const Spacer() : Container(), //2
-
                       // Question Number
                       Obx(
                         () => Text(

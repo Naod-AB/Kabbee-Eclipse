@@ -6,8 +6,6 @@ import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/common_widgets/score_alert_box.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
-
-
 class MyScoresScreen extends GetView<ProfileController> {
   MyScoresScreen({Key? key}) : super(key: key);
 
@@ -30,7 +28,9 @@ class MyScoresScreen extends GetView<ProfileController> {
                 controller.scores!.any(
                   (data) => data['courseType'] == null,
                 )
-            ? const ScoreAlertBox()
+            ? ScoreAlertBox(
+                title: 'Your score list is Empty !',
+                text: 'Do Some Exams and check your results here.')
             : Expanded(
                 child: GroupedListView<dynamic, String>(
                   elements: controller.scores!,
