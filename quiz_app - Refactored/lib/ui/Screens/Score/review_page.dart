@@ -158,9 +158,10 @@ class ReviewScreen extends StatelessWidget {
                           // context.router.push(const CategoryRoute());
 
                           print(controller.questionApi!.length);
+                          Get.delete<QuestionControl>();
                           // deleteSavedAnswers(controller.questionApi!.length);
                           context.router.push(CategoryRoute());
-                          // controller.qnIndex.value = 1;
+                          controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),

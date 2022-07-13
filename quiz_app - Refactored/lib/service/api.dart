@@ -17,7 +17,6 @@ import '../ui/Screens/Question/models/checkanswer.dart';
 final ProfileController pController = Get.find();
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
-  print('id ${score.courseId}');
   final response = await http.patch(
       Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
       headers: <String, String>{
@@ -31,10 +30,8 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'percentage': score.coursePercentage,
         'userId': score.userId
       }));
-  print(response.statusCode);
+
   if (response.statusCode == 204) {
-    log('${score.userId}');
-    log('user id${pController.userInfo.value!.id}');
     return CourseScore.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to Save score.');
@@ -58,11 +55,6 @@ Future<CourseScore> createUserScore(CourseScore score) async {
             'userId': score.userId
           }));
   if (response.statusCode == 201) {
-    print("this is inside the create scoreSave api function ");
-
-    log(' log of create ${score.courseId}');
-    // log('user id${pController.userInfo.value!.id}');
-    // print('creat escore response is${response.body}');
     return CourseScore.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to create score.');
@@ -164,7 +156,7 @@ Future<List> fetchquestionLength() async {
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/questions'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final dashboardData = (jsonDecode(response.body)["_embedded"]["questions"]);
-    print('Questions response is ${response.body}');
+    log('Questions response is ${response.body}');
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Questions');

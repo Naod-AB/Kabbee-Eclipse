@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
@@ -30,38 +32,72 @@ class MyTimer extends StatelessWidget {
         ),
         onEnd: () async {
           if (controller.isFinished) {
+            log('Timer is done and doing nothing ');
           } else {
-            controller.count = await fetchCorrectAnswers();
-            print('timer ended');
-            double scorePercent =
-                (controller.count / controller.questionApi!.length * 100);
+            // remove empty choices and answers
+            controller.choices.removeWhere((item) => [''].contains(item));
+            controller.answers.removeWhere((item) => [''].contains(item));
 
-            controller.seconds.value = 0;
-            controller.isEnabled.value = false;
+            if (controller.choices.every((element) => element == '') ||
+                controller.answers.every((element) => element == '')) {
+              controller.choices.clear();
+              controller.answers.clear();
+            }
+
+            // check id
             String checkid = pcontroller.userInfo.value!.id.toString() +
                 controller.chosenCourse.value;
+
+            // get percentge
+            double scorePercent = (controller.answers.length /
+                controller.questionApi!.length *
+                100);
+
+            // change timer
+            controller.seconds.value = 0;
+            controller.isEnabled.value = false;
+
+            // get score
             CourseScore score = CourseScore(
-                courseId: checkid,
+                courseId: pController.userInfo.value!.id.toString() +
+                    controller.chosenCourse.value,
                 courseName: controller.chosenCourse.value,
                 courseType: controller.chosenCourseType.value,
-                courseScore: controller.count,
+                courseScore: controller.answers.length,
                 coursePercentage: scorePercent,
-                userId: pcontroller.userInfo.value!.id);
+                userId: pController.userInfo.value!.id);
+            controller.isFinished = true;
+
+            // previous code
+            // controller.count = await fetchCorrectAnswers();
+            // double scorePercent =
+            //     (controller.count / controller.questionApi!.length * 100);
+            // controller.seconds.value = 0;
+            // controller.isEnabled.value = false;
+            // String checkid = pcontroller.userInfo.value!.id.toString() +
+            //     controller.chosenCourse.value;
+            // CourseScore score = CourseScore(
+            //     courseId: checkid,
+            //     courseName: controller.chosenCourse.value,
+            //     courseType: controller.chosenCourseType.value,
+            //     courseScore: controller.count,
+            //     coursePercentage: scorePercent,
+            //     userId: pcontroller.userInfo.value!.id);
             // saveUserScore(score);
-            print('checkid timer is ${checkid}');
-            if (score.courseId != checkid) {
-              // saveUserScore(score);
-              // print('create score ${score}');
+            // print('checkid timer is ${checkid}');
+
+            if (score.courseId == checkid) {
+              saveUserScore(score);
             } else {
               createUserScore(score);
-              // print('save score ${score}');
             }
             context.router.push(FinalScore(
               outOf: controller.questionApi!.length,
-              score: controller.count,
+              score: controller.answers.length,
               optionList: controller.questionApi!.length,
             ));
             controller.qnIndex.value = 1;
+            controller.scoreCounter = 0;
 
             print("Timer finished");
           }

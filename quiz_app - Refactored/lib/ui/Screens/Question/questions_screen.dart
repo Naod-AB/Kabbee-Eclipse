@@ -52,7 +52,9 @@ class QuestionsScreen extends StatelessWidget {
     var isSelected = false;
     controller.questionApi!.shuffle();
     controller.choices =
-        List.filled(controller.questionApi!.length, '', growable: true);
+        List.filled(controller.questionApi!.length + 1, '', growable: true);
+    controller.answers =
+        List.filled(controller.questionApi!.length + 1, '', growable: true);
 
     return SafeArea(
       child: WillPopScope(
@@ -87,7 +89,7 @@ class QuestionsScreen extends StatelessWidget {
                 // : Center(child: ScoreAlertBox(title: '', text: ''))
                 : Column(
                     children: [
-                      // isFinal ? MyTimer() : Container(), //1
+                      isFinal ? MyTimer() : Container(), //1
                       isFinal ? const Spacer() : Container(), //2
                       // Question Number
                       Obx(
@@ -133,7 +135,7 @@ class QuestionsScreen extends StatelessWidget {
                                     Spacer(
                                       flex: 1,
                                     ),
-                                    Text(
+                                    AutoSizeText(
                                       controller.questionApi![snapshot]
                                               ['question']
                                           .toString(),
@@ -141,6 +143,7 @@ class QuestionsScreen extends StatelessWidget {
                                           .textTheme
                                           .headline5!
                                           .copyWith(color: Colors.white),
+                                      maxLines: 3,
                                     ),
                                     const Spacer(
                                       flex: 2,
@@ -207,10 +210,17 @@ class QuestionsScreen extends StatelessWidget {
                                                                 .value[snapshot]
                                                             [index],
                                                         onChanged: (newValue) {
-                                                          log('list Data  ${controller.choices}');
-                                                          // int i = controller
-                                                          //     .qnIndex.value;
+                                                          controller.groupValue[
+                                                                  snapshot] =
+                                                              newValue as int;
 
+                                                          // add choices to list without replacing
+
+                                                          controller.choices
+                                                              .removeAt(
+                                                                  controller
+                                                                      .qnIndex
+                                                                      .value);
                                                           controller.choices
                                                               .insert(
                                                                   controller
@@ -218,25 +228,9 @@ class QuestionsScreen extends StatelessWidget {
                                                                       .value,
                                                                   options[index]
                                                                       .toString());
-                                                          // controller.answers.insert(
-                                                          //     i,
-                                                          //     controller.questionApi![
-                                                          //             snapshot]
-                                                          //         ['answer']);
 
-                                                          // controller.answers.insert(
-                                                          //     i,
-                                                          //     controller.questionApi![
-                                                          //             snapshot]
-                                                          //         ['answer']);
+                                                          // save the correct ansers for score
 
-                                                          log('choice ${controller.choices}');
-                                                          // log('correct answer ${controller.answers[i]}');
-                                                          log(' answer ${controller.questionApi![snapshot]['answer']}');
-
-                                                          controller.groupValue[
-                                                                  snapshot] =
-                                                              newValue as int;
                                                           if (options[index]
                                                                   .toString() ==
                                                               controller
@@ -244,22 +238,65 @@ class QuestionsScreen extends StatelessWidget {
                                                                       snapshot]
                                                                       ['answer']
                                                                   .toString()) {
-                                                            controller
-                                                                .scoreCounter += 1;
-                                                            isCorrect = true;
-                                                            isSelected = true;
-                                                          } else {
-                                                            if (controller
-                                                                    .scoreCounter !=
-                                                                0) {
-                                                              controller
-                                                                  .scoreCounter -= 1;
-                                                            }
+                                                            // add answer
+                                                            controller.answers
+                                                                .removeAt(
+                                                                    controller
+                                                                        .qnIndex
+                                                                        .value);
 
-                                                            isCorrect = false;
-                                                            isSelected = true;
+                                                            controller.answers.insert(
+                                                                controller
+                                                                    .qnIndex
+                                                                    .value,
+                                                                options[index]
+                                                                    .toString());
+                                                          } else {
+                                                            // remove answer
+                                                            controller.answers
+                                                                .removeAt(
+                                                                    controller
+                                                                        .qnIndex
+                                                                        .value);
+                                                            controller.answers
+                                                                .insert(
+                                                                    controller
+                                                                        .qnIndex
+                                                                        .value,
+                                                                    '');
                                                           }
 
+                                                          // log('choice ${controller.choices}');
+                                                          // log('answers ${controller.answers}');
+                                                          // log('answerFromApi ${controller.questionApi![snapshot]['answer']}');
+
+                                                          // old code for adding score
+
+                                                          // if (options[index]
+                                                          //         .toString() ==
+                                                          //     controller
+                                                          //         .questionApi![
+                                                          //             snapshot]
+                                                          //             ['answer']
+                                                          //         .toString()) {
+                                                          //   controller
+                                                          //       .scoreCounter++;
+                                                          //   print(
+                                                          //       '🥂 ${controller.scoreCounter}');
+                                                          //   isCorrect = true;
+                                                          //   isSelected = true;
+                                                          // } else {
+                                                          //   if (controller
+                                                          //           .scoreCounter !=
+                                                          //       0) {
+                                                          //     controller
+                                                          //         .scoreCounter--;
+                                                          //     print(
+                                                          //         '🥂 ${controller.scoreCounter}');
+                                                          //   }
+                                                          //   isCorrect = false;
+                                                          //   isSelected = true;
+                                                          // }
                                                           // updateJsonTime(
                                                           //   answer: options[index],
                                                           //   id: controller
@@ -268,7 +305,6 @@ class QuestionsScreen extends StatelessWidget {
                                                           //   isCorrect: isCorrect,
                                                           //   isSelected: isSelected,
                                                           // );
-
                                                           // print(controller
                                                           //         .questionApi![
                                                           //     snapshot]['id']);
@@ -294,30 +330,34 @@ class QuestionsScreen extends StatelessWidget {
                                 controller.qnIndex.value
                             ? ElevatedButton(
                                 onPressed: () async {
-                                  // print()
-                                  // var answered = await fetchSelectedQuestion();
-                                  // if (unanswered != 4)
-                                  // quizAlertBox(
-                                  //     context,
-                                  //     'Notice',
-                                  //     "CONTINUE",
-                                  //     'hello you have unanswered question . Do you want go back and check or continue to score page ?',
-                                  //     path,
-                                  //     icon,
-                                  //     controller,
-                                  //     false,
-                                  //     false);
+                                  controller.choices.removeWhere(
+                                      (item) => [''].contains(item));
+                                  controller.answers.removeWhere(
+                                      (item) => [''].contains(item));
+
+                                  // log('After removing  ${controller.choices}');
+                                  // log('Choices  ${controller.choices.length}');
+                                  // log('Answers  ${controller.answers.length}');
+                                  // log('controller.questionApi!.length  ${controller.questionApi!.length}');
+                                  if (controller.choices.length !=
+                                      controller.questionApi!.length) {
+                                    quizAlertBox(
+                                        context,
+                                        'Notice',
+                                        "CONTINUE",
+                                        'hello you have unanswered question . Do you want go back and check or continue to score page ?',
+                                        path,
+                                        icon,
+                                        controller,
+                                        false,
+                                        false);
+                                  }
 
                                   double scorePercent =
-                                      (controller.scoreCounter /
+                                      (controller.answers.length /
                                           controller.questionApi!.length *
                                           100);
-                                  print('scorePercent $scorePercent');
-                                  // double scorePercent = (controller.count /
-                                  //     controller.questionApi!.length *
-                                  //     100);
-
-                                  print('scorePercent $scorePercent');
+                                  print('THE USER PERCENTAGE IS $scorePercent');
 
                                   CourseScore score = CourseScore(
                                       courseId: pController.userInfo.value!.id
@@ -326,33 +366,34 @@ class QuestionsScreen extends StatelessWidget {
                                       courseName: controller.chosenCourse.value,
                                       courseType:
                                           controller.chosenCourseType.value,
-                                      courseScore: controller.scoreCounter,
+                                      courseScore: controller.answers.length,
                                       coursePercentage: scorePercent,
                                       userId: pController.userInfo.value!.id);
                                   controller.isFinished = true;
 
+                                  String checkid = pcontroller
+                                          .userInfo.value!.id
+                                          .toString() +
+                                      controller.chosenCourse.value;
                                   if (isFinal) {
-                                    print(
-                                        'data ${pController.userInfo.value!.id.toString() + controller.chosenCourse.value}');
-                                    saveUserScore(score);
+                                    if (score.courseId == checkid) {
+                                      createUserScore(score);
+                                    } else {
+                                      saveUserScore(score);
+                                    }
+                                    print('data ${score.courseId}');
                                     controller.isEnabled.value = false;
                                   }
-                                  // print(
-                                  //     'printing percent ${controller.scoreCounter / controller.questionApi!.length}');
 
-                                  // controller.choices.removeAt(0);
-                                  controller.choices.removeWhere(
-                                      (item) => [''].contains(item));
-
-                                  log('After removing  ${controller.choices}');
-
-                                  // print(controller.choices);
-
-                                  context.router.push(FinalScore(
-                                      outOf: controller.questionApi!.length,
-                                      score: controller.scoreCounter,
-                                      optionList: controller.optionList));
-                                  controller.qnIndex.value = 1;
+                                  if (controller.choices.length ==
+                                      controller.questionApi!.length) {
+                                    context.router.push(FinalScore(
+                                        outOf: controller.questionApi!.length,
+                                        score: controller.answers.length,
+                                        optionList: controller.optionList));
+                                    controller.qnIndex.value = 1;
+                                    controller.scoreCounter = 0;
+                                  }
                                 },
                                 style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(300, 50),
