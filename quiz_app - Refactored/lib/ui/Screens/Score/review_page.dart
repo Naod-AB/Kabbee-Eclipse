@@ -20,7 +20,7 @@ import '/routes/router.gr.dart';
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
 
-  // final QuestionControl questionController = Get.put(QuestionControl());
+  // final QuestionControl anotherQuetionController = Get.put(QuestionControl());
   // final ProfileController questionController = Get.put(ProfileController());
 
   @override

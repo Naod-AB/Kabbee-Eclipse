@@ -51,18 +51,18 @@ class FinalScore extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
-              Title(
-                color: Colors.white,
-                child: Text(
-                  'Your Score is $score out of $outOf',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.roboto().fontFamily),
-                ),
-              ),
+              //const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
+              // Title(
+              //   color: Colors.white,
+              //   child: Text(
+              //     'Your Score is $score out of $outOf',
+              //     style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 36.0,
+              //         fontWeight: FontWeight.bold,
+              //         fontFamily: GoogleFonts.roboto().fontFamily),
+              //   ),
+              // ),
               const Padding(padding: EdgeInsets.all(20)),
               score == outOf
                   ? Obx(() {
@@ -77,7 +77,7 @@ class FinalScore extends StatelessWidget {
                               height: 250,
                             );
                     })
-                  // : Container(),
+                  //: Container(),
                   : CircularFinalScore(
                       score: score,
                       outOf: outOf,
