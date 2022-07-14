@@ -62,8 +62,8 @@ class ReviewScreen extends StatelessWidget {
                           print(controller.questionApi!.length);
                           //Get.delete<QuestionControl>();
                           // deleteSavedAnswers(controller.questionApi!.length);
-                          context.router.push(CategoryRoute());
-                          controller.qnIndex.value = 1;
+                          //context.router.push(CategoryRoute());
+                          //controller.qnIndex.value = 1;
                         },
                         itemBuilder: (context, snapshot) {
                           var options =

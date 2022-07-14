@@ -61,26 +61,26 @@ class FinalScore extends StatelessWidget {
               //         fontFamily: GoogleFonts.roboto().fontFamily),
               //   ),
               // ),
-              //const Padding(padding: EdgeInsets.all(20)),
-              // score == outOf
-              //     ? Obx(() {
-              //         return isLoading.value
-              //             ? CircularFinalScore(
-              //                 score: score,
-              //                 outOf: outOf,
-              //                 animationDuration: 2000,
-              //               )
-              //             : Lottie.network(
-              //                 'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
-              //                 height: 250,
-              //               );
-              //       })
-              // : Container(),
-              CircularFinalScore(
-                score: score,
-                outOf: outOf,
-                animationDuration: 2000,
-              ),
+              const Padding(padding: EdgeInsets.all(20)),
+              score == outOf
+                  ? Obx(() {
+                      return isLoading.value
+                          ? CircularFinalScore(
+                              score: score,
+                              outOf: outOf,
+                              animationDuration: 2000,
+                            )
+                          : Lottie.network(
+                              'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
+                              height: 250,
+                            );
+                    })
+                  //: Container(),
+                  : CircularFinalScore(
+                      score: score,
+                      outOf: outOf,
+                      animationDuration: 2000,
+                    ),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
                 visible: controller.isEnabled.value,

@@ -63,11 +63,7 @@ class MyTimer extends StatelessWidget {
                     controller.chosenCourse.value,
                 courseName: controller.chosenCourse.value,
                 courseType: controller.chosenCourseType.value,
-<<<<<<< HEAD
-                courseScore: controller.scoreCounter,
-=======
                 courseScore: controller.answers.length,
->>>>>>> 329d649d2a756acf173f0e911ac160d729a0a4bb
                 coursePercentage: scorePercent,
                 userId: pController.userInfo.value!.id);
             controller.isFinished = true;
@@ -97,13 +93,8 @@ class MyTimer extends StatelessWidget {
             }
             context.router.push(FinalScore(
               outOf: controller.questionApi!.length,
-<<<<<<< HEAD
-              score: controller.scoreCounter,
-              //optionList: controller.questionApi!.length,
-=======
               score: controller.answers.length,
               optionList: controller.questionApi!.length,
->>>>>>> 329d649d2a756acf173f0e911ac160d729a0a4bb
             ));
             controller.qnIndex.value = 1;
             controller.scoreCounter = 0;
