@@ -9,12 +9,14 @@ import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 
+import '../ui/Screens/Auth/Controllers/auth_controller.dart';
 import '../ui/Screens/CommonControllers/question_controller.dart';
 import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
 import '../ui/Screens/Question/models/checkanswer.dart';
 
 // Save User Score
-final ProfileController pController = Get.find();
+final ProfileController aProfileController = Get.put(ProfileController());
+final QuestionControl aQuestionrofileController = Get.put(QuestionControl());
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
   final response = await http.patch(
@@ -197,7 +199,8 @@ Future<Users> updateUsersList({
       'status': status ? 'BLOCKED' : 'ACTIVE',
     }),
   );
-  if (response.statusCode == 200) {
+  print(response.statusCode);
+  if (response.statusCode == 200 || response.statusCode == 204) {
     if (status == true) {
       controller.blockedUsers.add(controller.activeUsers[index]);
       controller.activeUsers.removeAt(index);
@@ -259,7 +262,7 @@ class ChosenModel {
   }
 }
 
-final QuestionControl qcontroller = Get.put(QuestionControl());
+// final QuestionControl qcontroller = Get.put(QuestionControl());
 
 // Add Choices
 Future<checkAnswer> updateJsonTime({
@@ -371,4 +374,10 @@ Future<Users> updateJprofile({
 logOut() {
   Get.delete<ProfileController>();
   Get.delete<QuestionControl>();
+  Get.delete<AuthController>();
+
+  Get.put(AuthController());
+  AuthController authController = Get.put(AuthController());
+
+  Get.offAllNamed('/login');
 }

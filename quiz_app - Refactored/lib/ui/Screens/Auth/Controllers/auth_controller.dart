@@ -7,13 +7,13 @@ import 'package:hive/hive.dart';
 
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/string_extension.dart';
 
 // import '../../Category/category_screen.dart';
 import '../../CommonControllers/profile_controllers.dart';
 
 class AuthController extends GetxController {
-  ProfileController profileController = Get.find();
   Rx<TextEditingController> loginEmailController = TextEditingController().obs;
   Rx<TextEditingController> loginPasswordController =
       TextEditingController().obs;
@@ -85,23 +85,20 @@ class AuthController extends GetxController {
     var emails = email.text.trim().toLowerCase();
 
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
-      profileController.userInfo.value = await fetchUser(emails);
-      print(profileController.userInfo.value!.password);
-      print(
-          'You are looking for ${profileController.userInfo.value!.firstName}');
-      profileController.firstName.value = profileController
-          .userInfo.value!.firstName
-          .toString()
-          .toCapitalized();
-      profileController.lastName.value =
-          profileController.userInfo.value!.lastName.toString().toCapitalized();
-      profileController.password.value =
-          profileController.userInfo.value!.password.toString();
-      profileController.gender.value =
-          profileController.userInfo.value!.gender == 'Male' ? true : false;
+      controller.userInfo.value = await fetchUser(emails);
+      print(controller.userInfo.value!.password);
+      print('You are looking for ${controller.userInfo.value!.id}');
+      controller.firstName.value =
+          controller.userInfo.value!.firstName.toString().toCapitalized();
+      controller.lastName.value =
+          controller.userInfo.value!.lastName.toString().toCapitalized();
+      controller.password.value =
+          controller.userInfo.value!.password.toString();
+      controller.gender.value =
+          controller.userInfo.value!.gender == 'Male' ? true : false;
 
-      if (profileController.userInfo.value != null &&
-          profileController.password.value == pass) {
+      if (controller.userInfo.value != null &&
+          controller.password.value == pass) {
         if (rememberMe.value) {
           print("remmeber me");
           box1.put('email', emails);
@@ -109,14 +106,18 @@ class AuthController extends GetxController {
         } else if (box1.get('email') != null) {
           box1.delete('email');
           print("email deleted");
-          print(box1.get("email"));
+          print('could be null ${box1.get("email")}');
         }
         print(box1.get('email').toString());
         //print(box1.get('pass').toString());
-        profileController.scores =
-            await fetchUserScores(profileController.userInfo.value!.id);
+        controller.scores =
+            await fetchUserScores(controller.userInfo.value!.id);
         error.value = "";
+        print('Profile DATA  AUTH ${controller.userInfo.value!.email}');
+        print('after logout email - auth ${controller.userInfo.value!.email}');
         context.router.pushNamed('/category');
+
+        print('after logout email --- ${controller.userInfo.value!.email}');
       }
     } else {
       error.value = "Email address or Password is incorrect";

@@ -4,21 +4,24 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 //import 'package:quiz_app/service/model.dart';
-import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+// import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
 import '../Profile/widgets/user_profile_widget.dart';
-import '../../../service/api.dart';
+
+import '../Category/choose_type_screen.dart';
+
 import '/routes/router.gr.dart';
 
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
 
-  final QuestionControl controller = Get.put(QuestionControl());
-  final ProfileController pcontroller = Get.put(ProfileController());
+  // final QuestionControl questionController = Get.put(QuestionControl());
+  // final ProfileController questionController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +36,9 @@ class ReviewScreen extends StatelessWidget {
               // Question Number
               Obx(
                 () => Text(
-                    controller.qnIndex.toString() +
+                    questionController.qnIndex.toString() +
                         '/' +
-                        controller.questionApi!.length.toString(),
+                        questionController.questionApi!.length.toString(),
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -47,13 +50,13 @@ class ReviewScreen extends StatelessWidget {
               SizedBox(
                 height: 540.0,
                 child: PageView.builder(
-                    itemCount: controller.questionApi!.length,
+                    itemCount: questionController.questionApi!.length,
                     onPageChanged: (pageNumber) {
-                      controller.qnIndex.value = pageNumber + 1;
+                      questionController.qnIndex.value = pageNumber + 1;
                     },
                     itemBuilder: (context, snapshot) {
                       var options =
-                          controller.questionApi![snapshot]['options'];
+                          questionController.questionApi![snapshot]['options'];
 
                       return Container(
                         padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
@@ -69,7 +72,8 @@ class ReviewScreen extends StatelessWidget {
                               flex: 1,
                             ),
                             Text(
-                              controller.questionApi![snapshot]['question']
+                              questionController.questionApi![snapshot]
+                                      ['question']
                                   .toString(),
                               style: Theme.of(context)
                                   .textTheme
@@ -82,7 +86,7 @@ class ReviewScreen extends StatelessWidget {
                             Container(
                               height: 400.0,
                               child: ListView.builder(
-                                itemCount: controller.optionList,
+                                itemCount: questionController.optionList,
                                 itemBuilder: (context, index) => ButtonBar(
                                   alignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -92,18 +96,22 @@ class ReviewScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(10),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: controller.groupValue[
+                                              color: questionController
+                                                              .groupValue[
                                                           snapshot] ==
-                                                      controller.value[snapshot]
+                                                      questionController
+                                                              .value[snapshot]
                                                           [index]
                                                   ? options[index] ==
-                                                          controller.questionApi![
+                                                          questionController
+                                                                      .questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
                                                       : kred
                                                   : options[index] ==
-                                                          controller.questionApi![
+                                                          questionController
+                                                                      .questionApi![
                                                                   snapshot]
                                                               ['answer']
                                                       ? kblue
@@ -131,10 +139,10 @@ class ReviewScreen extends StatelessWidget {
                                           ),
                                           controlAffinity:
                                               ListTileControlAffinity.trailing,
-                                          groupValue:
-                                              controller.groupValue[snapshot],
-                                          value: controller.value[snapshot]
-                                              [index],
+                                          groupValue: questionController
+                                              .groupValue[snapshot],
+                                          value: questionController
+                                              .value[snapshot][index],
                                           onChanged: (value) => null,
                                         ),
                                       ),
@@ -150,18 +158,19 @@ class ReviewScreen extends StatelessWidget {
               ),
               const Spacer(),
               Obx(
-                () => controller.questionApi!.length == controller.qnIndex.value
+                () => questionController.questionApi!.length ==
+                        questionController.qnIndex.value
                     ? ElevatedButton(
                         onPressed: () {
-                          // print(controller.optionList);
-                          // deleteSavedAnswers(controller.optionList);
+                          // print(questionController.optionList);
+                          // deleteSavedAnswers(questionController.optionList);
                           // context.router.push(const CategoryRoute());
 
-                          print(controller.questionApi!.length);
+                          print(questionController.questionApi!.length);
                           Get.delete<QuestionControl>();
-                          // deleteSavedAnswers(controller.questionApi!.length);
+                          questionController.qnIndex.value = 1;
+                          // deleteSavedAnswers(questionController.questionApi!.length);
                           context.router.push(CategoryRoute());
-                          controller.qnIndex.value = 1;
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: const Size(300, 50),

@@ -53,8 +53,10 @@ class AppRouter extends _i17.RootStackRouter {
           routeData: routeData, child: _i3.OneSignupPage(key: args.key));
     },
     CategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryRouteArgs>(
+          orElse: () => const CategoryRouteArgs());
       return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.CategoryPage());
+          routeData: routeData, child: _i4.CategoryPage(key: args.key));
     },
     LanguageChoices.name: (routeData) {
       final args = routeData.argsAs<LanguageChoicesArgs>();
@@ -62,11 +64,11 @@ class AppRouter extends _i17.RootStackRouter {
           routeData: routeData,
           child: _i5.LanguageChoices(key: args.key, courses: args.courses));
     },
-    ChooseType.name: (routeData) {
-      final args = routeData.argsAs<ChooseTypeArgs>();
+    ChooseTypeRoute.name: (routeData) {
+      final args = routeData.argsAs<ChooseTypeRouteArgs>();
       return _i17.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.ChooseType(
+          child: _i6.ChooseTypePage(
               key: args.key,
               icon: args.icon,
               path: args.path,
@@ -142,7 +144,7 @@ class AppRouter extends _i17.RootStackRouter {
         _i17.RouteConfig(OneSignupRoute.name, path: '/signup'),
         _i17.RouteConfig(CategoryRoute.name, path: '/category'),
         _i17.RouteConfig(LanguageChoices.name, path: '/language-choices'),
-        _i17.RouteConfig(ChooseType.name, path: '/choose-type'),
+        _i17.RouteConfig(ChooseTypeRoute.name, path: '/choose-type'),
         _i17.RouteConfig(QuestionsScreen.name, path: '/questions'),
         _i17.RouteConfig(FinalScore.name, path: '/finalScore'),
         _i17.RouteConfig(ReviewScreen.name, path: '/review_screen'),
@@ -207,10 +209,23 @@ class OneSignupRouteArgs {
 
 /// generated route for
 /// [_i4.CategoryPage]
-class CategoryRoute extends _i17.PageRouteInfo<void> {
-  const CategoryRoute() : super(CategoryRoute.name, path: '/category');
+class CategoryRoute extends _i17.PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({_i18.Key? key})
+      : super(CategoryRoute.name,
+            path: '/category', args: CategoryRouteArgs(key: key));
 
   static const String name = 'CategoryRoute';
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({this.key});
+
+  final _i18.Key? key;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -238,24 +253,24 @@ class LanguageChoicesArgs {
 }
 
 /// generated route for
-/// [_i6.ChooseType]
-class ChooseType extends _i17.PageRouteInfo<ChooseTypeArgs> {
-  ChooseType(
+/// [_i6.ChooseTypePage]
+class ChooseTypeRoute extends _i17.PageRouteInfo<ChooseTypeRouteArgs> {
+  ChooseTypeRoute(
       {_i18.Key? key,
       required dynamic icon,
       required String path,
       String? ptype,
       String? ftype})
-      : super(ChooseType.name,
+      : super(ChooseTypeRoute.name,
             path: '/choose-type',
-            args: ChooseTypeArgs(
+            args: ChooseTypeRouteArgs(
                 key: key, icon: icon, path: path, ptype: ptype, ftype: ftype));
 
-  static const String name = 'ChooseType';
+  static const String name = 'ChooseTypeRoute';
 }
 
-class ChooseTypeArgs {
-  const ChooseTypeArgs(
+class ChooseTypeRouteArgs {
+  const ChooseTypeRouteArgs(
       {this.key,
       required this.icon,
       required this.path,
@@ -274,7 +289,7 @@ class ChooseTypeArgs {
 
   @override
   String toString() {
-    return 'ChooseTypeArgs{key: $key, icon: $icon, path: $path, ptype: $ptype, ftype: $ftype}';
+    return 'ChooseTypeRouteArgs{key: $key, icon: $icon, path: $path, ptype: $ptype, ftype: $ftype}';
   }
 }
 

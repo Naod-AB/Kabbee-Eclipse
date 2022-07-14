@@ -1,4 +1,4 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -6,22 +6,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
 //import 'package:quiz_app/service/model.dart';
-import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
-import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
+// import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+// import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:quiz_app/ui/Screens/Question/widgets/count_down.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 //import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
-import 'package:rflutter_alert/rflutter_alert.dart';
+// import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../common_widgets/alert_box.dart';
-import '../../common_widgets/alert_box.dart';
+import '../../Screens/Category/choose_type_screen.dart';
+// import '../../common_widgets/alert_box.dart';
 import '../../common_widgets/score_alert_box.dart';
 import '../Profile/widgets/user_profile_widget.dart';
 import '/routes/router.gr.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+
+// import '../Profile/widgets/user_profile_widget.dart';
+// import '../Profile/widgets/user_profile_widget.dart';
+// import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
 class QuestionsScreen extends StatelessWidget {
   QuestionsScreen(
@@ -38,8 +43,9 @@ class QuestionsScreen extends StatelessWidget {
   String? ptype;
   String? ftype;
 
-  final QuestionControl controller = Get.put(QuestionControl());
-  final ProfileController pcontroller = Get.put(ProfileController());
+  // final QuestionControl questionController = Get.put(QuestionControl());
+
+  // final ProfileController controller = Get.put(ProfileController());
 
   // ask Asme
   // Future<bool> _onWillPop() async {
@@ -48,13 +54,18 @@ class QuestionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // questionController.isEnabled
+    print('visibility.. QUESTION SCREEN ${questionController.isEnabled}');
+
     var isCorrect = false;
     var isSelected = false;
-    controller.questionApi!.shuffle();
-    controller.choices =
-        List.filled(controller.questionApi!.length + 1, '', growable: true);
-    controller.answers =
-        List.filled(controller.questionApi!.length + 1, '', growable: true);
+    questionController.questionApi!.shuffle();
+    questionController.choices = List.filled(
+        questionController.questionApi!.length + 1, '',
+        growable: true);
+    questionController.answers = List.filled(
+        questionController.questionApi!.length + 1, '',
+        growable: true);
 
     return SafeArea(
       child: WillPopScope(
@@ -67,7 +78,7 @@ class QuestionsScreen extends StatelessWidget {
                     "hello you can't back during exam starts",
                     path,
                     icon,
-                    controller,
+                    questionController,
                     false,
                     true);
               }
@@ -80,7 +91,7 @@ class QuestionsScreen extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-            child: controller.questionApi!.isEmpty
+            child: questionController.questionApi!.isEmpty
                 ? Center(
                     child: ScoreAlertBox(
                         title: 'No Questions Available',
@@ -94,9 +105,10 @@ class QuestionsScreen extends StatelessWidget {
                       // Question Number
                       Obx(
                         () => Text(
-                            controller.qnIndex.toString() +
+                            questionController.qnIndex.toString() +
                                 '/' +
-                                controller.questionApi!.length.toString(),
+                                questionController.questionApi!.length
+                                    .toString(),
                             style: Theme.of(context)
                                 .textTheme
                                 .headline4!
@@ -109,14 +121,14 @@ class QuestionsScreen extends StatelessWidget {
                       SizedBox(
                         height: 540.0,
                         child: PageView.builder(
-                            itemCount: controller.questionApi!.length,
+                            itemCount: questionController.questionApi!.length,
                             onPageChanged: (pageNumber) {
-                              controller.qnIndex.value = pageNumber + 1;
+                              questionController.qnIndex.value = pageNumber + 1;
                             },
                             itemBuilder: (context, snapshot) {
-                              var options = controller.questionApi![snapshot]
-                                  ['options'] as List;
-                              controller.optionList = options.length;
+                              var options = questionController
+                                  .questionApi![snapshot]['options'] as List;
+                              questionController.optionList = options.length;
 
                               return Container(
                                 padding:
@@ -136,7 +148,7 @@ class QuestionsScreen extends StatelessWidget {
                                       flex: 1,
                                     ),
                                     AutoSizeText(
-                                      controller.questionApi![snapshot]
+                                      questionController.questionApi![snapshot]
                                               ['question']
                                           .toString(),
                                       style: Theme.of(context)
@@ -163,9 +175,11 @@ class QuestionsScreen extends StatelessWidget {
                                                       const EdgeInsets.all(10),
                                                   decoration: BoxDecoration(
                                                     border: Border.all(
-                                                        color: controller.groupValue[
+                                                        color: questionController
+                                                                        .groupValue[
                                                                     snapshot] ==
-                                                                controller.value[
+                                                                questionController
+                                                                            .value[
                                                                         snapshot]
                                                                     [index]
                                                             ? kblue
@@ -203,27 +217,33 @@ class QuestionsScreen extends StatelessWidget {
                                                         controlAffinity:
                                                             ListTileControlAffinity
                                                                 .trailing,
-                                                        groupValue: controller
-                                                                .groupValue[
-                                                            snapshot],
-                                                        value: controller
-                                                                .value[snapshot]
-                                                            [index],
+                                                        groupValue:
+                                                            questionController
+                                                                    .groupValue[
+                                                                snapshot],
+                                                        value:
+                                                            questionController
+                                                                        .value[
+                                                                    snapshot]
+                                                                [index],
                                                         onChanged: (newValue) {
-                                                          controller.groupValue[
+                                                          questionController
+                                                                      .groupValue[
                                                                   snapshot] =
                                                               newValue as int;
 
                                                           // add choices to list without replacing
 
-                                                          controller.choices
+                                                          questionController
+                                                              .choices
                                                               .removeAt(
-                                                                  controller
+                                                                  questionController
                                                                       .qnIndex
                                                                       .value);
-                                                          controller.choices
+                                                          questionController
+                                                              .choices
                                                               .insert(
-                                                                  controller
+                                                                  questionController
                                                                       .qnIndex
                                                                       .value,
                                                                   options[index]
@@ -233,79 +253,84 @@ class QuestionsScreen extends StatelessWidget {
 
                                                           if (options[index]
                                                                   .toString() ==
-                                                              controller
+                                                              questionController
                                                                   .questionApi![
                                                                       snapshot]
                                                                       ['answer']
                                                                   .toString()) {
                                                             // add answer
-                                                            controller.answers
+                                                            questionController
+                                                                .answers
                                                                 .removeAt(
-                                                                    controller
+                                                                    questionController
                                                                         .qnIndex
                                                                         .value);
 
-                                                            controller.answers.insert(
-                                                                controller
-                                                                    .qnIndex
-                                                                    .value,
-                                                                options[index]
-                                                                    .toString());
+                                                            questionController
+                                                                .answers
+                                                                .insert(
+                                                                    questionController
+                                                                        .qnIndex
+                                                                        .value,
+                                                                    options[index]
+                                                                        .toString());
                                                           } else {
                                                             // remove answer
-                                                            controller.answers
+                                                            questionController
+                                                                .answers
                                                                 .removeAt(
-                                                                    controller
+                                                                    questionController
                                                                         .qnIndex
                                                                         .value);
-                                                            controller.answers
+                                                            questionController
+                                                                .answers
                                                                 .insert(
-                                                                    controller
+                                                                    questionController
                                                                         .qnIndex
                                                                         .value,
                                                                     '');
                                                           }
 
-                                                          // log('choice ${controller.choices}');
-                                                          // log('answers ${controller.answers}');
-                                                          // log('answerFromApi ${controller.questionApi![snapshot]['answer']}');
+                                                          // log('choice ${questionController.choices}');
+                                                          // log('answers ${questionController.answers}');
+                                                          // log('answerFromApi ${questionController.questionApi![snapshot]['answer']}');
 
                                                           // old code for adding score
 
                                                           // if (options[index]
                                                           //         .toString() ==
-                                                          //     controller
+                                                          //     questionController
                                                           //         .questionApi![
                                                           //             snapshot]
                                                           //             ['answer']
                                                           //         .toString()) {
-                                                          //   controller
+                                                          //   questionController
                                                           //       .scoreCounter++;
                                                           //   print(
-                                                          //       '🥂 ${controller.scoreCounter}');
+                                                          //       '🥂 ${questionController.scoreCounter}');
                                                           //   isCorrect = true;
                                                           //   isSelected = true;
                                                           // } else {
-                                                          //   if (controller
+                                                          //   if (questionController
                                                           //           .scoreCounter !=
                                                           //       0) {
-                                                          //     controller
+                                                          //     questionController
                                                           //         .scoreCounter--;
                                                           //     print(
-                                                          //         '🥂 ${controller.scoreCounter}');
+                                                          //         '🥂 ${questionController.scoreCounter}');
                                                           //   }
                                                           //   isCorrect = false;
                                                           //   isSelected = true;
                                                           // }
                                                           // updateJsonTime(
                                                           //   answer: options[index],
-                                                          //   id: controller
+                                                          //   id: questionController
                                                           //           .questionApi![
                                                           //       snapshot]['id'],
                                                           //   isCorrect: isCorrect,
                                                           //   isSelected: isSelected,
                                                           // );
-                                                          // print(controller
+                                                          // print(questionController
                                                           //         .questionApi![
                                                           //     snapshot]['id']);
                                                         });
@@ -326,55 +351,60 @@ class QuestionsScreen extends StatelessWidget {
                       //const Spacer(),
                       // Done button
                       Obx(
-                        () => controller.questionApi!.length ==
-                                controller.qnIndex.value
+                        () => questionController.questionApi!.length ==
+                                questionController.qnIndex.value
                             ? ElevatedButton(
                                 onPressed: () async {
-                                  controller.choices.removeWhere(
+                                  questionController.choices.removeWhere(
                                       (item) => [''].contains(item));
-                                  controller.answers.removeWhere(
+                                  questionController.answers.removeWhere(
                                       (item) => [''].contains(item));
 
-                                  // log('After removing  ${controller.choices}');
-                                  // log('Choices  ${controller.choices.length}');
-                                  // log('Answers  ${controller.answers.length}');
-                                  // log('controller.questionApi!.length  ${controller.questionApi!.length}');
-                                  if (controller.choices.length !=
-                                      controller.questionApi!.length) {
-                                    quizAlertBox(
-                                        context,
-                                        'Notice',
-                                        "CONTINUE",
-                                        'hello you have unanswered question . Do you want go back and check or continue to score page ?',
-                                        path,
-                                        icon,
-                                        controller,
-                                        false,
-                                        false);
+                                  // log('After removing  ${questionController.choices}');
+                                  // log('Choices  ${questionController.choices.length}');
+                                  // log('Answers  ${questionController.answers.length}');
+                                  // log('questionController.questionApi!.length  ${questionController.questionApi!.length}');
+
+                                  if (isFinal) {
+                                    if (questionController.choices.length !=
+                                        questionController
+                                            .questionApi!.length) {
+                                      quizAlertBox(
+                                          context,
+                                          'Notice',
+                                          "CONTINUE",
+                                          'hello you have unanswered question . Do you want go back and check or continue to score page ?',
+                                          path,
+                                          icon,
+                                          questionController,
+                                          false,
+                                          false);
+                                    }
                                   }
 
-                                  double scorePercent =
-                                      (controller.answers.length /
-                                          controller.questionApi!.length *
-                                          100);
+                                  double scorePercent = (questionController
+                                          .answers.length /
+                                      questionController.questionApi!.length *
+                                      100);
                                   print('THE USER PERCENTAGE IS $scorePercent');
 
                                   CourseScore score = CourseScore(
-                                      courseId: pController.userInfo.value!.id
+                                      courseId: controller.userInfo.value!.id
                                               .toString() +
-                                          controller.chosenCourse.value,
-                                      courseName: controller.chosenCourse.value,
-                                      courseType:
-                                          controller.chosenCourseType.value,
-                                      courseScore: controller.answers.length,
+                                          questionController.chosenCourse.value,
+                                      courseName:
+                                          questionController.chosenCourse.value,
+                                      courseType: questionController
+                                          .chosenCourseType.value,
+                                      courseScore:
+                                          questionController.answers.length,
                                       coursePercentage: scorePercent,
-                                      userId: pController.userInfo.value!.id);
-                                  controller.isFinished = true;
+                                      userId: controller.userInfo.value!.id);
+                                  questionController.isFinished = true;
 
-                                  String checkid = pcontroller
-                                          .userInfo.value!.id
-                                          .toString() +
-                                      controller.chosenCourse.value;
+                                  String checkid =
+                                      controller.userInfo.value!.id.toString() +
+                                          questionController.chosenCourse.value;
                                   if (isFinal) {
                                     if (score.courseId == checkid) {
                                       createUserScore(score);
@@ -382,18 +412,31 @@ class QuestionsScreen extends StatelessWidget {
                                       saveUserScore(score);
                                     }
                                     print('data ${score.courseId}');
-                                    controller.isEnabled.value = false;
+                                    questionController.isEnabled.value = false;
                                   }
-
-                                  if (controller.choices.length ==
-                                      controller.questionApi!.length) {
-                                    context.router.push(FinalScore(
-                                        outOf: controller.questionApi!.length,
-                                        score: controller.answers.length,
-                                        optionList: controller.optionList));
-                                    controller.qnIndex.value = 1;
-                                    controller.scoreCounter = 0;
+                                  if (isFinal) {
+                                    if (questionController.choices.length ==
+                                        questionController
+                                            .questionApi!.length) {
+                                      context.router.push(FinalScore(
+                                          outOf: questionController
+                                              .questionApi!.length,
+                                          score:
+                                              questionController.answers.length,
+                                          optionList:
+                                              questionController.optionList));
+                                      questionController.qnIndex.value = 1;
+                                      questionController.scoreCounter = 0;
+                                    }
                                   }
+                                  context.router.push(FinalScore(
+                                      outOf: questionController
+                                          .questionApi!.length,
+                                      score: questionController.answers.length,
+                                      optionList:
+                                          questionController.optionList));
+                                  questionController.qnIndex.value = 1;
+                                  questionController.scoreCounter = 0;
                                 },
                                 style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(300, 50),

@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:quiz_app/routes/router.gr.dart';
 import 'package:quiz_app/service/api.dart';
@@ -13,10 +12,14 @@ import 'package:quiz_app/ui/common_widgets/default_card.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
 import '../../common_widgets/alert_box.dart';
+import 'languages_screen.dart';
+import 'package:get/get.dart';
 import '../CommonControllers/question_controller.dart';
 
-class ChooseType extends StatelessWidget {
-  ChooseType(
+final QuestionControl questionController = Get.put(QuestionControl());
+
+class ChooseTypePage extends StatelessWidget {
+  ChooseTypePage(
       {Key? key,
       required this.icon,
       required this.path,
@@ -28,10 +31,10 @@ class ChooseType extends StatelessWidget {
   String? ptype = "PRACTICE";
   String? ftype = "FINAL";
 
-  final QuestionControl questionController = Get.put(QuestionControl());
-
   @override
   Widget build(BuildContext context) {
+    print('visibility.. QUESTION SCREEN ${questionController.isEnabled}');
+    print('from CHOOSE TYPE ${questionController.questionApi}');
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
@@ -57,8 +60,10 @@ class ChooseType extends StatelessWidget {
                       String ptype = "PRACTICE";
                       questionController.questionApi =
                           await fetchQuestionsApi(path.toUpperCase(), ptype);
+                      questionController.isEnabled.value = true;
                       String paths = path.toUpperCase();
                       String ptypes = "PRACTICE";
+
                       print('path is ${path.toUpperCase()} and type is $ptype');
                       context.router.push(QuestionsScreen(
                         icon: icon,

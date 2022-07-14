@@ -97,13 +97,10 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
-
 
 // ;
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -113,13 +110,9 @@ import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
-
-
 class LoginPage extends StatelessWidget {
-  
-  
-  ProfileController profileController = Get.find();
   AuthController authController = Get.put(AuthController());
+
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
@@ -132,20 +125,19 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal:20 ),//SizeConfig.screenWidth * 0.05
+        padding: EdgeInsets.symmetric(
+            horizontal: 20), //SizeConfig.screenWidth * 0.05
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 20 //SizeConfig.screenHeight * 0.04,
-              ),
+              SizedBox(height: 20 //SizeConfig.screenHeight * 0.04,
+                  ),
               Center(
                 child: Text(
                   'Login',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,//getProportionateScreenWidth(40),
+                      fontSize: 20, //getProportionateScreenWidth(40),
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -155,133 +147,138 @@ class LoginPage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: 25),//SizeConfig.screenWidth * 0.05
+                    horizontal: 25), //SizeConfig.screenWidth * 0.05
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Obx(()=> TextFormField(
-                        key: emailKey,
-                        controller: authController.loginEmailController.value,
-                        validator: (value) {
-                          if (value!.isEmpty) return "Email canot be empty ";
-                        },
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey[500]!.withOpacity(0.5),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          suffixIcon: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Icon(
-                              FontAwesomeIcons.solidEnvelope,
-                              size: 28,
-                              color: kblue,
+                      Obx(() => TextFormField(
+                            key: emailKey,
+                            controller:
+                                authController.loginEmailController.value,
+                            validator: (value) {
+                              if (value!.isEmpty)
+                                return "Email canot be empty ";
+                            },
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.grey[500]!.withOpacity(0.5),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              suffixIcon: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Icon(
+                                  FontAwesomeIcons.solidEnvelope,
+                                  size: 28,
+                                  color: kblue,
+                                ),
+                              ),
+                              hintText: 'Enter email',
+                              hintStyle: kBodyText,
                             ),
+                            style: kBodyText,
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                            obscureText: false,
+                          )),
+                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
                           ),
-                          hintText: 'Enter email',
-                          hintStyle: kBodyText,
+                      Obx(
+                        () => TextFormField(
+                          key: passKey,
+                          controller:
+                              authController.loginPasswordController.value,
+                          validator: (value) {
+                            if (value!.isEmpty)
+                              return "Password canot be empty";
+                          },
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.grey[500]!.withOpacity(0.5),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            suffixIcon: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    print(!authController.obsecure.value);
+                                    authController.obsecure.value =
+                                        !authController.obsecure.value;
+                                    // setState(() {
+                                    //   _obscureText = !_obscureText;
+                                    // });
+                                  },
+                                  child: Icon(
+                                    authController.obsecure.value
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: authController.obsecure.value
+                                        ? Color.fromARGB(255, 255, 165, 0)
+                                        : Color.fromARGB(255, 255, 165, 0),
+                                  )),
+                              // child: Icon(
+                              //   FontAwesomeIcons.lock,
+                              //   size: 28,
+                              //   color: kblue,
+                              // ),
+                            ),
+                            hintText: 'Enter Password',
+                            hintStyle: kBodyText,
+                          ),
+                          style: kBodyText,
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          obscureText: authController.obsecure.value,
                         ),
-                        style: kBodyText,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                      )),
-                      SizedBox(
-                        height: 10//SizeConfig.screenHeight * 0.02,
                       ),
-                      Obx(()=>TextFormField(
-                        key: passKey,
-                        controller: authController.loginPasswordController.value,
-                        validator: (value) {
-                          if (value!.isEmpty) return "Password canot be empty";
-                        },
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey[500]!.withOpacity(0.5),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          suffixIcon: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                print(!authController.obsecure.value);
-                                authController.obsecure.value=!authController.obsecure.value;
+                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
+                          //width:SizeConfig.screenHeight *0.5 //25,
+                          ),
+                      Obx(
+                        () => Text(
+                          authController.error.value,
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              left: 40), //SizeConfig.screenHeight * 0.08
+                          child: Obx(
+                            () => CheckboxListTile(
+                              title: const Text(
+                                'Remember me',
+                                style: TextStyle(fontSize: 16, color: kWhite1),
+                              ),
+                              value: authController.rememberMe.value,
+                              onChanged: (value) {
+                                authController.rememberMe.value = value!;
                                 // setState(() {
-                                //   _obscureText = !_obscureText;
+                                //   rememberMe = value!;
                                 // });
                               },
-                              child: Icon(
-                                authController.obsecure.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: authController.obsecure.value
-                                    ? Color.fromARGB(255, 255, 165, 0)
-                                    : Color.fromARGB(255, 255, 165, 0),
-                              ) 
+                              controlAffinity: ListTileControlAffinity.leading,
+                              activeColor: kblue,
+                              checkColor: kblack,
+                              side: BorderSide(
+                                color: kWhite1, //your desire colour here
+                                width: 1.5,
+                              ),
                             ),
-                            // child: Icon(
-                            //   FontAwesomeIcons.lock,
-                            //   size: 28,
-                            //   color: kblue,
-                            // ),
-                          ),
-                          hintText: 'Enter Password',
-                          hintStyle: kBodyText,
-                        ),
-                        style: kBodyText,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        obscureText: authController.obsecure.value,
-                      ),),
+                          )),
                       SizedBox(
-                        height: 10//SizeConfig.screenHeight * 0.02,
-                        //width:SizeConfig.screenHeight *0.5 //25,
-                      ),
-                      Obx(()=>
-                      Text(
-                        authController.error.value,
-                        style: TextStyle(color: Colors.red),
-                      ),) ,
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left:40 ),//SizeConfig.screenHeight * 0.08
-                        child: Obx(
-                          ()=>CheckboxListTile(
-                          title: const Text(
-                            'Remember me',
-                            style: TextStyle(fontSize: 16, color: kWhite1),
+                          height: 15 //SizeConfig.screenHeight * 0.03, //25,
                           ),
-                          value: authController.rememberMe.value,
-                          onChanged: (value) {
-                            authController.rememberMe.value=value!;
-                            // setState(() {
-                            //   rememberMe = value!;
-                            // });
-                          },
-                          controlAffinity: ListTileControlAffinity.leading,
-                          activeColor: kblue,
-                          checkColor: kblack,
-                          side: BorderSide(
-                            color: kWhite1, //your desire colour here
-                            width: 1.5,
-                          ),
-                        ),)
-                      ),
-                      SizedBox(
-                        height:15 //SizeConfig.screenHeight * 0.03, //25,
-                      ),
                       button.RoundedButton(
                           buttonName: 'Login',
-                          pressed:()=> authController.
-                          authenticateUser(
-                             context: context,
-                             email: authController.loginEmailController.value,
-                             emailKey: emailKey,
-                             passKey: passKey,
-                             password: authController.loginPasswordController.value)),
-                      SizedBox(height:15 ),//SizeConfig.screenHeight * 0.03
+                          pressed: () => authController.authenticateUser(
+                              context: context,
+                              email: authController.loginEmailController.value,
+                              emailKey: emailKey,
+                              passKey: passKey,
+                              password: authController
+                                  .loginPasswordController.value)),
+                      SizedBox(height: 15), //SizeConfig.screenHeight * 0.03
                       SizedBox(
-                        width: 50,//SizeConfig.screenWidth * 0.1,
+                        width: 50, //SizeConfig.screenWidth * 0.1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -309,7 +306,7 @@ class LoginPage extends StatelessWidget {
               ),
 
               SizedBox(
-                height: 15,//SizeConfig.screenHeight * 0.03,
+                height: 15, //SizeConfig.screenHeight * 0.03,
               ),
             ],
           ),
@@ -317,5 +314,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
-  }
+}

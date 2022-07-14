@@ -59,13 +59,13 @@ class MyTimer extends StatelessWidget {
 
             // get score
             CourseScore score = CourseScore(
-                courseId: pController.userInfo.value!.id.toString() +
+                courseId: pcontroller.userInfo.value!.id.toString() +
                     controller.chosenCourse.value,
                 courseName: controller.chosenCourse.value,
                 courseType: controller.chosenCourseType.value,
                 courseScore: controller.answers.length,
                 coursePercentage: scorePercent,
-                userId: pController.userInfo.value!.id);
+                userId: pcontroller.userInfo.value!.id);
             controller.isFinished = true;
 
             // previous code

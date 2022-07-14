@@ -1,20 +1,23 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import '../../routes/router.gr.dart';
 import '../../service/api.dart';
 //import '../../service/model.dart';
-import '../Screens/CommonControllers/question_controller.dart';
-import '../Screens/Profile/widgets/user_profile_widget.dart';
+// import '../Screens/CommonControllers/question_controller.dart';
+// import '../Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
-
+import '../Screens/Profile/widgets/user_profile_widget.dart';
 import '../Screens/Question/models/scores.dart';
+import '../Screens/Category/choose_type_screen.dart';
 
-final QuestionControl controller = Get.put(QuestionControl());
-final ProfileController pcontroller = Get.put(ProfileController());
+// final QuestionControl questionController = Get.put(QuestionControl());
+// final ProfileController controller = Get.put(ProfileController());
 quizAlertBox(
+    // questionController
     BuildContext context,
     String title,
     String confirmationText,
@@ -65,35 +68,35 @@ quizAlertBox(
             : !isFirst
                 ? () async {
                     // remove empty choices and answers
-                    controller.choices
+                    questionController.choices
                         .removeWhere((item) => [''].contains(item));
-                    controller.answers
+                    questionController.answers
                         .removeWhere((item) => [''].contains(item));
                     questionAlertCtrl.isEnabled.value = false;
 
                     // check id
-                    String checkid = pcontroller.userInfo.value!.id.toString() +
-                        controller.chosenCourse.value;
+                    String checkid = controller.userInfo.value!.id.toString() +
+                        questionController.chosenCourse.value;
 
                     // get percentge
-                    double scorePercent = (controller.answers.length /
-                        controller.questionApi!.length *
+                    double scorePercent = (questionController.answers.length /
+                        questionController.questionApi!.length *
                         100);
 
                     // change timer
-                    controller.seconds.value = 0;
-                    controller.isEnabled.value = false;
+                    questionController.seconds.value = 0;
+                    questionController.isEnabled.value = false;
 
                     // get score
                     CourseScore score = CourseScore(
-                        courseId: pController.userInfo.value!.id.toString() +
-                            controller.chosenCourse.value,
-                        courseName: controller.chosenCourse.value,
-                        courseType: controller.chosenCourseType.value,
-                        courseScore: controller.answers.length,
+                        courseId: controller.userInfo.value!.id.toString() +
+                            questionController.chosenCourse.value,
+                        courseName: questionController.chosenCourse.value,
+                        courseType: questionController.chosenCourseType.value,
+                        courseScore: questionController.answers.length,
                         coursePercentage: scorePercent,
-                        userId: pController.userInfo.value!.id);
-                    controller.isFinished = true;
+                        userId: controller.userInfo.value!.id);
+                    questionController.isFinished = true;
 
                     if (score.courseId == checkid) {
                       saveUserScore(score);
@@ -103,20 +106,20 @@ quizAlertBox(
                       print('creating score ');
                     }
                     context.router.push(FinalScore(
-                      outOf: controller.questionApi!.length,
-                      score: controller.answers.length,
-                      optionList: controller.questionApi!.length,
+                      outOf: questionController.questionApi!.length,
+                      score: questionController.answers.length,
+                      optionList: questionController.questionApi!.length,
                     ));
-                    controller.qnIndex.value = 1;
-                    controller.scoreCounter = 0;
+                    questionController.qnIndex.value = 1;
+                    questionController.scoreCounter = 0;
 
                     // previous code
                     // questionAlertCtrl.count = await fetchCorrectAnswers();
                     // double scorePercent = (questionAlertCtrl.count /
                     //     questionAlertCtrl.questionApi!.length *
                     //     100);
-                    // String checkid = pcontroller.userInfo.value!.id.toString() +
-                    //     controller.chosenCourse.value;
+                    // String checkid = controller.userInfo.value!.id.toString() +
+                    //     questionController.chosenCourse.value;
                     // print(
                     //     'scorePercent.runtimeType ${scorePercent.runtimeType}');
                     // CourseScore score = CourseScore(
@@ -125,7 +128,7 @@ quizAlertBox(
                     //     courseType: questionAlertCtrl.chosenCourseType.value,
                     //     courseScore: questionAlertCtrl.count,
                     //     coursePercentage: scorePercent,
-                    //     userId: pcontroller.userInfo.value!.id);
+                    //     userId: controller.userInfo.value!.id);
                     // print("after clicking done button ");
                     // questionAlertCtrl.isFinished = true;
                     // saveUserScore(score);
@@ -138,7 +141,7 @@ quizAlertBox(
                     // print('save score ${score}');
                     // }
                     // () => Navigator.pop(context, false);
-                    // print('printing score ${controller.count}');
+                    // print('printing score ${questionController.count}');
                     // context.router.push(FinalScore(
                     //     outOf: questionAlertCtrl.questionApi!.length,
                     //     score: questionAlertCtrl.count,

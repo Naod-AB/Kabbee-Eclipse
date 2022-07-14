@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/common_widgets/default_card.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
 import '../../../routes/router.gr.dart';
+// import '../Auth/Controllers/auth_controller.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
-
+// import '../CommonControllers/profile_controllers.dart';
 
 class CategoryPage extends StatelessWidget {
-  const CategoryPage({Key? key}) : super(key: key);
+  CategoryPage({Key? key}) : super(key: key);
+
+  // ProfileController pController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    // print('from CHOOSE TYPE ${questionController.questionApi}');
+    print('after logout email - category ${controller.userInfo.value!.email}');
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,
-           appBar: quizAppBar(context: context, iconUrl: ''),
+          appBar: quizAppBar(context: context, iconUrl: ''),
           body: Center(
             child: SingleChildScrollView(
               child: Column(

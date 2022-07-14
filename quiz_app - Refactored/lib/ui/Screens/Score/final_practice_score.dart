@@ -8,11 +8,13 @@ import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:quiz_app/service/api.dart';
 //import 'package:quiz_app/service/model.dart';
-import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+// import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
 import '../Profile/widgets/user_profile_widget.dart';
+import '../Category/choose_type_screen.dart';
 
 class FinalScore extends StatelessWidget {
   FinalScore(
@@ -23,8 +25,8 @@ class FinalScore extends StatelessWidget {
   int score;
   int? optionList;
 
-  final QuestionControl controller = Get.put(QuestionControl());
-  ProfileController pController = Get.find();
+  // final QuestionControl questionController = Get.put(QuestionControl());
+  // ProfileController controller = Get.find();
   RxBool isLoading = true.obs;
 
   @override
@@ -83,12 +85,12 @@ class FinalScore extends StatelessWidget {
                     ),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
-                visible: controller.isEnabled.value,
+                visible: questionController.isEnabled.value,
                 child: ElevatedButton(
                   child: customText('REVIEW', 20, false, false, primaryColor),
                   onPressed: () {
                     print(
-                        ' reviewlist number ${controller.questionApi!.length}');
+                        ' reviewlist number ${questionController.questionApi!.length}');
 
                     // deleteSavedAnswers(controller.questionApi!.length);
                     context.router.pushNamed('/review_screen');
@@ -112,10 +114,13 @@ class FinalScore extends StatelessWidget {
                   child: ElevatedButton(
                     child: customText('DONE', 20, false, false, primaryColor),
                     onPressed: () async {
-                      pController.scores =
-                          await fetchUserScores(pController.userInfo.value!.id);
+                      print('Null error ${controller.userInfo.value!.id}');
 
-                      print(' done number ${controller.questionApi!.length}');
+                      controller.scores =
+                          await fetchUserScores(controller.userInfo.value!.id);
+
+                      print(
+                          ' done number ${questionController.questionApi!.length}');
                       // deleteSavedAnswers(controller.questionApi!.length);
                       context.router.pushNamed('/category');
                       Get.delete<QuestionControl>();

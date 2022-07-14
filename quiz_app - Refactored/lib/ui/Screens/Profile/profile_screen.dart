@@ -10,7 +10,9 @@ import 'package:quiz_app/service/api.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
+// import '../Profile/widgets/user_profile_widget.dart';
 
+// import '../../../routes/router.gr.dart';
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
 
@@ -119,6 +121,8 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(),
                   GestureDetector(
                     onTap: () async {
+                      print(
+                          'Profile DATA MY SCORES ${controller.userInfo.value!.id}');
                       controller.scores =
                           await fetchUserScores(controller.userInfo.value!.id);
 
@@ -176,6 +180,10 @@ class ProfileScreen extends GetView<ProfileController> {
                               child: const Text('Yes'),
                               isDestructiveAction: true,
                               onPressed: () {
+                                // context.router.removeUntil(
+                                //     (route) => route.name == Splash.name);
+                                // context.router.popUntilRouteWithName('HomeRoute');
+                                // context.router.popUntilRoot();
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
                                 logOut();

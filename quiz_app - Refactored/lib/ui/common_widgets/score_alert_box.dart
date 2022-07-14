@@ -14,7 +14,7 @@ class ScoreAlertBox extends StatelessWidget {
     return Center(
       child: Container(
           width: 320,
-          height: 200,
+          height: 180,
           color: Colors.white10,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

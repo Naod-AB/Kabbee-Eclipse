@@ -4,14 +4,23 @@ import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/string_extension.dart';
 
+import '../../common_widgets/score_alert_box.dart';
+
 class UsersListPage extends StatelessWidget {
   const UsersListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print('USERSLIST ${controller.userList}');
     controller.activeUsers.value = controller.userList!
         .where((element) => element["status"] == 'ACTIVE')
         .toList();
+    print('ACTIVE >> ${controller.activeUsers}');
+    print('ACTIVE >> ${controller.activeUsers.length}');
+    print('');
+
+    print('BLOCKED >> ${controller.blockedUsers}');
+    print('BLOCKED >> ${controller.blockedUsers.length}');
 
     controller.activeUsersCount.value = controller.activeUsers.length;
 
@@ -42,7 +51,10 @@ class UsersListPage extends StatelessWidget {
           body: TabBarView(
             children: [
               activeList(),
-              blockedList(),
+              controller.blockedUsersCount.value == 0
+                  ? ScoreAlertBox(
+                      title: 'Users Not Found !', text: 'All users are active')
+                  : blockedList(),
             ],
           ),
         ));
