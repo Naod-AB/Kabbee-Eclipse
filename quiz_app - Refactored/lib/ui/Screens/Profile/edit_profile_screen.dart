@@ -22,7 +22,7 @@ class EditProfileScreen extends GetView<ProfileController> {
         body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: ListView(
-            physics: const NeverScrollableScrollPhysics(),
+            //physics: const NeverScrollableScrollPhysics(),
             children: [
               const SizedBox(height: 20),
               customText('First Name', 18, false, false, kblue),
