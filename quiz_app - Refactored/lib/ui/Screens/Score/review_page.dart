@@ -59,6 +59,11 @@ class ReviewScreen extends StatelessWidget {
                         itemCount: controller.questionApi!.length,
                         onPageChanged: (pageNumber) {
                           controller.qnIndex.value = pageNumber + 1;
+                          print(controller.questionApi!.length);
+                          //Get.delete<QuestionControl>();
+                          // deleteSavedAnswers(controller.questionApi!.length);
+                          context.router.push(CategoryRoute());
+                          controller.qnIndex.value = 1;
                         },
                         itemBuilder: (context, snapshot) {
                           var options =
@@ -78,7 +83,7 @@ class ReviewScreen extends StatelessWidget {
                                   flex: 1,
                                 ),
                                 Wrap(children: [
-                                  Text(
+                                  AutoSizeText(
                                     controller.questionApi![snapshot]
                                             ['question']
                                         .toString(),

@@ -49,38 +49,38 @@ class FinalScore extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
-              Title(
-                color: Colors.white,
-                child: Text(
-                  'Your Score is $score out of $outOf',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.roboto().fontFamily),
-                ),
+              //const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
+              // Title(
+              //   color: Colors.white,
+              //   child: Text(
+              //     'Your Score is $score out of $outOf',
+              //     style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 36.0,
+              //         fontWeight: FontWeight.bold,
+              //         fontFamily: GoogleFonts.roboto().fontFamily),
+              //   ),
+              // ),
+              //const Padding(padding: EdgeInsets.all(20)),
+              // score == outOf
+              //     ? Obx(() {
+              //         return isLoading.value
+              //             ? CircularFinalScore(
+              //                 score: score,
+              //                 outOf: outOf,
+              //                 animationDuration: 2000,
+              //               )
+              //             : Lottie.network(
+              //                 'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
+              //                 height: 250,
+              //               );
+              //       })
+              // : Container(),
+              CircularFinalScore(
+                score: score,
+                outOf: outOf,
+                animationDuration: 2000,
               ),
-              const Padding(padding: EdgeInsets.all(20)),
-              score == outOf
-                  ? Obx(() {
-                      return isLoading.value
-                          ? CircularFinalScore(
-                              score: score,
-                              outOf: outOf,
-                              animationDuration: 2000,
-                            )
-                          : Lottie.network(
-                              'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
-                              height: 250,
-                            );
-                    })
-                  // : Container(),
-                  : CircularFinalScore(
-                      score: score,
-                      outOf: outOf,
-                      animationDuration: 2000,
-                    ),
               const Padding(padding: EdgeInsets.all(20)),
               Visibility(
                 visible: controller.isEnabled.value,
