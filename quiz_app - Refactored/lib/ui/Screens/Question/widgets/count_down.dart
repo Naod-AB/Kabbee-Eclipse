@@ -4,7 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 //import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
@@ -13,7 +13,7 @@ import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import '../../../../routes/router.gr.dart';
 
 class MyTimer extends StatelessWidget {
-  QuestionControl controller = Get.put(QuestionControl());
+  QuestionController controller = Get.put(QuestionController());
   ProfileController pcontroller = Get.put(ProfileController());
   dynamic icon;
   @override
@@ -52,6 +52,7 @@ class MyTimer extends StatelessWidget {
             double scorePercent = (controller.answers.length /
                 controller.questionApi!.length *
                 100);
+            print('user percentage by timer $scorePercent');
 
             // change timer
             controller.seconds.value = 0;

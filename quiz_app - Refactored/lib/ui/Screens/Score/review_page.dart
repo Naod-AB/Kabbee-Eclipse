@@ -22,7 +22,7 @@ class ReviewScreen extends StatelessWidget {
 
   // final QuestionControl anotherQuetionController = Get.put(QuestionControl());
   // final ProfileController questionController = Get.put(ProfileController());
-
+  final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -182,7 +182,7 @@ class ReviewScreen extends StatelessWidget {
                               // context.router.push(const CategoryRoute());
 
                               print(questionController.questionApi!.length);
-                              Get.delete<QuestionControl>();
+                              Get.delete<QuestionController>();
                               questionController.qnIndex.value = 1;
                               // deleteSavedAnswers(questionController.questionApi!.length);
                               context.router.push(CategoryRoute());

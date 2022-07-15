@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
-import '../../../service/api.dart';
+import '../../../service/services.dart';
 
 class ProfileController extends GetxController {
   // RxString selectedGender = 'male'.obs;

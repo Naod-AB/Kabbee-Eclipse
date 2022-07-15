@@ -15,8 +15,8 @@ import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
 import '../ui/Screens/Question/models/checkanswer.dart';
 
 // Save User Score
-final ProfileController aProfileController = Get.put(ProfileController());
-final QuestionControl aQuestionrofileController = Get.put(QuestionControl());
+//final ProfileController aProfileController = Get.put(ProfileController());
+//final QuestionControl aQuestionrofileController = Get.put(QuestionControl());
 
 Future<CourseScore> saveUserScore(CourseScore score) async {
   final response = await http.patch(
@@ -373,7 +373,7 @@ Future<Users> updateJprofile({
 // Logout
 logOut() {
   Get.delete<ProfileController>();
-  Get.delete<QuestionControl>();
+  Get.delete<QuestionController>();
   Get.delete<AuthController>();
 
   Get.put(AuthController());

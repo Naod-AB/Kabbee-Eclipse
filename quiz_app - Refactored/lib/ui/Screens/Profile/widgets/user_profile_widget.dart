@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
@@ -762,12 +762,17 @@ Widget buildUsersTiles(
                             ? {
                                 controller.updatedPassword.value =
                                     'This#pass123',
+                                controller.blockedUsersCount.value += 1,
                                 updateUsersList(
                                     id: listId, status: true, index: index),
                               }
                             : {
                                 controller.updatedPassword.value =
                                     '${user['firstName']}' '#pass123',
+                                if (controller.blockedUsersCount.value != 0)
+                                  {
+                                    controller.blockedUsersCount.value -= 1,
+                                  },
                                 updateUsersList(
                                     id: listId, status: false, index: index)
                               };

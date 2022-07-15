@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 //import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
@@ -16,8 +16,15 @@ import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
 
+//bool isdarkthemeEnabled = false;
 class ProfileScreen extends GetView<ProfileController> {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
+  //bool isdarkthemeEnabled = false;
+  // Widget Build(BuildContext context) {
+  //   return MaterialApp(
+  //     theme: isdarkthemeEnabled ? ThemeData.dark() : ThemeData.light(),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -107,17 +114,22 @@ class ProfileScreen extends GetView<ProfileController> {
             buildTileGroup(
               Column(
                 children: [
-                  buildTile(
-                      Icons.dark_mode,
-                      customText('Dark Mode', 18, true, false, primaryColor),
-                      customText(
-                          'Change theme', 13, false, false, secondaryColor),
-                      Switch.adaptive(
-                        value: true,
-                        activeColor: orangeColor,
-                        onChanged: (value) {},
-                      ),
-                      true),
+                  // buildTile(
+                  //     Icons.dark_mode,
+                  //     customText('Dark Mode', 18, true, false, primaryColor),
+                  //     customText(
+                  //         'Change theme', 13, false, false, secondaryColor),
+                  //     Switch.adaptive(
+                  //       value: true,
+                  //       activeColor: orangeColor,
+                  //       onChanged: (Value) {
+                  //         // setState(() {
+                  //         //   isdarkthemeEnabled = changeTheme;
+                  //         //   print('dark theme is $isdarkthemeEnabled');
+                  //         // });
+                  //       },
+                  //     ),
+                  //     true),
                   buildDivider(),
                   GestureDetector(
                     onTap: () async {
@@ -210,4 +222,12 @@ class ProfileScreen extends GetView<ProfileController> {
       floatingActionButton: contactEditIcon(context),
     );
   }
+
+  void setState(isdarkthemeEnabled) {
+    isdarkthemeEnabled = false;
+  }
 }
+
+// void setState(darthemeEnabled) {
+//   bool darkthemeEnabled = false;
+// }

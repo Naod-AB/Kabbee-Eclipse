@@ -105,7 +105,7 @@ import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 // ;
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';

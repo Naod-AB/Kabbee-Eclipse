@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import '../../routes/router.gr.dart';
-import '../../service/api.dart';
+import '../../service/services.dart';
 //import '../../service/model.dart';
 // import '../Screens/CommonControllers/question_controller.dart';
 // import '../Screens/Profile/widgets/user_profile_widget.dart';
@@ -24,7 +24,7 @@ quizAlertBox(
     String description,
     path,
     icon,
-    QuestionControl questionAlertCtrl,
+    QuestionController questionAlertCtrl,
     bool isFirst,
     bool isback) {
   Alert(
@@ -67,6 +67,7 @@ quizAlertBox(
             ? null
             : !isFirst
                 ? () async {
+                    final QuestionController questionController = Get.find();
                     // remove empty choices and answers
                     questionController.choices
                         .removeWhere((item) => [''].contains(item));

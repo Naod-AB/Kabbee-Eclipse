@@ -21,8 +21,9 @@ class LanguageChoices extends StatelessWidget {
   dynamic courses;
   // QuestionControl qController = Get.find();
   // ProfileController pController = Get.find();
-
+  final QuestionController questionController = Get.find();
   @override
+
   // final QuestionControl questionController = Get.put(QuestionControl());
   Widget build(BuildContext context) {
     // final QuestionControl questionController = Get.put(QuestionControl());

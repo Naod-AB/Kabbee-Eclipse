@@ -3,7 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quiz_app/routes/router.gr.dart';
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
@@ -15,8 +15,6 @@ import '../../common_widgets/alert_box.dart';
 import 'languages_screen.dart';
 import 'package:get/get.dart';
 import '../CommonControllers/question_controller.dart';
-
-final QuestionControl questionController = Get.put(QuestionControl());
 
 class ChooseTypePage extends StatelessWidget {
   ChooseTypePage(
@@ -30,7 +28,7 @@ class ChooseTypePage extends StatelessWidget {
   String path;
   String? ptype = "PRACTICE";
   String? ftype = "FINAL";
-
+  final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
     print('visibility.. QUESTION SCREEN ${questionController.isEnabled}');

@@ -48,14 +48,17 @@ class UsersListPage extends StatelessWidget {
               ],
             ),
           ),
-          body: TabBarView(
-            children: [
-              activeList(),
-              controller.blockedUsersCount.value == 0
-                  ? ScoreAlertBox(
-                      title: 'Users Not Found !', text: 'All users are active')
-                  : blockedList(),
-            ],
+          body: Obx(
+            () => TabBarView(
+              children: [
+                activeList(),
+                controller.blockedUsersCount.value == 0
+                    ? ScoreAlertBox(
+                        title: 'Users Not Found !',
+                        text: 'All users are active')
+                    : blockedList(),
+              ],
+            ),
           ),
         ));
   }

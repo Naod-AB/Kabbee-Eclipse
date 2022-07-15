@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class QuestionControl extends GetxController {
+class QuestionController extends GetxController {
   // To hold
   // List<ChosenModel> chosenAnswers = [];
   // RxBool isCorrect = false.obs;

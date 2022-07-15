@@ -4,7 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quiz_app/service/api.dart';
+import 'package:quiz_app/service/services.dart';
 //import 'package:quiz_app/service/model.dart';
 // import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 // import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
@@ -20,6 +20,7 @@ import '../../common_widgets/alert_box.dart';
 import '../../Screens/Category/choose_type_screen.dart';
 // import '../../common_widgets/alert_box.dart';
 import '../../common_widgets/score_alert_box.dart';
+import '../CommonControllers/question_controller.dart';
 import '../Profile/widgets/user_profile_widget.dart';
 import '/routes/router.gr.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -51,7 +52,7 @@ class QuestionsScreen extends StatelessWidget {
   // Future<bool> _onWillPop() async {
   //   return false;
   // }
-
+  final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
     // questionController.isEnabled
@@ -380,6 +381,8 @@ class QuestionsScreen extends StatelessWidget {
                                       // log('questionController.questionApi!.length  ${questionController.questionApi!.length}');
 
                                       if (isFinal) {
+                                        print(
+                                            'unasnswered is ${questionController.questionApi!.length}');
                                         if (questionController.choices.length !=
                                             questionController
                                                 .questionApi!.length) {
@@ -450,15 +453,17 @@ class QuestionsScreen extends StatelessWidget {
                                           questionController.scoreCounter = 0;
                                         }
                                       }
-                                      context.router.push(FinalScore(
-                                          outOf: questionController
-                                              .questionApi!.length,
-                                          score:
-                                              questionController.answers.length,
-                                          optionList:
-                                              questionController.optionList));
-                                      questionController.qnIndex.value = 1;
-                                      questionController.scoreCounter = 0;
+                                      if (!isFinal) {
+                                        context.router.push(FinalScore(
+                                            outOf: questionController
+                                                .questionApi!.length,
+                                            score: questionController
+                                                .answers.length,
+                                            optionList:
+                                                questionController.optionList));
+                                        questionController.qnIndex.value = 1;
+                                        questionController.scoreCounter = 0;
+                                      }
                                     },
                                     style: ElevatedButton.styleFrom(
                                         fixedSize: const Size(300, 50),

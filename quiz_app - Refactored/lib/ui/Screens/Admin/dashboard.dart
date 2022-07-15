@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
-import '../../../service/api.dart';
+import '../../../service/services.dart';
 
 class DashboardPage extends GetView<ProfileController> {
   const DashboardPage({Key? key}) : super(key: key);

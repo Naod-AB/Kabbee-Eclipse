@@ -104,8 +104,10 @@ class AppRouter extends _i17.RootStackRouter {
           routeData: routeData, child: _i9.ReviewScreen(key: args.key));
     },
     ProfileScreen.name: (routeData) {
+      final args = routeData.argsAs<ProfileScreenArgs>(
+          orElse: () => const ProfileScreenArgs());
       return _i17.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.ProfileScreen());
+          routeData: routeData, child: _i10.ProfileScreen(key: args.key));
     },
     UserDetailsScreen.name: (routeData) {
       return _i17.MaterialPageX<dynamic>(
@@ -397,10 +399,23 @@ class ReviewScreenArgs {
 
 /// generated route for
 /// [_i10.ProfileScreen]
-class ProfileScreen extends _i17.PageRouteInfo<void> {
-  const ProfileScreen() : super(ProfileScreen.name, path: '/profile');
+class ProfileScreen extends _i17.PageRouteInfo<ProfileScreenArgs> {
+  ProfileScreen({_i18.Key? key})
+      : super(ProfileScreen.name,
+            path: '/profile', args: ProfileScreenArgs(key: key));
 
   static const String name = 'ProfileScreen';
+}
+
+class ProfileScreenArgs {
+  const ProfileScreenArgs({this.key});
+
+  final _i18.Key? key;
+
+  @override
+  String toString() {
+    return 'ProfileScreenArgs{key: $key}';
+  }
 }
 
 /// generated route for
