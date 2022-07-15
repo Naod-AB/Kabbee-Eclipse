@@ -39,15 +39,15 @@ class FinalScore extends StatelessWidget {
     // print('percent ${score / outOf}');
     Future.delayed(
         const Duration(milliseconds: 2300), () => isLoading.value = false);
-    return Expanded(
-      child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/photo.jpg"),
-              fit: BoxFit.cover,
-            ),
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/photo.jpg"),
+            fit: BoxFit.cover,
           ),
+        ),
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
