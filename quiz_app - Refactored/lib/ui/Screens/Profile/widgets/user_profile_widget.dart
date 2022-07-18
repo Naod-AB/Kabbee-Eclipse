@@ -458,7 +458,9 @@ Widget passwordVisibilityBtn() {
     },
     child: Icon(
       controller.hidePassword.value ? Icons.visibility_off : Icons.visibility,
-      color: controller.hidePassword.value ? orangeColor : Colors.white,
+      color: controller.hidePassword.value
+          ? orangeColor
+          : Color.fromARGB(255, 255, 165, 0),
     ),
   );
 }

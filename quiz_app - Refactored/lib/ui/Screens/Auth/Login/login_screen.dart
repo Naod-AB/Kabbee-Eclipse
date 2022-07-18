@@ -209,8 +209,8 @@ class LoginPage extends StatelessWidget {
                                   },
                                   child: Icon(
                                     authController.obsecure.value
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
                                     color: authController.obsecure.value
                                         ? Color.fromARGB(255, 255, 165, 0)
                                         : Color.fromARGB(255, 255, 165, 0),
