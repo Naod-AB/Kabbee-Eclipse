@@ -33,11 +33,18 @@ class UsersListPage extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            elevation: 0,
             title: const Text('Users'),
             centerTitle: false,
-            bottom: const TabBar(
-              labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            bottom: TabBar(
+              labelStyle: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
+              ),
               indicatorColor: kblue,
+              labelColor: kblue,
+              unselectedLabelColor: Theme.of(context).primaryColor,
               tabs: [
                 Tab(
                   text: 'ACTIVE',
@@ -75,8 +82,9 @@ class UsersListPage extends StatelessWidget {
             bool isCurrentUserAdmin =
                 user['email'] == controller.userInfo.value!.email;
             return Card(
-                color: Colors.white12,
+                color: Theme.of(context).shadowColor,
                 child: buildUsersTiles(
+                  context,
                   Image.asset('assets/images/avatar.png'),
                   user['firstName'].toString().toCapitalized() +
                       ' ' +
@@ -108,8 +116,9 @@ class UsersListPage extends StatelessWidget {
                 user['email'] == controller.userInfo.value!.email;
 
             return Card(
-                color: Colors.white12,
+                color: Theme.of(context).shadowColor,
                 child: buildUsersTiles(
+                    context,
                     Image.asset('assets/images/avatar.png'),
                     user['firstName'].toString().toCapitalized() +
                         ' ' +

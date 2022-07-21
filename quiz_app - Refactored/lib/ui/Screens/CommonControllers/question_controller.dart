@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class QuestionController extends GetxController {
@@ -9,6 +10,9 @@ class QuestionController extends GetxController {
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
   bool isFinal = false;
+
+  Rx<ScrollController> scrolController = ScrollController().obs;
+  Rx<ScrollController> reviewScrolController = ScrollController().obs;
 
   int optionList = 0;
 

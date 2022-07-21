@@ -35,7 +35,7 @@ class ChooseTypePage extends StatelessWidget {
     print('from CHOOSE TYPE ${questionController.questionApi}');
     return SafeArea(
       child: Scaffold(
-          backgroundColor: bgColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: quizAppBar(context: context, iconUrl: icon),
           body: Column(
             children: [
@@ -43,9 +43,10 @@ class ChooseTypePage extends StatelessWidget {
                 height: defaultPadding,
               ),
               Text("Select Type ",
-                  style: Theme.of(context).primaryTextTheme.headline1),
+                  style: Theme.of(context).textTheme.headline5),
               Expanded(
                   child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   const SizedBox(
                     height: defaultPadding * 3,

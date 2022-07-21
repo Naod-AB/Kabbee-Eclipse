@@ -26,7 +26,7 @@ class CategoryPage extends StatelessWidget {
     print('after logout email - category ${controller.userInfo.value!.email}');
     return SafeArea(
       child: Scaffold(
-          backgroundColor: bgColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: quizAppBar(context: context, iconUrl: ''),
           body: Center(
             child: SingleChildScrollView(
@@ -36,7 +36,7 @@ class CategoryPage extends StatelessWidget {
                     height: defaultPadding,
                   ),
                   Text("Select Category",
-                      style: Theme.of(context).primaryTextTheme.headline1),
+                      style: Theme.of(context).textTheme.headline5),
                   const SizedBox(
                     height: defaultPadding * 3,
                   ),

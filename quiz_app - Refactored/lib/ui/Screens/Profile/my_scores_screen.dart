@@ -18,7 +18,7 @@ class MyScoresScreen extends GetView<ProfileController> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: customText('My Scores', 18, false, false, primaryColor),
+        title: customText(context, 'My Scores', 18, false, false, primaryColor),
         centerTitle: false,
       ),
       backgroundColor: Colors.black,
@@ -40,7 +40,7 @@ class MyScoresScreen extends GetView<ProfileController> {
                     return Padding(
                       padding: const EdgeInsets.fromLTRB(10, 30, 10, 15),
                       child: customText(
-                          value.toUpperCase(), 20, true, false, kblue),
+                          context, value.toUpperCase(), 20, true, false, kblue),
                     );
                   },
                   itemBuilder: (context, element) {
@@ -56,10 +56,15 @@ class MyScoresScreen extends GetView<ProfileController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                customText(element['courseName'], 19, false,
-                                    false, primaryColor),
-                                customText('${element['percentage']} %', 19,
-                                    true, false, primaryColor),
+                                customText(context, element['courseName'], 19,
+                                    false, false, primaryColor),
+                                customText(
+                                    context,
+                                    '${element['percentage']} %',
+                                    19,
+                                    true,
+                                    false,
+                                    primaryColor),
                               ],
                             ),
                           ),

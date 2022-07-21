@@ -19,8 +19,9 @@ class UserDetailsScreen extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     // print(controller.userInfo.value!.gender);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Profile'),
         centerTitle: false,
       ),
@@ -29,29 +30,29 @@ class UserDetailsScreen extends GetView<ProfileController> {
         child: ListView(
           children: [
             profileCardContent(context),
-            customText('First Name', 18, false, false, kblue),
+            customText(context, 'First Name', 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
-                controller.firstName.value.toString(), true, false)),
+                context, controller.firstName.value.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Last Name', 18, false, false, kblue),
+            customText(context, 'Last Name', 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
-                controller.lastName.value.toString(), true, false)),
+                context, controller.lastName.value.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Email', 18, false, false, kblue),
+            customText(context, 'Email', 18, false, false, kblue),
             const SizedBox(height: 15),
-            Obx(() => userInfoTiles(
+            Obx(() => userInfoTiles(context,
                 controller.userInfo.value!.email.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Password', 18, false, false, kblue),
+            customText(context, 'Password', 18, false, false, kblue),
             const SizedBox(height: 15),
-            userInfoTiles(
+            userInfoTiles(context,
                 controller.userInfo.value!.password.toString(), true, true),
             const SizedBox(height: 20),
-            customText('Gender', 18, false, false, kblue),
+            customText(context, 'Gender', 18, false, false, kblue),
             const SizedBox(height: 15),
-            Obx(() => userInfoTiles(
+            Obx(() => userInfoTiles(context,
                 controller.gender.value ? 'Male' : 'Female', true, false)),
             // userInfoTiles(Text('Esrom'), true),
           ],

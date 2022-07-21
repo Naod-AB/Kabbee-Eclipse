@@ -33,13 +33,18 @@ quizAlertBox(
     title: title,
     desc: description,
     style: AlertStyle(
+      alertElevation: 200,
       isOverlayTapDismiss: false,
-      backgroundColor: Color(0xFF333333),
+      backgroundColor: Theme.of(context).shadowColor,
       buttonsDirection: isback ? ButtonsDirection.column : ButtonsDirection.row,
       titleStyle: TextStyle(
-          color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          color: Theme.of(context).primaryColor,
+          fontSize: 24,
+          fontWeight: FontWeight.bold),
       descStyle: TextStyle(
-          color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+          color: Theme.of(context).primaryColor,
+          fontSize: 18,
+          fontWeight: FontWeight.w400),
     ),
     buttons: [
       DialogButton(
@@ -47,7 +52,7 @@ quizAlertBox(
           //isback ? "" :
           "CANCEL",
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).primaryColor,
             fontSize: 20,
           ),
         ),

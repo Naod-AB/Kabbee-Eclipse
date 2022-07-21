@@ -12,8 +12,11 @@ class AdminLanguage extends StatelessWidget {
     // print(controller.fetchCoursesAndCategories);
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text('Courses'),
+          centerTitle: false,
         ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.only(top: 25),
           child: ListView.builder(
@@ -29,24 +32,28 @@ class AdminLanguage extends StatelessWidget {
                           .toUpperCase())
                   .toList();
 
+              print(language["icon"]);
+
               return Card(
-                color: tileColor,
+                color: Theme.of(context).shadowColor,
                 child: buildlanguageTiles(
-                    SvgPicture.asset(
-                      language["icon"],
-                      height: 40,
-                    ),
-                    language['courseName']
-                        .toString()
-                        .replaceAll('_', ' ')
-                        .toUpperCase(),
-                    language['category']
-                        .toString()
-                        .replaceAll('-', ' ')
-                        .toString()
-                        .toCapitalized()
-                        .replaceAll('_', ' '),
-                    questions.length),
+                  SvgPicture.asset(
+                    language["icon"],
+                    height: 40,
+                  ),
+                  language['courseName']
+                      .toString()
+                      .replaceAll('_', ' ')
+                      .toUpperCase(),
+                  language['category']
+                      .toString()
+                      .replaceAll('-', ' ')
+                      .toString()
+                      .toCapitalized()
+                      .replaceAll('_', ' '),
+                  questions.length,
+                  context,
+                ),
               );
             },
           ),

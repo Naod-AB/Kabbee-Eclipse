@@ -18,21 +18,23 @@ import 'package:image_picker/image_picker.dart';
 ProfileController controller = Get.put(ProfileController());
 
 Color orangeColor = const Color(0xFFFFA500);
-Color tileColor = Color.fromRGBO(20, 20, 20, 0.9);
-// Color tileColor = Color.fromRGBO(34, 34, 34, 0.9);
+// Color tileColor = Color.fromRGBO(40, 40, 40, 1);
+Color tileColor = Color.fromRGBO(25, 25, 25, 1);
+// Color tileColor = Color.fromARGB(227, 20, 20, 20);
+
 Color primaryColor = const Color(0xFFeeeeee);
 Color secondaryColor = Colors.white60;
 
 // Custom widgets
-Widget customText(
-    String text, double size, bool isBold, bool isPassword, Color textColor) {
+Widget customText(BuildContext context, String text, double size, bool isBold,
+    bool isPassword, Color textColor) {
   return Text(
     isPassword ? "." * text.length : text,
     softWrap: false,
     textAlign: TextAlign.left,
     style: TextStyle(
         height: 1,
-        color: textColor,
+        color: Theme.of(context).primaryColor,
         fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
         fontSize: size),
   );
@@ -59,8 +61,8 @@ Widget profileCardContent(context) {
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: const Image(
-                        width: 110,
-                        height: 110,
+                        width: 90,
+                        height: 90,
                         image: AssetImage('assets/images/avatar.png'),
                         fit: BoxFit.cover,
                       ),
@@ -86,14 +88,16 @@ Widget profileCardContent(context) {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Obx(() => customText(
+                Obx(() => Text(
                     "${controller.firstName.value}\n${controller.lastName.value}",
-                    30,
-                    true,
-                    false,
-                    Colors.black)),
-                customText('${controller.userInfo.value!.email}', 15, false,
-                    false, Colors.black45),
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        height: 1.1,
+                        color: Colors.black))),
+                Text('${controller.userInfo.value!.email}',
+                    style: TextStyle(
+                        fontSize: 15, height: 1.1, color: Colors.black))
               ],
             )
           ],
@@ -139,10 +143,12 @@ Widget genderValueContainer() {
   );
 }
 
-Widget buildTileGroup(Widget tiles) {
+Widget buildTileGroup(Widget tiles, BuildContext context) {
   return Container(
     decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10), color: tileColor),
+      borderRadius: BorderRadius.circular(10),
+      color: Theme.of(context).shadowColor,
+    ),
     child: tiles,
   );
 }
@@ -158,6 +164,7 @@ Widget buildTile(IconData? leadingIcon, Widget? title, Widget? subtitle,
         borderRadius: BorderRadius.circular(0),
       ),
       title: title,
+      // tileColor: Color.fromRGBO(30, 30, 30, 1),
       subtitle: subtitle,
       leading: Container(
         padding: const EdgeInsets.all(5),
@@ -198,11 +205,12 @@ Widget buildBottomSheetTiles(IconData? leadingIcon, Widget? title,
   );
 }
 
-Widget userInfoTiles(String title, bool padding, bool isPassword) {
+Widget userInfoTiles(
+    BuildContext context, String title, bool padding, bool isPassword) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: tileColor,
+      color: Theme.of(context).shadowColor,
     ),
     padding:
         padding ? const EdgeInsets.only(left: 10, right: 10) : EdgeInsets.zero,
@@ -213,28 +221,29 @@ Widget userInfoTiles(String title, bool padding, bool isPassword) {
       ),
       title: Text(
         isPassword ? "." * title.length : title,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        style: TextStyle(
+            color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500),
       ),
     ),
   );
 }
 
-Widget buildTextField(String hint, IconData? icon, TextEditingController ctrl,
-    bool ispassword, Widget? suffix) {
+Widget buildTextField(BuildContext context, String hint, IconData? icon,
+    TextEditingController ctrl, bool ispassword, Widget? suffix) {
   return TextFormField(
     obscureText: ispassword ? controller.hidePassword.value : false,
-    style: const TextStyle(color: Colors.white),
+    style: TextStyle(color: Theme.of(context).primaryColor),
     controller: ctrl,
     onChanged: (value) {
       if (value.trimLeft().isNotEmpty) controller.isBtnNull.value = true;
     },
     decoration: InputDecoration(
-        fillColor: tileColor,
+        fillColor: Theme.of(context).shadowColor,
         filled: true,
-        hintStyle: const TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Theme.of(context).primaryColor),
         focusColor: orangeColor,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: orangeColor, width: 1.0),
+          borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(
@@ -303,8 +312,8 @@ Widget contactEditIcon(BuildContext context) {
           builder: (context) {
             return Container(
               margin: EdgeInsets.only(top: 3),
-              decoration: const BoxDecoration(
-                  color: Color(0xFF222222),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).shadowColor,
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(50))),
               child: Wrap(
@@ -314,7 +323,7 @@ Widget contactEditIcon(BuildContext context) {
                     padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                     child: Center(
                       child: customText(
-                          'Contact Us', 26, true, false, primaryColor),
+                          context, 'Contact Us', 26, true, false, primaryColor),
                     ),
                   ),
                   GestureDetector(
@@ -323,7 +332,8 @@ Widget contactEditIcon(BuildContext context) {
                     },
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.telegram,
-                        customText(' Telegram', 18, false, false, primaryColor),
+                        customText(context, ' Telegram', 18, false, false,
+                            primaryColor),
                         null,
                         null,
                         true,
@@ -331,8 +341,8 @@ Widget contactEditIcon(BuildContext context) {
                   ),
                   buildBottomSheetTiles(
                       FontAwesomeIcons.solidEnvelope,
-                      customText(
-                          ' quizapp@gmail.com', 18, false, false, primaryColor),
+                      customText(context, ' quizapp@gmail.com', 18, false,
+                          false, primaryColor),
                       null,
                       null,
                       true,
@@ -343,8 +353,8 @@ Widget contactEditIcon(BuildContext context) {
                     },
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.earthAmericas,
-                        customText(
-                            ' www.kabbee.org', 18, false, false, primaryColor),
+                        customText(context, ' www.kabbee.org', 18, false, false,
+                            primaryColor),
                         null,
                         null,
                         true,
@@ -366,7 +376,7 @@ Widget buildUpdateButton(
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-            controller.isBtnNull.value ? orangeColor : tileColor),
+            controller.isBtnNull.value ? orangeColor : Colors.grey[300]),
         padding: MaterialStateProperty.all(const EdgeInsets.all(18)),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -378,15 +388,15 @@ Widget buildUpdateButton(
             await updateProfile(key!, context);
           }
         : null,
-    child: customText(text, 20, false, false, primaryColor),
+    child: customText(context, text, 20, false, false, primaryColor),
   );
 }
 
-Widget buildDivider() {
-  return const Divider(
+Widget buildDivider(BuildContext context) {
+  return Divider(
     height: 0,
     thickness: 2,
-    color: Colors.black,
+    color: Theme.of(context).scaffoldBackgroundColor,
   );
 }
 
@@ -395,7 +405,7 @@ Widget editProfilePic(context) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
-      color: tileColor,
+      color: Theme.of(context).shadowColor,
     ),
     child: Padding(
       padding: const EdgeInsets.all(10.0),
@@ -433,16 +443,20 @@ Widget editProfilePic(context) {
                       ),
               ),
               const SizedBox(width: 12),
-              customText('Change avatar', 18, false, false, primaryColor),
+              customText(
+                  context, 'Change avatar', 18, false, false, primaryColor),
             ],
           ),
           ElevatedButton(
             onPressed: () {
               controller.getFromGallery(ImageSource.gallery, context);
             },
-            child: const Text('Upload'),
+            child: Text(
+              'Upload',
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
             style: ElevatedButton.styleFrom(
-              primary: Colors.grey[800],
+              primary: Theme.of(context).scaffoldBackgroundColor,
             ),
           ),
         ],
@@ -493,8 +507,9 @@ Widget sampleCard(context, IconData icon, String score) {
           CircleAvatar(
             radius: 50,
             backgroundColor: const Color.fromRGBO(34, 34, 34, 1),
-            child:
-                Center(child: customText(score, 25, true, false, primaryColor)),
+            child: Center(
+                child:
+                    customText(context, score, 25, true, false, primaryColor)),
           ),
         ],
       ),
@@ -594,8 +609,14 @@ showSnackbar(
   }
 }
 
-Widget buildTextFieldP(String hint, IconData? icon, TextEditingController ctrl,
-    bool ispassword, Widget? suffix, GlobalKey key) {
+Widget buildTextFieldP(
+    BuildContext context,
+    String hint,
+    IconData? icon,
+    TextEditingController ctrl,
+    bool ispassword,
+    Widget? suffix,
+    GlobalKey key) {
   return TextFormField(
     key: key,
     // validator: (value) {
@@ -609,7 +630,7 @@ Widget buildTextFieldP(String hint, IconData? icon, TextEditingController ctrl,
     //   return null;
     // },
     obscureText: ispassword ? controller.hidePassword.value : false,
-    style: const TextStyle(color: Colors.white),
+    style: TextStyle(color: Theme.of(context).primaryColor),
     controller: ctrl,
     onChanged: (value) {
       ispassword && !validateStructure(value)
@@ -621,12 +642,12 @@ Widget buildTextFieldP(String hint, IconData? icon, TextEditingController ctrl,
       }
     },
     decoration: InputDecoration(
-        fillColor: tileColor,
+        fillColor: Theme.of(context).shadowColor,
         filled: true,
-        hintStyle: const TextStyle(color: Colors.white),
-        focusColor: orangeColor,
+        hintStyle: TextStyle(color: Theme.of(context).primaryColor),
+        // focusColor: orangeColor,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: orangeColor, width: 1.0),
+          borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(15),
         ),
         // prefixIcon: Icon(
@@ -656,7 +677,7 @@ Widget buildDashBoardTiles(
     height: 140,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: tileColor,
+        color: Theme.of(context).shadowColor,
         border: Border.all(color: kblue, width: 3)),
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -670,7 +691,7 @@ Widget buildDashBoardTiles(
               Text(
                 'TOTAL',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: size,
                 ),
@@ -678,7 +699,7 @@ Widget buildDashBoardTiles(
               Text(
                 text,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: size,
                 ),
@@ -688,7 +709,7 @@ Widget buildDashBoardTiles(
           Text(
             totalNumber,
             style: TextStyle(
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
               fontSize: totalNumberSize,
             ),
@@ -708,6 +729,7 @@ bool validateStructure(String value) {
 
 // admin users
 Widget buildUsersTiles(
+    BuildContext context,
     Widget leadingImage,
     String title,
     String subtitle,
@@ -720,8 +742,9 @@ Widget buildUsersTiles(
     borderRadius: BorderRadius.circular(12),
     child: ListTile(
       contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
-      title: customText(title, 17, true, false, primaryColor),
-      subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
+      title: customText(context, title, 17, true, false, primaryColor),
+      subtitle:
+          customText(context, subtitle, 14, false, false, Colors.grey.shade400),
       leading: Container(
         child: isUserAdmin
             ? Stack(
@@ -747,12 +770,12 @@ Widget buildUsersTiles(
         ),
       ),
       trailing: isCurrentUserAdmin
-          ? customText('You', 14, true, false, kblue)
+          ? customText(context, 'You', 14, true, false, kblue)
           : PopupMenuButton(
               position: PopupMenuPosition.under,
-              icon: const Icon(
+              icon: Icon(
                 Icons.more_horiz,
-                color: Colors.white,
+                color: Theme.of(context).primaryColor,
               ),
               color: kblue,
               itemBuilder: (context) => [
@@ -779,8 +802,13 @@ Widget buildUsersTiles(
                                     id: listId, status: false, index: index)
                               };
                       },
-                      child: customText(isUserActive ? 'Block' : 'Activate', 16,
-                          true, false, Colors.black),
+                      child: customText(
+                          context,
+                          isUserActive ? 'Block' : 'Activate',
+                          16,
+                          true,
+                          false,
+                          Colors.black),
                     ),
                   ]),
     ),
@@ -792,30 +820,34 @@ Widget buildlanguageTiles(
   String title,
   String subtitle,
   int questionNumber,
+  BuildContext context,
 ) {
   return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: ListTile(
         contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
-        title: customText(title, 17, true, false, primaryColor),
-        subtitle: customText(subtitle, 14, false, false, Colors.grey.shade400),
+        title: customText(context, title, 17, true, false, primaryColor),
+        subtitle: customText(
+            context, subtitle, 14, false, false, Colors.grey.shade400),
         leading: Container(
           child: leadingImage,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 56, 56, 55),
+            // color: Color.fromARGB(255, 56, 56, 55),
             borderRadius: BorderRadius.circular(50),
           ),
         ),
         trailing: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Container(
-            color: Color.fromARGB(255, 56, 55, 55),
+            color: Theme.of(context).scaffoldBackgroundColor,
             height: 30,
             width: 60,
             child: Center(
                 child: Text(
               questionNumber.toString(),
-              style: TextStyle(color: kblue),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
             )),
           ),
         ),

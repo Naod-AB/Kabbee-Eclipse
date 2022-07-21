@@ -100,7 +100,7 @@ class ChoiceCard extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           GestureDetector(
-            onTap:onpressed,
+            onTap: onpressed,
             child: Container(
               width: screenwidth * 0.8,
               height: screenhieght * 0.20,
@@ -117,17 +117,16 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               left: textPosx,
               bottom: textPosy,
-              child: Text(
-                cardtext,
-                style: Theme.of(context).textTheme.headline1)
-                ),
-          Positioned(left: textPosx, top: textPosy!-10, child: child ?? Container())
+              child:
+                  Text(cardtext, style: Theme.of(context).textTheme.headline6)),
+          Positioned(
+              left: textPosx, top: textPosy! - 10, child: child ?? Container())
         ],
       ),
     );
   }
 }
- 
+
 const colorizeColors = [kWhite, kblue, Colors.black];
 const colorizeTextStyle = TextStyle(
   fontSize: 30.0,

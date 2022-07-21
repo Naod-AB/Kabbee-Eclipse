@@ -85,7 +85,7 @@ class QuestionsScreen extends StatelessWidget {
               }
             : null,
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: quizAppBar(
             context: context,
             iconUrl: icon,
@@ -93,8 +93,9 @@ class QuestionsScreen extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
             child: SingleChildScrollView(
+              controller: questionController.scrolController.value,
               child: SizedBox(
-                height: 750,
+                height: 740,
                 child: questionController.questionApi!.isEmpty
                     ? Center(
                         child: ScoreAlertBox(
@@ -114,10 +115,7 @@ class QuestionsScreen extends StatelessWidget {
                                     '/' +
                                     questionController.questionApi!.length
                                         .toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline4!
-                                    .copyWith(color: Colors.white),
+                                style: Theme.of(context).textTheme.headline4,
                                 maxLines: 3,
                               ),
                             ]),
@@ -149,8 +147,7 @@ class QuestionsScreen extends StatelessWidget {
                                         const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                     decoration: BoxDecoration(
                                       // color: Colors.green,
-                                      color:
-                                          const Color.fromARGB(176, 34, 34, 34),
+                                      color: Theme.of(context).shadowColor,
 
                                       borderRadius: BorderRadius.circular(15),
                                     ),
@@ -168,8 +165,7 @@ class QuestionsScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline5!
-                                              .copyWith(color: Colors.white),
+                                              .headline6!,
                                           maxLines: 3,
                                         ),
                                         const Spacer(
@@ -222,10 +218,7 @@ class QuestionsScreen extends StatelessWidget {
                                                                   style: Theme.of(
                                                                           context)
                                                                       .textTheme
-                                                                      .headline5!
-                                                                      .copyWith(
-                                                                          color:
-                                                                              Colors.white),
+                                                                      .headline6!,
                                                                   maxLines: 2,
                                                                 ),
                                                                 const Spacer(),
@@ -249,6 +242,27 @@ class QuestionsScreen extends StatelessWidget {
                                                                       snapshot] =
                                                                   newValue
                                                                       as int;
+
+                                                              // scroll
+                                                              if (questionController
+                                                                      .qnIndex ==
+                                                                  questionController
+                                                                      .questionApi!
+                                                                      .length) {
+                                                                print(
+                                                                    'This should Scrollll...');
+                                                                questionController.scrolController.value.animateTo(
+                                                                    questionController
+                                                                        .scrolController
+                                                                        .value
+                                                                        .position
+                                                                        .extentAfter,
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            500),
+                                                                    curve: Curves
+                                                                        .easeInOut);
+                                                              }
 
                                                               // add choices to list without replacing
 
@@ -361,7 +375,7 @@ class QuestionsScreen extends StatelessWidget {
                                 }),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 30,
                           ),
                           // const Spacer(),
                           // Done button
@@ -472,8 +486,8 @@ class QuestionsScreen extends StatelessWidget {
                                                 BorderRadius.circular(15)),
                                         primary: const Color.fromARGB(
                                             255, 255, 165, 0)),
-                                    child: customText(
-                                        'DONE', 20, false, false, primaryColor),
+                                    child: customText(context, 'DONE', 20,
+                                        false, false, primaryColor),
                                   )
 
                                 // ? const RoundedButton(

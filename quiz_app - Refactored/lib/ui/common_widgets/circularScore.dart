@@ -27,7 +27,7 @@ class CircularScore extends StatelessWidget {
           textAlign: TextAlign.center,
           style: Theme.of(context)
               .textTheme
-              .headline1!
+              .headline6!
               .copyWith(color: Colors.white, fontSize: 20),
         ),
       ),

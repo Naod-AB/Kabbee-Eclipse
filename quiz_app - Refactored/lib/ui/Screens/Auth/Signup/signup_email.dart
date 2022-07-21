@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
-
+import 'package:quiz_app/ui/utils/theme.dart';
 
 class SignupEmail extends StatelessWidget {
   //final _formKey = GlobalKey<FormState>();
@@ -45,7 +45,7 @@ class SignupEmail extends StatelessWidget {
         Text(
           'Create account',
           style: TextStyle(
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
               fontSize: getProportionateScreenWidth(30), //40,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.30),
@@ -53,7 +53,7 @@ class SignupEmail extends StatelessWidget {
         Text(
           'please tell us more about you',
           style: TextStyle(
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
               fontSize: getProportionateScreenWidth(10), //20,
               fontWeight: FontWeight.w300,
               letterSpacing: 0.50),
@@ -81,7 +81,8 @@ class SignupEmail extends StatelessWidget {
               },
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.grey[500]!.withOpacity(0.5),
+                // fillColor: Colors.grey[500]!.withOpacity(0.5),
+                fillColor: Theme.of(context).primaryColor,
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 suffixIcon: const Padding(

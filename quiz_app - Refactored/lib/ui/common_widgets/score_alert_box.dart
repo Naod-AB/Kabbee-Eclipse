@@ -15,15 +15,16 @@ class ScoreAlertBox extends StatelessWidget {
       child: Container(
           width: 320,
           height: 180,
-          color: Colors.white10,
+          color: Theme.of(context).shadowColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              customText(title, 21, true, false, kblue),
+              customText(context, title, 21, true, false, kblue),
               Text(
                 text,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: primaryColor, fontSize: 18),
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 18),
               ),
             ],
           )),

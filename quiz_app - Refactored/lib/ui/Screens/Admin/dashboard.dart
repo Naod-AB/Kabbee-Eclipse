@@ -16,10 +16,11 @@ class DashboardPage extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text('Dashboard'),
         centerTitle: false,
+        elevation: 0,
       ),
       body: SafeArea(
         child: Padding(
@@ -44,16 +45,17 @@ class DashboardPage extends GetView<ProfileController> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: tileColor),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).shadowColor,
+                  ),
                   child: buildTile(
                     Icons.group,
-                    customText('Users', 18, true, false, primaryColor),
-                    customText('See active and blocked', 13, false, false,
-                        secondaryColor),
-                    const Icon(
+                    customText(context, 'Users', 18, true, false, primaryColor),
+                    customText(context, 'See active and blocked', 13, false,
+                        false, secondaryColor),
+                    Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                     ),
                     true,
                   ),
@@ -67,15 +69,16 @@ class DashboardPage extends GetView<ProfileController> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: tileColor),
+                      color: Theme.of(context).shadowColor),
                   child: buildTile(
                     Icons.view_list_outlined,
-                    customText('Courses', 18, true, false, primaryColor),
-                    customText('View and update courses', 13, false, false,
-                        secondaryColor),
-                    const Icon(
+                    customText(
+                        context, 'Courses', 18, true, false, primaryColor),
+                    customText(context, 'View and update courses', 13, false,
+                        false, secondaryColor),
+                    Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                     ),
                     true,
                   ),

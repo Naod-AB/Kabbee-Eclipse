@@ -29,8 +29,9 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Account'),
         centerTitle: false,
       ),
@@ -41,7 +42,7 @@ class ProfileScreen extends GetView<ProfileController> {
             //  Personal section
 
             profileCardContent(context),
-            customText('Profile', 20, false, false, primaryColor),
+            customText(context, 'Profile', 20, false, false, primaryColor),
             const SizedBox(height: 15),
 
             buildTileGroup(
@@ -53,19 +54,21 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                       Icons.person,
-                      customText('Personal', 18, true, false, primaryColor),
-                      customText('View and update profile', 13, false, false,
-                          secondaryColor),
-                      const Icon(
+                      customText(
+                          context, 'Personal', 18, true, false, primaryColor),
+                      customText(context, 'View and update profile', 13, false,
+                          false, secondaryColor),
+                      Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.white,
+                        color: Theme.of(context).primaryColor,
                       ),
                       true,
                     ),
                   ),
-                  buildDivider(),
+                  // buildDivider(),
                 ],
               ),
+              context,
             ),
 
             // Admin settings
@@ -75,7 +78,8 @@ class ProfileScreen extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  customText('Admin Settings', 20, false, false, primaryColor),
+                  customText(context, 'Admin Settings', 20, false, false,
+                      primaryColor),
                   const SizedBox(height: 15),
                   buildTileGroup(
                     Column(
@@ -87,20 +91,21 @@ class ProfileScreen extends GetView<ProfileController> {
                           },
                           child: buildTile(
                             Icons.dashboard,
-                            customText(
-                                'Dashboard', 18, true, false, primaryColor),
-                            customText(
-                                'Statistics', 13, false, false, secondaryColor),
-                            const Icon(
+                            customText(context, 'Dashboard', 18, true, false,
+                                primaryColor),
+                            customText(context, 'Statistics', 13, false, false,
+                                secondaryColor),
+                            Icon(
                               Icons.arrow_forward_ios,
-                              color: Colors.white,
+                              color: Theme.of(context).primaryColor,
                             ),
                             true,
                           ),
                         ),
-                        buildDivider(),
+                        // buildDivider(),
                       ],
                     ),
+                    context,
                   ),
                 ],
               ),
@@ -109,28 +114,33 @@ class ProfileScreen extends GetView<ProfileController> {
 
 // ......
             const SizedBox(height: 20),
-            customText('Other', 20, false, false, primaryColor),
+            customText(context, 'Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
-                  // buildTile(
-                  //     Icons.dark_mode,
-                  //     customText('Dark Mode', 18, true, false, primaryColor),
-                  //     customText(
-                  //         'Change theme', 13, false, false, secondaryColor),
-                  //     Switch.adaptive(
-                  //       value: true,
-                  //       activeColor: orangeColor,
-                  //       onChanged: (Value) {
-                  //         // setState(() {
-                  //         //   isdarkthemeEnabled = changeTheme;
-                  //         //   print('dark theme is $isdarkthemeEnabled');
-                  //         // });
-                  //       },
-                  //     ),
-                  //     true),
-                  buildDivider(),
+                  buildTile(
+                      Icons.dark_mode,
+                      customText(
+                          context, 'Dark Mode', 18, true, false, primaryColor),
+                      customText(context, 'Change theme', 13, false, false,
+                          secondaryColor),
+                      Switch.adaptive(
+                        value: !controller.isDarkMode.value,
+                        activeColor: orangeColor,
+                        onChanged: (value) {
+                          !controller.isDarkMode.value;
+                          if (Get.isDarkMode) {
+                            Get.changeThemeMode(ThemeMode.light);
+                          } else {
+                            Get.changeThemeMode(ThemeMode.dark);
+                          }
+                          // isdarkthemeEnabled = changeTheme;
+                          // print('dark theme is $isdarkthemeEnabled');
+                        },
+                      ),
+                      true),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () async {
                       print(
@@ -142,16 +152,17 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.celebration,
-                        customText('My Scores', 18, true, false, primaryColor),
-                        customText(
-                            'Achievements', 13, false, false, secondaryColor),
+                        customText(context, 'My Scores', 18, true, false,
+                            primaryColor),
+                        customText(context, 'Achievements', 13, false, false,
+                            secondaryColor),
                         const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                         ),
                         true),
                   ),
-                  buildDivider(),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -162,17 +173,17 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.recommend_outlined,
-                        customText(
-                            'Recommendations', 18, true, false, primaryColor),
-                        customText('kabbee recommend you to Visit', 13, false,
-                            false, secondaryColor),
+                        customText(context, 'Recommendations', 18, true, false,
+                            primaryColor),
+                        customText(context, 'kabbee recommend you to Visit', 13,
+                            false, false, secondaryColor),
                         const Icon(
                           Icons.view_carousel_outlined,
                           color: Colors.white,
                         ),
                         true),
                   ),
-                  buildDivider(),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () {
                       showCupertinoDialog<void>(
@@ -207,14 +218,16 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.exit_to_app,
-                        customText('Log Out', 18, true, false, primaryColor),
-                        customText('Exit from the application', 13, false,
-                            false, secondaryColor),
+                        customText(
+                            context, 'Log Out', 18, true, false, primaryColor),
+                        customText(context, 'Exit from the application', 13,
+                            false, false, secondaryColor),
                         null,
                         true),
                   )
                 ],
               ),
+              context,
             ),
           ],
         ),

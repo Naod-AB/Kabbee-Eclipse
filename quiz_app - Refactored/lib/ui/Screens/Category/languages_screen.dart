@@ -30,61 +30,70 @@ class LanguageChoices extends StatelessWidget {
     print('from LANGUAGE ${questionController.questionApi}');
     return SafeArea(
       child: Scaffold(
-          backgroundColor: bgColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: quizAppBar(context: context, iconUrl: ''),
-          body: Column(
-            children: [
-              const SizedBox(
-                height: defaultPadding,
-              ),
-              Text("Select Language",
-                  style: Theme.of(context).primaryTextTheme.headline1),
-              Expanded(
-                child: ListView.separated(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: defaultPadding * 3),
-                  itemCount: courses.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    int percentage = 0;
-                    print('Profile DATA LANGUAGE ${controller.scores}');
-                    if (controller.scores != null) {
-                      for (var element in controller.scores!) {
-                        if (courses[index]['courseName'] ==
-                            element['courseName']) {
-                          percentage = element['percentage'];
-                          break;
+          body: SingleChildScrollView(
+            child: SizedBox(
+              height: 650,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: defaultPadding,
+                  ),
+                  Text("Select Language",
+                      style: Theme.of(context).textTheme.headline5),
+                  const SizedBox(
+                    height: defaultPadding,
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: defaultPadding * 3),
+                      itemCount: courses.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        int percentage = 0;
+                        print('Profile DATA LANGUAGE ${controller.scores}');
+                        if (controller.scores != null) {
+                          for (var element in controller.scores!) {
+                            if (courses[index]['courseName'] ==
+                                element['courseName']) {
+                              percentage = element['percentage'];
+                              break;
+                            }
+                          }
                         }
-                      }
-                    }
 
-                    return ChoiceCard(
-                      child: CircularScore(
-                        scorePercent: percentage,
-                      ),
-                      imgPosY: -100,
-                      imgeSrc: courses[index]['icon'],
-                      cardtext: courses[index]['courseName'],
-                      onpressed: () {
-                        print(questionController.chosenCourse.value);
-                        questionController.chosenCourse.value =
-                            courses[index]['courseName'];
-                        questionController.chosenCourseType.value =
-                            courses[index]['category'];
-                        context.router.push(ChooseTypeRoute(
-                            icon: courses[index]['icon'],
-                            path: courses[index]['courseName']));
+                        return ChoiceCard(
+                          child: CircularScore(
+                            scorePercent: percentage,
+                          ),
+                          imgPosY: -100,
+                          imgeSrc: courses[index]['icon'],
+                          cardtext: courses[index]['courseName'],
+                          onpressed: () {
+                            print(questionController.chosenCourse.value);
+                            questionController.chosenCourse.value =
+                                courses[index]['courseName'];
+                            questionController.chosenCourseType.value =
+                                courses[index]['category'];
+                            context.router.push(ChooseTypeRoute(
+                                icon: courses[index]['icon'],
+                                path: courses[index]['courseName']));
+                          },
+                        );
                       },
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const SizedBox(
-                      height: defaultPadding * 3,
-                    );
-                  },
-                ),
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(
+                          height: defaultPadding * 3,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           )),
     );
   }

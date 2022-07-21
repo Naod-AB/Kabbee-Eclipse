@@ -16,6 +16,7 @@ class ProfileController extends GetxController {
   // RxBool activeBtn = false.obs;
   // RxInt type = 0.obs;
   // RxInt stepperIndex = 0.obs;
+  RxBool isDarkMode = true.obs;
 
   RxBool x = true.obs;
   RxBool y = true.obs;

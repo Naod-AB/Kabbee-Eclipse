@@ -10,7 +10,8 @@ import 'package:quiz_app/ui/utils/theme.dart';
 
 AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
   return AppBar(
-    backgroundColor: appbarColor,
+    backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+    elevation: 0,
     title: CircleAvatar(
       child: iconUrl != null ? SvgPicture.asset(iconUrl) : SvgPicture.asset(''),
       backgroundColor: Colors.transparent,

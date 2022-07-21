@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
     print("the page is reloading on it login ");
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: 20), //SizeConfig.screenWidth * 0.05
@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
                 child: Text(
                   'Login',
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 20, //getProportionateScreenWidth(40),
                       fontWeight: FontWeight.bold),
                 ),
@@ -161,8 +161,11 @@ class LoginPage extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Colors.grey[500]!.withOpacity(0.5),
+                              // focusColor: Colors.orange,
+                              fillColor: Theme.of(context).shadowColor,
+                              // fillColor: Colors.grey[500]!.withOpacity(0.5),
                               border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
                                   borderRadius: BorderRadius.circular(15)),
                               suffixIcon: const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -173,9 +176,15 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
                               hintText: 'Enter email',
-                              hintStyle: kBodyText,
+                              hintStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Theme.of(context).primaryColor,
+                                  height: 1.5),
                             ),
-                            style: kBodyText,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Theme.of(context).primaryColor,
+                                height: 1.5),
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             obscureText: false,
@@ -193,8 +202,11 @@ class LoginPage extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.grey[500]!.withOpacity(0.5),
+                            focusColor: Colors.orange,
+                            fillColor: Theme.of(context).shadowColor,
+                            // fillColor: Colors.grey[500]!.withOpacity(0.5),
                             border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(15)),
                             suffixIcon: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -222,9 +234,15 @@ class LoginPage extends StatelessWidget {
                               // ),
                             ),
                             hintText: 'Enter Password',
-                            hintStyle: kBodyText,
+                            hintStyle: TextStyle(
+                                fontSize: 16,
+                                color: Theme.of(context).primaryColor,
+                                height: 1.5),
                           ),
-                          style: kBodyText,
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Theme.of(context).primaryColor,
+                              height: 1.5),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                           obscureText: authController.obsecure.value,
@@ -244,9 +262,11 @@ class LoginPage extends StatelessWidget {
                               left: 40), //SizeConfig.screenHeight * 0.08
                           child: Obx(
                             () => CheckboxListTile(
-                              title: const Text(
+                              title: Text(
                                 'Remember me',
-                                style: TextStyle(fontSize: 16, color: kWhite1),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Theme.of(context).primaryColor),
                               ),
                               value: authController.rememberMe.value,
                               onChanged: (value) {
@@ -259,7 +279,8 @@ class LoginPage extends StatelessWidget {
                               activeColor: kblue,
                               checkColor: kblack,
                               side: BorderSide(
-                                color: kWhite1, //your desire colour here
+                                color: Theme.of(context)
+                                    .primaryColor, //your desire colour here
                                 width: 1.5,
                               ),
                             ),
@@ -283,10 +304,12 @@ class LoginPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'Don`t have an account',
-                            style: kText,
-                          ),
+                          Text('Don`t have an account',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 16,
+                                height: 1.5,
+                              )),
                           const SizedBox(
                             width: 15,
                           ),
@@ -295,9 +318,13 @@ class LoginPage extends StatelessWidget {
                               // Get.to(() => const SignupEmail());
                               context.router.pushNamed('/signup');
                             },
-                            child: const Text(
+                            child: Text(
                               'Sign up',
-                              style: kColorText,
+                              style: TextStyle(
+                                  color: kblue,
+                                  fontSize: 16,
+                                  height: 1.5,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],

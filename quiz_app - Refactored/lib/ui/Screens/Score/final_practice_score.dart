@@ -87,7 +87,8 @@ class FinalScore extends StatelessWidget {
               Visibility(
                 visible: questionController.isEnabled.value,
                 child: ElevatedButton(
-                  child: customText('REVIEW', 20, false, false, primaryColor),
+                  child: customText(
+                      context, 'REVIEW', 20, false, false, primaryColor),
                   onPressed: () {
                     print(
                         ' reviewlist number ${questionController.questionApi!.length}');
@@ -101,7 +102,7 @@ class FinalScore extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15)),
                       side: const BorderSide(
                           color: Color.fromARGB(255, 255, 165, 0), width: 1.5),
-                      primary: Colors.transparent),
+                      primary: Color.fromARGB(0, 236, 13, 13)),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(15)),
@@ -112,7 +113,8 @@ class FinalScore extends StatelessWidget {
                   maintainAnimation: true,
                   maintainState: true,
                   child: ElevatedButton(
-                    child: customText('DONE', 20, false, false, primaryColor),
+                    child: customText(
+                        context, 'DONE', 20, false, false, primaryColor),
                     onPressed: () async {
                       print('Null error ${controller.userInfo.value!.id}');
 
