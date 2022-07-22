@@ -9,6 +9,7 @@ import 'package:quiz_app/ui/utils/theme.dart';
 class SignupEmail extends StatelessWidget {
   //final _formKey = GlobalKey<FormState>();
   // final Users user ;
+
   GlobalKey<FormFieldState> emailKey;
   TextEditingController controller;
   EmailValidator validator;
@@ -45,7 +46,7 @@ class SignupEmail extends StatelessWidget {
         Text(
           'Create account',
           style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onPrimary,
               fontSize: getProportionateScreenWidth(30), //40,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.30),
@@ -53,7 +54,7 @@ class SignupEmail extends StatelessWidget {
         Text(
           'please tell us more about you',
           style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onPrimary,
               fontSize: getProportionateScreenWidth(10), //20,
               fontWeight: FontWeight.w300,
               letterSpacing: 0.50),
@@ -82,7 +83,7 @@ class SignupEmail extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 // fillColor: Colors.grey[500]!.withOpacity(0.5),
-                fillColor: Theme.of(context).primaryColor,
+                fillColor: Theme.of(context).colorScheme.onSurface,
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 suffixIcon: const Padding(
@@ -94,9 +95,15 @@ class SignupEmail extends StatelessWidget {
                   ),
                 ),
                 hintText: 'Enter email',
-                hintStyle: kBodyText,
+                hintStyle: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    height: 1.5),
               ),
-              style: kBodyText,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  height: 1.5),
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               obscureText: false,

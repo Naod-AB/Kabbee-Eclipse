@@ -15,6 +15,7 @@ import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
 // import '../../../routes/router.gr.dart';
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
+import '../../utils/theme.dart';
 
 //bool isdarkthemeEnabled = false;
 class ProfileScreen extends GetView<ProfileController> {
@@ -125,19 +126,30 @@ class ProfileScreen extends GetView<ProfileController> {
                           context, 'Dark Mode', 18, true, false, primaryColor),
                       customText(context, 'Change theme', 13, false, false,
                           secondaryColor),
-                      Switch.adaptive(
-                        value: !controller.isDarkMode.value,
-                        activeColor: orangeColor,
-                        onChanged: (value) {
-                          !controller.isDarkMode.value;
-                          if (Get.isDarkMode) {
-                            Get.changeThemeMode(ThemeMode.light);
-                          } else {
-                            Get.changeThemeMode(ThemeMode.dark);
-                          }
-                          // isdarkthemeEnabled = changeTheme;
-                          // print('dark theme is $isdarkthemeEnabled');
-                        },
+                      Obx(
+                        () => Switch.adaptive(
+                          value: controller.isDarkMode.value,
+                          activeColor: orangeColor,
+                          onChanged: (value) {
+                            controller.isDarkMode.value =
+                                !controller.isDarkMode.value;
+
+                            Get.changeTheme(controller.isDarkMode.value
+                                ? Themes.darkMode
+                                : Themes.lightMode);
+
+                            // if (Get.isDarkMode) {
+                            //   print('change to light');
+                            //   // Get.changeThemeMode(ThemeMode.light);
+                            // } else {
+                            //   // print('dark $ThemeData()')
+                            //   // Get.changeThemeMode(ThemeMode.dark);
+                            //   print('change to dark ');
+                            // }
+                            // isdarkthemeEnabled = changeTheme;
+                            // print('dark theme is $isdarkthemeEnabled');
+                          },
+                        ),
                       ),
                       true),
                   buildDivider(context),

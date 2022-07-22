@@ -10,6 +10,7 @@ import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
@@ -48,7 +49,14 @@ class OneSignupPage extends StatelessWidget {
               children: [
                 Theme(
                   data: ThemeData(
-                      canvasColor: Theme.of(context).scaffoldBackgroundColor),
+                    canvasColor: Theme.of(context).scaffoldBackgroundColor,
+
+                    // primaryColor: ,
+                    colorScheme: Theme.of(context).colorScheme.copyWith(
+                          secondary: kblue,
+                          onSurface: Theme.of(context).shadowColor,
+                        ),
+                  ),
                   child: Expanded(
                     child: Obx(() => Stepper(
                             controlsBuilder:
