@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: Themes.lightMode,
         darkTheme: Themes.darkMode,
         themeMode:
-            controller.isDarkMode.value ? ThemeMode.light : ThemeMode.light,
+            controller.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
         initialBinding: ProfileBinding(),
         debugShowMaterialGrid: false,
       ),
