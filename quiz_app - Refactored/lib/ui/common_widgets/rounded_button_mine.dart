@@ -27,11 +27,15 @@ class RoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: isActive ? pColor : Colors.grey,
       ),
-      child: TextButton(
-        onPressed: pressed,
-        child: Text(
-          buttonName,
-          style: kBodyText.copyWith(fontWeight: FontWeight.bold, fontSize: 20),
+      child: Center(
+        child: TextButton(
+          onPressed: pressed,
+          child: Text(
+            buttonName,
+            textAlign: TextAlign.center,
+            style:
+                kBodyText.copyWith(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
         ),
       ),
     );

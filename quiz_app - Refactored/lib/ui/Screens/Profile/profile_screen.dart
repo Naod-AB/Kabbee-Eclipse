@@ -61,7 +61,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           false, secondaryColor),
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                       true,
                     ),
@@ -98,7 +98,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                 secondaryColor),
                             Icon(
                               Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.onBackground,
                             ),
                             true,
                           ),
@@ -168,9 +168,9 @@ class ProfileScreen extends GetView<ProfileController> {
                             primaryColor),
                         customText(context, 'Achievements', 13, false, false,
                             secondaryColor),
-                        const Icon(
+                        Icon(
                           Icons.arrow_forward_ios,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         true),
                   ),
@@ -189,9 +189,9 @@ class ProfileScreen extends GetView<ProfileController> {
                             primaryColor),
                         customText(context, 'kabbee recommend you to Visit', 13,
                             false, false, secondaryColor),
-                        const Icon(
+                        Icon(
                           Icons.view_carousel_outlined,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         true),
                   ),

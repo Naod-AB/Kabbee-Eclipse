@@ -44,7 +44,7 @@ class UsersListPage extends StatelessWidget {
               ),
               indicatorColor: kblue,
               labelColor: kblue,
-              unselectedLabelColor: Theme.of(context).primaryColor,
+              unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
               tabs: [
                 Tab(
                   text: 'ACTIVE',
