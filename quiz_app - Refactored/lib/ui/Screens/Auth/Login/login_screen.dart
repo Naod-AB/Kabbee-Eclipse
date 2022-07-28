@@ -124,27 +124,24 @@ class LoginPage extends StatelessWidget {
     print("the page is reloading on it login ");
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: 20), //SizeConfig.screenWidth * 0.05
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20 //SizeConfig.screenHeight * 0.04,
+              SizedBox(height: 60 //SizeConfig.screenHeight * 0.04,
                   ),
               Center(
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 20, //getProportionateScreenWidth(40),
-                      fontWeight: FontWeight.bold),
-                ),
+                child: Text('LOGIN',
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                        fontSize: 25,
+                        color: Theme.of(context).colorScheme.onBackground)),
               ),
               // ),
               const SizedBox(
-                height: 15,
+                height: 40,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -168,8 +165,10 @@ class LoginPage extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                               filled: true,
+                              labelText: 'Enter email',
+                              labelStyle: TextStyle(fontSize: 16),
                               // focusColor: Colors.orange,
-                              fillColor: Theme.of(context).shadowColor,
+                              fillColor: Theme.of(context).colorScheme.tertiary,
                               // fillColor: Colors.grey[500]!.withOpacity(0.5),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide.none,
@@ -182,21 +181,23 @@ class LoginPage extends StatelessWidget {
                                   color: kblue,
                                 ),
                               ),
-                              hintText: 'Enter email',
-                              hintStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Theme.of(context).primaryColor,
-                                  height: 1.5),
+                              // hintText: 'Enter email',
+                              // hintStyle: TextStyle(
+                              //     fontSize: 16,
+                              //     color:
+                              //         Theme.of(context).colorScheme.onSecondary,
+                              //     height: 1.5),
                             ),
                             style: TextStyle(
                                 fontSize: 16,
-                                color: Theme.of(context).primaryColor,
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
                                 height: 1.5),
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             obscureText: false,
                           )),
-                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
+                      SizedBox(height: 25 //SizeConfig.screenHeight * 0.02,
                           ),
                       Obx(
                         () => TextFormField(
@@ -209,8 +210,10 @@ class LoginPage extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             filled: true,
+                            labelText: 'Enter password',
+                            labelStyle: TextStyle(fontSize: 16),
                             focusColor: Colors.orange,
-                            fillColor: Theme.of(context).shadowColor,
+                            fillColor: Theme.of(context).colorScheme.tertiary,
                             // fillColor: Colors.grey[500]!.withOpacity(0.5),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
@@ -240,60 +243,60 @@ class LoginPage extends StatelessWidget {
                               //   color: kblue,
                               // ),
                             ),
-                            hintText: 'Enter Password',
-                            hintStyle: TextStyle(
-                                fontSize: 16,
-                                color: Theme.of(context).primaryColor,
-                                height: 1.5),
+                            // hintText: 'Enter Password',
+                            // hintStyle: TextStyle(
+                            //     fontSize: 16,
+                            //     color:
+                            //         Theme.of(context).colorScheme.onSecondary,
+                            //     height: 1.5),
                           ),
                           style: TextStyle(
                               fontSize: 16,
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.onSecondary,
                               height: 1.5),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                           obscureText: authController.obsecure.value,
                         ),
                       ),
-                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
-                          //width:SizeConfig.screenHeight *0.5 //25,
-                          ),
+
                       Obx(
                         () => Text(
                           authController.error.value,
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 40), //SizeConfig.screenHeight * 0.08
-                          child: Obx(
-                            () => CheckboxListTile(
-                              title: Text(
-                                'Remember me',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Theme.of(context).primaryColor),
-                              ),
-                              value: authController.rememberMe.value,
-                              onChanged: (value) {
-                                authController.rememberMe.value = value!;
-                                // setState(() {
-                                //   rememberMe = value!;
-                                // });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: kblue,
-                              checkColor: kblack,
-                              side: BorderSide(
-                                color: Theme.of(context)
-                                    .primaryColor, //your desire colour here
-                                width: 1.5,
-                              ),
-                            ),
-                          )),
+                      Obx(
+                        () => CheckboxListTile(
+                          contentPadding: EdgeInsets.zero,
+                          // tileColor: Colors.blue,
+                          title: Text(
+                            'Remember me',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary),
+                          ),
+                          value: authController.rememberMe.value,
+                          onChanged: (value) {
+                            authController.rememberMe.value = value!;
+                            // setState(() {
+                            //   rememberMe = value!;
+                            // });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: kblue,
+                          checkColor: kblack,
+                          side: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondary, //your desire colour here
+                            width: 1.5,
+                          ),
+                        ),
+                      ),
                       SizedBox(
-                          height: 15 //SizeConfig.screenHeight * 0.03, //25,
+                          height: 20 //SizeConfig.screenHeight * 0.03, //25,
                           ),
                       Obx(() => button.RoundedButton(
                           buttonName: authController.isLoading.value
@@ -320,9 +323,10 @@ class LoginPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Don`t have an account',
+                          Text('Don`t have an account ?',
                               style: TextStyle(
-                                color: Theme.of(context).primaryColor,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
                                 fontSize: 16,
                                 height: 1.5,
                               )),

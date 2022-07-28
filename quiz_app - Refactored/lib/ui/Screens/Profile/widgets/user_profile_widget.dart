@@ -34,7 +34,7 @@ Widget customText(BuildContext context, String text, double size, bool isBold,
     textAlign: TextAlign.left,
     style: TextStyle(
         height: 1,
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.onBackground,
         fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
         fontSize: size),
   );
@@ -147,7 +147,7 @@ Widget buildTileGroup(Widget tiles, BuildContext context) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: Theme.of(context).shadowColor,
+      color: Theme.of(context).colorScheme.tertiary,
     ),
     child: tiles,
   );
@@ -164,7 +164,6 @@ Widget buildTile(IconData? leadingIcon, Widget? title, Widget? subtitle,
         borderRadius: BorderRadius.circular(0),
       ),
       title: title,
-      // tileColor: Color.fromRGBO(30, 30, 30, 1),
       subtitle: subtitle,
       leading: Container(
         padding: const EdgeInsets.all(5),
@@ -210,7 +209,7 @@ Widget userInfoTiles(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: Theme.of(context).shadowColor,
+      color: Theme.of(context).colorScheme.tertiary,
     ),
     padding:
         padding ? const EdgeInsets.only(left: 10, right: 10) : EdgeInsets.zero,
@@ -222,7 +221,8 @@ Widget userInfoTiles(
       title: Text(
         isPassword ? "." * title.length : title,
         style: TextStyle(
-            color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500),
+            color: Theme.of(context).colorScheme.onBackground,
+            fontWeight: FontWeight.w500),
       ),
     ),
   );
@@ -232,15 +232,19 @@ Widget buildTextField(BuildContext context, String hint, IconData? icon,
     TextEditingController ctrl, bool ispassword, Widget? suffix) {
   return TextFormField(
     obscureText: ispassword ? controller.hidePassword.value : false,
-    style: TextStyle(color: Theme.of(context).primaryColor),
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.onBackground,
+    ),
     controller: ctrl,
     onChanged: (value) {
       if (value.trimLeft().isNotEmpty) controller.isBtnNull.value = true;
     },
     decoration: InputDecoration(
-        fillColor: Theme.of(context).shadowColor,
+        fillColor: Theme.of(context).colorScheme.tertiary,
         filled: true,
-        hintStyle: TextStyle(color: Theme.of(context).primaryColor),
+        hintStyle: TextStyle(
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
         focusColor: orangeColor,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -376,7 +380,10 @@ Widget buildUpdateButton(
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-            controller.isBtnNull.value ? orangeColor : Colors.grey[300]),
+          controller.isBtnNull.value
+              ? orangeColor
+              : orangeColor.withOpacity(.1),
+        ),
         padding: MaterialStateProperty.all(const EdgeInsets.all(18)),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -388,7 +395,14 @@ Widget buildUpdateButton(
             await updateProfile(key!, context);
           }
         : null,
-    child: customText(context, text, 20, false, false, primaryColor),
+    child: customText(
+      context,
+      text,
+      20,
+      false,
+      false,
+      Theme.of(context).colorScheme.onBackground,
+    ),
   );
 }
 
@@ -405,7 +419,7 @@ Widget editProfilePic(context) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(15),
-      color: Theme.of(context).shadowColor,
+      color: Theme.of(context).colorScheme.tertiary,
     ),
     child: Padding(
       padding: const EdgeInsets.all(10.0),
@@ -453,7 +467,8 @@ Widget editProfilePic(context) {
             },
             child: Text(
               'Upload',
-              style: TextStyle(color: Theme.of(context).primaryColor),
+              style:
+                  TextStyle(color: Theme.of(context).colorScheme.onBackground),
             ),
             style: ElevatedButton.styleFrom(
               primary: Theme.of(context).scaffoldBackgroundColor,
@@ -630,7 +645,9 @@ Widget buildTextFieldP(
     //   return null;
     // },
     obscureText: ispassword ? controller.hidePassword.value : false,
-    style: TextStyle(color: Theme.of(context).primaryColor),
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.onBackground,
+    ),
     controller: ctrl,
     onChanged: (value) {
       ispassword && !validateStructure(value)
@@ -644,7 +661,7 @@ Widget buildTextFieldP(
     decoration: InputDecoration(
         fillColor: Theme.of(context).shadowColor,
         filled: true,
-        hintStyle: TextStyle(color: Theme.of(context).primaryColor),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
         // focusColor: orangeColor,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -677,7 +694,7 @@ Widget buildDashBoardTiles(
     height: 140,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        color: Theme.of(context).shadowColor,
+        color: Theme.of(context).colorScheme.tertiary,
         border: Border.all(color: kblue, width: 3)),
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -691,7 +708,7 @@ Widget buildDashBoardTiles(
               Text(
                 'TOTAL',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.onBackground,
                   fontWeight: FontWeight.bold,
                   fontSize: size,
                 ),
@@ -699,7 +716,7 @@ Widget buildDashBoardTiles(
               Text(
                 text,
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.onBackground,
                   fontWeight: FontWeight.bold,
                   fontSize: size,
                 ),
@@ -709,7 +726,7 @@ Widget buildDashBoardTiles(
           Text(
             totalNumber,
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onBackground,
               fontWeight: FontWeight.bold,
               fontSize: totalNumberSize,
             ),
@@ -775,7 +792,7 @@ Widget buildUsersTiles(
               position: PopupMenuPosition.under,
               icon: Icon(
                 Icons.more_horiz,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
               color: kblue,
               itemBuilder: (context) => [
@@ -839,14 +856,14 @@ Widget buildlanguageTiles(
         trailing: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: Theme.of(context).colorScheme.background,
             height: 30,
             width: 60,
             child: Center(
                 child: Text(
               questionNumber.toString(),
               style: TextStyle(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
             )),
           ),

@@ -60,7 +60,7 @@ class SignupEmail extends StatelessWidget {
               letterSpacing: 0.50),
         ),
         const SizedBox(
-          height: 15,
+          height: 40,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,10 +82,13 @@ class SignupEmail extends StatelessWidget {
               },
               decoration: InputDecoration(
                 filled: true,
-                // fillColor: Colors.grey[500]!.withOpacity(0.5),
-                fillColor: Theme.of(context).colorScheme.onSurface,
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                labelText: 'Enter email',
+                labelStyle: TextStyle(fontSize: 16),
+                fillColor: Theme.of(context).colorScheme.surface,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
                 suffixIcon: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Icon(
@@ -94,11 +97,11 @@ class SignupEmail extends StatelessWidget {
                     color: kblue,
                   ),
                 ),
-                hintText: 'Enter email',
-                hintStyle: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    height: 1.5),
+                // hintText: 'Enter email',
+                // hintStyle: TextStyle(
+                //     fontSize: 16,
+                //     color: Theme.of(context).colorScheme.onPrimary,
+                //     height: 1.5),
               ),
               style: TextStyle(
                   fontSize: 16,

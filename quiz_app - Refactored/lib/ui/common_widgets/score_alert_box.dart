@@ -24,7 +24,8 @@ class ScoreAlertBox extends StatelessWidget {
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 18),
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 18),
               ),
             ],
           )),

@@ -39,8 +39,9 @@ class OneSignupPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        elevation: 0,
       ),
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Form(
         key: formKey,
         child: Container(
@@ -50,12 +51,7 @@ class OneSignupPage extends StatelessWidget {
                 Theme(
                   data: ThemeData(
                     canvasColor: Theme.of(context).scaffoldBackgroundColor,
-
-                    // primaryColor: ,
-                    colorScheme: Theme.of(context).colorScheme.copyWith(
-                          secondary: kblue,
-                          onSurface: Theme.of(context).shadowColor,
-                        ),
+                    colorScheme: Theme.of(context).colorScheme.copyWith(),
                   ),
                   child: Expanded(
                     child: Obx(() => Stepper(
@@ -80,7 +76,9 @@ class OneSignupPage extends StatelessWidget {
                                   title: Text(
                                     "Email",
                                     style: TextStyle(
-                                        color: Theme.of(context).primaryColor),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
                                   ),
                                   content: Center(
                                       child: SignupEmail(
@@ -99,10 +97,13 @@ class OneSignupPage extends StatelessWidget {
                                       : StepState.complete,
                                   isActive:
                                       authController.signUpIndex.value >= 1,
-                                  title: Text("Password",
-                                      style: TextStyle(
-                                          color:
-                                              Theme.of(context).primaryColor)),
+                                  title: Text(
+                                    "Password",
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
                                   content: Center(
                                       child: SignupPassword(
                                           user: user,
@@ -125,10 +126,13 @@ class OneSignupPage extends StatelessWidget {
                                       : StepState.complete,
                                   isActive:
                                       authController.signUpIndex.value >= 2,
-                                  title: Text("Full Name",
-                                      style: TextStyle(
-                                          color:
-                                              Theme.of(context).primaryColor)),
+                                  title: Text(
+                                    "Full Name",
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
                                   content: //Container()
                                       SignupName(
                                     firstNameController: profilecontroller
@@ -165,7 +169,7 @@ class OneSignupPage extends StatelessWidget {
                               }),
                         ),
                       SizedBox(
-                        width: SizeConfig.screenWidth * 0.01,
+                        width: SizeConfig.screenWidth * 0.05,
                       ),
                       Expanded(
                         child: RoundedButton(

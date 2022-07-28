@@ -35,7 +35,7 @@ class AdminLanguage extends StatelessWidget {
               print(language["icon"]);
 
               return Card(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildlanguageTiles(
                   SvgPicture.asset(
                     language["icon"],

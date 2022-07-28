@@ -55,7 +55,7 @@ class DashboardPage extends GetView<ProfileController> {
                         false, secondaryColor),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                     true,
                   ),
@@ -78,7 +78,7 @@ class DashboardPage extends GetView<ProfileController> {
                         false, secondaryColor),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                     true,
                   ),

@@ -117,8 +117,8 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               left: textPosx,
               bottom: textPosy,
-              child:
-                  Text(cardtext, style: Theme.of(context).textTheme.headline6)),
+              child: Text(cardtext.toUpperCase(),
+                  style: Theme.of(context).textTheme.headline6)),
           Positioned(
               left: textPosx, top: textPosy! - 10, child: child ?? Container())
         ],
