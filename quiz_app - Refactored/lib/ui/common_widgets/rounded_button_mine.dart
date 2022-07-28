@@ -14,7 +14,7 @@ class RoundedButton extends StatelessWidget {
     required this.pressed,
   }) : super(key: key);
   bool isActive;
-  final String buttonName;
+  final dynamic buttonName;
   final Callback pressed;
 
   @override
@@ -27,13 +27,7 @@ class RoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: isActive ? pColor : Colors.grey,
       ),
-      child: TextButton(
-        onPressed: pressed,
-        child: Text(
-          buttonName,
-          style: kBodyText.copyWith(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-      ),
+      child: TextButton(onPressed: pressed, child: buttonName),
     );
   }
 }

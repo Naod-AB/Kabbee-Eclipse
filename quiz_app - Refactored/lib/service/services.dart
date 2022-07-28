@@ -127,7 +127,8 @@ Future<List<Users>> fetchAllUsers() async {
   final response =
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
-    return parseUsers(jsonDecode(response.body)["_embedded"]["users"]);
+    print(jsonDecode(response.body)["_embedded"]["users"].toString());
+    return parseUsers(response.body);
   } else {
     throw Exception('Failed to fetch Users');
   }
@@ -135,7 +136,7 @@ Future<List<Users>> fetchAllUsers() async {
 
 // Parse Users
 List<Users> parseUsers(String responseBody) {
-  final parsed = jsonDecode(responseBody)["_embedded"]["users"][0];
+  final parsed = jsonDecode(responseBody)["_embedded"]["users"];
 
   return parsed.map<Users>((json) => Users.fromJson(json)).toList();
 }

@@ -101,6 +101,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
+import 'package:email_validator/email_validator.dart';
 
 // ;
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -112,7 +113,7 @@ import 'package:quiz_app/ui/utils/size_config.dart';
 
 class LoginPage extends StatelessWidget {
   AuthController authController = Get.put(AuthController());
-
+  var isLoading = true;
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
@@ -156,8 +157,14 @@ class LoginPage extends StatelessWidget {
                             controller:
                                 authController.loginEmailController.value,
                             validator: (value) {
-                              if (value!.isEmpty)
-                                return "Email canot be empty ";
+                              if (value!.isEmpty) {
+                                return "Email cannot be empty ";
+                              } else {
+                                if (!EmailValidator.validate(value)) {
+                                  // print(value);
+                                  return "Enter a valid email";
+                                }
+                              }
                             },
                             decoration: InputDecoration(
                               filled: true,
@@ -288,15 +295,24 @@ class LoginPage extends StatelessWidget {
                       SizedBox(
                           height: 15 //SizeConfig.screenHeight * 0.03, //25,
                           ),
-                      button.RoundedButton(
-                          buttonName: 'Login',
+                      Obx(() => button.RoundedButton(
+                          buttonName: authController.isLoading.value
+                              ? CircularProgressIndicator(
+                                  color: Colors.white,
+                                )
+                              : Text(
+                                  "Login",
+                                  style: kBodyText.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                           pressed: () => authController.authenticateUser(
                               context: context,
                               email: authController.loginEmailController.value,
                               emailKey: emailKey,
                               passKey: passKey,
                               password: authController
-                                  .loginPasswordController.value)),
+                                  .loginPasswordController.value))),
                       SizedBox(height: 15), //SizeConfig.screenHeight * 0.03
                       SizedBox(
                         width: 50, //SizeConfig.screenWidth * 0.1,

@@ -20,6 +20,7 @@ class AuthController extends GetxController {
   List<Users> allusers = [];
   RxBool obsecure = true.obs;
   RxBool rememberMe = false.obs;
+  RxBool isLoading = false.obs;
   RxString error = "".obs;
   RxInt signUpIndex = 0.obs;
   late Box box1;
@@ -81,21 +82,46 @@ class AuthController extends GetxController {
       required GlobalKey<FormFieldState> passKey,
       required TextEditingController email,
       required TextEditingController password}) async {
+    isLoading.value = true;
+    print(isLoading.value);
     var pass = password.text.trim();
     var emails = email.text.trim().toLowerCase();
-
+    List<Users> users = await fetchAllUsers();
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
-      controller.userInfo.value = await fetchUser(emails);
-      print(controller.userInfo.value!.password);
-      print('You are looking for ${controller.userInfo.value!.id}');
-      controller.firstName.value =
-          controller.userInfo.value!.firstName.toString().toCapitalized();
-      controller.lastName.value =
-          controller.userInfo.value!.lastName.toString().toCapitalized();
-      controller.password.value =
-          controller.userInfo.value!.password.toString();
-      controller.gender.value =
-          controller.userInfo.value!.gender == 'Male' ? true : false;
+      print("email and pasword validated ");
+      //controller.userInfo.value = await fetchUser(emails);
+      var found = false;
+      for (var user in users) {
+        print(user.email);
+        if (user.email == email.text) {
+          print(user.email);
+          print("email found lets check the password");
+
+          if (user.password == password.text) {
+            controller.userInfo.value = user;
+            found = true;
+            break;
+          } else {
+            error.value = "Email address or Password is incorrect";
+            isLoading.value = false;
+          }
+        }
+      }
+      if (found == true) {
+        print(controller.userInfo.value!.password);
+        print('You are looking for ${controller.userInfo.value!.id}');
+        controller.firstName.value =
+            controller.userInfo.value!.firstName.toString().toCapitalized();
+        controller.lastName.value =
+            controller.userInfo.value!.lastName.toString().toCapitalized();
+        controller.password.value =
+            controller.userInfo.value!.password.toString();
+        controller.gender.value =
+            controller.userInfo.value!.gender == 'Male' ? true : false;
+      } else {
+        error.value = "Email address or Password is incorrect";
+        isLoading.value = false;
+      }
 
       if (controller.userInfo.value != null &&
           controller.password.value == pass) {
@@ -115,12 +141,14 @@ class AuthController extends GetxController {
         error.value = "";
         print('Profile DATA  AUTH ${controller.userInfo.value!.email}');
         print('after logout email - auth ${controller.userInfo.value!.email}');
+        isLoading.value = false;
         context.router.pushNamed('/category');
 
         print('after logout email --- ${controller.userInfo.value!.email}');
       }
     } else {
       error.value = "Email address or Password is incorrect";
+      isLoading.value = false;
     }
   }
 }
