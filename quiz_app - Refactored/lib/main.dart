@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/service/english.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => GetMaterialApp.router(
+        translations: translate(),
         title: 'Quiz APP',
         smartManagement: SmartManagement.keepFactory,
         routerDelegate: _appRouter.delegate(),

@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 60 //SizeConfig.screenHeight * 0.04,
                   ),
               Center(
-                child: Text('LOGIN',
+                child: Text('LOGIN'.tr,
                     style: Theme.of(context).textTheme.headline6!.copyWith(
                         fontSize: 25,
                         color: Theme.of(context).colorScheme.onBackground)),
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             decoration: InputDecoration(
                               filled: true,
-                              labelText: 'Enter email',
+                              labelText: 'Enter email'.tr,
                               labelStyle: TextStyle(fontSize: 16),
                               // focusColor: Colors.orange,
                               fillColor: Theme.of(context).colorScheme.tertiary,
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           decoration: InputDecoration(
                             filled: true,
-                            labelText: 'Enter password',
+                            labelText: 'Enter password'.tr,
                             labelStyle: TextStyle(fontSize: 16),
                             focusColor: Colors.orange,
                             fillColor: Theme.of(context).colorScheme.tertiary,
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                           contentPadding: EdgeInsets.zero,
                           // tileColor: Colors.blue,
                           title: Text(
-                            'Remember me',
+                            'Remember me'.tr,
                             style: TextStyle(
                                 fontSize: 16,
                                 color:
@@ -221,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
                                   color: Colors.white,
                                 )
                               : Text(
-                                  "Login",
+                                  "Login".tr,
                                   style: kBodyText.copyWith(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
@@ -240,7 +240,7 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Don`t have an account ?',
+                          Text('Don`t have an account ?'.tr,
                               style: TextStyle(
                                 color:
                                     Theme.of(context).colorScheme.onBackground,
@@ -256,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                               context.router.pushNamed('/signup');
                             },
                             child: Text(
-                              'Sign up',
+                              'Sign up'.tr,
                               style: TextStyle(
                                   color: kblue,
                                   fontSize: 16,
@@ -303,7 +303,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //   width: 25,
                                 // ),
                                 Text(
-                                  'select language'.tr,
+                                  'select language'.tr, //style: TextStyle(),
                                   style: TextStyle(color: Colors.white),
                                 )
                               ],

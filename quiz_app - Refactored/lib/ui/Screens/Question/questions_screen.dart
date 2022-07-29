@@ -202,8 +202,12 @@ class QuestionsScreen extends StatelessWidget {
                                                                       as int;
 
                                                               if (
-                                                                // ignore: unrelated_type_equality_checks
-                                                                qController.qnIndex == qController.questionApi!.length) {
+                                                                  // ignore: unrelated_type_equality_checks
+                                                                  qController
+                                                                          .qnIndex ==
+                                                                      qController
+                                                                          .questionApi!
+                                                                          .length) {
                                                                 qController.scrollController.value.animateTo(
                                                                     qController
                                                                         .scrollController
@@ -369,13 +373,8 @@ class QuestionsScreen extends StatelessWidget {
                                                 BorderRadius.circular(15)),
                                         primary: const Color.fromARGB(
                                             255, 255, 165, 0)),
-<<<<<<< HEAD
-                                    child: customText('DONE'.tr, 20, false,
-                                        false, primaryColor),
-=======
                                     child: customText(context, 'DONE', 20,
                                         false, false, primaryColor),
->>>>>>> a5dc99aa208c51874002318246868c0b43011fac
                                   )
                                 : Container(),
                           ),
