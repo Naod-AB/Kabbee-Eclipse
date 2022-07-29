@@ -472,8 +472,8 @@ class QuestionsScreen extends StatelessWidget {
                                                 BorderRadius.circular(15)),
                                         primary: const Color.fromARGB(
                                             255, 255, 165, 0)),
-                                    child: customText(
-                                        'DONE', 20, false, false, primaryColor),
+                                    child: customText('DONE'.tr, 20, false,
+                                        false, primaryColor),
                                   )
 
                                 // ? const RoundedButton(

@@ -18,7 +18,7 @@ class MyScoresScreen extends GetView<ProfileController> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: customText('My Scores', 18, false, false, primaryColor),
+        title: customText('My Scores'.tr, 18, false, false, primaryColor),
         centerTitle: false,
       ),
       backgroundColor: Colors.black,
@@ -29,8 +29,8 @@ class MyScoresScreen extends GetView<ProfileController> {
                   (data) => data['courseType'] == null,
                 )
             ? ScoreAlertBox(
-                title: 'Your score list is Empty !',
-                text: 'Do Some Exams and check your results here.')
+                title: 'Your score list is Empty !'.tr,
+                text: 'Do Some Exams and check your results here.'.tr)
             : Expanded(
                 child: GroupedListView<dynamic, String>(
                   elements: controller.scores!,
@@ -44,7 +44,7 @@ class MyScoresScreen extends GetView<ProfileController> {
                     );
                   },
                   itemBuilder: (context, element) {
-                    colorCode = element['percentage'];
+                    colorCode = element['percentage'.tr];
                     // print(colorCode.runtimeType);
 
                     return Stack(
@@ -56,9 +56,9 @@ class MyScoresScreen extends GetView<ProfileController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                customText(element['courseName'], 19, false,
+                                customText(element['courseName'.tr], 19, false,
                                     false, primaryColor),
-                                customText('${element['percentage']} %', 19,
+                                customText('${element['percentage'.tr]} %', 19,
                                     true, false, primaryColor),
                               ],
                             ),

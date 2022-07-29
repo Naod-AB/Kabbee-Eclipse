@@ -41,7 +41,7 @@ class ProfileScreen extends GetView<ProfileController> {
             //  Personal section
 
             profileCardContent(context),
-            customText('Profile', 20, false, false, primaryColor),
+            customText('Profile'.tr, 20, false, false, primaryColor),
             const SizedBox(height: 15),
 
             buildTileGroup(
@@ -53,8 +53,8 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                       Icons.person,
-                      customText('Personal', 18, true, false, primaryColor),
-                      customText('View and update profile', 13, false, false,
+                      customText('Personal'.tr, 18, true, false, primaryColor),
+                      customText('View and update profile'.tr, 13, false, false,
                           secondaryColor),
                       const Icon(
                         Icons.arrow_forward_ios,
@@ -75,7 +75,8 @@ class ProfileScreen extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  customText('Admin Settings', 20, false, false, primaryColor),
+                  customText(
+                      'Admin Settings'.tr, 20, false, false, primaryColor),
                   const SizedBox(height: 15),
                   buildTileGroup(
                     Column(
@@ -88,9 +89,9 @@ class ProfileScreen extends GetView<ProfileController> {
                           child: buildTile(
                             Icons.dashboard,
                             customText(
-                                'Dashboard', 18, true, false, primaryColor),
-                            customText(
-                                'Statistics', 13, false, false, secondaryColor),
+                                'Dashboard'.tr, 18, true, false, primaryColor),
+                            customText('Statistics'.tr, 13, false, false,
+                                secondaryColor),
                             const Icon(
                               Icons.arrow_forward_ios,
                               color: Colors.white,
@@ -142,9 +143,10 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.celebration,
-                        customText('My Scores', 18, true, false, primaryColor),
                         customText(
-                            'Achievements', 13, false, false, secondaryColor),
+                            'My Scores'.tr, 18, true, false, primaryColor),
+                        customText('Achievements'.tr, 13, false, false,
+                            secondaryColor),
                         const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
@@ -162,10 +164,10 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.recommend_outlined,
-                        customText(
-                            'Recommendations', 18, true, false, primaryColor),
-                        customText('kabbee recommend you to Visit', 13, false,
-                            false, secondaryColor),
+                        customText('Recommendations'.tr, 18, true, false,
+                            primaryColor),
+                        customText('kabbee recommend you to Visit'.tr, 13,
+                            false, false, secondaryColor),
                         const Icon(
                           Icons.view_carousel_outlined,
                           color: Colors.white,
@@ -178,18 +180,17 @@ class ProfileScreen extends GetView<ProfileController> {
                       showCupertinoDialog<void>(
                         context: context,
                         builder: (BuildContext context) => CupertinoAlertDialog(
-                          title: const Text('Logging Out'),
-                          content:
-                              const Text('Are You sure you want to log out?'),
+                          title: Text('Logging Out'.tr),
+                          content: Text('Are You sure you want to log out?'.tr),
                           actions: <CupertinoDialogAction>[
                             CupertinoDialogAction(
-                              child: const Text('No'),
+                              child: Text('No'.tr),
                               onPressed: () {
                                 context.router.pop();
                               },
                             ),
                             CupertinoDialogAction(
-                              child: const Text('Yes'),
+                              child: Text('Yes'.tr),
                               isDestructiveAction: true,
                               onPressed: () {
                                 // context.router.removeUntil(
@@ -207,8 +208,8 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.exit_to_app,
-                        customText('Log Out', 18, true, false, primaryColor),
-                        customText('Exit from the application', 13, false,
+                        customText('Log Out'.tr, 18, true, false, primaryColor),
+                        customText('Exit from the application'.tr, 13, false,
                             false, secondaryColor),
                         null,
                         true),

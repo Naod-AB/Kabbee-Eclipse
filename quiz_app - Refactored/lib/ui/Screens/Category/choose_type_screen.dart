@@ -42,7 +42,7 @@ class ChooseTypePage extends StatelessWidget {
               const SizedBox(
                 height: defaultPadding,
               ),
-              Text("Select Type ",
+              Text("Select Type ".tr,
                   style: Theme.of(context).primaryTextTheme.headline1),
               Expanded(
                   child: ListView(
@@ -53,7 +53,7 @@ class ChooseTypePage extends StatelessWidget {
                   ChoiceCard(
                     imgPosY: -110,
                     imgeSrc: "assets/icons/Practice_test.svg",
-                    cardtext: "Practice Test",
+                    cardtext: "Practice Test".tr,
                     onpressed: () async {
                       String ptype = "PRACTICE";
                       questionController.questionApi =
@@ -77,7 +77,7 @@ class ChooseTypePage extends StatelessWidget {
                   ChoiceCard(
                     imgPosY: -110,
                     imgeSrc: "assets/icons/exam.svg",
-                    cardtext: "Evalution Exam",
+                    cardtext: "Evalution Exam".tr,
                     onpressed: () {
                       quizAlertBox(
                           context,

@@ -106,18 +106,35 @@ import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:quiz_app/service/services.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
-class LoginPage extends StatelessWidget {
+import '../Controllers/lang_controller.dart';
+
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   AuthController authController = Get.put(AuthController());
 
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
+
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
 
+  //String? valueChoose;
+  dynamic dropdownValue = "Menu one";
+
+  String? SelectedValue;
+
   @override
+  MyController myController = Get.put(MyController());
+
   Widget build(BuildContext context) {
+    print('Value');
     String selam = 'selam@gmail.com';
     //authController.getdata(context);
     print("the page is reloading on it login ");
@@ -134,7 +151,7 @@ class LoginPage extends StatelessWidget {
                   ),
               Center(
                 child: Text(
-                  'Login',
+                  'login'.tr,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20, //getProportionateScreenWidth(40),
@@ -157,7 +174,7 @@ class LoginPage extends StatelessWidget {
                                 authController.loginEmailController.value,
                             validator: (value) {
                               if (value!.isEmpty)
-                                return "Email canot be empty ";
+                                return "Email canot be empty ".tr;
                             },
                             decoration: InputDecoration(
                               filled: true,
@@ -172,7 +189,7 @@ class LoginPage extends StatelessWidget {
                                   color: kblue,
                                 ),
                               ),
-                              hintText: 'Enter email',
+                              hintText: 'enter email'.tr,
                               hintStyle: kBodyText,
                             ),
                             style: kBodyText,
@@ -189,7 +206,7 @@ class LoginPage extends StatelessWidget {
                               authController.loginPasswordController.value,
                           validator: (value) {
                             if (value!.isEmpty)
-                              return "Password canot be empty";
+                              return "Password canot be empty".tr;
                           },
                           decoration: InputDecoration(
                             filled: true,
@@ -221,7 +238,7 @@ class LoginPage extends StatelessWidget {
                               //   color: kblue,
                               // ),
                             ),
-                            hintText: 'Enter Password',
+                            hintText: 'enter password'.tr,
                             hintStyle: kBodyText,
                           ),
                           style: kBodyText,
@@ -244,8 +261,8 @@ class LoginPage extends StatelessWidget {
                               left: 40), //SizeConfig.screenHeight * 0.08
                           child: Obx(
                             () => CheckboxListTile(
-                              title: const Text(
-                                'Remember me',
+                              title: Text(
+                                'remember_me'.tr,
                                 style: TextStyle(fontSize: 16, color: kWhite1),
                               ),
                               value: authController.rememberMe.value,
@@ -268,14 +285,18 @@ class LoginPage extends StatelessWidget {
                           height: 15 //SizeConfig.screenHeight * 0.03, //25,
                           ),
                       button.RoundedButton(
-                          buttonName: 'Login',
-                          pressed: () => authController.authenticateUser(
-                              context: context,
-                              email: authController.loginEmailController.value,
-                              emailKey: emailKey,
-                              passKey: passKey,
-                              password: authController
-                                  .loginPasswordController.value)),
+                          buttonName: 'login'.tr,
+                          pressed: () {
+                            authController.authenticateUser(
+                                context: context,
+                                email:
+                                    authController.loginEmailController.value,
+                                emailKey: emailKey,
+                                passKey: passKey,
+                                password: authController
+                                    .loginPasswordController.value);
+                            print('login is pressed');
+                          }),
                       SizedBox(height: 15), //SizeConfig.screenHeight * 0.03
                       SizedBox(
                         width: 50, //SizeConfig.screenWidth * 0.1,
@@ -284,7 +305,7 @@ class LoginPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Don`t have an account',
+                            'don`t have an account'.tr,
                             style: kText,
                           ),
                           const SizedBox(
@@ -295,13 +316,198 @@ class LoginPage extends StatelessWidget {
                               // Get.to(() => const SignupEmail());
                               context.router.pushNamed('/signup');
                             },
-                            child: const Text(
-                              'Sign up',
+                            child: Text(
+                              'sign up'.tr,
                               style: kColorText,
                             ),
                           ),
+
+                          //DropdownButton(items: [], onChanged: () ,)
                         ],
                       ),
+
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        "select language".tr,
+                        style: TextStyle(
+                          fontSize: 16,
+                          //fontFamily:
+                          //fontFamily: Roboto,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        width: 250,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 3.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            border: Border.all(color: kblue, width: 1.5)),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton(
+                            hint: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.language,
+                                  color: kblue,
+                                ),
+                                // SizedBox(
+                                //   width: 25,
+                                // ),
+                                Text(
+                                  'select language'.tr,
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                            isExpanded: true,
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: 30,
+                              color: kblue,
+                            ),
+                            dropdownColor: Color.fromARGB(255, 39, 37, 37),
+                            value: '${myController.langValue.value}',
+                            items: Language.languageList()
+                                .map((lang) => DropdownMenuItem(
+                                    value: lang.name,
+                                    child: Row(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          lang.flag,
+                                        ),
+                                        SizedBox(
+                                          width: 25,
+                                        ),
+                                        Text(
+                                          lang.name,
+                                          style: TextStyle(color: Colors.white),
+                                        )
+                                      ],
+                                    )))
+                                .toList(),
+                            onChanged: (value) {
+                              print(value.toString());
+                              setState(() {
+                                if (value != null) {
+                                  myController.langValue.value =
+                                      value.toString();
+                                }
+                                //print(value);
+                                if (value == 'ትግሪኛ') {
+                                  print('value is before $value');
+                                  myController.changeLanguage('tig', 'ER');
+                                  //print('value is after $value');
+                                }
+                                //myController.changeLanguage('en', 'US')
+                                else {
+                                  myController.changeLanguage('en', 'US');
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+
+                      // Obx(
+                      //   () => DropdownButton(
+                      //       value: '${myController.langValue.value}',
+                      //       style: TextStyle(color: Colors.amber),
+                      //       // items: [
+                      //       //   for (var item in items)
+                      //       //     DropdownMenuItem<String>(
+                      //       //         value: item, child: Text(item))
+                      //       // ],
+                      //       items: items.map((e) {
+                      //         return DropdownMenuItem(
+                      //             value: e,
+                      //             child: Row(
+                      //               children: [Text(e.flag), Text(e.name)],
+                      //             ));
+                      //       }).toList(),
+                      //       // Language.languageList()
+                      //       // .map((e) =>
+                      //       // DropdownMenuItem(
+                      //       //   child: Row)).toList()
+
+                      //       onChanged: (value) {
+                      //         if (value != null) {
+                      //           myController.langValue.value = value.toString();
+                      //         }
+                      //         print(value);
+                      //         if (value == 'Tigrina') {
+                      //           myController.changeLanguage('tig', 'ER');
+                      //         }
+                      //         // myController.changeLanguage('en', 'US');
+                      //         else {
+                      //           myController.changeLanguage('en', 'US');
+                      //         }
+                      //       }),
+                      // ),
+                      // Obx(
+                      //   (() => DropdownButton<String>(
+                      //       value: '${myController.langValue.value}',
+                      //       style: TextStyle(color: Colors.amber),
+                      //       // items: [
+                      //       //   for (var item in items)
+                      //       //     DropdownMenuItem<String>(
+                      //       //         value: item, child: Text(item))
+                      //       // ],
+                      //       items: items
+                      //           .map<DropdownMenuItem<String>>(
+                      //               (e) => DropdownMenuItem(
+                      //                   value: myController.langValue.value,
+                      //                   child: Row(
+                      //                     children: [
+                      //                       Text(e.flag),
+                      //                       Text(e.name)
+                      //                     ],
+                      //                   )))
+                      //           .toList(),
+                      //       // Language.languageList()
+                      //       // .map((e) =>
+                      //       // DropdownMenuItem(
+                      //       //   child: Row)).toList()
+
+                      //       onChanged: (value) {
+                      //         if (value != null) {
+                      //           myController.langValue.value = value.toString();
+                      //         }
+                      //         print(value);
+                      //         if (value == 'Tigrina') {
+                      //           myController.changeLanguage('tig', 'ER');
+                      //         }
+                      //         // myController.changeLanguage('en', 'US');
+                      //         else {
+                      //           myController.changeLanguage('en', 'US');
+                      //         }
+                      //         // setState(() {
+                      //         //   value;
+                      //         // });
+                      //       })),
+                      // ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      // ElevatedButton(
+                      //     onPressed: () {
+                      //       //  myController.changeLanguage('tig', 'ER');
+                      //       myController.changeLanguage('er', 'US');
+                      //     },
+                      //     child: Text('English')),
+                      // ElevatedButton(
+                      //     onPressed: () {
+                      //       //  myController.changeLanguage('tig', 'ER');
+                      //       myController.changeLanguage('tig', 'ER');
+                      //     },
+                      //     child: Text('Tigrina'))
                     ]),
               ),
 
@@ -315,3 +521,53 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+// class DropDown extends StatefulWidget {
+//   DropDown({Key? key, required this.items}) : super(key: key);
+//   List items;
+//   @override
+//   State<DropDown> createState() => _DropDownState();
+// }
+
+// class _DropDownState extends State<DropDown> {
+//   @override
+//   MyController myController = Get.put(MyController());
+//   Widget build(BuildContext context) {
+//     return DropdownButton(
+//         //  value: '${myController.langValue.value}',
+//         style: TextStyle(color: Colors.amber),
+//         // items: [
+//         //   for (var item in items)
+//         //     DropdownMenuItem<String>(
+//         //         value: item, child: Text(item))
+//         // ],
+//         items: widget.items.map((e) {
+//           return DropdownMenuItem(
+//               value: e,
+//               child: Row(
+//                 children: [Text(e.flag), Text(e.name)],
+//               ));
+//         }).toList(),
+//         // Language.languageList()
+//         // .map((e) =>
+//         // DropdownMenuItem(
+//         //   child: Row)).toList()
+
+//         onChanged: (value) {
+//           if (value != null) {
+//             myController.langValue.value = ;
+//           }
+//           print(value);
+//           if (value == 'Tigrina') {
+//             myController.changeLanguage('tig', 'ER');
+//           }
+//           // myController.changeLanguage('en', 'US');
+//           else {
+//             myController.changeLanguage('en', 'US');
+//           }
+//           setState(() {
+//             value;
+//           });
+//         });
+//   }
+// }

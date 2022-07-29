@@ -35,7 +35,7 @@ class CategoryPage extends StatelessWidget {
                   const SizedBox(
                     height: defaultPadding,
                   ),
-                  Text("Select Category",
+                  Text("Select Category".tr,
                       style: Theme.of(context).primaryTextTheme.headline1),
                   const SizedBox(
                     height: defaultPadding * 3,
@@ -45,7 +45,7 @@ class CategoryPage extends StatelessWidget {
                     imgeSrc: "assets/icons/front end icons_small.svg",
                     cardtext: "Front-End",
                     onpressed: () async {
-                      var course = await fetchCourses('Front-End');
+                      var course = await fetchCourses('Front-End'.tr);
                       context.router.push(LanguageChoices(courses: course));
                     },
                   ),
@@ -57,7 +57,7 @@ class CategoryPage extends StatelessWidget {
                     imgeSrc: "assets/icons/aws icons_small.svg",
                     cardtext: "Cloud-Service",
                     onpressed: () async {
-                      var course = await fetchCourses('cloud_services');
+                      var course = await fetchCourses('cloud_services'.tr);
                       context.router.push(LanguageChoices(courses: course));
                     },
                   ),
@@ -70,7 +70,7 @@ class CategoryPage extends StatelessWidget {
                     imgeSrc: "assets/icons/logos_nodejs-icon_small.svg",
                     cardtext: "Back-End",
                     onpressed: () async {
-                      var course = await fetchCourses('Back_end');
+                      var course = await fetchCourses('Back_end'.tr);
                       context.router.push(LanguageChoices(courses: course));
                     },
                   )

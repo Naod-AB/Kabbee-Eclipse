@@ -21,7 +21,7 @@ class UserDetailsScreen extends GetView<ProfileController> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text('Profile'.tr),
         centerTitle: false,
       ),
       body: Padding(
@@ -29,30 +29,32 @@ class UserDetailsScreen extends GetView<ProfileController> {
         child: ListView(
           children: [
             profileCardContent(context),
-            customText('First Name', 18, false, false, kblue),
+            customText('first Name'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
                 controller.firstName.value.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Last Name', 18, false, false, kblue),
+            customText('last Name'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
                 controller.lastName.value.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Email', 18, false, false, kblue),
+            customText('email'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
                 controller.userInfo.value!.email.toString(), true, false)),
             const SizedBox(height: 20),
-            customText('Password', 18, false, false, kblue),
+            customText('password'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
             userInfoTiles(
                 controller.userInfo.value!.password.toString(), true, true),
             const SizedBox(height: 20),
-            customText('Gender', 18, false, false, kblue),
+            customText('gender'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
             Obx(() => userInfoTiles(
-                controller.gender.value ? 'Male' : 'Female', true, false)),
+                controller.gender.value ? 'Male'.tr : 'Female'.tr,
+                true,
+                false)),
             // userInfoTiles(Text('Esrom'), true),
           ],
         ),

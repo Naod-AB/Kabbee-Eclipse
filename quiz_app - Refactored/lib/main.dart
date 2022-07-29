@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
+import 'package:quiz_app/service/english.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
@@ -17,10 +18,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   final _appRouter = AppRouter();
-
+//MyController myController = Get.put(MyController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
+      translations: translate(),
+      //locale: Locale('en', 'US'),
       title: 'Quiz APP',
       smartManagement: SmartManagement.keepFactory,
       routerDelegate: _appRouter.delegate(),

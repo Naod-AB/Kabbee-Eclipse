@@ -112,7 +112,7 @@ Widget genderToggle(int numberOfSwitches) {
     inactiveBgColor: Colors.grey[800],
     inactiveFgColor: primaryColor,
     totalSwitches: numberOfSwitches,
-    labels: const ['Male', 'Female'],
+    labels: ['Male'.tr, 'Female'.tr],
     activeBgColors: [
       [orangeColor],
       [orangeColor],
@@ -821,3 +821,37 @@ Widget buildlanguageTiles(
         ),
       ));
 }
+
+class Language {
+  final int id;
+
+  final String name;
+  final String flag;
+  //final String languageCode;
+
+  Language(
+    this.id,
+    this.name,
+    this.flag,
+  );
+  static List<Language> languageList() {
+    return <Language>[
+      Language(
+        1,
+        'English',
+        '🇬🇧',
+      ),
+      Language(
+        2,
+        'ትግሪኛ',
+        '🇪🇷',
+      ),
+    ];
+  }
+}
+// Widget Language() {
+//    final int id;
+//    final String name;
+//    final String flag;
+//    final String languageCode;
+// }

@@ -21,7 +21,7 @@ import 'signup_email.dart';
 import 'signup_name.dart';
 
 class OneSignupPage extends StatelessWidget {
-  ProfileController profilecontroller = Get.find();
+  ProfileController profilecontroller = Get.put(ProfileController());
   AuthController authController = Get.put(AuthController());
   final formKey = GlobalKey<FormState>();
 

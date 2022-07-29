@@ -83,7 +83,7 @@ class AuthController extends GetxController {
       required TextEditingController password}) async {
     var pass = password.text.trim();
     var emails = email.text.trim().toLowerCase();
-
+    print('loging');
     if (emailKey.currentState!.validate() && passKey.currentState!.validate()) {
       controller.userInfo.value = await fetchUser(emails);
       print(controller.userInfo.value!.password);
