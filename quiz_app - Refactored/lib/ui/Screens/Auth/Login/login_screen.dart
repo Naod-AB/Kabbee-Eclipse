@@ -330,6 +330,11 @@ class _LoginPageState extends State<LoginPage> {
                                       children: [
                                         Text(
                                           lang.flag,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondary),
                                         ),
                                         SizedBox(
                                           width: 25,
