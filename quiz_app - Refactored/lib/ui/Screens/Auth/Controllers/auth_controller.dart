@@ -155,14 +155,14 @@ class AuthController extends GetxController {
     }
   }
 
-  bool checkDuplicateEmail(String email) {
-    var found = false;
-    for (var element in allusers) {
-      if (element == email) {
-        found = true;
-        break;
-      }
-    }
-    return found;
-  }
+  // bool checkDuplicateEmail(String email) {
+  //   var found = false;
+  //   for (var element in allusers) {
+  //     if (element == email) {
+  //       found = true;
+  //       break;
+  //     }
+  //   }
+  //   return found;
+  // }
 }
