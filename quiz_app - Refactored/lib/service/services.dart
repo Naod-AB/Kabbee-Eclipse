@@ -13,6 +13,7 @@ import '../ui/Screens/Auth/Controllers/auth_controller.dart';
 import '../ui/Screens/CommonControllers/question_controller.dart';
 import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
 import '../ui/Screens/Question/models/checkanswer.dart';
+import '../ui/Screens/Question/models/courses.dart';
 
 // Save User Score
 //final ProfileController aProfileController = Get.put(ProfileController());
@@ -151,6 +152,52 @@ Future<List> fetchDashboard() async {
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Courses');
+  }
+}
+
+Future<CourseScore> updateExamcounter(CourseScore score) async {
+  final response = await http.patch(
+    Uri.parse('hhttps://eclipse-api.herokuapp.com/scores/${score.courseId}'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(
+        <String, dynamic>{'counter': score.counter, 'blocked': score.blocked!}),
+  );
+  if (response.statusCode == 200) {
+    return CourseScore.fromJson(jsonDecode(response.body));
+  } else {
+    print(response.statusCode);
+    log(' this is the log ${score.courseId}');
+    throw Exception('Failed to create User.');
+  }
+}
+
+Future<CourseScore?> findCourseScore(String courseId) async {
+  final response =
+      await http.get(Uri.parse('http://10.0.2.2:3000/Scores/?id=$courseId'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    if (!jsonDecode(response.body).isEmpty) {
+      return CourseScore.fromJson(jsonDecode(response.body)[0]);
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+}
+
+Future<Courses?> findCourse(String courseName) async {
+  final response = await http
+      .get(Uri.parse('http://10.0.2.2:3000/Courses/?courseName=$courseName'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    if (!jsonDecode(response.body).isEmpty) {
+      return Courses.fromJson(jsonDecode(response.body)[0]);
+    } else {
+      return null;
+    }
+  } else {
+    return null;
   }
 }
 

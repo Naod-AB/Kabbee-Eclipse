@@ -160,20 +160,32 @@ class OneSignupPage extends StatelessWidget {
                       horizontal: SizeConfig.screenWidth * 0.09),
                   child: Row(
                     children: [
-                      if (authController.signUpIndex.value != 0)
-                        Expanded(
-                          child: RoundedButton(
-                              buttonName: "Back",
-                              pressed: () {
-                                authController.signUpIndex.value--;
-                              }),
-                        ),
+                      Obx(
+                        () => authController.signUpIndex.value != 0
+                            ? Expanded(
+                                child: RoundedButton(
+                                    buttonName: Text(
+                                      "Back",
+                                      style: kBodyText.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                    pressed: () {
+                                      authController.signUpIndex.value--;
+                                    }),
+                              )
+                            : Container(),
+                      ),
                       SizedBox(
                         width: SizeConfig.screenWidth * 0.05,
                       ),
                       Expanded(
                         child: RoundedButton(
-                            buttonName: "Next",
+                            buttonName: Text(
+                              "Next",
+                              style: kBodyText.copyWith(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
                             pressed: () => authController.signUp(
                                 user, profilecontroller, formKey, context)),
                       ),

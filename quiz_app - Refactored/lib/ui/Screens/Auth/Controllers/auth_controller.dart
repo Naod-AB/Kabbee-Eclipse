@@ -22,6 +22,7 @@ class AuthController extends GetxController {
   RxBool rememberMe = false.obs;
   RxBool isLoading = false.obs;
   RxString error = "".obs;
+  RxString error2 = "".obs;
   RxInt signUpIndex = 0.obs;
   late Box box1;
 
@@ -30,7 +31,7 @@ class AuthController extends GetxController {
     super.onInit();
     createOpenBox();
 
-    //allusers = await fetchAllUsers();
+    allusers = await fetchAllUsers();
   }
 
   void createOpenBox() async {
@@ -51,9 +52,11 @@ class AuthController extends GetxController {
 
   Future<void> signUp(Users user, ProfileController controller,
       GlobalKey<FormState> formKey, BuildContext context) async {
-    print(signUpIndex.value);
     if (signUpIndex.value == 0) {
       if (controller.emailFieldKey.value.currentState!.validate()) {
+        // if (checkDuplicateEmail(controller.emailController.value.text)) {
+        //   error2.value = "Email already registered";
+        // } else
         signUpIndex.value++;
         print(signUpIndex.value);
       }
@@ -150,5 +153,16 @@ class AuthController extends GetxController {
       error.value = "Email address or Password is incorrect";
       isLoading.value = false;
     }
+  }
+
+  bool checkDuplicateEmail(String email) {
+    var found = false;
+    for (var element in allusers) {
+      if (element == email) {
+        found = true;
+        break;
+      }
+    }
+    return found;
   }
 }
