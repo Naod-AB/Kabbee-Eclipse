@@ -15,7 +15,7 @@ class CircularScore extends StatelessWidget {
           color: Colors.black, //                   <--- border color
           width: 1.0,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
             Radius.circular(50.0) //                 <--- border radius here
             ),
       ),
@@ -27,7 +27,7 @@ class CircularScore extends StatelessWidget {
           textAlign: TextAlign.center,
           style: Theme.of(context)
               .textTheme
-              .headline1!
+              .headline6!
               .copyWith(color: Colors.white, fontSize: 20),
         ),
       ),

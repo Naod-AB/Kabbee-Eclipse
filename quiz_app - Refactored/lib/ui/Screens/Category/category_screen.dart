@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:get/get.dart';
-// import 'package:get/get.dart';
+
 import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
 import 'package:quiz_app/ui/common_widgets/default_card.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
-
 import '../../../routes/router.gr.dart';
-// import '../Auth/Controllers/auth_controller.dart';
-import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
 import '../CommonControllers/question_controller.dart';
-
-// import '../CommonControllers/profile_controllers.dart';
 
 class CategoryPage extends StatelessWidget {
   CategoryPage({Key? key}) : super(key: key);
 
-  // ProfileController pController = Get.put(ProfileController());
   final QuestionController questionController = Get.put(QuestionController());
   @override
   Widget build(BuildContext context) {
-    // print('from CHOOSE TYPE ${questionController.questionApi}');
-    print('after logout email - category ${controller.userInfo.value!.email}');
     return SafeArea(
       child: Scaffold(
-          backgroundColor: bgColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: quizAppBar(context: context, iconUrl: ''),
           body: Center(
             child: SingleChildScrollView(
@@ -35,8 +27,8 @@ class CategoryPage extends StatelessWidget {
                   const SizedBox(
                     height: defaultPadding,
                   ),
-                  Text("Select Category".tr,
-                      style: Theme.of(context).primaryTextTheme.headline1),
+                  Text("Select Category",
+                      style: Theme.of(context).textTheme.headline5),
                   const SizedBox(
                     height: defaultPadding * 3,
                   ),

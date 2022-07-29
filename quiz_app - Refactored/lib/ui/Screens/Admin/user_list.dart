@@ -11,16 +11,9 @@ class UsersListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('USERSLIST ${controller.userList}');
     controller.activeUsers.value = controller.userList!
         .where((element) => element["status"] == 'ACTIVE')
         .toList();
-    print('ACTIVE >> ${controller.activeUsers}');
-    print('ACTIVE >> ${controller.activeUsers.length}');
-    print('');
-
-    print('BLOCKED >> ${controller.blockedUsers}');
-    print('BLOCKED >> ${controller.blockedUsers.length}');
 
     controller.activeUsersCount.value = controller.activeUsers.length;
 
@@ -33,12 +26,19 @@ class UsersListPage extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            elevation: 0,
             title: const Text('Users'),
             centerTitle: false,
-            bottom: const TabBar(
-              labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            bottom: TabBar(
+              labelStyle: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
+              ),
               indicatorColor: kblue,
-              tabs: [
+              labelColor: kblue,
+              unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
+              tabs: const [
                 Tab(
                   text: 'ACTIVE',
                 ),
@@ -75,8 +75,9 @@ class UsersListPage extends StatelessWidget {
             bool isCurrentUserAdmin =
                 user['email'] == controller.userInfo.value!.email;
             return Card(
-                color: Colors.white12,
+                color: Theme.of(context).shadowColor,
                 child: buildUsersTiles(
+                  context,
                   Image.asset('assets/images/avatar.png'),
                   user['firstName'].toString().toCapitalized() +
                       ' ' +
@@ -108,8 +109,9 @@ class UsersListPage extends StatelessWidget {
                 user['email'] == controller.userInfo.value!.email;
 
             return Card(
-                color: Colors.white12,
+                color: Theme.of(context).shadowColor,
                 child: buildUsersTiles(
+                    context,
                     Image.asset('assets/images/avatar.png'),
                     user['firstName'].toString().toCapitalized() +
                         ' ' +

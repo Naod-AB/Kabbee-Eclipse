@@ -4,25 +4,29 @@ import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
 //import '../../widgets/widgets.dart';
 
+import '../../../common_widgets/appbar.dart';
+import '../../../utils/pallete.dart';
 import '../Login/login_screen.dart';
 import 'signUp_password.dart';
 import 'signup_email.dart';
 import 'signup_name.dart';
 
 class OneSignupPage extends StatelessWidget {
-  ProfileController profilecontroller = Get.put(ProfileController());
   AuthController authController = Get.put(AuthController());
+  ProfileController profilecontroller = Get.put(ProfileController());
   final formKey = GlobalKey<FormState>();
 
   OneSignupPage({Key? key}) : super(key: key);
@@ -34,11 +38,10 @@ class OneSignupPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 34, 34, 34),
-        leading: const BackButton(),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Form(
         key: formKey,
         child: Container(
@@ -46,7 +49,10 @@ class OneSignupPage extends StatelessWidget {
             child: Column(
               children: [
                 Theme(
-                  data: ThemeData(canvasColor: bgColor),
+                  data: ThemeData(
+                    canvasColor: Theme.of(context).scaffoldBackgroundColor,
+                    colorScheme: Theme.of(context).colorScheme.copyWith(),
+                  ),
                   child: Expanded(
                     child: Obx(() => Stepper(
                             controlsBuilder:
@@ -69,7 +75,10 @@ class OneSignupPage extends StatelessWidget {
                                       authController.signUpIndex.value >= 0,
                                   title: Text(
                                     "Email",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
                                   ),
                                   content: Center(
                                       child: SignupEmail(
@@ -88,8 +97,13 @@ class OneSignupPage extends StatelessWidget {
                                       : StepState.complete,
                                   isActive:
                                       authController.signUpIndex.value >= 1,
-                                  title: Text("Password",
-                                      style: TextStyle(color: Colors.white)),
+                                  title: Text(
+                                    "Password",
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
                                   content: Center(
                                       child: SignupPassword(
                                           user: user,
@@ -112,8 +126,13 @@ class OneSignupPage extends StatelessWidget {
                                       : StepState.complete,
                                   isActive:
                                       authController.signUpIndex.value >= 2,
-                                  title: const Text("Full Name",
-                                      style: TextStyle(color: Colors.white)),
+                                  title: Text(
+                                    "Full Name",
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
                                   content: //Container()
                                       SignupName(
                                     firstNameController: profilecontroller
@@ -150,7 +169,7 @@ class OneSignupPage extends StatelessWidget {
                               }),
                         ),
                       SizedBox(
-                        width: SizeConfig.screenWidth * 0.01,
+                        width: SizeConfig.screenWidth * 0.05,
                       ),
                       Expanded(
                         child: RoundedButton(

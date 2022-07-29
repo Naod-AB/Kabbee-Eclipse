@@ -15,6 +15,7 @@ import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
 // import '../../../routes/router.gr.dart';
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
+import '../../utils/theme.dart';
 
 //bool isdarkthemeEnabled = false;
 class ProfileScreen extends GetView<ProfileController> {
@@ -29,8 +30,9 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Account'),
         centerTitle: false,
       ),
@@ -41,7 +43,7 @@ class ProfileScreen extends GetView<ProfileController> {
             //  Personal section
 
             profileCardContent(context),
-            customText('Profile'.tr, 20, false, false, primaryColor),
+            customText(context, 'Profile', 20, false, false, primaryColor),
             const SizedBox(height: 15),
 
             buildTileGroup(
@@ -53,19 +55,21 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                       Icons.person,
-                      customText('Personal'.tr, 18, true, false, primaryColor),
-                      customText('View and update profile'.tr, 13, false, false,
-                          secondaryColor),
-                      const Icon(
+                      customText(
+                          context, 'Personal', 18, true, false, primaryColor),
+                      customText(context, 'View and update profile', 13, false,
+                          false, secondaryColor),
+                      Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                       true,
                     ),
                   ),
-                  buildDivider(),
+                  // buildDivider(),
                 ],
               ),
+              context,
             ),
 
             // Admin settings
@@ -75,8 +79,8 @@ class ProfileScreen extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  customText(
-                      'Admin Settings'.tr, 20, false, false, primaryColor),
+                  customText(context, 'Admin Settings', 20, false, false,
+                      primaryColor),
                   const SizedBox(height: 15),
                   buildTileGroup(
                     Column(
@@ -88,20 +92,21 @@ class ProfileScreen extends GetView<ProfileController> {
                           },
                           child: buildTile(
                             Icons.dashboard,
-                            customText(
-                                'Dashboard'.tr, 18, true, false, primaryColor),
-                            customText('Statistics'.tr, 13, false, false,
+                            customText(context, 'Dashboard', 18, true, false,
+                                primaryColor),
+                            customText(context, 'Statistics', 13, false, false,
                                 secondaryColor),
-                            const Icon(
+                            Icon(
                               Icons.arrow_forward_ios,
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.onBackground,
                             ),
                             true,
                           ),
                         ),
-                        buildDivider(),
+                        // buildDivider(),
                       ],
                     ),
+                    context,
                   ),
                 ],
               ),
@@ -110,32 +115,46 @@ class ProfileScreen extends GetView<ProfileController> {
 
 // ......
             const SizedBox(height: 20),
-            customText('Other', 20, false, false, primaryColor),
+            customText(context, 'Other', 20, false, false, primaryColor),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
-                  // buildTile(
-                  //     Icons.dark_mode,
-                  //     customText('Dark Mode', 18, true, false, primaryColor),
-                  //     customText(
-                  //         'Change theme', 13, false, false, secondaryColor),
-                  //     Switch.adaptive(
-                  //       value: true,
-                  //       activeColor: orangeColor,
-                  //       onChanged: (Value) {
-                  //         // setState(() {
-                  //         //   isdarkthemeEnabled = changeTheme;
-                  //         //   print('dark theme is $isdarkthemeEnabled');
-                  //         // });
-                  //       },
-                  //     ),
-                  //     true),
-                  buildDivider(),
+                  buildTile(
+                      Icons.dark_mode,
+                      customText(
+                          context, 'Dark Mode', 18, true, false, primaryColor),
+                      customText(context, 'Change theme', 13, false, false,
+                          secondaryColor),
+                      Obx(
+                        () => Switch.adaptive(
+                          value: controller.isDarkMode.value,
+                          activeColor: orangeColor,
+                          onChanged: (value) {
+                            controller.isDarkMode.value =
+                                !controller.isDarkMode.value;
+
+                            Get.changeTheme(controller.isDarkMode.value
+                                ? Themes.darkMode
+                                : Themes.lightMode);
+
+                            // if (Get.isDarkMode) {
+                            //   print('change to light');
+                            //   // Get.changeThemeMode(ThemeMode.light);
+                            // } else {
+                            //   // print('dark $ThemeData()')
+                            //   // Get.changeThemeMode(ThemeMode.dark);
+                            //   print('change to dark ');
+                            // }
+                            // isdarkthemeEnabled = changeTheme;
+                            // print('dark theme is $isdarkthemeEnabled');
+                          },
+                        ),
+                      ),
+                      true),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () async {
-                      print(
-                          'Profile DATA MY SCORES ${controller.userInfo.value!.id}');
                       controller.scores =
                           await fetchUserScores(controller.userInfo.value!.id);
 
@@ -143,17 +162,17 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.celebration,
-                        customText(
-                            'My Scores'.tr, 18, true, false, primaryColor),
-                        customText('Achievements'.tr, 13, false, false,
+                        customText(context, 'My Scores', 18, true, false,
+                            primaryColor),
+                        customText(context, 'Achievements', 13, false, false,
                             secondaryColor),
-                        const Icon(
+                        Icon(
                           Icons.arrow_forward_ios,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         true),
                   ),
-                  buildDivider(),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -164,17 +183,17 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.recommend_outlined,
-                        customText('Recommendations'.tr, 18, true, false,
+                        customText(context, 'Recommendations', 18, true, false,
                             primaryColor),
-                        customText('kabbee recommend you to Visit'.tr, 13,
+                        customText(context, 'kabbee recommend you to Visit', 13,
                             false, false, secondaryColor),
-                        const Icon(
+                        Icon(
                           Icons.view_carousel_outlined,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         true),
                   ),
-                  buildDivider(),
+                  buildDivider(context),
                   GestureDetector(
                     onTap: () {
                       showCupertinoDialog<void>(
@@ -208,14 +227,16 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.exit_to_app,
-                        customText('Log Out'.tr, 18, true, false, primaryColor),
-                        customText('Exit from the application'.tr, 13, false,
-                            false, secondaryColor),
+                        customText(
+                            context, 'Log Out', 18, true, false, primaryColor),
+                        customText(context, 'Exit from the application', 13,
+                            false, false, secondaryColor),
                         null,
                         true),
                   )
                 ],
               ),
+              context,
             ),
           ],
         ),

@@ -9,11 +9,14 @@ class AdminLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(controller.fetchCoursesAndCategories);
+    
     return Scaffold(
         appBar: AppBar(
-          title: Text('Courses'),
+          elevation: 0,
+          title: const Text('Courses'),
+          centerTitle: false,
         ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.only(top: 25),
           child: ListView.builder(
@@ -29,24 +32,28 @@ class AdminLanguage extends StatelessWidget {
                           .toUpperCase())
                   .toList();
 
+              
+
               return Card(
-                color: tileColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildlanguageTiles(
-                    SvgPicture.asset(
-                      language["icon"],
-                      height: 40,
-                    ),
-                    language['courseName']
-                        .toString()
-                        .replaceAll('_', ' ')
-                        .toUpperCase(),
-                    language['category']
-                        .toString()
-                        .replaceAll('-', ' ')
-                        .toString()
-                        .toCapitalized()
-                        .replaceAll('_', ' '),
-                    questions.length),
+                  SvgPicture.asset(
+                    language["icon"],
+                    height: 40,
+                  ),
+                  language['courseName']
+                      .toString()
+                      .replaceAll('_', ' ')
+                      .toUpperCase(),
+                  language['category']
+                      .toString()
+                      .replaceAll('-', ' ')
+                      .toString()
+                      .toCapitalized()
+                      .replaceAll('_', ' '),
+                  questions.length,
+                  context,
+                ),
               );
             },
           ),

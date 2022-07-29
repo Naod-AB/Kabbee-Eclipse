@@ -7,12 +7,9 @@ import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
-
-
-
 class SignupPassword extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
-    Users user;
+  Users user;
   TextEditingController passController;
   TextEditingController confirmController;
   GlobalKey<FormFieldState> passKey;
@@ -56,7 +53,7 @@ class SignupPassword extends StatelessWidget {
                   letterSpacing: 0.50),
             ),
             const SizedBox(
-              height: 15,
+              height: 40,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,9 +71,13 @@ class SignupPassword extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.grey[500]!.withOpacity(0.5),
+                    labelText: 'Enter password',
+                    labelStyle: TextStyle(fontSize: 18),
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
                     suffixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: IconButton(
@@ -84,11 +85,13 @@ class SignupPassword extends StatelessWidget {
                           profileController.x.value
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color:
-                              profileController.x.value ? orangeColor : Colors.white,
+                          color: profileController.x.value
+                              ? orangeColor
+                              : Colors.white,
                         ),
                         onPressed: () {
-                          profileController.x.value = !profileController.x.value;
+                          profileController.x.value =
+                              !profileController.x.value;
                           // setState(() {
                           //   profileController.x.value = !profileController.x.value;
                           //   print(profileController.x.value);
@@ -102,8 +105,8 @@ class SignupPassword extends StatelessWidget {
                       //   color: kblue,
                       // ),
                     ),
-                    hintText: 'Enter Password',
-                    hintStyle: kBodyText,
+                    // hintText: 'Enter Password',
+                    // hintStyle: kBodyText,
                   ),
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,
@@ -111,22 +114,25 @@ class SignupPassword extends StatelessWidget {
                   obscureText: profileController.x.value,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 25,
                 ),
                 TextFormField(
                   controller: confirmController,
                   key: confirmKey,
                   validator: (value) {
-                    if (confirmController.text !=
-                        passController.text) {
+                    if (confirmController.text != passController.text) {
                       return 'The Two password need to be  the same ';
                     }
                   },
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.grey[500]!.withOpacity(0.5),
+                    labelText: 'Confirm Password',
+                    labelStyle: TextStyle(fontSize: 18),
+                    fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
                     suffixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: IconButton(
@@ -134,11 +140,13 @@ class SignupPassword extends StatelessWidget {
                           profileController.y.value
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color:
-                              profileController.y.value ? orangeColor : Colors.white,
+                          color: profileController.y.value
+                              ? orangeColor
+                              : Colors.white,
                         ),
                         onPressed: () {
-                          profileController.y.value = !profileController.y.value;
+                          profileController.y.value =
+                              !profileController.y.value;
                           // setState(() {
                           //   profileController.y.value = !profileController.y.value;
                           //   print(profileController.y.value);
@@ -147,8 +155,8 @@ class SignupPassword extends StatelessWidget {
                       ),
                       //passwordVisibilityBtn(),
                     ),
-                    hintText: 'Confirm Password',
-                    hintStyle: kBodyText,
+                    // hintText: 'Confirm Password',
+                    // hintStyle: kBodyText,
                   ),
                   style: kBodyText,
                   keyboardType: TextInputType.emailAddress,

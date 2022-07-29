@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 
 class QuestionController extends GetxController {
-  // To hold
-  // List<ChosenModel> chosenAnswers = [];
-  // RxBool isCorrect = false.obs;
-  // bool isSelected = false;
+
   List? questionApi;
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
   bool isFinal = false;
+
+  Rx<ScrollController> scrollController = ScrollController().obs;
+  Rx<ScrollController> reviewScrollController = ScrollController().obs;
 
   int optionList = 0;
 
@@ -39,7 +41,9 @@ class QuestionController extends GetxController {
 
   //
   List answers = [];
-  // List choices = [];
   List choices = [];
   int scoreCounter = 0;
+
+
+
 }

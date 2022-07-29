@@ -69,24 +69,6 @@ class MyTimer extends StatelessWidget {
                 userId: pcontroller.userInfo.value!.id);
             controller.isFinished = true;
 
-            // previous code
-            // controller.count = await fetchCorrectAnswers();
-            // double scorePercent =
-            //     (controller.count / controller.questionApi!.length * 100);
-            // controller.seconds.value = 0;
-            // controller.isEnabled.value = false;
-            // String checkid = pcontroller.userInfo.value!.id.toString() +
-            //     controller.chosenCourse.value;
-            // CourseScore score = CourseScore(
-            //     courseId: checkid,
-            //     courseName: controller.chosenCourse.value,
-            //     courseType: controller.chosenCourseType.value,
-            //     courseScore: controller.count,
-            //     coursePercentage: scorePercent,
-            //     userId: pcontroller.userInfo.value!.id);
-            // saveUserScore(score);
-            // print('checkid timer is ${checkid}');
-
             if (score.courseId == checkid) {
               saveUserScore(score);
             } else {

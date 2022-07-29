@@ -1,106 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'package:wc_form_validators/wc_form_validators.dart';
-
-// class LoginPage extends StatefulWidget {
-//   const LoginPage({ Key? key}) : super(key: key);
-
-//   @override
-//   _LoginPageState createState() => _LoginPageState();
-// }
-
-// class _LoginPageState extends State<LoginPage> {
-//   TextEditingController email = TextEditingController();
-//   TextEditingController password = TextEditingController();
-//   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-//   @override
-//   Widget build(BuildContext context) {
-//     print("reloading");
-//     return Scaffold(
-//       body: Center(
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               Image.asset('assets/images/flutter_logo.png', scale: 4.0),
-//               Container(
-//                 padding: EdgeInsets.all(10),
-//                 child: Form(
-//                   key: _formKey,
-//                   child: Column(
-//                     children: [
-//                       Text(
-//                         'Flutter Login',
-//                         style: TextStyle(fontSize: 30),
-//                       ),
-//                       SizedBox(
-//                         height: 20,
-//                       ),
-//                       Container(
-//                         child: TextFormField(
-//                           controller: email,
-//                           decoration: InputDecoration(
-//                               border: UnderlineInputBorder(
-//                                   borderSide:
-//                                       BorderSide(width: 1, color: Colors.grey)),
-//                               labelText: 'Email'),
-//                           validator: Validators.compose([
-//                             Validators.required('email is required'),
-//                             Validators.email('invalid email address')
-//                           ]),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: 20,
-//                       ),
-//                       Container(
-//                         child: TextFormField(
-//                           controller: password,
-//                           obscureText: true,
-//                           decoration: InputDecoration(
-//                               border: UnderlineInputBorder(
-//                                   borderSide:
-//                                       BorderSide(width: 1, color: Colors.grey)),
-//                               labelText: 'Password'),
-//                           validator: Validators.compose(
-//                               [Validators.required('password is required')]),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: 20,
-//                       ),
-//                       Container(
-//                         width: MediaQuery.of(context).size.width,
-//                         height: 50,
-//                         child: FlatButton(
-//                           onPressed: () {
-//                             if (_formKey.currentState!.validate()) {
-//                               print(email.text);
-//                               print(password.text);
-//                               print('success');
-//                             }
-//                           },
-//                           child: Text("Login"),
-//                           textColor: Colors.white,
-//                           color: Colors.black,
-//                           shape: new RoundedRectangleBorder(
-//                               borderRadius: new BorderRadius.circular(10)),
-//                         ),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
+import 'package:email_validator/email_validator.dart';
 
 // ;
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -120,7 +22,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   AuthController authController = Get.put(AuthController());
-
+  var isLoading = true;
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
 
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
@@ -137,30 +39,26 @@ class _LoginPageState extends State<LoginPage> {
     print('Value');
     String selam = 'selam@gmail.com';
     //authController.getdata(context);
-    print("the page is reloading on it login ");
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: 20), //SizeConfig.screenWidth * 0.05
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20 //SizeConfig.screenHeight * 0.04,
+              SizedBox(height: 60 //SizeConfig.screenHeight * 0.04,
                   ),
               Center(
-                child: Text(
-                  'login'.tr,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20, //getProportionateScreenWidth(40),
-                      fontWeight: FontWeight.bold),
-                ),
+                child: Text('LOGIN',
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                        fontSize: 25,
+                        color: Theme.of(context).colorScheme.onBackground)),
               ),
               // ),
               const SizedBox(
-                height: 15,
+                height: 40,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -173,13 +71,24 @@ class _LoginPageState extends State<LoginPage> {
                             controller:
                                 authController.loginEmailController.value,
                             validator: (value) {
-                              if (value!.isEmpty)
-                                return "Email canot be empty ".tr;
+                              if (value!.isEmpty) {
+                                return "Email cannot be empty ";
+                              } else {
+                                if (!EmailValidator.validate(value)) {
+                                  // print(value);
+                                  return "Enter a valid email";
+                                }
+                              }
                             },
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Colors.grey[500]!.withOpacity(0.5),
+                              labelText: 'Enter email',
+                              labelStyle: TextStyle(fontSize: 16),
+                              // focusColor: Colors.orange,
+                              fillColor: Theme.of(context).colorScheme.tertiary,
+                              // fillColor: Colors.grey[500]!.withOpacity(0.5),
                               border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
                                   borderRadius: BorderRadius.circular(15)),
                               suffixIcon: const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -189,15 +98,23 @@ class _LoginPageState extends State<LoginPage> {
                                   color: kblue,
                                 ),
                               ),
-                              hintText: 'enter email'.tr,
-                              hintStyle: kBodyText,
+                              // hintText: 'Enter email',
+                              // hintStyle: TextStyle(
+                              //     fontSize: 16,
+                              //     color:
+                              //         Theme.of(context).colorScheme.onSecondary,
+                              //     height: 1.5),
                             ),
-                            style: kBodyText,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                height: 1.5),
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             obscureText: false,
                           )),
-                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
+                      SizedBox(height: 25 //SizeConfig.screenHeight * 0.02,
                           ),
                       Obx(
                         () => TextFormField(
@@ -210,8 +127,13 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.grey[500]!.withOpacity(0.5),
+                            labelText: 'Enter password',
+                            labelStyle: TextStyle(fontSize: 16),
+                            focusColor: Colors.orange,
+                            fillColor: Theme.of(context).colorScheme.tertiary,
+                            // fillColor: Colors.grey[500]!.withOpacity(0.5),
                             border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(15)),
                             suffixIcon: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -238,65 +160,79 @@ class _LoginPageState extends State<LoginPage> {
                               //   color: kblue,
                               // ),
                             ),
-                            hintText: 'enter password'.tr,
-                            hintStyle: kBodyText,
+                            // hintText: 'Enter Password',
+                            // hintStyle: TextStyle(
+                            //     fontSize: 16,
+                            //     color:
+                            //         Theme.of(context).colorScheme.onSecondary,
+                            //     height: 1.5),
                           ),
-                          style: kBodyText,
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                              height: 1.5),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                           obscureText: authController.obsecure.value,
                         ),
                       ),
-                      SizedBox(height: 10 //SizeConfig.screenHeight * 0.02,
-                          //width:SizeConfig.screenHeight *0.5 //25,
-                          ),
+
                       Obx(
                         () => Text(
                           authController.error.value,
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 40), //SizeConfig.screenHeight * 0.08
-                          child: Obx(
-                            () => CheckboxListTile(
-                              title: Text(
-                                'remember_me'.tr,
-                                style: TextStyle(fontSize: 16, color: kWhite1),
-                              ),
-                              value: authController.rememberMe.value,
-                              onChanged: (value) {
-                                authController.rememberMe.value = value!;
-                                // setState(() {
-                                //   rememberMe = value!;
-                                // });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: kblue,
-                              checkColor: kblack,
-                              side: BorderSide(
-                                color: kWhite1, //your desire colour here
-                                width: 1.5,
-                              ),
-                            ),
-                          )),
-                      SizedBox(
-                          height: 15 //SizeConfig.screenHeight * 0.03, //25,
+                      Obx(
+                        () => CheckboxListTile(
+                          contentPadding: EdgeInsets.zero,
+                          // tileColor: Colors.blue,
+                          title: Text(
+                            'Remember me',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary),
                           ),
-                      button.RoundedButton(
-                          buttonName: 'login'.tr,
-                          pressed: () {
-                            authController.authenticateUser(
-                                context: context,
-                                email:
-                                    authController.loginEmailController.value,
-                                emailKey: emailKey,
-                                passKey: passKey,
-                                password: authController
-                                    .loginPasswordController.value);
-                            print('login is pressed');
-                          }),
+                          value: authController.rememberMe.value,
+                          onChanged: (value) {
+                            authController.rememberMe.value = value!;
+                            // setState(() {
+                            //   rememberMe = value!;
+                            // });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: kblue,
+                          checkColor: kblack,
+                          side: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondary, //your desire colour here
+                            width: 1.5,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                          height: 20 //SizeConfig.screenHeight * 0.03, //25,
+                          ),
+                      Obx(() => button.RoundedButton(
+                          buttonName: authController.isLoading.value
+                              ? CircularProgressIndicator(
+                                  color: Colors.white,
+                                )
+                              : Text(
+                                  "Login",
+                                  style: kBodyText.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                          pressed: () => authController.authenticateUser(
+                              context: context,
+                              email: authController.loginEmailController.value,
+                              emailKey: emailKey,
+                              passKey: passKey,
+                              password: authController
+                                  .loginPasswordController.value))),
                       SizedBox(height: 15), //SizeConfig.screenHeight * 0.03
                       SizedBox(
                         width: 50, //SizeConfig.screenWidth * 0.1,
@@ -304,10 +240,13 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'don`t have an account'.tr,
-                            style: kText,
-                          ),
+                          Text('Don`t have an account ?',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontSize: 16,
+                                height: 1.5,
+                              )),
                           const SizedBox(
                             width: 15,
                           ),
@@ -317,8 +256,12 @@ class _LoginPageState extends State<LoginPage> {
                               context.router.pushNamed('/signup');
                             },
                             child: Text(
-                              'sign up'.tr,
-                              style: kColorText,
+                              'Sign up',
+                              style: TextStyle(
+                                  color: kblue,
+                                  fontSize: 16,
+                                  height: 1.5,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
 

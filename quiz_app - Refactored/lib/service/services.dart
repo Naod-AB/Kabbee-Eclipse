@@ -109,10 +109,10 @@ Future fetchUserScores(int userId) async {
 Future<Users?> fetchUser(String email) async {
   final response = await http.get(Uri.parse(
       'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=$email'));
-  print(response.statusCode);
+  
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
-      print('from response is ${response.body[0]}');
+      
       return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
     } else {
       return null;
@@ -127,7 +127,8 @@ Future<List<Users>> fetchAllUsers() async {
   final response =
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
-    return parseUsers(jsonDecode(response.body)["_embedded"]["users"]);
+    
+    return parseUsers(response.body);
   } else {
     throw Exception('Failed to fetch Users');
   }
@@ -135,7 +136,7 @@ Future<List<Users>> fetchAllUsers() async {
 
 // Parse Users
 List<Users> parseUsers(String responseBody) {
-  final parsed = jsonDecode(responseBody)["_embedded"]["users"][0];
+  final parsed = jsonDecode(responseBody)["_embedded"]["users"];
 
   return parsed.map<Users>((json) => Users.fromJson(json)).toList();
 }
@@ -146,7 +147,7 @@ Future<List> fetchDashboard() async {
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/courses'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final dashboardData = (jsonDecode(response.body)["_embedded"]["courses"]);
-    print('Dashboard response is ${response.body}');
+    
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Courses');
@@ -188,7 +189,7 @@ Future<Users> updateUsersList({
   required int index,
   required bool status,
 }) async {
-  print('id of user list is $id');
+  
   final response = await http.patch(
     Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
     headers: <String, String>{
@@ -199,7 +200,7 @@ Future<Users> updateUsersList({
       'status': status ? 'BLOCKED' : 'ACTIVE',
     }),
   );
-  print(response.statusCode);
+
   if (response.statusCode == 200 || response.statusCode == 204) {
     if (status == true) {
       controller.blockedUsers.add(controller.activeUsers[index]);
@@ -262,10 +263,10 @@ class ChosenModel {
   }
 }
 
-// final QuestionControl qcontroller = Get.put(QuestionControl());
+
 
 // Add Choices
-Future<checkAnswer> updateJsonTime({
+Future<CheckAnswer> updateJsonTime({
   required String answer,
   required int id,
   required bool isCorrect,
@@ -285,7 +286,7 @@ Future<checkAnswer> updateJsonTime({
 
   log('log is ${response.statusCode}');
   if (response.statusCode == 200) {
-    return checkAnswer.fromJson(jsonDecode(response.body));
+    return CheckAnswer.fromJson(jsonDecode(response.body));
   } else {
     throw Exception(Error);
   }
@@ -308,22 +309,7 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
-// For unanswered
-// Future<int> fetchSelectedQuestion() async {
-//   final response = await http.get(
-//     Uri.parse('https://eclipse-api.herokuapp.com/answers'),
-//   );
-//   var count = 0;
 
-//   final parsed = jsonDecode(response.body)["_embedded"]["answers"];
-//   for (var item in parsed) {
-//     if (item['isSelected'] == true) {
-//       count++;
-//     }
-//   }
-
-//   return count;
-// }
 
 // To update profile to Api
 Future<Users> updateJprofile({
@@ -348,29 +334,7 @@ Future<Users> updateJprofile({
   }
 }
 
-// Update the user lists
 
-// Delete answers
-// Future deleteSavedAnswers(var pLength) async {
-//   for (var i = 1; i < pLength + 1; i++) {
-//     final response = await http.patch(
-//       Uri.parse('https://eclipse-api.herokuapp.com/answers/$i'),
-//       headers: <String, String>{
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//       body: jsonEncode(<String, bool>{
-//         'isCorrect': false,
-//         "isSelected": false,
-//       }),
-//     );
-//     print('i is $i');
-//     print('patch response delete answer is${response.body}');
-
-//     Get.delete<QuestionControl>();
-//   }
-// }
-
-// Logout
 logOut() {
   Get.delete<ProfileController>();
   Get.delete<QuestionController>();

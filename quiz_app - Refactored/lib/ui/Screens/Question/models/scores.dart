@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-CourseScore welcomeFromJson(String str) =>
+CourseScore courseScoreFromJson(String str) =>
     CourseScore.fromJson(json.decode(str));
 
-String welcomeToJson(CourseScore data) => json.encode(data.toJson());
+String courseScoreToJson(CourseScore data) => json.encode(data.toJson());
 
 class CourseScore {
   CourseScore({
