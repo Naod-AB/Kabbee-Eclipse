@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_const
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -27,16 +25,16 @@ class DashboardPage extends GetView<ProfileController> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               buildDashBoardTiles(context, 'USERS', 32,
                   '0' + controller.usersLength.toString(), 64),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildDashBoardTiles(context, 'COURSES', 32,
                   '0' + controller.courseLength.length.toString(), 64),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildDashBoardTiles(context, 'CATEGORIES', 32,
                   '0' + controller.categoryLength.length.toString(), 64),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {
                   controller.userList = await fetchUsers();
@@ -61,7 +59,7 @@ class DashboardPage extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   context.router.pushNamed('/adminLanguages');

@@ -45,7 +45,6 @@ class MyScoresScreen extends GetView<ProfileController> {
                   },
                   itemBuilder: (context, element) {
                     colorCode = element['percentage'];
-                    // print(colorCode.runtimeType);
 
                     return Stack(
                       children: [

@@ -30,66 +30,7 @@ AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
   );
 }
 
-// AppBar quizeAppbar(BuildContext context) {
-//   return AppBar(
-//     backgroundColor: appbarColor,
-//     actions: [
-//       Padding(
-//         padding: const EdgeInsets.only(right: defaultPadding / 2),
-//         child: GestureDetector(
-//           onTap: () {
-//             context.router.pushNamed('/profile');
-//           },
-//           child: profilePic(),
-//         ),
-//       )
-//     ],
-//   );
-// }
 
-// AppBar QuizeAppbar(String iconUrl, BuildContext context) {
-//   return AppBar(
-//     backgroundColor: appbarColor,
-//     title: CircleAvatar(
-//       child: SvgPicture.asset(iconUrl),
-//       backgroundColor: Colors.transparent,
-//     ),
-//     centerTitle: true,
-//     actions: [
-//       Padding(
-//         padding: const EdgeInsets.only(right: defaultPadding / 2),
-//         child: GestureDetector(
-//             onTap: () {
-//               context.router.pushNamed('/profile');
-//             },
-//             child: profilePic()),
-//       ),
-//     ],
-//   );
-
-//   // ),
-// }
-
-// AppBar quizeAppbar2(String iconUrl) {
-//   return AppBar(
-//     title: Center(
-//       child: CircleAvatar(child: SvgPicture.asset(iconUrl)),
-//     ),
-//     backgroundColor: appbarColor,
-//     actions: [
-//       Padding(
-//         padding: const EdgeInsets.only(right: defaultPadding / 2),
-//         child: InkWell(
-//             onTap: () {
-//              Get.to(ProfileScreen());
-//             },
-//             child: const CircleAvatar(
-//               foregroundImage: AssetImage("assets/images/profile_pic_demo.jpg"),
-//             )),
-//       ),
-//     ],
-//   );
-// }
 
 Widget profilePic() {
   return Obx(

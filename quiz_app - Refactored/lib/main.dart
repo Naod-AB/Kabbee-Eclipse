@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 

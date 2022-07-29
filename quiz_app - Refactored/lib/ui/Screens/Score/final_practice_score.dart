@@ -7,8 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:quiz_app/service/services.dart';
-//import 'package:quiz_app/service/model.dart';
-// import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
@@ -25,18 +24,12 @@ class FinalScore extends StatelessWidget {
   int score;
   int? optionList;
 
-  // final QuestionControl questionController = Get.put(QuestionControl());
-  // ProfileController controller = Get.find();
+ 
   RxBool isLoading = true.obs;
   final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
-    // print((double.parse('$score').toInt() / double.parse('$outOf').toInt())
-    //     .floor()
-    //     .toDouble());
-    print('score ${score}');
-    print('outof ${outOf}');
-    // print('percent ${score / outOf}');
+
     Future.delayed(
         const Duration(milliseconds: 2300), () => isLoading.value = false);
     return Scaffold(
@@ -51,18 +44,7 @@ class FinalScore extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //const Padding(padding: EdgeInsets.only(left: 2500, top: 50)),
-              // Title(
-              //   color: Colors.white,
-              //   child: Text(
-              //     'Your Score is $score out of $outOf',
-              //     style: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 36.0,
-              //         fontWeight: FontWeight.bold,
-              //         fontFamily: GoogleFonts.roboto().fontFamily),
-              //   ),
-              // ),
+         
               const Padding(padding: EdgeInsets.all(20)),
               score == outOf
                   ? Obx(() {
@@ -171,7 +153,6 @@ class CircularFinalScore extends StatelessWidget {
           animation: true,
           animationDuration: animationDuration,
           center: Text(
-            // '${double.parse('$score').toInt()} / ${double.parse('$outOf').toInt()}',
             '$score/$outOf',
             style: const TextStyle(
                 color: Color.fromARGB(255, 255, 165, 0),

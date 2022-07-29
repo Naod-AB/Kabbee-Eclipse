@@ -149,7 +149,7 @@ class TextG extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Row(
-          children: [
+          children: const [
             Text(
               'Gender',
               style: kText,

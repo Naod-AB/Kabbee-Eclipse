@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-checkAnswer welcomeFromJson(String str) =>
-    checkAnswer.fromJson(json.decode(str));
+CheckAnswer checkAnswerFromJson(String str) =>
+    CheckAnswer.fromJson(json.decode(str));
 
-class checkAnswer {
+class CheckAnswer {
   var id;
   var answer;
   bool isCorrect;
   bool isSelected;
 
-  checkAnswer(
+  CheckAnswer(
       {this.id,
       this.answer,
       required this.isCorrect,
       required this.isSelected});
 
-  factory checkAnswer.fromJson(Map<String, dynamic> json) {
-    return checkAnswer(
+  factory CheckAnswer.fromJson(Map<String, dynamic> json) {
+    return CheckAnswer(
       id: json['id'],
       answer: json['answer'],
       isCorrect: json['isCorrect'],

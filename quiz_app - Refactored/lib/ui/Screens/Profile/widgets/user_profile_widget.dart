@@ -19,7 +19,7 @@ ProfileController controller = Get.put(ProfileController());
 
 Color orangeColor = const Color(0xFFFFA500);
 // Color tileColor = Color.fromRGBO(40, 40, 40, 1);
-Color tileColor = Color.fromRGBO(25, 25, 25, 1);
+Color tileColor = const Color.fromRGBO(25, 25, 25, 1);
 // Color tileColor = Color.fromARGB(227, 20, 20, 20);
 
 Color primaryColor = const Color(0xFFeeeeee);
@@ -90,13 +90,13 @@ Widget profileCardContent(context) {
               children: [
                 Obx(() => Text(
                     "${controller.firstName.value}\n${controller.lastName.value}",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         height: 1.1,
                         color: Colors.black))),
                 Text('${controller.userInfo.value!.email}',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 15, height: 1.1, color: Colors.black))
               ],
             )
@@ -315,11 +315,11 @@ Widget contactEditIcon(BuildContext context) {
           backgroundColor: kblue,
           builder: (context) {
             return Container(
-              margin: EdgeInsets.only(top: 3),
+              margin: const EdgeInsets.only(top: 3),
               decoration: BoxDecoration(
                   color: Theme.of(context).shadowColor,
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(50))),
+                      const BorderRadius.vertical(top: Radius.circular(50))),
               child: Wrap(
                 runSpacing: 9,
                 children: [
@@ -341,7 +341,7 @@ Widget contactEditIcon(BuildContext context) {
                         null,
                         null,
                         true,
-                        Color(0xFF40B3E0)),
+                        const Color(0xFF40B3E0)),
                   ),
                   buildBottomSheetTiles(
                       FontAwesomeIcons.solidEnvelope,
@@ -489,7 +489,7 @@ Widget passwordVisibilityBtn() {
       controller.hidePassword.value ? Icons.visibility_off : Icons.visibility,
       color: controller.hidePassword.value
           ? orangeColor
-          : Color.fromARGB(255, 255, 165, 0),
+          : const Color.fromARGB(255, 255, 165, 0),
     ),
   );
 }
@@ -799,7 +799,6 @@ Widget buildUsersTiles(
                     PopupMenuItem(
                       onTap: () {
                         final String listId = user['id'].toString();
-                        print('from file id $listId');
                         isUserActive
                             ? {
                                 controller.updatedPassword.value =

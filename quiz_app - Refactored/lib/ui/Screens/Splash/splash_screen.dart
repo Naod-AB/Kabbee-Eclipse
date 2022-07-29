@@ -17,16 +17,16 @@ import '../../../routes/router.gr.dart';
 
 class Splash extends StatelessWidget {
   Splash({Key? key}) : super(key: key);
-  // ProfileController controller = Get.put(ProfileController());
-  // QuestionControl qController = Get.put(QuestionControl());
+  
+  
 
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 4000), () {
-      //    Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const LoginPage()),
-      // );
+      
+      
+      
+      
       context.router.replace(const LoginRoute());
     });
 

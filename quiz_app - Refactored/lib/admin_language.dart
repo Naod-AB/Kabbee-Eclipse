@@ -9,11 +9,11 @@ class AdminLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(controller.fetchCoursesAndCategories);
+    
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text('Courses'),
+          title: const Text('Courses'),
           centerTitle: false,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -32,7 +32,7 @@ class AdminLanguage extends StatelessWidget {
                           .toUpperCase())
                   .toList();
 
-              print(language["icon"]);
+              
 
               return Card(
                 color: Theme.of(context).colorScheme.tertiary,

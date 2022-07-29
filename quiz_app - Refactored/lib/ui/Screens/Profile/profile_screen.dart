@@ -155,8 +155,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(context),
                   GestureDetector(
                     onTap: () async {
-                      print(
-                          'Profile DATA MY SCORES ${controller.userInfo.value!.id}');
+                     
                       controller.scores =
                           await fetchUserScores(controller.userInfo.value!.id);
 

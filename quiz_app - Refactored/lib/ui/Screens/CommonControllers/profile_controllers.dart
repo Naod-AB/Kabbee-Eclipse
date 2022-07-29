@@ -12,10 +12,6 @@ import 'dart:convert';
 import '../../../service/services.dart';
 
 class ProfileController extends GetxController {
-  // RxString selectedGender = 'male'.obs;
-  // RxBool activeBtn = false.obs;
-  // RxInt type = 0.obs;
-  // RxInt stepperIndex = 0.obs;
   RxBool isDarkMode = true.obs;
 
   RxBool x = true.obs;
@@ -108,10 +104,10 @@ class ProfileController extends GetxController {
 
     categoryLength =
         fetchCoursesAndCategories.map((e) => e['category']).toSet().toList();
-    // print('category length is $categoryLength');
+  
     courseLength =
         fetchCoursesAndCategories.map((e) => e['courseName']).toSet().toList();
     usersLength = fetchUser.length;
-    // print('user length is ${fetchUser.length}');
+    
   }
 }
