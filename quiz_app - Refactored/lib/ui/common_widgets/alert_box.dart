@@ -10,7 +10,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import '../Screens/Profile/widgets/user_profile_widget.dart';
 import '../Screens/Question/models/scores.dart';
 
-
 quizAlertBox(
     BuildContext context,
     String title,
@@ -29,14 +28,14 @@ quizAlertBox(
     style: AlertStyle(
       alertElevation: 200,
       isOverlayTapDismiss: false,
-      backgroundColor: Theme.of(context).shadowColor,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       buttonsDirection: isback ? ButtonsDirection.column : ButtonsDirection.row,
       titleStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.onBackground,
           fontSize: 24,
           fontWeight: FontWeight.bold),
       descStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.onBackground,
           fontSize: 18,
           fontWeight: FontWeight.w400),
     ),
@@ -45,7 +44,7 @@ quizAlertBox(
         child: Text(
           "CANCEL",
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).colorScheme.onBackground,
             fontSize: 20,
           ),
         ),
@@ -111,7 +110,6 @@ quizAlertBox(
                     questionAlertCtrl.questionApi = await fetchQuestionsApi(
                         path.toString().toUpperCase(), ftype);
 
-                   
                     String paths = path.toString().toUpperCase();
                     String ftypes = "FINAL";
 

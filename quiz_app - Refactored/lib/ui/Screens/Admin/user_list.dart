@@ -75,7 +75,7 @@ class UsersListPage extends StatelessWidget {
             bool isCurrentUserAdmin =
                 user['email'] == controller.userInfo.value!.email;
             return Card(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildUsersTiles(
                   context,
                   Image.asset('assets/images/avatar.png'),
@@ -109,7 +109,7 @@ class UsersListPage extends StatelessWidget {
                 user['email'] == controller.userInfo.value!.email;
 
             return Card(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildUsersTiles(
                     context,
                     Image.asset('assets/images/avatar.png'),

@@ -73,7 +73,7 @@ class ReviewScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                               margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                               decoration: BoxDecoration(
-                                color: Theme.of(context).shadowColor,
+                                color: Theme.of(context).colorScheme.tertiary,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Column(
@@ -88,9 +88,8 @@ class ReviewScreen extends StatelessWidget {
                                       questionController.questionApi![snapshot]
                                               ['question']
                                           .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6!,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                       maxLines: 3,
                                     ),
                                   ]),
@@ -145,7 +144,7 @@ class ReviewScreen extends StatelessWidget {
                                                       options[index].toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .headline6!,
+                                                          .headline3,
                                                       maxLines: 2,
                                                     ),
                                                     const Spacer(),

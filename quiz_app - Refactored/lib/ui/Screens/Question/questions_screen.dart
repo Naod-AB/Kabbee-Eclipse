@@ -109,7 +109,9 @@ class QuestionsScreen extends StatelessWidget {
                                     margin:
                                         const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context).shadowColor,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Column(
@@ -125,7 +127,7 @@ class QuestionsScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline6!,
+                                              .headline3,
                                           maxLines: 3,
                                         ),
                                         const Spacer(
@@ -178,7 +180,7 @@ class QuestionsScreen extends StatelessWidget {
                                                                   style: Theme.of(
                                                                           context)
                                                                       .textTheme
-                                                                      .headline6!,
+                                                                      .headline3,
                                                                   maxLines: 2,
                                                                 ),
                                                                 const Spacer(),

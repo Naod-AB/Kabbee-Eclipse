@@ -24,7 +24,8 @@ class EditProfileScreen extends GetView<ProfileController> {
           //physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(height: 20),
-            customText(context, 'First Name', 18, false, false, kblue),
+            customText(context, 'First Name', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextField(
@@ -36,7 +37,8 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Last Name', 18, false, false, kblue),
+            customText(context, 'Last Name', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextField(
@@ -48,7 +50,8 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Password', 18, false, false, kblue),
+            customText(context, 'Password', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextFieldP(
@@ -63,7 +66,8 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             Obx(() => buildTile(
                   controller.gender.value ? Icons.male : Icons.female,
-                  customText(context, 'Gender', 18, true, false, primaryColor),
+                  customText(context, 'Gender', 18, true, false,
+                      Theme.of(context).colorScheme.onBackground),
                   null,
                   genderToggle(2),
                   false,

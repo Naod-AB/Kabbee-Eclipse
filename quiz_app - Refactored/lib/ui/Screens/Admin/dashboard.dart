@@ -44,13 +44,14 @@ class DashboardPage extends GetView<ProfileController> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).shadowColor,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                   child: buildTile(
                     Icons.group,
-                    customText(context, 'Users', 18, true, false, primaryColor),
+                    customText(context, 'Users', 18, true, false,
+                        Theme.of(context).colorScheme.onBackground),
                     customText(context, 'See active and blocked', 13, false,
-                        false, secondaryColor),
+                        false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).colorScheme.onBackground,
@@ -67,13 +68,13 @@ class DashboardPage extends GetView<ProfileController> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).shadowColor),
+                      color: Theme.of(context).colorScheme.tertiary),
                   child: buildTile(
                     Icons.view_list_outlined,
-                    customText(
-                        context, 'Courses', 18, true, false, primaryColor),
+                    customText(context, 'Courses', 18, true, false,
+                        Theme.of(context).colorScheme.onBackground),
                     customText(context, 'View and update courses', 13, false,
-                        false, secondaryColor),
+                        false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).colorScheme.onBackground,

@@ -39,7 +39,7 @@ class SignupPassword extends StatelessWidget {
             Text(
               'Create account',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(30),
                   fontWeight: FontWeight.bold,
                   letterSpacing: 0.30),
@@ -47,9 +47,9 @@ class SignupPassword extends StatelessWidget {
             Text(
               'please enter your password',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(10),
-                  fontWeight: FontWeight.w100,
+                  fontWeight: FontWeight.w300,
                   letterSpacing: 0.50),
             ),
             const SizedBox(
@@ -108,7 +108,10 @@ class SignupPassword extends StatelessWidget {
                     // hintText: 'Enter Password',
                     // hintStyle: kBodyText,
                   ),
-                  style: kBodyText,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onBackground,
+                      height: 1.5),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   obscureText: profileController.x.value,
@@ -158,7 +161,10 @@ class SignupPassword extends StatelessWidget {
                     // hintText: 'Confirm Password',
                     // hintStyle: kBodyText,
                   ),
-                  style: kBodyText,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onBackground,
+                      height: 1.5),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   obscureText: profileController.y.value,

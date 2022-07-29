@@ -272,14 +272,12 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 50,
                       ),
-                      Text(
-                        "select language".tr,
-                        style: TextStyle(
-                          fontSize: 16,
-                          //fontFamily:
-                          //fontFamily: Roboto,
-                        ),
-                      ),
+                      Text("select language".tr,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onBackground,
+                            fontSize: 16,
+                            height: 1.5,
+                          )),
                       SizedBox(
                         height: 30,
                       ),
@@ -304,7 +302,13 @@ class _LoginPageState extends State<LoginPage> {
                                 // ),
                                 Text(
                                   'select language'.tr, //style: TextStyle(),
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground,
+                                    fontSize: 16,
+                                    height: 1.5,
+                                  ),
                                 )
                               ],
                             ),
@@ -314,7 +318,8 @@ class _LoginPageState extends State<LoginPage> {
                               size: 30,
                               color: kblue,
                             ),
-                            dropdownColor: Color.fromARGB(255, 39, 37, 37),
+                            dropdownColor:
+                                Theme.of(context).colorScheme.tertiary,
                             value: '${myController.langValue.value}',
                             items: Language.languageList()
                                 .map((lang) => DropdownMenuItem(
@@ -331,7 +336,13 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         Text(
                                           lang.name,
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onBackground,
+                                            fontSize: 16,
+                                            height: 1.5,
+                                          ),
                                         )
                                       ],
                                     )))

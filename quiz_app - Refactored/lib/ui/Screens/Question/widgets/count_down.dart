@@ -22,6 +22,10 @@ class MyTimer extends StatelessWidget {
 
     return Obx(
       () => TimerCountdown(
+        timeTextStyle:
+            TextStyle(color: Theme.of(context).colorScheme.onBackground),
+        descriptionTextStyle:
+            TextStyle(color: Theme.of(context).colorScheme.onBackground),
         format: CountDownTimerFormat.hoursMinutesSeconds,
         endTime: DateTime.now().add(
           Duration(

@@ -163,7 +163,10 @@ class OneSignupPage extends StatelessWidget {
                       if (authController.signUpIndex.value != 0)
                         Expanded(
                           child: RoundedButton(
-                              buttonName: "Back",
+                              buttonName: Text(
+                                "Back",
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
                               pressed: () {
                                 authController.signUpIndex.value--;
                               }),
@@ -173,7 +176,10 @@ class OneSignupPage extends StatelessWidget {
                       ),
                       Expanded(
                         child: RoundedButton(
-                            buttonName: "Next",
+                            buttonName: Text(
+                              "Next",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
                             pressed: () => authController.signUp(
                                 user, profilecontroller, formKey, context)),
                       ),

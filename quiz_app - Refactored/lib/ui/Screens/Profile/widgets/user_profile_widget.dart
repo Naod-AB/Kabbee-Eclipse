@@ -34,7 +34,7 @@ Widget customText(BuildContext context, String text, double size, bool isBold,
     textAlign: TextAlign.left,
     style: TextStyle(
         height: 1,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: textColor,
         fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
         fontSize: size),
   );
@@ -317,7 +317,7 @@ Widget contactEditIcon(BuildContext context) {
             return Container(
               margin: const EdgeInsets.only(top: 3),
               decoration: BoxDecoration(
-                  color: Theme.of(context).shadowColor,
+                  color: Theme.of(context).colorScheme.tertiary,
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(50))),
               child: Wrap(
@@ -326,8 +326,8 @@ Widget contactEditIcon(BuildContext context) {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                     child: Center(
-                      child: customText(
-                          context, 'Contact Us', 26, true, false, primaryColor),
+                      child: customText(context, 'Contact Us', 26, true, false,
+                          Theme.of(context).colorScheme.onBackground),
                     ),
                   ),
                   GestureDetector(
@@ -337,7 +337,7 @@ Widget contactEditIcon(BuildContext context) {
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.telegram,
                         customText(context, ' Telegram', 18, false, false,
-                            primaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         null,
                         null,
                         true,
@@ -346,7 +346,7 @@ Widget contactEditIcon(BuildContext context) {
                   buildBottomSheetTiles(
                       FontAwesomeIcons.solidEnvelope,
                       customText(context, ' quizapp@gmail.com', 18, false,
-                          false, primaryColor),
+                          false, Theme.of(context).colorScheme.onBackground),
                       null,
                       null,
                       true,
@@ -358,7 +358,7 @@ Widget contactEditIcon(BuildContext context) {
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.earthAmericas,
                         customText(context, ' www.kabbee.org', 18, false, false,
-                            primaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         null,
                         null,
                         true,
@@ -457,8 +457,8 @@ Widget editProfilePic(context) {
                       ),
               ),
               const SizedBox(width: 12),
-              customText(
-                  context, 'Change avatar', 18, false, false, primaryColor),
+              customText(context, 'Change avatar', 18, false, false,
+                  Theme.of(context).colorScheme.onBackground),
             ],
           ),
           ElevatedButton(
@@ -659,7 +659,7 @@ Widget buildTextFieldP(
       }
     },
     decoration: InputDecoration(
-        fillColor: Theme.of(context).shadowColor,
+        fillColor: Theme.of(context).colorScheme.tertiary,
         filled: true,
         hintStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
         // focusColor: orangeColor,
@@ -759,9 +759,10 @@ Widget buildUsersTiles(
     borderRadius: BorderRadius.circular(12),
     child: ListTile(
       contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
-      title: customText(context, title, 17, true, false, primaryColor),
-      subtitle:
-          customText(context, subtitle, 14, false, false, Colors.grey.shade400),
+      title: customText(context, title, 17, true, false,
+          Theme.of(context).colorScheme.onBackground),
+      subtitle: customText(context, subtitle, 14, false, false,
+          Theme.of(context).colorScheme.onBackground),
       leading: Container(
         child: isUserAdmin
             ? Stack(
