@@ -74,7 +74,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Admin settings
 
-            if (controller.userInfo.value!.role == 'ADMIN')
+            if (pController.userInfo.value!.role == 'ADMIN')
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -87,7 +87,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            await controller.getDashBoardData();
+                            await pController.getDashBoardData();
                             context.router.pushNamed('/dahboard');
                           },
                           child: buildTile(
@@ -128,13 +128,13 @@ class ProfileScreen extends GetView<ProfileController> {
                           secondaryColor),
                       Obx(
                         () => Switch.adaptive(
-                          value: controller.isDarkMode.value,
+                          value: pController.isDarkMode.value,
                           activeColor: orangeColor,
                           onChanged: (value) {
-                            controller.isDarkMode.value =
-                                !controller.isDarkMode.value;
+                            pController.isDarkMode.value =
+                                !pController.isDarkMode.value;
 
-                            Get.changeTheme(controller.isDarkMode.value
+                            Get.changeTheme(pController.isDarkMode.value
                                 ? Themes.darkMode
                                 : Themes.lightMode);
 
@@ -156,9 +156,9 @@ class ProfileScreen extends GetView<ProfileController> {
                   GestureDetector(
                     onTap: () async {
                       print(
-                          'Profile DATA MY SCORES ${controller.userInfo.value!.id}');
-                      controller.scores =
-                          await fetchUserScores(controller.userInfo.value!.id);
+                          'Profile DATA MY SCORES ${pController.userInfo.value!.id}');
+                      pController.scores = (await fetchUserScores(
+                          pController.userInfo.value!.id))!;
 
                       context.router.pushNamed('/my_scores');
                     },

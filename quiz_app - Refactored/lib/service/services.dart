@@ -31,7 +31,10 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'courseType': score.courseType,
         'courseScore': score.courseScore,
         'percentage': score.coursePercentage,
-        'userId': score.userId
+        'userId': score.userId,
+        'blocked': score.blocked,
+        'counter': score.counter,
+        'takendate': score.takenDate
       }));
 
   if (response.statusCode == 204) {
@@ -55,7 +58,10 @@ Future<CourseScore> createUserScore(CourseScore score) async {
             'courseType': score.courseType,
             'courseScore': score.courseScore,
             'percentage': score.coursePercentage,
-            'userId': score.userId
+            'userId': score.userId,
+            'blocked': score.blocked,
+            'counter': score.counter,
+            'takendate': score.takenDate
           }));
   if (response.statusCode == 201) {
     return CourseScore.fromJson(jsonDecode(response.body));
@@ -90,14 +96,19 @@ Future<Users> createUser(Users user) async {
 }
 
 // Fetch MY Scores
-Future fetchUserScores(int userId) async {
+Future<List<CourseScore>?> fetchUserScores(int userId) async {
   final response = await http.get(Uri.parse(
       'https://eclipse-api.herokuapp.com/scores/filter/?userId=$userId'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       final parsed = jsonDecode(response.body);
-
-      return parsed;
+      print(parsed
+          .map<CourseScore>((json) => CourseScore.fromJson(json))
+          .toList());
+      return parsed
+          .map<CourseScore>((json) => CourseScore.fromJson(json))
+          .toList();
+      ;
     } else {
       return null;
     }
@@ -157,7 +168,7 @@ Future<List> fetchDashboard() async {
 
 Future<CourseScore> updateExamcounter(CourseScore score) async {
   final response = await http.patch(
-    Uri.parse('hhttps://eclipse-api.herokuapp.com/scores/${score.courseId}'),
+    Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -243,22 +254,22 @@ Future<Users> updateUsersList({
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, dynamic>{
-      'password': controller.updatedPassword.value,
+      'password': pController.updatedPassword.value,
       'status': status ? 'BLOCKED' : 'ACTIVE',
     }),
   );
   print(response.statusCode);
   if (response.statusCode == 200 || response.statusCode == 204) {
     if (status == true) {
-      controller.blockedUsers.add(controller.activeUsers[index]);
-      controller.activeUsers.removeAt(index);
+      pController.blockedUsers.add(pController.activeUsers[index]);
+      pController.activeUsers.removeAt(index);
     } else {
-      controller.activeUsers.add(controller.blockedUsers[index]);
-      controller.blockedUsers.removeAt(index);
+      pController.activeUsers.add(pController.blockedUsers[index]);
+      pController.blockedUsers.removeAt(index);
     }
 
-    controller.activeUsersCount.value = controller.activeUsers.length;
-    controller.blockedUsersCount.value = controller.blockedUsers.length;
+    pController.activeUsersCount.value = pController.activeUsers.length;
+    pController.blockedUsersCount.value = pController.blockedUsers.length;
 
     return Users.fromJson(jsonDecode(response.body));
   } else {
@@ -383,10 +394,10 @@ Future<Users> updateJprofile({
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, dynamic>{
-      'firstName': controller.firstName.value,
-      'lastName': controller.lastName.value,
-      'password': controller.password.value,
-      'gender': controller.gender.value ? 'Male' : 'Female',
+      'firstName': pController.firstName.value,
+      'lastName': pController.lastName.value,
+      'password': pController.password.value,
+      'gender': pController.gender.value ? 'Male' : 'Female',
     }),
   );
   if (response.statusCode == 200) {
@@ -420,6 +431,9 @@ Future<Users> updateJprofile({
 
 // Logout
 logOut() {
+  ProfileController pcontroller = Get.find();
+  print(pcontroller.userInfo.value!.email);
+  pcontroller.userInfo.value = Users();
   Get.delete<ProfileController>();
   Get.delete<QuestionController>();
   Get.delete<AuthController>();

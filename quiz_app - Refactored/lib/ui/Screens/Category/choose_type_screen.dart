@@ -80,16 +80,30 @@ class ChooseTypePage extends StatelessWidget {
                     imgeSrc: "assets/icons/exam.svg",
                     cardtext: "Evalution Exam",
                     onpressed: () {
-                      quizAlertBox(
-                          context,
-                          'Exam information',
-                          "OK",
-                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
-                          path,
-                          icon,
-                          questionController,
-                          true,
-                          false);
+                      print("somethign here ");
+                      !questionController.fetchSelectedCourseScore()!.blocked!
+                          ? quizAlertBox(
+                              context,
+                              'Exam information',
+                              "OK",
+                              'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
+                              path,
+                              icon,
+                              questionController,
+                              true,
+                              false,
+                              "WARNING")
+                          : quizAlertBox(
+                              context,
+                              'Exam information',
+                              "OK",
+                              'You cannot take the Exam at the moment ,Too many failed attempts',
+                              path,
+                              icon,
+                              questionController,
+                              true,
+                              false,
+                              "INFO");
                     },
                   ),
                   const SizedBox(

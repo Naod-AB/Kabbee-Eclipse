@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:quiz_app/Models/scores.dart';
+import 'package:quiz_app/controllers/profile_controllers.dart';
 
 class ChosenModel {
   final int questionNumber;
@@ -13,10 +15,12 @@ class ChosenModel {
 }
 
 class QuestionControl extends GetxController {
+  ProfileController pController = Get.find();
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
   RxBool isEnabled = true.obs;
   int optionList = 0;
+  CourseScore selectedScore = CourseScore();
 
   RxInt h = 0.obs;
   RxInt m = 0.obs;
@@ -37,4 +41,14 @@ class QuestionControl extends GetxController {
   int count = 0;
   RxBool isCorrect = false.obs;
   bool isSelected = false;
+  CourseScore? fetchSelectedCourseScore() {
+    for (var element in pController.scores!) {
+      print(chosenCourse.value);
+      if (element.courseName == chosenCourse.value) {
+        selectedScore = element;
+        print(element.courseId);
+      }
+    }
+    return selectedScore;
+  }
 }

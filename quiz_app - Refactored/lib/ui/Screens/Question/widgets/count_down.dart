@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:quiz_app/service/services.dart';
 //import 'package:quiz_app/service/model.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -49,14 +50,23 @@ class MyTimer extends StatelessWidget {
                 controller.chosenCourse.value;
 
             // get percentge
-            double scorePercent = (controller.answers.length /
-                controller.questionApi!.length *
-                100);
+            int scorePercent = (controller.answers.length /
+                    controller.questionApi!.length *
+                    100)
+                .toInt();
             print('user percentage by timer $scorePercent');
 
             // change timer
             controller.seconds.value = 0;
             controller.isEnabled.value = false;
+            controller.checkExamCounter(scorePercent);
+            // set date time
+            DateTime now = DateTime.now();
+            final DateFormat formatter = DateFormat(
+              'yyyy-MM-dd HH:mm:ss',
+            );
+
+            final String takenDate = formatter.format(now);
 
             // get score
             CourseScore score = CourseScore(
@@ -66,6 +76,9 @@ class MyTimer extends StatelessWidget {
                 courseType: controller.chosenCourseType.value,
                 courseScore: controller.answers.length,
                 coursePercentage: scorePercent,
+                counter: controller.examCounter,
+                blocked: controller.examCounter >= 2 ? true : false,
+                takenDate: takenDate,
                 userId: pcontroller.userInfo.value!.id);
             controller.isFinished = true;
 

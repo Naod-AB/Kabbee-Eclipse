@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+
+import '../../../service/services.dart';
+import '../Question/models/scores.dart';
 
 class QuestionController extends GetxController {
   // To hold
@@ -9,10 +13,12 @@ class QuestionController extends GetxController {
   List? questionApi;
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
+  int examCounter = 0;
   bool isFinal = false;
-
+  CourseScore selectedScore = CourseScore();
   Rx<ScrollController> scrolController = ScrollController().obs;
   Rx<ScrollController> reviewScrolController = ScrollController().obs;
+  ProfileController pController = Get.put(ProfileController());
 
   int optionList = 0;
 
@@ -46,4 +52,34 @@ class QuestionController extends GetxController {
   // List choices = [];
   List choices = [];
   int scoreCounter = 0;
+  CourseScore? fetchSelectedCourseScore() {
+    for (var element in pController.scores) {
+      print(chosenCourse.value);
+      if (element.courseName == chosenCourse.value) {
+        selectedScore = element;
+        print(element.courseName);
+      }
+    }
+    return selectedScore;
+  }
+
+  int checkExamCounter(int scorePercentage) {
+    CourseScore course;
+    print("this is the selected score" + selectedScore.courseName!);
+    examCounter = selectedScore!.counter!;
+    if (scorePercentage < 60) {
+      examCounter++;
+      print("increamented the examCounter " + examCounter.toString());
+    }
+    if (examCounter >= 2) {
+      print(
+          "block the user from taking the task  by setting blockked to true ");
+      selectedScore.blocked = true;
+      updateExamcounter(selectedScore);
+    } else {
+      selectedScore.blocked = false;
+      updateExamcounter(selectedScore);
+    }
+    return examCounter;
+  }
 }

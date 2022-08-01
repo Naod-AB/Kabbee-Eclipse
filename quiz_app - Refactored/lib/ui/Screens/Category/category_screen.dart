@@ -23,7 +23,7 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print('from CHOOSE TYPE ${questionController.questionApi}');
-    print('after logout email - category ${controller.userInfo.value!.email}');
+    print('after logout email - category ${pController.userInfo.value!.email}');
     return SafeArea(
       child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,

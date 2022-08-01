@@ -22,7 +22,7 @@ class CourseScore {
   String? courseType;
   int? courseScore;
   int? userId;
-  double? coursePercentage;
+  int? coursePercentage;
   int? counter;
   bool? blocked;
   String? takenDate;
@@ -35,7 +35,7 @@ class CourseScore {
       coursePercentage: json["percentage"],
       userId: json["userId"],
       counter: json["counter"],
-      takenDate: json["takenDate"],
+      takenDate: json["takendate"],
       blocked: json["blocked"]);
 
   Map<String, dynamic> toJson() => {
@@ -47,6 +47,6 @@ class CourseScore {
         "userId": userId,
         "blocked": blocked,
         "counter": counter,
-        "takenDate": takenDate
+        "takendate": takenDate
       };
 }

@@ -11,6 +11,7 @@ import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:quiz_app/ui/Screens/Question/widgets/count_down.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
+import 'package:intl/intl.dart';
 //import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 
@@ -81,7 +82,8 @@ class QuestionsScreen extends StatelessWidget {
                     icon,
                     questionController,
                     false,
-                    true);
+                    true,
+                    "WARNING");
               }
             : null,
         child: Scaffold(
@@ -409,20 +411,32 @@ class QuestionsScreen extends StatelessWidget {
                                               icon,
                                               questionController,
                                               false,
-                                              false);
+                                              false,
+                                              "WARNING");
                                         }
                                       }
+                                      int examCounter = 0;
 
-                                      double scorePercent =
+                                      int scorePercent =
                                           (questionController.answers.length /
-                                              questionController
-                                                  .questionApi!.length *
-                                              100);
+                                                  questionController
+                                                      .questionApi!.length *
+                                                  100)
+                                              .toInt();
                                       print(
                                           'THE USER PERCENTAGE IS $scorePercent');
+                                      examCounter = questionController
+                                          .checkExamCounter(scorePercent);
+                                      DateTime now = DateTime.now();
+                                      final DateFormat formatter = DateFormat(
+                                        'yyyy-MM-dd HH:mm:ss',
+                                      );
+
+                                      final String takenDate =
+                                          formatter.format(now);
 
                                       CourseScore score = CourseScore(
-                                          courseId: controller
+                                          courseId: pController
                                                   .userInfo.value!.id
                                                   .toString() +
                                               questionController
@@ -435,10 +449,13 @@ class QuestionsScreen extends StatelessWidget {
                                               questionController.answers.length,
                                           coursePercentage: scorePercent,
                                           userId:
-                                              controller.userInfo.value!.id);
+                                              pController.userInfo.value!.id,
+                                          counter: examCounter,
+                                          blocked: false,
+                                          takenDate: takenDate);
                                       questionController.isFinished = true;
 
-                                      String checkid = controller
+                                      String checkid = pController
                                               .userInfo.value!.id
                                               .toString() +
                                           questionController.chosenCourse.value;

@@ -30,9 +30,9 @@ class EditProfileScreen extends GetView<ProfileController> {
             Obx(
               () => buildTextField(
                   context,
-                  controller.firstName.value,
+                  pController.firstName.value,
                   Icons.person,
-                  controller.firstNameController.value,
+                  pController.firstNameController.value,
                   false,
                   null),
             ),
@@ -42,9 +42,9 @@ class EditProfileScreen extends GetView<ProfileController> {
             Obx(
               () => buildTextField(
                   context,
-                  controller.lastName.value,
+                  pController.lastName.value,
                   Icons.person,
-                  controller.lastNameController.value,
+                  pController.lastNameController.value,
                   false,
                   null),
             ),
@@ -56,14 +56,14 @@ class EditProfileScreen extends GetView<ProfileController> {
                   context,
                   'Enter new password ',
                   Icons.lock,
-                  controller.passwordController.value,
+                  pController.passwordController.value,
                   true,
                   passwordVisibilityBtn(),
                   pkey),
             ),
             const SizedBox(height: 20),
             Obx(() => buildTile(
-                  controller.gender.value ? Icons.male : Icons.female,
+                  pController.gender.value ? Icons.male : Icons.female,
                   customText(context, 'Gender', 18, true, false, primaryColor),
                   null,
                   genderToggle(2),

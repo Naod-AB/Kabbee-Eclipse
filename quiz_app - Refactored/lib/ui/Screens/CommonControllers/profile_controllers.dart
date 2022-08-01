@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
@@ -38,7 +39,7 @@ class ProfileController extends GetxController {
   Rx<Users?> userInfo = Users().obs;
   List? userList;
 
-  List? scores;
+  List<CourseScore> scores = [];
   RxList activeUsers = [].obs;
   RxList blockedUsers = [].obs;
 

@@ -95,13 +95,11 @@ class AuthController extends GetxController {
       //controller.userInfo.value = await fetchUser(emails);
       var found = false;
       for (var user in users) {
-        print(user.email);
         if (user.email == email.text) {
-          print(user.email);
-          print("email found lets check the password");
-
+          print("Miki name");
           if (user.password == password.text) {
-            controller.userInfo.value = user;
+            print("Miki" + user.email!);
+            pController.userInfo.value = user;
             found = true;
             break;
           } else {
@@ -111,23 +109,24 @@ class AuthController extends GetxController {
         }
       }
       if (found == true) {
-        print(controller.userInfo.value!.password);
-        print('You are looking for ${controller.userInfo.value!.id}');
-        controller.firstName.value =
-            controller.userInfo.value!.firstName.toString().toCapitalized();
-        controller.lastName.value =
-            controller.userInfo.value!.lastName.toString().toCapitalized();
-        controller.password.value =
-            controller.userInfo.value!.password.toString();
-        controller.gender.value =
-            controller.userInfo.value!.gender == 'Male' ? true : false;
+        // print(controller.userInfo.value!.password);
+        // print('You are looking for ${controller.userInfo.value!.id}');
+        pController.firstName.value =
+            pController.userInfo.value!.firstName.toString().toCapitalized();
+        pController.lastName.value =
+            pController.userInfo.value!.lastName.toString().toCapitalized();
+        pController.password.value =
+            pController.userInfo.value!.password.toString();
+        pController.gender.value =
+            pController.userInfo.value!.gender == 'Male' ? true : false;
       } else {
         error.value = "Email address or Password is incorrect";
         isLoading.value = false;
       }
 
-      if (controller.userInfo.value != null &&
-          controller.password.value == pass) {
+      if (pController.userInfo.value != null &&
+          pController.password.value == pass) {
+        print("Mohammed" + pController.userInfo.value!.email!);
         if (rememberMe.value) {
           print("remmeber me");
           box1.put('email', emails);
@@ -139,15 +138,16 @@ class AuthController extends GetxController {
         }
         print(box1.get('email').toString());
         //print(box1.get('pass').toString());
-        controller.scores =
-            await fetchUserScores(controller.userInfo.value!.id);
+        pController.scores =
+            (await fetchUserScores(pController.userInfo.value!.id))!;
+        print("this is the first course" + pController.scores[0].courseName!);
         error.value = "";
-        print('Profile DATA  AUTH ${controller.userInfo.value!.email}');
-        print('after logout email - auth ${controller.userInfo.value!.email}');
+        print('Profile DATA  AUTH ${pController.userInfo.value!.email}');
+        print('after logout email - auth ${pController.userInfo.value!.email}');
         isLoading.value = false;
         context.router.pushNamed('/category');
 
-        print('after logout email --- ${controller.userInfo.value!.email}');
+        print('after logout email --- ${pController.userInfo.value!.email}');
       }
     } else {
       error.value = "Email address or Password is incorrect";

@@ -24,16 +24,16 @@ class MyScoresScreen extends GetView<ProfileController> {
       backgroundColor: Colors.black,
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
-        child: controller.scores == null ||
-                controller.scores!.any(
-                  (data) => data['courseType'] == null,
+        child: pController.scores == null ||
+                pController.scores!.any(
+                  (data) => data.courseType == null,
                 )
             ? ScoreAlertBox(
                 title: 'Your score list is Empty !',
                 text: 'Do Some Exams and check your results here.')
             : Expanded(
                 child: GroupedListView<dynamic, String>(
-                  elements: controller.scores!,
+                  elements: pController.scores!,
                   groupBy: (element) => element['courseType'],
                   order: GroupedListOrder.ASC,
                   groupSeparatorBuilder: (value) {
