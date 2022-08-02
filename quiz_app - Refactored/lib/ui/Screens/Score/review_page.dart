@@ -3,8 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-//import 'package:quiz_app/service/model.dart';
-// import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
@@ -20,10 +19,8 @@ import '/routes/router.gr.dart';
 class ReviewScreen extends StatelessWidget {
   ReviewScreen({Key? key}) : super(key: key);
 
-  // final QuestionControl anotherQuetionController = Get.put(QuestionControl());
-  // final ProfileController questionController = Get.put(ProfileController());
   final QuestionController questionController = Get.find();
-  // ScrollController reviewScrolController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,12 +31,11 @@ class ReviewScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Obx(
             () => SingleChildScrollView(
-              controller: questionController.reviewScrolController.value,
+              controller: questionController.reviewScrollController.value,
               child: SizedBox(
                 height: 740,
                 child: Column(
                   children: [
-                    // Question Number
                     Obx(
                       () => Wrap(children: [
                         AutoSizeText(
@@ -52,8 +48,6 @@ class ReviewScreen extends StatelessWidget {
                       ]),
                     ),
                     SizedBox(height: 20),
-                    // Questions
-
                     SizedBox(
                       height: 540.0,
                       child: PageView.builder(
@@ -63,9 +57,9 @@ class ReviewScreen extends StatelessWidget {
                             if (questionController.qnIndex ==
                                 questionController.questionApi!.length) {
                               print('This should Scrollll...');
-                              questionController.reviewScrolController.value
+                              questionController.reviewScrollController.value
                                   .animateTo(
-                                      questionController.reviewScrolController
+                                      questionController.reviewScrollController
                                           .value.position.extentAfter,
                                       duration: Duration(milliseconds: 500),
                                       curve: Curves.easeInOut);
@@ -79,7 +73,7 @@ class ReviewScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(40, 10, 10, 0),
                               margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                               decoration: BoxDecoration(
-                                color: Theme.of(context).shadowColor,
+                                color: Theme.of(context).colorScheme.tertiary,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Column(
@@ -94,9 +88,8 @@ class ReviewScreen extends StatelessWidget {
                                       questionController.questionApi![snapshot]
                                               ['question']
                                           .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6!,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                       maxLines: 3,
                                     ),
                                   ]),
@@ -151,7 +144,7 @@ class ReviewScreen extends StatelessWidget {
                                                       options[index].toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .headline6!,
+                                                          .headline3,
                                                       maxLines: 2,
                                                     ),
                                                     const Spacer(),
@@ -180,20 +173,15 @@ class ReviewScreen extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    //const Spacer(),
                     Obx(
                       () => questionController.questionApi!.length ==
                               questionController.qnIndex.value
                           ? ElevatedButton(
                               onPressed: () {
-                                // print(questionController.optionList);
-                                // deleteSavedAnswers(questionController.optionList);
-                                // context.router.push(const CategoryRoute());
-
                                 print(questionController.questionApi!.length);
                                 Get.delete<QuestionController>();
                                 questionController.qnIndex.value = 1;
-                                // deleteSavedAnswers(questionController.questionApi!.length);
+
                                 context.router.push(CategoryRoute());
                               },
                               style: ElevatedButton.styleFrom(

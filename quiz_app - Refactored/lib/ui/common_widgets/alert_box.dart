@@ -5,20 +5,13 @@ import 'package:intl/intl.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
 import '../../routes/router.gr.dart';
 import '../../service/services.dart';
-//import '../../service/model.dart';
-// import '../Screens/CommonControllers/question_controller.dart';
-// import '../Screens/Profile/widgets/user_profile_widget.dart';
+
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import '../Screens/Profile/widgets/user_profile_widget.dart';
 import '../Screens/Question/models/scores.dart';
-import '../Screens/Category/choose_type_screen.dart';
 
-// final QuestionControl questionController = Get.put(QuestionControl());
-// final ProfileController controller = Get.put(ProfileController());
 quizAlertBox(
-    // questionController
     BuildContext context,
     String title,
     String confirmationText,
@@ -37,14 +30,14 @@ quizAlertBox(
     style: AlertStyle(
       alertElevation: 200,
       isOverlayTapDismiss: false,
-      backgroundColor: Theme.of(context).shadowColor,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       buttonsDirection: isback ? ButtonsDirection.column : ButtonsDirection.row,
       titleStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.onBackground,
           fontSize: 24,
           fontWeight: FontWeight.bold),
       descStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.onBackground,
           fontSize: 18,
           fontWeight: FontWeight.w400),
     ),
@@ -69,7 +62,7 @@ quizAlertBox(
       DialogButton(
         child: Text(
           confirmationText,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: const TextStyle(color: Colors.white, fontSize: 20),
         ),
         onPressed: isback
             ? null

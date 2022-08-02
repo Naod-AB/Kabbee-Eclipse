@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
+import 'package:quiz_app/service/english.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_bindings.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => GetMaterialApp.router(
+        translations: translate(),
         title: 'Quiz APP',
         smartManagement: SmartManagement.keepFactory,
         routerDelegate: _appRouter.delegate(),
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: Themes.lightMode,
         darkTheme: Themes.darkMode,
         themeMode:
-            controller.isDarkMode.value ? ThemeMode.light : ThemeMode.light,
+            controller.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
         initialBinding: ProfileBinding(),
         debugShowMaterialGrid: false,
       ),

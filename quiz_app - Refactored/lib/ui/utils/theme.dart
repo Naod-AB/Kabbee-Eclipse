@@ -56,9 +56,13 @@ class Themes {
       surface: DarkModeColors.surfaceColor,
       onSurface: DarkModeColors.onBackgroundColor,
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       headline4: TextStyle(color: lightThemeBody),
       headline5: TextStyle(color: lightThemeBody),
+      headline3: TextStyle(
+        color: DarkModeColors.onBackgroundColor,
+        fontSize: 20,
+      ),
       headline6: TextStyle(
           color: DarkModeColors.onBackgroundColor, fontWeight: FontWeight.bold),
     ),
@@ -67,9 +71,15 @@ class Themes {
   );
   static ThemeData lightMode = ThemeData.light().copyWith(
     scaffoldBackgroundColor: lightThemeBody,
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
+      headline3: TextStyle(
+        color: LightModeColors.onBackgroundColor,
+        fontSize: 20,
+      ),
       headline4: TextStyle(color: darkThemeBody),
-      headline5: TextStyle(color: darkThemeBody),
+      headline5: TextStyle(
+        color: darkThemeBody,
+      ),
       headline6: TextStyle(
           color: DarkModeColors.onBackgroundColor, fontWeight: FontWeight.bold),
     ),

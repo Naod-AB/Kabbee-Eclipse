@@ -43,7 +43,8 @@ class ProfileScreen extends GetView<ProfileController> {
             //  Personal section
 
             profileCardContent(context),
-            customText(context, 'Profile', 20, false, false, primaryColor),
+            customText(context, 'Profile', 20, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
 
             buildTileGroup(
@@ -55,10 +56,10 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                       Icons.person,
-                      customText(
-                          context, 'Personal', 18, true, false, primaryColor),
+                      customText(context, 'Personal', 18, true, false,
+                          Theme.of(context).colorScheme.onBackground),
                       customText(context, 'View and update profile', 13, false,
-                          false, secondaryColor),
+                          false, Theme.of(context).colorScheme.onBackground),
                       Icon(
                         Icons.arrow_forward_ios,
                         color: Theme.of(context).colorScheme.onBackground,
@@ -80,7 +81,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 children: [
                   SizedBox(height: 20),
                   customText(context, 'Admin Settings', 20, false, false,
-                      primaryColor),
+                      Theme.of(context).colorScheme.onBackground),
                   const SizedBox(height: 15),
                   buildTileGroup(
                     Column(
@@ -93,9 +94,9 @@ class ProfileScreen extends GetView<ProfileController> {
                           child: buildTile(
                             Icons.dashboard,
                             customText(context, 'Dashboard', 18, true, false,
-                                primaryColor),
+                                Theme.of(context).colorScheme.onBackground),
                             customText(context, 'Statistics', 13, false, false,
-                                secondaryColor),
+                                Theme.of(context).colorScheme.onBackground),
                             Icon(
                               Icons.arrow_forward_ios,
                               color: Theme.of(context).colorScheme.onBackground,
@@ -115,17 +116,18 @@ class ProfileScreen extends GetView<ProfileController> {
 
 // ......
             const SizedBox(height: 20),
-            customText(context, 'Other', 20, false, false, primaryColor),
+            customText(context, 'Other', 20, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             buildTileGroup(
               Column(
                 children: [
                   buildTile(
                       Icons.dark_mode,
-                      customText(
-                          context, 'Dark Mode', 18, true, false, primaryColor),
+                      customText(context, 'Dark Mode', 18, true, false,
+                          Theme.of(context).colorScheme.onBackground),
                       customText(context, 'Change theme', 13, false, false,
-                          secondaryColor),
+                          Theme.of(context).colorScheme.onBackground),
                       Obx(
                         () => Switch.adaptive(
                           value: pController.isDarkMode.value,
@@ -155,19 +157,17 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(context),
                   GestureDetector(
                     onTap: () async {
-                      print(
-                          'Profile DATA MY SCORES ${pController.userInfo.value!.id}');
-                      pController.scores = (await fetchUserScores(
-                          pController.userInfo.value!.id))!;
+                      controller.scores = (await fetchUserScores(
+                          controller.userInfo.value!.id))!;
 
                       context.router.pushNamed('/my_scores');
                     },
                     child: buildTile(
                         Icons.celebration,
                         customText(context, 'My Scores', 18, true, false,
-                            primaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         customText(context, 'Achievements', 13, false, false,
-                            secondaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         Icon(
                           Icons.arrow_forward_ios,
                           color: Theme.of(context).colorScheme.onBackground,
@@ -186,9 +186,14 @@ class ProfileScreen extends GetView<ProfileController> {
                     child: buildTile(
                         Icons.recommend_outlined,
                         customText(context, 'Recommendations', 18, true, false,
-                            primaryColor),
-                        customText(context, 'kabbee recommend you to Visit', 13,
-                            false, false, secondaryColor),
+                            Theme.of(context).colorScheme.onBackground),
+                        customText(
+                            context,
+                            'kabbee recommend you to Visit',
+                            13,
+                            false,
+                            false,
+                            Theme.of(context).colorScheme.onBackground),
                         Icon(
                           Icons.view_carousel_outlined,
                           color: Theme.of(context).colorScheme.onBackground,
@@ -201,18 +206,17 @@ class ProfileScreen extends GetView<ProfileController> {
                       showCupertinoDialog<void>(
                         context: context,
                         builder: (BuildContext context) => CupertinoAlertDialog(
-                          title: const Text('Logging Out'),
-                          content:
-                              const Text('Are You sure you want to log out?'),
+                          title: Text('Logging Out'.tr),
+                          content: Text('Are You sure you want to log out?'.tr),
                           actions: <CupertinoDialogAction>[
                             CupertinoDialogAction(
-                              child: const Text('No'),
+                              child: Text('No'.tr),
                               onPressed: () {
                                 context.router.pop();
                               },
                             ),
                             CupertinoDialogAction(
-                              child: const Text('Yes'),
+                              child: Text('Yes'.tr),
                               isDestructiveAction: true,
                               onPressed: () {
                                 // context.router.removeUntil(
@@ -221,7 +225,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                 // context.router.popUntilRoot();
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
-                                logOut();
+                                logOut(context);
                               },
                             )
                           ],
@@ -230,10 +234,15 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.exit_to_app,
+                        customText(context, 'Log Out', 18, true, false,
+                            Theme.of(context).colorScheme.onBackground),
                         customText(
-                            context, 'Log Out', 18, true, false, primaryColor),
-                        customText(context, 'Exit from the application', 13,
-                            false, false, secondaryColor),
+                            context,
+                            'Exit from the application',
+                            13,
+                            false,
+                            false,
+                            Theme.of(context).colorScheme.onBackground),
                         null,
                         true),
                   )

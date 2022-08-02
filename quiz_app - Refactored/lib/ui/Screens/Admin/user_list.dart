@@ -11,16 +11,9 @@ class UsersListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('USERSLIST ${pController.userList}');
     pController.activeUsers.value = pController.userList!
         .where((element) => element["status"] == 'ACTIVE')
         .toList();
-    print('ACTIVE >> ${pController.activeUsers}');
-    print('ACTIVE >> ${pController.activeUsers.length}');
-    print('');
-
-    print('BLOCKED >> ${pController.blockedUsers}');
-    print('BLOCKED >> ${pController.blockedUsers.length}');
 
     pController.activeUsersCount.value = pController.activeUsers.length;
 
@@ -45,7 +38,7 @@ class UsersListPage extends StatelessWidget {
               indicatorColor: kblue,
               labelColor: kblue,
               unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'ACTIVE',
                 ),
@@ -83,7 +76,7 @@ class UsersListPage extends StatelessWidget {
             bool isCurrentUserAdmin =
                 user['email'] == pController.userInfo.value!.email;
             return Card(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildUsersTiles(
                   context,
                   Image.asset('assets/images/avatar.png'),
@@ -117,7 +110,7 @@ class UsersListPage extends StatelessWidget {
                 user['email'] == pController.userInfo.value!.email;
 
             return Card(
-                color: Theme.of(context).shadowColor,
+                color: Theme.of(context).colorScheme.tertiary,
                 child: buildUsersTiles(
                     context,
                     Image.asset('assets/images/avatar.png'),

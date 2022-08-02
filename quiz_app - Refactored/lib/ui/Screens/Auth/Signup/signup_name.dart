@@ -34,7 +34,7 @@ class SignupName extends StatelessWidget {
           Text(
             'Create account',
             style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onBackground,
                 fontSize: getProportionateScreenWidth(30), //40,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 0.30),
@@ -42,9 +42,9 @@ class SignupName extends StatelessWidget {
           Text(
             'please tell us more about you',
             style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onBackground,
                 fontSize: getProportionateScreenWidth(10), //20,
-                fontWeight: FontWeight.w100,
+                fontWeight: FontWeight.w300,
                 letterSpacing: 0.50),
           ),
           SizedBox(
@@ -82,7 +82,10 @@ class SignupName extends StatelessWidget {
                   // hintText: 'Enter First Name',
                   // hintStyle: kBodyText,
                 ),
-                style: kBodyText,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    height: 1.5),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 obscureText: false,
@@ -131,7 +134,10 @@ class SignupName extends StatelessWidget {
                     ),
                   ),
                 ),
-                style: kBodyText,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    height: 1.5),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 obscureText: false,

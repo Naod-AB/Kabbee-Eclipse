@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_const
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -27,16 +25,16 @@ class DashboardPage extends GetView<ProfileController> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               buildDashBoardTiles(context, 'USERS', 32,
-                  '0' + pController.usersLength.toString(), 64),
-              SizedBox(height: 20),
+                  '0' + controller.usersLength.toString(), 64),
+              const SizedBox(height: 20),
               buildDashBoardTiles(context, 'COURSES', 32,
-                  '0' + pController.courseLength.length.toString(), 64),
-              SizedBox(height: 20),
+                  '0' + controller.courseLength.length.toString(), 64),
+              const SizedBox(height: 20),
               buildDashBoardTiles(context, 'CATEGORIES', 32,
-                  '0' + pController.categoryLength.length.toString(), 64),
-              SizedBox(height: 40),
+                  '0' + controller.categoryLength.length.toString(), 64),
+              const SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {
                   pController.userList = await fetchUsers();
@@ -46,13 +44,14 @@ class DashboardPage extends GetView<ProfileController> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).shadowColor,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                   child: buildTile(
                     Icons.group,
-                    customText(context, 'Users', 18, true, false, primaryColor),
+                    customText(context, 'Users', 18, true, false,
+                        Theme.of(context).colorScheme.onBackground),
                     customText(context, 'See active and blocked', 13, false,
-                        false, secondaryColor),
+                        false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).colorScheme.onBackground,
@@ -61,7 +60,7 @@ class DashboardPage extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
                   context.router.pushNamed('/adminLanguages');
@@ -69,13 +68,13 @@ class DashboardPage extends GetView<ProfileController> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).shadowColor),
+                      color: Theme.of(context).colorScheme.tertiary),
                   child: buildTile(
                     Icons.view_list_outlined,
-                    customText(
-                        context, 'Courses', 18, true, false, primaryColor),
+                    customText(context, 'Courses', 18, true, false,
+                        Theme.of(context).colorScheme.onBackground),
                     customText(context, 'View and update courses', 13, false,
-                        false, secondaryColor),
+                        false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).colorScheme.onBackground,

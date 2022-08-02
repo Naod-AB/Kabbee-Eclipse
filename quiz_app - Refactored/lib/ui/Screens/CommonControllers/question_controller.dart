@@ -6,10 +6,6 @@ import '../../../service/services.dart';
 import '../Question/models/scores.dart';
 
 class QuestionController extends GetxController {
-  // To hold
-  // List<ChosenModel> chosenAnswers = [];
-  // RxBool isCorrect = false.obs;
-  // bool isSelected = false;
   List? questionApi;
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
@@ -49,7 +45,6 @@ class QuestionController extends GetxController {
 
   //
   List answers = [];
-  // List choices = [];
   List choices = [];
   int scoreCounter = 0;
   CourseScore? fetchSelectedCourseScore() {
@@ -66,7 +61,7 @@ class QuestionController extends GetxController {
   int checkExamCounter(int scorePercentage) {
     CourseScore course;
     print("this is the selected score" + selectedScore.courseName!);
-    examCounter = selectedScore!.counter!;
+    examCounter = selectedScore.counter!;
     if (scorePercentage < 60) {
       examCounter++;
       print("increamented the examCounter " + examCounter.toString());

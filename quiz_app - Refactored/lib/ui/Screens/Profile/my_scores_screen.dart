@@ -16,12 +16,19 @@ class MyScoresScreen extends GetView<ProfileController> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-        title: customText(context, 'My Scores', 18, false, false, primaryColor),
+        title: customText(
+          context,
+          'My Scores',
+          18,
+          false,
+          false,
+          Theme.of(context).colorScheme.onBackground,
+        ),
         centerTitle: false,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
         child: pController.scores == null ||
@@ -29,8 +36,8 @@ class MyScoresScreen extends GetView<ProfileController> {
                   (data) => data.courseType == null,
                 )
             ? ScoreAlertBox(
-                title: 'Your score list is Empty !',
-                text: 'Do Some Exams and check your results here.')
+                title: 'Your score list is Empty !'.tr,
+                text: 'Do Some Exams and check your results here.'.tr)
             : Expanded(
                 child: GroupedListView<dynamic, String>(
                   elements: pController.scores!,
@@ -45,26 +52,31 @@ class MyScoresScreen extends GetView<ProfileController> {
                   },
                   itemBuilder: (context, element) {
                     colorCode = element['percentage'];
-                    // print(colorCode.runtimeType);
 
                     return Stack(
                       children: [
                         Card(
-                          color: Colors.white12,
+                          color: Theme.of(context).colorScheme.tertiary,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                customText(context, element['courseName'], 19,
-                                    false, false, primaryColor),
                                 customText(
                                     context,
-                                    '${element['percentage']} %',
+                                    element['courseName'],
                                     19,
-                                    true,
                                     false,
-                                    primaryColor),
+                                    false,
+                                    Theme.of(context).colorScheme.onBackground),
+                                customText(
+                                  context,
+                                  '${element['percentage']} %',
+                                  19,
+                                  true,
+                                  false,
+                                  Theme.of(context).colorScheme.onBackground,
+                                ),
                               ],
                             ),
                           ),

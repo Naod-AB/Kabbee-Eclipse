@@ -19,7 +19,7 @@ ProfileController pController = Get.put(ProfileController());
 
 Color orangeColor = const Color(0xFFFFA500);
 // Color tileColor = Color.fromRGBO(40, 40, 40, 1);
-Color tileColor = Color.fromRGBO(25, 25, 25, 1);
+Color tileColor = const Color.fromRGBO(25, 25, 25, 1);
 // Color tileColor = Color.fromARGB(227, 20, 20, 20);
 
 Color primaryColor = const Color(0xFFeeeeee);
@@ -34,7 +34,7 @@ Widget customText(BuildContext context, String text, double size, bool isBold,
     textAlign: TextAlign.left,
     style: TextStyle(
         height: 1,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: textColor,
         fontWeight: isBold ? FontWeight.bold : FontWeight.w500,
         fontSize: size),
   );
@@ -90,13 +90,13 @@ Widget profileCardContent(context) {
               children: [
                 Obx(() => Text(
                     "${pController.firstName.value}\n${pController.lastName.value}",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         height: 1.1,
                         color: Colors.black))),
                 Text('${pController.userInfo.value!.email}',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 15, height: 1.1, color: Colors.black))
               ],
             )
@@ -116,7 +116,7 @@ Widget genderToggle(int numberOfSwitches) {
     inactiveBgColor: Colors.grey[800],
     inactiveFgColor: primaryColor,
     totalSwitches: numberOfSwitches,
-    labels: const ['Male', 'Female'],
+    labels: ['Male'.tr, 'Female'.tr],
     activeBgColors: [
       [orangeColor],
       [orangeColor],
@@ -315,19 +315,19 @@ Widget contactEditIcon(BuildContext context) {
           backgroundColor: kblue,
           builder: (context) {
             return Container(
-              margin: EdgeInsets.only(top: 3),
+              margin: const EdgeInsets.only(top: 3),
               decoration: BoxDecoration(
-                  color: Theme.of(context).shadowColor,
+                  color: Theme.of(context).colorScheme.tertiary,
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(50))),
+                      const BorderRadius.vertical(top: Radius.circular(50))),
               child: Wrap(
                 runSpacing: 9,
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                     child: Center(
-                      child: customText(
-                          context, 'Contact Us', 26, true, false, primaryColor),
+                      child: customText(context, 'Contact Us', 26, true, false,
+                          Theme.of(context).colorScheme.onBackground),
                     ),
                   ),
                   GestureDetector(
@@ -337,16 +337,16 @@ Widget contactEditIcon(BuildContext context) {
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.telegram,
                         customText(context, ' Telegram', 18, false, false,
-                            primaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         null,
                         null,
                         true,
-                        Color(0xFF40B3E0)),
+                        const Color(0xFF40B3E0)),
                   ),
                   buildBottomSheetTiles(
                       FontAwesomeIcons.solidEnvelope,
                       customText(context, ' quizapp@gmail.com', 18, false,
-                          false, primaryColor),
+                          false, Theme.of(context).colorScheme.onBackground),
                       null,
                       null,
                       true,
@@ -358,7 +358,7 @@ Widget contactEditIcon(BuildContext context) {
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.earthAmericas,
                         customText(context, ' www.kabbee.org', 18, false, false,
-                            primaryColor),
+                            Theme.of(context).colorScheme.onBackground),
                         null,
                         null,
                         true,
@@ -376,7 +376,10 @@ Widget contactEditIcon(BuildContext context) {
 }
 
 Widget buildUpdateButton(
-    BuildContext context, text, GlobalKey<FormFieldState>? key) {
+  BuildContext context,
+  text,
+  GlobalKey<FormFieldState>? key,
+) {
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -393,6 +396,10 @@ Widget buildUpdateButton(
     onPressed: pController.isBtnNull.value
         ? () async {
             await updateProfile(key!, context);
+            FocusScope.of(context).unfocus();
+            Future.delayed(const Duration(seconds: 3), () {
+              context.navigateBack();
+            });
           }
         : null,
     child: customText(
@@ -457,8 +464,8 @@ Widget editProfilePic(context) {
                       ),
               ),
               const SizedBox(width: 12),
-              customText(
-                  context, 'Change avatar', 18, false, false, primaryColor),
+              customText(context, 'Change avatar', 18, false, false,
+                  Theme.of(context).colorScheme.onBackground),
             ],
           ),
           ElevatedButton(
@@ -489,7 +496,7 @@ Widget passwordVisibilityBtn() {
       pController.hidePassword.value ? Icons.visibility_off : Icons.visibility,
       color: pController.hidePassword.value
           ? orangeColor
-          : Color.fromARGB(255, 255, 165, 0),
+          : const Color.fromARGB(255, 255, 165, 0),
     ),
   );
 }
@@ -561,13 +568,12 @@ updateProfile(GlobalKey<FormFieldState> passwordKey, BuildContext context) {
   }
 
   updateJprofile(id: pController.userInfo.value!.id.toString());
-
-  showSnackbar(context, 'Update', 'Profile Updated Successfully', 'success');
-  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
-
   updateProfileImage();
 
   clearFieldsAndDisableButton();
+  showSnackbar(context, 'Update', 'Profile Updated Successful', 'success');
+
+  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
 }
 
 updateProfileImage() {
@@ -659,7 +665,7 @@ Widget buildTextFieldP(
       }
     },
     decoration: InputDecoration(
-        fillColor: Theme.of(context).shadowColor,
+        fillColor: Theme.of(context).colorScheme.tertiary,
         filled: true,
         hintStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
         // focusColor: orangeColor,
@@ -759,9 +765,10 @@ Widget buildUsersTiles(
     borderRadius: BorderRadius.circular(12),
     child: ListTile(
       contentPadding: const EdgeInsets.fromLTRB(10, 1, 20, 1),
-      title: customText(context, title, 17, true, false, primaryColor),
-      subtitle:
-          customText(context, subtitle, 14, false, false, Colors.grey.shade400),
+      title: customText(context, title, 17, true, false,
+          Theme.of(context).colorScheme.onBackground),
+      subtitle: customText(context, subtitle, 14, false, false,
+          Theme.of(context).colorScheme.onBackground),
       leading: Container(
         child: isUserAdmin
             ? Stack(
@@ -799,7 +806,6 @@ Widget buildUsersTiles(
                     PopupMenuItem(
                       onTap: () {
                         final String listId = user['id'].toString();
-                        print('from file id $listId');
                         isUserActive
                             ? {
                                 pController.updatedPassword.value =
@@ -870,3 +876,37 @@ Widget buildlanguageTiles(
         ),
       ));
 }
+
+class Language {
+  final int id;
+
+  final String name;
+  final String flag;
+  //final String languageCode;
+
+  Language(
+    this.id,
+    this.name,
+    this.flag,
+  );
+  static List<Language> languageList() {
+    return <Language>[
+      Language(
+        1,
+        'English',
+        '🇬🇧',
+      ),
+      Language(
+        2,
+        'ትግሪኛ',
+        '🇪🇷',
+      ),
+    ];
+  }
+}
+// Widget Language() {
+//    final int id;
+//    final String name;
+//    final String flag;
+//    final String languageCode;
+// }

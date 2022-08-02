@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 
@@ -16,7 +16,7 @@ class EditProfileScreen extends GetView<ProfileController> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         elevation: 0,
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
         centerTitle: false,
       ),
       body: Padding(
@@ -25,7 +25,8 @@ class EditProfileScreen extends GetView<ProfileController> {
           //physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(height: 20),
-            customText(context, 'First Name', 18, false, false, kblue),
+            customText(context, 'First Name', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextField(
@@ -37,7 +38,8 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Last Name', 18, false, false, kblue),
+            customText(context, 'Last Name', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextField(
@@ -49,7 +51,8 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Password', 18, false, false, kblue),
+            customText(context, 'Password', 18, false, false,
+                Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextFieldP(
@@ -63,8 +66,9 @@ class EditProfileScreen extends GetView<ProfileController> {
             ),
             const SizedBox(height: 20),
             Obx(() => buildTile(
-                  pController.gender.value ? Icons.male : Icons.female,
-                  customText(context, 'Gender', 18, true, false, primaryColor),
+                  controller.gender.value ? Icons.male : Icons.female,
+                  customText(context, 'Gender', 18, true, false,
+                      Theme.of(context).colorScheme.onBackground),
                   null,
                   genderToggle(2),
                   false,
@@ -72,9 +76,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             editProfilePic(context),
             const SizedBox(height: 40),
-            Obx(
-              () => buildUpdateButton(context, 'UPDATE', pkey),
-            ),
+            Obx(() => buildUpdateButton(context, 'UPDATE', pkey)),
             const SizedBox(height: 30),
           ],
         ),
