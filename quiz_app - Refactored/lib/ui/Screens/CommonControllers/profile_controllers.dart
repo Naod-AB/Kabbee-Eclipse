@@ -33,6 +33,17 @@ class ProfileController extends GetxController {
 
   Rx<Users?> userInfo = Users().obs;
   List? userList;
+  @override
+  void onClose() {
+    userInfo = Users().obs;
+    super.onClose();
+  }
+
+  @override
+  void onReady() {
+    userInfo = Users().obs;
+    super.onReady();
+  }
 
   List? scores;
   RxList activeUsers = [].obs;
@@ -104,10 +115,9 @@ class ProfileController extends GetxController {
 
     categoryLength =
         fetchCoursesAndCategories.map((e) => e['category']).toSet().toList();
-  
+
     courseLength =
         fetchCoursesAndCategories.map((e) => e['courseName']).toSet().toList();
     usersLength = fetchUser.length;
-    
   }
 }

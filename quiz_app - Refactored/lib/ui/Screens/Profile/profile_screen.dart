@@ -225,7 +225,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                 // context.router.popUntilRoot();
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
-                                logOut();
+                                logOut(context);
                               },
                             )
                           ],

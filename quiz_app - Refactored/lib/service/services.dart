@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/routes/router.gr.dart';
 
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 
@@ -109,16 +112,11 @@ Future fetchUserScores(int userId) async {
 Future<Users?> fetchUser(String email) async {
   final response = await http.get(Uri.parse(
       'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=$email'));
-  
-  if (response.statusCode == 200 || response.statusCode == 304) {
-    if (!jsonDecode(response.body).isEmpty) {
-      
-      return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
-    } else {
-      return null;
-    }
+
+  if (jsonDecode(response.body)["_embedded"]["users"].length != 0) {
+    return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
   } else {
-    throw Exception('Failed to load User');
+    throw Exception('Failed to load user');
   }
 }
 
@@ -127,7 +125,6 @@ Future<List<Users>> fetchAllUsers() async {
   final response =
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
-    
     return parseUsers(response.body);
   } else {
     throw Exception('Failed to fetch Users');
@@ -147,7 +144,7 @@ Future<List> fetchDashboard() async {
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/courses'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final dashboardData = (jsonDecode(response.body)["_embedded"]["courses"]);
-    
+
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Courses');
@@ -189,7 +186,6 @@ Future<Users> updateUsersList({
   required int index,
   required bool status,
 }) async {
-  
   final response = await http.patch(
     Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
     headers: <String, String>{
@@ -263,8 +259,6 @@ class ChosenModel {
   }
 }
 
-
-
 // Add Choices
 Future<CheckAnswer> updateJsonTime({
   required String answer,
@@ -309,8 +303,6 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
-
-
 // To update profile to Api
 Future<Users> updateJprofile({
   required String id,
@@ -334,14 +326,17 @@ Future<Users> updateJprofile({
   }
 }
 
-
-logOut() {
+logOut(BuildContext context) async {
+  await Get.delete<AuthController>();
   Get.delete<ProfileController>();
   Get.delete<QuestionController>();
-  Get.delete<AuthController>();
 
+  print(controller.userInfo.value!.email);
+  // Get.put(AuthController());
   Get.put(AuthController());
-  AuthController authController = Get.put(AuthController());
+// get.testmode=true
+//
 
-  Get.offAllNamed('/login');
+  // Get.offAllNamed('/login');
+  Get.offAll(const LoginRoute());
 }

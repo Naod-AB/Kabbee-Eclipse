@@ -13,6 +13,7 @@ import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
+import '../../../common_widgets/rounded_button_mine.dart';
 import '../Controllers/lang_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,8 +21,9 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+AuthController authController = Get.put(AuthController());
+
 class _LoginPageState extends State<LoginPage> {
-  AuthController authController = Get.put(AuthController());
   var isLoading = true;
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
 
@@ -30,11 +32,18 @@ class _LoginPageState extends State<LoginPage> {
   //String? valueChoose;
   dynamic dropdownValue = "Menu one";
 
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      print('starting login');
+    });
+  }
+
   String? SelectedValue;
 
-  @override
   MyController myController = Get.put(MyController());
-
+  @override
   Widget build(BuildContext context) {
     print('Value');
     String selam = 'selam@gmail.com';
@@ -176,6 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: authController.obsecure.value,
                         ),
                       ),
+                      // SizedBox(height: 15),
 
                       Obx(
                         () => Text(
@@ -215,26 +225,33 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                           height: 20 //SizeConfig.screenHeight * 0.03, //25,
                           ),
-                      Obx(() => button.RoundedButton(
-                          buttonName: authController.isLoading.value
-                              ? CircularProgressIndicator(
-                                  color: Colors.white,
-                                )
-                              : Text(
-                                  "Login".tr,
+                      Obx(
+                        () => authController.loadingUser.value
+                            ? LoadingRoundedButton()
+                            : RoundedButton(
+                                buttonName: Text(
+                                  'LOGIN',
                                   style: kBodyText.copyWith(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
-                          pressed: () => authController.authenticateUser(
-                              context: context,
-                              email: authController.loginEmailController.value,
-                              emailKey: emailKey,
-                              passKey: passKey,
-                              password: authController
-                                  .loginPasswordController.value))),
-                      SizedBox(height: 15), //SizeConfig.screenHeight * 0.03
-                      SizedBox(
+                                pressed: () {
+                                  print('logging user..');
+
+                                  authController.authenticateUser(
+                                      context: context,
+                                      email: authController
+                                          .loginEmailController.value,
+                                      emailKey: emailKey,
+                                      passKey: passKey,
+                                      password: authController
+                                          .loginPasswordController.value);
+                                }),
+                      ),
+
+                      const SizedBox(
+                          height: 15), //SizeConfig.screenHeight * 0.03
+                      const SizedBox(
                         width: 50, //SizeConfig.screenWidth * 0.1,
                       ),
                       Row(
@@ -320,7 +337,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             dropdownColor:
                                 Theme.of(context).colorScheme.tertiary,
-                            value: '${myController.langValue.value}',
+                            value: myController.langValue.value,
                             items: Language.languageList()
                                 .map((lang) => DropdownMenuItem(
                                     value: lang.name,

@@ -35,6 +35,7 @@ class OneSignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Users user = Users();
     EmailValidator emailValidator = EmailValidator();
+    print('info if not null ${profilecontroller.userInfo.value!.firstName}');
 
     return Scaffold(
       appBar: AppBar(
