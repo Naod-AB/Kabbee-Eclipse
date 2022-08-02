@@ -28,7 +28,7 @@ class CourseScore {
   String? takenDate;
 
   factory CourseScore.fromJson(Map<String, dynamic> json) => CourseScore(
-      courseId: json["courseId"],
+      courseId: json["id"],
       courseName: json["courseName"],
       courseType: json["courseType"],
       courseScore: json["courseScore"],

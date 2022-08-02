@@ -102,9 +102,7 @@ Future<List<CourseScore>?> fetchUserScores(int userId) async {
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       final parsed = jsonDecode(response.body);
-      print(parsed
-          .map<CourseScore>((json) => CourseScore.fromJson(json))
-          .toList());
+
       return parsed
           .map<CourseScore>((json) => CourseScore.fromJson(json))
           .toList();
@@ -166,7 +164,8 @@ Future<List> fetchDashboard() async {
   }
 }
 
-Future<CourseScore> updateExamcounter(CourseScore score) async {
+Future updateExamcounter(CourseScore score) async {
+  print("this is the Id ${score.courseName}");
   final response = await http.patch(
     Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
     headers: <String, String>{
@@ -175,12 +174,12 @@ Future<CourseScore> updateExamcounter(CourseScore score) async {
     body: jsonEncode(
         <String, dynamic>{'counter': score.counter, 'blocked': score.blocked!}),
   );
-  if (response.statusCode == 200) {
-    return CourseScore.fromJson(jsonDecode(response.body));
+  if (response.statusCode == 200 || response.statusCode == 204) {
+    log('succefully updated ');
   } else {
     print(response.statusCode);
     log(' this is the log ${score.courseId}');
-    throw Exception('Failed to create User.');
+    throw Exception('Failed to update User Score.');
   }
 }
 
@@ -199,8 +198,9 @@ Future<CourseScore?> findCourseScore(String courseId) async {
 }
 
 Future<Courses?> findCourse(String courseName) async {
-  final response = await http
-      .get(Uri.parse('http://10.0.2.2:3000/Courses/?courseName=$courseName'));
+  print("this si the payload in the notification ");
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/courses/?courseName=$courseName'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       return Courses.fromJson(jsonDecode(response.body)[0]);

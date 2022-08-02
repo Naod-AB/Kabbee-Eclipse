@@ -11,13 +11,16 @@ import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/string_extension.dart';
 
 // import '../../Category/category_screen.dart';
+import '../../../../service/notificationService.dart';
 import '../../CommonControllers/profile_controllers.dart';
+import '../../Question/models/scores.dart';
 
 class AuthController extends GetxController {
   Rx<TextEditingController> loginEmailController = TextEditingController().obs;
   Rx<TextEditingController> loginPasswordController =
       TextEditingController().obs;
   List<Users> allusers = [];
+  int waitInSeconds = 0;
   RxBool obsecure = true.obs;
   RxBool rememberMe = false.obs;
   RxBool isLoading = false.obs;
@@ -136,11 +139,19 @@ class AuthController extends GetxController {
           print("email deleted");
           print('could be null ${box1.get("email")}');
         }
+        // NotificationService().showNotification(
+        //     "Unlocked",
+        //     " has been unblocked, you can take the exam now ",
+        //     "course.courseName!");
         print(box1.get('email').toString());
         //print(box1.get('pass').toString());
         pController.scores =
             (await fetchUserScores(pController.userInfo.value!.id))!;
-        print("this is the first course" + pController.scores[0].courseName!);
+        for (var courseScore in pController.scores) {
+          print("this is the Id up ${courseScore.courseId}");
+          checkIfCourseLocked(courseScore);
+        }
+        // print("this is the first course" + pController.scores[0].courseName!);
         error.value = "";
         print('Profile DATA  AUTH ${pController.userInfo.value!.email}');
         print('after logout email - auth ${pController.userInfo.value!.email}');
@@ -155,6 +166,35 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> checkIfCourseLocked(CourseScore course) async {
+    if (course.blocked == true) {
+      DateTime takenDate = DateTime.parse(course.takenDate!);
+      var newDate = takenDate.add(const Duration(minutes: 5));
+      DateTime now = DateTime.now();
+      if (now.compareTo(newDate) > 0) {
+        print(course.courseName);
+        NotificationService().showNotification(
+            "Unlocked",
+            "${course.courseName} has been unblocked before, you can take the exam now ",
+            course.courseName!);
+        course.blocked = false;
+        course.counter = 0;
+        updateExamcounter(course);
+      } else {
+        waitInSeconds = newDate.difference(now).inSeconds;
+        await Future.delayed(Duration(seconds: waitInSeconds)).then((value) {
+          NotificationService().showNotification(
+              "Unlocked",
+              "${course.courseName} has been unblocked, you can take the exam now ",
+              course.courseName!);
+          course.blocked = false;
+          course.counter = 0;
+          updateExamcounter(course);
+        });
+        waitInSeconds = 0;
+      }
+    }
+  }
   // bool checkDuplicateEmail(String email) {
   //   var found = false;
   //   for (var element in allusers) {
