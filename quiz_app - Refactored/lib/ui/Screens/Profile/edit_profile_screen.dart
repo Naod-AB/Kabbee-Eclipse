@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -75,9 +76,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             editProfilePic(context),
             const SizedBox(height: 40),
-            Obx(
-              () => buildUpdateButton(context, 'UPDATE', pkey),
-            ),
+            Obx(() => buildUpdateButton(context, 'UPDATE', pkey)),
             const SizedBox(height: 30),
           ],
         ),

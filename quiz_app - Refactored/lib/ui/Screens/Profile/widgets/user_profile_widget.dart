@@ -376,7 +376,10 @@ Widget contactEditIcon(BuildContext context) {
 }
 
 Widget buildUpdateButton(
-    BuildContext context, text, GlobalKey<FormFieldState>? key) {
+  BuildContext context,
+  text,
+  GlobalKey<FormFieldState>? key,
+) {
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -393,6 +396,10 @@ Widget buildUpdateButton(
     onPressed: controller.isBtnNull.value
         ? () async {
             await updateProfile(key!, context);
+            FocusScope.of(context).unfocus();
+            Future.delayed(const Duration(seconds: 3), () {
+              context.navigateBack();
+            });
           }
         : null,
     child: customText(
@@ -561,13 +568,12 @@ updateProfile(GlobalKey<FormFieldState> passwordKey, BuildContext context) {
   }
 
   updateJprofile(id: controller.userInfo.value!.id.toString());
-
-  showSnackbar(context, 'Update', 'Profile Updated Successfully', 'success');
-  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
-
   updateProfileImage();
 
   clearFieldsAndDisableButton();
+  showSnackbar(context, 'Update', 'Profile Updated Successful', 'success');
+
+  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
 }
 
 updateProfileImage() {
