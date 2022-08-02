@@ -150,6 +150,8 @@ class AuthController extends GetxController {
       TextEditingController().obs;
   List<Users> allusers = [];
   RxBool obsecure = true.obs;
+  RxBool signUpObsecure = true.obs;
+  RxBool signUpConfirmationObsecure = true.obs;
   RxBool rememberMe = false.obs;
   RxString error = "".obs;
   RxInt signUpIndex = 0.obs;

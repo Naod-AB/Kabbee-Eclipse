@@ -156,13 +156,10 @@ class _LoginPageState extends State<LoginPage> {
                                     // });
                                   },
                                   child: Icon(
-                                    authController.obsecure.value
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                    color: authController.obsecure.value
-                                        ? Color.fromARGB(255, 255, 165, 0)
-                                        : Color.fromARGB(255, 255, 165, 0),
-                                  )),
+                                      authController.obsecure.value
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: kblue)),
                               // child: Icon(
                               //   FontAwesomeIcons.lock,
                               //   size: 28,

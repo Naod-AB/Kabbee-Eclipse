@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/question_controller.dart';
@@ -27,6 +28,8 @@ class SignupPassword extends StatelessWidget {
       required this.confirmController,
       required this.confirmKey})
       : super(key: key);
+
+  AuthController authController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -58,116 +61,114 @@ class SignupPassword extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TextFormField(
-                  controller: passController,
-                  key: passKey,
-                  onSaved: (value) {
-                    user.password = value;
-                  },
-                  validator: (value) {
-                    if (!validateStructure(value!)) {
-                      return 'Enter a Valid Password';
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    labelText: 'Enter password',
-                    labelStyle: TextStyle(fontSize: 18),
-                    fillColor: Theme.of(context).colorScheme.surface,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide.none,
-                    ),
-                    suffixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          profileController.x.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: profileController.x.value
-                              ? orangeColor
-                              : Colors.white,
-                        ),
-                        onPressed: () {
-                          profileController.x.value =
-                              !profileController.x.value;
-                          // setState(() {
-                          //   profileController.x.value = !profileController.x.value;
-                          //   print(profileController.x.value);
-                          // });
-                        },
+                Obx(
+                  () => TextFormField(
+                    controller: passController,
+                    key: passKey,
+                    onSaved: (value) {
+                      user.password = value;
+                    },
+                    validator: (value) {
+                      if (!validateStructure(value!)) {
+                        return 'Enter a Valid Password';
+                      }
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      labelText: 'Enter password',
+                      labelStyle: TextStyle(fontSize: 18),
+                      fillColor: Theme.of(context).colorScheme.surface,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide.none,
                       ),
-                      //passwordVisibilityBtn(),
-                      //  Icon(
-                      //   FontAwesomeIcons.solidEnvelope,
-                      //   size: 28,
-                      //   color: kblue,
-                      // ),
+                      suffixIcon: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: GestureDetector(
+                            onTap: () {
+                              print(!authController.signUpObsecure.value);
+                              authController.signUpObsecure.value =
+                                  !authController.signUpObsecure.value;
+                              // setState(() {
+                              //   _obscureText = !_obscureText;
+                              // });
+                            },
+                            child: Icon(
+                                authController.signUpObsecure.value
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: kblue)),
+                        // child: Icon(
+                        //   FontAwesomeIcons.lock,
+                        //   size: 28,
+                        //   color: kblue,
+                        // ),
+                      ),
+                      // hintText: 'Enter Password',
+                      // hintStyle: kBodyText,
                     ),
-                    // hintText: 'Enter Password',
-                    // hintStyle: kBodyText,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.onBackground,
+                        height: 1.5),
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    obscureText: authController.signUpObsecure.value,
                   ),
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      height: 1.5),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  obscureText: profileController.x.value,
                 ),
                 const SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  controller: confirmController,
-                  key: confirmKey,
-                  validator: (value) {
-                    if (confirmController.text != passController.text) {
-                      return 'The Two password need to be  the same ';
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    labelText: 'Confirm Password',
-                    labelStyle: TextStyle(fontSize: 18),
-                    fillColor: Theme.of(context).colorScheme.surface,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide.none,
-                    ),
-                    suffixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          profileController.y.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: profileController.y.value
-                              ? orangeColor
-                              : Colors.white,
-                        ),
-                        onPressed: () {
-                          profileController.y.value =
-                              !profileController.y.value;
-                          // setState(() {
-                          //   profileController.y.value = !profileController.y.value;
-                          //   print(profileController.y.value);
-                          // });
-                        },
+                Obx(
+                  () => TextFormField(
+                    controller: confirmController,
+                    key: confirmKey,
+                    validator: (value) {
+                      if (confirmController.text != passController.text) {
+                        return 'The Two password need to be  the same ';
+                      }
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      labelText: 'Confirm Password',
+                      labelStyle: TextStyle(fontSize: 18),
+                      fillColor: Theme.of(context).colorScheme.surface,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide.none,
                       ),
-                      //passwordVisibilityBtn(),
+                      suffixIcon: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: GestureDetector(
+                            onTap: () {
+                              print(!authController
+                                  .signUpConfirmationObsecure.value);
+                              authController.signUpConfirmationObsecure.value =
+                                  !authController
+                                      .signUpConfirmationObsecure.value;
+                              // setState(() {
+                              //   _obscureText = !_obscureText;
+                              // });
+                            },
+                            child: Icon(
+                                authController.signUpConfirmationObsecure.value
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: kblue)),
+                        //passwordVisibilityBtn(),
+                      ),
+                      // hintText: 'Confirm Password',
+                      // hintStyle: kBodyText,
                     ),
-                    // hintText: 'Confirm Password',
-                    // hintStyle: kBodyText,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.onBackground,
+                        height: 1.5),
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    obscureText:
+                        authController.signUpConfirmationObsecure.value,
                   ),
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      height: 1.5),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  obscureText: profileController.y.value,
                 ),
                 const SizedBox(
                   height: 10,
