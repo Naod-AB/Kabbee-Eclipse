@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 
 import '../../api.dart';
+import '../../notificationservice.dart';
 import '../../routes/router.gr.dart';
 
 import '../../widgets/theme.dart';
@@ -13,6 +14,7 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NotificationService().initNotification(context);
     return SafeArea(
       child: Scaffold(
           backgroundColor: bgColor,

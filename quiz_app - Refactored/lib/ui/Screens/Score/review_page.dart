@@ -31,7 +31,7 @@ class ReviewScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
           child: Obx(
             () => SingleChildScrollView(
-              controller: questionController.reviewScrollController.value,
+              controller: questionController.reviewScrolController.value,
               child: SizedBox(
                 height: 740,
                 child: Column(
@@ -57,9 +57,9 @@ class ReviewScreen extends StatelessWidget {
                             if (questionController.qnIndex ==
                                 questionController.questionApi!.length) {
                               print('This should Scrollll...');
-                              questionController.reviewScrollController.value
+                              questionController.reviewScrolController.value
                                   .animateTo(
-                                      questionController.reviewScrollController
+                                      questionController.reviewScrolController
                                           .value.position.extentAfter,
                                       duration: Duration(milliseconds: 500),
                                       curve: Curves.easeInOut);

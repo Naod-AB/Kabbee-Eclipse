@@ -323,7 +323,8 @@ class QuestionsScreen extends StatelessWidget {
                                       print(
                                           'THE USER PERCENTAGE IS $scorePercent');
                                       examCounter = qController
-                                          .checkExamCounter(scorePercent);
+                                              .checkExamCounter(scorePercent)
+                                          as int;
                                       DateTime now = DateTime.now();
                                       final DateFormat formatter = DateFormat(
                                         'yyyy-MM-dd HH:mm:ss',

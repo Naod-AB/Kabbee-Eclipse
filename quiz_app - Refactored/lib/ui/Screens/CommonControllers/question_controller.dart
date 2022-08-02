@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 
+import '../../../service/notificationService.dart';
 import '../../../service/services.dart';
 import '../Question/models/scores.dart';
 
@@ -58,7 +59,7 @@ class QuestionController extends GetxController {
     return selectedScore;
   }
 
-  int checkExamCounter(int scorePercentage) {
+  Future<int> checkExamCounter(int scorePercentage) async {
     CourseScore course;
     print("this is the selected score" + selectedScore.courseName!);
     examCounter = selectedScore.counter!;
@@ -71,6 +72,15 @@ class QuestionController extends GetxController {
           "block the user from taking the task  by setting blockked to true ");
       selectedScore.blocked = true;
       updateExamcounter(selectedScore);
+      await Future.delayed(Duration(seconds: 20)).then((value) {
+        NotificationService().showNotification(
+            "Unlocked",
+            "${selectedScore.courseName} has been unblocked, you can take the exam now ",
+            selectedScore.courseName!);
+        selectedScore.blocked = false;
+        selectedScore.counter = 0;
+        updateExamcounter(selectedScore);
+      });
     } else {
       selectedScore.blocked = false;
       updateExamcounter(selectedScore);
