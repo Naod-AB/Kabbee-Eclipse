@@ -29,7 +29,7 @@ class LanguageChoices extends StatelessWidget {
                   const SizedBox(
                     height: defaultPadding,
                   ),
-                  Text("Select Language",
+                  Text("Select Language".tr,
                       style: Theme.of(context).textTheme.headline5),
                   const SizedBox(
                     height: defaultPadding,

@@ -37,7 +37,7 @@ class SignupPassword extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Create account',
+              'Create account'.tr,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(30),
@@ -45,7 +45,7 @@ class SignupPassword extends StatelessWidget {
                   letterSpacing: 0.30),
             ),
             Text(
-              'please enter your password',
+              'please enter your password'.tr,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(10),
@@ -66,12 +66,12 @@ class SignupPassword extends StatelessWidget {
                   },
                   validator: (value) {
                     if (!validateStructure(value!)) {
-                      return 'Enter a Valid Password';
+                      return 'Enter a Valid Password'.tr;
                     }
                   },
                   decoration: InputDecoration(
                     filled: true,
-                    labelText: 'Enter password',
+                    labelText: 'Enter password'.tr,
                     labelStyle: TextStyle(fontSize: 18),
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -124,12 +124,12 @@ class SignupPassword extends StatelessWidget {
                   key: confirmKey,
                   validator: (value) {
                     if (confirmController.text != passController.text) {
-                      return 'The Two password need to be  the same ';
+                      return 'The Two password need to be  the same '.tr;
                     }
                   },
                   decoration: InputDecoration(
                     filled: true,
-                    labelText: 'Confirm Password',
+                    labelText: 'Confirm Password'.tr,
                     labelStyle: TextStyle(fontSize: 18),
                     fillColor: Theme.of(context).colorScheme.surface,
                     border: OutlineInputBorder(
@@ -177,7 +177,8 @@ class SignupPassword extends StatelessWidget {
                   children: [
                     Tooltip(
                         message:
-                            "* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  ",
+                            "* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  "
+                                .tr,
                         waitDuration: Duration(microseconds: 500),
                         showDuration: Duration(seconds: 1),
                         child: Container(

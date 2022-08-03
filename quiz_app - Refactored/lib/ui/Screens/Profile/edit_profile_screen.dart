@@ -15,7 +15,7 @@ class EditProfileScreen extends GetView<ProfileController> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Edit Profile'),
+        title: Text('Edit Profile'.tr),
         centerTitle: false,
       ),
       body: Padding(
@@ -24,7 +24,7 @@ class EditProfileScreen extends GetView<ProfileController> {
           //physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(height: 20),
-            customText(context, 'First Name', 18, false, false,
+            customText(context, 'First Name'.tr, 18, false, false,
                 Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
@@ -37,7 +37,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Last Name', 18, false, false,
+            customText(context, 'Last Name'.tr, 18, false, false,
                 Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
@@ -50,13 +50,13 @@ class EditProfileScreen extends GetView<ProfileController> {
                   null),
             ),
             const SizedBox(height: 20),
-            customText(context, 'Password', 18, false, false,
+            customText(context, 'Password'.tr, 18, false, false,
                 Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
             Obx(
               () => buildTextFieldP(
                   context,
-                  'Enter new password ',
+                  'Enter new password '.tr,
                   Icons.lock,
                   controller.passwordController.value,
                   true,
@@ -66,7 +66,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             Obx(() => buildTile(
                   controller.gender.value ? Icons.male : Icons.female,
-                  customText(context, 'Gender', 18, true, false,
+                  customText(context, 'Gender'.tr, 18, true, false,
                       Theme.of(context).colorScheme.onBackground),
                   null,
                   genderToggle(2),
@@ -76,7 +76,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             editProfilePic(context),
             const SizedBox(height: 40),
             Obx(
-              () => buildUpdateButton(context, 'UPDATE', pkey),
+              () => buildUpdateButton(context, 'UPDATE'.tr, pkey),
             ),
             const SizedBox(height: 30),
           ],

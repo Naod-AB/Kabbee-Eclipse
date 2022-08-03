@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 Courses coursesFromJson(String str) => Courses.fromJson(json.decode(str));
 
 String coursesToJson(Courses data) => json.encode(data.toJson());
@@ -31,10 +33,9 @@ class Courses {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "courseName": courseName,
+        "courseName".tr: courseName,
         "category": category,
         "icon": icon,
         "percentage": percentage,
       };
 }
-

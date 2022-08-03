@@ -190,7 +190,7 @@ class ReviewScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(15)),
                                   primary:
                                       const Color.fromARGB(255, 255, 165, 0)),
-                              child: customText(context, 'DONE', 20, false,
+                              child: customText(context, 'DONE'.tr, 20, false,
                                   false, primaryColor))
                           : Container(),
                     ),

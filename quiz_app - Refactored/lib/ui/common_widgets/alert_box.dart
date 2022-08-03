@@ -42,7 +42,7 @@ quizAlertBox(
     buttons: [
       DialogButton(
         child: Text(
-          "CANCEL",
+          "CANCEL".tr,
           style: TextStyle(
             color: Theme.of(context).colorScheme.onBackground,
             fontSize: 20,

@@ -27,7 +27,7 @@ class UsersListPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            title: const Text('Users'),
+            title: Text('Users'.tr),
             centerTitle: false,
             bottom: TabBar(
               labelStyle: TextStyle(
@@ -38,12 +38,12 @@ class UsersListPage extends StatelessWidget {
               indicatorColor: kblue,
               labelColor: kblue,
               unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
-              tabs: const [
+              tabs: [
                 Tab(
-                  text: 'ACTIVE',
+                  text: 'ACTIVE'.tr,
                 ),
                 Tab(
-                  text: 'BLOCKED',
+                  text: 'BLOCKED'.tr,
                 ),
               ],
             ),
@@ -54,8 +54,8 @@ class UsersListPage extends StatelessWidget {
                 activeList(),
                 controller.blockedUsersCount.value == 0
                     ? ScoreAlertBox(
-                        title: 'Users Not Found !',
-                        text: 'All users are active')
+                        title: 'Users Not Found !'.tr,
+                        text: 'All users are active'.tr)
                     : blockedList(),
               ],
             ),

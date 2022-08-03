@@ -24,12 +24,10 @@ class FinalScore extends StatelessWidget {
   int score;
   int? optionList;
 
- 
   RxBool isLoading = true.obs;
   final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
-
     Future.delayed(
         const Duration(milliseconds: 2300), () => isLoading.value = false);
     return Scaffold(
@@ -44,7 +42,6 @@ class FinalScore extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-         
               const Padding(padding: EdgeInsets.all(20)),
               score == outOf
                   ? Obx(() {
@@ -70,7 +67,7 @@ class FinalScore extends StatelessWidget {
                 visible: questionController.isEnabled.value,
                 child: ElevatedButton(
                   child: customText(
-                      context, 'REVIEW', 20, false, false, primaryColor),
+                      context, 'REVIEW'.tr, 20, false, false, primaryColor),
                   onPressed: () {
                     print(
                         ' reviewlist number ${questionController.questionApi!.length}');
@@ -96,7 +93,7 @@ class FinalScore extends StatelessWidget {
                   maintainState: true,
                   child: ElevatedButton(
                     child: customText(
-                        context, 'DONE', 20, false, false, primaryColor),
+                        context, 'DONE'.tr, 20, false, false, primaryColor),
                     onPressed: () async {
                       print('Null error ${controller.userInfo.value!.id}');
 

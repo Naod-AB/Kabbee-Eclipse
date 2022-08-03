@@ -33,7 +33,7 @@ class ProfileScreen extends GetView<ProfileController> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Account'),
+        title: Text('Account'.tr),
         centerTitle: false,
       ),
       body: Padding(
@@ -43,7 +43,7 @@ class ProfileScreen extends GetView<ProfileController> {
             //  Personal section
 
             profileCardContent(context),
-            customText(context, 'Profile', 20, false, false,
+            customText(context, 'Profile'.tr, 20, false, false,
                 Theme.of(context).colorScheme.onBackground),
             const SizedBox(height: 15),
 
@@ -56,10 +56,15 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                       Icons.person,
-                      customText(context, 'Personal', 18, true, false,
+                      customText(context, 'Personal'.tr, 18, true, false,
                           Theme.of(context).colorScheme.onBackground),
-                      customText(context, 'View and update profile', 13, false,
-                          false, Theme.of(context).colorScheme.onBackground),
+                      customText(
+                          context,
+                          'View and update profile'.tr,
+                          13,
+                          false,
+                          false,
+                          Theme.of(context).colorScheme.onBackground),
                       Icon(
                         Icons.arrow_forward_ios,
                         color: Theme.of(context).colorScheme.onBackground,
@@ -80,7 +85,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  customText(context, 'Admin Settings', 20, false, false,
+                  customText(context, 'Admin Settings'.tr, 20, false, false,
                       Theme.of(context).colorScheme.onBackground),
                   const SizedBox(height: 15),
                   buildTileGroup(
@@ -93,9 +98,14 @@ class ProfileScreen extends GetView<ProfileController> {
                           },
                           child: buildTile(
                             Icons.dashboard,
-                            customText(context, 'Dashboard', 18, true, false,
+                            customText(context, 'Dashboard'.tr, 18, true, false,
                                 Theme.of(context).colorScheme.onBackground),
-                            customText(context, 'Statistics', 13, false, false,
+                            customText(
+                                context,
+                                'Statistics'.tr,
+                                13,
+                                false,
+                                false,
                                 Theme.of(context).colorScheme.onBackground),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -124,9 +134,9 @@ class ProfileScreen extends GetView<ProfileController> {
                 children: [
                   buildTile(
                       Icons.dark_mode,
-                      customText(context, 'Dark Mode', 18, true, false,
+                      customText(context, 'Dark Mode'.tr, 18, true, false,
                           Theme.of(context).colorScheme.onBackground),
-                      customText(context, 'Change theme', 13, false, false,
+                      customText(context, 'Change theme'.tr, 13, false, false,
                           Theme.of(context).colorScheme.onBackground),
                       Obx(
                         () => Switch.adaptive(
@@ -164,9 +174,9 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.celebration,
-                        customText(context, 'My Scores', 18, true, false,
+                        customText(context, 'My Scores'.tr, 18, true, false,
                             Theme.of(context).colorScheme.onBackground),
-                        customText(context, 'Achievements', 13, false, false,
+                        customText(context, 'Achievements'.tr, 13, false, false,
                             Theme.of(context).colorScheme.onBackground),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -185,11 +195,11 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.recommend_outlined,
-                        customText(context, 'Recommendations', 18, true, false,
-                            Theme.of(context).colorScheme.onBackground),
+                        customText(context, 'Recommendations'.tr, 18, true,
+                            false, Theme.of(context).colorScheme.onBackground),
                         customText(
                             context,
-                            'kabbee recommend you to Visit',
+                            'kabbee recommend you to Visit'.tr,
                             13,
                             false,
                             false,
@@ -234,11 +244,11 @@ class ProfileScreen extends GetView<ProfileController> {
                     },
                     child: buildTile(
                         Icons.exit_to_app,
-                        customText(context, 'Log Out', 18, true, false,
+                        customText(context, 'Log Out'.tr, 18, true, false,
                             Theme.of(context).colorScheme.onBackground),
                         customText(
                             context,
-                            'Exit from the application',
+                            'Exit from the application'.tr,
                             13,
                             false,
                             false,

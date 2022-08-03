@@ -37,7 +37,7 @@ class ChooseTypePage extends StatelessWidget {
               const SizedBox(
                 height: defaultPadding,
               ),
-              Text("Select Type ",
+              Text("Select Type".tr,
                   style: Theme.of(context).textTheme.headline5),
               Expanded(
                   child: ListView(
@@ -76,9 +76,10 @@ class ChooseTypePage extends StatelessWidget {
                     onpressed: () {
                       quizAlertBox(
                           context,
-                          'Exam information',
-                          "OK",
-                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?',
+                          'Exam information'.tr,
+                          "OK".tr,
+                          'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?'
+                              .tr,
                           path,
                           icon,
                           questionController,

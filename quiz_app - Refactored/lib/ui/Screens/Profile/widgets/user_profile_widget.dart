@@ -29,7 +29,7 @@ Color secondaryColor = Colors.white60;
 Widget customText(BuildContext context, String text, double size, bool isBold,
     bool isPassword, Color textColor) {
   return Text(
-    isPassword ? "." * text.length : text,
+    isPassword ? "." * text.length : text.tr,
     softWrap: false,
     textAlign: TextAlign.left,
     style: TextStyle(
@@ -706,7 +706,7 @@ Widget buildDashBoardTiles(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'TOTAL',
+                'TOTAL'.tr,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onBackground,
                   fontWeight: FontWeight.bold,

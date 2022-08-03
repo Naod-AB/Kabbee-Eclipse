@@ -46,7 +46,7 @@ class QuestionsScreen extends StatelessWidget {
             ? () {
                 return quizAlertBox(
                     context,
-                    "navigate",
+                    "navigate".tr,
                     "",
                     "hello you can't back during exam starts",
                     path,
@@ -71,9 +71,10 @@ class QuestionsScreen extends StatelessWidget {
                 child: qController.questionApi!.isEmpty
                     ? Center(
                         child: ScoreAlertBox(
-                            title: 'No Questions Available',
+                            title: 'No Questions Available'.tr,
                             text:
-                                'Please practice or choose other languages to test on.'))
+                                'Please practice or choose other languages to test on.'
+                                    .tr))
                     : Column(
                         children: [
                           isFinal ? MyTimer() : Container(),
@@ -300,7 +301,7 @@ class QuestionsScreen extends StatelessWidget {
                                             qController.questionApi!.length) {
                                           quizAlertBox(
                                               context,
-                                              'Notice',
+                                              'Notice'.tr,
                                               "CONTINUE",
                                               'hello you have unanswered question . Do you want go back and check or continue to score page ?',
                                               path,
@@ -375,7 +376,7 @@ class QuestionsScreen extends StatelessWidget {
                                                 BorderRadius.circular(15)),
                                         primary: const Color.fromARGB(
                                             255, 255, 165, 0)),
-                                    child: customText(context, 'DONE', 20,
+                                    child: customText(context, 'DONE'.tr, 20,
                                         false, false, primaryColor),
                                   )
                                 : Container(),

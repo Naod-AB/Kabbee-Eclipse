@@ -16,7 +16,7 @@ class DashboardPage extends GetView<ProfileController> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text('Dashboard'.tr),
         centerTitle: false,
         elevation: 0,
       ),
@@ -26,13 +26,13 @@ class DashboardPage extends GetView<ProfileController> {
           child: ListView(
             children: [
               const SizedBox(height: 25),
-              buildDashBoardTiles(context, 'USERS', 32,
+              buildDashBoardTiles(context, 'USERS'.tr, 32,
                   '0' + controller.usersLength.toString(), 64),
               const SizedBox(height: 20),
-              buildDashBoardTiles(context, 'COURSES', 32,
+              buildDashBoardTiles(context, 'COURSES'.tr, 32,
                   '0' + controller.courseLength.length.toString(), 64),
               const SizedBox(height: 20),
-              buildDashBoardTiles(context, 'CATEGORIES', 32,
+              buildDashBoardTiles(context, 'CATEGORIES'.tr, 32,
                   '0' + controller.categoryLength.length.toString(), 64),
               const SizedBox(height: 40),
               GestureDetector(
@@ -48,9 +48,9 @@ class DashboardPage extends GetView<ProfileController> {
                   ),
                   child: buildTile(
                     Icons.group,
-                    customText(context, 'Users', 18, true, false,
+                    customText(context, 'Users'.tr, 18, true, false,
                         Theme.of(context).colorScheme.onBackground),
-                    customText(context, 'See active and blocked', 13, false,
+                    customText(context, 'See active and blocked'.tr, 13, false,
                         false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,
@@ -71,9 +71,9 @@ class DashboardPage extends GetView<ProfileController> {
                       color: Theme.of(context).colorScheme.tertiary),
                   child: buildTile(
                     Icons.view_list_outlined,
-                    customText(context, 'Courses', 18, true, false,
+                    customText(context, 'Courses'.tr, 18, true, false,
                         Theme.of(context).colorScheme.onBackground),
-                    customText(context, 'View and update courses', 13, false,
+                    customText(context, 'View and update courses'.tr, 13, false,
                         false, Theme.of(context).colorScheme.onBackground),
                     Icon(
                       Icons.arrow_forward_ios,

@@ -268,18 +268,30 @@ class _LoginPageState extends State<LoginPage> {
                           //DropdownButton(items: [], onChanged: () ,)
                         ],
                       ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.language,
+                            color: kblue,
+                          ),
+                          SizedBox(
+                            width: 15,
+                            height: 50,
+                          ),
+                          Text("select language".tr,
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontSize: 16,
+                                height: 1.5,
+                              )),
+                        ],
+                      ),
 
                       SizedBox(
-                        height: 50,
-                      ),
-                      Text("select language".tr,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontSize: 16,
-                            height: 1.5,
-                          )),
-                      SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
                       Container(
                         width: 250,

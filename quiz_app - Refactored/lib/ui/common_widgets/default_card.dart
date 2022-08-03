@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
@@ -49,7 +50,7 @@ class ChoiceCard extends StatelessWidget {
           Positioned(
               left: textPosx,
               bottom: textPosy,
-              child: Text(cardtext.toUpperCase(),
+              child: Text(cardtext.toUpperCase().tr,
                   style: Theme.of(context).textTheme.headline6)),
           Positioned(
               left: textPosx, top: textPosy! - 10, child: child ?? Container())

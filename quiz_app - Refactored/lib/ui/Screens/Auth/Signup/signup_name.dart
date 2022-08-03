@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
@@ -32,7 +34,7 @@ class SignupName extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Create account',
+            'Create account'.tr,
             style: TextStyle(
                 color: Theme.of(context).colorScheme.onBackground,
                 fontSize: getProportionateScreenWidth(30), //40,
@@ -40,7 +42,7 @@ class SignupName extends StatelessWidget {
                 letterSpacing: 0.30),
           ),
           Text(
-            'please tell us more about you',
+            'please tell us more about you'.tr,
             style: TextStyle(
                 color: Theme.of(context).colorScheme.onBackground,
                 fontSize: getProportionateScreenWidth(10), //20,
@@ -60,11 +62,11 @@ class SignupName extends StatelessWidget {
                 controller: firstNameController,
                 key: firtNameKey,
                 validator: (value) {
-                  if (value!.isEmpty) return "First Name cannot be empty";
+                  if (value!.isEmpty) return "First Name cannot be empty".tr;
                 },
                 decoration: InputDecoration(
                   filled: true,
-                  labelText: 'Enter First Name',
+                  labelText: 'Enter First Name'.tr,
                   labelStyle: TextStyle(fontSize: 16),
                   fillColor: Theme.of(context).colorScheme.surface,
                   border: OutlineInputBorder(
@@ -114,11 +116,11 @@ class SignupName extends StatelessWidget {
                 controller: lastNameController,
                 key: lastNameKey,
                 validator: (value) {
-                  if (value!.isEmpty) return "Last Name cannot be empty";
+                  if (value!.isEmpty) return "Last Name cannot be empty".tr;
                 },
                 decoration: InputDecoration(
                   filled: true,
-                  labelText: 'Enter Last Name',
+                  labelText: 'Enter Last Name'.tr,
                   labelStyle: TextStyle(fontSize: 16),
                   fillColor: Theme.of(context).colorScheme.surface,
                   border: OutlineInputBorder(
