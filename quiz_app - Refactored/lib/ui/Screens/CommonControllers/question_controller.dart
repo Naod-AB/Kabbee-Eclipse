@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
+import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
+
+import '../../../service/notificationService.dart';
+import '../../../service/services.dart';
+import '../Question/models/scores.dart';
 
 class QuestionController extends GetxController {
-
   List? questionApi;
   RxString chosenCourse = ''.obs;
   RxString chosenCourseType = ''.obs;
+  int examCounter = 0;
   bool isFinal = false;
-
-  Rx<ScrollController> scrollController = ScrollController().obs;
-  Rx<ScrollController> reviewScrollController = ScrollController().obs;
+  CourseScore selectedScore = CourseScore();
+  Rx<ScrollController> scrolController = ScrollController().obs;
+  Rx<ScrollController> reviewScrolController = ScrollController().obs;
+  ProfileController pController = Get.put(ProfileController());
 
   int optionList = 0;
 
@@ -43,7 +48,43 @@ class QuestionController extends GetxController {
   List answers = [];
   List choices = [];
   int scoreCounter = 0;
+  CourseScore? fetchSelectedCourseScore() {
+    for (var element in pController.scores) {
+      print(chosenCourse.value);
+      if (element.courseName == chosenCourse.value) {
+        selectedScore = element;
+        print(element.courseName);
+      }
+    }
+    return selectedScore;
+  }
 
-
-
+  Future<int> checkExamCounter(int scorePercentage) async {
+    CourseScore course;
+    print("this is the selected score" + selectedScore.courseName!);
+    examCounter = selectedScore.counter!;
+    if (scorePercentage < 60) {
+      examCounter++;
+      print("increamented the examCounter " + examCounter.toString());
+    }
+    if (examCounter >= 2) {
+      print(
+          "block the user from taking the task  by setting blockked to true ");
+      selectedScore.blocked = true;
+      updateExamcounter(selectedScore);
+      await Future.delayed(Duration(seconds: 20)).then((value) {
+        NotificationService().showNotification(
+            "Unlocked",
+            "${selectedScore.courseName} has been unblocked, you can take the exam now ",
+            selectedScore.courseName!);
+        selectedScore.blocked = false;
+        selectedScore.counter = 0;
+        updateExamcounter(selectedScore);
+      });
+    } else {
+      selectedScore.blocked = false;
+      updateExamcounter(selectedScore);
+    }
+    return examCounter;
+  }
 }

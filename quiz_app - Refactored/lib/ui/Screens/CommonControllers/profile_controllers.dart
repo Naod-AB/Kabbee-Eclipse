@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
@@ -33,8 +34,19 @@ class ProfileController extends GetxController {
 
   Rx<Users?> userInfo = Users().obs;
   List? userList;
+  @override
+  void onClose() {
+    userInfo = Users().obs;
+    super.onClose();
+  }
 
-  List? scores;
+  @override
+  void onReady() {
+    userInfo = Users().obs;
+    super.onReady();
+  }
+
+  List<CourseScore> scores = [];
   RxList activeUsers = [].obs;
   RxList blockedUsers = [].obs;
 
@@ -104,10 +116,9 @@ class ProfileController extends GetxController {
 
     categoryLength =
         fetchCoursesAndCategories.map((e) => e['category']).toSet().toList();
-  
+
     courseLength =
         fetchCoursesAndCategories.map((e) => e['courseName']).toSet().toList();
     usersLength = fetchUser.length;
-    
   }
 }

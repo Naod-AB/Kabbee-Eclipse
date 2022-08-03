@@ -7,7 +7,8 @@ import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/Question/models/scores.dart';
 import 'package:quiz_app/ui/Screens/Question/widgets/count_down.dart';
 import 'package:quiz_app/ui/common_widgets/appbar.dart';
-
+import 'package:intl/intl.dart';
+//import 'package:quiz_app/ui/common_widgets/appbar_evalu.dart';
 import 'package:quiz_app/ui/utils/pallete.dart';
 import '../../common_widgets/alert_box.dart';
 import '../../common_widgets/score_alert_box.dart';
@@ -53,7 +54,8 @@ class QuestionsScreen extends StatelessWidget {
                     icon,
                     qController,
                     false,
-                    true);
+                    true,
+                    "WARNING");
               }
             : null,
         child: Scaffold(
@@ -65,7 +67,7 @@ class QuestionsScreen extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
             child: SingleChildScrollView(
-              controller: qController.scrollController.value,
+              controller: qController.scrolController.value,
               child: SizedBox(
                 height: 740,
                 child: qController.questionApi!.isEmpty
@@ -211,9 +213,9 @@ class QuestionsScreen extends StatelessWidget {
                                                                       qController
                                                                           .questionApi!
                                                                           .length) {
-                                                                qController.scrollController.value.animateTo(
+                                                                qController.scrolController.value.animateTo(
                                                                     qController
-                                                                        .scrollController
+                                                                        .scrolController
                                                                         .value
                                                                         .position
                                                                         .extentAfter,
@@ -308,17 +310,32 @@ class QuestionsScreen extends StatelessWidget {
                                               icon,
                                               qController,
                                               false,
-                                              false);
+                                              false,
+                                              "WARNING");
                                         }
                                       }
+                                      int examCounter = 0;
 
-                                      double scorePercent =
-                                          (qController.answers.length /
+                                      int scorePercent = (qController
+                                                  .answers.length /
                                               qController.questionApi!.length *
-                                              100);
+                                              100)
+                                          .toInt();
+                                      print(
+                                          'THE USER PERCENTAGE IS $scorePercent');
+                                      examCounter = qController
+                                              .checkExamCounter(scorePercent)
+                                          as int;
+                                      DateTime now = DateTime.now();
+                                      final DateFormat formatter = DateFormat(
+                                        'yyyy-MM-dd HH:mm:ss',
+                                      );
+
+                                      final String takenDate =
+                                          formatter.format(now);
 
                                       CourseScore score = CourseScore(
-                                          courseId: controller
+                                          courseId: pController
                                                   .userInfo.value!.id
                                                   .toString() +
                                               qController.chosenCourse.value,
@@ -330,10 +347,13 @@ class QuestionsScreen extends StatelessWidget {
                                               qController.answers.length,
                                           coursePercentage: scorePercent,
                                           userId:
-                                              controller.userInfo.value!.id);
+                                              pController.userInfo.value!.id,
+                                          counter: examCounter,
+                                          blocked: false,
+                                          takenDate: takenDate);
                                       qController.isFinished = true;
 
-                                      String checkid = controller
+                                      String checkid = pController
                                               .userInfo.value!.id
                                               .toString() +
                                           qController.chosenCourse.value;

@@ -80,7 +80,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Admin settings
 
-            if (controller.userInfo.value!.role == 'ADMIN')
+            if (pController.userInfo.value!.role == 'ADMIN')
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -93,7 +93,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            await controller.getDashBoardData();
+                            await pController.getDashBoardData();
                             context.router.pushNamed('/dahboard');
                           },
                           child: buildTile(
@@ -140,13 +140,13 @@ class ProfileScreen extends GetView<ProfileController> {
                           Theme.of(context).colorScheme.onBackground),
                       Obx(
                         () => Switch.adaptive(
-                          value: controller.isDarkMode.value,
+                          value: pController.isDarkMode.value,
                           activeColor: orangeColor,
                           onChanged: (value) {
-                            controller.isDarkMode.value =
-                                !controller.isDarkMode.value;
+                            pController.isDarkMode.value =
+                                !pController.isDarkMode.value;
 
-                            Get.changeTheme(controller.isDarkMode.value
+                            Get.changeTheme(pController.isDarkMode.value
                                 ? Themes.darkMode
                                 : Themes.lightMode);
 
@@ -167,8 +167,8 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(context),
                   GestureDetector(
                     onTap: () async {
-                      controller.scores =
-                          await fetchUserScores(controller.userInfo.value!.id);
+                      controller.scores = (await fetchUserScores(
+                          controller.userInfo.value!.id))!;
 
                       context.router.pushNamed('/my_scores');
                     },
@@ -235,7 +235,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                 // context.router.popUntilRoot();
                                 context.router.removeUntil(
                                     (route) => route.name == LoginRoute.name);
-                                logOut();
+                                logOut(context);
                               },
                             )
                           ],

@@ -15,7 +15,7 @@ import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:image_picker/image_picker.dart';
 
-ProfileController controller = Get.put(ProfileController());
+ProfileController pController = Get.put(ProfileController());
 
 Color orangeColor = const Color(0xFFFFA500);
 // Color tileColor = Color.fromRGBO(40, 40, 40, 1);
@@ -57,7 +57,7 @@ Widget profileCardContent(context) {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Obx(
-              () => controller.imageFile.value == ''
+              () => pController.imageFile.value == ''
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: const Image(
@@ -71,13 +71,13 @@ Widget profileCardContent(context) {
                       borderRadius: BorderRadius.circular(50),
                       child: !kIsWeb
                           ? Image.file(
-                              File(controller.imageFile.value),
+                              File(pController.imageFile.value),
                               fit: BoxFit.cover,
                               width: 110,
                               height: 110,
                             )
                           : Image.network(
-                              controller.imageFile.value,
+                              pController.imageFile.value,
                               fit: BoxFit.cover,
                               width: 110,
                               height: 110,
@@ -89,13 +89,13 @@ Widget profileCardContent(context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Obx(() => Text(
-                    "${controller.firstName.value}\n${controller.lastName.value}",
+                    "${pController.firstName.value}\n${pController.lastName.value}",
                     style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         height: 1.1,
                         color: Colors.black))),
-                Text('${controller.userInfo.value!.email}',
+                Text('${pController.userInfo.value!.email}',
                     style: const TextStyle(
                         fontSize: 15, height: 1.1, color: Colors.black))
               ],
@@ -110,7 +110,7 @@ Widget profileCardContent(context) {
 Widget genderToggle(int numberOfSwitches) {
   return ToggleSwitch(
     minWidth: 70.0,
-    initialLabelIndex: controller.genderIndex.value ? 0 : 1,
+    initialLabelIndex: pController.genderIndex.value ? 0 : 1,
     cornerRadius: 10.0,
     activeFgColor: primaryColor,
     inactiveBgColor: Colors.grey[800],
@@ -122,8 +122,8 @@ Widget genderToggle(int numberOfSwitches) {
       [orangeColor],
     ],
     onToggle: (index) {
-      controller.genderIndex.value = !controller.genderIndex.value;
-      controller.isBtnNull.value = true;
+      pController.genderIndex.value = !pController.genderIndex.value;
+      pController.isBtnNull.value = true;
     },
   );
 }
@@ -136,7 +136,7 @@ Widget genderValueContainer() {
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
       child: Text(
-        controller.gender.value ? 'Male' : 'Female',
+        pController.gender.value ? 'Male' : 'Female',
         style: TextStyle(color: primaryColor),
       ),
     ),
@@ -231,13 +231,13 @@ Widget userInfoTiles(
 Widget buildTextField(BuildContext context, String hint, IconData? icon,
     TextEditingController ctrl, bool ispassword, Widget? suffix) {
   return TextFormField(
-    obscureText: ispassword ? controller.hidePassword.value : false,
+    obscureText: ispassword ? pController.hidePassword.value : false,
     style: TextStyle(
       color: Theme.of(context).colorScheme.onBackground,
     ),
     controller: ctrl,
     onChanged: (value) {
-      if (value.trimLeft().isNotEmpty) controller.isBtnNull.value = true;
+      if (value.trimLeft().isNotEmpty) pController.isBtnNull.value = true;
     },
     decoration: InputDecoration(
         fillColor: Theme.of(context).colorScheme.tertiary,
@@ -279,7 +279,7 @@ Widget editIcon(BuildContext context) {
         size: 30,
       ),
       onPressed: () {
-        controller.editedImage.value = controller.imageFile.value;
+        pController.editedImage.value = pController.imageFile.value;
         clearFieldsAndDisableButton();
         context.router.pushNamed('/edit_profile');
       },
@@ -332,7 +332,7 @@ Widget contactEditIcon(BuildContext context) {
                   ),
                   GestureDetector(
                     onTap: () {
-                      controller.launchTelegram();
+                      pController.launchTelegram();
                     },
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.telegram,
@@ -353,7 +353,7 @@ Widget contactEditIcon(BuildContext context) {
                       kblue),
                   GestureDetector(
                     onTap: () {
-                      controller.launchWebsite();
+                      pController.launchWebsite();
                     },
                     child: buildBottomSheetTiles(
                         FontAwesomeIcons.earthAmericas,
@@ -376,11 +376,14 @@ Widget contactEditIcon(BuildContext context) {
 }
 
 Widget buildUpdateButton(
-    BuildContext context, text, GlobalKey<FormFieldState>? key) {
+  BuildContext context,
+  text,
+  GlobalKey<FormFieldState>? key,
+) {
   return TextButton(
     style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-          controller.isBtnNull.value
+          pController.isBtnNull.value
               ? orangeColor
               : orangeColor.withOpacity(.1),
         ),
@@ -390,9 +393,13 @@ Widget buildUpdateButton(
             borderRadius: BorderRadius.circular(15),
           ),
         )),
-    onPressed: controller.isBtnNull.value
+    onPressed: pController.isBtnNull.value
         ? () async {
             await updateProfile(key!, context);
+            FocusScope.of(context).unfocus();
+            Future.delayed(const Duration(seconds: 3), () {
+              context.navigateBack();
+            });
           }
         : null,
     child: customText(
@@ -429,7 +436,7 @@ Widget editProfilePic(context) {
           Row(
             children: [
               Obx(
-                () => controller.editedImage.value == ''
+                () => pController.editedImage.value == ''
                     ? ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child: const Image(
@@ -443,13 +450,13 @@ Widget editProfilePic(context) {
                         borderRadius: BorderRadius.circular(50),
                         child: !kIsWeb
                             ? Image.file(
-                                File(controller.editedImage.value),
+                                File(pController.editedImage.value),
                                 fit: BoxFit.cover,
                                 width: 60,
                                 height: 60,
                               )
                             : Image.network(
-                                controller.editedImage.value,
+                                pController.editedImage.value,
                                 fit: BoxFit.cover,
                                 width: 60,
                                 height: 60,
@@ -463,7 +470,7 @@ Widget editProfilePic(context) {
           ),
           ElevatedButton(
             onPressed: () {
-              controller.getFromGallery(ImageSource.gallery, context);
+              pController.getFromGallery(ImageSource.gallery, context);
             },
             child: Text(
               'Upload',
@@ -483,11 +490,11 @@ Widget editProfilePic(context) {
 Widget passwordVisibilityBtn() {
   return GestureDetector(
     onTap: () {
-      controller.hidePassword.value = !controller.hidePassword.value;
+      pController.hidePassword.value = !pController.hidePassword.value;
     },
     child: Icon(
-      controller.hidePassword.value ? Icons.visibility_off : Icons.visibility,
-      color: controller.hidePassword.value
+      pController.hidePassword.value ? Icons.visibility_off : Icons.visibility,
+      color: pController.hidePassword.value
           ? orangeColor
           : const Color.fromARGB(255, 255, 165, 0),
     ),
@@ -534,54 +541,53 @@ Widget sampleCard(context, IconData icon, String score) {
 
 //!  FUNTIONS
 updateProfile(GlobalKey<FormFieldState> passwordKey, BuildContext context) {
-  controller.gender.value = controller.genderIndex.value;
-  controller.userInfo.value!.gender =
-      controller.gender.value ? 'Male' : 'Female';
+  pController.gender.value = pController.genderIndex.value;
+  pController.userInfo.value!.gender =
+      pController.gender.value ? 'Male' : 'Female';
 
-  if (controller.firstNameController.value.text.trimLeft().isNotEmpty) {
-    controller.firstName.value =
-        controller.firstNameController.value.text.trimLeft();
+  if (pController.firstNameController.value.text.trimLeft().isNotEmpty) {
+    pController.firstName.value =
+        pController.firstNameController.value.text.trimLeft();
 
-    controller.userInfo.value!.firstName = controller.firstName.value;
+    pController.userInfo.value!.firstName = pController.firstName.value;
   }
 
-  if (controller.lastNameController.value.text.trimLeft().isNotEmpty) {
-    controller.lastName.value =
-        controller.lastNameController.value.text.trimLeft();
+  if (pController.lastNameController.value.text.trimLeft().isNotEmpty) {
+    pController.lastName.value =
+        pController.lastNameController.value.text.trimLeft();
 
-    controller.userInfo.value!.lastName = controller.lastName.value;
+    pController.userInfo.value!.lastName = pController.lastName.value;
   }
 
-  if (controller.passwordController.value.text.trimLeft().isNotEmpty &&
+  if (pController.passwordController.value.text.trimLeft().isNotEmpty &&
       passwordKey.currentState!.validate()) {
-    controller.password.value =
-        controller.passwordController.value.text.toString().trimLeft();
+    pController.password.value =
+        pController.passwordController.value.text.toString().trimLeft();
   } else {
     showSnackbar(context, 'Update', 'Profile Updated Successfully', 'success');
   }
 
-  updateJprofile(id: controller.userInfo.value!.id.toString());
-
-  showSnackbar(context, 'Update', 'Profile Updated Successfully', 'success');
-  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
-
+  updateJprofile(id: pController.userInfo.value!.id.toString());
   updateProfileImage();
 
   clearFieldsAndDisableButton();
+  showSnackbar(context, 'Update', 'Profile Updated Successful', 'success');
+
+  // Future.delayed(Duration(seconds: 3), () => context.router.navigateBack());
 }
 
 updateProfileImage() {
-  controller.imageFile.value = controller.editedImage.value;
+  pController.imageFile.value = pController.editedImage.value;
 }
 
 void clearFieldsAndDisableButton() {
   // clear fields
-  controller.firstNameController.value.clear();
-  controller.lastNameController.value.clear();
-  controller.passwordController.value.clear();
+  pController.firstNameController.value.clear();
+  pController.lastNameController.value.clear();
+  pController.passwordController.value.clear();
 
   // disable update btn
-  controller.isBtnNull.value = false;
+  pController.isBtnNull.value = false;
 }
 
 // !  Snackbar
@@ -644,18 +650,18 @@ Widget buildTextFieldP(
 
     //   return null;
     // },
-    obscureText: ispassword ? controller.hidePassword.value : false,
+    obscureText: ispassword ? pController.hidePassword.value : false,
     style: TextStyle(
       color: Theme.of(context).colorScheme.onBackground,
     ),
     controller: ctrl,
     onChanged: (value) {
       ispassword && !validateStructure(value)
-          ? controller.isBtnNull.value = false
-          : controller.isBtnNull.value = true;
+          ? pController.isBtnNull.value = false
+          : pController.isBtnNull.value = true;
 
       if (!ispassword && value.trimLeft().isNotEmpty) {
-        controller.isBtnNull.value = true;
+        pController.isBtnNull.value = true;
       }
     },
     decoration: InputDecoration(
@@ -802,18 +808,18 @@ Widget buildUsersTiles(
                         final String listId = user['id'].toString();
                         isUserActive
                             ? {
-                                controller.updatedPassword.value =
+                                pController.updatedPassword.value =
                                     'This#pass123',
-                                controller.blockedUsersCount.value += 1,
+                                pController.blockedUsersCount.value += 1,
                                 updateUsersList(
                                     id: listId, status: true, index: index),
                               }
                             : {
-                                controller.updatedPassword.value =
+                                pController.updatedPassword.value =
                                     '${user['firstName']}' '#pass123',
-                                if (controller.blockedUsersCount.value != 0)
+                                if (pController.blockedUsersCount.value != 0)
                                   {
-                                    controller.blockedUsersCount.value -= 1,
+                                    pController.blockedUsersCount.value -= 1,
                                   },
                                 updateUsersList(
                                     id: listId, status: false, index: index)

@@ -7,7 +7,6 @@ import 'notificationservice.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  NotificationService().initNotification();
 
   runApp(MyApp());
 }

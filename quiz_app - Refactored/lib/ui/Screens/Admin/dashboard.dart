@@ -37,7 +37,7 @@ class DashboardPage extends GetView<ProfileController> {
               const SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {
-                  controller.userList = await fetchUsers();
+                  pController.userList = await fetchUsers();
 
                   context.router.pushNamed('/users');
                 },

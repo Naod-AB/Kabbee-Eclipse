@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
@@ -30,9 +31,9 @@ class EditProfileScreen extends GetView<ProfileController> {
             Obx(
               () => buildTextField(
                   context,
-                  controller.firstName.value,
+                  pController.firstName.value,
                   Icons.person,
-                  controller.firstNameController.value,
+                  pController.firstNameController.value,
                   false,
                   null),
             ),
@@ -43,9 +44,9 @@ class EditProfileScreen extends GetView<ProfileController> {
             Obx(
               () => buildTextField(
                   context,
-                  controller.lastName.value,
+                  pController.lastName.value,
                   Icons.person,
-                  controller.lastNameController.value,
+                  pController.lastNameController.value,
                   false,
                   null),
             ),
@@ -58,7 +59,7 @@ class EditProfileScreen extends GetView<ProfileController> {
                   context,
                   'Enter new password '.tr,
                   Icons.lock,
-                  controller.passwordController.value,
+                  pController.passwordController.value,
                   true,
                   passwordVisibilityBtn(),
                   pkey),
@@ -75,9 +76,13 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             editProfilePic(context),
             const SizedBox(height: 40),
+<<<<<<< HEAD
             Obx(
               () => buildUpdateButton(context, 'UPDATE'.tr, pkey),
             ),
+=======
+            Obx(() => buildUpdateButton(context, 'UPDATE', pkey)),
+>>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
             const SizedBox(height: 30),
           ],
         ),

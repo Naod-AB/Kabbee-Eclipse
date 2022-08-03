@@ -34,7 +34,7 @@ AppBar quizAppBar({required BuildContext context, String? iconUrl}) {
 
 Widget profilePic() {
   return Obx(
-    () => controller.editedImage.value == ''
+    () => pController.editedImage.value == ''
         ? ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: const Image(
@@ -47,13 +47,13 @@ Widget profilePic() {
             borderRadius: BorderRadius.circular(50),
             child: !kIsWeb
                 ? Image.file(
-                    File(controller.editedImage.value),
+                    File(pController.editedImage.value),
                     fit: BoxFit.fill,
                     width: 60,
                     height: 60,
                   )
                 : Image.network(
-                    controller.editedImage.value,
+                    pController.editedImage.value,
                     fit: BoxFit.fill,
                     width: 60,
                     height: 60,

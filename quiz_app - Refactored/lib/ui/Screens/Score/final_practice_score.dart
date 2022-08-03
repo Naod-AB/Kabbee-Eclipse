@@ -95,10 +95,10 @@ class FinalScore extends StatelessWidget {
                     child: customText(
                         context, 'DONE'.tr, 20, false, false, primaryColor),
                     onPressed: () async {
-                      print('Null error ${controller.userInfo.value!.id}');
+                      print('Null error ${pController.userInfo.value!.id}');
 
-                      controller.scores =
-                          await fetchUserScores(controller.userInfo.value!.id);
+                      pController.scores = (await fetchUserScores(
+                          pController.userInfo.value!.id))!;
 
                       print(
                           ' done number ${questionController.questionApi!.length}');

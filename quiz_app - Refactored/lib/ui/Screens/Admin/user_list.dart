@@ -11,16 +11,16 @@ class UsersListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.activeUsers.value = controller.userList!
+    pController.activeUsers.value = pController.userList!
         .where((element) => element["status"] == 'ACTIVE')
         .toList();
 
-    controller.activeUsersCount.value = controller.activeUsers.length;
+    pController.activeUsersCount.value = pController.activeUsers.length;
 
-    controller.blockedUsers.value = controller.userList!
+    pController.blockedUsers.value = pController.userList!
         .where((element) => element["status"] == 'BLOCKED')
         .toList();
-    controller.blockedUsersCount.value = controller.blockedUsers.length;
+    pController.blockedUsersCount.value = pController.blockedUsers.length;
 
     return DefaultTabController(
         length: 2,
@@ -52,7 +52,7 @@ class UsersListPage extends StatelessWidget {
             () => TabBarView(
               children: [
                 activeList(),
-                controller.blockedUsersCount.value == 0
+                pController.blockedUsersCount.value == 0
                     ? ScoreAlertBox(
                         title: 'Users Not Found !'.tr,
                         text: 'All users are active'.tr)
@@ -68,12 +68,13 @@ class UsersListPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 25),
       child: Obx(() {
         return ListView.builder(
-          itemCount: controller.activeUsersCount.value,
+          itemCount: pController.activeUsersCount.value,
           itemBuilder: (context, index) {
-            var user = controller.activeUsers[index];
-            bool isUserAdmin = controller.activeUsers[index]['role'] == 'ADMIN';
+            var user = pController.activeUsers[index];
+            bool isUserAdmin =
+                pController.activeUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
-                user['email'] == controller.userInfo.value!.email;
+                user['email'] == pController.userInfo.value!.email;
             return Card(
                 color: Theme.of(context).colorScheme.tertiary,
                 child: buildUsersTiles(
@@ -100,13 +101,13 @@ class UsersListPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 25),
       child: Obx(() {
         return ListView.builder(
-          itemCount: controller.blockedUsersCount.value,
+          itemCount: pController.blockedUsersCount.value,
           itemBuilder: (context, index) {
-            var user = controller.blockedUsers[index];
+            var user = pController.blockedUsers[index];
             bool isUserAdmin =
-                controller.blockedUsers[index]['role'] == 'ADMIN';
+                pController.blockedUsers[index]['role'] == 'ADMIN';
             bool isCurrentUserAdmin =
-                user['email'] == controller.userInfo.value!.email;
+                user['email'] == pController.userInfo.value!.email;
 
             return Card(
                 color: Theme.of(context).colorScheme.tertiary,

@@ -7,6 +7,8 @@ import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 import 'package:quiz_app/ui/utils/theme.dart';
 
+import '../Controllers/auth_controller.dart';
+
 class SignupEmail extends StatelessWidget {
   //final _formKey = GlobalKey<FormState>();
   // final Users user ;
@@ -29,6 +31,7 @@ class SignupEmail extends StatelessWidget {
     bool isAvailable = false;
     ///// print(allUsers);
     for (user in allUsers) {
+      print(user.email);
       if (user.email == email) {
         isAvailable = true;
       }
@@ -39,6 +42,7 @@ class SignupEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    AuthController authController = Get.find();
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: SizeConfig.screenWidth * 0.05,
@@ -111,6 +115,12 @@ class SignupEmail extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               obscureText: false,
+            ),
+            Obx(
+              () => Text(
+                authController.error.value,
+                style: TextStyle(color: Colors.red),
+              ),
             ),
             const SizedBox(
               height: 160,

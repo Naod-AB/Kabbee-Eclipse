@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/routes/router.gr.dart';
 
 import 'package:quiz_app/ui/Screens/Auth/Controllers/users.dart';
 
@@ -13,6 +16,7 @@ import '../ui/Screens/Auth/Controllers/auth_controller.dart';
 import '../ui/Screens/CommonControllers/question_controller.dart';
 import '../ui/Screens/Profile/widgets/user_profile_widget.dart';
 import '../ui/Screens/Question/models/checkanswer.dart';
+import '../ui/Screens/Question/models/courses.dart';
 
 // Save User Score
 //final ProfileController aProfileController = Get.put(ProfileController());
@@ -30,7 +34,10 @@ Future<CourseScore> saveUserScore(CourseScore score) async {
         'courseType': score.courseType,
         'courseScore': score.courseScore,
         'percentage': score.coursePercentage,
-        'userId': score.userId
+        'userId': score.userId,
+        'blocked': score.blocked,
+        'counter': score.counter,
+        'takendate': score.takenDate
       }));
 
   if (response.statusCode == 204) {
@@ -54,7 +61,10 @@ Future<CourseScore> createUserScore(CourseScore score) async {
             'courseType': score.courseType,
             'courseScore': score.courseScore,
             'percentage': score.coursePercentage,
-            'userId': score.userId
+            'userId': score.userId,
+            'blocked': score.blocked,
+            'counter': score.counter,
+            'takendate': score.takenDate
           }));
   if (response.statusCode == 201) {
     return CourseScore.fromJson(jsonDecode(response.body));
@@ -89,14 +99,17 @@ Future<Users> createUser(Users user) async {
 }
 
 // Fetch MY Scores
-Future fetchUserScores(int userId) async {
+Future<List<CourseScore>?> fetchUserScores(int userId) async {
   final response = await http.get(Uri.parse(
       'https://eclipse-api.herokuapp.com/scores/filter/?userId=$userId'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     if (!jsonDecode(response.body).isEmpty) {
       final parsed = jsonDecode(response.body);
 
-      return parsed;
+      return parsed
+          .map<CourseScore>((json) => CourseScore.fromJson(json))
+          .toList();
+      ;
     } else {
       return null;
     }
@@ -109,16 +122,11 @@ Future fetchUserScores(int userId) async {
 Future<Users?> fetchUser(String email) async {
   final response = await http.get(Uri.parse(
       'https://eclipse-api.herokuapp.com/users/search/findByEmail?email=$email'));
-  
-  if (response.statusCode == 200 || response.statusCode == 304) {
-    if (!jsonDecode(response.body).isEmpty) {
-      
-      return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
-    } else {
-      return null;
-    }
+
+  if (jsonDecode(response.body)["_embedded"]["users"].length != 0) {
+    return Users.fromJson(jsonDecode(response.body)["_embedded"]["users"][0]);
   } else {
-    throw Exception('Failed to load User');
+    throw Exception('Failed to load user');
   }
 }
 
@@ -127,7 +135,6 @@ Future<List<Users>> fetchAllUsers() async {
   final response =
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/users'));
   if (response.statusCode == 200 || response.statusCode == 304) {
-    
     return parseUsers(response.body);
   } else {
     throw Exception('Failed to fetch Users');
@@ -147,10 +154,58 @@ Future<List> fetchDashboard() async {
       await http.get(Uri.parse('https://eclipse-api.herokuapp.com/courses'));
   if (response.statusCode == 200 || response.statusCode == 304) {
     final dashboardData = (jsonDecode(response.body)["_embedded"]["courses"]);
-    
+
     return dashboardData;
   } else {
     throw Exception('Failed to fetch Courses');
+  }
+}
+
+Future updateExamcounter(CourseScore score) async {
+  print("this is the Id ${score.courseName}");
+  final response = await http.patch(
+    Uri.parse('https://eclipse-api.herokuapp.com/scores/${score.courseId}'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(
+        <String, dynamic>{'counter': score.counter, 'blocked': score.blocked!}),
+  );
+  if (response.statusCode == 200 || response.statusCode == 204) {
+    log('succefully updated ');
+  } else {
+    print(response.statusCode);
+    log(' this is the log ${score.courseId}');
+    throw Exception('Failed to update User Score.');
+  }
+}
+
+Future<CourseScore?> findCourseScore(String courseId) async {
+  final response =
+      await http.get(Uri.parse('http://10.0.2.2:3000/Scores/?id=$courseId'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    if (!jsonDecode(response.body).isEmpty) {
+      return CourseScore.fromJson(jsonDecode(response.body)[0]);
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+}
+
+Future<Courses?> findCourse(String courseName) async {
+  print("this si the payload in the notification ");
+  final response = await http.get(Uri.parse(
+      'https://eclipse-api.herokuapp.com/courses/?courseName=$courseName'));
+  if (response.statusCode == 200 || response.statusCode == 304) {
+    if (!jsonDecode(response.body).isEmpty) {
+      return Courses.fromJson(jsonDecode(response.body)[0]);
+    } else {
+      return null;
+    }
+  } else {
+    return null;
   }
 }
 
@@ -189,29 +244,28 @@ Future<Users> updateUsersList({
   required int index,
   required bool status,
 }) async {
-  
   final response = await http.patch(
     Uri.parse('https://eclipse-api.herokuapp.com/users/$id'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, dynamic>{
-      'password': controller.updatedPassword.value,
+      'password': pController.updatedPassword.value,
       'status': status ? 'BLOCKED' : 'ACTIVE',
     }),
   );
 
   if (response.statusCode == 200 || response.statusCode == 204) {
     if (status == true) {
-      controller.blockedUsers.add(controller.activeUsers[index]);
-      controller.activeUsers.removeAt(index);
+      pController.blockedUsers.add(pController.activeUsers[index]);
+      pController.activeUsers.removeAt(index);
     } else {
-      controller.activeUsers.add(controller.blockedUsers[index]);
-      controller.blockedUsers.removeAt(index);
+      pController.activeUsers.add(pController.blockedUsers[index]);
+      pController.blockedUsers.removeAt(index);
     }
 
-    controller.activeUsersCount.value = controller.activeUsers.length;
-    controller.blockedUsersCount.value = controller.blockedUsers.length;
+    pController.activeUsersCount.value = pController.activeUsers.length;
+    pController.blockedUsersCount.value = pController.blockedUsers.length;
 
     return Users.fromJson(jsonDecode(response.body));
   } else {
@@ -263,8 +317,6 @@ class ChosenModel {
   }
 }
 
-
-
 // Add Choices
 Future<CheckAnswer> updateJsonTime({
   required String answer,
@@ -309,8 +361,6 @@ Future<int> fetchCorrectAnswers() async {
   return count;
 }
 
-
-
 // To update profile to Api
 Future<Users> updateJprofile({
   required String id,
@@ -321,10 +371,10 @@ Future<Users> updateJprofile({
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, dynamic>{
-      'firstName': controller.firstName.value,
-      'lastName': controller.lastName.value,
-      'password': controller.password.value,
-      'gender': controller.gender.value ? 'Male' : 'Female',
+      'firstName': pController.firstName.value,
+      'lastName': pController.lastName.value,
+      'password': pController.password.value,
+      'gender': pController.gender.value ? 'Male' : 'Female',
     }),
   );
   if (response.statusCode == 200) {
@@ -334,14 +384,17 @@ Future<Users> updateJprofile({
   }
 }
 
-
-logOut() {
+logOut(BuildContext context) async {
+  await Get.delete<AuthController>();
   Get.delete<ProfileController>();
   Get.delete<QuestionController>();
-  Get.delete<AuthController>();
 
+  print(pController.userInfo.value!.email);
+  // Get.put(AuthController());
   Get.put(AuthController());
-  AuthController authController = Get.put(AuthController());
+// get.testmode=true
+//
 
-  Get.offAllNamed('/login');
+  // Get.offAllNamed('/login');
+  Get.offAll(const LoginRoute());
 }

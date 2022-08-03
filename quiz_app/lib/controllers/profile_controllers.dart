@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/Models/users.dart';
 
+import '../Models/scores.dart';
 import '../routes/router.gr.dart';
 import '../widgets/user_profile_widget.dart';
 import 'package:url_launcher/url_launcher.dart';

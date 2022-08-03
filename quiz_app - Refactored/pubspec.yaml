@@ -61,7 +61,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   auto_size_text: ^3.0.0
   flutter_launcher_icons: ^0.9.3
-  dropdown_button2: ^1.7.0
+  flutter_local_notifications: ^9.7.0
+  intl: ^0.17.0
   #flutter_countdown_timer: ^4.1.0
   #simple_progress_bar: ^0.0.4
 

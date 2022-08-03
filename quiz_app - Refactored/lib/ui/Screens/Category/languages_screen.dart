@@ -43,12 +43,12 @@ class LanguageChoices extends StatelessWidget {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         int percentage = 0;
-
-                        if (controller.scores != null) {
-                          for (var element in controller.scores!) {
+                        print('Profile DATA LANGUAGE ${pController.scores}');
+                        if (pController.scores != null) {
+                          for (var element in pController.scores) {
                             if (courses[index]['courseName'] ==
-                                element['courseName']) {
-                              percentage = element['percentage'];
+                                element.courseName) {
+                              percentage = element.coursePercentage!;
                               break;
                             }
                           }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
@@ -15,7 +16,7 @@ class NotificationService {
 
   NotificationService._internal();
 
-  Future<void> initNotification() async {
+  Future<void> initNotification(BuildContext context) async {
     final AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@drawable/ic_flutternotification');
 

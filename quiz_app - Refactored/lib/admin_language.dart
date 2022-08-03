@@ -20,14 +20,14 @@ class AdminLanguage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.only(top: 25),
           child: ListView.builder(
-            itemCount: controller.fetchCoursesAndCategories.length,
+            itemCount: pController.fetchCoursesAndCategories.length,
             itemBuilder: (context, index) {
-              var language = controller.fetchCoursesAndCategories[index];
+              var language = pController.fetchCoursesAndCategories[index];
 
-              List questions = controller.fetchquestionLengths
+              List questions = pController.fetchquestionLengths
                   .where((element) =>
                       element["topic"] ==
-                      controller.fetchCoursesAndCategories[index]['courseName']
+                      pController.fetchCoursesAndCategories[index]['courseName']
                           .toString()
                           .toUpperCase())
                   .toList();
