@@ -42,24 +42,15 @@ quizAlertBox(
           fontWeight: FontWeight.w400),
     ),
     buttons: [
-<<<<<<< HEAD
-      DialogButton(
-        child: Text(
-          "CANCEL".tr,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onBackground,
-            fontSize: 20,
-=======
       if (type != "INFO")
         DialogButton(
           child: Text(
             //isback ? "" :
-            "CANCEL",
+            "CANCEL".tr,
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontSize: 20,
             ),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
           ),
           onPressed: () => Navigator.pop(context),
           color: isback ? kblue : Colors.transparent,

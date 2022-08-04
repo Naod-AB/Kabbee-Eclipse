@@ -56,16 +56,8 @@ class UserDetailsScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             customText(context, 'Gender'.tr, 18, false, false, kblue),
             const SizedBox(height: 15),
-<<<<<<< HEAD
-            Obx(() => userInfoTiles(
-                context,
-                controller.gender.value ? 'Male'.tr : 'Female'.tr,
-                true,
-                false)),
-=======
             Obx(() => userInfoTiles(context,
                 pController.gender.value ? 'Male' : 'Female', true, false)),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
             // userInfoTiles(Text('Esrom'), true),
           ],
         ),

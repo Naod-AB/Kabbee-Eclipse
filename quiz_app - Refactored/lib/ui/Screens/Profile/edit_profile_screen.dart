@@ -57,7 +57,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             Obx(
               () => buildTextFieldP(
                   context,
-                  'Enter new password '.tr,
+                  'enter_new_password'.tr,
                   Icons.lock,
                   pController.passwordController.value,
                   true,
@@ -76,13 +76,7 @@ class EditProfileScreen extends GetView<ProfileController> {
             const SizedBox(height: 20),
             editProfilePic(context),
             const SizedBox(height: 40),
-<<<<<<< HEAD
-            Obx(
-              () => buildUpdateButton(context, 'UPDATE'.tr, pkey),
-            ),
-=======
             Obx(() => buildUpdateButton(context, 'UPDATE', pkey)),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
             const SizedBox(height: 30),
           ],
         ),

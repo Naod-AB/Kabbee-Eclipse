@@ -63,6 +63,10 @@ dependencies:
   flutter_launcher_icons: ^0.9.3
   flutter_local_notifications: ^9.7.0
   intl: ^0.17.0
+  internet_connection_checker: ^0.0.1+4
+  overlay_support: ^2.0.1
+  connectivity_plus: ^2.3.6
+  
   #flutter_countdown_timer: ^4.1.0
   #simple_progress_bar: ^0.0.4
 

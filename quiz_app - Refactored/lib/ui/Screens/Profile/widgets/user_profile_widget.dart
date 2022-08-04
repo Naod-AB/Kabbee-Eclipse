@@ -464,7 +464,7 @@ Widget editProfilePic(context) {
                       ),
               ),
               const SizedBox(width: 12),
-              customText(context, 'Change avatar', 18, false, false,
+              customText(context, 'change_avatar'.tr, 18, false, false,
                   Theme.of(context).colorScheme.onBackground),
             ],
           ),
@@ -473,7 +473,7 @@ Widget editProfilePic(context) {
               pController.getFromGallery(ImageSource.gallery, context);
             },
             child: Text(
-              'Upload',
+              'Upload'.tr,
               style:
                   TextStyle(color: Theme.of(context).colorScheme.onBackground),
             ),
@@ -898,7 +898,7 @@ class Language {
       ),
       Language(
         2,
-        'ትግሪኛ',
+        'ትግርኛ',
         '🇪🇷',
       ),
     ];

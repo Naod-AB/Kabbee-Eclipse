@@ -1,20 +1,21 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:quiz_app/ui/Screens/Auth/Controllers/auth_controller.dart';
 import 'package:email_validator/email_validator.dart';
 
-// ;
-import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:quiz_app/service/services.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
-import 'package:quiz_app/ui/common_widgets/rounded_button_mine.dart' as button;
 import 'package:quiz_app/ui/utils/pallete.dart';
 import 'package:quiz_app/ui/utils/size_config.dart';
 
 import '../../../common_widgets/rounded_button_mine.dart';
 import '../Controllers/lang_controller.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -28,16 +29,37 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
 
   GlobalKey<FormFieldState> passKey = GlobalKey<FormFieldState>();
+  //bool hasInternet = false;
+  late StreamSubscription subscription;
+  var isDeviceConnected = false;
+  bool isAlertSet = false;
 
   //String? valueChoose;
   dynamic dropdownValue = "Menu one";
 
   @override
   void initState() {
+    getConnectivity();
+
     super.initState();
     setState(() {
       print('starting login');
     });
+  }
+
+  getConnectivity() => subscription = Connectivity()
+          .onConnectivityChanged
+          .listen((ConnectivityResult result) async {
+        isDeviceConnected = await InternetConnectionChecker().hasConnection;
+        if (!isDeviceConnected && isAlertSet == false) {
+          showDialogBox();
+          setState(() => isAlertSet = true);
+        }
+      });
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
   }
 
   String? SelectedValue;
@@ -45,10 +67,10 @@ class _LoginPageState extends State<LoginPage> {
   MyController myController = Get.put(MyController());
   @override
   Widget build(BuildContext context) {
-    print('Value');
     String selam = 'selam@gmail.com';
     //authController.getdata(context);
     SizeConfig().init(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
@@ -107,12 +129,6 @@ class _LoginPageState extends State<LoginPage> {
                                   color: kblue,
                                 ),
                               ),
-                              // hintText: 'Enter email',
-                              // hintStyle: TextStyle(
-                              //     fontSize: 16,
-                              //     color:
-                              //         Theme.of(context).colorScheme.onSecondary,
-                              //     height: 1.5),
                             ),
                             style: TextStyle(
                                 fontSize: 16,
@@ -160,18 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                                           ? Icons.visibility_off
                                           : Icons.visibility,
                                       color: kblue)),
-                              // child: Icon(
-                              //   FontAwesomeIcons.lock,
-                              //   size: 28,
-                              //   color: kblue,
-                              // ),
                             ),
-                            // hintText: 'Enter Password',
-                            // hintStyle: TextStyle(
-                            //     fontSize: 16,
-                            //     color:
-                            //         Theme.of(context).colorScheme.onSecondary,
-                            //     height: 1.5),
                           ),
                           style: TextStyle(
                               fontSize: 16,
@@ -182,7 +187,6 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: authController.obsecure.value,
                         ),
                       ),
-                      // SizedBox(height: 15),
 
                       Obx(
                         () => Text(
@@ -227,14 +231,14 @@ class _LoginPageState extends State<LoginPage> {
                             ? LoadingRoundedButton()
                             : RoundedButton(
                                 buttonName: Text(
-                                  'LOGIN',
+                                  'LOGIN'.tr,
                                   style: kBodyText.copyWith(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
                                 pressed: () {
                                   print('logging user..');
-
+                                  authController.loadingUser.value = true;
                                   authController.authenticateUser(
                                       context: context,
                                       email: authController
@@ -294,7 +298,7 @@ class _LoginPageState extends State<LoginPage> {
                             width: 15,
                             height: 50,
                           ),
-                          Text("select language".tr,
+                          Text("Select language".tr,
                               style: TextStyle(
                                 color:
                                     Theme.of(context).colorScheme.onBackground,
@@ -327,7 +331,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //   width: 25,
                                 // ),
                                 Text(
-                                  'select language'.tr, //style: TextStyle(),
+                                  'Select language'.tr, //style: TextStyle(),
                                   style: TextStyle(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -386,7 +390,7 @@ class _LoginPageState extends State<LoginPage> {
                                       value.toString();
                                 }
                                 //print(value);
-                                if (value == 'ትግሪኛ') {
+                                if (value == 'ትግርኛ') {
                                   print('value is before $value');
                                   myController.changeLanguage('tig', 'ER');
                                   //print('value is after $value');
@@ -400,104 +404,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-
-                      // Obx(
-                      //   () => DropdownButton(
-                      //       value: '${myController.langValue.value}',
-                      //       style: TextStyle(color: Colors.amber),
-                      //       // items: [
-                      //       //   for (var item in items)
-                      //       //     DropdownMenuItem<String>(
-                      //       //         value: item, child: Text(item))
-                      //       // ],
-                      //       items: items.map((e) {
-                      //         return DropdownMenuItem(
-                      //             value: e,
-                      //             child: Row(
-                      //               children: [Text(e.flag), Text(e.name)],
-                      //             ));
-                      //       }).toList(),
-                      //       // Language.languageList()
-                      //       // .map((e) =>
-                      //       // DropdownMenuItem(
-                      //       //   child: Row)).toList()
-
-                      //       onChanged: (value) {
-                      //         if (value != null) {
-                      //           myController.langValue.value = value.toString();
-                      //         }
-                      //         print(value);
-                      //         if (value == 'Tigrina') {
-                      //           myController.changeLanguage('tig', 'ER');
-                      //         }
-                      //         // myController.changeLanguage('en', 'US');
-                      //         else {
-                      //           myController.changeLanguage('en', 'US');
-                      //         }
-                      //       }),
-                      // ),
-                      // Obx(
-                      //   (() => DropdownButton<String>(
-                      //       value: '${myController.langValue.value}',
-                      //       style: TextStyle(color: Colors.amber),
-                      //       // items: [
-                      //       //   for (var item in items)
-                      //       //     DropdownMenuItem<String>(
-                      //       //         value: item, child: Text(item))
-                      //       // ],
-                      //       items: items
-                      //           .map<DropdownMenuItem<String>>(
-                      //               (e) => DropdownMenuItem(
-                      //                   value: myController.langValue.value,
-                      //                   child: Row(
-                      //                     children: [
-                      //                       Text(e.flag),
-                      //                       Text(e.name)
-                      //                     ],
-                      //                   )))
-                      //           .toList(),
-                      //       // Language.languageList()
-                      //       // .map((e) =>
-                      //       // DropdownMenuItem(
-                      //       //   child: Row)).toList()
-
-                      //       onChanged: (value) {
-                      //         if (value != null) {
-                      //           myController.langValue.value = value.toString();
-                      //         }
-                      //         print(value);
-                      //         if (value == 'Tigrina') {
-                      //           myController.changeLanguage('tig', 'ER');
-                      //         }
-                      //         // myController.changeLanguage('en', 'US');
-                      //         else {
-                      //           myController.changeLanguage('en', 'US');
-                      //         }
-                      //         // setState(() {
-                      //         //   value;
-                      //         // });
-                      //       })),
-                      // ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      // ElevatedButton(
-                      //     onPressed: () {
-                      //       //  myController.changeLanguage('tig', 'ER');
-                      //       myController.changeLanguage('er', 'US');
-                      //     },
-                      //     child: Text('English')),
-                      // ElevatedButton(
-                      //     onPressed: () {
-                      //       //  myController.changeLanguage('tig', 'ER');
-                      //       myController.changeLanguage('tig', 'ER');
-                      //     },
-                      //     child: Text('Tigrina'))
                     ]),
-              ),
-
-              SizedBox(
-                height: 15, //SizeConfig.screenHeight * 0.03,
               ),
             ],
           ),
@@ -505,54 +412,21 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  showDialogBox() => showCupertinoDialog<String>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+            title: Text('No internet'.tr),
+            content: Text('Please check your internet connectivity'.tr),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context, 'CANCEL');
+                    setState(() => isAlertSet = false);
+                    isDeviceConnected =
+                        await InternetConnectionChecker().hasConnection;
+                  },
+                  child: Text('CANCEL'.tr, style: TextStyle(color: kblue)))
+            ],
+          ));
 }
-
-// class DropDown extends StatefulWidget {
-//   DropDown({Key? key, required this.items}) : super(key: key);
-//   List items;
-//   @override
-//   State<DropDown> createState() => _DropDownState();
-// }
-
-// class _DropDownState extends State<DropDown> {
-//   @override
-//   MyController myController = Get.put(MyController());
-//   Widget build(BuildContext context) {
-//     return DropdownButton(
-//         //  value: '${myController.langValue.value}',
-//         style: TextStyle(color: Colors.amber),
-//         // items: [
-//         //   for (var item in items)
-//         //     DropdownMenuItem<String>(
-//         //         value: item, child: Text(item))
-//         // ],
-//         items: widget.items.map((e) {
-//           return DropdownMenuItem(
-//               value: e,
-//               child: Row(
-//                 children: [Text(e.flag), Text(e.name)],
-//               ));
-//         }).toList(),
-//         // Language.languageList()
-//         // .map((e) =>
-//         // DropdownMenuItem(
-//         //   child: Row)).toList()
-
-//         onChanged: (value) {
-//           if (value != null) {
-//             myController.langValue.value = ;
-//           }
-//           print(value);
-//           if (value == 'Tigrina') {
-//             myController.changeLanguage('tig', 'ER');
-//           }
-//           // myController.changeLanguage('en', 'US');
-//           else {
-//             myController.changeLanguage('en', 'US');
-//           }
-//           setState(() {
-//             value;
-//           });
-//         });
-//   }
-// }

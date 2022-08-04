@@ -61,47 +61,6 @@ class SignupPassword extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-<<<<<<< HEAD
-                TextFormField(
-                  controller: passController,
-                  key: passKey,
-                  onSaved: (value) {
-                    user.password = value;
-                  },
-                  validator: (value) {
-                    if (!validateStructure(value!)) {
-                      return 'Enter a Valid Password'.tr;
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    labelText: 'Enter password'.tr,
-                    labelStyle: TextStyle(fontSize: 18),
-                    fillColor: Theme.of(context).colorScheme.surface,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide.none,
-                    ),
-                    suffixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          profileController.x.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: profileController.x.value
-                              ? orangeColor
-                              : Colors.white,
-                        ),
-                        onPressed: () {
-                          profileController.x.value =
-                              !profileController.x.value;
-                          // setState(() {
-                          //   profileController.x.value = !profileController.x.value;
-                          //   print(profileController.x.value);
-                          // });
-                        },
-=======
                 Obx(
                   () => TextFormField(
                     controller: passController,
@@ -122,7 +81,6 @@ class SignupPassword extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
                       ),
                       suffixIcon: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -161,44 +119,6 @@ class SignupPassword extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-<<<<<<< HEAD
-                TextFormField(
-                  controller: confirmController,
-                  key: confirmKey,
-                  validator: (value) {
-                    if (confirmController.text != passController.text) {
-                      return 'The Two password need to be  the same '.tr;
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    labelText: 'Confirm Password'.tr,
-                    labelStyle: TextStyle(fontSize: 18),
-                    fillColor: Theme.of(context).colorScheme.surface,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide.none,
-                    ),
-                    suffixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: IconButton(
-                        icon: Icon(
-                          profileController.y.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: profileController.y.value
-                              ? orangeColor
-                              : Colors.white,
-                        ),
-                        onPressed: () {
-                          profileController.y.value =
-                              !profileController.y.value;
-                          // setState(() {
-                          //   profileController.y.value = !profileController.y.value;
-                          //   print(profileController.y.value);
-                          // });
-                        },
-=======
                 Obx(
                   () => TextFormField(
                     controller: confirmController,
@@ -216,7 +136,6 @@ class SignupPassword extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: BorderSide.none,
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
                       ),
                       suffixIcon: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.0),

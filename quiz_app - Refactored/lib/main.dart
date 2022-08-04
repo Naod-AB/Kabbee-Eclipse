@@ -12,7 +12,7 @@ import 'routes/router.gr.dart';
 
 void main() async {
   await Hive.initFlutter();
-  // ProfileBinding().dependencies();
+
   runApp(MyApp());
 }
 

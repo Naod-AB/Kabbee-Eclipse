@@ -161,19 +161,6 @@ class OneSignupPage extends StatelessWidget {
                       horizontal: SizeConfig.screenWidth * 0.09),
                   child: Row(
                     children: [
-<<<<<<< HEAD
-                      if (authController.signUpIndex.value != 0)
-                        Expanded(
-                          child: RoundedButton(
-                              buttonName: Text(
-                                "Back".tr,
-                                style: Theme.of(context).textTheme.headline6,
-                              ),
-                              pressed: () {
-                                authController.signUpIndex.value--;
-                              }),
-                        ),
-=======
                       Obx(
                         () => authController.signUpIndex.value != 0
                             ? Expanded(
@@ -190,21 +177,15 @@ class OneSignupPage extends StatelessWidget {
                               )
                             : Container(),
                       ),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
                       SizedBox(
                         width: SizeConfig.screenWidth * 0.05,
                       ),
                       Expanded(
                         child: RoundedButton(
                             buttonName: Text(
-<<<<<<< HEAD
-                              "Next".tr,
-                              style: Theme.of(context).textTheme.headline6,
-=======
                               "Next",
                               style: kBodyText.copyWith(
                                   fontWeight: FontWeight.bold, fontSize: 20),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
                             ),
                             pressed: () => authController.signUp(
                                 user, profilecontroller, formKey, context)),

@@ -18,10 +18,6 @@ class MyScoresScreen extends GetView<ProfileController> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-<<<<<<< HEAD
-        title:
-            customText(context, 'My Scores'.tr, 18, false, false, primaryColor),
-=======
         title: customText(
           context,
           'My Scores',
@@ -30,14 +26,13 @@ class MyScoresScreen extends GetView<ProfileController> {
           false,
           Theme.of(context).colorScheme.onBackground,
         ),
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
         centerTitle: false,
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
         child: pController.scores == null ||
-                pController.scores!.any(
+                pController.scores.any(
                   (data) => data.courseType == null,
                 )
             ? ScoreAlertBox(
@@ -45,7 +40,7 @@ class MyScoresScreen extends GetView<ProfileController> {
                 text: 'Do Some Exams and check your results here.'.tr)
             : Expanded(
                 child: GroupedListView<dynamic, String>(
-                  elements: pController.scores!,
+                  elements: pController.scores,
                   groupBy: (element) => element['courseType'],
                   order: GroupedListOrder.ASC,
                   groupSeparatorBuilder: (value) {
@@ -67,11 +62,6 @@ class MyScoresScreen extends GetView<ProfileController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-<<<<<<< HEAD
-                                customText(context, element['courseName'.tr],
-                                    19, false, false, primaryColor),
-=======
->>>>>>> d8ac6fe3451a5baeb13e6a8e9d18a2250e08f35b
                                 customText(
                                     context,
                                     element['courseName'],

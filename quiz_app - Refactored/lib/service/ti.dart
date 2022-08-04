@@ -9,7 +9,7 @@ const Map<String, String> tigrinya = {
   'Enter password': 'ምልክት ቃል ኣእትዉ',
   'Don`t have an account ?': 'ኣካውንት የብልካን።',
   'Sign up': 'ተመዝገቡ።',
-  "select language": "ቋንቋ ምረጽ",
+  "Select language": "ቋንቋ ምረጽ",
   'Password canot be empty': 'ምልክት ቃል ባዶ ክኸውን ኣይክእልን እዩ።',
   'Email canot be empty': 'ኢመይል ባዶ ክኸውን ኣይክእልን እዩ።',
   'Create account': 'ሕሳብ ፍጠር',
@@ -19,12 +19,16 @@ const Map<String, String> tigrinya = {
   'please tell us more about you': 'በጃኻ ብዛዕባኻ ዝያዳ ንገረና።',
   'First Name cannot be empty': 'ቀዳማይ ስም ባዶ ክኸውን ኣይክእልን እዩ።',
   'Enter First Name': 'ቀዳማይ ስም ኣእቱ',
+  'enter_new_password': 'ሓድሽ ቃል ምስጢር የአቱ',
   'Last Name cannot be empty': 'መወዳእታ ስም ባዶ ክኸውን ኣይክእልን እዩ።',
   'Enter Last Name': 'መወዳእታ ስም ኣእቱ',
+  'change_avatar': 'ምስሊ ቀይር',
+  'Upload': 'ጸዓን',
   'Next': 'ቀፃሊ',
 
   // Category screen\
   "Select Category": "ምድብ ምረጽ",
+  //languages
   "Front-End": "ናይ ቅድሚት ፍጻሜ",
   "Front end": "ናይ ቅድሚት ፍጻሜ",
   "Cloud-Service": "ኣገልግሎት ደበና",
@@ -39,13 +43,14 @@ const Map<String, String> tigrinya = {
   'Dart': 'ዳርት',
   'CLOUD_SERVICES': 'ኣገልግሎት ደበና',
   'Cloud services': 'ኣገልግሎት ደበና',
-  'Machine_Learning': 'ማሽን_ትምህርቲ',
+  'Machine_Learning': 'ማሽን ትምህርቲ',
   'JAVASCRIPT': 'ጃቫስክሪፕት',
   'HTML_CSS': 'ኤችቲኤምኤል_ሲኤስኤስ',
   'HTML CSS': 'ኤችቲኤምኤል_ሲኤስኤስ',
   'DART': 'ዳርት',
   'FLUTTER': 'ፍላተር',
-  'MACHINE_LEARNING': 'ማሽን_ትምህርቲ',
+  'MACHINE_LEARNING'
+      '': 'ማሽን_ትምህርቲ',
   'MACHINE LEARNING': 'ማሽን_ትምህርቲ',
   'CLOUD_COMPUTING': 'ክላውድ ኮምፒዩቲንግ',
   'CLOUD COMPUTING': 'ክላውድ ኮምፒዩቲንግ',
@@ -57,11 +62,7 @@ const Map<String, String> tigrinya = {
   'Select Language': 'ቋንቋ ምረጽ',
   'Select Type': 'ዓይነት ምረጽ',
   'Practice Test': 'ናይ ልምምድ ፈተና።',
-  //'Create account': '',
-//'create_account':'ሕሳብ ፍጠር',
 
-  //"select_type": "ዓይነት ምረጽ",
-  //"practice_test": "መለማመዲ ፈተና",
   "Evalution Exam": "ናይ ገምጋም ፈተና",
   'your_score': 'ነጥብካ',
   'REVIEW': 'ድግማ',
@@ -80,13 +81,10 @@ const Map<String, String> tigrinya = {
   'users': 'ተጠቀምቲ',
   'ACTIVE': 'ንጡፍ ',
   'blocked': 'ዓገተ',
-  //'enter_email': 'ኢመይል ኣእቱ',
 
-  //'enter Password': '',
-  //'Password canot be empty': 'ምልክት ቃል ባዶ ክኸውን ኣይክእልን እዩ።',
-  // 'Email canot be empty': 'ኢመይል ባዶ ክኸውን ኣይክእልን እዩ።',
   'Exam information': 'ሓበሬታ ፈተና',
   'OK': 'እወ',
+
   'hello you have 2 and half hours time to  finish the exam. are you ready to take exam ?':
       'ሰላም ፈተና ንምውዳእ ናይ 2 ሰዓትን ፈረቓን ግዜ ኣለኩም። ፈተና ክትወስድ ድሉው ዲኻ ?',
   'No Questions Available': 'ዝኾነ ሕቶ የለን',
@@ -95,7 +93,7 @@ const Map<String, String> tigrinya = {
   'Account': 'ኣካውንት',
   'Profile': 'መግለፂ',
   'Personal': 'ውልቃዊ',
-  'View and update profile': 'ፕሮፋይል ርአን ኣዘምንን።',
+  'View and update profile': 'ፕሮፋይል ርአን ኣማዕብል',
   'Admin Settings': 'ናይ ኣድሚን ቅጥዕታት',
   'Dashboard': 'ዳሽቦርድ',
   'Statistics': 'ስታቲስቲክስ',
@@ -114,7 +112,7 @@ const Map<String, String> tigrinya = {
   'First_Name': 'ናይ መጀመርታ ሽም',
   'Last Name': 'ናይ መወዳእታ ሽም',
   'Password': 'መሕለፊ ቓል',
-  'UPDATE': 'ኣዘምን',
+  'UPDATE': 'ኣማዕብል',
   'Gender': 'ፆታ',
   'Male': 'ተባዕታይ',
   'Female': 'ኣንስተይቲ',
@@ -134,7 +132,7 @@ const Map<String, String> tigrinya = {
   'TOTAL': 'ድምር',
   'CATEGORIES': 'ምድባት',
   'See active and blocked': 'ንጡፍን ዝተዓጽወን ርአ',
-  'View and update courses': 'ኮርሳት ምርኣይን ምዕራፍን',
+  'View and update courses': 'ኮርሳት ምርኣይን ምምዕባል ምዕራፍን',
 
   'BLOCKED': 'ተዓጽዩ ኣሎ።',
   'Users Not Found !': 'ተጠቀምቲ ኣይተረኽበን !',
@@ -146,4 +144,6 @@ const Map<String, String> tigrinya = {
   'Confirm Password': 'ምልክት ቃል ኣረጋግጽ',
   '* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  ':
       '* ምልክት ቃል 6 ወይ ልዕሊኡ ፊደላት ክህልዎ ኣለዎ \n *  እንተወሓደ ኣብ ዓበይቲ ፊደላት ክህልዎ ኣለዎ \n * Atleast ሓደ ኣሃዝ \n እንተወሓደ ሓደ ፍሉይ ፊደል',
+  'No internet': 'ኢንተርነት የለን',
+  'Please check your internet connectivity': 'በጃኹም ናይ ኢንተርነት ምትእስሳርኩም መርምሩ።',
 };
