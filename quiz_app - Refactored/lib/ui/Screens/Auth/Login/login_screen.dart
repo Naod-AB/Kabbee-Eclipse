@@ -237,6 +237,11 @@ class _LoginPageState extends State<LoginPage> {
                                       fontSize: 20),
                                 ),
                                 pressed: () {
+                                  if (!isDeviceConnected &&
+                                      isAlertSet == false) {
+                                    showDialogBox();
+                                    setState(() => isAlertSet = true);
+                                  }
                                   print('logging user..');
                                   authController.loadingUser.value = true;
                                   authController.authenticateUser(
