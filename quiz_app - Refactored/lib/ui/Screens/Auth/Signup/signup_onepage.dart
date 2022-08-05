@@ -75,7 +75,7 @@ class OneSignupPage extends StatelessWidget {
                                   isActive:
                                       authController.signUpIndex.value >= 0,
                                   title: Text(
-                                    "Email",
+                                    "Email".tr,
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -99,7 +99,7 @@ class OneSignupPage extends StatelessWidget {
                                   isActive:
                                       authController.signUpIndex.value >= 1,
                                   title: Text(
-                                    "Password",
+                                    "Password".tr,
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -128,7 +128,7 @@ class OneSignupPage extends StatelessWidget {
                                   isActive:
                                       authController.signUpIndex.value >= 2,
                                   title: Text(
-                                    "Full Name",
+                                    "Full Name".tr,
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme

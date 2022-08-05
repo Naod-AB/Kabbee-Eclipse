@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:quiz_app/ui/utils/string_extension.dart';
 
 import 'ui/Screens/Profile/widgets/user_profile_widget.dart';
@@ -9,11 +10,10 @@ class AdminLanguage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: const Text('Courses'),
+          title: Text('Courses'.tr),
           centerTitle: false,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -32,8 +32,6 @@ class AdminLanguage extends StatelessWidget {
                           .toUpperCase())
                   .toList();
 
-              
-
               return Card(
                 color: Theme.of(context).colorScheme.tertiary,
                 child: buildlanguageTiles(
@@ -41,11 +39,11 @@ class AdminLanguage extends StatelessWidget {
                     language["icon"],
                     height: 40,
                   ),
-                  language['courseName']
+                  language['courseName'.tr]
                       .toString()
                       .replaceAll('_', ' ')
                       .toUpperCase(),
-                  language['category']
+                  language['category'.tr]
                       .toString()
                       .replaceAll('-', ' ')
                       .toString()

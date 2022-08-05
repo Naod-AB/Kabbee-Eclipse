@@ -32,7 +32,7 @@ class MyScoresScreen extends GetView<ProfileController> {
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
         child: pController.scores == null ||
-                pController.scores!.any(
+                pController.scores.any(
                   (data) => data.courseType == null,
                 )
             ? ScoreAlertBox(
@@ -40,14 +40,14 @@ class MyScoresScreen extends GetView<ProfileController> {
                 text: 'Do Some Exams and check your results here.'.tr)
             : Expanded(
                 child: GroupedListView<dynamic, String>(
-                  elements: pController.scores!,
+                  elements: pController.scores,
                   groupBy: (element) => element['courseType'],
                   order: GroupedListOrder.ASC,
                   groupSeparatorBuilder: (value) {
                     return Padding(
                       padding: const EdgeInsets.fromLTRB(10, 30, 10, 15),
-                      child: customText(
-                          context, value.toUpperCase(), 20, true, false, kblue),
+                      child: customText(context, value.toUpperCase().tr, 20,
+                          true, false, kblue),
                     );
                   },
                   itemBuilder: (context, element) {

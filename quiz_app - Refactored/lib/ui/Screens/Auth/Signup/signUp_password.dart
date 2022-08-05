@@ -40,7 +40,7 @@ class SignupPassword extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Create account',
+              'Create account'.tr,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(30),
@@ -48,7 +48,7 @@ class SignupPassword extends StatelessWidget {
                   letterSpacing: 0.30),
             ),
             Text(
-              'please enter your password',
+              'please enter your password'.tr,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.onBackground,
                   fontSize: getProportionateScreenWidth(10),
@@ -178,7 +178,8 @@ class SignupPassword extends StatelessWidget {
                   children: [
                     Tooltip(
                         message:
-                            "* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  ",
+                            "* Password have to have 6 or more in characters \n * At to have at least on UpperCase letter \n * At least one digit \n at least one special character  "
+                                .tr,
                         waitDuration: Duration(microseconds: 500),
                         showDuration: Duration(seconds: 1),
                         child: Container(

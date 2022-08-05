@@ -69,20 +69,13 @@ class FinalScore extends StatelessWidget {
                   visible: questionController.isEnabled.value,
                   child: ElevatedButton(
                     child: customText(
-                        context, 'REVIEW', 20, false, false, primaryColor),
+                        context, 'REVIEW'.tr, 20, false, false, primaryColor),
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Center(child: CircularProgressIndicator());
-                        },
-                      );
                       print(
                           ' reviewlist number ${questionController.questionApi!.length}');
 
                       // deleteSavedAnswers(controller.questionApi!.length);
                       context.router.pushNamed('/review_screen');
-                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(300, 50),
@@ -103,34 +96,68 @@ class FinalScore extends StatelessWidget {
                     maintainState: true,
                     child: ElevatedButton(
                       child: customText(
-                          context, 'DONE', 20, false, false, primaryColor),
+                          context, 'DONE'.tr, 20, false, false, primaryColor),
                       onPressed: () async {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Center(child: CircularProgressIndicator());
-                          },
-                        );
                         print('Null error ${pController.userInfo.value!.id}');
 
                         pController.scores = (await fetchUserScores(
                             pController.userInfo.value!.id))!;
 
                         print(
-                            ' done number ${questionController.questionApi!.length}');
+                            ' reviewlist number ${questionController.questionApi!.length}');
+
                         // deleteSavedAnswers(controller.questionApi!.length);
-                        context.router.pushNamed('/category');
-                        Get.delete<QuestionController>();
+                        context.router.pushNamed('/review_screen');
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(300, 50),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          primary: const Color.fromARGB(255, 255, 165, 0)),
+                          side: const BorderSide(
+                              color: Color.fromARGB(255, 255, 165, 0),
+                              width: 1.5),
+                          primary: Color.fromARGB(0, 236, 13, 13)),
                     ),
                   );
-                })
+                  const Padding(padding: EdgeInsets.all(15));
+                  Obx(() {
+                    return Visibility(
+                      visible: !isLoading.value,
+                      maintainSize: true,
+                      maintainAnimation: true,
+                      maintainState: true,
+                      child: ElevatedButton(
+                        child: customText(
+                            context, 'DONE', 20, false, false, primaryColor),
+                        onPressed: () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Center(child: CircularProgressIndicator());
+                            },
+                          );
+                          print('Null error ${pController.userInfo.value!.id}');
+
+                          pController.scores = (await fetchUserScores(
+                              pController.userInfo.value!.id))!;
+
+                          print(
+                              ' done number ${questionController.questionApi!.length}');
+                          // deleteSavedAnswers(controller.questionApi!.length);
+                          context.router.pushNamed('/category');
+                          Get.delete<QuestionController>();
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(300, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            primary: const Color.fromARGB(255, 255, 165, 0)),
+                      ),
+                    );
+                  });
+                }),
               ],
             ),
           ),

@@ -47,7 +47,7 @@ class QuestionsScreen extends StatelessWidget {
             ? () {
                 return quizAlertBox(
                     context,
-                    "navigate",
+                    "navigate".tr,
                     "",
                     "hello you can't back during exam starts",
                     path,
@@ -73,9 +73,10 @@ class QuestionsScreen extends StatelessWidget {
                 child: qController.questionApi!.isEmpty
                     ? Center(
                         child: ScoreAlertBox(
-                            title: 'No Questions Available',
+                            title: 'No Questions Available'.tr,
                             text:
-                                'Please practice or choose other languages to test on.'))
+                                'Please practice or choose other languages to test on.'
+                                    .tr))
                     : Column(
                         children: [
                           isFinal ? MyTimer() : Container(),
@@ -287,39 +288,39 @@ class QuestionsScreen extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
-                          Obx(() => qController.questionApi!.length ==
-                                      qController.qnIndex.value
-                                  ? ElevatedButton(
-                                      onPressed: () async {
-                                        // showDialog(
-                                        //   context: context,
-                                        //   builder: (context) {
-                                        //     return Center(
-                                        //         child:
-                                        //             CircularProgressIndicator());
-                                        //   },
-                                        // );
-                                        qController.choices.removeWhere(
-                                            (item) => [''].contains(item));
-                                        qController.answers.removeWhere(
-                                            (item) => [''].contains(item));
-                                        // Navigator.pop(context);
+                          Obx(
+                            () => qController.questionApi!.length ==
+                                    qController.qnIndex.value
+                                ? ElevatedButton(
+                                    onPressed: () async {
+                                      // showDialog(
+                                      //   context: context,
+                                      //   builder: (context) {
+                                      //     return Center(
+                                      //         child:
+                                      //             CircularProgressIndicator());
+                                      //   },
+                                      // );
+                                      qController.choices.removeWhere(
+                                          (item) => [''].contains(item));
+                                      qController.answers.removeWhere(
+                                          (item) => [''].contains(item));
+                                      // Navigator.pop(context);
 
-                                        if (isFinal) {
-                                          if (qController.choices.length !=
-                                              qController.questionApi!.length) {
-                                            quizAlertBox(
-                                                context,
-                                                'Notice',
-                                                "CONTINUE",
-                                                'hello you have unanswered question . Do you want go back and check or continue to score page ?',
-                                                path,
-                                                icon,
-                                                qController,
-                                                false,
-                                                false,
-                                                "WARNING");
-                                          }
+                                      if (isFinal) {
+                                        if (qController.choices.length !=
+                                            qController.questionApi!.length) {
+                                          quizAlertBox(
+                                              context,
+                                              'Notice'.tr,
+                                              "CONTINUE",
+                                              'hello you have unanswered question . Do you want go back and check or continue to score page ?',
+                                              path,
+                                              icon,
+                                              qController,
+                                              false,
+                                              false,
+                                              "WARNING");
                                         }
                                         int examCounter = 0;
 
@@ -399,22 +400,30 @@ class QuestionsScreen extends StatelessWidget {
                                           qController.qnIndex.value = 1;
                                           qController.scoreCounter = 0;
                                         }
-                                        // Navigator.pop(context);
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          fixedSize: const Size(300, 50),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          primary: const Color.fromARGB(
-                                              255, 255, 165, 0)),
-                                      child: customText(context, 'DONE', 20,
-                                          false, false, primaryColor),
-                                    )
-                                  : Container()
-                              // Navigator.pop(context);
-                              ),
-                          //Navigator.pop(context, true),
+                                      }
+                                      if (!isFinal) {
+                                        context.router.push(FinalScore(
+                                            outOf:
+                                                qController.questionApi!.length,
+                                            score: qController.answers.length,
+                                            optionList:
+                                                qController.optionList));
+                                        qController.qnIndex.value = 1;
+                                        qController.scoreCounter = 0;
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        fixedSize: const Size(300, 50),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        primary: const Color.fromARGB(
+                                            255, 255, 165, 0)),
+                                    child: customText(context, 'DONE'.tr, 20,
+                                        false, false, primaryColor),
+                                  )
+                                : Container(),
+                          ),
                           const Spacer(),
                         ],
                       ),

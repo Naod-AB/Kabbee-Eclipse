@@ -91,6 +91,57 @@ class CategoryPage extends StatelessWidget {
                     )
                   ],
                 ),
+
+                // child: Scaffold(
+                //     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                //     appBar: quizAppBar(context: context, iconUrl: ''),
+                //     body: Center(
+                //       child: SingleChildScrollView(
+                //         child: Column(
+                //           children: [
+                //             const SizedBox(
+                //               height: defaultPadding,
+                //             ),
+                //             Text("Select Category".tr,
+                //                 style: Theme.of(context).textTheme.headline5),
+                //             const SizedBox(
+                //               height: defaultPadding * 3,
+                //             ),
+                //             ChoiceCard(
+                //               imgPosY: -130,
+                //               imgeSrc: "assets/icons/front end icons_small.svg",
+                //               cardtext: "Front-End".tr,
+                //               onpressed: () async {
+                //                 var course = await fetchCourses('Front-End');
+                //                 context.router.push(LanguageChoices(courses: course));
+                //               },
+                //             ),
+                //             const SizedBox(
+                //               height: defaultPadding * 3,
+                //             ),
+                //             ChoiceCard(
+                //               imgPosY: -130,
+                //               imgeSrc: "assets/icons/aws icons_small.svg",
+                //               cardtext: "Cloud-Service".tr,
+                //               onpressed: () async {
+                //                 var course = await fetchCourses('cloud_services');
+                //                 context.router.push(LanguageChoices(courses: course));
+                //               },
+                //             ),
+                //             const SizedBox(
+                //               height: defaultPadding * 3,
+                //             ),
+                //             ChoiceCard(
+                //               imgheig: 280,
+                //               imgPosY: -130,
+                //               imgeSrc: "assets/icons/logos_nodejs-icon_small.svg",
+                //               cardtext: "Back-End".tr,
+                //               onpressed: () async {
+                //                 var course = await fetchCourses('Back_end');
+                //                 context.router.push(LanguageChoices(courses: course));
+                //               },
+                // )
+                //],
               ),
             )),
       ),

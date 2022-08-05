@@ -49,7 +49,7 @@ class SignupEmail extends StatelessWidget {
           vertical: SizeConfig.screenWidth * 0.05),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Text(
-          'Create account',
+          'Create account'.tr,
           style: TextStyle(
               color: Theme.of(context).colorScheme.onBackground,
               fontSize: getProportionateScreenWidth(30), //40,
@@ -57,7 +57,7 @@ class SignupEmail extends StatelessWidget {
               letterSpacing: 0.30),
         ),
         Text(
-          'please tell us more about you',
+          'please tell us more about you'.tr,
           style: TextStyle(
               color: Theme.of(context).colorScheme.onBackground,
               fontSize: getProportionateScreenWidth(10), //20,
@@ -78,16 +78,16 @@ class SignupEmail extends StatelessWidget {
               key: emailKey,
               validator: (value) {
                 if (!EmailValidator.validate(value!)) {
-                  return 'You need A valid email Address';
+                  return 'You need A valid email Address'.tr;
                 } else if (isEmailRegistered(value)) {
                   print(isEmailRegistered(value));
-                  return 'Email is already registered ';
+                  return 'Email is already registered '.tr;
                 }
                 print(isEmailRegistered(value));
               },
               decoration: InputDecoration(
                 filled: true,
-                labelText: 'Enter email',
+                labelText: 'Enter email'.tr,
                 labelStyle: TextStyle(fontSize: 16),
                 fillColor: Theme.of(context).colorScheme.surface,
                 border: OutlineInputBorder(
