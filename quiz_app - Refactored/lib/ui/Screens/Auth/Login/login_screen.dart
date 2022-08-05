@@ -240,7 +240,11 @@ class _LoginPageState extends State<LoginPage> {
                                   if (!isDeviceConnected &&
                                       isAlertSet == false) {
                                     showDialogBox();
-                                    setState(() => isAlertSet = true);
+                                    setState(() => {
+                                          isAlertSet = true,
+                                          authController.loadingUser.value =
+                                              false
+                                        });
                                   }
                                   print('logging user..');
                                   authController.loadingUser.value = true;

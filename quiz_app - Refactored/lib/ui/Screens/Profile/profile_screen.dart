@@ -11,7 +11,7 @@ import 'package:quiz_app/ui/Screens/CommonControllers/profile_controllers.dart';
 import 'package:quiz_app/ui/Screens/Profile/widgets/user_profile_widget.dart';
 import 'package:quiz_app/ui/Screens/Question/models/courses.dart';
 // import '../Profile/widgets/user_profile_widget.dart';
-
+import 'package:share_plus/share_plus.dart';
 // import '../../../routes/router.gr.dart';
 import '../../../routes/router.gr.dart';
 import '../../../webviewSlider.dart';
@@ -206,6 +206,30 @@ class ProfileScreen extends GetView<ProfileController> {
                             Theme.of(context).colorScheme.onBackground),
                         Icon(
                           Icons.view_carousel_outlined,
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
+                        true),
+                  ),
+                  buildDivider(context),
+
+                  // share
+                  GestureDetector(
+                    onTap: () async {
+                      // await Share.share('Sharing with your friends ');
+                      await Share.share(
+                          'check out my website https://example.com',
+                          subject: 'Share with friends!');
+
+                      // context.router.pushNamed('/invite');
+                    },
+                    child: buildTile(
+                        Icons.share,
+                        customText(context, 'Share'.tr, 18, true, false,
+                            Theme.of(context).colorScheme.onBackground),
+                        customText(context, 'Invite friends'.tr, 13, false,
+                            false, Theme.of(context).colorScheme.onBackground),
+                        Icon(
+                          Icons.arrow_forward_ios,
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
                         true),

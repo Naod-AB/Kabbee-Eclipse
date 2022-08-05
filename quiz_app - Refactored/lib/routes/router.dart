@@ -18,6 +18,7 @@ import '../admin_language.dart';
 import '../ui/Screens/Admin/user_list.dart';
 import '../ui/Screens/Category/choose_type_screen.dart';
 import '../ui/Screens/Profile/user_details_screen.dart';
+import '../ui/Screens/Profile/widgets/share.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -35,6 +36,7 @@ import '../ui/Screens/Profile/user_details_screen.dart';
     AutoRoute(path: '/personal_details', page: UserDetailsScreen),
     AutoRoute(path: '/edit_profile', page: EditProfileScreen),
     AutoRoute(path: '/my_scores', page: MyScoresScreen),
+    // AutoRoute(path: '/invite', page: InvitePage),
     AutoRoute(path: '/users', page: UsersListPage),
     AutoRoute(path: '/dahboard', page: DashboardPage),
     AutoRoute(path: '/adminLanguages', page: AdminLanguage),
