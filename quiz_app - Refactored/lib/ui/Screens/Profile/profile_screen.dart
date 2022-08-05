@@ -88,8 +88,16 @@ class ProfileScreen extends GetView<ProfileController> {
                       children: [
                         GestureDetector(
                           onTap: () async {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              },
+                            );
                             await pController.getDashBoardData();
                             context.router.pushNamed('/dahboard');
+                            Navigator.pop(context);
                           },
                           child: buildTile(
                             Icons.dashboard,
@@ -157,10 +165,17 @@ class ProfileScreen extends GetView<ProfileController> {
                   buildDivider(context),
                   GestureDetector(
                     onTap: () async {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(child: CircularProgressIndicator());
+                        },
+                      );
                       controller.scores = (await fetchUserScores(
                           controller.userInfo.value!.id))!;
 
                       context.router.pushNamed('/my_scores');
+                      Navigator.pop(context);
                     },
                     child: buildTile(
                         Icons.celebration,

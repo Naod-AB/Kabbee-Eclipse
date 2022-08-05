@@ -170,6 +170,12 @@ quizAlertBox(
                         //     optionList: questionAlertCtrl.questionApi!.length));
                       }
                     : () async {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Center(child: CircularProgressIndicator());
+                          },
+                        );
                         String? ftype = "FINAL";
                         questionAlertCtrl.questionApi = await fetchQuestionsApi(
                             path.toString().toUpperCase(), ftype);

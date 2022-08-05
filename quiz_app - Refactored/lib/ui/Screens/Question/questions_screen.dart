@@ -287,86 +287,109 @@ class QuestionsScreen extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
-                          Obx(
-                            () => qController.questionApi!.length ==
-                                    qController.qnIndex.value
-                                ? ElevatedButton(
-                                    onPressed: () async {
-                                      qController.choices.removeWhere(
-                                          (item) => [''].contains(item));
-                                      qController.answers.removeWhere(
-                                          (item) => [''].contains(item));
+                          Obx(() => qController.questionApi!.length ==
+                                      qController.qnIndex.value
+                                  ? ElevatedButton(
+                                      onPressed: () async {
+                                        // showDialog(
+                                        //   context: context,
+                                        //   builder: (context) {
+                                        //     return Center(
+                                        //         child:
+                                        //             CircularProgressIndicator());
+                                        //   },
+                                        // );
+                                        qController.choices.removeWhere(
+                                            (item) => [''].contains(item));
+                                        qController.answers.removeWhere(
+                                            (item) => [''].contains(item));
+                                        // Navigator.pop(context);
 
-                                      if (isFinal) {
-                                        if (qController.choices.length !=
-                                            qController.questionApi!.length) {
-                                          quizAlertBox(
-                                              context,
-                                              'Notice',
-                                              "CONTINUE",
-                                              'hello you have unanswered question . Do you want go back and check or continue to score page ?',
-                                              path,
-                                              icon,
-                                              qController,
-                                              false,
-                                              false,
-                                              "WARNING");
+                                        if (isFinal) {
+                                          if (qController.choices.length !=
+                                              qController.questionApi!.length) {
+                                            quizAlertBox(
+                                                context,
+                                                'Notice',
+                                                "CONTINUE",
+                                                'hello you have unanswered question . Do you want go back and check or continue to score page ?',
+                                                path,
+                                                icon,
+                                                qController,
+                                                false,
+                                                false,
+                                                "WARNING");
+                                          }
                                         }
-                                      }
-                                      int examCounter = 0;
+                                        int examCounter = 0;
 
-                                      int scorePercent = (qController
-                                                  .answers.length /
-                                              qController.questionApi!.length *
-                                              100)
-                                          .toInt();
-                                      print(
-                                          'THE USER PERCENTAGE IS $scorePercent');
-                                      examCounter = qController
-                                              .checkExamCounter(scorePercent)
-                                          as int;
-                                      DateTime now = DateTime.now();
-                                      final DateFormat formatter = DateFormat(
-                                        'yyyy-MM-dd HH:mm:ss',
-                                      );
+                                        int scorePercent =
+                                            (qController.answers.length /
+                                                    qController
+                                                        .questionApi!.length *
+                                                    100)
+                                                .toInt();
+                                        print(
+                                            'THE USER PERCENTAGE IS $scorePercent');
+                                        examCounter = qController
+                                                .checkExamCounter(scorePercent)
+                                            as int;
+                                        DateTime now = DateTime.now();
+                                        final DateFormat formatter = DateFormat(
+                                          'yyyy-MM-dd HH:mm:ss',
+                                        );
 
-                                      final String takenDate =
-                                          formatter.format(now);
+                                        final String takenDate =
+                                            formatter.format(now);
 
-                                      CourseScore score = CourseScore(
-                                          courseId: pController
-                                                  .userInfo.value!.id
-                                                  .toString() +
-                                              qController.chosenCourse.value,
-                                          courseName:
-                                              qController.chosenCourse.value,
-                                          courseType: qController
-                                              .chosenCourseType.value,
-                                          courseScore:
-                                              qController.answers.length,
-                                          coursePercentage: scorePercent,
-                                          userId:
-                                              pController.userInfo.value!.id,
-                                          counter: examCounter,
-                                          blocked: false,
-                                          takenDate: takenDate);
-                                      qController.isFinished = true;
+                                        CourseScore score = CourseScore(
+                                            courseId: pController
+                                                    .userInfo.value!.id
+                                                    .toString() +
+                                                qController.chosenCourse.value,
+                                            courseName:
+                                                qController.chosenCourse.value,
+                                            courseType: qController
+                                                .chosenCourseType.value,
+                                            courseScore:
+                                                qController.answers.length,
+                                            coursePercentage: scorePercent,
+                                            userId:
+                                                pController.userInfo.value!.id,
+                                            counter: examCounter,
+                                            blocked: false,
+                                            takenDate: takenDate);
+                                        qController.isFinished = true;
 
-                                      String checkid = pController
-                                              .userInfo.value!.id
-                                              .toString() +
-                                          qController.chosenCourse.value;
-                                      if (isFinal) {
-                                        if (score.courseId == checkid) {
-                                          createUserScore(score);
-                                        } else {
-                                          saveUserScore(score);
+                                        String checkid = pController
+                                                .userInfo.value!.id
+                                                .toString() +
+                                            qController.chosenCourse.value;
+                                        if (isFinal) {
+                                          if (score.courseId == checkid) {
+                                            createUserScore(score);
+                                          } else {
+                                            saveUserScore(score);
+                                          }
+                                          qController.isEnabled.value = false;
                                         }
-                                        qController.isEnabled.value = false;
-                                      }
-                                      if (isFinal) {
-                                        if (qController.choices.length ==
-                                            qController.questionApi!.length) {
+                                        if (isFinal) {
+                                          if (qController.choices.length ==
+                                              qController.questionApi!.length) {
+                                            context.router.push(FinalScore(
+                                                outOf: qController
+                                                    .questionApi!.length,
+                                                score:
+                                                    qController.answers.length,
+                                                optionList:
+                                                    qController.optionList));
+                                            qController.qnIndex.value = 1;
+                                            qController.scoreCounter = 0;
+                                            // Navigator.pop(context);
+                                          }
+                                        }
+
+                                        if (!isFinal) {
                                           context.router.push(FinalScore(
                                               outOf: qController
                                                   .questionApi!.length,
@@ -376,30 +399,22 @@ class QuestionsScreen extends StatelessWidget {
                                           qController.qnIndex.value = 1;
                                           qController.scoreCounter = 0;
                                         }
-                                      }
-                                      if (!isFinal) {
-                                        context.router.push(FinalScore(
-                                            outOf:
-                                                qController.questionApi!.length,
-                                            score: qController.answers.length,
-                                            optionList:
-                                                qController.optionList));
-                                        qController.qnIndex.value = 1;
-                                        qController.scoreCounter = 0;
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        fixedSize: const Size(300, 50),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        primary: const Color.fromARGB(
-                                            255, 255, 165, 0)),
-                                    child: customText(context, 'DONE', 20,
-                                        false, false, primaryColor),
-                                  )
-                                : Container(),
-                          ),
+                                        // Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          fixedSize: const Size(300, 50),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          primary: const Color.fromARGB(
+                                              255, 255, 165, 0)),
+                                      child: customText(context, 'DONE', 20,
+                                          false, false, primaryColor),
+                                    )
+                                  : Container()
+                              // Navigator.pop(context);
+                              ),
+                          //Navigator.pop(context, true),
                           const Spacer(),
                         ],
                       ),

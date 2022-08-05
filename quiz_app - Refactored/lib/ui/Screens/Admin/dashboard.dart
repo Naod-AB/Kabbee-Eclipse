@@ -37,9 +37,16 @@ class DashboardPage extends GetView<ProfileController> {
               const SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Center(child: CircularProgressIndicator());
+                    },
+                  );
                   pController.userList = await fetchUsers();
 
                   context.router.pushNamed('/users');
+                  Navigator.pop(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -63,7 +70,14 @@ class DashboardPage extends GetView<ProfileController> {
               const SizedBox(height: 10),
               GestureDetector(
                 onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Center(child: CircularProgressIndicator());
+                    },
+                  );
                   context.router.pushNamed('/adminLanguages');
+                  Navigator.pop(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(

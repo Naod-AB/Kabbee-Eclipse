@@ -234,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 pressed: () {
                                   print('logging user..');
-
+                                  authController.loadingUser.value = true;
                                   authController.authenticateUser(
                                       context: context,
                                       email: authController

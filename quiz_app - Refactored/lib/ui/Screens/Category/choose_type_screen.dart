@@ -51,6 +51,12 @@ class ChooseTypePage extends StatelessWidget {
                     imgeSrc: "assets/icons/Practice_test.svg",
                     cardtext: "Practice Test".tr,
                     onpressed: () async {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(child: CircularProgressIndicator());
+                        },
+                      );
                       String ptype = "PRACTICE";
                       questionController.questionApi =
                           await fetchQuestionsApi(path.toUpperCase(), ptype);
@@ -64,6 +70,7 @@ class ChooseTypePage extends StatelessWidget {
                         isFinal: false,
                         ptype: ptypes,
                       ));
+                      Navigator.pop(context);
                     },
                   ),
                   const SizedBox(

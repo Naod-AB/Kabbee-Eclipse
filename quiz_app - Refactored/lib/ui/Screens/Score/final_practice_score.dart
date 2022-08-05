@@ -24,100 +24,115 @@ class FinalScore extends StatelessWidget {
   int score;
   int? optionList;
 
- 
   RxBool isLoading = true.obs;
   final QuestionController questionController = Get.find();
   @override
   Widget build(BuildContext context) {
-
     Future.delayed(
         const Duration(milliseconds: 2300), () => isLoading.value = false);
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/photo.jpg"),
-            fit: BoxFit.cover,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/photo.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-         
-              const Padding(padding: EdgeInsets.all(20)),
-              score == outOf
-                  ? Obx(() {
-                      return isLoading.value
-                          ? CircularFinalScore(
-                              score: score,
-                              outOf: outOf,
-                              animationDuration: 2000,
-                            )
-                          : Lottie.network(
-                              'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
-                              height: 250,
-                            );
-                    })
-                  //: Container(),
-                  : CircularFinalScore(
-                      score: score,
-                      outOf: outOf,
-                      animationDuration: 2000,
-                    ),
-              const Padding(padding: EdgeInsets.all(20)),
-              Visibility(
-                visible: questionController.isEnabled.value,
-                child: ElevatedButton(
-                  child: customText(
-                      context, 'REVIEW', 20, false, false, primaryColor),
-                  onPressed: () {
-                    print(
-                        ' reviewlist number ${questionController.questionApi!.length}');
-
-                    // deleteSavedAnswers(controller.questionApi!.length);
-                    context.router.pushNamed('/review_screen');
-                  },
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(300, 50),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      side: const BorderSide(
-                          color: Color.fromARGB(255, 255, 165, 0), width: 1.5),
-                      primary: Color.fromARGB(0, 236, 13, 13)),
-                ),
-              ),
-              const Padding(padding: EdgeInsets.all(15)),
-              Obx(() {
-                return Visibility(
-                  visible: !isLoading.value,
-                  maintainSize: true,
-                  maintainAnimation: true,
-                  maintainState: true,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(padding: EdgeInsets.all(20)),
+                score == outOf
+                    ? Obx(() {
+                        return isLoading.value
+                            ? CircularFinalScore(
+                                score: score,
+                                outOf: outOf,
+                                animationDuration: 2000,
+                              )
+                            : Lottie.network(
+                                'https://assets4.lottiefiles.com/packages/lf20_touohxv0.json',
+                                height: 250,
+                              );
+                      })
+                    //: Container(),
+                    : CircularFinalScore(
+                        score: score,
+                        outOf: outOf,
+                        animationDuration: 2000,
+                      ),
+                const Padding(padding: EdgeInsets.all(20)),
+                Visibility(
+                  visible: questionController.isEnabled.value,
                   child: ElevatedButton(
                     child: customText(
-                        context, 'DONE', 20, false, false, primaryColor),
-                    onPressed: () async {
-                      print('Null error ${pController.userInfo.value!.id}');
-
-                      pController.scores = (await fetchUserScores(
-                          pController.userInfo.value!.id))!;
-
+                        context, 'REVIEW', 20, false, false, primaryColor),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(child: CircularProgressIndicator());
+                        },
+                      );
                       print(
-                          ' done number ${questionController.questionApi!.length}');
+                          ' reviewlist number ${questionController.questionApi!.length}');
+
                       // deleteSavedAnswers(controller.questionApi!.length);
-                      context.router.pushNamed('/category');
-                      Get.delete<QuestionController>();
+                      context.router.pushNamed('/review_screen');
+                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(300, 50),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        primary: const Color.fromARGB(255, 255, 165, 0)),
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 255, 165, 0),
+                            width: 1.5),
+                        primary: Color.fromARGB(0, 236, 13, 13)),
                   ),
-                );
-              })
-            ],
+                ),
+                const Padding(padding: EdgeInsets.all(15)),
+                Obx(() {
+                  return Visibility(
+                    visible: !isLoading.value,
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    child: ElevatedButton(
+                      child: customText(
+                          context, 'DONE', 20, false, false, primaryColor),
+                      onPressed: () async {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Center(child: CircularProgressIndicator());
+                          },
+                        );
+                        print('Null error ${pController.userInfo.value!.id}');
+
+                        pController.scores = (await fetchUserScores(
+                            pController.userInfo.value!.id))!;
+
+                        print(
+                            ' done number ${questionController.questionApi!.length}');
+                        // deleteSavedAnswers(controller.questionApi!.length);
+                        context.router.pushNamed('/category');
+                        Get.delete<QuestionController>();
+                        Navigator.pop(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(300, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          primary: const Color.fromARGB(255, 255, 165, 0)),
+                    ),
+                  );
+                })
+              ],
+            ),
           ),
         ),
       ),
